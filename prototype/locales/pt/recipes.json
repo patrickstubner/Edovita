@@ -1,0 +1,58 @@
+{
+ "recipes": {
+  "oven_salmon": "Salmão assado com brócolis",
+  "quinoa_pan": "Quinoa refogada com legumes e grão-de-bico",
+  "thai_curry": "Curry tailandês de frango",
+  "pho": "Pho de carne",
+  "summer_rolls": "Rolinhos primavera vietnamitas com camarão",
+  "birchermuesli": "Bircher muesli",
+  "yogurt_bowl": "Iogurte com frutas vermelhas e castanhas",
+  "lentil_curry": "Curry de lentilha com leite de coco",
+  "scrambled_eggs": "Ovos mexidos com espinafre e pão integral",
+  "chicken_bowl": "Bowl de frango teriyaki",
+  "mushroom_polenta": "Cogumelos salteados com polenta",
+  "hummus_wrap": "Wrap de homus e legumes",
+  "miso_salmon": "Salmão ao missô com pak choi",
+  "shakshuka": "Shakshuka",
+  "burrito_bowl": "Burrito bowl com feijão"
+ },
+ "cuisines": {
+  "european": "Europeia",
+  "thai": "Tailandesa",
+  "mediterranean": "Mediterrânea",
+  "vietnamese": "Vietnamita",
+  "swiss": "Suíça",
+  "japanese": "Japonesa",
+  "indian": "Indiana",
+  "middle_eastern": "Do Oriente Médio",
+  "mexican": "Mexicana",
+  "italian": "Italiana"
+ },
+ "ingredients": {
+  "broccoli": "Brócolis",
+  "chickpeas": "Grão-de-bico",
+  "berries": "Frutas vermelhas",
+  "yogurt": "Iogurte natural",
+  "eggs": "Ovos",
+  "quinoa": "Quinoa",
+  "nuts": "Castanhas",
+  "olive_oil": "Azeite de oliva"
+ },
+ "foods": {
+  "spaghetti": "Espaguete à bolonhesa",
+  "birchermuesli": "Bircher muesli",
+  "chicken_rice": "Frango com arroz",
+  "salad": "Salada mista",
+  "pizza": "Pizza margherita",
+  "sushi": "Sushi",
+  "pad_thai": "Pad thai",
+  "rosti_egg": "Rösti com ovo frito",
+  "banana": "Banana",
+  "apple": "Maçã",
+  "oatmeal_berries": "Mingau de aveia com frutas vermelhas",
+  "lentil_salad": "Salada de lentilha com feta",
+  "yogurt_nuts": "Iogurte com frutas vermelhas e castanhas",
+  "apple_almonds": "Maçã com amêndoas",
+  "pizza_whole": "Pizza margherita inteira"
+ }
+}

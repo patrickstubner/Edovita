@@ -1,0 +1,58 @@
+{
+ "recipes": {
+  "oven_salmon": "Saumon au four et brocoli",
+  "quinoa_pan": "Poêlée de quinoa aux légumes et pois chiches",
+  "thai_curry": "Curry thaï au poulet",
+  "pho": "Pho au bœuf",
+  "summer_rolls": "Rouleaux de printemps vietnamiens aux crevettes",
+  "birchermuesli": "Birchermüesli",
+  "yogurt_bowl": "Yogourt aux baies et noix",
+  "lentil_curry": "Curry de lentilles au lait de coco",
+  "scrambled_eggs": "Œufs brouillés aux épinards et pain complet",
+  "chicken_bowl": "Bowl de poulet teriyaki",
+  "mushroom_polenta": "Poêlée de champignons et polenta",
+  "hummus_wrap": "Wrap houmous et légumes",
+  "miso_salmon": "Saumon miso et pak choï",
+  "shakshuka": "Chakchouka",
+  "burrito_bowl": "Burrito bowl aux haricots"
+ },
+ "cuisines": {
+  "european": "Européenne",
+  "thai": "Thaïe",
+  "mediterranean": "Méditerranéenne",
+  "vietnamese": "Vietnamienne",
+  "swiss": "Suisse",
+  "japanese": "Japonaise",
+  "indian": "Indienne",
+  "middle_eastern": "Moyen-orientale",
+  "mexican": "Mexicaine",
+  "italian": "Italienne"
+ },
+ "ingredients": {
+  "broccoli": "Brocoli",
+  "chickpeas": "Pois chiches",
+  "berries": "Baies",
+  "yogurt": "Yogourt nature",
+  "eggs": "Œufs",
+  "quinoa": "Quinoa",
+  "nuts": "Noix",
+  "olive_oil": "Huile d'olive"
+ },
+ "foods": {
+  "spaghetti": "Spaghetti bolognaise",
+  "birchermuesli": "Birchermüesli",
+  "chicken_rice": "Poulet et riz",
+  "salad": "Salade mêlée",
+  "pizza": "Pizza margherita",
+  "sushi": "Sushi",
+  "pad_thai": "Pad thaï",
+  "rosti_egg": "Rösti et œuf au plat",
+  "banana": "Banane",
+  "apple": "Pomme",
+  "oatmeal_berries": "Porridge aux baies",
+  "lentil_salad": "Salade de lentilles à la feta",
+  "yogurt_nuts": "Yogourt aux baies et noix",
+  "apple_almonds": "Pomme et amandes",
+  "pizza_whole": "Pizza margherita entière"
+ }
+}

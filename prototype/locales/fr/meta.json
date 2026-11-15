@@ -1,0 +1,13 @@
+{
+ "code": "fr",
+ "name": "Français",
+ "englishName": "French",
+ "locale": "fr-CH",
+ "direction": "ltr",
+ "fallback": "en",
+ "units": "metric",
+ "font": "system",
+ "reviewed": false,
+ "legalApproved": false,
+ "legalNote": "In Prüfung, nicht wählbar"
+}

@@ -1,0 +1,13 @@
+{
+ "code": "en",
+ "name": "English",
+ "englishName": "English",
+ "locale": "en-GB",
+ "direction": "ltr",
+ "fallback": "en",
+ "units": "metric",
+ "font": "system",
+ "reviewed": false,
+ "legalApproved": true,
+ "legalNote": "Prototyp-Simulation, Anwaltsprüfung offen"
+}

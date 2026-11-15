@@ -1,0 +1,58 @@
+{
+ "recipes": {
+  "oven_salmon": "Salmón al horno con brócoli",
+  "quinoa_pan": "Salteado de quinoa y verduras con garbanzos",
+  "thai_curry": "Curry tailandés de pollo",
+  "pho": "Pho de ternera",
+  "summer_rolls": "Rollitos vietnamitas de verano con gambas",
+  "birchermuesli": "Muesli Bircher",
+  "yogurt_bowl": "Yogur con frutos rojos y frutos secos",
+  "lentil_curry": "Curry de lentejas con leche de coco",
+  "scrambled_eggs": "Huevos revueltos con espinacas y pan integral",
+  "chicken_bowl": "Bowl de pollo teriyaki",
+  "mushroom_polenta": "Salteado de setas con polenta",
+  "hummus_wrap": "Wrap de hummus y verduras",
+  "miso_salmon": "Salmón al miso con pak choi",
+  "shakshuka": "Shakshuka",
+  "burrito_bowl": "Burrito bowl con alubias"
+ },
+ "cuisines": {
+  "european": "Europea",
+  "thai": "Tailandesa",
+  "mediterranean": "Mediterránea",
+  "vietnamese": "Vietnamita",
+  "swiss": "Suiza",
+  "japanese": "Japonesa",
+  "indian": "India",
+  "middle_eastern": "De Oriente Medio",
+  "mexican": "Mexicana",
+  "italian": "Italiana"
+ },
+ "ingredients": {
+  "broccoli": "Brócoli",
+  "chickpeas": "Garbanzos",
+  "berries": "Frutos rojos",
+  "yogurt": "Yogur natural",
+  "eggs": "Huevos",
+  "quinoa": "Quinoa",
+  "nuts": "Frutos secos",
+  "olive_oil": "Aceite de oliva"
+ },
+ "foods": {
+  "spaghetti": "Espaguetis a la boloñesa",
+  "birchermuesli": "Muesli Bircher",
+  "chicken_rice": "Pollo con arroz",
+  "salad": "Ensalada mixta",
+  "pizza": "Pizza margarita",
+  "sushi": "Sushi",
+  "pad_thai": "Pad thai",
+  "rosti_egg": "Rösti con huevo frito",
+  "banana": "Plátano",
+  "apple": "Manzana",
+  "oatmeal_berries": "Gachas de avena con frutos rojos",
+  "lentil_salad": "Ensalada de lentejas con feta",
+  "yogurt_nuts": "Yogur con frutos rojos y frutos secos",
+  "apple_almonds": "Manzana con almendras",
+  "pizza_whole": "Pizza margarita entera"
+ }
+}

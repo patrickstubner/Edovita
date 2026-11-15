@@ -1,0 +1,186 @@
+/* Edovita Logo-Animation, erzeugt von build_animation.py. Loop 7.2s: Zusammenbau 0-2.8 s, Herzschlag 2.8-5.5 s (lub-dub, EKG-Strahl), Zerfall bis 6.95 s.
+   Farben: Symbol bleibt in beiden Modi gleich; nur der Schriftzug wechselt (--wm). Ohne Animation (prefers-reduced-motion) wird das fertige Logo gezeigt. */
+.alogo{display:block;width:100%;height:auto;overflow:visible;--wm:#0B6633}
+html[data-eff=dark] .alogo,.alogo.dark{--wm:#fff}
+.alogo #wordmark{fill:var(--wm)}
+.alogo .a-sweep{fill:none;stroke:#fff;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;opacity:0}
+.alogo.once *{animation-iteration-count:1!important}
+.alogo.once .a-sweep{opacity:0}
+.alogo .a-bg{animation:e-bg 7.2s linear infinite;transform-box:fill-box;transform-origin:center}
+.alogo .a-fork{animation:e-fork 7.2s linear infinite;transform-box:fill-box;transform-origin:10% 95%}
+.alogo .a-leaf{animation:e-leaf 7.2s linear infinite;transform-box:fill-box;transform-origin:90% 95%}
+.alogo #midrib{animation:e-rib 7.2s linear infinite}
+.alogo #veins path{animation:e-vein 7.2s linear infinite}
+.alogo .a-heart{animation:e-heart 7.2s linear infinite;transform-box:fill-box;transform-origin:center}
+.alogo .a-pulse{animation:e-pulse 7.2s linear infinite}
+.alogo .a-sweep{animation:e-sweep 7.2s linear infinite}
+.alogo .a-word{animation:e-word 7.2s linear infinite}
+.alogo .wl:nth-child(1){animation:e-l0 7.2s linear infinite}
+.alogo .wl:nth-child(2){animation:e-l1 7.2s linear infinite}
+.alogo .wl:nth-child(3){animation:e-l2 7.2s linear infinite}
+.alogo .wl:nth-child(4){animation:e-l3 7.2s linear infinite}
+.alogo .wl:nth-child(5){animation:e-l4 7.2s linear infinite}
+.alogo .wl:nth-child(6){animation:e-l5 7.2s linear infinite}
+.alogo .wl:nth-child(7){animation:e-l6 7.2s linear infinite}
+@keyframes e-bg{
+0%{opacity:0;transform:scale(.7);animation-timing-function:cubic-bezier(.2,.9,.3,1.25)}
+7.639%{opacity:1;transform:scale(1)}
+87.5%{opacity:1;transform:scale(1);animation-timing-function:cubic-bezier(.5,0,.9,.6)}
+96.528%{opacity:0;transform:scale(.8)}
+100%{opacity:0;transform:scale(.8)}
+}
+@keyframes e-fork{
+0%{opacity:0;transform:translate(70px,60px) rotate(14deg)}
+4.861%{opacity:0;transform:translate(70px,60px) rotate(14deg);animation-timing-function:cubic-bezier(.2,.9,.3,1)}
+13.889%{opacity:1;transform:none}
+84.028%{opacity:1;transform:none;animation-timing-function:cubic-bezier(.5,0,.9,.6)}
+93.056%{opacity:0;transform:translate(110px,80px) rotate(28deg)}
+100%{opacity:0;transform:translate(110px,80px) rotate(28deg)}
+}
+@keyframes e-leaf{
+0%{opacity:0;transform:scale(.1)}
+7.639%{opacity:0;transform:scale(.1);animation-timing-function:cubic-bezier(.2,.9,.3,1.25)}
+17.361%{opacity:1;transform:scale(1)}
+82.639%{opacity:1;transform:none;animation-timing-function:cubic-bezier(.5,0,.9,.6)}
+91.667%{opacity:0;transform:translate(-130px,70px) rotate(-38deg) scale(.8)}
+100%{opacity:0;transform:translate(-130px,70px) rotate(-38deg) scale(.8)}
+}
+@keyframes e-rib{
+0%{stroke-dasharray:1 2;stroke-dashoffset:1}
+14.583%{stroke-dasharray:1 2;stroke-dashoffset:1;animation-timing-function:linear}
+20.833%{stroke-dasharray:1 2;stroke-dashoffset:0}
+80.556%{stroke-dasharray:1 2;stroke-dashoffset:0;animation-timing-function:linear}
+84.028%{stroke-dasharray:1 2;stroke-dashoffset:1}
+100%{stroke-dasharray:1 2;stroke-dashoffset:1}
+}
+@keyframes e-vein{
+0%{stroke-dasharray:1 2;stroke-dashoffset:1}
+18.75%{stroke-dasharray:1 2;stroke-dashoffset:1;animation-timing-function:linear}
+25%{stroke-dasharray:1 2;stroke-dashoffset:0}
+80.556%{stroke-dasharray:1 2;stroke-dashoffset:0;animation-timing-function:linear}
+83.333%{stroke-dasharray:1 2;stroke-dashoffset:1}
+100%{stroke-dasharray:1 2;stroke-dashoffset:1}
+}
+@keyframes e-heart{
+0%{opacity:0;transform:scale(0)}
+19.444%{opacity:0;transform:scale(0);animation-timing-function:cubic-bezier(.2,.9,.3,1.25)}
+24.306%{opacity:1;transform:scale(1.2);animation-timing-function:ease-in-out}
+27.083%{opacity:1;transform:scale(1)}
+38.889%{opacity:1;transform:scale(1);animation-timing-function:ease-out}
+41.944%{opacity:1;transform:scale(1);animation-timing-function:ease-out}
+43.056%{opacity:1;transform:scale(1.17);animation-timing-function:ease-in-out}
+44.861%{opacity:1;transform:scale(1);animation-timing-function:ease-out}
+45.833%{opacity:1;transform:scale(1);animation-timing-function:ease-out}
+46.806%{opacity:1;transform:scale(1.10);animation-timing-function:ease-in-out}
+48.75%{opacity:1;transform:scale(1)}
+51.389%{opacity:1;transform:scale(1);animation-timing-function:ease-out}
+54.444%{opacity:1;transform:scale(1);animation-timing-function:ease-out}
+55.556%{opacity:1;transform:scale(1.17);animation-timing-function:ease-in-out}
+57.361%{opacity:1;transform:scale(1);animation-timing-function:ease-out}
+58.333%{opacity:1;transform:scale(1);animation-timing-function:ease-out}
+59.306%{opacity:1;transform:scale(1.10);animation-timing-function:ease-in-out}
+61.25%{opacity:1;transform:scale(1)}
+63.889%{opacity:1;transform:scale(1);animation-timing-function:ease-out}
+66.944%{opacity:1;transform:scale(1);animation-timing-function:ease-out}
+68.056%{opacity:1;transform:scale(1.17);animation-timing-function:ease-in-out}
+69.861%{opacity:1;transform:scale(1);animation-timing-function:ease-out}
+70.833%{opacity:1;transform:scale(1);animation-timing-function:ease-out}
+71.806%{opacity:1;transform:scale(1.10);animation-timing-function:ease-in-out}
+73.75%{opacity:1;transform:scale(1)}
+81.25%{opacity:1;transform:scale(1);animation-timing-function:cubic-bezier(.2,.9,.3,1.25)}
+83.333%{opacity:1;transform:scale(1.12);animation-timing-function:cubic-bezier(.5,0,.9,.6)}
+89.583%{opacity:0;transform:translate(0,-40px) scale(0)}
+100%{opacity:0;transform:translate(0,-40px) scale(0)}
+}
+@keyframes e-pulse{
+0%{stroke-dasharray:1 2;stroke-dashoffset:1;opacity:1}
+25%{stroke-dasharray:1 2;stroke-dashoffset:1;opacity:1;animation-timing-function:linear}
+32.639%{stroke-dasharray:1 2;stroke-dashoffset:0;opacity:1}
+38.194%{stroke-dasharray:1 2;stroke-dashoffset:0;opacity:1;animation-timing-function:ease-in-out}
+40.972%{stroke-dasharray:1 2;stroke-dashoffset:0;opacity:.35}
+75.694%{stroke-dasharray:1 2;stroke-dashoffset:0;opacity:.35;animation-timing-function:ease-in-out}
+79.167%{stroke-dasharray:1 2;stroke-dashoffset:0;opacity:1}
+84.722%{stroke-dasharray:1 2;stroke-dashoffset:0;opacity:1;animation-timing-function:linear}
+88.889%{stroke-dasharray:1 2;stroke-dashoffset:1;opacity:1}
+100%{stroke-dasharray:1 2;stroke-dashoffset:1;opacity:1}
+}
+@keyframes e-sweep{
+0%{stroke-dasharray:.28 2;stroke-dashoffset:.28;opacity:0}
+38.889%{stroke-dasharray:.28 2;stroke-dashoffset:.28;opacity:1;animation-timing-function:linear}
+47.5%{stroke-dasharray:.28 2;stroke-dashoffset:-1;opacity:1}
+47.639%{stroke-dasharray:.28 2;stroke-dashoffset:-1;opacity:0}
+51.25%{stroke-dasharray:.28 2;stroke-dashoffset:.28;opacity:0}
+51.389%{stroke-dasharray:.28 2;stroke-dashoffset:.28;opacity:1;animation-timing-function:linear}
+60%{stroke-dasharray:.28 2;stroke-dashoffset:-1;opacity:1}
+60.139%{stroke-dasharray:.28 2;stroke-dashoffset:-1;opacity:0}
+63.75%{stroke-dasharray:.28 2;stroke-dashoffset:.28;opacity:0}
+63.889%{stroke-dasharray:.28 2;stroke-dashoffset:.28;opacity:1;animation-timing-function:linear}
+72.5%{stroke-dasharray:.28 2;stroke-dashoffset:-1;opacity:1}
+72.639%{stroke-dasharray:.28 2;stroke-dashoffset:-1;opacity:0}
+100%{stroke-dasharray:.28 2;stroke-dashoffset:-1;opacity:0}
+}
+@keyframes e-word{
+0%{transform:translateY(16px)}
+27.083%{transform:translateY(16px);animation-timing-function:cubic-bezier(.2,.9,.3,1)}
+38.194%{transform:none}
+77.083%{transform:none;animation-timing-function:cubic-bezier(.5,0,.9,.6)}
+87.5%{transform:translateY(26px)}
+100%{transform:translateY(26px)}
+}
+@keyframes e-l0{
+0%{opacity:0}
+27.778%{opacity:0;animation-timing-function:cubic-bezier(.2,.9,.3,1)}
+32.639%{opacity:1}
+77.083%{opacity:1;animation-timing-function:cubic-bezier(.5,0,.9,.6)}
+82.639%{opacity:0}
+100%{opacity:0}
+}
+@keyframes e-l1{
+0%{opacity:0}
+29.028%{opacity:0;animation-timing-function:cubic-bezier(.2,.9,.3,1)}
+33.889%{opacity:1}
+77.778%{opacity:1;animation-timing-function:cubic-bezier(.5,0,.9,.6)}
+83.333%{opacity:0}
+100%{opacity:0}
+}
+@keyframes e-l2{
+0%{opacity:0}
+30.278%{opacity:0;animation-timing-function:cubic-bezier(.2,.9,.3,1)}
+35.139%{opacity:1}
+78.472%{opacity:1;animation-timing-function:cubic-bezier(.5,0,.9,.6)}
+84.028%{opacity:0}
+100%{opacity:0}
+}
+@keyframes e-l3{
+0%{opacity:0}
+31.528%{opacity:0;animation-timing-function:cubic-bezier(.2,.9,.3,1)}
+36.389%{opacity:1}
+79.167%{opacity:1;animation-timing-function:cubic-bezier(.5,0,.9,.6)}
+84.722%{opacity:0}
+100%{opacity:0}
+}
+@keyframes e-l4{
+0%{opacity:0}
+32.778%{opacity:0;animation-timing-function:cubic-bezier(.2,.9,.3,1)}
+37.639%{opacity:1}
+79.861%{opacity:1;animation-timing-function:cubic-bezier(.5,0,.9,.6)}
+85.417%{opacity:0}
+100%{opacity:0}
+}
+@keyframes e-l5{
+0%{opacity:0}
+34.028%{opacity:0;animation-timing-function:cubic-bezier(.2,.9,.3,1)}
+38.889%{opacity:1}
+80.556%{opacity:1;animation-timing-function:cubic-bezier(.5,0,.9,.6)}
+86.111%{opacity:0}
+100%{opacity:0}
+}
+@keyframes e-l6{
+0%{opacity:0}
+35.278%{opacity:0;animation-timing-function:cubic-bezier(.2,.9,.3,1)}
+40.139%{opacity:1}
+81.25%{opacity:1;animation-timing-function:cubic-bezier(.5,0,.9,.6)}
+86.806%{opacity:0}
+100%{opacity:0}
+}
+@media (prefers-reduced-motion:reduce){.alogo,.alogo *{animation:none!important}.alogo .a-sweep{display:none}}

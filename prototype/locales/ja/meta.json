@@ -1,0 +1,13 @@
+{
+ "code": "ja",
+ "name": "日本語",
+ "englishName": "Japanese",
+ "locale": "ja-JP",
+ "direction": "ltr",
+ "fallback": "en",
+ "units": "metric",
+ "font": "system: Hiragino Sans / Noto Sans CJK JP",
+ "reviewed": false,
+ "legalApproved": false,
+ "legalNote": "In Prüfung, nicht wählbar"
+}

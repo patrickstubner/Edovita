@@ -1,0 +1,58 @@
+{
+ "recipes": {
+  "oven_salmon": "Salmone al forno con broccoli",
+  "quinoa_pan": "Padella di quinoa e verdure con ceci",
+  "thai_curry": "Curry thai di pollo",
+  "pho": "Pho di manzo",
+  "summer_rolls": "Involtini estivi vietnamiti con gamberi",
+  "birchermuesli": "Birchermüesli",
+  "yogurt_bowl": "Yogurt con frutti di bosco e noci",
+  "lentil_curry": "Curry di lenticchie al latte di cocco",
+  "scrambled_eggs": "Uova strapazzate con spinaci e pane integrale",
+  "chicken_bowl": "Bowl di pollo teriyaki",
+  "mushroom_polenta": "Padella di funghi con polenta",
+  "hummus_wrap": "Wrap con hummus e verdure",
+  "miso_salmon": "Salmone al miso con pak choi",
+  "shakshuka": "Shakshuka",
+  "burrito_bowl": "Burrito bowl con fagioli"
+ },
+ "cuisines": {
+  "european": "Europea",
+  "thai": "Thailandese",
+  "mediterranean": "Mediterranea",
+  "vietnamese": "Vietnamita",
+  "swiss": "Svizzera",
+  "japanese": "Giapponese",
+  "indian": "Indiana",
+  "middle_eastern": "Mediorientale",
+  "mexican": "Messicana",
+  "italian": "Italiana"
+ },
+ "ingredients": {
+  "broccoli": "Broccoli",
+  "chickpeas": "Ceci",
+  "berries": "Frutti di bosco",
+  "yogurt": "Yogurt naturale",
+  "eggs": "Uova",
+  "quinoa": "Quinoa",
+  "nuts": "Noci",
+  "olive_oil": "Olio d'oliva"
+ },
+ "foods": {
+  "spaghetti": "Spaghetti alla bolognese",
+  "birchermuesli": "Birchermüesli",
+  "chicken_rice": "Pollo con riso",
+  "salad": "Insalata mista",
+  "pizza": "Pizza margherita",
+  "sushi": "Sushi",
+  "pad_thai": "Pad thai",
+  "rosti_egg": "Rösti con uovo all'occhio di bue",
+  "banana": "Banana",
+  "apple": "Mela",
+  "oatmeal_berries": "Porridge ai frutti di bosco",
+  "lentil_salad": "Insalata di lenticchie con feta",
+  "yogurt_nuts": "Yogurt con frutti di bosco e noci",
+  "apple_almonds": "Mela con mandorle",
+  "pizza_whole": "Pizza margherita intera"
+ }
+}

@@ -1,0 +1,58 @@
+{
+ "recipes": {
+  "oven_salmon": "サーモンのオーブン焼きとブロッコリー",
+  "quinoa_pan": "ひよこ豆入りキヌアの野菜炒め",
+  "thai_curry": "タイ風チキンカレー",
+  "pho": "牛肉のフォー",
+  "summer_rolls": "エビの生春巻き",
+  "birchermuesli": "ビルヒャーミューズリー",
+  "yogurt_bowl": "ベリーとナッツのヨーグルト",
+  "lentil_curry": "ココナッツミルクのレンズ豆カレー",
+  "scrambled_eggs": "ほうれん草入りスクランブルエッグと全粒粉パン",
+  "chicken_bowl": "照り焼きチキン丼",
+  "mushroom_polenta": "きのこ炒めとポレンタ",
+  "hummus_wrap": "フムスと野菜のラップ",
+  "miso_salmon": "サーモンの味噌焼きとチンゲン菜",
+  "shakshuka": "シャクシュカ",
+  "burrito_bowl": "豆入りブリトーボウル"
+ },
+ "cuisines": {
+  "european": "ヨーロッパ",
+  "thai": "タイ",
+  "mediterranean": "地中海",
+  "vietnamese": "ベトナム",
+  "swiss": "スイス",
+  "japanese": "日本",
+  "indian": "インド",
+  "middle_eastern": "中東",
+  "mexican": "メキシコ",
+  "italian": "イタリア"
+ },
+ "ingredients": {
+  "broccoli": "ブロッコリー",
+  "chickpeas": "ひよこ豆",
+  "berries": "ベリー",
+  "yogurt": "プレーンヨーグルト",
+  "eggs": "卵",
+  "quinoa": "キヌア",
+  "nuts": "ナッツ",
+  "olive_oil": "オリーブオイル"
+ },
+ "foods": {
+  "spaghetti": "スパゲッティ・ボロネーゼ",
+  "birchermuesli": "ビルヒャーミューズリー",
+  "chicken_rice": "チキンとご飯",
+  "salad": "ミックスサラダ",
+  "pizza": "マルゲリータピザ",
+  "sushi": "寿司",
+  "pad_thai": "パッタイ",
+  "rosti_egg": "目玉焼きのせレシュティ",
+  "banana": "バナナ",
+  "apple": "りんご",
+  "oatmeal_berries": "ベリー入りオートミール",
+  "lentil_salad": "フェタ入りレンズ豆サラダ",
+  "yogurt_nuts": "ベリーとナッツのヨーグルト",
+  "apple_almonds": "りんごとアーモンド",
+  "pizza_whole": "マルゲリータピザ（1枚）"
+ }
+}

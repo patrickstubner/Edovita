@@ -1,0 +1,58 @@
+{
+ "recipes": {
+  "oven_salmon": "Oven-baked salmon with broccoli",
+  "quinoa_pan": "Quinoa vegetable pan with chickpeas",
+  "thai_curry": "Thai chicken curry",
+  "pho": "Beef pho",
+  "summer_rolls": "Vietnamese summer rolls with prawns",
+  "birchermuesli": "Bircher muesli",
+  "yogurt_bowl": "Yoghurt with berries and nuts",
+  "lentil_curry": "Lentil curry with coconut milk",
+  "scrambled_eggs": "Scrambled eggs with spinach and wholemeal bread",
+  "chicken_bowl": "Teriyaki chicken bowl",
+  "mushroom_polenta": "Mushroom pan with polenta",
+  "hummus_wrap": "Hummus vegetable wrap",
+  "miso_salmon": "Miso salmon with pak choi",
+  "shakshuka": "Shakshuka",
+  "burrito_bowl": "Burrito bowl with beans"
+ },
+ "cuisines": {
+  "european": "European",
+  "thai": "Thai",
+  "mediterranean": "Mediterranean",
+  "vietnamese": "Vietnamese",
+  "swiss": "Swiss",
+  "japanese": "Japanese",
+  "indian": "Indian",
+  "middle_eastern": "Middle Eastern",
+  "mexican": "Mexican",
+  "italian": "Italian"
+ },
+ "ingredients": {
+  "broccoli": "Broccoli",
+  "chickpeas": "Chickpeas",
+  "berries": "Berries",
+  "yogurt": "Natural yoghurt",
+  "eggs": "Eggs",
+  "quinoa": "Quinoa",
+  "nuts": "Nuts",
+  "olive_oil": "Olive oil"
+ },
+ "foods": {
+  "spaghetti": "Spaghetti bolognese",
+  "birchermuesli": "Bircher muesli",
+  "chicken_rice": "Chicken with rice",
+  "salad": "Mixed salad",
+  "pizza": "Pizza margherita",
+  "sushi": "Sushi",
+  "pad_thai": "Pad thai",
+  "rosti_egg": "Rösti with fried egg",
+  "banana": "Banana",
+  "apple": "Apple",
+  "oatmeal_berries": "Porridge with berries",
+  "lentil_salad": "Lentil salad with feta",
+  "yogurt_nuts": "Yoghurt with berries and nuts",
+  "apple_almonds": "Apple with almonds",
+  "pizza_whole": "Pizza margherita, whole"
+ }
+}

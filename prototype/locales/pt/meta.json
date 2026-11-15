@@ -1,0 +1,15 @@
+{
+ "code": "pt",
+ "name": "Português",
+ "englishName": "Portuguese",
+ "locale": "pt-BR",
+ "direction": "ltr",
+ "fallback": "en",
+ "units": "metric",
+ "font": "system",
+ "reviewed": false,
+ "legalApproved": false,
+ "legalNote": "In Prüfung, nicht wählbar",
+ "variant": "pt-BR",
+ "variantNote": "Basis Brasilianisches Portugiesisch (pt-BR): grösste Sprechergruppe; Anrede 'você'. pt-PT-Geräte erhalten vorerst pt-BR, eigene pt-PT-Variante erst bei Bedarf (Store-Listing pt-PT separat prüfen)."
+}

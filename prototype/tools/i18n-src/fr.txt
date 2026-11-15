@@ -1,0 +1,1020 @@
+1|Touchez pour passer
+2|Bienvenue
+3|Prototype
+4|Bienvenue sur Edovita
+5|Manger pour la vie. Choisis d'abord ta langue.
+6|Tu peux changer de langue à tout moment : en haut via l'icône du globe ou dans le profil sous « Langue ». L'app change aussitôt et tes données restent intactes.
+7|Sons
+8|Mélodie de marque et courts sons de réussite
+9|Activer ou couper les sons
+10|Continuer
+11|Choisir un objectif
+12|Retour
+13|Changer de langue
+14|Quel est ton objectif ?
+15|Nous adaptons calories, recettes et conseils à toi. Tu peux changer d'objectif à tout moment.
+16|Perdre du poids
+17|Léger déficit calorique : perdre de la graisse en gardant ton énergie.
+18|Prendre du poids
+19|Se renforcer sainement : pour celles et ceux qui sont trop légers et veulent gagner en force.
+20|Maintenir le poids
+21|Trouver l'équilibre : garder un poids stable et vieillir en forme.
+22|À propos de toi
+23|Parle-nous de toi
+24|Nous avons besoin de ta taille, de ta date de naissance (pour ton âge) et de ton sexe pour l'IMC, les valeurs de référence de masse grasse et tes besoins caloriques. Tes données restent privées.
+25|Poids cible et rythme
+26|Ton poids cible
+27|Choisis ton objectif et la vitesse à laquelle tu veux l'atteindre. Lent et régulier, c'est souvent mieux et plus durable.
+28|Alimentation et intolérances
+29|Qu'aimes-tu manger ?
+30|Nous tenons compte des allergies, intolérances et préférences pour les recettes et la liste de courses. Tu peux tout modifier plus tard dans le profil.
+31|C'est parti
+32|Données corporelles
+33|Ces données servent uniquement à l'IMC, aux valeurs de référence et aux besoins caloriques, et restent privées.
+34|Aujourd'hui
+35|Basculer le mode sombre
+36|Bonjour, Alex
+37|Changer d'objectif
+38|Objectif
+39|Mangé
+40|Sport
+41|150 kcal
+42|Pas assez de protéines
+43|Macros
+44|Détails du jour
+45|Protéines
+46|Glucides
+47|85 / 200 g
+48|Lipides
+49|22 / 60 g
+50|Eau
+51|+ 1 verre
+52|+ 0,5 l
+53|Annuler un verre
+54|Mangé aujourd'hui
+55|Petit-déjeuner
+56|Porridge aux baies
+57|320 kcal
+58|Dîner
+59|Salade de lentilles à la feta
+60|400 kcal
+61|Souper
+62|Photographier le repas
+63|Aujourd'hui en détail
+64|Score qualité du jour
+65|Bien, plus de légumes
+66|Légumes
+67|2 sur 5
+68|Fibres
+69|14 / 30 g
+70|Sucre
+71|18 g, bas
+72|Ultra-transformés
+73|1 sur 4
+74|Sommeil
+75|7 h 20 min
+76|Apple Santé
+77|Pas
+78|Objectif 8 000
+79|Fenêtre alimentaire 10:00 à 18:00
+80|Activer ou couper la fenêtre alimentaire
+81|Facultatif. Tu décides si tu veux utiliser une fenêtre alimentaire.
+82|Plus
+83|Bilan de la semaine
+84|Force 10 min
+85|Aide au restaurant
+86|Saisir
+87|Saisir un repas
+88|Qu'as-tu mangé ?
+89|V1
+90|Tape ou parle. Choisis une proposition et la portion.
+91|Rechercher un aliment
+92|p. ex. spaghetti
+93|Saisie vocale
+94|J'écoute … (simulation)
+95|Portion
+96|Petite assiette
+97|Assiette moyenne
+98|Grande assiette
+99|Reconnaissance photo
+100|Plus tard
+101|Vue caméra avec assiette (espace réservé)
+102|Tiens la caméra au-dessus de ton repas. L'IA reconnaît plats, portion et calories. Cette fonction arrive après la version 1.
+103|Prendre une photo
+104|Scanner le menu
+105|Scanner un code-barres
+106|Favoris et fréquents
+107|Un toucher, et le repas est saisi.
+108|Scanner de code-barres (espace réservé)
+109|Place le code-barres dans le cadre …
+110|Annuler
+111|Produit reconnu (simulation)
+112|Yogourt nature 3,5 %
+113|150 g · produit d'exemple
+114|Nutri-Score B
+115|5,4 g
+116|Protéines
+117|6,0 g
+118|Lait
+119|Allergène
+120|Ajouter au repas
+121|Scanner à nouveau
+122|L'IA analyse ton repas …
+123|Plats, portions et calories sont estimés.
+124|Photo avec ingrédients reconnus (espace réservé)
+125|Analyse IA
+126|Saumon
+127|Riz
+128|Brocoli
+129|Reconnu (3)
+130|Ajuster les portions
+131|Total
+132|Score qualité du repas
+133|Très bien
+134|bas
+135|peu
+136|Transformé
+137|Confirmer et enregistrer
+138|Recettes
+139|Recettes pour toi
+140|REPAS
+141|Repas
+142|Tous
+143|Collation
+144|PROPRIÉTÉS (PLUSIEURS POSSIBLES)
+145|Propriétés
+146|Rapide, 15 min max.
+147|Riche en protéines
+148|Enregistrées
+149|Comment nous choisissons
+150|Nous proposons plus souvent les recettes bien notées, avec de la variété du monde entier. Note avec des étoiles et enregistre tes favoris.
+151|Conseil du jour
+152|Une poignée de noix l'après-midi te rassasie plus longtemps.
+153|Prototype : en cas d'allergie, vérifie toujours la liste des ingrédients sur l'emballage.
+154|Ouvrir la liste de courses
+155|Liste de courses
+156|Créée à partir de 3 recettes
+157|Partagée avec Sam
+158|Comment fonctionne la liste
+159|Toucher = dans le panier (barré, descend en bas).
+160|« J'en ai » = déjà à la maison, ne sera pas acheté.
+161|Actions de tes magasins
+162|Après V1
+163|Plus tard : choisir tes magasins (p. ex. Migros, Coop, Lidl, Aldi) et recevoir des recettes selon leurs actions. Signalé si une carte client ou une app est nécessaire, p. ex. « uniquement avec carte ».
+164|Prototype : le partage est seulement simulé ici.
+165|Partager la liste avec Sam
+166|Photo d'un menu (espace réservé)
+167|Menu scanné
+168|Ce qui te convient le mieux
+169|MEILLEUR CHOIX
+170|Saumon grillé aux légumes
+171|540 kcal · 38 g de protéines
+172|Salade de poulet au quinoa
+173|480 kcal · 35 g de protéines
+174|Pâtes carbonara
+175|890 kcal · 28 g de protéines
+176|Conseil : commande la sauce et la vinaigrette à part.
+177|Bilan de la semaine
+178|Dimanche 8 novembre
+179|Ta semaine en 3 phrases
+180|Qualité moy.
+181|Poids
+182|Pas moy.
+183|Ce qui a bien marché
+184|Petit-déjeuner saisi chaque jour
+185|Sucre sous l'objectif 5 jours
+186|2 séances de force de 10 minutes
+187|Objectif d'eau atteint 5 jours sur 7
+188|Ton plan s'adapte
+189|Nous ne descendons jamais sous le minimum de 1 200 kcal (femmes) ou 1 500 kcal (hommes).
+190|À améliorer
+191|Plus de protéines au souper
+192|Plan pour la semaine prochaine
+193|La force en 10 minutes
+194|Sans matériel, faisable partout
+195|Recommandé aujourd'hui
+196|Base corps entier
+197|10 min
+198|env. 70 kcal
+199|Squats
+200|Jambes et fessiers
+201|Pompes
+202|Aussi sur les genoux
+203|Fentes
+204|Équilibre et jambes
+205|Gainage
+206|Stabiliser le tronc
+207|3 × 30 s
+208|La force préserve muscles et os et te garde mobile jusqu'à un âge avancé.
+209|Entraînement en cours (simulation)
+210|Commencer l'entraînement
+211|Progrès
+212|Ton chemin vers plus d'énergie et de santé
+213|–2,1 kg depuis le 6 oct.
+214|Poids cible
+215|Encore
+216|Période poids
+217|1M
+218|3M
+219|1A
+220|L'IMC n'est qu'un repère approximatif. Avec beaucoup de muscles, il affiche des valeurs trop élevées ; la masse grasse et musculaire en disent plus.
+221|Masse grasse
+222|Période masse grasse
+223|6M
+224|Voir la composition corporelle
+225|Pas encore d'analyse corporelle
+226|Dès que ta balance connectée mesure la masse grasse, tu verras ici ton évolution et les valeurs de référence pour ton âge et ton sexe.
+227|Connecter la balance
+228|Photos de progrès
+229|Chiffré
+230|Face
+231|Profil
+232|Dos
+233|6 oct.
+234|Début
+235|20 oct.
+236|Semaine 2
+237|3 nov.
+238|Nouveau
+239|ajouter
+240|Lire l'accéléré
+241|Privé et chiffré de bout en bout : toi seul·e peux voir tes photos.
+242|Composition corporelle
+243|Composition corporelle
+244|De ta balance connectée
+245|–1,1 % depuis le début
+246|Masse musculaire
+247|+0,3 % depuis le début
+248|Masse grasse un peu élevée
+249|Référence pour homme, 42 ans : 11–21,9 %.
+250|Masse musculaire dans le temps
+251|Une part musculaire en hausse est bon signe, même si le poids baisse à peine.
+252|Plus important que le poids : garder ses muscles, réduire la masse grasse. Les valeurs de la balance sont des estimations.
+253|Connecte une balance avec analyse corporelle, la masse grasse et musculaire apparaîtront ici.
+254|Profil
+255|Alex Muster
+256|DONNÉES CORPORELLES
+257|CONNEXIONS
+258|Apple Santé / Health Connect
+259|Health Connect
+260|Balance connectée
+261|ALIMENTATION
+262|Allergies et préférences
+263|Objectif d'eau
+264|ml par jour
+265|Moins
+266|Fenêtre alimentaire
+267|Objectif de protéines
+268|g par jour
+269|RAPPELS
+270|Rappels
+271|LANGUE ET SON
+272|Langue
+273|Sons et mélodie de marque
+274|AFFICHAGE
+275|Choisir l'affichage
+276|Système
+277|Clair
+278|Sombre
+279|Voir l'animation de démarrage
+280|Avec mélodie si les sons sont activés
+281|Animation du logo en boucle
+282|Assemblage, battement de cœur, dissolution. Toucher pour arrêter.
+283|Voir l'animation de récompense
+284|Apparaît quand tu atteins un objectif
+285|PARTAGE ET DONNÉES
+286|Export pour le médecin
+287|PDF avec poids et alimentation
+288|Mode partenaire
+289|Sam · recettes et liste de courses
+290|Photos chiffrées
+291|De bout en bout, rien que pour toi
+292|CONFIDENTIALITÉ ET MENTIONS LÉGALES
+293|Confidentialité et sauvegarde
+294|Mentions légales et avis
+295|Avis santé, confidentialité, crédits
+296|AIDE
+297|Aide en cas de troubles alimentaires
+298|Conseil gratuit en Suisse
+299|Edovita · prototype cliquable v5.4, aucune donnée réelle
+300|Des rappels doux, sans pression. Tu choisis lesquels tu reçois.
+301|Repas
+302|Pesée
+303|Photo de progrès
+304|Voici à quoi ressemble une notification
+305|EDOVITA · maintenant
+306|Un verre d'eau ?
+307|Tu as bu 750 ml sur 2 250 aujourd'hui.
+308|Touche un type pour voir un exemple en haut de l'écran :
+309|Photo
+310|Prototype : aucune vraie notification n'est envoyée.
+311|Aide et soutien
+312|Tu n'es pas seul·e
+313|Si la nourriture, le poids ou ton corps te préoccupent ou te pèsent beaucoup, en parler peut aider. Ces offres sont gratuites et confidentielles.
+314|La Main Tendue · 143
+315|24 h sur 24, anonyme et gratuit. Chat tous les jours de 10 h à 22 h et e-mail sur 143.ch.
+316|Appeler le 143
+317|PEP · Prévention des troubles alimentaires
+318|Conseil gratuit et anonyme pour les problèmes alimentaires, les troubles du comportement alimentaire et l'addiction au fitness ou aux muscles, aussi pour les proches. Téléphone en général lundi et jeudi. pepinfo.ch
+319|AES · Groupe de travail troubles alimentaires
+320|Conseil à Zurich par téléphone, e-mail, sur place ou en vidéo, gratuit. Téléphone mardi et jeudi, 10–12 h et 14–17 h. aes.ch
+321|Danger immédiat
+322|Ambulance 144 ou numéro d'urgence 112. Pour les enfants et les jeunes : Pro Juventute, téléphone 147.
+323|Informations vérifiées le 4 novembre 2026 sur les sites des prestataires. Edovita ne remplace pas un avis médical ou thérapeutique. N'hésite pas à parler aussi à ton médecin de famille.
+324|Sam Exemple
+325|Connecté depuis le 12 octobre
+326|Actif
+327|Ce que voit Sam
+328|Sam cuisine et voit ce qui convient à ta journée. Tu décides ci-dessous ce que Sam voit.
+329|PARTAGER AVEC SAM
+330|Favoris communs
+331|Partager les recettes
+332|En direct, cocher ensemble
+333|Partager la liste de courses
+334|Calories restantes et besoins
+335|Pour que Sam cuisine en conséquence
+336|Partager les calories restantes
+337|Ce que tu as mangé aujourd'hui
+338|Partager les repas
+339|Par défaut : privé
+340|Partager le poids
+341|TOUJOURS RIEN QUE POUR TOI
+342|Chiffré de bout en bout, jamais partagé
+343|Composition corporelle et export médecin
+344|Restent privés
+345|CONNECTER UN NOUVEAU PARTENAIRE
+346|Mode de connexion
+347|Code QR
+348|Code à 6 chiffres
+349|Lien WhatsApp
+350|Valable 10 minutes. Ton/ta partenaire saisit le code dans son app.
+351|Tu envoies un lien d'invitation via WhatsApp. Il est valable 24 heures et utilisable une seule fois.
+352|Prototype : WhatsApp s'ouvrirait ici avec le lien.
+353|Partager le lien
+354|Simuler la connexion
+355|La connexion nécessite un petit serveur (UE). Les données partagées sont transmises chiffrées. Tu peux te déconnecter à tout moment.
+356|Prototype : la connexion serait supprimée après confirmation.
+357|Déconnecter
+358|Aperçu PDF (espace réservé)
+359|Rapport d'évolution · Edovita
+360|Alex Muster · 4 août au 4 novembre
+361|Contenu
+362|Évolution du poids
+363|Alimentation : calories, protéines, qualité
+364|Activité, sommeil et pas
+365|Période
+366|3 derniers mois
+367|Le PDF est créé uniquement sur ton appareil. Tu décides qui le reçoit.
+368|Prototype : aucun vrai fichier n'est créé.
+369|Créer le PDF
+370|S'applique aux menus, avis, recettes et textes juridiques.
+371|Quand puis-je changer de langue ?
+372|À tout moment, même en plein onboarding. L'app change aussitôt, sans redémarrage. Tes objectifs, repas, notes et réglages restent inchangés ; seul l'affichage change.
+373|Les nombres et dates suivent la langue. Le poids reste en kg, l'énergie en kcal.
+374|PAS ENCORE APPROUVÉES
+375|Les langues grisées ne peuvent pas être choisies. Une langue n'est activée qu'une fois la traduction et les textes juridiques vérifiés.
+376|STRUCTURE (POUR LE DÉVELOPPEMENT)
+377|FICHE STORE (APERÇU)
+378|MÉLODIE DE MARQUE
+379|Générée par IA avec ACE-Step v1 (Apache-2.0). H1 et H5 sont les favorites, H4 la réserve. Elle accompagne l'animation de démarrage.
+380|SONS COURTS DANS L'APP
+381|Drum samples provided by DrumGizmo.org
+382|Les sons ne jouent qu'après un toucher et jamais quand le son est coupé. Au tout premier lancement, le navigateur n'autorise pas encore le son.
+383|Confidentialité
+384|Tes données restent sur ton appareil
+385|Poids, repas et objectifs sont des données de santé. Edovita les enregistre uniquement en local sur ton téléphone. Pas de compte, pas de publicité, aucune exploitation de tes données de santé.
+386|SAUVEGARDE CLOUD
+387|Sauvegarde chiffrée
+388|Sauvegarde cloud
+389|Avant d'activer la sauvegarde
+390|Tes données sont chiffrées sur ton appareil (de bout en bout) puis seulement enregistrées, dans l'UE chez Cloudflare. Personne d'autre que toi ne peut les lire, pas même nous. Tu peux désactiver et supprimer la sauvegarde à tout moment.
+391|Je consens expressément à ce que mes données de santé soient sauvegardées sous forme chiffrée.
+392|Activer la sauvegarde
+393|TES DONNÉES
+394|Exporter les données
+395|En fichier, p. ex. pour changer d'appareil
+396|Prototype : tout serait supprimé ici après confirmation.
+397|Supprimer toutes les données
+398|Supprime tout sur cet appareil
+399|Ce prototype ne mémorise que la langue, l'affichage et le son dans le navigateur. Toutes les autres données sont fictives et disparaissent au rechargement.
+400|Mentions légales
+401|Navigation principale
+402|Edovita – {screen}
+403|Perdre du poids
+404|Prendre du poids
+405|Maintenir le poids
+406|Insuffisance pondérale
+407|Poids normal
+408|Surpoids
+409|Obésité de grade I
+410|Obésité I
+411|Obésité de grade II
+412|Obésité II
+413|Obésité de grade III
+414|Obésité III
+415|moins de {v}
+416|{v} et plus
+417|léger déficit
+418|léger surplus
+419|équilibré
+420|Homme
+421|Femme
+422|Si la nourriture ou ton corps te pèsent beaucoup, un entretien confidentiel peut aider.
+423|Ton IMC est très bas
+424|Prendre du poids est le bon objectif pour toi. Avec un poids aussi bas, la reprise devrait toutefois être suivie médicalement : parle à ton médecin de famille et, si possible, à un·e diététicien·ne. Au début surtout, ton corps a besoin d'un démarrage lent et protégé. Tu n'es pas seul·e.
+425|Parle à ton médecin de famille et, si possible, à un·e diététicien·ne. Nous te recommandons de ne pas laisser ton poids baisser davantage et de prendre du poids sainement. Nous pouvons volontiers passer ton objectif à « Prendre du poids ».
+426|À cette valeur, perdre du poids n'a pas de sens ; nous ne proposons donc pas de déficit calorique. Nous recommandons de maintenir ton poids ou d'en prendre sainement. Parle à ton médecin de famille et, si possible, à un·e diététicien·ne.
+427|Ton IMC est sous la plage normale
+428|Prendre du poids correspond à ton objectif. Un contrôle médical et un conseil nutritionnel t'aident à te renforcer de façon sûre et durable. Si la nourriture ou ton corps te pèsent, une aide gratuite et confidentielle existe.
+429|Nous recommandons de maintenir ton poids ou d'en prendre sainement. Un·e diététicien·ne ou ton médecin peut t'accompagner. Si la nourriture te pèse, une aide gratuite et confidentielle existe.
+430|Nous recommandons de maintenir ou de prendre du poids sainement et masquons la perte de poids. Si la nourriture te pèse, une aide gratuite et confidentielle existe.
+431|Ton IMC est au-dessus de la plage normale
+432|Prendre plus de poids n'est généralement pas recommandé avec ton IMC. Si tu veux te muscler, « Maintenir le poids » avec de la musculation convient souvent mieux. Ton médecin de famille peut répondre à tes questions.
+433|Ton objectif est très ambitieux
+434|Un rythme plus calme ou un poids cible un peu plus élevé est plus sain et plus durable. Si la nourriture, le poids ou la silhouette te préoccupent beaucoup, en parler peut aider.
+435|Aide et services de conseil
+436|Bas
+437|Normal
+438|Élevé
+439|Haut
+440|moins de {v} %
+441|{a}–{b} %
+442|plus de {v} %
+443|{v} % · {name}
+444|Valeurs de référence pour {sex}, {age} ans. Elles servent de repère, pas de diagnostic.
+445|Masse grasse dans la norme
+446|Masse grasse plutôt basse
+447|Masse grasse un peu élevée
+448|Masse grasse élevée
+449|Référence pour {sex}, {age} ans : {lo}–{hi} %.
+450|Objectif {v} kg
+451|Évolution du poids avec zones d'IMC : actuellement {w} kilogrammes, IMC {b}
+452|Évolution de la masse grasse en pour cent avec valeurs de référence pour {sex}, {age} ans : actuellement {v} pour cent
+453|Masse musculaire en pour cent dans le temps : actuellement {v} pour cent
+454|(actuel)
+455|Tout
+456|Taille
+457|Âge
+458|Poids actuel
+459|Sexe
+460|pour les valeurs de référence
+461|cm
+462|ans
+463|kg
+464|kg par semaine
+465|Ton IMC
+466|Besoins caloriques env. {need} kcal par jour. Ton objectif quotidien : {goal} kcal ({goalname}, {mode}).
+467|L'IMC n'est qu'un repère approximatif, p. ex. avec beaucoup de masse musculaire.
+468|Poids cible
+469|Maintenir le poids
+470|Ici, pas besoin de rythme. Nous ajustons tes calories pour que ton poids reste stable.
+471|Choisir le rythme
+472|Durable
+473|Rythme personnel
+474|Rythme
+475|Rythme
+476|{r} kg par semaine
+477|Objectif quotidien
+478|{k} kcal
+479|Objectif atteint
+480|env. {date}
+481|{n, plural, one {Dans environ # semaine, à rythme constant.} other {Dans environ # semaines, à rythme constant.}}
+482|Edovita choisit ton rythme
+483|Environ 0,5 % de ton poids par semaine. Les 2 derniers kilos, nous les prenons encore plus lentement, puis suivent 4 semaines de stabilisation{until}. Le résultat tient et l'effet yo-yo devient moins probable.
+484| (jusqu'au {date})
+485|Environ 0,25 kg par semaine : tu construis surtout du muscle plutôt que de la graisse. Ensuite, nous stabilisons ton poids.
+486|Le rythme a été limité
+487|Ton objectif quotidien passerait sous {floor} kcal. Nous ne descendons pas en dessous ; nous calculons donc avec {r} kg par semaine.
+488|Ajuster le poids cible
+489|Ton poids cible n'est pas inférieur à ton poids actuel. Choisis un objectif plus bas.
+490|Ton poids cible n'est pas supérieur à ton poids actuel. Choisis un objectif plus haut.
+491|Remarque : ton objectif se situe dans le bas de la plage normale. Nous ne proposons pas d'objectif sous un IMC de {b} ({kg} kg).
+492|Pour des raisons de sécurité, nous ne proposons pas de poids cible sous un IMC de 18,5 ({kg} kg).
+493|Trop rapide, nous ne le recommandons pas
+494|Ambitieux
+495|Tout à fait faisable
+496|À ce rythme, tu perds plus facilement du muscle, tu as plus de fringales et le risque d'effet yo-yo augmente. Il est recommandé de ne pas dépasser {max} kg par semaine. Durable serait env. {sus} kg.
+497|C'est faisable mais demande de la discipline. Prévois de la récupération et assez de protéines.
+498|Un rythme calme protège tes muscles et fait durer le résultat.
+499|Une prise de poids rapide crée surtout plus de graisse que de muscle. Il est recommandé de ne pas dépasser 0,5 kg par semaine.
+500|C'est possible avec de la musculation et beaucoup de protéines.
+501|Prendre du poids lentement construit surtout du muscle.
+502|Régime alimentaire
+503|Allergies et intolérances
+504|Je n'aime pas
+505|Végétarien
+506|Végane
+507|Sans lactose
+508|Sans gluten
+509|Allergie aux noix
+510|Champignons
+511|Poisson
+512|Oignons
+513|Coriandre
+514|végétarien
+515|végane
+516|sans lactose
+517|sans gluten
+518|sans noix
+519|sans champignons
+520|sans poisson
+521|sans oignons
+522|sans coriandre
+523|Aucune restriction
+524|En cas d'allergie, vérifie toujours la liste des ingrédients sur l'emballage. Ce prototype ne donne aucune garantie.
+525|Petit-déjeuner
+526|Dîner
+527|Souper
+528|Collation
+529|{n} kcal
+530|{n} min
+531|{n} g de protéines
+532|Meilleur choix
+533|Ingrédients sur la liste de courses
+534|Image de remplacement
+535|Aucune recette adaptée
+536|Avec tes données et ces filtres, il n'y a pas de recette pour l'instant. Choisis d'autres filtres ou adapte tes préférences.
+537|Adapté à tes données
+538|Allergies et préférences
+539|{n, plural, one {# recette masquée.} other {# recettes masquées.}}
+540|Indique-les et nous ne montrerons que des recettes adaptées. Touche ici.
+541|Noter {n} sur 5 étoiles
+542|Ta note : {n} sur 5
+543|Enregistrer
+544|Retirer des favoris
+545|Enregistrée.
+546|Merci ! Nous proposerons plus souvent des plats similaires.
+547|Adapté à tes {n} kcal restantes
+548|Adapté à tes {n} kcal encore à prendre
+549|Selon tes {n} kcal restantes et ton objectif de protéines
+550|Selon tes {n} kcal encore à prendre et ton objectif de protéines
+551|Favori
+552|Souvent mangé
+553|{kind} · {kcal} kcal · {p} g de protéines
+554|Saisir {name}
+555|Ça suffit pour aujourd'hui.
+556|{name} saisi.
+557|Repas
+558|Code-barres
+559|Saisie
+560|Objectif quotidien atteint
+561|Tu as atteint ton objectif calorique du jour, c'est exactement ce qu'il faut pour prendre du poids. Ton objectif reste inchangé.
+562|Un peu plus aujourd'hui, ce n'est pas grave
+563|Tu es {n} kcal au-dessus de ton objectif quotidien.
+564|Nous ajustons doucement les 3 prochains jours : {per} kcal de moins chacun.
+565|Nous ajustons doucement les 3 prochains jours : {per} kcal de moins chacun, le reste est compensé sur la semaine.
+566|Nous gardons ton objectif inchangé et compensons sur la semaine.
+567|Aucune raison de s'inquiéter.
+568|{n} verres sur {g}
+569|Objectif d'eau atteint, bravo !
+570|Encore {n} ml jusqu'à ton objectif quotidien.
+571|Tu as atteint ton objectif calorique 6 jours sur 7, bravo ! Tes protéines étaient en moyenne de 82 g, l'objectif est de 110 g. Plus de légumes le soir soutiendrait ton énergie et ton poids.
+572|Tu as atteint ton objectif calorique 6 jours sur 7, bravo ! Tes protéines étaient en moyenne de 82 g, l'objectif est de 110 g. Plus de légumes le soir soutiendrait ton énergie.
+573|Tu as atteint ton objectif calorique 6 jours sur 7, bravo ! Tes protéines étaient en moyenne de 82 g, l'objectif est de 110 g. Un repas protéiné supplémentaire le soir soutiendrait ta prise de masse.
+574|Mercredi, tu étais 180 kcal au-dessus de ton objectif. C'est tout à fait normal. Nous répartissons en douceur : de jeudi à samedi, 60 kcal de moins chaque jour. Ton objectif hebdomadaire reste le même.
+575|Mercredi, tu étais 180 kcal au-dessus de ton objectif. C'est tout à fait normal. Nous répartissons en douceur : de jeudi à samedi, 60 kcal de moins chaque jour. Ton poids reste stable.
+576|Mercredi, tu étais 180 kcal au-dessus de ton objectif. Pour prendre du poids, c'est très bien ; ton objectif reste inchangé. Si l'appétit te manque un jour, nous compensons doucement les jours suivants.
+577|Plus de légumes et de fibres
+578|Prévoir une collation énergétique, p. ex. noix ou yogourt
+579|Midi 12:00 et soir 18:30
+580|Le matin 07:30, le dimanche seulement
+581|Chaque dimanche 09:00
+582|Toutes les 2 heures, de 09:00 à 19:00
+583|Désactivé
+584|{n} actifs
+585|Tous désactivés
+586|Saisir ton dîner ?
+587|Taper ou parler suffit, nous proposons des plats adaptés.
+588|Bonjour !
+589|Monte un instant sur la balance. Cela prend 10 secondes.
+590|C'est l'heure de ta photo hebdomadaire
+591|Elle reste chiffrée et privée, toi seul·e la vois.
+592|Un verre d'eau ?
+593|Tu as bu {n} ml sur {g} aujourd'hui.
+594|Ce rappel est désactivé.
+595|Adapté à tes données
+596|Aucune de tes allergies ou préférences n'est concernée.
+597|Contient du lait (lactose)
+598|Cela ne correspond pas à tes données. Tu peux quand même l'ajouter.
+599|{h} cm · {age} ans · {sex} · {w} kg
+600|dans la norme
+601|jusqu'à la plage normale
+602|Encore {n} kg jusqu'à la plage normale
+603|Tu es dans la plage normale
+604|Poids normal pour ta taille : {lo} à {hi} kg (IMC 18,5–24,9).
+605|Ton objectif est atteint.
+606|Encore {n} kg jusqu'à ton objectif de {t} kg.
+607|Encore {n} kg à prendre jusqu'à ton objectif de {t} kg.
+608|{sign}{n} kg depuis le {date}
+609|Maintenir le poids · {k} kcal
+610|{t} kg · {mode} · {r} kg par semaine
+611|kcal restantes
+612|kcal en trop
+613|kcal jusqu'à l'objectif
+614|kcal au-dessus de l'objectif
+615|Protéines en bonne voie
+616|Objectif {t} g, jusqu'ici {p} g. Un yogourt ou un œuf comble l'écart. Touche pour des recettes.
+617|Tu as atteint {p} g sur {t}. Continue comme ça !
+618|Saumon, riz et brocoli
+619|Rien de saisi pour l'instant
+620|Filet de saumon
+621|Riz basmati
+622|Brocoli
+623|Estimation
+624|Moins de {name}
+625|Plus de {name}
+626|ensuite encore {n} kcal jusqu'à l'objectif
+627|Objectif quotidien atteint ainsi
+628|ensuite encore {n} kcal restantes
+629|Pause
+630|Réussi !
+631|10 minutes de force accomplies.
+632|Bravo, continue !
+633|Voici la récompense quand un objectif est atteint.
+634|Objectif d'eau atteint
+635|Tu as assez bu aujourd'hui.
+636|Repas enregistré
+637|Bien joué, tu t'accroches.
+638|Connecté !
+639|Vous partagez maintenant recettes et liste de courses.
+640|Suit le réglage de ton appareil.
+641|Toujours clair.
+642|Toujours sombre.
+643|Actuellement : sombre.
+644|Actuellement : clair.
+645|Activer le mode clair
+646|Activer le mode sombre
+647|À ton poids, nous ne proposons pas de perte de poids.
+648|Ingrédients ajoutés à la liste de courses.
+649|Sommeil et pas : connecté
+650|Sommeil et pas : non connecté
+651|Poids et composition corporelle : connecté
+652|Poids et composition corporelle : non connecté
+653|10:00 à 18:00 (facultatif)
+654|Encore 2 h 10 min ouvert
+655|La fenêtre alimentaire est désactivée
+656|Objectif : {goal} · protéines {t} g
+657|Détectée : {name}
+658|Langue de l'appareil : {device}. Tu peux en choisir une autre ci-dessous.
+659|La langue de ton appareil ({device}) n'est pas encore disponible. Nous commençons en anglais.
+660|Brouillon
+661|Texte source
+662|Active
+663|Prévue, traduction en attente
+664|Prévue, d'abord sans sauvegarde uniquement (enregistrement en attente)
+665|Bloquée : obligation d'enregistrement en Indonésie
+666|Langue : {name}. Tes données sont conservées.
+667|Cette langue n'est pas encore approuvée.
+668|Dossier {path}
+669|meta.json : nom, sens d'écriture, unités, police, statut de relecture
+670|ui.json : {n} textes d'interface
+671|legal.json : avis santé, confidentialité, crédits
+672|recipes.json : {n} recettes, aliments et ingrédients
+673|store.json : textes pour l'App Store et Google Play
+674|Traduit : {p} % · relu : {r} · approuvé juridiquement : {l}
+675|S'il manque un texte, l'anglais s'affiche automatiquement (fallback). Nouvelle langue = nouveau dossier plus une entrée dans la liste des langues.
+676|Simulation du prototype : l'approbation juridique est encore en attente.
+677|oui
+678|non
+679|Nom
+680|Sous-titre
+681|Description courte
+682|Activés
+683|Désactivés
+684|Écouter
+685|Stop
+686|Sélectionnée
+687|Sélectionner
+688|Sons activés
+689|Sons désactivés
+690|Couper les sons
+691|Activer les sons
+692|H1 · Duo « E-do-VI-ta »
+693|H5 · Chœur épique de bande-annonce
+694|H4 · Pop whoa-oh (réserve)
+695|Générée par IA
+696|Départ
+697|Après l'onboarding
+698|Réussite
+699|Quand tu atteins un objectif
+700|Ensemble
+701|Quand un partenaire est connecté
+702|Désactivée (par défaut)
+703|Activée · chiffrée · UE
+704|Uniquement sur cet appareil · sauvegarde désactivée
+705|Sur l'appareil · sauvegarde activée (UE, chiffrée)
+706|Sauvegarde activée (simulation).
+707|Sauvegarde désactivée. Les données sauvegardées seraient supprimées.
+708|Rien trouvé. Essaie un autre mot.
+709|Entendu : « {q} »
+710|Ajouter {name}
+711|{portion} · env. {kcal} kcal
+712|Fruits et légumes
+713|Produits laitiers et œufs
+714|Provisions
+715|Dans le panier
+716|Déjà à la maison
+717|J'en ai
+718|Acheter quand même
+719|Tout est fait !
+720|{name} : dans le panier
+721|{name} : retour sur la liste
+722|{n} pce
+723|{n} bout.
+724|Alex a encore {n} kcal aujourd'hui. Idée à cuisiner : {recipe}.
+725|Alex a encore besoin de {n} kcal aujourd'hui. Idée à cuisiner : {recipe}.
+726|Les calories restantes ne sont pas partagées. Sam ne voit que les recettes et la liste de courses.
+727|Brouillon, pas encore vérifié par un avocat
+728|6 oct.
+729|En cours de vérification : traduction et textes juridiques
+730|Date de naissance
+731|Jour
+732|Mois
+733|Année
+734|JJ
+735|AAAA
+736|{n, plural, one {# an} other {# ans}}
+737|Saisis une date valide.
+738|Cette date est dans le futur.
+739|Saisis une date de naissance correspondant à un âge entre {min} et {max} ans.
+740|Edovita s'adresse aux adultes. Avant {n} ans, utilise-la seulement avec un adulte et un suivi médical.
+741|Diminuer {label} de {step}
+742|Augmenter {label} de {step}
+743|Ajusté à {v} {unit} (autorisé : {min}–{max}).
+744|Saisis un nombre.
+745|Maintiens moins/plus pour aller plus vite. Tu peux aussi toucher la valeur et la saisir.
+746|Décider plus tard
+747|Objectif calorique personnel
+748|Rythme durable, calculé par Edovita
+749|Tu choisis les kg par semaine
+750|Tu choisis les kcal par jour ; Edovita affiche le rythme et la date visée
+751|Calculé par Edovita
+752|Objectif calorique par jour
+753|kcal/jour
+754|{k} kcal · régime sous suivi médical
+755|Exemple : programmes comme celui du Dr Nowzaradan
+756|{k} kcal · recommandation Edovita
+757|{k} kcal · ton besoin estimé
+758|Les noms ne sont que des exemples. Edovita n’est lié à aucun programme et ne remplace pas un avis médical.
+759|Le poids reste à peu près stable
+760|env. −{r} kg par semaine
+761|env. +{r} kg par semaine
+762|Ton besoin estimé
+763|Rythme attendu
+764|Uniquement sous suivi médical
+765|Cet objectif est inférieur à {safe} kcal. Pour toi, il ne convient qu’avec un suivi médical.
+766|Sans suivi, la valeur indicative est d’au moins {floor} kcal par jour et pas moins que ton métabolisme de base (estimé à env. {bmr} kcal).
+767|Très peu d’énergie peut entraîner une perte musculaire, des carences, des calculs biliaires, des vertiges et l’effet yo-yo. Déconseillé pendant la grossesse ou l’allaitement, avant 18 ans ou en cas de trouble alimentaire (même passé).
+768|Edovita ne donne pas de conseils médicaux. Parle de cet objectif avec ton médecin et fais-toi suivre régulièrement.
+769|Je suis suivi·e médicalement pour cela.
+770|Tant que tu n’as pas confirmé, Edovita calcule avec {safe} kcal.
+771|{min} kcal est la limite inférieure dans Edovita. Impossible d’aller plus bas, même avec confirmation.
+772|Ainsi, tu ne perdras presque pas de poids
+773|Pour perdre du poids, l’objectif doit être inférieur à ton besoin d’env. {need} kcal.
+774|Ainsi, tu ne prendras pas de poids
+775|Pour prendre du poids, l’objectif doit être supérieur à ton besoin d’env. {need} kcal.
+776|Environ 250 à 500 kcal au-dessus du besoin est raisonnable, avec assez de protéines et du renforcement musculaire. En cas d’insuffisance pondérale ou de perte de poids involontaire, consulte un médecin.
+777|Maintenir le poids
+778|Ton besoin est d’env. {need} kcal par jour. Proche de cette valeur, ton poids reste stable.
+779|Avec cet objectif, tu perdrais env. {r} kg par semaine. Sinon, choisis l’objectif « {goal} ».
+780|Avec cet objectif, tu prendrais env. {r} kg par semaine. Sinon, choisis l’objectif « {goal} ».
+781|En savoir plus
+782|{t} kg · objectif perso {k} kcal/jour
+783|Maintenir le poids · objectif perso {k} kcal/jour
+784|NOUVEAU EN V1
+785|Restes
+786|Avec ce que tu as
+787|Indique ce qu’il te reste. Nous proposons des recettes locales — sans photo ni IA.
+788|Choisir les ingrédients
+789|Quantités approximatives
+790|portion
+791|Idées de recettes
+792|Pas encore de résultat. Ajoute des ingrédients.
+793|{n} sur {total} ingrédients disponibles
+794|Voir les recettes
+795|Prototype : correspondance uniquement locale.
+796|Saumon
+797|Riz
+798|Tomates
+799|Oignon
+800|Épinards
+801|Carottes
+802|Poulet
+803|Pomme
+804|Avoine
+805|Lentilles
+806|Haricots
+807|Pommes de terre
+808|Concombre
+809|Salade
+810|Champignons
+811|Poivron
+812|Brocoli
+813|Pois chiches
+814|Baies
+815|Yaourt
+816|Œufs
+817|Quinoa
+818|Noix
+819|Huile d’olive
+820|Calendrier de saison
+821|Frais et local
+822|Région / marché
+823|Mois
+824|De saison : {region}, {month}
+825|Légumes
+826|Fruits
+827|local
+828|Rien dans les données d’exemple.
+829|Données d’exemple, simplifiées.
+830|Suisse
+831|Allemagne
+832|Autriche
+833|Italie
+834|Espagne
+835|France
+836|Portugal
+837|Brésil
+838|Japon
+839|Janvier
+840|Février
+841|Mars
+842|Avril
+843|Mai
+844|Juin
+845|Juillet
+846|Août
+847|Septembre
+848|Octobre
+849|Novembre
+850|Décembre
+851|Pommes
+852|Poires
+853|Baies
+854|Agrumes
+855|Tomates
+856|Concombres
+857|Carottes
+858|Brocoli
+859|Épinards
+860|Courgettes
+861|Chou
+862|Courge
+863|Poireau
+864|Pommes de terre
+865|Oignons
+866|Poivrons
+867|Asperges
+868|Salade
+869|Repas en un tap
+870|Modèles et favoris
+871|Enregistre un repas en un tap.
+872|Comme hier
+873|{name} · {k} kcal
+874|Favori : bol yaourt
+875|Favori : porridge
+876|Modèle : œufs brouillés
+877|Modèle : salade
+878|{k} kcal · {p} g de protéines
+879|Repas enregistré (simulation).
+880|Les favoris restent sur cet appareil.
+881|Porridge aux baies
+882|Yaourt aux baies et noix
+883|Œufs brouillés
+884|Salade mixte
+885|Portions à la main
+886|Sans balance
+887|Repères visuels — pas un conseil médical.
+888|Paume
+889|env. {g} g de protéines
+890|Poing
+891|env. {g} g de glucides
+892|Pouce
+893|env. {g} g de lipides
+894|Poignée
+895|env. {g} g de collation
+896|Main en coupe
+897|env. {g} g de légumes
+898|Idéal viande, poisson, tofu
+899|Idéal riz, pâtes, pommes de terre
+900|Idéal huiles et noix
+901|Idéal noix et baies
+902|Idéal légumes et salade
+903|Les repères varient selon la taille de la main.
+904|Base aliments
+905|Codes-barres locaux
+906|Base d’exemple locale.
+907|EAN / code-barres
+908|Rechercher
+909|Caméra (optionnel)
+910|Scan simulé.
+911|BarcodeDetector indisponible.
+912|{k} kcal / 100 g · {p} g protéines · paquet {g} g
+913|Ajouter à aujourd’hui
+914|Produit enregistré.
+915|Aucun résultat.
+916|Exemples
+917|Produits d’exemple (fictifs). Pas de données OFF.
+918|Yaourt nature
+919|Flocons d’avoine
+920|Séré maigre
+921|Lentilles corail
+922|Tofu nature
+923|Riz long
+924|Boisson avoine
+925|Pois chiches boîte
+926|Blanc de poulet
+927|Mélange de légumes
+928|Pain complet
+929|Pommes en vrac
+930|Migros
+931|Coop
+932|Lidl
+933|Aldi
+934|Denner
+935|Spar
+936|Fenêtre alimentaire
+937|Optionnel, désactivé par défaut
+938|Optionnel. Désactivé par défaut.
+939|Activé · {a} à {b}
+940|Désactivé (défaut)
+941|De
+942|À
+943|Pas de jeûne forcé.
+944|Fenêtre activée.
+945|Fenêtre désactivée.
+946|Sport et activité
+947|Ajuster les calories
+948|Enregistre activités (MET).
+949|Choisir une activité
+950|Durée et intensité
+951|Durée (minutes)
+952|Intensité
+953|Léger
+954|Moyen
+955|Soutenu
+956|Enregistrer
+957|Aujourd’hui
+958|Pas encore d’activité.
+959|{min} min · {int} · env. {k} kcal
+960|Supprimer
+961|Dépensé en plus : env. {k} kcal
+962|Après la musculation : surveille les protéines.
+963|Env. {k} kcal prises en compte.
+964|Estimations MET.
+965|Padel
+966|Tennis de table
+967|Tennis
+968|Volley-ball
+969|Beach-volley
+970|Musculation
+971|Marche
+972|Course
+973|Vélo
+974|Yoga
+975|Juste traîner
+976|Liste QR
+977|Partager sans serveur
+978|La liste est dans le QR (fragment).
+979|Copier le lien
+980|Lien copié.
+981|Copie impossible.
+982|Réception : ouvrir le même lien.
+983|{n} éléments importés.
+984|Import refusé ({e}).
+985|QR impossible.
+986|Uniquement liens fragment Edovita.
+987|Mode voyage
+988|Plus simple en voyage
+989|Saisie simplifiée, resto, saison locale.
+990|Activé
+991|Désactivé
+992|Région de voyage
+993|Ce qui change
+994|Saisie plus rapide
+995|Estimations resto mises en avant
+996|Calendrier selon la région
+997|Fuseau selon l’appareil
+998|Ouvrir estimation resto
+999|Mode voyage activé.
+1000|Mode voyage désactivé.
+1001|Prototype : fuseau local.
+1002|Marques de distributeur
+1003|Migros, Coop, etc.
+1004|Données d’exemple. Noms descriptifs, pas de logos.
+1005|Marchés : {s}
+1006|Lignes (exemple) : {l}
+1007|Pas de partenariat.
+1008|Bientôt : export médecin
+1009|L’export PDF arrive juste après la V1.
+1010|Backlog : export médecin (bientôt), check-in soir (pas V1), IA photo (plus tard, payant).
+1011|Restes
+1012|Saison
+1013|Un tap
+1014|Portions main
+1015|Base codes-barres
+1016|Fenêtre
+1017|Activité
+1018|Liste QR
+1019|Voyage
+1020|MDD

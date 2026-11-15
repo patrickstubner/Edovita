@@ -1,0 +1,39 @@
+{
+ "fallback": "en",
+ "active": [
+  "de",
+  "en",
+  "fr",
+  "it",
+  "es",
+  "ja",
+  "pt"
+ ],
+ "planned": [
+  {
+   "code": "hi",
+   "name": "हिन्दी",
+   "reason": "planned"
+  },
+  {
+   "code": "ko",
+   "name": "한국어",
+   "reason": "planned"
+  },
+  {
+   "code": "bn",
+   "name": "বাংলা",
+   "reason": "planned"
+  },
+  {
+   "code": "tr",
+   "name": "Türkçe",
+   "reason": "tr"
+  },
+  {
+   "code": "id",
+   "name": "Bahasa Indonesia",
+   "reason": "id"
+  }
+ ]
+}

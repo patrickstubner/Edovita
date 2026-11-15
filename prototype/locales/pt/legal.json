@@ -1,0 +1,32 @@
+{
+ "note": "O Edovita não substitui orientação médica ou nutricional. Os filtros de alérgenos são indicações, não garantias.",
+ "sections": [
+  {
+   "title": "Aviso de saúde",
+   "paragraphs": [
+    "Os valores de calorias e corporais são estimativas e referências. Se você tem doenças preexistentes, está grávida ou tem problemas alimentares, converse primeiro com seu médico de família.",
+    "O Edovita deliberadamente não oferece perda de peso com IMC abaixo de 18,5 nem meta diária abaixo de 1.200 kcal (mulheres) ou 1.500 kcal (homens)."
+   ]
+  },
+  {
+   "title": "Privacidade",
+   "paragraphs": [
+    "Seus dados de saúde ficam no seu aparelho. Sem conta e sem anúncios.",
+    "O backup na nuvem vem desligado. Se você ligá-lo, os dados são primeiro criptografados no aparelho e guardados na UE. A base legal é o seu consentimento específico e destacado, que você pode revogar a qualquer momento."
+   ]
+  },
+  {
+   "title": "Idiomas",
+   "paragraphs": [
+    "Os textos jurídicos valem no idioma em que foram revisados. As traduções deste protótipo são rascunhos."
+   ]
+  }
+ ],
+ "credits": {
+  "title": "Créditos",
+  "items": [
+   "Hymne H1, H5, H4: ACE-Step v1 (Apache-2.0)",
+   "Drum samples provided by DrumGizmo.org"
+  ]
+ }
+}

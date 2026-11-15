@@ -1,0 +1,32 @@
+{
+ "note": "Edovita does not replace medical or dietetic advice. Allergen filters are hints, not guarantees.",
+ "sections": [
+  {
+   "title": "Health notice",
+   "paragraphs": [
+    "Calorie and body values are estimates and guide values. If you have pre-existing conditions, are pregnant or have eating problems, talk to your GP first.",
+    "Edovita deliberately offers no weight loss at a BMI below 18.5 and no daily goal below 1,200 kcal (women) or 1,500 kcal (men)."
+   ]
+  },
+  {
+   "title": "Privacy",
+   "paragraphs": [
+    "Your health data stays on your device. There is no account and no advertising.",
+    "Cloud backup is off by default. If you turn it on, data is encrypted on the device first and stored in the EU. The legal basis is your explicit consent, which you can withdraw at any time."
+   ]
+  },
+  {
+   "title": "Languages",
+   "paragraphs": [
+    "Legal texts apply in the language in which they were reviewed. Translations in this prototype are drafts."
+   ]
+  }
+ ],
+ "credits": {
+  "title": "Credits",
+  "items": [
+   "Hymne H1, H5, H4: ACE-Step v1 (Apache-2.0)",
+   "Drum samples provided by DrumGizmo.org"
+  ]
+ }
+}

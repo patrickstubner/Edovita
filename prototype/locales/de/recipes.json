@@ -1,0 +1,58 @@
+{
+ "recipes": {
+  "oven_salmon": "Ofenlachs mit Brokkoli",
+  "quinoa_pan": "Quinoa-Gemüsepfanne mit Kichererbsen",
+  "thai_curry": "Thai-Curry mit Poulet",
+  "pho": "Pho mit Rindfleisch",
+  "summer_rolls": "Vietnamesische Sommerrollen mit Crevetten",
+  "birchermuesli": "Birchermüesli",
+  "yogurt_bowl": "Joghurt mit Beeren und Nüssen",
+  "lentil_curry": "Linsen-Curry mit Kokosmilch",
+  "scrambled_eggs": "Rührei mit Spinat und Vollkornbrot",
+  "chicken_bowl": "Teriyaki-Poulet-Bowl",
+  "mushroom_polenta": "Pilzpfanne mit Polenta",
+  "hummus_wrap": "Hummus-Gemüse-Wrap",
+  "miso_salmon": "Miso-Lachs mit Pak Choi",
+  "shakshuka": "Shakshuka",
+  "burrito_bowl": "Burrito-Bowl mit Bohnen"
+ },
+ "cuisines": {
+  "european": "Europäisch",
+  "thai": "Thailändisch",
+  "mediterranean": "Mediterran",
+  "vietnamese": "Vietnamesisch",
+  "swiss": "Schweizerisch",
+  "japanese": "Japanisch",
+  "indian": "Indisch",
+  "middle_eastern": "Nahöstlich",
+  "mexican": "Mexikanisch",
+  "italian": "Italienisch"
+ },
+ "ingredients": {
+  "broccoli": "Brokkoli",
+  "chickpeas": "Kichererbsen",
+  "berries": "Beeren",
+  "yogurt": "Naturjoghurt",
+  "eggs": "Eier",
+  "quinoa": "Quinoa",
+  "nuts": "Nüsse",
+  "olive_oil": "Olivenöl"
+ },
+ "foods": {
+  "spaghetti": "Spaghetti Bolognese",
+  "birchermuesli": "Birchermüesli",
+  "chicken_rice": "Poulet mit Reis",
+  "salad": "Gemischter Salat",
+  "pizza": "Pizza Margherita",
+  "sushi": "Sushi",
+  "pad_thai": "Pad Thai",
+  "rosti_egg": "Rösti mit Spiegelei",
+  "banana": "Banane",
+  "apple": "Apfel",
+  "oatmeal_berries": "Haferbrei mit Beeren",
+  "lentil_salad": "Linsensalat mit Feta",
+  "yogurt_nuts": "Joghurt mit Beeren und Nüssen",
+  "apple_almonds": "Apfel mit Mandeln",
+  "pizza_whole": "Pizza Margherita, ganz"
+ }
+}
