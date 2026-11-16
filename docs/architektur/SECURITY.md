@@ -69,4 +69,7 @@ Das Install-Skript lädt ripgrep 14.1.1, ast-grep 0.51.2 und codebase-memory-mcp
 |---|---|---|---|
 | C1 | info | Keine kritischen, hohen oder mittleren Befunde in den neuen Dateien. | keiner |
 | C2 | niedrig | Lieferkettenrisiko der Dritt-Binaries bleibt trotz Hash-Prüfung. | Hashes bei jedem Versionswechsel von der Release-Seite neu übernehmen. |
+| C3 | niedrig, behoben | (CA-1) optionales `sudo` nach `/usr/local/bin` entfernt. | nur `~/.local/bin`, PATH im Skript |
+| C4 | niedrig, behoben | (CA-2) `.codebase-memory/` war nicht ignoriert. | Eintrag in `.gitignore` und `.cursorignore` |
 
+Nachzug 16.11.2026 (CA-1, CA-2): Das Install-Skript kopiert nicht mehr nach `/usr/local/bin` und verwendet kein `sudo`; die Werkzeuge liegen nur unter `~/.local/bin`, PATH setzt das Skript in `~/.profile` und `~/.bashrc`. `.codebase-memory/` steht in `.gitignore` und `.cursorignore`.

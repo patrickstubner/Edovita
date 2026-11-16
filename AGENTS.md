@@ -55,20 +55,21 @@ Cloud Agents starten in einer eigenen Ubuntu-VM, ohne den gemeinsamen Rechner. D
 ### Zuerst lesen
 - AGENTS.md, ARCHITECTURE.md und STATUS.md, in dieser Reihenfolge.
 - Sind sie unklar oder nicht aktuell: konkret nachfragen, nicht raten.
-- `prototype/` ist eine eingefrorene Design-Referenz und wird nicht verändert.
 
 ### Werkzeuge in dieser Umgebung
 Das Install-Skript `.cursor/install-dev-tools.sh` legt im Build bereit:
 - `rg` (ripgrep 14.1.1) für Zeilensuche
 - `ast-grep` (0.51.2) für strukturelle Suche; auf Linux den Befehl `ast-grep` nutzen, nicht `sg`
-- `codebase-memory-mcp` (0.12.1) für Aufrufer, Impact und Architektur. Der Index liegt unter `~/.cache/codebase-memory-mcp/` und wird im Build erzeugt (heute vor allem `prototype/` und `docs/`).
+- `codebase-memory-mcp` (0.12.1) für Aufrufer, Impact und Architektur. Der Index liegt unter `~/.cache/codebase-memory-mcp/` und wird im Build erzeugt.
+
+Die Binaries liegen nur unter `~/.local/bin` (kein Kopieren nach `/usr/local/bin`, kein `sudo`). Das Skript hängt `~/.local/bin` an PATH in `~/.profile` und `~/.bashrc`. Fehlt ein Befehl in einer Sitzung: `export PATH="$HOME/.local/bin:$PATH"`. `environment.json` setzt PATH nicht selbst: das offizielle Schema erlaubt kein `env`-Feld.
 
 Weitere Tools können später im selben Skript ergänzt werden (Version und SHA-256 pinnen, kein `curl|bash`).
 
-Es gibt noch kein `package-lock.json`. Sobald E0 eine `package.json` mit Lockfile mitbringt, führt dasselbe Skript `npm ci --ignore-scripts` aus (geplant: Node 22).
+Abhängigkeiten: das Skript erkennt `package-lock.json` (`npm ci --ignore-scripts`) oder `pnpm-lock.yaml` (`pnpm install --frozen-lockfile`, pnpm über corepack mit der in `packageManager` gepinnten Version). Node muss die `engines` in `package.json` erfüllen (typisch >= 22); das Skript installiert Node nicht.
 
 ### Reihenfolge bei Struktur-Fragen
-1. STATUS.md und ARCHITECTURE.md sowie `docs/architektur/`.
+1. STATUS.md und ARCHITECTURE.md.
 2. Index-Tool, bevor ganze Dateien gelesen werden:
    - `codebase-memory-mcp cli --quiet list_projects '{}'`
    - `codebase-memory-mcp cli --quiet trace_path '{"project":"<name>","function_name":"<Symbol>","direction":"inbound","depth":2}'`
@@ -76,7 +77,9 @@ Es gibt noch kein `package-lock.json`. Sobald E0 eine `package.json` mit Lockfil
 3. `ast-grep` oder `rg` für Muster und exakte Zeichenketten.
 4. Dateien nur gezielt lesen.
 
+Der eingefrorene Klick-Prototyp liegt unter `prototype/`. Ein npm-Lockfile gibt es erst mit E0; bis dahin überspringt das Skript `npm ci`.
+
 ### Graphify-MCP (gehostet, falls verbunden)
 Wenn unter cursor.com/agents ein HTTP-MCP namens `graphify` auf `https://api.graphify.com/mcp` eingerichtet und per OAuth angemeldet ist, den Graphen für Aufrufer, Impact und Tests nutzen (`list_repositories`, `graphify_find`, `graphify_callers`, `graphify_impact`). Der gehostete Graph zeigt den indexierten GitHub-Stand, keine uncommitteten lokalen Änderungen. Fehlt die Verbindung oder weicht der Stand ab: `codebase-memory-mcp` in dieser VM verwenden.
 
-Nicht `codebase-memory-mcp install` oder `update` ausführen (ändert Agent-Konfigurationen oder lädt Binaries). Index-Ordner `.codegraph/`, `graphify-out/` und `.serena/` nicht committen.
+Nicht `codebase-memory-mcp install` oder `update` ausführen (ändert Agent-Konfigurationen oder lädt Binaries). Index-Ordner `.codegraph/`, `graphify-out/`, `.serena/` und `.codebase-memory/` nicht committen (stehen in `.gitignore` und `.cursorignore`).

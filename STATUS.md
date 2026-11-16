@@ -6,6 +6,8 @@ Branch `chore/cloud-agent-setup` (Draft-PR, nicht mergen bis Stabschef und Proje
 - `.cursorignore` für Lockfiles, Build, Audio, Screenshots, grosse generierte Dateien, Index-Ordner.
 - Abschnitt «Cursor Cloud specific instructions» in AGENTS.md ergänzt.
 - Der gehostete Graphify-MCP wird unter cursor.com/agents verbunden, nicht durch diesen PR.
+- Nachzug CA-1/CA-2: Binaries nur unter `~/.local/bin` (kein `sudo`, kein `/usr/local/bin`); PATH setzt das Skript in `~/.profile` und `~/.bashrc`. `.codebase-memory/` steht in `.gitignore` und `.cursorignore`.
+- Die Analyse mit lokalen Index-Tools (Hotspots, Aufrufer, Abhängigkeiten des Prototyps) wird ab E0 nachgeführt, mit dem dann aktuellen Commit-Stand. Bis E0 bleiben cbm/codegraph zurückgestellt; `ARCHITECTURE.md` bezieht sich weiter auf Commit `7ccbd06` (Prototyp).
 
 ## Aktuelles Ziel
 Phase 1 ab 27.11.2026: Grundgerüst (E0), dann zuerst Rezept-Detailseite (E4) und zweisprachige Einkaufsliste (E5, E6).
@@ -48,5 +50,5 @@ Details: `docs/architektur/issues-entwuerfe.md`, `docs/architektur/ablaufplan-un
 
 ## Genutzte lokale Tools & vermiedene Cloud-Agent-Nutzung
 - rg: Personendaten-Prüfung der Architektur-Doku vor dem Übernehmen.
-- Kein Code zum Indexieren (cbm/codegraph erst ab E0 sinnvoll).
+- Kein Code zum Indexieren (cbm/codegraph erst ab E0 sinnvoll; Analyse dann mit Commit-Stand nachführen).
 - Der Doku-Teil von E0 ist damit erledigt, geschätzt 0,1–0,2 Agent-Tage gespart.
