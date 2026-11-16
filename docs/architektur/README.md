@@ -1,7 +1,7 @@
 # Edovita: Architekturgrundlage für den Bau ab 27.11.2026
 
 - **Stand:** 15.11.2026
-- **Repo-Stand:** `patrickstubner/Edovita`, Commit `ed4d9fb` (nur `README.md`, öffentlich)
+- **Repo-Stand:** `patrickstubner/Edovita`, `main` = `7ccbd06` (Prototyp v5.4.1 unter `prototype/`, dazu `README.md`, öffentlich). Bei der Erstellung am 15.11. war es noch `ed4d9fb` (nur `README.md`).
 - **Prototyp (Referenz):** v5.4.1, im Repo unter `prototype/`, identisch mit der Live-Demo (Cloudflare Worker, URL bewusst nicht im Repo, Titel «Prototyp v5.4»). Ältere Stände nur lokal.
 - **Weitere Quellen (lokal, nicht im Repo):** Brief, Entwickler-Handoff, Decision-Log, Rechtstexte, Strings, Hosting-Notiz, gespeicherte Entscheide des Projektinhabers (Zweitsprache 07./10.11., Rezept-Detailseite 07.11., Rezepte selbst geschrieben und gegengeprüft).
 - **Graphify:** Workspace des Repo-Kontos. Was Graphify geliefert hat und was nicht: `graphify-befund.md`.

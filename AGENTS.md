@@ -45,5 +45,5 @@
 ### Prüfung und Merge
 - Jede Code-Änderung, jeder Merge und jedes Update (auch grüne Dependabot-PRs) wird von Stabschef unabhängig geprüft (Entscheid Projektinhaber, 16.11.2026).
 - Vor jedem Merge oder Push auf `main` den Head-SHA an Stabschef geben und auf das Ok warten. Merge nur mit ausdrücklichem Ok des Projektinhabers.
-- Keine bezahlten Dienste und kein On-Demand ohne dem Ja des Projektinhabers.
+- Keine bezahlten Dienste und kein On-Demand ohne das Ja des Projektinhabers.
 - Merge immer als Squash-Merge mit `--match-head-commit <SHA>`. Autor und Committer nur mit der GitHub-noreply-Adresse des Repo-Kontos.
