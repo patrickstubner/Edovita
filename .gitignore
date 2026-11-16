@@ -1,0 +1,9 @@
+# Lokale Code-Index-Ordner (Agent-Tools), nie committen
+.codegraph/
+graphify-out/
+.serena/
+
+# Umgebungsdateien (ADR-004)
+.env
+.env.*
+!.env.example

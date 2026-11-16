@@ -1,0 +1,60 @@
+# Sicherheits-Kurzprüfung Prototyp v5.4.1
+
+- **Datum:** 15.11.2026 (Zürich)
+- **Geprüft:** Prototyp v5.4.1, heute `prototype/` (`app.js`, `v1-features.js`, `i18n.js`, `theme.js`, `vendor/edo-qr.js`, `data/v1-data.js`, `index.html`, `_headers`, `worker.tpl.mjs`, `build-worker.py`, `tools/*.py`)
+- **Methode:** Code-Lesen, `rg` nach `innerHTML`, `insertAdjacentHTML`, `outerHTML`, `eval`, `new Function`, `document.write`, Inline-Handlern/-Stilen, Netzwerkaufrufen und Secret-Mustern (AWS/GitHub/Slack/API-Key/Bearer). Kein dynamischer Test, kein `npm audit` (keine Laufzeit-Abhängigkeiten im Prototyp; Python-Werkzeuge nur Standardbibliothek).
+- **Vorherige Prüfungen:** `prototype/SECURITY.md` (v4–v5.4). Diese Prüfung bestätigt sie und ergänzt Punkte für die echte App.
+
+## Ergebnis
+
+Keine kritischen und keine hohen Befunde. Der Prototyp ist bewusst ohne Netz, ohne Backend und ohne gespeicherte Gesundheitsdaten gebaut.
+
+| # | Thema | Befund | Schwere | Fix-Vorschlag |
+|---|---|---|---|---|
+| 1 | XSS / Injection | Kein `innerHTML`, `eval`, `new Function`, `document.write`. Texte nur über `textContent`/`setAttribute` (Whitelist `ATTR_OK` in `i18n.js`). QR-SVG über `DOMParser`, nur `<svg>`-Wurzel übernommen. CSP ohne `unsafe-inline`/`unsafe-eval`. | kein Befund | In der App beibehalten: ESLint `react/no-danger` als Fehler, CSP-Test in CI |
+| 2 | Eingabevalidierung QR-Import | `parseImport`: Regex auf Fragment, Länge ≤ 4000/3000, ≤ 40 Items, ID-Whitelist, Namen ohne `<>&"'`, `st` auf open/cart/home begrenzt. Übernahme erfolgt **ohne Rückfrage**, sobald jemand einen präparierten Link öffnet (Liste wird überschrieben). | niedrig | In der App: Bestätigungsdialog «X Artikel übernehmen?» mit Vorschau, nur bekannte `FoodId`, Ersetzen vs. Ergänzen wählbar |
+| 3 | Eingabevalidierung localStorage | `edovita.v1`: `travelRegion` wird nur auf Typ `string` geprüft, nicht gegen `regions` (anders als `region`). Wirkung nur ein falscher Übersetzungsschlüssel, da Ausgabe per `textContent`. | niedrig | Gegen `D.regions` prüfen; in der App alle gelesenen Werte über `coerce*()`/zod |
+| 4 | Geheimnisse | Keine Keys/Tokens im Code. Treffer für `AKIA` nur in Base64-Audio in `worker.mjs` (Zufall). `build-worker.py` erzeugt den Upload-Code ohne Zugangsdaten (`accountId`/Auth kommen aus der Laufzeit des Cloudflare-Werkzeugs). | kein Befund | Im Repo: Secret-Scan (gitleaks) in CI, `.env*` in `.gitignore` |
+| 5 | Abhängigkeiten | Laufzeit nur `qrcode-generator` 1.4.4 (MIT, lokal gebündelt, Lizenz beigelegt). Keine CDNs, keine Fremd-Fonts. | kein Befund | In der App: `npm audit` pro PR, Dependabot, Lockfile committen |
+| 6 | Datenschutz Gesundheitsdaten | Gewicht, Grösse, Geburtsdatum, Ziel, Mahlzeiten nur im Arbeitsspeicher (Demo-Werte), nicht gespeichert, nicht übertragen. localStorage nur Sprache, Theme, Ton, Melodie, Region/Fenster/Reise. | kein Befund (Prototyp) | App: ADR-004 (lokal, Backup aus, Export/Löschen, keine Scheinverschlüsselung im Browser, SQLCipher mit Capacitor) |
+| 7 | Geteilte Einkaufsliste | QR/Teilen enthält nur ID, Name, Zustand, keine Gesundheitsdaten. Das QR-Fragment hängt an der aktuellen URL; geteilt wird damit die Prototyp-Adresse. | niedrig | In der App nur Lebensmittel-IDs teilen, Namen lokal auflösen (kürzere, robuste Payload) |
+| 8 | Öffentliche Prototyp-URL | Cloudflare-Worker-Demo ohne Zugriffsschutz, `noindex`. Keine echten Daten. | niedrig | Nach Abschluss der App-Entwicklung Worker abschalten oder Cloudflare Access (gratis bis 50 Nutzer, vor Aktivierung prüfen) |
+| 9 | Meta-CSP ohne `frame-ancestors` | Gilt nur, wenn `index.html` als Datei geöffnet wird; der Worker setzt den Header. | niedrig | In der App nur über HTTP-Header (`_headers`) |
+| 10 | Medizinische Logik | Schutzregeln korrekt umgesetzt (`kcalFloor`, `wMin`, `loseBlocked`, `kcalSafe`, `checkDob`). `bmr()` kennt nur m/w. | mittel (fachlich, nicht technisch) | `sexForCalc` mit «keine Angabe» und konservativer Untergrenze; Grenzwerte und Texte vor Release medizinisch prüfen lassen |
+
+## Vorgaben für die App (aus dieser Prüfung)
+
+1. CSP wie Prototyp, aber `connect-src 'self'` für lazy geladene Inhalte; bei SQLite-WASM zusätzlich nur `'wasm-unsafe-eval'`, nie `'unsafe-eval'`.
+2. Alles von aussen (QR, Import, Inhalte beim Build) durch zod; alles aus dem Speicher durch `coerce*()`.
+3. Keine Nutzerdaten im Service-Worker-Cache.
+4. Pro PR: `npm audit`, Secret-Scan, grep auf gefährliche Senken, Bericht mit Schweregrad an den Projektinhaber.
+
+## Nachtrag 15.11.2026: Prototyp-Push und Inhalte
+
+### Prototyp-Commit `7ccbd06` (`prototype/`, gepusht 15.11.2026, ersetzt den lokalen Entwurf `4369eb8`)
+
+- Gitleaks 8.30.1: `gitleaks dir prototype` und `gitleaks git .` (2 Commits) ohne Funde. Keine `.env`, `.pem`, `wrangler.toml`, keine Tokens.
+- Metadaten: MP3-ID3 nur Encoder (`Lavc61.19`), PNG ohne Text- oder EXIF-Blöcke. Keine Datei über 500 KB.
+- Nichts ausserhalb von `prototype/` geändert. `prototype/README.md` kennzeichnet den Ordner als nicht produktiven Code.
+
+| # | Schwere | Befund | Fix-Vorschlag |
+|---|---|---|---|
+| P1 | niedrig, **behoben** | Vorname und ein persönlicher Bezug in `locales/pt/meta.json` | vor dem Push in `meta.json`, `tools/build-locales.py`, `content.py` neutralisiert (Entscheid Projektinhaber 15.11.) |
+| P2 | niedrig, **behoben** | Interne Ticket-IDs, lokale Pfade, Backup-Ordner, Worker-URL mit Namensteil in `ENTWICKLUNG.md`, `SECURITY.md`, `README.md` | vor dem Push neutralisiert; rg-Prüfung danach ohne Treffer |
+| P5 | info | Commit-Autor-Mail ist die GitHub-noreply-Adresse des Repo-Kontos; Kontoname steht ohnehin in der Repo-URL | keiner |
+| P6 | info | Orts- und Länder-Treffer im Code sind fachlich (Beratungsstelle, Ländername `region.BR`) | keiner |
+| P3 | info | Telefonnummern in `index.html` sind öffentliche Hilfe-Nummern (PEP) | keiner |
+| P4 | info | Bekannte Prototyp-Befunde (QR-Import ohne Bestätigung, `travelRegion` ohne Whitelist, `bmr()` nur m/w) werden mit dem Push öffentlich lesbar | nicht ausnutzbar (keine Server, keine Nutzerdaten); in E2/E3 beheben wie oben |
+
+### Inhalte (`inhalte/`, nur lokal)
+
+- Kein ausführbarer App-Code; `build_inhalte.py` und `validate.py` lesen nur die lokale xlsx (SHA-256 geprüft) und schreiben JSON. Abhängigkeit `openpyxl` 3.1.5 (neuste Version, keine bekannte offene Lücke; liest nur die eigene, per SHA-256 geprüfte Datei).
+- `validate.py` lehnt `<`, `>`, `&` und Steuerzeichen in allen Glossaren und Rezepttexten ab, prüft jede ID gegen den Katalog und alle Nährwerte gegen die xlsx. Negativtest mit 4 absichtlichen Fehlern: alle erkannt. Ein Absturz bei unbekannter Zutat (KeyError statt Meldung) wurde dabei gefunden und behoben.
+- Allergene werden aus den Zutaten abgeleitet, nicht von Hand gesetzt; produktabhängige stehen als `allergensToCheck`.
+
+| # | Schwere | Befund | Fix-Vorschlag |
+|---|---|---|---|
+| I1 | mittel (Gesundheit) | 14 Lebensmittel ohne Nährwerte, Rezeptsummen sind Mindestwerte; Pho hat 5,7 g Salz pro Portion ohne Fischsauce | App zeigt «mindestens» und Salz-Hinweis; Werte aus USDA ergänzen; salzarme Bouillon im Rezept |
+| I2 | mittel (Allergie) | Currypaste (Krebstiere), Currypulver (Senf, Sellerie), Bouillon (Sellerie) produktabhängig | als «kann enthalten» anzeigen, nie als «frei von» |
+| I3 | niedrig | 3 JA- und 3 PT-Namen unsicher | Gegenlesen durch Muttersprachler; bis dahin in `_status.json` markiert |
+| I4 | info | Rezepttexte selbst geschrieben, Quellen nur zum Abgleich; CH-NWD erlaubt kommerzielle Nutzung mit Quellenangabe | Quellenangabe im Impressum der App |
