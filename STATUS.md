@@ -1,4 +1,11 @@
-# STATUS.md – Stand 16.11.2026, Commit 7ccbd06
+# STATUS.md – Stand 16.11.2026, Commit 522e39e (main, inkl. #1)
+
+## Nachtrag 16.11.2026: Cloud-Agent-Setup
+Branch `chore/cloud-agent-setup` (Draft-PR, nicht mergen bis Stabschef und Projektinhaber Ja sagen).
+- `.cursor/environment.json` und `.cursor/install-dev-tools.sh`: ripgrep 14.1.1, ast-grep 0.51.2, codebase-memory-mcp 0.12.1, Versionen und SHA-256 gepinnt. `npm ci` erst, wenn ein Lockfile da ist (E0).
+- `.cursorignore` für Lockfiles, Build, Audio, Screenshots, grosse generierte Dateien, Index-Ordner.
+- Abschnitt «Cursor Cloud specific instructions» in AGENTS.md ergänzt.
+- Der gehostete Graphify-MCP wird unter cursor.com/agents verbunden, nicht durch diesen PR.
 
 ## Aktuelles Ziel
 Phase 1 ab 27.11.2026: Grundgerüst (E0), dann zuerst Rezept-Detailseite (E4) und zweisprachige Einkaufsliste (E5, E6).
@@ -32,7 +39,8 @@ Details: `docs/architektur/issues-entwuerfe.md`, `docs/architektur/ablaufplan-un
 - Issues E0–E7 auf GitHub anlegen? – Projektinhaber
 
 ## Offene PRs (16.11.2026)
-- nur dieser Docs-PR
+- Docs-PR #1 ist gemergt.
+- dieser Draft-PR: Cloud-Agent-Setup (`chore/cloud-agent-setup`)
 
 ## Bekannte Probleme / Risiken
 - Noch keine CI und kein Secret-Scan im Repo (kommt mit E0).

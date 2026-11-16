@@ -1,0 +1,39 @@
+# Abhängigkeiten und Lockfiles (Terminal/MCP bleiben lesbar)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+bun.lock
+bun.lockb
+node_modules/
+
+# Build- und Test-Artefakte (auch für späteres E0)
+dist/
+dev-dist/
+.cache/
+.vite/
+coverage/
+test-results/
+playwright-report/
+
+# Prototyp: Audio, Screenshots, grosse generierte Bundles
+prototype/audio/
+prototype/screenshots/
+prototype/locales.js
+prototype/worker.mjs
+*.wav
+*.mp3
+*.m4a
+*.ogg
+*.flac
+*.onnx
+*.wasm
+
+# Lokale Index-Ordner, nie committen
+.codegraph/
+graphify-out/
+.serena/
+
+# Umgebung
+.env
+.env.*
+!.env.example
