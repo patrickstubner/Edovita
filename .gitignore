@@ -2,6 +2,7 @@
 .codegraph/
 graphify-out/
 .serena/
+.codebase-memory/
 
 # Umgebungsdateien (ADR-004)
 .env

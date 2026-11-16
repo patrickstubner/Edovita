@@ -58,3 +58,18 @@ Keine kritischen und keine hohen Befunde. Der Prototyp ist bewusst ohne Netz, oh
 | I2 | mittel (Allergie) | Currypaste (Krebstiere), Currypulver (Senf, Sellerie), Bouillon (Sellerie) produktabhängig | als «kann enthalten» anzeigen, nie als «frei von» |
 | I3 | niedrig | 3 JA- und 3 PT-Namen unsicher | Gegenlesen durch Muttersprachler; bis dahin in `_status.json` markiert |
 | I4 | info | Rezepttexte selbst geschrieben, Quellen nur zum Abgleich; CH-NWD erlaubt kommerzielle Nutzung mit Quellenangabe | Quellenangabe im Impressum der App |
+
+## Nachtrag 16.11.2026: Cloud-Agent-Setup
+
+Geprüft: `.cursor/environment.json`, `.cursor/install-dev-tools.sh`, `.cursorignore`, ergänzter Abschnitt in AGENTS.md. Kein App-Code, keine Secrets, keine Personennamen und keine lokalen Rechnerpfade in den neuen Dateien.
+
+Das Install-Skript lädt ripgrep 14.1.1, ast-grep 0.51.2 und codebase-memory-mcp 0.12.1 von offiziellen GitHub-Releases, prüft SHA-256, setzt kein `curl|bash` ein und ruft nicht `codebase-memory-mcp install` oder `update` auf. Ohne `package-lock.json` entfällt `npm ci`.
+
+| # | Schwere | Befund | Fix-Vorschlag |
+|---|---|---|---|
+| C1 | info | Keine kritischen, hohen oder mittleren Befunde in den neuen Dateien. | keiner |
+| C2 | niedrig | Lieferkettenrisiko der Dritt-Binaries bleibt trotz Hash-Prüfung. | Hashes bei jedem Versionswechsel von der Release-Seite neu übernehmen. |
+| C3 | niedrig, behoben | (CA-1) optionales `sudo` nach `/usr/local/bin` entfernt. | nur `~/.local/bin`, PATH im Skript |
+| C4 | niedrig, behoben | (CA-2) `.codebase-memory/` war nicht ignoriert. | Eintrag in `.gitignore` und `.cursorignore` |
+
+Nachzug 16.11.2026 (CA-1, CA-2): Das Install-Skript kopiert nicht mehr nach `/usr/local/bin` und verwendet kein `sudo`; die Werkzeuge liegen nur unter `~/.local/bin`, PATH setzt das Skript in `~/.profile` und `~/.bashrc`. `.codebase-memory/` steht in `.gitignore` und `.cursorignore`.
