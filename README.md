@@ -29,7 +29,7 @@ Startinhalte prüfen (`pip install openpyxl`):
 python3 docs/architektur/inhalte/tools/validate.py   # Ergebnis: OK
 ```
 
-Die echte App (React, TypeScript, Rsbuild, Capacitor) entsteht ab Paket E0; dort kommen `npm ci`, `npm run dev`, `npm test`, `npm run build` dazu. Die Befehle stehen dann hier und in `AGENTS.md`.
+Die echte App (React, TypeScript, Rsbuild, Capacitor) entsteht ab Paket E0; dort kommen `pnpm install --frozen-lockfile`, `pnpm run dev`, `pnpm test`, `pnpm run build` dazu (nur pnpm, nach `corepack enable`). Die Befehle stehen dann hier und in `AGENTS.md`.
 
 ## Mit Agents arbeiten (Cursor, Google Antigravity)
 

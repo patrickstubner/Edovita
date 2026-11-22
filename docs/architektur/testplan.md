@@ -1,6 +1,6 @@
 # Testplan
 
-Werkzeuge wie Travel Talk: Vitest + Testing Library (Unit/Komponenten), Playwright (Journeys, Handy-Viewport 390×844, hell und dunkel), `fake-indexeddb` für Dexie-Tests. Jede PR: `npm test`, `npm run lint` (ESLint, Stylelint, dependency-cruiser), `npm run build`, `npm run content:check`, `npm audit`.
+Werkzeuge wie Travel Talk: Vitest + Testing Library (Unit/Komponenten), Playwright (Journeys, Handy-Viewport 390×844, hell und dunkel), `fake-indexeddb` für Dexie-Tests. Jede PR: `pnpm test`, `pnpm run lint` (ESLint, Stylelint, dependency-cruiser), `pnpm run build`, `pnpm run content:check`, `pnpm audit`.
 
 ## Journeys (Playwright)
 
@@ -36,4 +36,4 @@ Werkzeuge wie Travel Talk: Vitest + Testing Library (Unit/Komponenten), Playwrig
 
 ## Sicherheit pro PR (Dauerregel)
 
-`npm audit` (keine hohen/kritischen), Secret-Scan, grep auf `dangerouslySetInnerHTML`/`innerHTML`/`eval`, CSP-Header-Test (Antwort der Vorschau), Ergebnis mit Schweregrad und Fix im PR und in der Meldung an den Projektinhaber.
+`pnpm audit` (keine hohen/kritischen), Secret-Scan, grep auf `dangerouslySetInnerHTML`/`innerHTML`/`eval`, CSP-Header-Test (Antwort der Vorschau), Ergebnis mit Schweregrad und Fix im PR und in der Meldung an den Projektinhaber.

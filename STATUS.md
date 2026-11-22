@@ -1,4 +1,10 @@
-# STATUS.md – Stand 22.11.2026, beruht auf Commit 6d0c0a1 (`main`, inkl. PR #1–#4)
+# STATUS.md – Stand 22.11.2026, Branch `chore/pnpm-regel`, Basis main 889a09f (inkl. PR #1–#5)
+
+## Nachtrag 22.11.2026 (Nachmittag): Regel «nur pnpm»
+Branch `chore/pnpm-regel` (Draft-PR, Basis `main` `889a09f`, nicht mergen bis Stabschef-Ok und Ja des Projektinhabers). Nur Doku, kein App-Code, kein Versionsbump, kein Cloud Agent.
+- Edovita hat noch kein `package.json` und keine Abhängigkeiten (kommen mit E0). Nichts umzustellen.
+- `AGENTS.md`: Regel «nur pnpm» (kein npm/yarn, kein `shamefully-hoist`, `ignore-scripts` per `.npmrc`), geplante Befehle und Verweise auf `npm` korrigiert. `README.md` und `docs/architektur/testplan.md`: geplante Befehle mit pnpm.
+- Historische Sicherheitsberichte (`prototype/SECURITY.md`, `design/brief/`) bleiben unverändert: Sie beschreiben den damaligen Stand.
 
 ## Nachtrag 22.11.2026 (Antigravity): Dev-Tools-Skript gefixt & Doku-Rangfolge geklärt
 Branch `chore/prep-agents-and-dev-tools` (Draft-PR, Basis `main` `6d0c0a1`, nicht mergen bis Stabschef-Ok und Ja des Projektinhabers). Kein App-Code, kein Versionsbump.
