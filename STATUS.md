@@ -3,7 +3,7 @@
 
 ## Nachtrag 22.11.2026 (Abend): H1 und N1 am Deploy-Workflow (Folge zu #23)
 
-Branch `fix/stabschef-e0-e0b` (Draft-PR #23, Basis `main` `e7d46884`, nicht mergen). Geprüfter Code-Stand: `PENDING_HEAD_SHA`.
+Branch `fix/stabschef-e0-e0b` (Draft-PR #23, Basis `main` `e7d46884`, nicht mergen). Geprüfter Code-Stand: `d3a4d0ca061580abbe41ac167ca46deee24e26df`.
 - **H1 (hoch, behoben):** `deploy-pages.yml` lässt `workflow_run` nur noch zu, wenn die auslösende CI ein erfolgreicher `push` auf `main` **im eigenen Repo** war (`event == 'push'`, `head_branch == 'main'`, `head_repository.full_name == github.repository`, zusätzlich zu `conclusion == success`). Dieselbe `if` gilt für `build` und `deploy`. Der Filter `branches: [main]` bleibt, gilt aber nicht als einzige Vertrauensgrenze.
 - **N1 (niedrig, geschlossen):** `workflow_dispatch` bleibt auf `main` beschränkt und prüft vor dem Build per `gh api` (Recht `actions: read`, `GITHUB_TOKEN`), dass der Workflow «CI» für genau diesen Commit als `push` auf `main` des eigenen Repos erfolgreich war. Sonst kein Deploy.
 - Details in `SECURITY.md` (H1 dort als gefunden und behoben festgehalten, nicht mehr als «kein Befund»).

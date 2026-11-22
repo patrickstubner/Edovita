@@ -77,7 +77,7 @@ Sicherheitskonzept, laufende Sicherheitsprüfungen und offene Risiken für die E
 
 ## Nachtrag 22.11.2026: H1 (workflow_run gegen Forks) und N1 (Dispatch prüft CI)
 
-- **Geprüfter Code-Stand (Commit-SHA):** `PENDING_HEAD_SHA` (Basis weiterhin `main` `e7d46884e98c61619ec85702133670ec32aca4a3`, Folge zu PR #23 / Stabschef-Prüfung des Heads `cd4922ac6d3854541a9a041da14101a68f622fcf`).
+- **Geprüfter Code-Stand (Commit-SHA):** `d3a4d0ca061580abbe41ac167ca46deee24e26df` (Basis weiterhin `main` `e7d46884e98c61619ec85702133670ec32aca4a3`, Folge zu PR #23 / Stabschef-Prüfung des Heads `cd4922ac6d3854541a9a041da14101a68f622fcf`).
 - **Methode:** Skill `sicherheitspr-fung-nach-code-nderung`. Lesen der Workflow- und Doku-Änderungen, `actionlint 1.7.12` auf beide Workflows, `gitleaks 8.30.1` (`dir` und `git` über `origin/main..HEAD`). Keine App- oder Paketänderungen.
 - **Ergebnis:** H1 (hoch) gefunden und im YAML behoben. N1 (niedrig) geschlossen: `workflow_dispatch` auf `main` ruft die Actions-API nur lesend auf und bricht ab, wenn kein erfolgreicher CI-`push`-Lauf zu genau diesem SHA vorliegt. SHA und Repo-Name werden vor dem API-Aufruf geprüft (40 Hex-Zeichen bzw. `owner/repo`). Keine neuen Pakete, keine Ausnahme von der 4-Tage-Regel. Keine kritischen offenen Befunde; H1 ist geschlossen, sobald dieser Head geprüft ist.
 
