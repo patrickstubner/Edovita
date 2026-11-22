@@ -9,6 +9,14 @@ graphify-out/
 .env.*
 !.env.example
 
+# Abhängigkeiten, Build und Test-Artefakte (E0)
+node_modules/
+dist/
+coverage/
+playwright-report/
+test-results/
+.rstest/
+
 # Lokale Agent-Konfiguration mit möglichen Schlüsseln (Antigravity), nie committen
 .agents/mcp_config.json
 .agent/mcp_config.json

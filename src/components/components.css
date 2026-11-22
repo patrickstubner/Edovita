@@ -1,0 +1,173 @@
+.edo-sprite {
+  position: absolute;
+  inline-size: 0;
+  block-size: 0;
+  overflow: hidden;
+}
+
+.edo-screen {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-block-size: 0;
+  padding-block: 16px 0;
+  padding-inline: 20px;
+  overflow: hidden;
+}
+
+.edo-screen-header {
+  flex: none;
+  margin-block-end: 14px;
+}
+
+.edo-screen-body {
+  flex: 1 1 auto;
+  min-block-size: 0;
+  overflow-block: auto;
+  overflow-inline: hidden;
+  overscroll-behavior: contain;
+  padding-block-end: 16px;
+}
+
+.edo-screen:not(:has(> .edo-actions)) > .edo-screen-body {
+  padding-block-end: calc(24px + env(safe-area-inset-bottom, 0px));
+}
+
+.edo-actions {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-block: 12px calc(12px + env(safe-area-inset-bottom, 0px));
+  padding-inline: 0;
+  background: var(--edo-bg);
+  border-block-start: 1px solid var(--edo-border);
+  box-shadow: 0 -8px 20px -12px rgb(20 33 31 / 18%);
+  z-index: 6;
+}
+
+.edo-app-shell.has-tab .edo-screen > .edo-actions {
+  padding-block-end: calc(
+    12px + var(--edo-tabbar-h) + env(safe-area-inset-bottom, 0px)
+  );
+}
+
+.edo-ic {
+  inline-size: 24px;
+  block-size: 24px;
+  stroke: currentcolor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex: none;
+}
+
+.edo-ic-sm {
+  inline-size: 18px;
+  block-size: 18px;
+}
+
+.edo-ic-lg {
+  inline-size: 30px;
+  block-size: 30px;
+}
+
+.edo-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  inline-size: 100%;
+  min-block-size: 60px;
+  border-radius: 30px;
+  background: var(--edo-primary);
+  color: var(--edo-on-primary);
+  font-size: 19px;
+  font-weight: 700;
+  padding-inline: 20px;
+  text-align: center;
+}
+
+.edo-btn-secondary {
+  background: var(--edo-surface);
+  color: var(--edo-primary);
+  border: 2px solid var(--edo-primary);
+  min-block-size: 52px;
+  font-size: 17px;
+}
+
+html[data-eff='dark'] .edo-btn-secondary {
+  border-color: var(--edo-primary);
+  color: var(--edo-primary-dark);
+  background: var(--edo-surface);
+}
+
+.edo-card {
+  background: var(--edo-surface);
+  border-radius: 20px;
+  box-shadow: var(--edo-shadow);
+  padding-block: 18px;
+  padding-inline: 18px;
+}
+
+.edo-card-mint {
+  background: var(--edo-primary-soft);
+  box-shadow: none;
+}
+
+.edo-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.edo-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.edo-row-between {
+  justify-content: space-between;
+}
+
+.edo-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--edo-primary-soft);
+  color: var(--edo-primary-dark);
+  border-radius: 18px;
+  padding-block: 6px;
+  padding-inline: 12px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+/* Segment-Schalter exakt wie Prototyp (.seg): Pillen-Container, aktiver Knopf weiss */
+.edo-segmented {
+  display: flex;
+  background: var(--edo-bg);
+  border-radius: 16px;
+  padding-block: 4px;
+  padding-inline: 4px;
+  gap: 2px;
+}
+
+.edo-seg-btn {
+  flex: 1;
+  text-align: center;
+  padding-block: 10px;
+  padding-inline: 0;
+  border-radius: 12px;
+  font-weight: 700;
+  color: var(--edo-text-muted);
+  min-block-size: 46px;
+}
+
+.edo-seg-btn[aria-pressed='true'] {
+  background: var(--edo-surface);
+  color: var(--edo-text);
+  box-shadow: var(--edo-shadow);
+}

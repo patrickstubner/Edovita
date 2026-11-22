@@ -1,0 +1,85 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: Lint, Tests, Build & Audit
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6.1.1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile --ignore-scripts
+
+      - name: Lint (TypeScript, ESLint, Stylelint, dependency-cruiser)
+        run: pnpm run lint
+
+      - name: Architecture guardrail negative tests (ADR-001)
+        run: pnpm run test:arch
+
+      - name: Unit & component tests (Rstest, ADR-006)
+        run: pnpm test
+
+      - name: Content check
+        run: pnpm run content:check
+
+      - name: Build
+        run: pnpm run build
+
+      - name: Security checks (DOM sinks, CSP, supply-chain config)
+        run: pnpm run security:check
+
+      - name: Dependency vulnerability audit
+        run: pnpm audit --audit-level=high
+
+      - name: Install Playwright Chromium
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: E2E smoke tests (390x844, light & dark, CSP headers)
+        run: pnpm run test:e2e
+
+  secrets:
+    name: Secret Scan (gitleaks)
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+
+      - name: Download & verify pinned gitleaks 8.30.1
+        run: |
+          set -euo pipefail
+          GITLEAKS_URL="https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_linux_x64.tar.gz"
+          GITLEAKS_SHA256="551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb"
+          TMP="$(mktemp -d)"
+          curl -fsSL --proto '=https' --proto-redir '=https' -o "${TMP}/gitleaks.tar.gz" "${GITLEAKS_URL}"
+          echo "${GITLEAKS_SHA256}  ${TMP}/gitleaks.tar.gz" | sha256sum -c -
+          tar -xzf "${TMP}/gitleaks.tar.gz" -C "${TMP}" gitleaks
+          mkdir -p "${HOME}/.local/bin"
+          install -m 0755 "${TMP}/gitleaks" "${HOME}/.local/bin/gitleaks"
+          rm -rf "${TMP}"
+
+      - name: Run gitleaks on repository history
+        run: '"${HOME}/.local/bin/gitleaks" git --no-banner --redact .'

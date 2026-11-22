@@ -1,0 +1,20 @@
+version: 2
+updates:
+  # Mindestalter neuer Paketversionen: mindestens 4 Tage (AGENTS.md, SECURITY.md)
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 4
+    ignore:
+      # ADR-006: Rstest vor 1.0 exakt gepinnt, Updates nur bewusst im eigenen PR
+      - dependency-name: "@rstest/core"
+      - dependency-name: "@rstest/adapter-rsbuild"
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 4
