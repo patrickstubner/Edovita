@@ -1,19 +1,28 @@
-# STATUS.md – Stand 22.11.2026, Branch `chore/pnpm-regel`, Basis main 889a09f (inkl. PR #1–#5)
+# STATUS.md – Stand 22.11.2026, Branch `feat/e0-scaffold`, Basis main 40aa5b5 (inkl. PR #1–#5, #14)
+
+## Nachtrag 22.11.2026 (Antigravity): Paket E0 – Grundgerüst mit Leitplanken (v0.1.0)
+Branch `feat/e0-scaffold` (Draft-PR, Basis `main` `40aa5b5`, nicht mergen bis Stabschef-Ok und Ja des Projektinhabers). Version `0.1.0`, Issue `#6`.
+- **Supply-Chain & Paketmanager (nur `pnpm`):** `.npmrc` (`ignore-scripts=true`, kein `shamefully-hoist`), `pnpm-workspace.yaml` (`minimumReleaseAge: 5760`, 4 Tage), `package.json` (`packageManager: pnpm@12.21.0`, `engines.node: >=22`), `.github/dependabot.yml` (4-Tage-Cooldown, Rstest bewusst ausgenommen gemäss ADR-006). `pnpm-lock.yaml` eingecheckt, kein `package-lock.json`.
+- **Stack & Schichten (ADR-001, ADR-006):** React 19, TypeScript (`strict`), Rsbuild (`2.3.3`), React Router (`createHashRouter`), Rstest (`@rstest/core` + `@rstest/adapter-rsbuild` exakt auf `0.12.6`), Testing Library, `fake-indexeddb`, Playwright (`390×844`, Hell & Dunkel). Alle Zielordner gemäss ADR-001 angelegt (`src/pages`, `components`, `hooks`, `app`, `storage`, `catalog`, `i18n`, `nutrition`, `health`, `pwa`, `domain`, `content/`).
+- **UI-Basis:** `Screen` + `BottomActions` (fix unten, Safe-Area, `visualViewport`), Theme (`ThemeProvider` + `useTheme`, System/Hell/Dunkel, Primärgrün `#0B7F6B`, externe `public/theme-init.js`), SVG-Icon-Sprite (52 Symbole aus Prototyp), Startseite (`HomePage`) und `#/status` (`StatusPage`), finale Logo-SVGs unter `public/assets/`.
+- **Leitplanken & CI:** ESLint (`react/no-danger` als Fehler, ADR-001-Importverbote), Stylelint (`csstools/use-logical` für RTL), `dependency-cruiser` (alle 7 ADR-001-Regeln + 3 automatisierte Negativtests in `scripts/test-arch-guard.mjs`), `scripts/security-check.mjs`, `public/_headers` (CSP mit `connect-src 'self'`, ohne `unsafe-inline`/`unsafe-eval`), `.github/workflows/ci.yml` (alle Actions auf Commit-SHAs gepinnt, `permissions: { contents: read }`, `gitleaks 8.30.1` mit SHA-256-Prüfung).
+- **Doku nachgeführt:** Root-`SECURITY.md` angelegt, `README.md`, `AGENTS.md`, `ARCHITECTURE.md` und diese `STATUS.md` aktualisiert. GitHub-Issues `#6`–`#13` (E0–E7) angelegt.
+- **Bewusst nicht in E0:** Capacitor, Sounds, Splash, Service Worker (E7); `prototype/` unverändert.
 
 ## Nachtrag 22.11.2026 (Abend): Entscheid Rstest (ADR-006)
-Branch `chore/pnpm-regel` (Draft-PR #14, Basis `main` `889a09f`, nicht mergen bis Stabschef-Ok und Ja des Projektinhabers). Nur Doku, kein App-Code, kein Versionsbump, kein Cloud Agent.
+Branch `chore/pnpm-regel` (gemergt als PR #14, `40aa5b5`). Nur Doku, kein App-Code, kein Versionsbump, kein Cloud Agent.
 - Der Projektinhaber hat am 22.11.2026 entschieden: Edovita nutzt Rstest (aktuell 0.12.6, noch vor 1.0) mit `@rstest/adapter-rsbuild` statt Vitest. Playwright bleibt für Journeys. Travel Talk und die anderen Repos bleiben bei Vitest.
 - Festgehalten in ADR-006, `AGENTS.md`, `docs/architektur/testplan.md`, `docs/architektur/issues-entwuerfe.md` (E0-Umfang, `validate.py` als Rstest-Test), `README.md`, dieser Datei und `docs/architektur/SECURITY.md`.
 
 ## Nachtrag 22.11.2026 (Nachmittag): Regel «nur pnpm»
-Branch `chore/pnpm-regel` (Draft-PR, Basis `main` `889a09f`, nicht mergen bis Stabschef-Ok und Ja des Projektinhabers). Nur Doku, kein App-Code, kein Versionsbump, kein Cloud Agent.
+Branch `chore/pnpm-regel` (gemergt als PR #14, `40aa5b5`). Nur Doku, kein App-Code, kein Versionsbump, kein Cloud Agent.
 - Edovita hat noch kein `package.json` und keine Abhängigkeiten (kommen mit E0). Nichts umzustellen.
 - `AGENTS.md`: Regel «nur pnpm» (kein npm/yarn, kein `shamefully-hoist`, `ignore-scripts` per `.npmrc`), geplante Befehle und Verweise auf `npm` korrigiert. `README.md` und `docs/architektur/testplan.md`: geplante Befehle mit pnpm.
 - Mindestalter neuer Paketversionen 4 Tage: Regel in `AGENTS.md` und `docs/architektur/SECURITY.md`; `pnpm-workspace.yaml` mit `minimumReleaseAge: 5760` und Dependabot-`cooldown` kommen mit E0. Übergangsausnahmen: keine (keine Pakete im Repo).
 - Historische Sicherheitsberichte (`prototype/SECURITY.md`, `design/brief/`) bleiben unverändert: Sie beschreiben den damaligen Stand.
 
 ## Nachtrag 22.11.2026 (Antigravity): Dev-Tools-Skript gefixt & Doku-Rangfolge geklärt
-Branch `chore/prep-agents-and-dev-tools` (Draft-PR, Basis `main` `6d0c0a1`, nicht mergen bis Stabschef-Ok und Ja des Projektinhabers). Kein App-Code, kein Versionsbump.
+Branch `chore/prep-agents-and-dev-tools` (gemergt als PR #5, `889a09f`). Kein App-Code, kein Versionsbump.
 - **`.cursor/install-dev-tools.sh` erstmals auf Ubuntu 24.04 (x86_64) end-to-end getestet und zwei reale Blocker behoben:**
   1. `ast-grep` 0.51.2: `app-x86_64-unknown-linux-musl.zip` war dynamisch gegen `/lib/ld-musl-x86_64.so.1` gelinkt und startete auf Ubuntu (glibc) nicht (`cannot execute: required file not found`). Umstellung auf das offizielle glibc-Archiv `app-x86_64-unknown-linux-gnu.zip` mit geprüfter SHA-256-Prüfsumme (`40604c21…`).
   2. `codebase-memory-mcp --ui=false` (Zeile 180) startete den stdio-MCP-Server im Vordergrund und blockierte das Skript dauerhaft. Zeile entfernt; `config set ui_enabled false` und `auto_index false` laufen nicht-blockierend.
@@ -55,39 +64,44 @@ Phase 1 ab 27.11.2026: Grundgerüst (E0), dann zuerst Rezept-Detailseite (E4) un
 ## Erledigt
 - Klick-Prototyp v5.4.1 als Referenz unter `prototype/` (15.11.2026).
 - Architektur-Doku, ADR-001 bis ADR-005 akzeptiert (15.11.2026), ADR-006 akzeptiert (22.11.2026).
-- Architektur-Doku als `docs/architektur/` im Repo, AGENTS.md, ARCHITECTURE.md, STATUS.md (dieser PR, lokal ohne Cloud Agent).
+- GitHub-Issues `#6`–`#13` für E0–E7 angelegt (22.11.2026).
+- Paket **E0** (Grundgerüst v0.1.0, Leitplanken, Rstest `0.12.6`, Playwright `390×844`, CI, Root-`SECURITY.md`) umgesetzt auf Branch `feat/e0-scaffold` (22.11.2026, Draft-PR wartet auf Stabschef-Ok und Ja des Projektinhabers).
 
-## Entscheide (15.11.2026)
-- Dexie in der Web-Phase, SQLite später mit der Handy-App.
-- Zweitsprache ohne Rechts-Gate.
-- Stack React, TypeScript, Rsbuild, später Capacitor.
+## Entscheide (15.11. & 22.11.2026)
+- Dexie in der Web-Phase, SQLite später mit der Handy-App (ADR-002).
+- Zweitsprache ohne Rechts-Gate (ADR-003).
+- Stack React, TypeScript (strict), Rsbuild, später Capacitor.
+- Paketmanager nur `pnpm` mit 4-Tage-Mindestalter (`minimumReleaseAge: 5760`) und `ignore-scripts=true` (PR #14).
+- Testrunner Rstest `0.12.6` mit `@rstest/adapter-rsbuild` statt Vitest (ADR-006); Playwright für Journeys.
 
-## Plan ab 27.11.2026 (ca. ein Drittel des Kontingents)
-| Paket | Inhalt | Voraussetzung |
-|---|---|---|
-| E0 | Grundgerüst mit Leitplanken (Scaffold Phase 1), CI, SECURITY.md | – |
-| E1 | Domäne, Lebensmittel-Katalog, Rezept-Schema, Inhaltsprüfung, übernimmt die lokal vorbereiteten Inhalte | E0 |
-| E2 | i18n-Laufzeit und Registry | E0 |
-| E3 | Speicherung mit Dexie | E0 |
-| E4 | Rezept-Detailseite | E1, E2, E3 |
-| E5 | Einkaufsliste mit drei Zuständen | E1, E3 |
-| E6 | Zweitsprache | E2, E5 |
-| E7 | PWA und Offline | E0, eher Dez./Jan. |
+## Plan Phase 1 (Issues `#6`–`#13`)
+| Paket | Issue | Inhalt | Status / Voraussetzung |
+|---|---|---|---|
+| E0 | `#6` | Grundgerüst mit Leitplanken (Scaffold Phase 1), CI, SECURITY.md | umgesetzt (Draft-PR `feat/e0-scaffold`) |
+| E1 | `#7` | Domäne, Lebensmittel-Katalog, Rezept-Schema, Inhaltsprüfung, übernimmt `docs/architektur/inhalte/` | offen (nach E0) |
+| E2 | `#8` | i18n-Laufzeit und Registry | offen (nach E0) |
+| E3 | `#9` | Speicherung mit Dexie | offen (nach E0) |
+| E4 | `#10` | Rezept-Detailseite | offen (nach E1, E2, E3) |
+| E5 | `#11` | Einkaufsliste mit drei Zuständen | offen (nach E1, E3) |
+| E6 | `#12` | Zweitsprache | offen (nach E2, E5) |
+| E7 | `#13` | PWA und Offline | offen (nach E0, eher Dez./Jan.) |
 Details: `docs/architektur/issues-entwuerfe.md`, `docs/architektur/ablaufplan-und-schaetzung.md`.
 
 ## Offen / Entscheide nötig (wer?)
-- Startinhalte (55 Lebensmittel, Glossare, 5 Rezepte, Prüfskript, Quelldatei CH-NWD) liegen seit PR #4 als Entwurf unter `docs/architektur/inhalte/`; Übernahme nach `content/` folgt in E1.
+- Startinhalte (55 Lebensmittel, Glossare, 5 Rezepte, Prüfskript, Quelldatei CH-NWD) liegen unter `docs/architektur/inhalte/`; Übernahme nach `content/` folgt in E1 (`#7`).
 - Nährwerte für 12 fehlende Lebensmittel (USDA) und 2 Näherungen (`rice_noodles`, `thai_basil`), Pho-Salzgehalt (5,7 g/Portion ohne Fischsauce), Probekochen, JA/PT-Namen gegenlesen (offen bis 26.11.) – Projektinhaber
-- Issues E0–E7 auf GitHub anlegen? – Projektinhaber
+- Issues `#6`–`#13`: Issue `#6` (E0) nach Merge abschliessen; in `#7` (E1) Rstest statt Vitest als Testrunner beachten (ADR-006).
 
 ## PR-Status (22.11.2026)
-- Gemergt auf `main` (`6d0c0a1`): PR #1 (Docs/AGENTS/STATUS), PR #2 (Cloud-Agent-Setup), PR #3 (MCP-Allowlist), PR #4 (Antigravity-Setup, `design/`, `docs/architektur/inhalte/`).
-- Offen (Draft-PR): `chore/prep-agents-and-dev-tools` (Fix `.cursor/install-dev-tools.sh`, Quellen-Rangfolge, Doku-Abgleich).
+- Gemergt auf `main` (`40aa5b5`): PR #1 (Docs/AGENTS/STATUS), PR #2 (Cloud-Agent-Setup), PR #3 (MCP-Allowlist), PR #4 (Antigravity-Setup, `design/`, `docs/architektur/inhalte/`), PR #5 (Fix `.cursor/install-dev-tools.sh` & Quellen-Rangfolge), PR #14 (Regel «nur pnpm» & ADR-006 Rstest).
+- Offen (Draft-PR): `feat/e0-scaffold` (Paket E0 – Grundgerüst mit Leitplanken, v0.1.0, Issue `#6`).
 
 ## Bekannte Probleme / Risiken
-- Noch keine CI und kein Secret-Scan im Repo (kommt mit E0).
-- Repo ist öffentlich: keine Personendaten, keine Live-URL mit Namensteil.
+- Rstest (`0.12.6`) ist noch vor 1.0 (ADR-006): exakt gepinnt, in Dependabot ausgenommen, Rückweg zu Vitest dokumentiert.
+- `eslint` auf `9.39.5` (wegen Peer-Range von `eslint-plugin-react@7.37.5`); bei ESLint-10-Support nachziehen.
+- Repo ist öffentlich: keine Personendaten, keine Live-URL mit Namensteil; `gitleaks 8.30.1` läuft ab E0 automatisch in CI.
 
 ## Genutzte lokale Tools & vermiedene Cloud-Agent-Nutzung
 - 16.11.: `rg` für Personendaten-Prüfung der Architektur-Doku vor dem Übernehmen (Doku-Teil von E0 erledigt, geschätzt 0,1–0,2 Agent-Tage gespart).
-- 22.11. (Antigravity-VM): `.cursor/install-dev-tools.sh` erstmals real auf Ubuntu 24.04 getestet → zwei echte Blocker in `install-dev-tools.sh` vor dem ersten Cursor-Cloud-Agent-Lauf gefunden und behoben (sonst wäre der erste Cloud-Agent-Build am hängenden `codebase-memory-mcp --ui=false` bzw. an der dynamisch gelinkten musl-`ast-grep`-Binary gescheitert). `ripgrep 14.1.1`, `ast-grep 0.51.2` (glibc) und `codebase-memory-mcp 0.12.1` installiert und Repo indexiert (9'709 Knoten, 10'903 Kanten). `validate.py` geprüft (0 Fehler; 6 inhaltliche Warnungen + fehlendes `openpyxl` in der VM).
+- 22.11. (Antigravity-VM, Vorarbeit): `.cursor/install-dev-tools.sh` erstmals real auf Ubuntu 24.04 getestet → zwei Blocker behoben (PR #5).
+- 22.11. (Antigravity-VM, E0): `rg`, `codebase-memory-mcp 0.12.1` (Repository inkl. E0 indexiert: 9'915 Knoten, 11'286 Kanten; neue Pakete `components`, `domain`, `pages` zyklenfrei; `dependency-cruiser` 32 Module / 44 Abhängigkeiten, 0 Verstösse + 3 Negativtests grün), `gitleaks 8.30.1` (`dir` + `git`: 0 Funde), `pnpm audit` (0 Schwachstellen), Rstest `0.12.6` (6/6 grün), Playwright `390×844` Hell & Dunkel (2/2 grün, HTTP-CSP-Header verifiziert). E0 komplett ohne Cursor-Cloud-Agent-Kontingent umgesetzt (~1–1,5 Agent-Tage gespart).

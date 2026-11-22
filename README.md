@@ -2,40 +2,57 @@
 
 Ernährungs-App mit Rezepten, Einkaufsliste und Zweitsprache für Lebensmittel. Web-App (PWA) zuerst, danach Handy-App mit Capacitor. Local-first: Gesundheitsdaten bleiben auf dem Gerät. App-ID `ch.edovita.app`.
 
-**Stand:** Der App-Code existiert noch nicht. Das Repo enthält den Klick-Prototyp als Design-Referenz, die Architektur-Doku, die Startinhalte und alle Design- und Produktvorgaben. Aktueller Stand und nächste Schritte: [`STATUS.md`](STATUS.md).
+**Stand:** Version `0.1.0` – Paket **E0** (Grundgerüst mit Leitplanken, React + TypeScript strict + Rsbuild + Rstest + Playwright + CI). Aktueller Stand und nächste Schritte: [`STATUS.md`](STATUS.md).
 
 ## Inhalt
 
 | Ordner | Zweck |
 |---|---|
+| `src/` | Echte App (ADR-001-Schichten: `pages`, `components`, `hooks`, `app`, `storage`, `catalog`, `i18n`, `nutrition`, `health`, `pwa`, `domain`) |
+| `content/` | App-Inhalte (Datenbasis ab E1/E2: Lebensmittel, Glossare, Rezepte, Locales) |
+| `public/` | Statische Dateien (`_headers` mit strikter CSP, `theme-init.js`, finale Logos) |
+| `tests/` | Test-Setup (Rstest + Testing Library + `fake-indexeddb`) und Playwright-E2E (`390×844`) |
+| `scripts/` | Leitplanken- und Sicherheitsprüfungen (`test-arch-guard.mjs`, `security-check.mjs`, `content-check.mjs`) |
 | `prototype/` | Klick-Prototyp v5.4.1 (Vanilla-JS, eingefroren, nur Design-Referenz) |
-| `design/logos/` | Finales Logo (SVG/PNG, hell/dunkel/weiss), Icon-Export (PWA, Android, Apple, Capacitor), Logo-Animation, Schrift Quicksand (OFL) |
-| `design/brief/` | Briefing, Entwickler-Übergabe, Decision-Log, Rechtsentwürfe, Store-Texte, String-Inventar, Sound-Manifest |
-| `design/sounds/favoriten/` | 7 ausgewählte Sounds (KI-generiert, siehe `design/brief/legal/credits-lizenzen.md`) |
-| `docs/architektur/` | Architektur-Entscheide (ADR-001 bis ADR-006), Pakete E0–E7, Testplan, Sicherheitsprüfung |
-| `docs/architektur/inhalte/` | Startinhalte: 55 Lebensmittel, Glossare DE/EN/PT/JA, 5 Rezepte, Prüfskripte |
+| `design/` | Logos, Icon-Exporte, Logo-Animation, Schrift Quicksand (OFL), Briefing, Handoff, Decision-Log, Rechtsentwürfe, Store-Texte, 7 Sound-Favoriten |
+| `docs/architektur/` | Architektur-Entscheide (ADR-001 bis ADR-006), Pakete E0–E7, Testplan, Startinhalte (`inhalte/`), historische Sicherheitsprüfung |
 
-## Lokal starten
+## Lokal starten (nur pnpm, Node >= 22)
 
-Prototyp ansehen (Python 3 genügt):
 ```bash
-cd prototype
-python3 -m http.server 8000
-# http://localhost:8000/ im Browser, Handy-Ansicht 390×844
+corepack enable
+pnpm install --frozen-lockfile
+pnpm run dev
 ```
 
-Startinhalte prüfen (`pip install openpyxl`):
+### Prüfen, testen und bauen
+
 ```bash
-python3 docs/architektur/inhalte/tools/validate.py   # Ergebnis: OK
+pnpm run lint            # TypeScript (strict), ESLint, Stylelint (RTL), dependency-cruiser
+pnpm run test:arch       # Negativtests für ADR-001-Schichtregeln
+pnpm test                # Unit- & Komponententests (Rstest 0.12.6, ADR-006)
+pnpm run content:check   # Inhaltsprüfung (Basis in E0, Vollausbau in E1)
+pnpm run build           # Produktions-Build mit Rsbuild nach dist/
+pnpm run security:check  # DOM-Senken, CSP, Build-HTML, Supply-Chain-Config
+pnpm audit --audit-level=high
+pnpm run test:e2e        # Playwright 390×844 (Hell & Dunkel, HTTP-CSP-Header)
 ```
 
-Die echte App (React, TypeScript, Rsbuild, Rstest, Capacitor) entsteht ab Paket E0; dort kommen `pnpm install --frozen-lockfile`, `pnpm run dev`, `pnpm test`, `pnpm run build` dazu (nur pnpm, nach `corepack enable`). Die Befehle stehen dann hier und in `AGENTS.md`.
+### Prototyp und Startinhalte ansehen
+
+```bash
+# Eingefrorener Prototyp (Design-Referenz)
+python3 -m http.server 8000 --directory prototype
+
+# Startinhalte prüfen (optional: pip install openpyxl für xlsx-Rückverfolgung)
+python3 docs/architektur/inhalte/tools/validate.py
+```
 
 ## Mit Agents arbeiten (Cursor, Google Antigravity)
 
 1. `AGENTS.md`, `ARCHITECTURE.md` und `STATUS.md` lesen. Antigravity lädt `AGENTS.md` automatisch.
 2. Zuerst `docs/architektur/adr/` (ADR-001 bis ADR-006) und `design/brief/HANDOFF-entwickler.md` (Reihenfolge der Quellen bei Widerspruch: ADRs > Decision-Log > Handoff > Briefing > Hosting-Doku).
-3. Ein Branch pro Aufgabe und Agent, Änderungen nur per Pull Request, nach jeder Änderung Sicherheitsprüfung, am Ende `STATUS.md` nachführen.
+3. Ein Branch pro Aufgabe und Agent, Änderungen nur per Pull Request, nach jeder Änderung Sicherheitsprüfung (`SECURITY.md`), am Ende `STATUS.md` nachführen.
 4. Keine Secrets ins Repo, keine kostenpflichtigen Dienste ohne Ja des Projektinhabers.
 
 Das Repo ist öffentlich. Rechtliches (Datenschutz, Disclaimer) liegt nur als Entwurf vor und ist keine Rechtsberatung.

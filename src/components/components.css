@@ -1,0 +1,156 @@
+.edo-sprite {
+  position: absolute;
+  inline-size: 0;
+  block-size: 0;
+  overflow: hidden;
+}
+
+.edo-screen {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-block-size: 0;
+  padding-block-start: 16px;
+  padding-inline: 20px;
+  overflow: hidden;
+}
+
+.edo-screen-header {
+  flex: none;
+  margin-block-end: 12px;
+}
+
+.edo-screen-body {
+  flex: 1 1 auto;
+  min-block-size: 0;
+  overflow-block: auto;
+  overflow-inline: hidden;
+  overscroll-behavior: contain;
+  padding-block-end: 20px;
+}
+
+.edo-actions {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-block: 12px calc(12px + env(safe-area-inset-bottom, 0px));
+  background: var(--edo-bg);
+  border-block-start: 1px solid var(--edo-border);
+  box-shadow: 0 -8px 20px -12px rgb(20 33 31 / 18%);
+  z-index: 6;
+}
+
+.edo-ic {
+  inline-size: 24px;
+  block-size: 24px;
+  stroke: currentcolor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex: none;
+}
+
+.edo-ic-sm {
+  inline-size: 18px;
+  block-size: 18px;
+}
+
+.edo-ic-lg {
+  inline-size: 30px;
+  block-size: 30px;
+}
+
+.edo-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  inline-size: 100%;
+  min-block-size: 56px;
+  border-radius: 28px;
+  background: var(--edo-primary);
+  color: var(--edo-on-primary);
+  font-size: 18px;
+  font-weight: 700;
+  padding-inline: 20px;
+  text-align: center;
+}
+
+.edo-btn-secondary {
+  background: var(--edo-surface);
+  color: var(--edo-primary);
+  border: 2px solid var(--edo-primary);
+  min-block-size: 48px;
+  font-size: 16px;
+}
+
+.edo-card {
+  background: var(--edo-surface);
+  border-radius: 20px;
+  box-shadow: var(--edo-shadow);
+  padding-block: 18px;
+  padding-inline: 18px;
+}
+
+.edo-card-mint {
+  background: var(--edo-primary-soft);
+  box-shadow: none;
+}
+
+.edo-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.edo-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.edo-row-between {
+  justify-content: space-between;
+}
+
+.edo-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--edo-primary-soft);
+  color: var(--edo-primary-dark);
+  border-radius: 18px;
+  padding-block: 6px;
+  padding-inline: 12px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.edo-segmented {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.edo-seg-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-block-size: 46px;
+  border-radius: 14px;
+  border: 1.5px solid var(--edo-border-strong);
+  background: var(--edo-surface);
+  color: var(--edo-text-muted);
+  font-size: 15px;
+  font-weight: 600;
+  padding-inline: 8px;
+}
+
+.edo-seg-btn[aria-pressed='true'] {
+  background: var(--edo-primary);
+  border-color: var(--edo-primary);
+  color: var(--edo-on-primary);
+}

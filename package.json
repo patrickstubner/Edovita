@@ -1,0 +1,55 @@
+{
+  "name": "edovita",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@12.21.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "rsbuild dev",
+    "build": "rsbuild build",
+    "preview": "rsbuild preview",
+    "typecheck": "tsc --noEmit",
+    "test": "rstest run",
+    "test:e2e": "playwright test",
+    "lint:es": "eslint .",
+    "lint:css": "stylelint \"src/**/*.css\"",
+    "lint:arch": "depcruise src --config .dependency-cruiser.mjs",
+    "lint": "pnpm run typecheck && pnpm run lint:es && pnpm run lint:css && pnpm run lint:arch",
+    "test:arch": "node scripts/test-arch-guard.mjs",
+    "security:check": "node scripts/security-check.mjs",
+    "content:check": "node scripts/content-check.mjs"
+  },
+  "dependencies": {
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router": "^8.5.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "@playwright/test": "^1.65.1",
+    "@rsbuild/core": "^2.3.3",
+    "@rsbuild/plugin-react": "^2.1.1",
+    "@rstest/adapter-rsbuild": "0.12.6",
+    "@rstest/core": "0.12.6",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.3",
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "dependency-cruiser": "^18.8.0",
+    "eslint": "^9.39.5",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "fake-indexeddb": "^6.2.8",
+    "globals": "^17.14.0",
+    "jsdom": "^31.0.1",
+    "stylelint": "^16.26.1",
+    "stylelint-config-standard": "^38.0.0",
+    "stylelint-use-logical": "^2.1.3",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.73.0"
+  }
+}

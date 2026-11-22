@@ -1,0 +1,6 @@
+# Regel Mindestalter neuer Paketversionen (AGENTS.md, docs/architektur/SECURITY.md):
+# 4 Tage = 5760 Minuten. Nie senken oder entfernen.
+# Ausnahmen nur gezielt unter minimumReleaseAgeExclude mit CVE/GHSA-Kommentar und Datum.
+minimumReleaseAge: 5760
+packages:
+  - "."
