@@ -1,4 +1,10 @@
-# STATUS.md – Stand 22.11.2026, beruht auf Commit 7ec6272 (Branch `docs/antigravity-setup`, Basis main 850b240)
+# STATUS.md – Stand 22.11.2026, beruht auf Commit c7bba31 (Branch `docs/antigravity-setup`, Basis main 850b240)
+
+## Nachtrag 22.11.2026 (Abend): Korrekturen nach Stabschef-Prüfung
+Commit `c7bba31`. Nur Doku und das Hilfsskript `design/logos/animation/build_animation.py`, kein Cloud Agent.
+- Abschnitt «Zusammenarbeit mehrerer Agents»: vor dem Merge geht der Head-SHA an Stabschef, auf dessen Ok warten, Merge erst nach dem Ja des Projektinhabers.
+- Formulierung korrigiert: es gibt sieben Python-Hilfsskripte (unbedenklich), nicht «kein ausführbarer Code».
+- `build_animation.py` schreibt nicht mehr in den Geschwisterordner `edovita-prototyp` ausserhalb des Repos. Ausgabe nur noch innerhalb des Repo-Stamms (`prototype/` bzw. `design/logos/animation/`), mit Pfadprüfung.
 
 ## Nachtrag 22.11.2026: Vorbereitung für lokale Arbeit mit Google Antigravity
 Branch `docs/antigravity-setup` (PR offen, nicht mergen bis Stabschef-Ok und Ja des Projektinhabers). Nur Doku, Design-Dateien, Inhalte und sieben Python-Hilfsskripte (Build, Validierung, Export; unbedenklich). Kein App-Code (keine React-App). Kein Cloud Agent gestartet.
