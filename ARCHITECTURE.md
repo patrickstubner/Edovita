@@ -1,6 +1,6 @@
 # ARCHITECTURE.md – Edovita
 
-Stand 22.11.2026, `main` enthält E0 (`7f49e3d`, Version `0.1.0`). Das Grundgerüst (Phase 1) steht mit allen Schicht- und Sicherheitsleitplanken; Details in `docs/architektur/`. Vorschau nach Merge des Pages-Workflows: https://patrickstubner.github.io/Edovita/.
+Stand 22.11.2026, `main` enthält E0 (`7f49e3d`, Version `0.1.0`) und E0b Pages (`e7d46884`). Die lokale Analyse von E0 (codebase-memory, Leitplanken, Tests, gitleaks) bezieht sich auf den Code-Stand `9e45e9e9688d33e781d03d3b8e722b0af55f68d6` (letzter Vor-Squash-Head von PR #15: `50e3739086ac488911c26aa30606d505becab2be`). Das Grundgerüst (Phase 1) steht mit allen Schicht- und Sicherheitsleitplanken; Details in `docs/architektur/`. Vorschau: https://patrickstubner.github.io/Edovita/.
 
 ## Heute im Repo
 | Ort | Inhalt |

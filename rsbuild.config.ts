@@ -20,10 +20,11 @@ export function getAssetPrefix(): string {
  * ADR-004 / docs/architektur/SECURITY.md), damit Preview-Server und Auslieferung
  * garantiert identische CSP- und Sicherheits-Header verwenden.
  *
- * Es wird nur der `/*`-Block gelesen.
+ * Es wird nur der `/*`-Block gelesen; andere Pfad-Blöcke werden ignoriert.
+ * Der Standardpfad hängt an dieser Datei (`import.meta.dirname`), nicht am cwd.
  */
 export function loadSecurityHeaders(
-  headersFile = resolve(process.cwd(), 'public/_headers'),
+  headersFile = resolve(import.meta.dirname, 'public/_headers'),
 ): Record<string, string> {
   const raw = readFileSync(headersFile, 'utf8');
   const headers: Record<string, string> = {};

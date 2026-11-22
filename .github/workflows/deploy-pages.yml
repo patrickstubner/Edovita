@@ -1,9 +1,11 @@
 # Statische Vorschau auf GitHub Pages (kostenlos, öffentliches Repo).
-# Deploy nur nach Merge auf main, oder per workflow_dispatch auf main.
+# Deploy nur nach grüner CI auf main (workflow_run), oder per workflow_dispatch auf main.
 name: Deploy Pages
 
 on:
-  push:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
     branches: [main]
   workflow_dispatch:
 
@@ -18,12 +20,18 @@ concurrency:
 jobs:
   build:
     name: Build
+    if: >-
+      (github.event_name == 'workflow_run' &&
+       github.event.workflow_run.conclusion == 'success') ||
+      (github.event_name == 'workflow_dispatch' &&
+       github.ref == 'refs/heads/main')
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           persist-credentials: false
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
 
       - name: Setup pnpm
         uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6.1.1

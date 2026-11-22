@@ -13,7 +13,7 @@ Kleine Pakete, je ein PR, je ca. 0,5–1,5 Agent-Tage. Jedes Issue verweist auf 
 
 ## E0b – Deploy auf GitHub Pages
 **Ziel:** E0-Grundgerüst unter https://patrickstubner.github.io/Edovita/ ansehbar machen (Entscheid Projektinhaber, 22.11.2026). GitHub-Issue `#21`.
-**Umfang:** Workflow `deploy-pages` (nur `push` auf `main` und `workflow_dispatch`), SHA-gepinnten Actions, Asset-Prefix `/Edovita/`, CSP zusätzlich als `<meta http-equiv>` (GitHub Pages ignoriert `_headers`; ohne `frame-ancestors` im Meta-Tag).
+**Umfang:** Workflow `deploy-pages` (Deploy erst nach grüner CI auf `main` per `workflow_run`, oder `workflow_dispatch` nur auf `main`), SHA-gepinnten Actions, Asset-Prefix `/Edovita/`, CSP zusätzlich als `<meta http-equiv>` (GitHub Pages ignoriert `_headers`; `frame-ancestors` und `X-Frame-Options` lassen sich per Meta-Tag nicht setzen – bekannte Grenze, dokumentiert in `SECURITY.md`).
 **Nicht:** Eigene Domain, Cloudflare, Store, kostenpflichtige Dienste, Merge ohne Ok des Stabschefs.
 **Akzeptanz:** Nach Merge auf `main` lädt die App unter `/Edovita/` inkl. Assets und Hash-Routen; CI grün; Sicherheitsprüfung im PR.
 
