@@ -1,5 +1,7 @@
 # Statische Vorschau auf GitHub Pages (kostenlos, öffentliches Repo).
-# Deploy nur nach grüner CI auf main (workflow_run), oder per workflow_dispatch auf main.
+# Deploy nur nach grüner CI auf main des eigenen Repos (workflow_run nach
+# push, nicht nach Fork- oder PR-Läufen), oder per workflow_dispatch auf main
+# nachdem die CI für genau diesen Commit grün ist.
 name: Deploy Pages
 
 on:
@@ -20,18 +22,57 @@ concurrency:
 jobs:
   build:
     name: Build
+    # H1: branches: [main] prüft nur den Branch-Namen. Zusätzlich Event, Branch
+    # und eigenes Repo verlangen, sonst könnte ein Fork-PR namens main deployen.
     if: >-
       (github.event_name == 'workflow_run' &&
-       github.event.workflow_run.conclusion == 'success') ||
+       github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.event == 'push' &&
+       github.event.workflow_run.head_branch == 'main' &&
+       github.event.workflow_run.head_repository.full_name == github.repository) ||
       (github.event_name == 'workflow_dispatch' &&
        github.ref == 'refs/heads/main')
     runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      actions: read
     steps:
       - name: Checkout
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           persist-credentials: false
           ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+
+      - name: Verify CI is green for this commit
+        if: github.event_name == 'workflow_dispatch'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          COMMIT_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          if ! printf '%s' "${COMMIT_SHA}" | grep -Eq '^[0-9a-f]{40}$'; then
+            echo "Ungültiger Commit-SHA, Abbruch." >&2
+            exit 1
+          fi
+          if ! printf '%s' "${GITHUB_REPOSITORY}" | grep -Eq '^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$'; then
+            echo "Ungültiges GITHUB_REPOSITORY, Abbruch." >&2
+            exit 1
+          fi
+          HEAD="$(git rev-parse HEAD)"
+          if [ "${HEAD}" != "${COMMIT_SHA}" ]; then
+            echo "Checkout (${HEAD}) weicht von github.sha (${COMMIT_SHA}) ab." >&2
+            exit 1
+          fi
+          COUNT="$(
+            gh api \
+              "repos/${GITHUB_REPOSITORY}/actions/workflows/ci.yml/runs?head_sha=${COMMIT_SHA}&event=push&status=completed&per_page=20" \
+              --jq '[.workflow_runs[] | select(.head_sha == env.COMMIT_SHA and .event == "push" and .head_branch == "main" and .status == "completed" and .conclusion == "success" and .head_repository.full_name == env.GITHUB_REPOSITORY)] | length'
+          )"
+          if [ "${COUNT}" = "0" ]; then
+            echo "Kein grüner CI-Lauf (Workflow «CI», push auf main) für ${COMMIT_SHA}. Deploy abgebrochen." >&2
+            exit 1
+          fi
+          echo "CI für ${COMMIT_SHA} ist grün (${COUNT} erfolgreicher Lauf/Läufe)."
 
       - name: Setup pnpm
         uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6.1.1
@@ -69,6 +110,14 @@ jobs:
   deploy:
     name: Deploy
     needs: build
+    if: >-
+      (github.event_name == 'workflow_run' &&
+       github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.event == 'push' &&
+       github.event.workflow_run.head_branch == 'main' &&
+       github.event.workflow_run.head_repository.full_name == github.repository) ||
+      (github.event_name == 'workflow_dispatch' &&
+       github.ref == 'refs/heads/main')
     runs-on: ubuntu-24.04
     permissions:
       contents: read
