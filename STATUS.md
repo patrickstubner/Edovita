@@ -1,7 +1,7 @@
 # STATUS.md – Stand 22.11.2026, `main` `e7d46884e98c61619ec85702133670ec32aca4a3` (E0 als PR #15, E0b als PR #22; inkl. PR #1–#5, #14)
 
 ## Nachtrag 22.11.2026 (Abend): Folge-PR zu Stabschef-Hinweisen aus #15 und #22
-Branch `fix/stabschef-e0-e0b` (Draft-PR, Basis `main` `e7d46884`, nicht mergen). Geprüfter Head dieses PRs: `PENDING_HEAD_SHA`.
+Branch `fix/stabschef-e0-e0b` (Draft-PR, Basis `main` `e7d46884`, nicht mergen). Geprüfter Code-Stand: `63d426bb6cb77aa2a02e1f013500bcdde4291575` (plus dieser Doku-Nachtrag mit dem SHA).
 - **Zu #15:** `ARCHITECTURE.md` nennt den Analyse-SHA von E0 (`9e45e9e9688d33e781d03d3b8e722b0af55f68d6`; letzter Vor-Squash-Head `50e3739086ac488911c26aa30606d505becab2be`). Der `_headers`-Parser liest ausschliesslich den `/*`-Block und löst den Dateipfad über `import.meta.dirname`. Platzhalter- und UI-Texte der Start- und Statusseite liegen in `content/locales/de/ui.json` und werden nur über `src/i18n` gelesen (kein i18next, das bleibt E2; keine neuen Pakete).
 - **Zu #22:** S2: Deploy erst nach grüner CI (`workflow_run` auf den Workflow «CI», Checkout des geprüften `head_sha`). S3: `workflow_dispatch` nur auf `main`. S4: geprüfter Head von #22 `1891b0f18ea31bf4e22ec92b538e86306fc8744a` steht in `STATUS.md` und `SECURITY.md`. Low: in `SECURITY.md` als bekannte Grenze von GitHub Pages festgehalten, dass `frame-ancestors` und `X-Frame-Options` per Meta-Tag nicht setzbar sind und auf Pages nicht ankommen.
 - **Hinweis vor Release (nicht in diesem PR entfernt):** Die Entwicklungs-Route `#/status` (`StatusPage`) und die Dev-/Platzhaltertexte (etwa «Bereit für den Aufbau», «Geplante Bereiche») vor der Veröffentlichung entfernen.

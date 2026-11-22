@@ -59,7 +59,7 @@ Sicherheitskonzept, laufende Sicherheitsprüfungen und offene Risiken für die E
 
 ## Sicherheitsprüfung Folge-PR Stabschef-Hinweise #15/#22 (`fix/stabschef-e0-e0b`, 22.11.2026)
 
-- **Geprüfter Code-Stand (Commit-SHA):** `PENDING_HEAD_SHA` (Basis `main` `e7d46884e98c61619ec85702133670ec32aca4a3`, App-Version `0.1.0`).
+- **Geprüfter Code-Stand (Commit-SHA):** `63d426bb6cb77aa2a02e1f013500bcdde4291575` (Basis `main` `e7d46884e98c61619ec85702133670ec32aca4a3`, App-Version `0.1.0`).
 - **Methode:** Skill `sicherheitspr-fung-nach-code-nderung`. Lesen der Änderungen; `pnpm run lint` grün; `test:arch` 3/3; `pnpm test` 13/13 (Rstest 0.12.6); `content:check` OK; `pnpm run build` OK; `security:check` OK (auch auf `dist-pages` mit Prefix `/Edovita/`); `pnpm audit --audit-level=high` 0 Funde; Playwright E2E 2/2 (390×844 Hell/Dunkel); `gitleaks 8.30.1` (`dir` und `git` über `origin/main..HEAD`) 0 Funde; `actionlint 1.7.12` auf beide Workflows 0 Funde.
 - **Keine neuen Pakete.** 4-Tage-Regel (`minimumReleaseAge: 5760`) unverändert, keine Ausnahme.
 
