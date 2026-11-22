@@ -1,6 +1,6 @@
 # ARCHITECTURE.md – Edovita
 
-Stand 22.11.2026, Basis `main` `a6c47cb3` (enthält E0 `7f49e3d`, E0b Pages `e7d46884` und Nachzug `#23` `a6c47cb3`, Version `0.1.0`), erweitert um Paket **E1** (Issue `#7`, Branch `feat/e1-domain-content`). Die lokale Analyse von E0 (codebase-memory, Leitplanken, Tests, gitleaks) bezieht sich auf `9e45e9e9688d33e781d03d3b8e722b0af55f68d6`; der E1-Analyse-SHA wird im Folge-Commit nach grüner CI ergänzt. Details in `docs/architektur/`. Vorschau: https://patrickstubner.github.io/Edovita/.
+Stand 22.11.2026, Basis `main` `a6c47cb35de675d3b3b71d1ec8bceca3cb936f97` (enthält E0 `7f49e3d`, E0b Pages `e7d46884` und Nachzug `#23` `a6c47cb3`, Version `0.1.0`), erweitert um Paket **E1** (Issue `#7`, Draft-PR `#24`, Branch `feat/e1-domain-content`). Die lokale Analyse von E1 (`codebase-memory-mcp`, Leitplanken, Rstest, Playwright, `gitleaks`, GitHub-CI-Run `45074835911`) bezieht sich auf den geprüften Code-Stand `eb71c25a0bfc68c9cbb185f0ce45e9a9d5d453f1` (E0-Referenzstand: `9e45e9e9688d33e781d03d3b8e722b0af55f68d6`). Details in `docs/architektur/`. Vorschau: https://patrickstubner.github.io/Edovita/.
 
 ## Heute im Repo
 | Ort | Inhalt |

@@ -1,5 +1,11 @@
-# STATUS.md – Stand 22.11.2026, `main` `e7d46884e98c61619ec85702133670ec32aca4a3` (E0 als PR #15, E0b als PR #22; inkl. PR #1–#5, #14)
+# STATUS.md – Stand 22.11.2026, Basis `main` `a6c47cb35de675d3b3b71d1ec8bceca3cb936f97` (E0 PR #15, E0b PR #22, Nachzug PR #23; E1 als Draft-PR #24)
 
+## Nachtrag 22.11.2026 (Antigravity): Paket E1 – Domäne, Lebensmittel-Katalog, Rezept-Schema, Inhaltsprüfung
+Branch `feat/e1-domain-content` (Draft-PR `#24`, Issue `#7`, Basis `main` `a6c47cb35de675d3b3b71d1ec8bceca3cb936f97`, nicht mergen bis Stabschef-Ok und Ja des Projektinhabers). Geprüfter Code-Stand (Commit A): `eb71c25a0bfc68c9cbb185f0ce45e9a9d5d453f1` (GitHub Actions CI Run `45074835911` grün: `Lint, Tests, Build & Audit` 1m26s, `Secret Scan (gitleaks)` 7s).
+- **Domäne (`src/domain/`, rein gemäss ADR-001):** Marken-Typen (`FoodId`, `RecipeId`, `CuisineId`), vollständige ADR-002/003/005-Datenmodelle (`Food`, `Recipe`, `RecipeIngredient`, `ShoppingItem`, `ShopState`, `Profile`, `Settings`, `LangCode`, `LangMeta`, `ExportBundleV1`), strenge `zod@4.6.7`-Schemas (`z.strictObject`, HTML-/Steuerzeichen-Filter, `isSafeRecordKey`, `z.config({ jitless: true })` gegen `new Function`-Probe unter strikter CSP), `parseShopImport`/`encodeShopImport` (alle 7 Ablehnungsgründe + `Object.hasOwn`) und `validateContentBundle`/`computeRecipeNutrition` (reiner Port von `validate.py`).
+- **Inhalte (`content/`):** Byte-identische Übernahme aus `docs/architektur/inhalte/`: `content/foods/foods.json` (55 Lebensmittel, CH-NWD V7.1), `content/foods/glossary/{de,en,pt,ja,_status}.json`, 5 Rezepte unter `content/recipes/{birchermuesli,lentil_curry,oven_salmon,pho,thai_curry}/{recipe,de,en}.json`. Typisierter Inhalts-Index `content/generated/catalog-index.ts`, erzeugt via `scripts/build-content-index.mjs` (`pnpm run content:build`) und auf Aktualität geprüft via `scripts/content-check.mjs` (`pnpm run content:check`).
+- **Katalog- & Nährwert-Dienste (`src/catalog/`, `src/nutrition/`):** `foods.ts` (`listFoods`, `getFood`, `foodName` ohne EN-Fallback gemäss ADR-003, `isAllowed` 1:1 gemäss Prototyp), `recipes.ts` (`getRecipe`, `getRecipeText`, `isRecipeAllowed`, `listRecipes`, `rankRecipes` inkl. Küchen-Vielfalt gemäss Prototyp), `scale.ts` (`scaleIngredients` 1–12 Portionen) und `sum.ts` (`nutrientsPerServing`, `nutrientsForServings`).
+- **Tests, Leitplanken & Sicherheit:** Rstest `0.12.6` (11 Dateien, 43/43 Tests grün, inkl. `tests/unit/content.check.test.ts` mit CH-NWD-V7.1-xlsx-SHA-256 und Negativtests für unbekannte `FoodId`, 1 Quelle, falsche `kcal`, manipulierte Allergene, HTML im Glossar und fehlenden Glossareintrag). `dependency-cruiser` (`lint:arch` + `test:arch`) prüft nun `src` und `content` (72 Module / 109 Abhängigkeiten, 0 Verstösse, 4/4 Negativtests inkl. `content-only-domain`). `security-check.mjs` prüft zusätzlich `.ts/.tsx/.js/.jsx` unter `content/`. Playwright E2E 2/2 (390×844 Hell/Dunkel, 0 CSP-Verstösse nach `jitless: true`-Fix). `pnpm audit --audit-level=moderate`: 0 Funde. `gitleaks 8.30.1` (`dir` & `git` lokal + CI) und `actionlint 1.7.12`: 0 Funde. `prototype/` unverändert. Details in `SECURITY.md`.
 
 ## Nachtrag 22.11.2026 (Abend): H1 und N1 am Deploy-Workflow (Folge zu #23)
 
@@ -89,7 +95,8 @@ Phase 1 ab 27.11.2026: Grundgerüst (E0), dann zuerst Rezept-Detailseite (E4) un
 - Klick-Prototyp v5.4.1 als Referenz unter `prototype/` (15.11.2026).
 - Architektur-Doku, ADR-001 bis ADR-005 akzeptiert (15.11.2026), ADR-006 akzeptiert (22.11.2026).
 - GitHub-Issues `#6`–`#13` für E0–E7 angelegt (22.11.2026).
-- Paket **E0** (Grundgerüst v0.1.0, Leitplanken, Rstest `0.12.6`, Playwright `390×844`, CI, Root-`SECURITY.md`) umgesetzt auf Branch `feat/e0-scaffold` (22.11.2026, Draft-PR wartet auf Stabschef-Ok und Ja des Projektinhabers).
+- Paket **E0** (PR `#15`, `7f49e3d`), **E0b** GitHub Pages (PR `#22`, `e7d46884`) und Nachzug `#23` (`a6c47cb3`) auf `main` gemergt (22.11.2026).
+- Paket **E1** (Issue `#7`, Domäne mit `zod@4.6.7`, Katalog, Nährwerte, Inhaltsprüfung inkl. Übernahme nach `content/`) umgesetzt auf Branch `feat/e1-domain-content` (22.11.2026, Draft-PR `#24`, wartet auf Stabschef-Ok und Ja des Projektinhabers).
 
 ## Entscheide (15.11. & 22.11.2026)
 - Dexie in der Web-Phase, SQLite später mit der Handy-App (ADR-002).
@@ -97,12 +104,13 @@ Phase 1 ab 27.11.2026: Grundgerüst (E0), dann zuerst Rezept-Detailseite (E4) un
 - Stack React, TypeScript (strict), Rsbuild, später Capacitor.
 - Paketmanager nur `pnpm` mit 4-Tage-Mindestalter (`minimumReleaseAge: 5760`) und `ignore-scripts=true` (PR #14).
 - Testrunner Rstest `0.12.6` mit `@rstest/adapter-rsbuild` statt Vitest (ADR-006); Playwright für Journeys.
+- Zod v4 läuft global mit `z.config({ jitless: true })` (E1), damit unter strikter CSP ohne `'unsafe-eval'` keine `securitypolicyviolation`-Events entstehen.
 
 ## Plan Phase 1 (Issues `#6`–`#13`)
 | Paket | Issue | Inhalt | Status / Voraussetzung |
 |---|---|---|---|
-| E0 | `#6` | Grundgerüst mit Leitplanken (Scaffold Phase 1), CI, SECURITY.md | umgesetzt (Draft-PR `feat/e0-scaffold`) |
-| E1 | `#7` | Domäne, Lebensmittel-Katalog, Rezept-Schema, Inhaltsprüfung, übernimmt `docs/architektur/inhalte/` | offen (nach E0) |
+| E0 | `#6` | Grundgerüst mit Leitplanken (Scaffold Phase 1), CI, SECURITY.md | erledigt (gemergt PR `#15`, Pages `#22`, Nachzug `#23`) |
+| E1 | `#7` | Domäne, Lebensmittel-Katalog, Rezept-Schema, Inhaltsprüfung, übernimmt `docs/architektur/inhalte/` | umgesetzt (Draft-PR `#24`, `feat/e1-domain-content`) |
 | E2 | `#8` | i18n-Laufzeit und Registry | offen (nach E0) |
 | E3 | `#9` | Speicherung mit Dexie | offen (nach E0) |
 | E4 | `#10` | Rezept-Detailseite | offen (nach E1, E2, E3) |
@@ -112,13 +120,12 @@ Phase 1 ab 27.11.2026: Grundgerüst (E0), dann zuerst Rezept-Detailseite (E4) un
 Details: `docs/architektur/issues-entwuerfe.md`, `docs/architektur/ablaufplan-und-schaetzung.md`.
 
 ## Offen / Entscheide nötig (wer?)
-- Startinhalte (55 Lebensmittel, Glossare, 5 Rezepte, Prüfskript, Quelldatei CH-NWD) liegen unter `docs/architektur/inhalte/`; Übernahme nach `content/` folgt in E1 (`#7`).
 - Nährwerte für 12 fehlende Lebensmittel (USDA) und 2 Näherungen (`rice_noodles`, `thai_basil`), Pho-Salzgehalt (5,7 g/Portion ohne Fischsauce), Probekochen, JA/PT-Namen gegenlesen (offen bis 26.11.) – Projektinhaber
-- Issues `#6`–`#13`: Issue `#6` (E0) nach Merge abschliessen; in `#7` (E1) Rstest statt Vitest als Testrunner beachten (ADR-006).
+- Vor Release: Entwicklungs-Route `#/status` (`StatusPage`) und Platzhaltertexte entfernen; Rechtstexte und medizinische Grenzwerte prüfen – Projektinhaber
 
 ## PR-Status (22.11.2026)
-- Gemergt auf `main` (`40aa5b5`): PR #1 (Docs/AGENTS/STATUS), PR #2 (Cloud-Agent-Setup), PR #3 (MCP-Allowlist), PR #4 (Antigravity-Setup, `design/`, `docs/architektur/inhalte/`), PR #5 (Fix `.cursor/install-dev-tools.sh` & Quellen-Rangfolge), PR #14 (Regel «nur pnpm» & ADR-006 Rstest).
-- Offen (Draft-PR): `feat/e0-scaffold` (Paket E0 – Grundgerüst mit Leitplanken, v0.1.0, Issue `#6`).
+- Gemergt auf `main` (`a6c47cb3`): PR `#1`–`#5`, `#14` (pnpm & ADR-006 Rstest), `#15` (E0 Scaffold), `#22` (E0b GitHub Pages), `#23` (Nachzug Stabschef-Hinweise & H1/N1 Deploy-Absicherung).
+- Offen (Draft-PR): **PR `#24`** (`feat/e1-domain-content`, Paket E1 – Domäne, Lebensmittel-Katalog, Rezept-Schema und Inhaltsprüfung, Issue `#7`).
 
 ## Bekannte Probleme / Risiken
 - Rstest (`0.12.6`) ist noch vor 1.0 (ADR-006): exakt gepinnt, in Dependabot ausgenommen, Rückweg zu Vitest dokumentiert.
@@ -135,3 +142,10 @@ Details: `docs/architektur/issues-entwuerfe.md`, `docs/architektur/ablaufplan-un
   - **`rg`**, **`pnpm audit`** (0 Schwachstellen), **Rstest `0.12.6`** (6/6 grün), **Playwright `390×844`** Hell & Dunkel (2/2 grün, HTTP-CSP- & `X-Robots-Tag`-Header geprüft).
   - **Vermiedene Cloud-Agent-Nutzung:** E0 inkl. Review-Nachbesserungen komplett ohne Cursor-Cloud-Agent-Kontingent umgesetzt (~1–1,5 Agent-Tage gespart).
   - **Rückmeldung zu den Tools:** `rg`, `ast-grep` (glibc) und `actionlint` laufen sehr schnell und zuverlässig. `codebase-memory-mcp` liefert hilfreiche Aufrufer-/Paketübersichten (kleine Kante: `parse_partial` bei kompakten CSS-Keyframe-Zeilen in `logo-anim.css`, unkritisch). **Rstest `0.12.6`** startet mit `@rstest/adapter-rsbuild` sehr schnell (~210–335 ms Build); für `@testing-library/jest-dom` braucht es `globals: true` in `rstest.config.ts` plus eine kleine Typ-Augmentierung (`tests/jest-dom.d.ts`). Playwright mit `rsbuild preview` erfordert auf Linux explizit `server.host: '127.0.0.1'`, da `rsbuild` sonst auf IPv6 `[::1]` bindet.
+- 22.11. (Antigravity-VM, E1, analysierter Code-Stand Commit `eb71c25a0bfc68c9cbb185f0ce45e9a9d5d453f1`, Draft-PR `#24`):
+  - **`codebase-memory-mcp 0.12.1`** (Stand `eb71c25a`): Repository indexiert mit **10'777 Knoten / 12'704 Kanten** (`parse_unusable: 0`; 51 TypeScript-Dateien, neue Pakete `domain` 59, `catalog` 17, `nutrition` 7, `build-content-index` 4). **`dependency-cruiser`** (`src` + `content`): 72 Module / 109 Abhängigkeiten, 0 Verstösse + 4/4 Negativtests grün.
+  - **Rstest `0.12.6`**: 11 Dateien, 43/43 Tests grün (inkl. `content.check.test.ts` mit CH-NWD-V7.1-xlsx-SHA-256 & 4 Negativtest-Blöcken, Build ~388 ms).
+  - **Playwright `390×844`** Hell & Dunkel (2/2 grün): deckte einen echten CSP-Fund auf (Zod v4 `allowsEval` `new Function`-Probe → behoben mit `z.config({ jitless: true })`, danach 0 CSP-Verstösse).
+  - **`gitleaks 8.30.1`** (`dir` & `git` lokal + CI Run `45074835911`), **`actionlint 1.7.12`**, **`pnpm audit --audit-level=moderate`**, **`pnpm peers check`**, **`rg`**, **`diff -rq`** (byte-identische Inhaltsübernahme): alle 0 Funde.
+  - **Vermiedene Cloud-Agent-Nutzung:** E1 komplett ohne Cursor-Cloud-Agent-Kontingent umgesetzt (~1–1,5 Agent-Tage gespart).
+  - **Rückmeldung zu den Tools:** Playwright-CSP-Prüfung auf dem echten Build hat ihren Wert direkt bewiesen (Zod-v4-JIT-Fund vor Push entdeckt). `rstest` + `content:check` laufen in ~1,4 s durch. `codebase-memory-mcp` indexierte den Zuwachs (+851 Knoten / +1'393 Kanten) zuverlässig ohne unlesbare Dateien.
