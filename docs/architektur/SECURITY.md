@@ -88,3 +88,7 @@ Geprüft auf Basis `main` `6d0c0a1` (Branch `chore/prep-agents-and-dev-tools`). 
 - **Verfügbarkeit / Laufzeitverhalten:** Blockierender Aufruf `codebase-memory-mcp --ui=false` entfernt; Skript läuft auf Ubuntu 24.04 (x86_64) vollständig und idempotent durch (Exit-Code 0).
 - **Secrets & Personendaten:** Diff- und `rg`-Prüfung auf Schlüssel, Tokens, Pfade und Personendaten ohne Funde.
 - **Befunde:** Keine kritischen, hohen oder mittleren Befunde. (D1, niedrig, unverändert aus C2) Allgemeines Lieferkettenrisiko der Dritt-Binaries bleibt trotz Hash-Pinning; Hashes bei Versionswechsel erneut gegen die offizielle Release-Seite prüfen.
+
+## Regel Mindestalter neuer Paketversionen (22.11.2026)
+
+Neue Paketversionen kommen erst ins Projekt, wenn sie mindestens 4 Tage alt sind (Schutz vor kompromittierten Releases). Umsetzung mit E0: `pnpm-workspace.yaml` mit `minimumReleaseAge: 5760` und Dependabot-`cooldown` von mindestens 4 Tagen. Ausnahmen nur für Sicherheitslücken, die sich anders nicht beheben lassen: Paket in `minimumReleaseAgeExclude`, mit Kommentar (CVE/GHSA, Datum), nach 4 Tagen wieder entfernen. Edovita hat noch kein `package.json`; heute ist nichts zu prüfen, keine Ausnahme nötig.

@@ -4,6 +4,7 @@
 Branch `chore/pnpm-regel` (Draft-PR, Basis `main` `889a09f`, nicht mergen bis Stabschef-Ok und Ja des Projektinhabers). Nur Doku, kein App-Code, kein Versionsbump, kein Cloud Agent.
 - Edovita hat noch kein `package.json` und keine Abhängigkeiten (kommen mit E0). Nichts umzustellen.
 - `AGENTS.md`: Regel «nur pnpm» (kein npm/yarn, kein `shamefully-hoist`, `ignore-scripts` per `.npmrc`), geplante Befehle und Verweise auf `npm` korrigiert. `README.md` und `docs/architektur/testplan.md`: geplante Befehle mit pnpm.
+- Mindestalter neuer Paketversionen 4 Tage: Regel in `AGENTS.md` und `docs/architektur/SECURITY.md`; `pnpm-workspace.yaml` mit `minimumReleaseAge: 5760` und Dependabot-`cooldown` kommen mit E0. Übergangsausnahmen: keine (keine Pakete im Repo).
 - Historische Sicherheitsberichte (`prototype/SECURITY.md`, `design/brief/`) bleiben unverändert: Sie beschreiben den damaligen Stand.
 
 ## Nachtrag 22.11.2026 (Antigravity): Dev-Tools-Skript gefixt & Doku-Rangfolge geklärt

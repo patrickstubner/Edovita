@@ -9,6 +9,7 @@
 
 ## Befehle
 - **Paketmanager: nur pnpm** (kommt mit E0: `packageManager` in `package.json`, `corepack enable`). Kein `npm`, kein `yarn`, kein `package-lock.json`. Fehlt ein Paket, wird es sauber in `package.json` eingetragen, kein `shamefully-hoist`. `.npmrc` mit `ignore-scripts=true` (Sicherheitshaltung CA-3).
+- **Mindestalter neuer Paketversionen: 4 Tage.** Mit E0 kommt `pnpm-workspace.yaml` mit `minimumReleaseAge: 5760` (Minuten) in das Repo, bevor das erste Paket installiert wird: pnpm installiert dann keine Version, die jünger ist (Schutz vor kompromittierten Releases). Die Zeile nie senken oder entfernen. Ausnahme nur, wenn eine Sicherheitslücke sich anders nicht beheben lässt: das Paket gezielt unter `minimumReleaseAgeExclude` eintragen, mit Kommentar (CVE/GHSA, Datum), im PR melden und nach 4 Tagen wieder entfernen. Dependabot bekommt `cooldown` von mindestens 4 Tagen. Das gilt für alle Agents (Cursor, Antigravity, weitere).
 - Noch keine Skripte (`package.json` fehlt, kommt mit E0). Geplant laut `docs/architektur/testplan.md`: `pnpm install --frozen-lockfile`, `pnpm test`, `pnpm run lint`, `pnpm run build`, `pnpm run content:check`, `pnpm audit`. Diese Liste mit E0 an die echten Skripte anpassen.
 - Prototyp lokal ansehen: in `prototype/` `python3 -m http.server`, dann `http://localhost:8000/`.
 
