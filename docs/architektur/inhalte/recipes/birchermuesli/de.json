@@ -1,0 +1,14 @@
+{
+ "title": "Birchermüesli",
+ "steps": [
+  "Haferflocken mit der Milch mischen und zugedeckt mindestens 30 Minuten, besser über Nacht, im Kühlschrank quellen lassen.",
+  "Haselnüsse grob hacken.",
+  "Äpfel waschen und mit der Schale direkt in die Flocken raffeln. Sofort den Zitronensaft untermischen, damit sie nicht braun werden.",
+  "Joghurt unterrühren, nach Belieben mit Honig süssen und mit den Nüssen bestreuen."
+ ],
+ "notes": {
+  "birchermuesli.ing.apple": "2 Stück, ca. 300 g, mit Schale",
+  "birchermuesli.ing.lemon": "Saft (Annahme 15 g)",
+  "birchermuesli.ing.honey": "nach Belieben"
+ }
+}

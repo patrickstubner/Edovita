@@ -1,0 +1,18 @@
+{
+ "title": "Oven-baked salmon with broccoli and potatoes",
+ "steps": [
+  "Preheat the oven to 200 °C (180 °C fan). Wash the potatoes, cut them unpeeled into wedges and toss them on a lined tray with half the oil and a little salt. Bake for 20 minutes.",
+  "Cut the broccoli into florets, finely chop the garlic and toss both with the remaining oil.",
+  "Pat the salmon dry and season with salt and pepper. Turn the potatoes, add the broccoli and salmon to the tray.",
+  "Bake for another 12–15 minutes until the salmon flakes easily and is just cooked inside (core about 60 °C).",
+  "Drizzle with lemon juice and serve straight away."
+ ],
+ "notes": {
+  "oven_salmon.ing.potato": "unpeeled",
+  "oven_salmon.ing.broccoli": "florets",
+  "oven_salmon.ing.salmon": "2 fillets of 150 g",
+  "oven_salmon.ing.olive_oil": "about 2 tbsp",
+  "oven_salmon.ing.garlic": "2 cloves (assumed 3 g each)",
+  "oven_salmon.ing.lemon": "juice (assumed 20 g)"
+ }
+}

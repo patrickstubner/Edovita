@@ -25,5 +25,5 @@
 ## Nachtrag 15.11.2026
 
 - Alle ADRs **akzeptiert** (Projektinhaber, 15.11.): Dexie in der Web-Phase, SQLite mit der Handy-App; Zweitsprache ohne Rechts-Gate; Doku kommt mit E0 ab 27.11. als `docs/architektur/` ins Repo (macht der Entwickler).
-- `inhalte/` (lokal vorbereitet, noch nicht im Repo, kommt mit E1): 55 Lebensmittel (CH-NWD 7.1), Glossare de/en/pt/ja, 5 Rezepte, Prüfskript.
+- `inhalte/` (seit 22.11.2026 im Repo, Entwurf für E1): 55 Lebensmittel (CH-NWD 7.1), Glossare de/en/pt/ja, 5 Rezepte, Prüfskript. Prüfen mit `python3 docs/architektur/inhalte/tools/validate.py` (braucht `openpyxl`).
 - Prototyp als `prototype/` gepusht (Commit `7ccbd06`, Graphify 228 Knoten): `graphify-befund.md` §5.

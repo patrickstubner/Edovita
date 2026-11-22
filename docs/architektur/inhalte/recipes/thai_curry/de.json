@@ -1,0 +1,21 @@
+{
+ "title": "Rotes Thai-Curry mit Poulet",
+ "steps": [
+  "Reis nach Packungsangabe kochen.",
+  "Poulet in mundgerechte Streifen, Peperoni in Streifen und Aubergine in Würfel schneiden.",
+  "Öl im Wok oder in einer weiten Pfanne erhitzen. Currypaste darin etwa 1 Minute anrösten, bis sie duftet. 3 EL vom dicken Teil der Kokosmilch dazugeben und kurz mitrösten.",
+  "Poulet dazugeben und rundum anbraten. Restliche Kokosmilch, Aubergine und Limettenblätter dazugeben und 8–10 Minuten köcheln, bis das Poulet durchgegart ist.",
+  "Peperoni dazugeben und 2 Minuten mitkochen. Mit Fischsauce und Zucker abschmecken.",
+  "Vom Herd nehmen, Basilikum unterheben und mit dem Reis servieren."
+ ],
+ "notes": {
+  "thai_curry.ing.jasmine_rice": "roh",
+  "thai_curry.ing.red_curry_paste": "je nach Schärfe 1–3 EL (Annahme 15 g/EL)",
+  "thai_curry.ing.coconut_milk": "vollfett",
+  "thai_curry.ing.red_bell_pepper": "1 Stück",
+  "thai_curry.ing.rapeseed_oil": "ca. 1 EL",
+  "thai_curry.ing.fish_sauce": "nach Geschmack",
+  "thai_curry.ing.sugar": "ca. 2 TL, traditionell Palmzucker",
+  "thai_curry.ing.thai_basil": "1 Handvoll Blätter"
+ }
+}

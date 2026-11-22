@@ -1,0 +1,47 @@
+{
+  "name": "Edovita",
+  "short_name": "Edovita",
+  "description": "Lokal-first Ernährungstagebuch – Ziele, Rezepte, Schutzhinweise.",
+  "lang": "de-CH",
+  "dir": "ltr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#FFFFFF",
+  "theme_color": "#0B7F6B",
+  "categories": ["health", "food", "lifestyle"],
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/apple-touch-icon-180.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "_comment": "Entwurf. Icon-Pfade relativ zur späteren PWA. Bundle-ID-Vorschlag ch.edovita.app ist Capacitor/native, nicht Teil des Web-Manifests."
+}

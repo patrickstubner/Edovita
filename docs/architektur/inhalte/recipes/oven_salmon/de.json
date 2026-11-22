@@ -1,0 +1,18 @@
+{
+ "title": "Ofenlachs mit Broccoli und Kartoffeln",
+ "steps": [
+  "Ofen auf 200 °C (Umluft 180 °C) vorheizen. Kartoffeln waschen, ungeschält in Schnitze schneiden und auf einem Blech mit Backpapier mit der Hälfte des Öls und etwas Salz mischen. 20 Minuten backen.",
+  "Broccoli in Röschen teilen, Knoblauch fein hacken und beides mit dem restlichen Öl mischen.",
+  "Lachs trocken tupfen und mit Salz und Pfeffer würzen. Kartoffeln wenden, Broccoli und Lachs dazulegen.",
+  "12–15 Minuten weiterbacken, bis sich der Lachs leicht zerteilen lässt und innen gerade gar ist (Kerntemperatur ca. 60 °C).",
+  "Mit Zitronensaft beträufeln und sofort servieren."
+ ],
+ "notes": {
+  "oven_salmon.ing.potato": "ungeschält",
+  "oven_salmon.ing.broccoli": "Röschen",
+  "oven_salmon.ing.salmon": "2 Filets à 150 g",
+  "oven_salmon.ing.olive_oil": "ca. 2 EL",
+  "oven_salmon.ing.garlic": "2 Zehen (Annahme 3 g/Zehe)",
+  "oven_salmon.ing.lemon": "Saft (Annahme 20 g)"
+ }
+}
