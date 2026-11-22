@@ -77,6 +77,7 @@ jobs:
           curl -fsSL --proto '=https' --proto-redir '=https' -o "${TMP}/gitleaks.tar.gz" "${GITLEAKS_URL}"
           echo "${GITLEAKS_SHA256}  ${TMP}/gitleaks.tar.gz" | sha256sum -c -
           tar -xzf "${TMP}/gitleaks.tar.gz" -C "${TMP}" gitleaks
+          mkdir -p "${HOME}/.local/bin"
           install -m 0755 "${TMP}/gitleaks" "${HOME}/.local/bin/gitleaks"
           rm -rf "${TMP}"
 
