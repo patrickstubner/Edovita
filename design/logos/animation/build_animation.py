@@ -1,10 +1,20 @@
 #!/usr/bin/env python3
 """Erzeugt die Edovita-Logo-Animation (Zusammenbau -> Herzschlag lub-dub mit EKG-Linie -> Zerfall -> Loop).
 Ausgabe: logo-anim.css (geteilt mit dem Prototyp), edovita_logo_animation.html (standalone),
-splash-Markup fuer den Prototyp (wird in edovita-prototyp/index.html zwischen den Markern ersetzt).
+splash-Markup fuer den Prototyp (wird in prototype/index.html zwischen den Markern ersetzt; Ausgabe nur innerhalb des Repos).
 Quelle des Logos: ../final/edovita_logo.svg (Gruppen #leaf #midrib #veins #fork #heart #pulse #wordmark #symbol)."""
 import re, math, os, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.abspath(os.path.join(HERE, '..', '..', '..'))
+
+def _inside_repo(path):
+    """Verweigert Schreibpfade ausserhalb des Repo-Stamms."""
+    ap = os.path.abspath(path)
+    prefix = os.path.join(ROOT, '')
+    if not (ap == ROOT or ap.startswith(prefix)):
+        raise SystemExit('Ausgabe ausserhalb des Repos verweigert: ' + ap)
+    return ap
+
 SRC = open(os.path.join(HERE, '..', 'final', 'edovita_logo.svg')).read()
 T = 7.2  # Loop-Dauer in Sekunden
 BEAT0, BEAT = 2.8, 0.9  # Start des ersten Herzschlags, Dauer eines Schlags (ca. 67/min)
@@ -105,7 +115,7 @@ html[data-eff=dark] .alogo,.alogo.dark{--wm:#fff}
 ''' % (T, BEAT0, end) + '\n'.join(anims) + '\n' + '\n'.join(kfs) + '''
 @media (prefers-reduced-motion:reduce){.alogo,.alogo *{animation:none!important}.alogo .a-sweep{display:none}}
 '''
-open(os.path.join(HERE, 'logo-anim.css'), 'w').write(CSS)
+open(_inside_repo(os.path.join(HERE, 'logo-anim.css')), 'w').write(CSS)
 
 # ---------- Standalone-HTML ----------
 LOGO = markup()
@@ -160,13 +170,14 @@ def sri(x): return "'sha256-" + base64.b64encode(hashlib.sha256(x.encode('utf-8'
 sty = re.search(r'<style>(.*?)</style>', HTML, re.S).group(1); scr = re.search(r'<script>(.*?)</script>', HTML, re.S).group(1)
 csp = "default-src 'none'; style-src %s; script-src %s; img-src data:; base-uri 'none'; form-action 'none'; connect-src 'none'" % (sri(sty), sri(scr))
 HTML = HTML.replace('<meta name="color-scheme"', '<meta http-equiv="Content-Security-Policy" content="%s">\n<meta name="referrer" content="no-referrer">\n<meta name="color-scheme"' % csp, 1)
-open(os.path.join(HERE, 'edovita_logo_animation.html'), 'w').write(HTML)
+open(_inside_repo(os.path.join(HERE, 'edovita_logo_animation.html')), 'w').write(HTML)
 
-# ---------- Prototyp: CSS kopieren, Splash-Markup ersetzen ----------
-PROTO = os.path.join(HERE, '..', '..', '..', 'edovita-prototyp')
+# ---------- Prototyp: CSS kopieren, Splash-Markup ersetzen (nur im Repo) ----------
+# Frueher: Geschwisterordner edovita-prototyp ausserhalb des Repos. Jetzt nur prototype/ im Repo.
+PROTO = _inside_repo(os.path.join(ROOT, 'prototype'))
 if os.path.isdir(PROTO):
-    open(os.path.join(PROTO, 'logo-anim.css'), 'w').write(CSS)
-    ip = os.path.join(PROTO, 'index.html'); h = open(ip, encoding='utf-8').read()
+    open(_inside_repo(os.path.join(PROTO, 'logo-anim.css')), 'w').write(CSS)
+    ip = _inside_repo(os.path.join(PROTO, 'index.html')); h = open(ip, encoding='utf-8').read()
     splash = '<div id="splash" role="img" aria-label="Edovita">' + markup('alogo once splash-logo') + '<p class="splash-hint">Tippen zum Überspringen</p></div>'
     h2 = re.sub(r'<div id="splash".*?</p></div>', lambda m: splash, h, count=1, flags=re.S)
     assert h2 != h or splash in h

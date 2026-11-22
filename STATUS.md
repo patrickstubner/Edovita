@@ -1,7 +1,7 @@
 # STATUS.md – Stand 22.11.2026, beruht auf Commit 7ec6272 (Branch `docs/antigravity-setup`, Basis main 850b240)
 
 ## Nachtrag 22.11.2026: Vorbereitung für lokale Arbeit mit Google Antigravity
-Branch `docs/antigravity-setup` (PR offen, nicht mergen bis Stabschef-Ok und Ja des Projektinhabers). Nur Doku, Design-Dateien und Inhalte, kein App-Code. Kein Cloud Agent gestartet.
+Branch `docs/antigravity-setup` (PR offen, nicht mergen bis Stabschef-Ok und Ja des Projektinhabers). Nur Doku, Design-Dateien, Inhalte und sieben Python-Hilfsskripte (Build, Validierung, Export; unbedenklich). Kein App-Code (keine React-App). Kein Cloud Agent gestartet.
 - **Neu im Repo:** `design/` (Logos final/Export/Animation/Schrift, Briefing, Handoff, Decision-Log, Rechtsentwürfe, Store-Texte, String-Inventar, Sound-Manifest, 7 Sound-Favoriten) und `docs/architektur/inhalte/` (55 Lebensmittel, Glossare DE/EN/PT/JA, 5 Rezepte, Prüfskripte, CH-Nährwertdatenbank V7.1 als Quelle). Das war bisher nur lokal. Persönliche Angaben, interne Pfade und die Worker-URL sind entfernt (Prüfung mit `rg` und gitleaks ohne Funde).
 - **AGENTS.md:** neuer Abschnitt «Zusammenarbeit mehrerer Agents» (ein Branch pro Aufgabe und Agent, nur PRs, Sicherheitsprüfung nach jeder Änderung, STATUS.md mit Commit, keine Secrets, keine Kosten ohne Ja, empfohlene lokale MCP-Server) und «Produktvorgaben Edovita» (Capacitor, Offline-PWA nur fürs fertige Produkt, Buttons fix unten, Dark Mode, Lottie/SVG, Sprachen, Schutzregeln). Antigravity liest `AGENTS.md` automatisch; keine zweite Regel-Datei.
 - **README.md, ARCHITECTURE.md, `.gitignore` (`.agents/mcp_config.json`), `.cursorignore`** ergänzt. Cloud-Agent-Setup (`.cursor/`) unverändert.
