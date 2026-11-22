@@ -1,0 +1,20 @@
+{
+ "title": "Pho mit Rindfleisch",
+ "steps": [
+  "Zwiebel und Ingwer halbieren und mit der Schnittfläche nach unten in einer trockenen Pfanne 6–8 Minuten rösten, bis sie dunkle Stellen haben.",
+  "Sternanis, Zimtstange und Nelken in einem Topf ohne Fett 1–2 Minuten rösten, bis sie duften. Bouillon, Zwiebel, Ingwer, Fischsauce und Zucker dazugeben und halb zugedeckt 25 Minuten leise köcheln.",
+  "Reisnudeln nach Packungsangabe einweichen oder kochen, abtropfen lassen und auf zwei Schalen verteilen.",
+  "Rindfleisch quer zur Faser in sehr dünne Scheiben schneiden. Das geht leichter, wenn es vorher 15 Minuten im Tiefkühler war.",
+  "Brühe absieben und wieder aufkochen. Fleischscheiben 30–60 Sekunden in der siedenden Brühe garen und auf die Nudeln legen.",
+  "Heisse Brühe darübergiessen. Mit Sprossen, Frühlingszwiebeln, Koriander, Basilikum und Limettenschnitzen servieren."
+ ],
+ "notes": {
+  "pho.ing.onion": "halbiert, wird abgesiebt",
+  "pho.ing.ginger": "wird abgesiebt",
+  "pho.ing.sugar": "ca. 1 TL",
+  "pho.ing.rice_noodles": "trocken",
+  "pho.ing.beef_sirloin": "sehr dünn geschnitten",
+  "pho.ing.spring_onion": "2 Stück",
+  "pho.ing.lime": "in Schnitzen, Saft (Annahme 30 g)"
+ }
+}

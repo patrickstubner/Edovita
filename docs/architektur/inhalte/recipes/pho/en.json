@@ -1,0 +1,20 @@
+{
+ "title": "Beef pho",
+ "steps": [
+  "Halve the onion and ginger and char them cut side down in a dry pan for 6–8 minutes until they have dark spots.",
+  "Toast the star anise, cinnamon stick and cloves in a dry pot for 1–2 minutes until fragrant. Add the stock, onion, ginger, fish sauce and sugar and simmer gently, half covered, for 25 minutes.",
+  "Soak or cook the rice noodles according to the packet, drain and divide between two bowls.",
+  "Slice the beef very thinly across the grain. This is easier after 15 minutes in the freezer.",
+  "Strain the broth and bring it back to the boil. Cook the beef slices in the simmering broth for 30–60 seconds and place them on the noodles.",
+  "Pour the hot broth over. Serve with sprouts, spring onions, coriander, basil and lime wedges."
+ ],
+ "notes": {
+  "pho.ing.onion": "halved, strained out",
+  "pho.ing.ginger": "strained out",
+  "pho.ing.sugar": "about 1 tsp",
+  "pho.ing.rice_noodles": "dry",
+  "pho.ing.beef_sirloin": "very thinly sliced",
+  "pho.ing.spring_onion": "2 stalks",
+  "pho.ing.lime": "in wedges, juice (assumed 30 g)"
+ }
+}

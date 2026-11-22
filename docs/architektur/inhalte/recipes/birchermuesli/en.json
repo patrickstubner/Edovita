@@ -1,0 +1,14 @@
+{
+ "title": "Bircher muesli",
+ "steps": [
+  "Mix the oats with the milk, cover and leave to soak in the fridge for at least 30 minutes, ideally overnight.",
+  "Roughly chop the hazelnuts.",
+  "Wash the apples and grate them unpeeled straight into the oats. Stir in the lemon juice immediately so they do not brown.",
+  "Stir in the yoghurt, sweeten with honey if you like and sprinkle with the nuts."
+ ],
+ "notes": {
+  "birchermuesli.ing.apple": "2 apples, about 300 g, unpeeled",
+  "birchermuesli.ing.lemon": "juice (assumed 15 g)",
+  "birchermuesli.ing.honey": "to taste"
+ }
+}

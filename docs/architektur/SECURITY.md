@@ -46,7 +46,7 @@ Keine kritischen und keine hohen Befunde. Der Prototyp ist bewusst ohne Netz, oh
 | P3 | info | Telefonnummern in `index.html` sind öffentliche Hilfe-Nummern (PEP) | keiner |
 | P4 | info | Bekannte Prototyp-Befunde (QR-Import ohne Bestätigung, `travelRegion` ohne Whitelist, `bmr()` nur m/w) werden mit dem Push öffentlich lesbar | nicht ausnutzbar (keine Server, keine Nutzerdaten); in E2/E3 beheben wie oben |
 
-### Inhalte (`inhalte/`, nur lokal)
+### Inhalte (`inhalte/`, seit 22.11.2026 im Repo)
 
 - Kein ausführbarer App-Code; `build_inhalte.py` und `validate.py` lesen nur die lokale xlsx (SHA-256 geprüft) und schreiben JSON. Abhängigkeit `openpyxl` 3.1.5 (neuste Version, keine bekannte offene Lücke; liest nur die eigene, per SHA-256 geprüfte Datei).
 - `validate.py` lehnt `<`, `>`, `&` und Steuerzeichen in allen Glossaren und Rezepttexten ab, prüft jede ID gegen den Katalog und alle Nährwerte gegen die xlsx. Negativtest mit 4 absichtlichen Fehlern: alle erkannt. Ein Absturz bei unbekannter Zutat (KeyError statt Meldung) wurde dabei gefunden und behoben.

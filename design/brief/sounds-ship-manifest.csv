@@ -1,0 +1,206 @@
+id,rel_path,role,label_de,default,ki_generated,credit,include_phase1,notes
+EXCLUDE_hymne_AI_H2,ai_hymnen_v1/hymne_AI_H2.mp3,hymne,Hymne H2 – ausgeschlossen,no,yes,KI-generiert mit ACE-Step v1 (Apache-2.0); als KI kennzeichnen,no,EXCLUDE laut Scope: hymne_AI_H2 inkl. alt-Takes
+EXCLUDE_hymne_AI_H3,ai_hymnen_v1/hymne_AI_H3.mp3,hymne,Hymne H3 – ausgeschlossen,no,yes,KI-generiert mit ACE-Step v1 (Apache-2.0); als KI kennzeichnen,no,EXCLUDE laut Scope: hymne_AI_H3 inkl. alt-Takes
+EXCLUDE_raw,ai_hymnen_v1/raw/,hymne,AI raw Takes – ausgeschlossen,no,yes,KI-generiert mit ACE-Step v1 (Apache-2.0); als KI kennzeichnen,no,EXCLUDE: Rohausgaben
+EXCLUDE_stile_v3_discarded,stile_v3/_discarded/,jingle,stile_v3 discarded – ausgeschlossen,no,no,Drum samples provided by DrumGizmo.org,no,EXCLUDE
+EXCLUDE_stile_v3_samples,stile_v3/samples/,ui,Sample-Quellen – ausgeschlossen,no,no,Drum samples provided by DrumGizmo.org,no,"EXCLUDE: Sample-Bibliothek, nicht App-Audio"
+A_aufbruch,A_aufbruch.mp3,sting,Aufbruch (Sting A),no,no,Drum samples provided by DrumGizmo.org,yes,
+B_erfolg,B_erfolg.mp3,sting,Erfolg (Sting B),no,no,Drum samples provided by DrumGizmo.org,yes,
+C_zusammen,C_zusammen.mp3,sting,Zusammen (Sting C),no,no,Drum samples provided by DrumGizmo.org,yes,
+ai_alt_hymne_AI_H1_s1,ai_hymnen_v1/alt/hymne_AI_H1_s1.mp3,hymne,Hymne H1 Alt-Take s1,no,yes,KI-generiert mit ACE-Step v1 (Apache-2.0); als KI kennzeichnen,no,Alt-Take; nicht Default
+ai_alt_hymne_AI_H1_s2,ai_hymnen_v1/alt/hymne_AI_H1_s2.mp3,hymne,Hymne H1 Alt-Take s2,no,yes,KI-generiert mit ACE-Step v1 (Apache-2.0); als KI kennzeichnen,no,Alt-Take; nicht Default
+ai_alt_hymne_AI_H4_s2,ai_hymnen_v1/alt/hymne_AI_H4_s2.mp3,hymne,Hymne H4 Alt-Take s2,no,yes,KI-generiert mit ACE-Step v1 (Apache-2.0); als KI kennzeichnen,no,Alt-Take; nicht Default
+ai_alt_hymne_AI_H4_s3,ai_hymnen_v1/alt/hymne_AI_H4_s3.mp3,hymne,Hymne H4 Alt-Take s3,no,yes,KI-generiert mit ACE-Step v1 (Apache-2.0); als KI kennzeichnen,no,Alt-Take; nicht Default
+ai_alt_hymne_AI_H5_s2,ai_hymnen_v1/alt/hymne_AI_H5_s2.mp3,hymne,Hymne H5 Alt-Take s2,no,yes,KI-generiert mit ACE-Step v1 (Apache-2.0); als KI kennzeichnen,no,Alt-Take; nicht Default
+ai_alt_hymne_AI_H5_s3,ai_hymnen_v1/alt/hymne_AI_H5_s3.mp3,hymne,Hymne H5 Alt-Take s3,no,yes,KI-generiert mit ACE-Step v1 (Apache-2.0); als KI kennzeichnen,no,Alt-Take; nicht Default
+hymne_AI_H1,ai_hymnen_v1/hymne_AI_H1.mp3,hymne,Hymne H1 – Duett «E-do-VI-ta»,yes,yes,KI-generiert mit ACE-Step v1 (Apache-2.0); als KI kennzeichnen,yes,Default-Hymne; Projektinhaber Hör-QC offen; ggf. Intro-Schnitt 5–8 s
+hymne_AI_H4,ai_hymnen_v1/hymne_AI_H4.mp3,hymne,Hymne H4 – Whoa-oh-Pop,yes,yes,KI-generiert mit ACE-Step v1 (Apache-2.0); als KI kennzeichnen,yes,Default-Hymne; Projektinhaber Hör-QC offen; ggf. Intro-Schnitt 5–8 s
+hymne_AI_H5,ai_hymnen_v1/hymne_AI_H5.mp3,hymne,Hymne H5 – Epischer Trailer-Chor,yes,yes,KI-generiert mit ACE-Step v1 (Apache-2.0); als KI kennzeichnen,yes,Default-Hymne; Projektinhaber Hör-QC offen; ggf. Intro-Schnitt 5–8 s
+mel_v1_demo_melodien,melodien_v1/demo_melodien.mp3,ui,Melodie – demo melodien,no,no,Drum samples provided by DrumGizmo.org,no,Demo-Medley; optional Katalog
+mel_v1_melodie_A_hiphop,melodien_v1/melodie_A_hiphop.mp3,jingle,Melodie – melodie A hiphop,no,no,Drum samples provided by DrumGizmo.org,no,
+mel_v1_melodie_A_panfloete,melodien_v1/melodie_A_panfloete.mp3,jingle,Melodie – melodie A panfloete,no,no,Drum samples provided by DrumGizmo.org,no,
+mel_v1_melodie_A_rock,melodien_v1/melodie_A_rock.mp3,jingle,Melodie – melodie A rock,no,no,Drum samples provided by DrumGizmo.org,no,
+mel_v1_melodie_B_hiphop,melodien_v1/melodie_B_hiphop.mp3,jingle,Melodie – melodie B hiphop,no,no,Drum samples provided by DrumGizmo.org,no,
+mel_v1_melodie_B_panfloete,melodien_v1/melodie_B_panfloete.mp3,jingle,Melodie – melodie B panfloete,no,no,Drum samples provided by DrumGizmo.org,no,
+mel_v1_melodie_B_rock,melodien_v1/melodie_B_rock.mp3,jingle,Melodie – melodie B rock,no,no,Drum samples provided by DrumGizmo.org,no,
+mel_v1_melodie_C_hiphop,melodien_v1/melodie_C_hiphop.mp3,jingle,Melodie – melodie C hiphop,no,no,Drum samples provided by DrumGizmo.org,no,
+mel_v1_melodie_C_panfloete,melodien_v1/melodie_C_panfloete.mp3,jingle,Melodie – melodie C panfloete,no,no,Drum samples provided by DrumGizmo.org,no,
+mel_v1_melodie_C_rock,melodien_v1/melodie_C_rock.mp3,jingle,Melodie – melodie C rock,no,no,Drum samples provided by DrumGizmo.org,no,
+mel_v1_melodie_D_hiphop,melodien_v1/melodie_D_hiphop.mp3,jingle,Melodie – melodie D hiphop,no,no,Drum samples provided by DrumGizmo.org,no,
+mel_v1_melodie_D_panfloete,melodien_v1/melodie_D_panfloete.mp3,jingle,Melodie – melodie D panfloete,no,no,Drum samples provided by DrumGizmo.org,no,
+mel_v1_melodie_D_rock,melodien_v1/melodie_D_rock.mp3,jingle,Melodie – melodie D rock,no,no,Drum samples provided by DrumGizmo.org,no,
+mel_v1_melodie_E_hiphop,melodien_v1/melodie_E_hiphop.mp3,jingle,Melodie – melodie E hiphop,no,no,Drum samples provided by DrumGizmo.org,no,
+mel_v1_melodie_E_panfloete,melodien_v1/melodie_E_panfloete.mp3,jingle,Melodie – melodie E panfloete,no,no,Drum samples provided by DrumGizmo.org,no,
+mel_v1_melodie_E_rock,melodien_v1/melodie_E_rock.mp3,jingle,Melodie – melodie E rock,no,no,Drum samples provided by DrumGizmo.org,no,
+mel_v2_demo_melodien_v2,melodien_v2/demo_melodien_v2.mp3,ui,Melodie – demo melodien v2,no,no,Drum samples provided by DrumGizmo.org,no,Demo-Medley; optional Katalog
+mel_v2_melodie_A1_panfloete,melodien_v2/melodie_A1_panfloete.mp3,jingle,Melodie – melodie A1 panfloete,no,no,Drum samples provided by DrumGizmo.org,no,
+mel_v2_melodie_A2_panfloete,melodien_v2/melodie_A2_panfloete.mp3,jingle,Melodie – melodie A2 panfloete,no,no,Drum samples provided by DrumGizmo.org,no,
+mel_v2_melodie_A3_panfloete,melodien_v2/melodie_A3_panfloete.mp3,jingle,Melodie – melodie A3 panfloete,no,no,Drum samples provided by DrumGizmo.org,no,
+mel_v2_melodie_A4_panfloete,melodien_v2/melodie_A4_panfloete.mp3,jingle,Melodie – melodie A4 panfloete,no,no,Drum samples provided by DrumGizmo.org,no,
+mel_v2_melodie_A5_panfloete,melodien_v2/melodie_A5_panfloete.mp3,jingle,Melodie – melodie A5 panfloete,no,no,Drum samples provided by DrumGizmo.org,no,
+mel_v3_demo_melodien_v3,melodien_v3/demo_melodien_v3.mp3,ui,Melodie – demo melodien v3,no,no,Drum samples provided by DrumGizmo.org,no,Demo-Medley; optional Katalog
+mel_v3_melodie_N1_panfloete,melodien_v3/melodie_N1_panfloete.mp3,jingle,Melodie – melodie N1 panfloete,no,no,Drum samples provided by DrumGizmo.org,no,
+mel_v3_melodie_N2_panfloete,melodien_v3/melodie_N2_panfloete.mp3,jingle,Melodie – melodie N2 panfloete,no,no,Drum samples provided by DrumGizmo.org,no,
+mel_v3_melodie_N3_panfloete,melodien_v3/melodie_N3_panfloete.mp3,jingle,Melodie – melodie N3 panfloete,no,no,Drum samples provided by DrumGizmo.org,no,
+mel_v3_melodie_N4_panfloete,melodien_v3/melodie_N4_panfloete.mp3,jingle,Melodie – melodie N4 panfloete,no,no,Drum samples provided by DrumGizmo.org,no,
+mel_v3_melodie_N5_panfloete,melodien_v3/melodie_N5_panfloete.mp3,jingle,Melodie – melodie N5 panfloete,no,no,Drum samples provided by DrumGizmo.org,no,
+mel_v3_melodie_N6_panfloete,melodien_v3/melodie_N6_panfloete.mp3,jingle,Melodie – melodie N6 panfloete,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v1_choro_aufbruch,stile/choro_aufbruch.mp3,jingle,Stil v1 – choro aufbruch,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v1_choro_erfolg,stile/choro_erfolg.mp3,jingle,Stil v1 – choro erfolg,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v1_choro_zusammen,stile/choro_zusammen.mp3,jingle,Stil v1 – choro zusammen,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v1_demo_choro,stile/demo_choro.mp3,ui,Stil v1 – demo choro,no,no,Drum samples provided by DrumGizmo.org,no,Demo-Medley; optional Katalog
+stile_v1_demo_forro,stile/demo_forro.mp3,ui,Stil v1 – demo forro,no,no,Drum samples provided by DrumGizmo.org,no,Demo-Medley; optional Katalog
+stile_v1_demo_hiphop,stile/demo_hiphop.mp3,ui,Stil v1 – demo hiphop,no,no,Drum samples provided by DrumGizmo.org,no,Demo-Medley; optional Katalog
+stile_v1_demo_panfloete,stile/demo_panfloete.mp3,ui,Stil v1 – demo panfloete,no,no,Drum samples provided by DrumGizmo.org,no,Demo-Medley; optional Katalog
+stile_v1_demo_punk,stile/demo_punk.mp3,ui,Stil v1 – demo punk,no,no,Drum samples provided by DrumGizmo.org,no,Demo-Medley; optional Katalog
+stile_v1_demo_reggaeton,stile/demo_reggaeton.mp3,ui,Stil v1 – demo reggaeton,no,no,Drum samples provided by DrumGizmo.org,no,Demo-Medley; optional Katalog
+stile_v1_demo_rock,stile/demo_rock.mp3,ui,Stil v1 – demo rock,no,no,Drum samples provided by DrumGizmo.org,no,Demo-Medley; optional Katalog
+stile_v1_forro_aufbruch,stile/forro_aufbruch.mp3,jingle,Stil v1 – forro aufbruch,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v1_forro_erfolg,stile/forro_erfolg.mp3,jingle,Stil v1 – forro erfolg,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v1_forro_zusammen,stile/forro_zusammen.mp3,jingle,Stil v1 – forro zusammen,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v1_hiphop_aufbruch,stile/hiphop_aufbruch.mp3,jingle,Stil v1 – hiphop aufbruch,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v1_hiphop_erfolg,stile/hiphop_erfolg.mp3,jingle,Stil v1 – hiphop erfolg,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v1_hiphop_zusammen,stile/hiphop_zusammen.mp3,jingle,Stil v1 – hiphop zusammen,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v1_panfloete_aufbruch,stile/panfloete_aufbruch.mp3,jingle,Stil v1 – panfloete aufbruch,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v1_panfloete_erfolg,stile/panfloete_erfolg.mp3,jingle,Stil v1 – panfloete erfolg,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v1_panfloete_zusammen,stile/panfloete_zusammen.mp3,jingle,Stil v1 – panfloete zusammen,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v1_punk_aufbruch,stile/punk_aufbruch.mp3,jingle,Stil v1 – punk aufbruch,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v1_punk_erfolg,stile/punk_erfolg.mp3,jingle,Stil v1 – punk erfolg,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v1_punk_zusammen,stile/punk_zusammen.mp3,jingle,Stil v1 – punk zusammen,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v1_reggaeton_aufbruch,stile/reggaeton_aufbruch.mp3,jingle,Stil v1 – reggaeton aufbruch,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v1_reggaeton_erfolg,stile/reggaeton_erfolg.mp3,jingle,Stil v1 – reggaeton erfolg,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v1_reggaeton_zusammen,stile/reggaeton_zusammen.mp3,jingle,Stil v1 – reggaeton zusammen,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v1_rock_aufbruch,stile/rock_aufbruch.mp3,jingle,Stil v1 – rock aufbruch,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v1_rock_erfolg,stile/rock_erfolg.mp3,jingle,Stil v1 – rock erfolg,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v1_rock_zusammen,stile/rock_zusammen.mp3,jingle,Stil v1 – rock zusammen,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_choro_v1,stile_v2/choro_v1.mp3,jingle,Stil v2 – choro v1,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_choro_v1_sting,stile_v2/choro_v1_sting.mp3,sting,Stil v2 – choro v1 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_choro_v2,stile_v2/choro_v2.mp3,jingle,Stil v2 – choro v2,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_choro_v2_sting,stile_v2/choro_v2_sting.mp3,sting,Stil v2 – choro v2 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_choro_v3,stile_v2/choro_v3.mp3,jingle,Stil v2 – choro v3,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_choro_v3_sting,stile_v2/choro_v3_sting.mp3,sting,Stil v2 – choro v3 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_choro_v4,stile_v2/choro_v4.mp3,jingle,Stil v2 – choro v4,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_choro_v4_sting,stile_v2/choro_v4_sting.mp3,sting,Stil v2 – choro v4 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_demo_choro,stile_v2/demo_choro.mp3,ui,Stil v2 – demo choro,no,no,Drum samples provided by DrumGizmo.org,no,Demo-Medley; optional Katalog
+stile_v2_demo_forro,stile_v2/demo_forro.mp3,ui,Stil v2 – demo forro,no,no,Drum samples provided by DrumGizmo.org,no,Demo-Medley; optional Katalog
+stile_v2_demo_hiphop,stile_v2/demo_hiphop.mp3,ui,Stil v2 – demo hiphop,no,no,Drum samples provided by DrumGizmo.org,no,Demo-Medley; optional Katalog
+stile_v2_demo_panfloete,stile_v2/demo_panfloete.mp3,ui,Stil v2 – demo panfloete,no,no,Drum samples provided by DrumGizmo.org,no,Demo-Medley; optional Katalog
+stile_v2_demo_punk,stile_v2/demo_punk.mp3,ui,Stil v2 – demo punk,no,no,Drum samples provided by DrumGizmo.org,no,Demo-Medley; optional Katalog
+stile_v2_demo_reggaeton,stile_v2/demo_reggaeton.mp3,ui,Stil v2 – demo reggaeton,no,no,Drum samples provided by DrumGizmo.org,no,Demo-Medley; optional Katalog
+stile_v2_demo_rock,stile_v2/demo_rock.mp3,ui,Stil v2 – demo rock,no,no,Drum samples provided by DrumGizmo.org,no,Demo-Medley; optional Katalog
+stile_v2_forro_v1,stile_v2/forro_v1.mp3,jingle,Stil v2 – forro v1,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_forro_v1_sting,stile_v2/forro_v1_sting.mp3,sting,Stil v2 – forro v1 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_forro_v2,stile_v2/forro_v2.mp3,jingle,Stil v2 – forro v2,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_forro_v2_sting,stile_v2/forro_v2_sting.mp3,sting,Stil v2 – forro v2 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_forro_v3,stile_v2/forro_v3.mp3,jingle,Stil v2 – forro v3,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_forro_v3_sting,stile_v2/forro_v3_sting.mp3,sting,Stil v2 – forro v3 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_forro_v4,stile_v2/forro_v4.mp3,jingle,Stil v2 – forro v4,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_forro_v4_sting,stile_v2/forro_v4_sting.mp3,sting,Stil v2 – forro v4 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_hiphop_v1,stile_v2/hiphop_v1.mp3,jingle,Stil v2 – hiphop v1,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_hiphop_v1_sting,stile_v2/hiphop_v1_sting.mp3,sting,Stil v2 – hiphop v1 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_hiphop_v2,stile_v2/hiphop_v2.mp3,jingle,Stil v2 – hiphop v2,yes,no,Drum samples provided by DrumGizmo.org,yes,Default Hip-Hop v2 #2; Kopie auch in stile_v3/hiphop_v2.mp3
+stile_v2_hiphop_v2_sting,stile_v2/hiphop_v2_sting.mp3,sting,Stil v2 – hiphop v2 sting,no,no,Drum samples provided by DrumGizmo.org,yes,
+stile_v2_hiphop_v3,stile_v2/hiphop_v3.mp3,jingle,Stil v2 – hiphop v3,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_hiphop_v3_sting,stile_v2/hiphop_v3_sting.mp3,sting,Stil v2 – hiphop v3 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_hiphop_v4,stile_v2/hiphop_v4.mp3,jingle,Stil v2 – hiphop v4,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_hiphop_v4_sting,stile_v2/hiphop_v4_sting.mp3,sting,Stil v2 – hiphop v4 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_panfloete_v1,stile_v2/panfloete_v1.mp3,jingle,Stil v2 – panfloete v1,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_panfloete_v1_sting,stile_v2/panfloete_v1_sting.mp3,sting,Stil v2 – panfloete v1 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_panfloete_v2,stile_v2/panfloete_v2.mp3,jingle,Stil v2 – panfloete v2,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_panfloete_v2_sting,stile_v2/panfloete_v2_sting.mp3,sting,Stil v2 – panfloete v2 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_panfloete_v3,stile_v2/panfloete_v3.mp3,jingle,Stil v2 – panfloete v3,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_panfloete_v3_sting,stile_v2/panfloete_v3_sting.mp3,sting,Stil v2 – panfloete v3 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_panfloete_v4,stile_v2/panfloete_v4.mp3,jingle,Stil v2 – panfloete v4,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_panfloete_v4_sting,stile_v2/panfloete_v4_sting.mp3,sting,Stil v2 – panfloete v4 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_punk_v1,stile_v2/punk_v1.mp3,jingle,Stil v2 – punk v1,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_punk_v1_sting,stile_v2/punk_v1_sting.mp3,sting,Stil v2 – punk v1 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_punk_v2,stile_v2/punk_v2.mp3,jingle,Stil v2 – punk v2,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_punk_v2_sting,stile_v2/punk_v2_sting.mp3,sting,Stil v2 – punk v2 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_punk_v3,stile_v2/punk_v3.mp3,jingle,Stil v2 – punk v3,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_punk_v3_sting,stile_v2/punk_v3_sting.mp3,sting,Stil v2 – punk v3 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_punk_v4,stile_v2/punk_v4.mp3,jingle,Stil v2 – punk v4,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_punk_v4_sting,stile_v2/punk_v4_sting.mp3,sting,Stil v2 – punk v4 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_reggaeton_v1,stile_v2/reggaeton_v1.mp3,jingle,Stil v2 – reggaeton v1,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_reggaeton_v1_sting,stile_v2/reggaeton_v1_sting.mp3,sting,Stil v2 – reggaeton v1 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_reggaeton_v2,stile_v2/reggaeton_v2.mp3,jingle,Stil v2 – reggaeton v2,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_reggaeton_v2_sting,stile_v2/reggaeton_v2_sting.mp3,sting,Stil v2 – reggaeton v2 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_reggaeton_v3,stile_v2/reggaeton_v3.mp3,jingle,Stil v2 – reggaeton v3,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_reggaeton_v3_sting,stile_v2/reggaeton_v3_sting.mp3,sting,Stil v2 – reggaeton v3 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_reggaeton_v4,stile_v2/reggaeton_v4.mp3,jingle,Stil v2 – reggaeton v4,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_reggaeton_v4_sting,stile_v2/reggaeton_v4_sting.mp3,sting,Stil v2 – reggaeton v4 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_rock_v1,stile_v2/rock_v1.mp3,jingle,Stil v2 – rock v1,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_rock_v1_sting,stile_v2/rock_v1_sting.mp3,sting,Stil v2 – rock v1 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_rock_v2,stile_v2/rock_v2.mp3,jingle,Stil v2 – rock v2,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_rock_v2_sting,stile_v2/rock_v2_sting.mp3,sting,Stil v2 – rock v2 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_rock_v3,stile_v2/rock_v3.mp3,jingle,Stil v2 – rock v3,yes,no,Drum samples provided by DrumGizmo.org,yes,Default Rock; Kopie auch in stile_v3/
+stile_v2_rock_v3_sting,stile_v2/rock_v3_sting.mp3,sting,Stil v2 – rock v3 sting,no,no,Drum samples provided by DrumGizmo.org,yes,
+stile_v2_rock_v4,stile_v2/rock_v4.mp3,jingle,Stil v2 – rock v4,yes,no,Drum samples provided by DrumGizmo.org,yes,Default Rock; Kopie auch in stile_v3/
+stile_v2_rock_v4_sting,stile_v2/rock_v4_sting.mp3,sting,Stil v2 – rock v4 sting,no,no,Drum samples provided by DrumGizmo.org,yes,
+stile_v2_trance_v1,stile_v2/trance_v1.mp3,jingle,Stil v2 – trance v1,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_trance_v1_sting,stile_v2/trance_v1_sting.mp3,sting,Stil v2 – trance v1 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_trance_v2,stile_v2/trance_v2.mp3,jingle,Stil v2 – trance v2,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_trance_v2_sting,stile_v2/trance_v2_sting.mp3,sting,Stil v2 – trance v2 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_trance_v3,stile_v2/trance_v3.mp3,jingle,Stil v2 – trance v3,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_trance_v3_sting,stile_v2/trance_v3_sting.mp3,sting,Stil v2 – trance v3 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_trance_v4,stile_v2/trance_v4.mp3,jingle,Stil v2 – trance v4,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v2_trance_v4_sting,stile_v2/trance_v4_sting.mp3,sting,Stil v2 – trance v4 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_demo_forro,stile_v3/demo_forro.mp3,ui,Stil v3 – demo forro,no,no,Drum samples provided by DrumGizmo.org,no,Demo-Medley; optional Katalog
+stile_v3_demo_gitarre,stile_v3/demo_gitarre.mp3,ui,Stil v3 – demo gitarre,no,no,Drum samples provided by DrumGizmo.org,no,Demo-Medley; optional Katalog
+stile_v3_demo_panfloete,stile_v3/demo_panfloete.mp3,ui,Stil v3 – demo panfloete,no,no,Drum samples provided by DrumGizmo.org,no,Demo-Medley; optional Katalog
+stile_v3_demo_punk,stile_v3/demo_punk.mp3,ui,Stil v3 – demo punk,no,no,Drum samples provided by DrumGizmo.org,no,Demo-Medley; optional Katalog
+stile_v3_demo_reggaeton,stile_v3/demo_reggaeton.mp3,ui,Stil v3 – demo reggaeton,no,no,Drum samples provided by DrumGizmo.org,no,Demo-Medley; optional Katalog
+stile_v3_demo_trance,stile_v3/demo_trance.mp3,ui,Stil v3 – demo trance,no,no,Drum samples provided by DrumGizmo.org,no,Demo-Medley; optional Katalog
+stile_v3_forro_v1,stile_v3/forro_v1.mp3,jingle,Stil v3 – forro v1,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_forro_v1_sting,stile_v3/forro_v1_sting.mp3,sting,Stil v3 – forro v1 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_forro_v2,stile_v3/forro_v2.mp3,jingle,Stil v3 – forro v2,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_forro_v2_sting,stile_v3/forro_v2_sting.mp3,sting,Stil v3 – forro v2 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_forro_v3,stile_v3/forro_v3.mp3,jingle,Stil v3 – forro v3,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_forro_v3_sting,stile_v3/forro_v3_sting.mp3,sting,Stil v3 – forro v3 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_forro_v4,stile_v3/forro_v4.mp3,jingle,Stil v3 – forro v4,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_forro_v4_sting,stile_v3/forro_v4_sting.mp3,sting,Stil v3 – forro v4 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_gitarre_v1,stile_v3/gitarre_v1.mp3,jingle,Stil v3 – gitarre v1,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_gitarre_v1_sting,stile_v3/gitarre_v1_sting.mp3,sting,Stil v3 – gitarre v1 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_gitarre_v2,stile_v3/gitarre_v2.mp3,jingle,Stil v3 – gitarre v2,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_gitarre_v2_sting,stile_v3/gitarre_v2_sting.mp3,sting,Stil v3 – gitarre v2 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_gitarre_v3,stile_v3/gitarre_v3.mp3,jingle,Stil v3 – gitarre v3,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_gitarre_v3_sting,stile_v3/gitarre_v3_sting.mp3,sting,Stil v3 – gitarre v3 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_gitarre_v4,stile_v3/gitarre_v4.mp3,jingle,Stil v3 – gitarre v4,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_gitarre_v4_sting,stile_v3/gitarre_v4_sting.mp3,sting,Stil v3 – gitarre v4 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_hiphop_v2,stile_v3/hiphop_v2.mp3,jingle,Stil v3 – hiphop v2,no,no,Drum samples provided by DrumGizmo.org,yes,Spiegel von stile_v2 Favorit
+stile_v3_hiphop_v2_sting,stile_v3/hiphop_v2_sting.mp3,sting,Stil v3 – hiphop v2 sting,no,no,Drum samples provided by DrumGizmo.org,yes,
+stile_v3_panfloete_v1,stile_v3/panfloete_v1.mp3,jingle,Stil v3 – panfloete v1,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_panfloete_v1_sting,stile_v3/panfloete_v1_sting.mp3,sting,Stil v3 – panfloete v1 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_panfloete_v2,stile_v3/panfloete_v2.mp3,jingle,Stil v3 – panfloete v2,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_panfloete_v2_sting,stile_v3/panfloete_v2_sting.mp3,sting,Stil v3 – panfloete v2 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_panfloete_v3,stile_v3/panfloete_v3.mp3,jingle,Stil v3 – panfloete v3,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_panfloete_v3_sting,stile_v3/panfloete_v3_sting.mp3,sting,Stil v3 – panfloete v3 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_panfloete_v4,stile_v3/panfloete_v4.mp3,jingle,Stil v3 – panfloete v4,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_panfloete_v4_sting,stile_v3/panfloete_v4_sting.mp3,sting,Stil v3 – panfloete v4 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_punk_v1,stile_v3/punk_v1.mp3,jingle,Stil v3 – punk v1,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_punk_v1_sting,stile_v3/punk_v1_sting.mp3,sting,Stil v3 – punk v1 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_punk_v2,stile_v3/punk_v2.mp3,jingle,Stil v3 – punk v2,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_punk_v2_sting,stile_v3/punk_v2_sting.mp3,sting,Stil v3 – punk v2 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_punk_v3,stile_v3/punk_v3.mp3,jingle,Stil v3 – punk v3,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_punk_v3_sting,stile_v3/punk_v3_sting.mp3,sting,Stil v3 – punk v3 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_punk_v4,stile_v3/punk_v4.mp3,jingle,Stil v3 – punk v4,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_punk_v4_sting,stile_v3/punk_v4_sting.mp3,sting,Stil v3 – punk v4 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_reggaeton_v1,stile_v3/reggaeton_v1.mp3,jingle,Stil v3 – reggaeton v1,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_reggaeton_v1_sting,stile_v3/reggaeton_v1_sting.mp3,sting,Stil v3 – reggaeton v1 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_reggaeton_v2,stile_v3/reggaeton_v2.mp3,jingle,Stil v3 – reggaeton v2,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_reggaeton_v2_sting,stile_v3/reggaeton_v2_sting.mp3,sting,Stil v3 – reggaeton v2 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_reggaeton_v3,stile_v3/reggaeton_v3.mp3,jingle,Stil v3 – reggaeton v3,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_reggaeton_v3_sting,stile_v3/reggaeton_v3_sting.mp3,sting,Stil v3 – reggaeton v3 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_reggaeton_v4,stile_v3/reggaeton_v4.mp3,jingle,Stil v3 – reggaeton v4,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_reggaeton_v4_sting,stile_v3/reggaeton_v4_sting.mp3,sting,Stil v3 – reggaeton v4 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_rock_v3,stile_v3/rock_v3.mp3,jingle,Stil v3 – rock v3,no,no,Drum samples provided by DrumGizmo.org,yes,Spiegel von stile_v2 Favorit
+stile_v3_rock_v3_sting,stile_v3/rock_v3_sting.mp3,sting,Stil v3 – rock v3 sting,no,no,Drum samples provided by DrumGizmo.org,yes,
+stile_v3_rock_v4,stile_v3/rock_v4.mp3,jingle,Stil v3 – rock v4,no,no,Drum samples provided by DrumGizmo.org,yes,Spiegel von stile_v2 Favorit
+stile_v3_rock_v4_sting,stile_v3/rock_v4_sting.mp3,sting,Stil v3 – rock v4 sting,no,no,Drum samples provided by DrumGizmo.org,yes,
+stile_v3_trance_v1,stile_v3/trance_v1.mp3,jingle,Stil v3 – trance v1,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_trance_v1_sting,stile_v3/trance_v1_sting.mp3,sting,Stil v3 – trance v1 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_trance_v2,stile_v3/trance_v2.mp3,jingle,Stil v3 – trance v2,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_trance_v2_sting,stile_v3/trance_v2_sting.mp3,sting,Stil v3 – trance v2 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_trance_v3,stile_v3/trance_v3.mp3,jingle,Stil v3 – trance v3,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_trance_v3_sting,stile_v3/trance_v3_sting.mp3,sting,Stil v3 – trance v3 sting,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_trance_v4,stile_v3/trance_v4.mp3,jingle,Stil v3 – trance v4,no,no,Drum samples provided by DrumGizmo.org,no,
+stile_v3_trance_v4_sting,stile_v3/trance_v4_sting.mp3,sting,Stil v3 – trance v4 sting,no,no,Drum samples provided by DrumGizmo.org,no,

@@ -1,0 +1,17 @@
+Kuratierte Prototyp-Screenshots für Store/PWA-Vorbereitung
+Quelle: prototype/shots/
+01-onboarding.png
+02-onboarding-hell-v4.png
+03-onboarding-dunkel-v4.png
+04-heute-hell.png
+05-heute-dunkel.png
+06-heute-gain-hell.png
+07-rezepte-hell.png
+08-fortschritt-hell.png
+09-fortschritt-dunkel.png
+10-profil-hell.png
+11-splash-live.png
+12-loader-hell.png
+13-belohnung-hell.png
+14-hilfe.png
+15-onboarding-gain.png

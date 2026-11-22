@@ -1,0 +1,87 @@
+{
+  "meta": {
+    "source": "prototype/index.html + app.js",
+    "locale": "de-CH",
+    "orthography": "ss statt ss",
+    "primary_color_v1": "#0B7F6B",
+    "primary_color_prototype_note": "Prototyp nutzt noch #0F9D84 (Kontrast Hell 3.4:1); V1 auf #0B7F6B (ca. 4.9:1) abdunkeln.",
+    "goal_dependent_rule": "Bei Ziel 'Zunehmen' niemals 'abnehmen'-Wortlaut in Schutz-/Hinweistexten. Kalorien: leichter Überschuss, Ring 'kcal bis Ziel', bei Erreichen 'Tagesziel erreicht'.",
+    "extracted_at": "2026-11-06",
+    "status": "Inventar aus Prototyp – Review durch Projektinhaber nötig; medizinische Formulierungen vor Release prüfen lassen."
+  },
+  "goals": {
+    "lose": "Abnehmen",
+    "gain": "Zunehmen",
+    "keep": "Gewicht halten"
+  },
+  "goal_dependent_protection": {
+    "rule": "Bei Ziel gain (Zunehmen) niemals Abnehmen-/Defizit-Wortlaut in Schutztexten. Lose-blocked-Texte dürfen «Abnehmen» nennen, weil sie das Ziel ablehnen.",
+    "bmi_under_17": {
+      "gain": {
+        "title": "Dein BMI ist sehr niedrig",
+        "text": "Zunehmen ist für dich das richtige Ziel. Bei so einem niedrigen Gewicht sollte der Aufbau aber medizinisch begleitet werden: Bitte sprich mit deiner Hausärztin oder deinem Hausarzt und, wenn möglich, mit einer Ernährungsberatung. Gerade am Anfang braucht dein Körper einen langsamen, geschützten Start. Du bist damit nicht allein. Wenn dich Essen oder dein Körper stark belasten, hilft ein vertrauliches Gespräch."
+      },
+      "keep": {
+        "title": "Dein BMI ist sehr niedrig",
+        "text": "Bitte sprich mit deiner Hausärztin oder deinem Hausarzt und, wenn möglich, mit einer Ernährungsberatung. Wir empfehlen, dein Gewicht nicht weiter sinken zu lassen und gesund zuzunehmen. Gerne passen wir dein Ziel auf «Zunehmen» an. Wenn dich Essen oder dein Körper stark belasten, hilft ein vertrauliches Gespräch."
+      },
+      "lose_fallback": {
+        "title": "Dein BMI ist sehr niedrig",
+        "text": "Bei diesem Wert ist Abnehmen nicht sinnvoll, deshalb bieten wir kein Kaloriendefizit an. Wir empfehlen, dein Gewicht zu halten oder gesund zuzunehmen. Bitte sprich mit deiner Hausärztin oder deinem Hausarzt und, wenn möglich, mit einer Ernährungsberatung. Wenn dich Essen oder dein Körper stark belasten, hilft ein vertrauliches Gespräch.",
+        "note": "Nur wenn Nutzer Abnehmen gewählt hatte und gesperrt wird – nicht bei aktivem Zunehmen-Ziel."
+      }
+    },
+    "bmi_17_to_18_5": {
+      "gain": {
+        "title": "Dein BMI liegt unter dem Normalbereich",
+        "text": "Zunehmen passt zu deinem Ziel. Ein ärztlicher Check und eine Ernährungsberatung helfen dir, sicher und nachhaltig aufzubauen. Wenn dich Essen oder dein Körper belasten, gibt es kostenlose und vertrauliche Hilfe."
+      },
+      "keep": {
+        "title": "Dein BMI liegt unter dem Normalbereich",
+        "text": "Wir empfehlen, dein Gewicht zu halten oder gesund zuzunehmen. Eine Ernährungsberatung oder dein Hausarzt kann dich dabei unterstützen. Wenn Essen dich belastet, gibt es kostenlose und vertrauliche Hilfe."
+      },
+      "lose_fallback": {
+        "title": "Dein BMI liegt unter dem Normalbereich",
+        "text": "Wir empfehlen Gewicht halten oder gesund zunehmen und blenden Abnehmen aus. Wenn Essen dich belastet, gibt es kostenlose und vertrauliche Hilfe."
+      }
+    },
+    "gain_bmi_ge_25": {
+      "title": "Dein BMI liegt über dem Normalbereich",
+      "text": "Mehr Gewicht ist bei deinem BMI meist nicht empfehlenswert. Wenn du Muskeln aufbauen möchtest, passt oft «Gewicht halten» mit Krafttraining besser. Bei Fragen hilft dir deine Hausärztin oder dein Hausarzt."
+    },
+    "copy_gain_vs_lose": {
+      "ring_label_lose": "kcal übrig",
+      "ring_label_gain": "kcal bis Ziel",
+      "over_target_gain": "Tagesziel erreicht",
+      "calorie_mode_gain": "leichter Überschuss",
+      "calorie_mode_lose": "Kaloriendefizit"
+    },
+    "limits": {
+      "lose_blocked_if": "BMI < 18.5 oder Gewicht < 40 kg",
+      "weight_input_min_gain_keep_kg": 25,
+      "weight_input_min_lose_kg": 40,
+      "target_bmi_floor": 18.5,
+      "max_pace_kg_per_week": 1.0,
+      "min_kcal_women": 1200,
+      "min_kcal_men": 1500,
+      "note": "Richtwerte aus Prototyp; vor Release medizinisch prüfen."
+    }
+  },
+  "contrast_fix": {
+    "prototype_primary": "#0F9D84",
+    "v1_primary": "#0B7F6B",
+    "reason": "WCAG Kontrast Text-auf-Grün im Hellmodus"
+  },
+  "help_hotline_snippets": [
+    "Hilfe und Unterstützung",
+    "Dargebotene Hand · 143 — Rund um die Uhr, anonym und kostenlos. Chat täglich 10 bis 22 Uhr und Mail auf 143.ch.",
+    "PEP · Prävention Essstörungen Praxisnah — Kostenlose, anonyme Beratung bei Essverhaltensproblemen, Essstörungen sowie Fitness- und Muskelsucht, auch für Angehörige. Telefon in der Regel Montag und Donnerstag. pepinfo.ch",
+    "AES · Arbeitsgemeinschaft Ess-Störungen — Beratung in Zürich per Telefon, E-Mail, vor Ort oder per Video, kostenlos. Telefon Dienstag und Donnerstag, 10 bis 12 und 14 bis 17 Uhr. aes.ch / 043 488 63 73",
+    "Bei Allergien prüfe immer die Zutatenliste auf der Verpackung. Dieser Prototyp gibt keine Garantie."
+  ],
+  "disclaimer_snippets": [
+    "Edovita ist keine Medizin- oder Ernährungsberatung. Grenzwerte und Empfehlungen sind Richtwerte.",
+    "Bei Allergien prüfe immer die Zutatenliste auf der Verpackung.",
+    "Der BMI ist nur ein grober Richtwert, z. B. bei viel Muskelmasse."
+  ]
+}
