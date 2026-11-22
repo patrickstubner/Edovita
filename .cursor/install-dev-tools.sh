@@ -23,8 +23,8 @@ RG_URL="https://github.com/BurntSushi/ripgrep/releases/download/14.1.1/ripgrep-1
 RG_SHA256="4cf9f2741e6c465ffdb7c26f38056a59e2a2544b51f7cc128ef28337eeae4d8e"
 
 ASTGREP_VERSION="0.51.2"
-ASTGREP_URL="https://github.com/ast-grep/ast-grep/releases/download/0.51.2/app-x86_64-unknown-linux-musl.zip"
-ASTGREP_SHA256="7263b2f3dbfa4a4ae4512932ffa75ccd86451db17646bd1640a4b21e4b3558d8"
+ASTGREP_URL="https://github.com/ast-grep/ast-grep/releases/download/0.51.2/app-x86_64-unknown-linux-gnu.zip"
+ASTGREP_SHA256="40604c21c38d4c7581c56bdddeef277c56bf3c0113620aa96e78ae87e82366df"
 
 CBM_VERSION="0.12.1"
 CBM_SUMS_URL="https://github.com/DeusData/codebase-memory-mcp/releases/download/v0.12.1/checksums.txt"
@@ -177,7 +177,7 @@ fi
 
 # UI und Auto-Index aus (keine Netz-Modelle, keine Agent-Configs).
 # Nicht «codebase-memory-mcp install» oder «update» ausführen.
-codebase-memory-mcp --ui=false >/dev/null 2>&1 || true
+# Hinweis: nicht «codebase-memory-mcp --ui=false» aufrufen, das startet den stdio-Server und blockiert.
 codebase-memory-mcp config set ui_enabled false >/dev/null
 codebase-memory-mcp config set auto_index false >/dev/null
 
