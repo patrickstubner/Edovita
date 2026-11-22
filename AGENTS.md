@@ -3,12 +3,14 @@
 ## Projekt
 - Zweck: Ernährungs-App mit Rezepten, Einkaufsliste und Zweitsprache für Lebensmittel. PWA zuerst, Handy-App mit Capacitor später.
 - **Heute im Repo:** `README.md`, der Klick-Prototyp v5.4.1 unter `prototype/` (eingefrorene Design-Referenz, nicht produktiv, nicht erweitern), die Architektur-Doku und die Startinhalte unter `docs/architektur/` (`inhalte/`: 55 Lebensmittel, Glossare, 5 Rezepte, Prüfskripte) sowie Logos, Briefing, Entscheid-Log, Rechts- und Store-Entwürfe, Sound-Favoriten unter `design/`. Noch kein App-Code.
-- **Übergabe an neue Agents (zuerst lesen):** `docs/architektur/adr/` (ADR-001 bis ADR-005, akzeptiert 15.11.2026), dann `design/brief/HANDOFF-entwickler.md` und `design/brief/decision-log.md`. Bei Widerspruch gilt: **ADRs (`docs/architektur/adr/*`) > Decision-Log > Handoff > `design/brief/BRIEF.md` > `design/brief/architektur-hosting.md`** (z. B. überschreiben ADR-001 bis ADR-004 ältere Handoff-Punkte wie SQLite/WebCrypto in Phase 1 oder `src/locales/`).
-- Stack (entschieden, kommt mit E0): React, TypeScript (strict), Rsbuild, React Router (Hash-Router), Dexie (IndexedDB) in der Web-Phase, SQLite später mit Capacitor, i18next mit ICU, zod. Tests: Vitest, Testing Library, Playwright (390×844), fake-indexeddb. Lint: ESLint, Stylelint (`csstools/use-logical`), dependency-cruiser.
-- Architektur: ARCHITECTURE.md und `docs/architektur/` (ADR-001 bis ADR-005, Bausteine, Testplan, Pakete E0–E7). Stand: STATUS.md.
+- **Übergabe an neue Agents (zuerst lesen):** `docs/architektur/adr/` (ADR-001 bis ADR-005, akzeptiert 15.11.2026; ADR-006, akzeptiert 22.11.2026), dann `design/brief/HANDOFF-entwickler.md` und `design/brief/decision-log.md`. Bei Widerspruch gilt: **ADRs (`docs/architektur/adr/*`) > Decision-Log > Handoff > `design/brief/BRIEF.md` > `design/brief/architektur-hosting.md`** (z. B. überschreiben ADR-001 bis ADR-004 ältere Handoff-Punkte wie SQLite/WebCrypto in Phase 1 oder `src/locales/`).
+- Stack (entschieden, kommt mit E0): React, TypeScript (strict), Rsbuild, React Router (Hash-Router), Dexie (IndexedDB) in der Web-Phase, SQLite später mit Capacitor, i18next mit ICU, zod. Tests: Rstest mit `@rstest/adapter-rsbuild` (aktuell 0.12.6, noch vor 1.0), Testing Library, `fake-indexeddb`; Playwright bleibt für Journeys (390×844). Travel Talk und die anderen Repos bleiben bei Vitest (ADR-006). Lint: ESLint, Stylelint (`csstools/use-logical`), dependency-cruiser.
+- Architektur: ARCHITECTURE.md und `docs/architektur/` (ADR-001 bis ADR-006, Bausteine, Testplan, Pakete E0–E7). Stand: STATUS.md.
 
 ## Befehle
-- Noch keine (`package.json` fehlt, kommt mit E0). Geplant laut `docs/architektur/testplan.md`: `npm ci`, `npm test`, `npm run lint`, `npm run build`, `npm run content:check`, `npm audit`. Diese Liste mit E0 an die echten Skripte anpassen.
+- **Paketmanager: nur pnpm** (kommt mit E0: `packageManager` in `package.json`, `corepack enable`). Kein `npm`, kein `yarn`, kein `package-lock.json`. Fehlt ein Paket, wird es sauber in `package.json` eingetragen, kein `shamefully-hoist`. `.npmrc` mit `ignore-scripts=true` (Sicherheitshaltung CA-3).
+- **Mindestalter neuer Paketversionen: 4 Tage.** Mit E0 kommt `pnpm-workspace.yaml` mit `minimumReleaseAge: 5760` (Minuten) in das Repo, bevor das erste Paket installiert wird: pnpm installiert dann keine Version, die jünger ist (Schutz vor kompromittierten Releases). Die Zeile nie senken oder entfernen. Ausnahme nur, wenn eine Sicherheitslücke sich anders nicht beheben lässt: das Paket gezielt unter `minimumReleaseAgeExclude` eintragen, mit Kommentar (CVE/GHSA, Datum), im PR melden und nach 4 Tagen wieder entfernen. Dependabot bekommt `cooldown` von mindestens 4 Tagen. Das gilt für alle Agents (Cursor, Antigravity, weitere).
+- Noch keine Skripte (`package.json` fehlt, kommt mit E0). Geplant laut `docs/architektur/testplan.md`: `pnpm install --frozen-lockfile`, `pnpm test`, `pnpm run lint`, `pnpm run build`, `pnpm run content:check`, `pnpm audit`. Diese Liste mit E0 an die echten Skripte anpassen.
 - Prototyp lokal ansehen: in `prototype/` `python3 -m http.server`, dann `http://localhost:8000/`.
 
 ## Projektregeln
@@ -78,7 +80,7 @@ Nach jeder Code-Erstellung oder -Änderung, **bevor weitergebaut wird**, kurz pr
 - Eingabevalidierung und Injection (XSS, SQL/Command, Pfade, Prototype Pollution, Deserialisierung)
 - Geheimnisse und Zugangsdaten (Code, Konfiguration, Git-Historie, Logs)
 - Berechtigungen und Zugriffskontrolle
-- Abhängigkeiten und Versionen (direkt und indirekt, CDN, GitHub Actions): `npm audit` bzw. `pnpm audit`, verwundbare Libraries auf die nächste sichere Version heben; bei Major-Sprung vorher den Projektinhaber fragen
+- Abhängigkeiten und Versionen (direkt und indirekt, CDN, GitHub Actions): `pnpm audit`, verwundbare Libraries auf die nächste sichere Version heben; bei Major-Sprung vorher den Projektinhaber fragen
 - Fehlermeldungen und Logs mit sensiblen Daten
 - Neue Angriffsflächen (Endpunkte, Schnittstellen, Dateizugriff, Weiterleitungen, CSP/Header)
 
@@ -100,7 +102,7 @@ Schwachstellen mit **Schweregrad** (kritisch / hoch / mittel / niedrig) und Fix-
 - Antigravity: Konfiguration global in `~/.gemini/config/mcp_config.json` oder pro Workspace in `.agents/mcp_config.json` (nicht committen). Anleitung: https://antigravity.google/docs/mcp
 
 ### Lokaler Start
-Installation, Start und Tests stehen in `README.md` und im Abschnitt «Befehle» oben. Vor dem ersten Commit `npm test` bzw. die dort genannten Prüfungen ausführen.
+Installation, Start und Tests stehen in `README.md` und im Abschnitt «Befehle» oben. Vor dem ersten Commit `pnpm test` bzw. die dort genannten Prüfungen ausführen.
 
 ## Cursor Cloud specific instructions
 
@@ -120,7 +122,7 @@ Die Binaries liegen nur unter `~/.local/bin` (kein Kopieren nach `/usr/local/bin
 
 Weitere Tools können später im selben Skript ergänzt werden (Version und SHA-256 pinnen, kein `curl|bash`).
 
-Abhängigkeiten: das Skript erkennt `package-lock.json` (`npm ci --ignore-scripts`) oder `pnpm-lock.yaml` (`pnpm install --frozen-lockfile`, pnpm über corepack mit der in `packageManager` gepinnten Version). Node muss die `engines` in `package.json` erfüllen (typisch >= 22); das Skript installiert Node nicht.
+Abhängigkeiten: das Skript erkennt `pnpm-lock.yaml` (`pnpm install --frozen-lockfile`, pnpm über corepack mit der in `packageManager` gepinnten Version) oder `package-lock.json` (`npm ci --ignore-scripts`, nur für andere Repos). In diesem Repo gilt pnpm. Node muss die `engines` in `package.json` erfüllen (typisch >= 22); das Skript installiert Node nicht.
 
 ### Reihenfolge bei Struktur-Fragen
 1. STATUS.md und ARCHITECTURE.md.
@@ -131,7 +133,7 @@ Abhängigkeiten: das Skript erkennt `package-lock.json` (`npm ci --ignore-script
 3. `ast-grep` oder `rg` für Muster und exakte Zeichenketten.
 4. Dateien nur gezielt lesen.
 
-Der eingefrorene Klick-Prototyp liegt unter `prototype/`. Ein npm-Lockfile gibt es erst mit E0; bis dahin überspringt das Skript `npm ci`.
+Der eingefrorene Klick-Prototyp liegt unter `prototype/`. Ein Lockfile (`pnpm-lock.yaml`) gibt es erst mit E0; bis dahin überspringt das Skript die Installation.
 
 ### Graphify-MCP (gehostet, falls verbunden)
 Wenn unter cursor.com/agents ein HTTP-MCP namens `graphify` auf `https://api.graphify.com/mcp` eingerichtet und per OAuth angemeldet ist, den Graphen für Aufrufer, Impact und Tests nutzen (`list_repositories`, `graphify_find`, `graphify_callers`, `graphify_impact`). Der gehostete Graph zeigt den indexierten GitHub-Stand, keine uncommitteten lokalen Änderungen. Fehlt die Verbindung oder weicht der Stand ab: `codebase-memory-mcp` in dieser VM verwenden.

@@ -8,7 +8,7 @@ Stand 22.11.2026, Commit 6d0c0a1 (`main`, inkl. PR #4). Die App existiert noch n
 | `README.md` | Überblick, lokaler Start, Einstieg für Agents (Cursor, Antigravity) |
 | `prototype/` | Klick-Prototyp v5.4.1: HTML/CSS/Vanilla-JS, 37 Screens, 7 Sprachen, keine Laufzeit-Abhängigkeit ausser `qrcode-generator`. Nur Design-Referenz (siehe `prototype/README.md`). |
 | `design/` | Design- und Produktvorgaben: `logos/` (final, Export, Animation, Schrift), `brief/` (Briefing, Handoff, Decision-Log, Rechtsentwürfe, Store-Texte, String-Inventar), `sounds/favoriten/` (7 MP3). Die Quell-Sounds (3,4 GB) liegen nur lokal beim Projektinhaber. |
-| `docs/architektur/` | Review, `inhalte/` (Startinhalte: 55 Lebensmittel, Glossare, 5 Rezepte, Prüfskripte), ADR-001 bis ADR-005, Bausteine, Testplan, Pakete E0–E7, Ablaufplan, Sicherheitsprüfung des Prototyps |
+| `docs/architektur/` | Review, `inhalte/` (Startinhalte: 55 Lebensmittel, Glossare, 5 Rezepte, Prüfskripte), ADR-001 bis ADR-006, Bausteine, Testplan, Pakete E0–E7, Ablaufplan, Sicherheitsprüfung des Prototyps |
 
 ## Zielstruktur (ADR-001)
 ```
