@@ -3,20 +3,21 @@ import { publicUrl } from '../app/publicBase.ts';
 import { Icon, Screen } from '../components/index.ts';
 import type { ThemePreference } from '../domain/index.ts';
 import { useTheme } from '../hooks/index.ts';
+import { t, type UiKey } from '../i18n/index.ts';
 
 const THEME_OPTIONS: ReadonlyArray<{
   value: ThemePreference;
-  label: string;
+  labelKey: UiKey;
 }> = [
-  { value: 'system', label: 'System' },
-  { value: 'light', label: 'Hell' },
-  { value: 'dark', label: 'Dunkel' },
+  { value: 'system', labelKey: 'theme.option.system' },
+  { value: 'light', labelKey: 'theme.option.light' },
+  { value: 'dark', labelKey: 'theme.option.dark' },
 ];
 
-const THEME_NOTES: Record<ThemePreference, string> = {
-  system: 'Folgt der Einstellung deines Geräts.',
-  light: 'Immer hell.',
-  dark: 'Immer dunkel.',
+const THEME_NOTE_KEYS: Record<ThemePreference, UiKey> = {
+  system: 'theme.system',
+  light: 'theme.light',
+  dark: 'theme.dark',
 };
 
 /**
@@ -40,17 +41,17 @@ export function HomePage() {
           className="edo-btn"
           onClick={() => navigate('/status')}
         >
-          <span>Weiter</span>
+          <span>{t('start.weiter')}</span>
           <Icon name="chev" size="sm" />
         </button>
       }
-      actionsLabel="Startseite Aktionen"
+      actionsLabel={t('start.actions_label')}
     >
       <div className="edo-stack">
         <div className="edo-logo-wrap">
           <img
             src={logoSrc}
-            alt="Edovita"
+            alt={t('start.logo_alt')}
             className="edo-logo-img"
             width={150}
             height={142}
@@ -58,19 +59,16 @@ export function HomePage() {
         </div>
 
         <div className="edo-center edo-stack">
-          <h1>Willkommen bei Edovita</h1>
-          <p className="edo-sub">
-            Iss fürs Leben. Rezepte, Einkaufsliste und Zweitsprache für
-            Lebensmittel – lokal auf deinem Gerät.
-          </p>
+          <h1>{t('start.willkommen_bei_edovita')}</h1>
+          <p className="edo-sub">{t('start.tagline')}</p>
         </div>
 
         <section className="edo-card edo-stack" aria-labelledby="theme-heading">
-          <h2 id="theme-heading">Darstellung</h2>
+          <h2 id="theme-heading">{t('theme.heading')}</h2>
           <div
             className="edo-segmented"
             role="group"
-            aria-label="Darstellung wählen"
+            aria-label={t('theme.choose')}
           >
             {THEME_OPTIONS.map((opt) => (
               <button
@@ -80,12 +78,12 @@ export function HomePage() {
                 aria-pressed={preference === opt.value}
                 onClick={() => setPreference(opt.value)}
               >
-                {opt.label}
+                {t(opt.labelKey)}
               </button>
             ))}
           </div>
           <p className="edo-cap" data-testid="theme-note">
-            {THEME_NOTES[preference]}
+            {t(THEME_NOTE_KEYS[preference])}
           </p>
         </section>
 
@@ -93,25 +91,19 @@ export function HomePage() {
           className="edo-card edo-card-mint edo-stack"
           aria-labelledby="privacy-heading"
         >
-          <h2 id="privacy-heading">Deine Daten bleiben bei dir</h2>
+          <h2 id="privacy-heading">{t('datenschutz.heading')}</h2>
           <ul className="edo-list">
             <li className="edo-list-item">
               <span className="edo-icon-badge" aria-hidden="true">
                 <Icon name="shield" size="sm" />
               </span>
-              <span className="edo-sub">
-                Kein Konto, kein Server und keine Werbung – alles bleibt direkt
-                auf deinem Gerät.
-              </span>
+              <span className="edo-sub">{t('datenschutz.kein_konto')}</span>
             </li>
             <li className="edo-list-item">
               <span className="edo-icon-badge" aria-hidden="true">
                 <Icon name="lock" size="sm" />
               </span>
-              <span className="edo-sub">
-                Deine Angaben und Einkaufslisten gehören nur dir und lassen sich
-                jederzeit löschen.
-              </span>
+              <span className="edo-sub">{t('datenschutz.gehoeren_dir')}</span>
             </li>
           </ul>
         </section>

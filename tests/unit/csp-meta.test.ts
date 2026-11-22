@@ -1,3 +1,4 @@
+import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from '@rstest/core';
 import { cspForMeta, getAssetPrefix, loadSecurityHeaders } from '../../rsbuild.config.ts';
 
@@ -26,5 +27,26 @@ describe('cspForMeta', () => {
 describe('getAssetPrefix', () => {
   it('ist lokal der Ursprungspfad', () => {
     expect(getAssetPrefix()).toBe('/');
+  });
+});
+
+describe('loadSecurityHeaders', () => {
+  it('liest nur den /*-Block und ignoriert andere Pfad-Blöcke', () => {
+    const headers = loadSecurityHeaders(
+      fileURLToPath(new URL('./fixtures/_headers-multiple-blocks', import.meta.url)),
+    );
+    expect(headers['Content-Security-Policy']).toBe(
+      "default-src 'none'; frame-ancestors 'none'",
+    );
+    expect(headers['X-Frame-Options']).toBe('DENY');
+    expect(headers['X-Content-Type-Options']).toBe('nosniff');
+    expect(headers['X-Custom']).toBeUndefined();
+    expect(headers['X-Other']).toBeUndefined();
+  });
+
+  it('findet public/_headers über den Dateipfad der Rsbuild-Konfiguration', () => {
+    const headers = loadSecurityHeaders();
+    expect(headers['Content-Security-Policy']).toContain("default-src 'none'");
+    expect(headers['X-Frame-Options']).toBe('DENY');
   });
 });

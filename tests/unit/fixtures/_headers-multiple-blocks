@@ -1,0 +1,13 @@
+# Kommentar darf nicht als Header gelten
+/special
+  X-Custom: only-special
+  Content-Security-Policy: default-src 'self'
+
+/*
+  Content-Security-Policy: default-src 'none'; frame-ancestors 'none'
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+
+/other
+  X-Other: should-ignore
+  X-Frame-Options: SAMEORIGIN

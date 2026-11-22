@@ -107,7 +107,7 @@ Keine kritischen, hohen oder mittleren Befunde.
 
 ## Nachtrag 22.11.2026: E0b GitHub Pages
 
-Geprüft auf Branch `feat/e0b-github-pages` (Basis `main` `7f49e3d`). Neuer Workflow `deploy-pages.yml`, Asset-Prefix `/Edovita/`, CSP zusätzlich als Meta-Tag, Doku. Keine neuen npm-Pakete.
+Geprüft auf Branch `feat/e0b-github-pages`, Head `1891b0f18ea31bf4e22ec92b538e86306fc8744a` (Basis `main` `7f49e3d`, nach Merge `e7d46884`). Neuer Workflow `deploy-pages.yml`, Asset-Prefix `/Edovita/`, CSP zusätzlich als Meta-Tag, Doku. Keine neuen npm-Pakete.
 
-GitHub Pages wertet `public/_headers` nicht aus. Die CSP kommt deshalb als `<meta http-equiv>` aus derselben Quelle; `frame-ancestors` und `X-Frame-Options` wirken dort nicht (niedrig: Clickjacking auf der öffentlichen Vorschau ohne Nutzerdaten). Deploy nur nach Merge auf `main`. Keine kritischen, hohen oder mittleren technischen Befunde. Details in der Root-`SECURITY.md`.
+GitHub Pages wertet `public/_headers` nicht aus. Die CSP kommt deshalb als `<meta http-equiv>` aus derselben Quelle. Bekannte Grenze: `frame-ancestors` und `X-Frame-Options` lassen sich per Meta-Tag nicht setzen und kommen auf Pages auch nicht als HTTP-Header an (niedrig: Clickjacking auf der öffentlichen Vorschau ohne Nutzerdaten). Deploy nur nach grüner CI auf `main`. Keine kritischen, hohen oder mittleren technischen Befunde. Details in der Root-`SECURITY.md`.
 

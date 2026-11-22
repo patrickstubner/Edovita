@@ -33,7 +33,7 @@
 - **Eingaben im Prototyp-Stil:** Grösse als Slider plus Minus/Plus 1 cm, Geburtsdatum statt Alter, Gewicht als Slider plus Minus/Plus 0,1 kg.
 - **Einkaufsliste:** Zustände «habe ich zu Hause» / «bereits im Einkaufskorb» bleiben; unten QR-Einkaufsliste und Liste teilen; Hausmarken als Info-Icon oben; Rezept-Detail mit Portionszahl, Schritten, Nährwerten und Button «zur Einkaufsliste».
 - **Sounds:** Erkennungsmelodie H1 ist Standard (H5 gut, H4 Reserve), Töne beim ersten Start an, KI-Hymnen als KI-generiert kennzeichnen (ACE-Step, Apache-2.0), Credit «Drum samples provided by DrumGizmo.org». Nicht ausliefern: `hymne_AI_H2*`, `hymne_AI_H3*`, `stile_v3/_discarded`, `stile_v3/samples/`, `ai_hymnen_v1/raw/`. Favoriten liegen in `design/sounds/favoriten/`; die Quell-Sounds (3,4 GB) sind nur lokal beim Projektinhaber.
-- **Hosting/Daten:** Local-first, Gesundheitsdaten nur auf dem Gerät. Später Cloudflare Workers, Jurisdiction `eu`. App-ID `ch.edovita.app`. Cloud-Backup standardmässig aus. **Deploy nur über den Pages-Workflow** (`.github/workflows/deploy-pages.yml`) nach Merge auf `main`; Vorschau: https://patrickstubner.github.io/Edovita/. Keine eigene Domain, keine Store-Konten und keine anderen Deploys ohne Ja des Projektinhabers.
+- **Hosting/Daten:** Local-first, Gesundheitsdaten nur auf dem Gerät. Später Cloudflare Workers, Jurisdiction `eu`. App-ID `ch.edovita.app`. Cloud-Backup standardmässig aus. **Deploy nur über den Pages-Workflow** (`.github/workflows/deploy-pages.yml`) nach Merge auf `main` und grüner CI; Vorschau: https://patrickstubner.github.io/Edovita/. Keine eigene Domain, keine Store-Konten und keine anderen Deploys ohne Ja des Projektinhabers.
 - **Nährwerte** werden berechnet (Schweizer Nährwertdatenbank, Quellenangabe Pflicht), nie geschätzt. Rezepte sind selbst geschrieben, kein kopierter Text.
 
 ## Arbeitsregeln für Agents
@@ -93,7 +93,7 @@ Schwachstellen mit **Schweregrad** (kritisch / hoch / mittel / niedrig) und Fix-
 
 ### Verbote
 - **Keine Secrets, API-Keys, Tokens oder `.env`-Dateien ins Repo.** Auch nicht in MCP-Konfigurationen: `.agents/mcp_config.json` und `~/.gemini/…` liegen nur lokal (`.agents/mcp_config.json` steht in `.gitignore`).
-- **Keine kostenpflichtigen Dienste, Abos oder Käufe** ohne ausdrückliches Ja des Projektinhabers. **Deploy nur über den Pages-Workflow nach Merge auf `main`.** Andere Deploys, Domains oder Hosting-Dienste nur mit ausdrücklichem Ja. Im Zweifel stoppen und fragen.
+- **Keine kostenpflichtigen Dienste, Abos oder Käufe** ohne ausdrückliches Ja des Projektinhabers. **Deploy nur über den Pages-Workflow nach Merge auf `main` und grüner CI.** Andere Deploys, Domains oder Hosting-Dienste nur mit ausdrücklichem Ja. Im Zweifel stoppen und fragen.
 - Keine personenbezogenen Daten ins Repo, wenn es öffentlich ist.
 
 ### Lokale MCP-Server (Empfehlung für Antigravity und andere lokale Agents)

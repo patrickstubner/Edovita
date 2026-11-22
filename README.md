@@ -54,7 +54,7 @@ python3 docs/architektur/inhalte/tools/validate.py
 
 ## Vorschau auf GitHub Pages
 
-Nach einem Merge auf `main` veröffentlicht der Workflow `.github/workflows/deploy-pages.yml` den Build unter https://patrickstubner.github.io/Edovita/. Es gibt keinen anderen automatischen Deploy. Keine eigene Domain und keine kostenpflichtigen Dienste ohne Ja des Projektinhabers. Die Seite bleibt mit `noindex` versehen.
+Nach einem Merge auf `main` und grüner CI veröffentlicht der Workflow `.github/workflows/deploy-pages.yml` den Build unter https://patrickstubner.github.io/Edovita/. Es gibt keinen anderen automatischen Deploy. Keine eigene Domain und keine kostenpflichtigen Dienste ohne Ja des Projektinhabers. Die Seite bleibt mit `noindex` versehen.
 
 ## Mit Agents arbeiten (Cursor, Google Antigravity)
 

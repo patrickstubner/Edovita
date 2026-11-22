@@ -1,8 +1,23 @@
-# STATUS.md – Stand 22.11.2026, `main` `7f49e3d` (E0 gemergt als PR #15; inkl. PR #1–#5, #14)
+# STATUS.md – Stand 22.11.2026, `main` `e7d46884e98c61619ec85702133670ec32aca4a3` (E0 als PR #15, E0b als PR #22; inkl. PR #1–#5, #14)
+
+
+## Nachtrag 22.11.2026 (Abend): H1 und N1 am Deploy-Workflow (Folge zu #23)
+
+Branch `fix/stabschef-e0-e0b` (Draft-PR #23, Basis `main` `e7d46884`, nicht mergen). Geprüfter Code-Stand: `d3a4d0ca061580abbe41ac167ca46deee24e26df`.
+- **H1 (hoch, behoben):** `deploy-pages.yml` lässt `workflow_run` nur noch zu, wenn die auslösende CI ein erfolgreicher `push` auf `main` **im eigenen Repo** war (`event == 'push'`, `head_branch == 'main'`, `head_repository.full_name == github.repository`, zusätzlich zu `conclusion == success`). Dieselbe `if` gilt für `build` und `deploy`. Der Filter `branches: [main]` bleibt, gilt aber nicht als einzige Vertrauensgrenze.
+- **N1 (niedrig, geschlossen):** `workflow_dispatch` bleibt auf `main` beschränkt und prüft vor dem Build per `gh api` (Recht `actions: read`, `GITHUB_TOKEN`), dass der Workflow «CI» für genau diesen Commit als `push` auf `main` des eigenen Repos erfolgreich war. Sonst kein Deploy.
+- Details in `SECURITY.md` (H1 dort als gefunden und behoben festgehalten, nicht mehr als «kein Befund»).
+
+## Nachtrag 22.11.2026 (Abend): Folge-PR zu Stabschef-Hinweisen aus #15 und #22
+Branch `fix/stabschef-e0-e0b` (Draft-PR, Basis `main` `e7d46884`, nicht mergen). Geprüfter Code-Stand: `63d426bb6cb77aa2a02e1f013500bcdde4291575` (plus dieser Doku-Nachtrag mit dem SHA).
+- **Zu #15:** `ARCHITECTURE.md` nennt den Analyse-SHA von E0 (`9e45e9e9688d33e781d03d3b8e722b0af55f68d6`; letzter Vor-Squash-Head `50e3739086ac488911c26aa30606d505becab2be`). Der `_headers`-Parser liest ausschliesslich den `/*`-Block und löst den Dateipfad über `import.meta.dirname`. Platzhalter- und UI-Texte der Start- und Statusseite liegen in `content/locales/de/ui.json` und werden nur über `src/i18n` gelesen (kein i18next, das bleibt E2; keine neuen Pakete).
+- **Zu #22:** S2: Deploy erst nach grüner CI (`workflow_run`); die wirksame Absicherung gegen Fork-PRs (H1) steht im Nachtrag darüber. S3: `workflow_dispatch` nur auf `main`, mit CI-Prüfung für denselben Commit (N1). S4: geprüfter Head von #22 `1891b0f18ea31bf4e22ec92b538e86306fc8744a` steht in `STATUS.md` und `SECURITY.md`. Low: in `SECURITY.md` als bekannte Grenze von GitHub Pages festgehalten, dass `frame-ancestors` und `X-Frame-Options` per Meta-Tag nicht setzbar sind und auf Pages nicht ankommen.
+- **Hinweis vor Release (nicht in diesem PR entfernt):** Die Entwicklungs-Route `#/status` (`StatusPage`) und die Dev-/Platzhaltertexte (etwa «Bereit für den Aufbau», «Geplante Bereiche») vor der Veröffentlichung entfernen.
+- **Lokal geprüft:** siehe Sicherheitsprüfung in `SECURITY.md` und den PR-Bericht.
 
 ## Nachtrag 22.11.2026 (Abend): E0b – Deploy auf GitHub Pages
-Branch `feat/e0b-github-pages` (Draft-PR, Basis `main` `7f49e3d`, Issue `#21`). Nicht mergen bis Ok des Stabschefs. Der Projektinhaber hat am 22.11.2026 entschieden, dass das E0-Grundgerüst unter https://patrickstubner.github.io/Edovita/ ansehbar sein soll. Kein bestehendes Issue (#7–#13) deckte Pages ab.
-- **Workflow** `.github/workflows/deploy-pages.yml`: nur `push` auf `main` und `workflow_dispatch`. Alle Actions SHA-gepinnt (`pnpm/action-setup` wie in `ci.yml`; `configure-pages` `v6.0.0`, `upload-pages-artifact` `v5.0.0`, `deploy-pages` `v5.0.1`, jeweils älter als 4 Tage). Schreibrechte `pages: write` und `id-token: write` nur im Deploy-Job. Concurrency-Gruppe `pages`, laufende Deploys werden nicht abgebrochen. Environment `github-pages` auf Branch `main` beschränkt.
+Branch `feat/e0b-github-pages` (PR #22, gemergt, Squash-Commit `e7d46884e98c61619ec85702133670ec32aca4a3`). Geprüfter Head vor dem Merge: `1891b0f18ea31bf4e22ec92b538e86306fc8744a`. Basis war `main` `7f49e3d`, Issue `#21`. Der Projektinhaber hat am 22.11.2026 entschieden, dass das E0-Grundgerüst unter https://patrickstubner.github.io/Edovita/ ansehbar sein soll. Kein bestehendes Issue (#7–#13) deckte Pages ab.
+- **Workflow** `.github/workflows/deploy-pages.yml` (Stand nach H1/N1): Deploy erst nach grüner CI auf `main` des eigenen Repos (`workflow_run` nach `push`) oder per `workflow_dispatch` nur auf `main` und nur bei grüner CI für genau diesen Commit. Alle Actions SHA-gepinnt (`pnpm/action-setup` wie in `ci.yml`; `configure-pages` `v6.0.0`, `upload-pages-artifact` `v5.0.0`, `deploy-pages` `v5.0.1`, jeweils älter als 4 Tage). Schreibrechte `pages: write` und `id-token: write` nur im Deploy-Job. Concurrency-Gruppe `pages`, laufende Deploys werden nicht abgebrochen. Environment `github-pages` auf Branch `main` beschränkt.
 - **Build:** Asset-Prefix `/Edovita/` nur wenn `GITHUB_PAGES=true`; lokal weiter `/`. Hash-Router unverändert. `publicUrl()` für Logo- und Public-Pfade. CI baut zusätzlich nach `dist-pages/` und prüft Prefix plus CSP-Meta.
 - **CSP:** GitHub Pages ignoriert `_headers`. Dieselbe Policy wird als `<meta http-equiv>` aus `_headers` erzeugt, ohne `frame-ancestors`. Dokumentiert in `SECURITY.md`.
 - **Doku:** `AGENTS.md`, `README.md`, `ARCHITECTURE.md`, `STATUS.md`, `docs/architektur/issues-entwuerfe.md`, `ablaufplan-und-schaetzung.md`: Deploy nur über den Pages-Workflow nach Merge auf `main`. Keine neuen Pakete, keine Kosten (öffentliches Repo).

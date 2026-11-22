@@ -23,7 +23,8 @@
     "tests",
     "rsbuild.config.ts",
     "rstest.config.ts",
-    "playwright.config.ts"
+    "playwright.config.ts",
+    "content/**/*.json"
   ],
   "exclude": ["node_modules", "dist", "prototype", "design", "docs"]
 }
