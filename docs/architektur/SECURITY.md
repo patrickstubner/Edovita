@@ -80,3 +80,11 @@ Geprüft auf Basis main b6acf91. Nur Konfiguration: `.cursor/environment.json` (
 
 Wirkung: Agents dieser Umgebung laden nur den gehosteten Graphify-MCP; alle anderen User- und Team-MCP-Server sind gesperrt (weniger Tool-Beschreibungen pro Anfrage, kleinere Angriffsfläche durch fremde MCP-Tools). Keine kritischen, hohen oder mittleren Befunde. (M1, Info) Die Datei wirkt nur, wenn die Umgebung auf cursor.com sie verwendet; sonst gilt die Dashboard-Einstellung. (M2, Info) Passt das URL-Muster nicht, ist Graphify gesperrt und der Agent nutzt `codebase-memory-mcp` (steht in AGENTS.md). Nicht in der Cloud getestet.
 
+## Nachtrag 22.11.2026: Fix `.cursor/install-dev-tools.sh` und Doku-Abgleich
+
+Geprüft auf Basis `main` `6d0c0a1` (Branch `chore/prep-agents-and-dev-tools`). Geändert: `.cursor/install-dev-tools.sh`, `AGENTS.md`, `ARCHITECTURE.md`, `README.md`, `STATUS.md`, `design/README.md`, `docs/architektur/SECURITY.md`. Kein App-Code, keine neuen Laufzeitabhängigkeiten.
+
+- **Lieferkette / Hash-Prüfung:** `ast-grep` 0.51.2 von `app-x86_64-unknown-linux-musl.zip` auf das offizielle glibc-Release `app-x86_64-unknown-linux-gnu.zip` umgestellt. Die SHA-256-Prüfsumme (`40604c21c38d4c7581c56bdddeef277c56bf3c0113620aa96e78ae87e82366df`) wurde direkt gegen die offizielle GitHub-Release-API (`repos/ast-grep/ast-grep/releases/tags/0.51.2`) verifiziert und im Skript beim Download geprüft. Weiterhin nur HTTPS, kein `curl|bash`, kein `sudo`, Installation nur unter `~/.local/bin`.
+- **Verfügbarkeit / Laufzeitverhalten:** Blockierender Aufruf `codebase-memory-mcp --ui=false` entfernt; Skript läuft auf Ubuntu 24.04 (x86_64) vollständig und idempotent durch (Exit-Code 0).
+- **Secrets & Personendaten:** Diff- und `rg`-Prüfung auf Schlüssel, Tokens, Pfade und Personendaten ohne Funde.
+- **Befunde:** Keine kritischen, hohen oder mittleren Befunde. (D1, niedrig, unverändert aus C2) Allgemeines Lieferkettenrisiko der Dritt-Binaries bleibt trotz Hash-Pinning; Hashes bei Versionswechsel erneut gegen die offizielle Release-Seite prüfen.

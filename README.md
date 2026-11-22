@@ -34,7 +34,7 @@ Die echte App (React, TypeScript, Rsbuild, Capacitor) entsteht ab Paket E0; dort
 ## Mit Agents arbeiten (Cursor, Google Antigravity)
 
 1. `AGENTS.md`, `ARCHITECTURE.md` und `STATUS.md` lesen. Antigravity lädt `AGENTS.md` automatisch.
-2. Zuerst `design/brief/HANDOFF-entwickler.md` (Reihenfolge der Quellen: Decision-Log > Handoff > Briefing > Hosting-Doku).
+2. Zuerst `docs/architektur/adr/` (ADR-001 bis ADR-005) und `design/brief/HANDOFF-entwickler.md` (Reihenfolge der Quellen bei Widerspruch: ADRs > Decision-Log > Handoff > Briefing > Hosting-Doku).
 3. Ein Branch pro Aufgabe und Agent, Änderungen nur per Pull Request, nach jeder Änderung Sicherheitsprüfung, am Ende `STATUS.md` nachführen.
 4. Keine Secrets ins Repo, keine kostenpflichtigen Dienste ohne Ja des Projektinhabers.
 

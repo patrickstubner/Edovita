@@ -1,13 +1,22 @@
-# STATUS.md – Stand 22.11.2026, beruht auf Commit c7bba31 (Branch `docs/antigravity-setup`, Basis main 850b240)
+# STATUS.md – Stand 22.11.2026, beruht auf Commit 6d0c0a1 (`main`, inkl. PR #1–#4)
+
+## Nachtrag 22.11.2026 (Antigravity): Dev-Tools-Skript gefixt & Doku-Rangfolge geklärt
+Branch `chore/prep-agents-and-dev-tools` (Draft-PR, Basis `main` `6d0c0a1`, nicht mergen bis Stabschef-Ok und Ja des Projektinhabers). Kein App-Code, kein Versionsbump.
+- **`.cursor/install-dev-tools.sh` erstmals auf Ubuntu 24.04 (x86_64) end-to-end getestet und zwei reale Blocker behoben:**
+  1. `ast-grep` 0.51.2: `app-x86_64-unknown-linux-musl.zip` war dynamisch gegen `/lib/ld-musl-x86_64.so.1` gelinkt und startete auf Ubuntu (glibc) nicht (`cannot execute: required file not found`). Umstellung auf das offizielle glibc-Archiv `app-x86_64-unknown-linux-gnu.zip` mit geprüfter SHA-256-Prüfsumme (`40604c21…`).
+  2. `codebase-memory-mcp --ui=false` (Zeile 180) startete den stdio-MCP-Server im Vordergrund und blockierte das Skript dauerhaft. Zeile entfernt; `config set ui_enabled false` und `auto_index false` laufen nicht-blockierend.
+  3. Vollständiger Skript-Durchlauf danach erfolgreich (Exit-Code 0, alle 3 Binaries unter `~/.local/bin` funktionsfähig, Repository indexiert: 9'709 Knoten / 10'903 Kanten).
+- **Quellen-Rangfolge & Pfade vereinheitlicht:** In `AGENTS.md`, `README.md` und `design/README.md` explizit festgehalten, dass die akzeptierten ADRs (`docs/architektur/adr/*`, 15.11.) ältere Punkte aus `HANDOFF-entwickler.md` (6.11.) überschreiben (z. B. Dexie statt SQLite/WebCrypto in Phase 1, `content/locales/` statt `src/locales/`). Pfad in `AGENTS.md` angepasst, `ARCHITECTURE.md`-Stand auf `6d0c0a1` aktualisiert.
+- **Sicherheitsprüfung:** in `docs/architektur/SECURITY.md` nachgeführt (SHA-256 gegen offizielle GitHub-Release-API verifiziert, keine Secrets, keine neuen Angriffsflächen).
 
 ## Nachtrag 22.11.2026 (Abend): Korrekturen nach Stabschef-Prüfung
-Commit `c7bba31`. Nur Doku und das Hilfsskript `design/logos/animation/build_animation.py`, kein Cloud Agent.
+Commit `c7bba31` (gemergt in PR #4, `6d0c0a1`). Nur Doku und das Hilfsskript `design/logos/animation/build_animation.py`, kein Cloud Agent.
 - Abschnitt «Zusammenarbeit mehrerer Agents»: vor dem Merge geht der Head-SHA an Stabschef, auf dessen Ok warten, Merge erst nach dem Ja des Projektinhabers.
 - Formulierung korrigiert: es gibt sieben Python-Hilfsskripte (unbedenklich), nicht «kein ausführbarer Code».
 - `build_animation.py` schreibt nicht mehr in den Geschwisterordner `edovita-prototyp` ausserhalb des Repos. Ausgabe nur noch innerhalb des Repo-Stamms (`prototype/` bzw. `design/logos/animation/`), mit Pfadprüfung.
 
 ## Nachtrag 22.11.2026: Vorbereitung für lokale Arbeit mit Google Antigravity
-Branch `docs/antigravity-setup` (PR offen, nicht mergen bis Stabschef-Ok und Ja des Projektinhabers). Nur Doku, Design-Dateien, Inhalte und sieben Python-Hilfsskripte (Build, Validierung, Export; unbedenklich). Kein App-Code (keine React-App). Kein Cloud Agent gestartet.
+Branch `docs/antigravity-setup` (gemergt als PR #4, `6d0c0a1`). Nur Doku, Design-Dateien, Inhalte und sieben Python-Hilfsskripte (Build, Validierung, Export; unbedenklich). Kein App-Code (keine React-App). Kein Cloud Agent gestartet.
 - **Neu im Repo:** `design/` (Logos final/Export/Animation/Schrift, Briefing, Handoff, Decision-Log, Rechtsentwürfe, Store-Texte, String-Inventar, Sound-Manifest, 7 Sound-Favoriten) und `docs/architektur/inhalte/` (55 Lebensmittel, Glossare DE/EN/PT/JA, 5 Rezepte, Prüfskripte, CH-Nährwertdatenbank V7.1 als Quelle). Das war bisher nur lokal. Persönliche Angaben, interne Pfade und die Worker-URL sind entfernt (Prüfung mit `rg` und gitleaks ohne Funde).
 - **AGENTS.md:** neuer Abschnitt «Zusammenarbeit mehrerer Agents» (ein Branch pro Aufgabe und Agent, nur PRs, Sicherheitsprüfung nach jeder Änderung, STATUS.md mit Commit, keine Secrets, keine Kosten ohne Ja, empfohlene lokale MCP-Server) und «Produktvorgaben Edovita» (Capacitor, Offline-PWA nur fürs fertige Produkt, Buttons fix unten, Dark Mode, Lottie/SVG, Sprachen, Schutzregeln). Antigravity liest `AGENTS.md` automatisch; keine zweite Regel-Datei.
 - **README.md, ARCHITECTURE.md, `.gitignore` (`.agents/mcp_config.json`), `.cursorignore`** ergänzt. Cloud-Agent-Setup (`.cursor/`) unverändert.
@@ -55,19 +64,18 @@ Phase 1 ab 27.11.2026: Grundgerüst (E0), dann zuerst Rezept-Detailseite (E4) un
 Details: `docs/architektur/issues-entwuerfe.md`, `docs/architektur/ablaufplan-und-schaetzung.md`.
 
 ## Offen / Entscheide nötig (wer?)
-- Inhalte (55 Lebensmittel, Glossare, 5 Rezepte, Prüfskript, Quelldatei Nährwertdatenbank) liegen lokal. Mit E1 übernehmen oder vorher als eigener PR? – Projektinhaber
-- Nährwerte für 12–14 Lebensmittel fehlen, Probekochen, JA/PT-Namen gegenlesen (offen bis 26.11.) – Projektinhaber
+- Startinhalte (55 Lebensmittel, Glossare, 5 Rezepte, Prüfskript, Quelldatei CH-NWD) liegen seit PR #4 als Entwurf unter `docs/architektur/inhalte/`; Übernahme nach `content/` folgt in E1.
+- Nährwerte für 12 fehlende Lebensmittel (USDA) und 2 Näherungen (`rice_noodles`, `thai_basil`), Pho-Salzgehalt (5,7 g/Portion ohne Fischsauce), Probekochen, JA/PT-Namen gegenlesen (offen bis 26.11.) – Projektinhaber
 - Issues E0–E7 auf GitHub anlegen? – Projektinhaber
 
-## Offene PRs (16.11.2026)
-- Docs-PR #1 ist gemergt.
-- dieser Draft-PR: Cloud-Agent-Setup (`chore/cloud-agent-setup`)
+## PR-Status (22.11.2026)
+- Gemergt auf `main` (`6d0c0a1`): PR #1 (Docs/AGENTS/STATUS), PR #2 (Cloud-Agent-Setup), PR #3 (MCP-Allowlist), PR #4 (Antigravity-Setup, `design/`, `docs/architektur/inhalte/`).
+- Offen (Draft-PR): `chore/prep-agents-and-dev-tools` (Fix `.cursor/install-dev-tools.sh`, Quellen-Rangfolge, Doku-Abgleich).
 
 ## Bekannte Probleme / Risiken
 - Noch keine CI und kein Secret-Scan im Repo (kommt mit E0).
 - Repo ist öffentlich: keine Personendaten, keine Live-URL mit Namensteil.
 
 ## Genutzte lokale Tools & vermiedene Cloud-Agent-Nutzung
-- rg: Personendaten-Prüfung der Architektur-Doku vor dem Übernehmen.
-- Kein Code zum Indexieren (cbm/codegraph erst ab E0 sinnvoll; Analyse dann mit Commit-Stand nachführen).
-- Der Doku-Teil von E0 ist damit erledigt, geschätzt 0,1–0,2 Agent-Tage gespart.
+- 16.11.: `rg` für Personendaten-Prüfung der Architektur-Doku vor dem Übernehmen (Doku-Teil von E0 erledigt, geschätzt 0,1–0,2 Agent-Tage gespart).
+- 22.11. (Antigravity-VM): `.cursor/install-dev-tools.sh` erstmals real auf Ubuntu 24.04 getestet → zwei echte Blocker in `install-dev-tools.sh` vor dem ersten Cursor-Cloud-Agent-Lauf gefunden und behoben (sonst wäre der erste Cloud-Agent-Build am hängenden `codebase-memory-mcp --ui=false` bzw. an der dynamisch gelinkten musl-`ast-grep`-Binary gescheitert). `ripgrep 14.1.1`, `ast-grep 0.51.2` (glibc) und `codebase-memory-mcp 0.12.1` installiert und Repo indexiert (9'709 Knoten, 10'903 Kanten). `validate.py` geprüft (0 Fehler; 6 inhaltliche Warnungen + fehlendes `openpyxl` in der VM).

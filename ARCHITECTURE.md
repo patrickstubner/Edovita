@@ -1,6 +1,6 @@
 # ARCHITECTURE.md – Edovita
 
-Stand 16.11.2026, Commit 7ccbd06. Die App existiert noch nicht; diese Datei beschreibt die **beschlossene Zielstruktur**. Details in `docs/architektur/`.
+Stand 22.11.2026, Commit 6d0c0a1 (`main`, inkl. PR #4). Die App existiert noch nicht; diese Datei beschreibt die **beschlossene Zielstruktur**. Details in `docs/architektur/`.
 
 ## Heute im Repo
 | Ort | Inhalt |
