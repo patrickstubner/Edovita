@@ -1,18 +1,18 @@
 # Issue-Entwürfe Edovita (nicht angelegt)
 
-Kleine Pakete, je ein PR, je ca. 0,5–1,5 Agent-Tage. Jedes Issue verweist auf `docs/architektur/` (dieser Ordner, mit E0 ins Repo) und nennt die Schicht. Allgemein für alle: Sicherheitsprüfung nach der Änderung (Schweregrad + Fix) im PR, `npm audit`, keine Secrets, nichts deployen, keine kostenpflichtigen Dienste.
+Kleine Pakete, je ein PR, je ca. 0,5–1,5 Agent-Tage. Jedes Issue verweist auf `docs/architektur/` (dieser Ordner, mit E0 ins Repo) und nennt die Schicht. Allgemein für alle: Sicherheitsprüfung nach der Änderung (Schweregrad + Fix) im PR, `pnpm audit`, keine Secrets, nichts deployen, keine kostenpflichtigen Dienste.
 
 ---
 
 ## E0 – Grundgerüst mit Leitplanken
 **Ziel:** Leeres, aber vollständig abgesichertes Projekt.
-**Umfang:** Rsbuild + React + TS (strict), Vitest, Testing Library, Playwright (390×844), ESLint, Stylelint (`csstools/use-logical`), dependency-cruiser mit ADR-001-Regeln, Ordner gemäss ADR-001, `createHashRouter`, `Screen`/`BottomActions`, Theme (System/Hell/Dunkel, #0B7F6B), SVG-Icon-Sprite aus dem Prototyp, `_headers` mit CSP aus dem Prototyp (`connect-src 'self'`), CI-Workflow (test, lint, build, audit, Secret-Scan), `docs/architektur/` (Kopie dieses Ordners ohne SECURITY-Prototyp-Hashes), README, SECURITY.md, Version 0.1.0.
+**Umfang:** Rsbuild + React + TS (strict), Rstest mit `@rstest/adapter-rsbuild` (aktuell 0.12.6, noch vor 1.0; ADR-006), Testing Library, Playwright (390×844, Journeys), ESLint, Stylelint (`csstools/use-logical`), dependency-cruiser mit ADR-001-Regeln, Ordner gemäss ADR-001, `createHashRouter`, `Screen`/`BottomActions`, Theme (System/Hell/Dunkel, #0B7F6B), SVG-Icon-Sprite aus dem Prototyp, `_headers` mit CSP aus dem Prototyp (`connect-src 'self'`), CI-Workflow (test, lint, build, audit, Secret-Scan), `docs/architektur/` (Kopie dieses Ordners ohne SECURITY-Prototyp-Hashes), README, SECURITY.md, Version 0.1.0.
 **Nicht:** Capacitor, Sounds, Splash, Service Worker (kommt in E7).
-**Akzeptanz:** `npm test`, `npm run lint`, `npm run build` grün; dependency-cruiser schlägt bei einem absichtlich falschen Import an (Test); Startseite mit `BottomActions` im Handy-Viewport, hell und dunkel; CSP ohne `unsafe-inline`.
+**Akzeptanz:** `pnpm test`, `pnpm run lint`, `pnpm run build` grün; dependency-cruiser schlägt bei einem absichtlich falschen Import an (Test); Startseite mit `BottomActions` im Handy-Viewport, hell und dunkel; CSP ohne `unsafe-inline`.
 
 ## E1 – Domäne, Lebensmittel-Katalog, Rezept-Schema, Inhaltsprüfung
 **Ziel:** Datenbasis für Rezepte und Liste.
-**Umfang:** `src/domain` (ADR-002-Typen, zod-Schemas), `content/foods/foods.json` + Glossare de/en, `content/` aus `docs/architektur/inhalte/` übernehmen (55 Lebensmittel, Glossare de/en/pt/ja, 5 Rezepte; Agent baut nur ein), `validate.py` als Vitest-Test nachbauen, Skript `content:check`, Build-Schritt erzeugt einen typisierten Index, `nutrition/scale`, `nutrition/sum`, `catalog/*`.
+**Umfang:** `src/domain` (ADR-002-Typen, zod-Schemas), `content/foods/foods.json` + Glossare de/en, `content/` aus `docs/architektur/inhalte/` übernehmen (55 Lebensmittel, Glossare de/en/pt/ja, 5 Rezepte; Agent baut nur ein), `validate.py` als Rstest-Test nachbauen, Skript `content:check`, Build-Schritt erzeugt einen typisierten Index, `nutrition/scale`, `nutrition/sum`, `catalog/*`.
 **Akzeptanz:** Inhaltsprüfungen aus dem Testplan grün; absichtlich kaputtes Rezept (unbekannte `FoodId`, 1 Quelle) bricht `content:check`; Unit-Tests `scale`/`sum`/`rankRecipes` grün.
 
 ## E2 – i18n-Laufzeit und Registry

@@ -1,6 +1,6 @@
 # Testplan
 
-Werkzeuge wie Travel Talk: Vitest + Testing Library (Unit/Komponenten), Playwright (Journeys, Handy-Viewport 390×844, hell und dunkel), `fake-indexeddb` für Dexie-Tests. Jede PR: `pnpm test`, `pnpm run lint` (ESLint, Stylelint, dependency-cruiser), `pnpm run build`, `pnpm run content:check`, `pnpm audit`.
+Unit- und Komponententests: Rstest mit `@rstest/adapter-rsbuild` (aktuell 0.12.6, noch vor 1.0; ADR-006), Testing Library, `fake-indexeddb` für Dexie-Tests. Journeys: Playwright (Handy-Viewport 390×844, hell und dunkel). Travel Talk und die anderen Repos bleiben bei Vitest. Jede PR: `pnpm test`, `pnpm run lint` (ESLint, Stylelint, dependency-cruiser), `pnpm run build`, `pnpm run content:check`, `pnpm audit`.
 
 ## Journeys (Playwright)
 

@@ -1,5 +1,10 @@
 # STATUS.md – Stand 22.11.2026, Branch `chore/pnpm-regel`, Basis main 889a09f (inkl. PR #1–#5)
 
+## Nachtrag 22.11.2026 (Abend): Entscheid Rstest (ADR-006)
+Branch `chore/pnpm-regel` (Draft-PR #14, Basis `main` `889a09f`, nicht mergen bis Stabschef-Ok und Ja des Projektinhabers). Nur Doku, kein App-Code, kein Versionsbump, kein Cloud Agent.
+- Der Projektinhaber hat am 22.11.2026 entschieden: Edovita nutzt Rstest (aktuell 0.12.6, noch vor 1.0) mit `@rstest/adapter-rsbuild` statt Vitest. Playwright bleibt für Journeys. Travel Talk und die anderen Repos bleiben bei Vitest.
+- Festgehalten in ADR-006, `AGENTS.md`, `docs/architektur/testplan.md`, `docs/architektur/issues-entwuerfe.md` (E0-Umfang, `validate.py` als Rstest-Test), `README.md`, dieser Datei und `docs/architektur/SECURITY.md`.
+
 ## Nachtrag 22.11.2026 (Nachmittag): Regel «nur pnpm»
 Branch `chore/pnpm-regel` (Draft-PR, Basis `main` `889a09f`, nicht mergen bis Stabschef-Ok und Ja des Projektinhabers). Nur Doku, kein App-Code, kein Versionsbump, kein Cloud Agent.
 - Edovita hat noch kein `package.json` und keine Abhängigkeiten (kommen mit E0). Nichts umzustellen.
@@ -49,7 +54,7 @@ Phase 1 ab 27.11.2026: Grundgerüst (E0), dann zuerst Rezept-Detailseite (E4) un
 
 ## Erledigt
 - Klick-Prototyp v5.4.1 als Referenz unter `prototype/` (15.11.2026).
-- Architektur-Doku, ADR-001 bis ADR-005 akzeptiert (15.11.2026).
+- Architektur-Doku, ADR-001 bis ADR-005 akzeptiert (15.11.2026), ADR-006 akzeptiert (22.11.2026).
 - Architektur-Doku als `docs/architektur/` im Repo, AGENTS.md, ARCHITECTURE.md, STATUS.md (dieser PR, lokal ohne Cloud Agent).
 
 ## Entscheide (15.11.2026)

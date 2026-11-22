@@ -92,3 +92,16 @@ Geprüft auf Basis `main` `6d0c0a1` (Branch `chore/prep-agents-and-dev-tools`). 
 ## Regel Mindestalter neuer Paketversionen (22.11.2026)
 
 Neue Paketversionen kommen erst ins Projekt, wenn sie mindestens 4 Tage alt sind (Schutz vor kompromittierten Releases). Umsetzung mit E0: `pnpm-workspace.yaml` mit `minimumReleaseAge: 5760` und Dependabot-`cooldown` von mindestens 4 Tagen. Ausnahmen nur für Sicherheitslücken, die sich anders nicht beheben lassen: Paket in `minimumReleaseAgeExclude`, mit Kommentar (CVE/GHSA, Datum), nach 4 Tagen wieder entfernen. Edovita hat noch kein `package.json`; heute ist nichts zu prüfen, keine Ausnahme nötig.
+
+## Nachtrag 22.11.2026: ADR-006 Rstest (nur Doku)
+
+Geprüft am Branch `chore/pnpm-regel` (Draft-PR #14, Basis `main` `889a09f`). Quelle: Lesen der geänderten Dateien. Kein App-Code, kein `package.json`, keine neuen Abhängigkeiten im Repo (kommen mit E0).
+
+Geändert: `AGENTS.md`, `README.md`, `ARCHITECTURE.md`, `STATUS.md`, `docs/architektur/testplan.md`, `docs/architektur/issues-entwuerfe.md`, neu `docs/architektur/adr/ADR-006-rstest.md`, diese Notiz.
+
+- Keine Secrets, keine Personendaten, keine neuen Rechte, keine neue Angriffsfläche.
+- Geplante Test-Pakete mit E0: `@rstest/core` 0.12.6 und `@rstest/adapter-rsbuild` 0.12.6, veröffentlicht am 3.11.2026 (älter als 4 Tage). Die 4-Tage-Regel gilt beim Install in E0 weiterhin; Version exakt pinnen, Updates bewusst (ADR-006). Vor 1.0: Breaking Changes möglich (bekannt aus 0.11). Rückweg zu Vitest ist dokumentiert (`https://rstest.rs/guide/migration/vitest`).
+- Keine Prüfung mit `pnpm audit` (noch keine Lockdatei).
+
+Keine kritischen, hohen oder mittleren Befunde.
+
