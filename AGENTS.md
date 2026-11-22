@@ -2,7 +2,8 @@
 
 ## Projekt
 - Zweck: Ernährungs-App mit Rezepten, Einkaufsliste und Zweitsprache für Lebensmittel. PWA zuerst, Handy-App mit Capacitor später.
-- **Heute im Repo:** nur `README.md`, der Klick-Prototyp v5.4.1 unter `prototype/` (eingefrorene Design-Referenz, nicht produktiv, nicht erweitern) und die Architektur-Doku unter `docs/architektur/`. Noch kein App-Code.
+- **Heute im Repo:** `README.md`, der Klick-Prototyp v5.4.1 unter `prototype/` (eingefrorene Design-Referenz, nicht produktiv, nicht erweitern), die Architektur-Doku und die Startinhalte unter `docs/architektur/` (`inhalte/`: 55 Lebensmittel, Glossare, 5 Rezepte, Prüfskripte) sowie Logos, Briefing, Entscheid-Log, Rechts- und Store-Entwürfe, Sound-Favoriten unter `design/`. Noch kein App-Code.
+- **Übergabe an neue Agents (zuerst lesen):** `design/brief/HANDOFF-entwickler.md`, dann `design/brief/decision-log.md`. Bei Widerspruch gilt: Decision-Log > Handoff > `design/brief/BRIEF.md` > `design/brief/architektur-hosting.md`.
 - Stack (entschieden, kommt mit E0): React, TypeScript (strict), Rsbuild, React Router (Hash-Router), Dexie (IndexedDB) in der Web-Phase, SQLite später mit Capacitor, i18next mit ICU, zod. Tests: Vitest, Testing Library, Playwright (390×844), fake-indexeddb. Lint: ESLint, Stylelint (`csstools/use-logical`), dependency-cruiser.
 - Architektur: ARCHITECTURE.md und `docs/architektur/` (ADR-001 bis ADR-005, Bausteine, Testplan, Pakete E0–E7). Stand: STATUS.md.
 
@@ -17,6 +18,21 @@
 - Rezepte sind Daten, Nährwerte berechnet aus der Schweizer Nährwertdatenbank, nichts geschätzt (ADR-005).
 - Kein `innerHTML`, kein `dangerouslySetInnerHTML`, CSP ohne `unsafe-inline`.
 - `prototype/` nicht anfassen.
+
+### Produktvorgaben Edovita (verbindlich für die echte App)
+- **Web-App mit Capacitor** (iOS/Android später), eine Codebasis, **PWA zuerst**. Stack React + TypeScript (strict) + **Rsbuild** (nicht Vite), Hash-Router.
+- **Volle Offline-Nutzung ist Pflicht fürs fertige Produkt** (PWA mit Service Worker: nach dem ersten Start alles lokal, inklusive Rezepte, Sounds und Animationen; nur Backup und Partner-Sync brauchen Netz). **In Prototypen und frühen Paketen nicht nötig** (kommt mit E7). Service Worker cacht nie Nutzerdaten oder API-Antworten.
+- **Hauptaktions-Buttons (1–3) sind auf jedem Screen immer fix unten sichtbar, der Inhalt scrollt darüber.**
+- **Dark Mode** (System/Hell/Dunkel). Primärgrün für Text und Buttons im Hellmodus `#0B7F6B` (Kontrast 4,9:1; der Prototyp nutzt noch `#0F9D84`). Logo für dunkel: dunkler Hintergrund, Symbol gleich, Schriftzug weiss.
+- **Animationen:** Lottie für Belohnungen bei Zwischenzielen (Konfetti, Abzeichen, Logo-Feier, mit Erfolg-Sound), **SVG** (CSS-Keyframes) für Loader und die Logo-Animation (Zusammenbau, Herz Lub-Dub, EKG; `prefers-reduced-motion` beachten). Native Startanimation: das Hauptlogo setzt sich zusammen.
+- **Logo final** (Konzept D: Blatt und Gabel als V, darüber Herz mit Pulslinie; Schriftzug Quicksand): `design/logos/final/`, Export für Web/Android/Apple/Capacitor in `design/logos/export/`. Im App-Icon nur wenig Rand.
+- **Sprachen UI v1:** EN, DE, FR, IT, ES, JA, PT (pt-BR), Fallback EN; wählbar nur bei `legalApproved=true` (zuerst DE/EN). i18next + react-i18next + i18next-icu, Ordner `locales/<code>/{meta,ui,legal,recipes,store}.json`. Zweitsprache nur für Zutaten und Einkaufsartikel, Kochschritte nur in der App-Sprache. Quelltext und Kommentare Deutsch, Schweizer Schreibweise (ss, kein ß).
+- **Schutzregeln (Gesundheit):** kein Abnehmen bei BMI < 18,5; Gewicht min. 25 kg bei Zunehmen/Halten, 40 kg bei Abnehmen; Tempo ≤ 1 kg pro Woche; Mindest-kcal 1'500 (m) / 1'200 (w); Texte zielabhängig, nie «abnehmen»-Wortlaut bei Ziel Zunehmen. Keine Finanz- oder Medizinberatung, Allergenfilter nur als Hinweis. Rechtliches zu Gesundheitsdaten immer mehrfach prüfen.
+- **Eingaben im Prototyp-Stil:** Grösse als Slider plus Minus/Plus 1 cm, Geburtsdatum statt Alter, Gewicht als Slider plus Minus/Plus 0,1 kg.
+- **Einkaufsliste:** Zustände «habe ich zu Hause» / «bereits im Einkaufskorb» bleiben; unten QR-Einkaufsliste und Liste teilen; Hausmarken als Info-Icon oben; Rezept-Detail mit Portionszahl, Schritten, Nährwerten und Button «zur Einkaufsliste».
+- **Sounds:** Erkennungsmelodie H1 ist Standard (H5 gut, H4 Reserve), Töne beim ersten Start an, KI-Hymnen als KI-generiert kennzeichnen (ACE-Step, Apache-2.0), Credit «Drum samples provided by DrumGizmo.org». Nicht ausliefern: `hymne_AI_H2*`, `hymne_AI_H3*`, `stile_v3/_discarded`, `stile_v3/samples/`, `ai_hymnen_v1/raw/`. Favoriten liegen in `design/sounds/favoriten/`; die Quell-Sounds (3,4 GB) sind nur lokal beim Projektinhaber.
+- **Hosting/Daten:** Local-first, Gesundheitsdaten nur auf dem Gerät. Später Cloudflare Workers, Jurisdiction `eu`. App-ID `ch.edovita.app`. Cloud-Backup standardmässig aus. Kein Deploy, keine Domain, keine Store-Konten ohne Ja des Projektinhabers.
+- **Nährwerte** werden berechnet (Schweizer Nährwertdatenbank, Quellenangabe Pflicht), nie geschätzt. Rezepte sind selbst geschrieben, kein kopierter Text.
 
 ## Arbeitsregeln für Agents
 
@@ -47,6 +63,44 @@
 - Vor jedem Merge oder Push auf `main` den Head-SHA an Stabschef geben und auf das Ok warten. Merge nur mit ausdrücklichem Ok des Projektinhabers.
 - Keine bezahlten Dienste und kein On-Demand ohne das Ja des Projektinhabers.
 - Merge immer als Squash-Merge mit `--match-head-commit <SHA>`. Autor und Committer nur mit der GitHub-noreply-Adresse des Repo-Kontos.
+
+## Zusammenarbeit mehrerer Agents (Cursor, Google Antigravity, weitere)
+
+Gilt für alle Agents und Menschen, die an diesem Repo arbeiten. Google Antigravity liest diese `AGENTS.md` im Repo-Stamm automatisch (Rules-Doku: https://antigravity.google/docs/rules); eine zweite Regel-Datei gibt es bewusst nicht, damit nichts doppelt gepflegt wird.
+
+### Branches und PRs
+- **Ein Branch pro Aufgabe und Agent.** Zwei Agents arbeiten nie auf demselben Branch. Branch-Name nach Muster `<typ>/<kurzer-name>` (z. B. `feat/…`, `fix/…`, `docs/…`), Basis immer aktuelles `main`.
+- **Änderungen nur per Pull Request.** Kein direkter Push auf `main`, kein Force-Push auf fremde Branches. Merge nur mit ausdrücklichem Ok des Projektinhabers. Die unabhängige Prüfung durch den Bot Stabschef läuft über den Projektinhaber; Agents ohne Zugang (z. B. Antigravity) nennen nur den Head-SHA im PR (Details: «Prüfung und Merge»).
+- Im PR den Head-SHA nennen. Kleine PRs mit einem Thema; fremde Branches und PRs nicht anfassen.
+
+### Sicherheitsprüfung nach jeder Codeänderung
+Nach jeder Code-Erstellung oder -Änderung, **bevor weitergebaut wird**, kurz prüfen und im PR (Abschnitt «Sicherheit») bzw. in der `SECURITY`-Notiz des Repos festhalten:
+- Eingabevalidierung und Injection (XSS, SQL/Command, Pfade, Prototype Pollution, Deserialisierung)
+- Geheimnisse und Zugangsdaten (Code, Konfiguration, Git-Historie, Logs)
+- Berechtigungen und Zugriffskontrolle
+- Abhängigkeiten und Versionen (direkt und indirekt, CDN, GitHub Actions): `npm audit` bzw. `pnpm audit`, verwundbare Libraries auf die nächste sichere Version heben; bei Major-Sprung vorher den Projektinhaber fragen
+- Fehlermeldungen und Logs mit sensiblen Daten
+- Neue Angriffsflächen (Endpunkte, Schnittstellen, Dateizugriff, Weiterleitungen, CSP/Header)
+
+Schwachstellen mit **Schweregrad** (kritisch / hoch / mittel / niedrig) und Fix-Vorschlag melden, bevor weitergebaut wird. Nichts als «sicher» bezeichnen, was nicht geprüft wurde.
+
+### Übergabe: STATUS.md
+- Am Ende **jeder Aufgabe** `STATUS.md` nachführen: was getan wurde, was offen ist, **Commit-Hash**, auf dem der Stand beruht, und welche lokalen Tools genutzt wurden. So kann der nächste Agent einsteigen, ohne alles neu zu lesen.
+- `ARCHITECTURE.md` nachführen, wenn sich Struktur oder Entscheide ändern. Keine Werte erfinden: Unbelegtes steht als «offen» da.
+- Ergebnisse lokaler Analysen (Hotspots, Aufrufer, Abhängigkeiten) kurz in `STATUS.md`; rohe Index-Ordner (`.codegraph/`, `graphify-out/`, `.serena/`, `.codebase-memory/`) bleiben lokal und stehen in `.gitignore`.
+
+### Verbote
+- **Keine Secrets, API-Keys, Tokens oder `.env`-Dateien ins Repo.** Auch nicht in MCP-Konfigurationen: `.agents/mcp_config.json` und `~/.gemini/…` liegen nur lokal (`.agents/mcp_config.json` steht in `.gitignore`).
+- **Keine kostenpflichtigen Dienste, Abos, Deploys oder Käufe** ohne ausdrückliches Ja des Projektinhabers. Im Zweifel stoppen und fragen.
+- Keine personenbezogenen Daten ins Repo, wenn es öffentlich ist.
+
+### Lokale MCP-Server (Empfehlung für Antigravity und andere lokale Agents)
+- **Sinnvoll:** GitHub (Repos, PRs, Issues), Graphify (Struktur-Graph) und `codebase-memory-mcp` (Aufrufer, Impact, Architektur; spart Tokens).
+- **Nicht nötig:** Sentry, Notion, PostHog, Vercel, Netlify. Jeder geladene MCP-Server kostet bei jeder Anfrage Tokens; nur aufnehmen, was beim Coden direkt hilft.
+- Antigravity: Konfiguration global in `~/.gemini/config/mcp_config.json` oder pro Workspace in `.agents/mcp_config.json` (nicht committen). Anleitung: https://antigravity.google/docs/mcp
+
+### Lokaler Start
+Installation, Start und Tests stehen in `README.md` und im Abschnitt «Befehle» oben. Vor dem ersten Commit `npm test` bzw. die dort genannten Prüfungen ausführen.
 
 ## Cursor Cloud specific instructions
 

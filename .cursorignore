@@ -38,3 +38,11 @@ graphify-out/
 .env
 .env.*
 !.env.example
+
+# Design-Binärdateien (Logos-Export, Animation, Store-Screenshots): nicht für Cloud-Agent-Indexierung
+design/logos/export/
+design/logos/animation/*.gif
+design/logos/animation/*.mp4
+design/logos/animation/*.png
+design/brief/store/screenshots/
+design/sounds/
