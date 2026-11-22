@@ -2,7 +2,7 @@
 
 Ernährungs-App mit Rezepten, Einkaufsliste und Zweitsprache für Lebensmittel. Web-App (PWA) zuerst, danach Handy-App mit Capacitor. Local-first: Gesundheitsdaten bleiben auf dem Gerät. App-ID `ch.edovita.app`.
 
-**Stand:** Version `0.1.0` – Paket **E0** (Grundgerüst mit Leitplanken, React + TypeScript strict + Rsbuild + Rstest + Playwright + CI). Aktueller Stand und nächste Schritte: [`STATUS.md`](STATUS.md).
+**Stand:** Version `0.1.0` – Paket **E0** (Grundgerüst mit Leitplanken, React + TypeScript strict + Rsbuild + Rstest + Playwright + CI). Vorschau nach Merge auf `main`: https://patrickstubner.github.io/Edovita/ (Deploy nur über den Pages-Workflow). Aktueller Stand und nächste Schritte: [`STATUS.md`](STATUS.md).
 
 ## Inhalt
 
@@ -36,6 +36,10 @@ pnpm run build           # Produktions-Build mit Rsbuild nach dist/
 pnpm run security:check  # DOM-Senken, CSP, Build-HTML, Supply-Chain-Config
 pnpm audit --audit-level=high
 pnpm run test:e2e        # Playwright 390×844 (Hell & Dunkel, HTTP-CSP-Header)
+
+# Pages-Build lokal prüfen (Assets unter /Edovita/, dann http://127.0.0.1:4173/Edovita/)
+GITHUB_PAGES=true PAGES_DIST=dist-pages pnpm run build
+GITHUB_PAGES=true PAGES_DIST=dist-pages pnpm run preview
 ```
 
 ### Prototyp und Startinhalte ansehen
@@ -47,6 +51,10 @@ python3 -m http.server 8000 --directory prototype
 # Startinhalte prüfen (optional: pip install openpyxl für xlsx-Rückverfolgung)
 python3 docs/architektur/inhalte/tools/validate.py
 ```
+
+## Vorschau auf GitHub Pages
+
+Nach einem Merge auf `main` veröffentlicht der Workflow `.github/workflows/deploy-pages.yml` den Build unter https://patrickstubner.github.io/Edovita/. Es gibt keinen anderen automatischen Deploy. Keine eigene Domain und keine kostenpflichtigen Dienste ohne Ja des Projektinhabers. Die Seite bleibt mit `noindex` versehen.
 
 ## Mit Agents arbeiten (Cursor, Google Antigravity)
 

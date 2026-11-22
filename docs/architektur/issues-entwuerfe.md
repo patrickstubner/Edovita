@@ -1,6 +1,6 @@
 # Issue-Entwürfe Edovita (nicht angelegt)
 
-Kleine Pakete, je ein PR, je ca. 0,5–1,5 Agent-Tage. Jedes Issue verweist auf `docs/architektur/` (dieser Ordner, mit E0 ins Repo) und nennt die Schicht. Allgemein für alle: Sicherheitsprüfung nach der Änderung (Schweregrad + Fix) im PR, `pnpm audit`, keine Secrets, nichts deployen, keine kostenpflichtigen Dienste.
+Kleine Pakete, je ein PR, je ca. 0,5–1,5 Agent-Tage. Jedes Issue verweist auf `docs/architektur/` (dieser Ordner, mit E0 ins Repo) und nennt die Schicht. Allgemein für alle: Sicherheitsprüfung nach der Änderung (Schweregrad + Fix) im PR, `pnpm audit`, keine Secrets, **Deploy nur über den Pages-Workflow nach Merge auf `main`**, keine anderen Deploys und keine kostenpflichtigen Dienste ohne Ja des Projektinhabers.
 
 ---
 
@@ -9,6 +9,13 @@ Kleine Pakete, je ein PR, je ca. 0,5–1,5 Agent-Tage. Jedes Issue verweist auf 
 **Umfang:** Rsbuild + React + TS (strict), Rstest mit `@rstest/adapter-rsbuild` (aktuell 0.12.6, noch vor 1.0; ADR-006), Testing Library, Playwright (390×844, Journeys), ESLint, Stylelint (`csstools/use-logical`), dependency-cruiser mit ADR-001-Regeln, Ordner gemäss ADR-001, `createHashRouter`, `Screen`/`BottomActions`, Theme (System/Hell/Dunkel, #0B7F6B), SVG-Icon-Sprite aus dem Prototyp, `_headers` mit CSP aus dem Prototyp (`connect-src 'self'`), CI-Workflow (test, lint, build, audit, Secret-Scan), `docs/architektur/` (Kopie dieses Ordners ohne SECURITY-Prototyp-Hashes), README, SECURITY.md, Version 0.1.0.
 **Nicht:** Capacitor, Sounds, Splash, Service Worker (kommt in E7).
 **Akzeptanz:** `pnpm test`, `pnpm run lint`, `pnpm run build` grün; dependency-cruiser schlägt bei einem absichtlich falschen Import an (Test); Startseite mit `BottomActions` im Handy-Viewport, hell und dunkel; CSP ohne `unsafe-inline`.
+
+
+## E0b – Deploy auf GitHub Pages
+**Ziel:** E0-Grundgerüst unter https://patrickstubner.github.io/Edovita/ ansehbar machen (Entscheid Projektinhaber, 22.11.2026). GitHub-Issue `#21`.
+**Umfang:** Workflow `deploy-pages` (nur `push` auf `main` und `workflow_dispatch`), SHA-gepinnten Actions, Asset-Prefix `/Edovita/`, CSP zusätzlich als `<meta http-equiv>` (GitHub Pages ignoriert `_headers`; ohne `frame-ancestors` im Meta-Tag).
+**Nicht:** Eigene Domain, Cloudflare, Store, kostenpflichtige Dienste, Merge ohne Ok des Stabschefs.
+**Akzeptanz:** Nach Merge auf `main` lädt die App unter `/Edovita/` inkl. Assets und Hash-Routen; CI grün; Sicherheitsprüfung im PR.
 
 ## E1 – Domäne, Lebensmittel-Katalog, Rezept-Schema, Inhaltsprüfung
 **Ziel:** Datenbasis für Rezepte und Liste.

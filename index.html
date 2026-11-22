@@ -2,6 +2,7 @@
 <html lang="de-CH">
   <head>
     <meta charset="utf-8" />
+    <meta http-equiv="Content-Security-Policy" content="<%= cspMeta %>" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, viewport-fit=cover"
@@ -11,8 +12,12 @@
     <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" id="themeColor" content="#0F9D84" />
     <title>Edovita</title>
-    <link rel="icon" type="image/svg+xml" href="/assets/edovita_appicon.svg" />
-    <script src="/theme-init.js"></script>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="<%= publicBase %>assets/edovita_appicon.svg"
+    />
+    <script src="<%= publicBase %>theme-init.js"></script>
   </head>
   <body>
     <div id="root"></div>

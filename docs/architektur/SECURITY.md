@@ -105,3 +105,9 @@ Geändert: `AGENTS.md`, `README.md`, `ARCHITECTURE.md`, `STATUS.md`, `docs/archi
 
 Keine kritischen, hohen oder mittleren Befunde.
 
+## Nachtrag 22.11.2026: E0b GitHub Pages
+
+Geprüft auf Branch `feat/e0b-github-pages` (Basis `main` `7f49e3d`). Neuer Workflow `deploy-pages.yml`, Asset-Prefix `/Edovita/`, CSP zusätzlich als Meta-Tag, Doku. Keine neuen npm-Pakete.
+
+GitHub Pages wertet `public/_headers` nicht aus. Die CSP kommt deshalb als `<meta http-equiv>` aus derselben Quelle; `frame-ancestors` und `X-Frame-Options` wirken dort nicht (niedrig: Clickjacking auf der öffentlichen Vorschau ohne Nutzerdaten). Deploy nur nach Merge auf `main`. Keine kritischen, hohen oder mittleren technischen Befunde. Details in der Root-`SECURITY.md`.
+
