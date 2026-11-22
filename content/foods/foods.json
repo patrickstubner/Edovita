@@ -1,0 +1,1244 @@
+{
+ "format": 1,
+ "source": {
+  "name": "Schweizer Nährwertdatenbank V 7.1 (01.07.2026), BLV, naehrwertdaten.ch",
+  "license": "Kostenlos, auch kommerziell, mit Quellenangabe (naehrwertdaten.ch/de/downloads)",
+  "file": "quelle/Schweizer_Nahrwertdatenbank_V7.1.xlsx",
+  "sha256": "f4bb854944ef811f9b8463984389f8121e73278c4fd24fc3e8d16336cb711270"
+ },
+ "foods": [
+  {
+   "id": "salmon",
+   "group": "fish",
+   "allergens": [
+    "fish"
+   ],
+   "allergensToCheck": [],
+   "per100g": {
+    "kcal": 223.0,
+    "fat": 15.9,
+    "satFat": 2.3,
+    "carbs": 0.0,
+    "sugars": 0.0,
+    "fiber": 0.0,
+    "protein": 19.9,
+    "salt": 0.1
+   },
+   "source": {
+    "db": "CH-NWD",
+    "version": "7.1",
+    "ref": 194,
+    "name": "Lachs, Zucht, roh"
+   },
+   "status": "ok",
+   "proxy": false,
+   "note": "Lachs, Zucht, roh"
+  },
+  {
+   "id": "broccoli",
+   "group": "veg",
+   "allergens": [],
+   "allergensToCheck": [],
+   "per100g": {
+    "kcal": 39.0,
+    "fat": 0.6,
+    "satFat": 0.2,
+    "carbs": 3.2,
+    "sugars": 1.9,
+    "fiber": 3.2,
+    "protein": 3.6,
+    "salt": 0.0
+   },
+   "source": {
+    "db": "CH-NWD",
+    "version": "7.1",
+    "ref": 351,
+    "name": "Broccoli, roh"
+   },
+   "status": "ok",
+   "proxy": false,
+   "note": "Broccoli, roh"
+  },
+  {
+   "id": "potato",
+   "group": "veg",
+   "allergens": [],
+   "allergensToCheck": [],
+   "per100g": {
+    "kcal": 76.0,
+    "fat": 0.1,
+    "satFat": 0.0,
+    "carbs": 15.6,
+    "sugars": 0.7,
+    "fiber": 2.1,
+    "protein": 2.0,
+    "salt": 0.0
+   },
+   "source": {
+    "db": "CH-NWD",
+    "version": "7.1",
+    "ref": 813,
+    "name": "Kartoffel, geschält, roh"
+   },
+   "status": "ok",
+   "proxy": false,
+   "note": "Kartoffel, geschält, roh (für ungeschälte Schnitze verwendet)"
+  },
+  {
+   "id": "olive_oil",
+   "group": "pantry",
+   "allergens": [],
+   "allergensToCheck": [],
+   "per100g": {
+    "kcal": 900.0,
+    "fat": 100.0,
+    "satFat": 11.9,
+    "carbs": 0.0,
+    "sugars": 0.0,
+    "fiber": 0.0,
+    "protein": 0.0,
+    "salt": 0.0
+   },
+   "source": {
+    "db": "CH-NWD",
+    "version": "7.1",
+    "ref": 591,
+    "name": "Olivenöl"
+   },
+   "status": "ok",
+   "proxy": false,
+   "note": "Olivenöl",
+   "density": 0.92
+  },
+  {
+   "id": "lemon",
+   "group": "fruit",
+   "allergens": [],
+   "allergensToCheck": [],
+   "per100g": {
+    "kcal": 24.0,
+    "fat": 0.6,
+    "satFat": 0.1,
+    "carbs": 2.9,
+    "sugars": 2.5,
+    "fiber": 2.0,
+    "protein": 0.8,
+    "salt": 0.0
+   },
+   "source": {
+    "db": "CH-NWD",
+    "version": "7.1",
+    "ref": 398,
+    "name": "Zitrone, roh"
+   },
+   "status": "ok",
+   "proxy": false,
+   "note": "Zitrone, roh (gegessen wird der Saft)"
+  },
+  {
+   "id": "garlic",
+   "group": "veg",
+   "allergens": [],
+   "allergensToCheck": [],
+   "per100g": {
+    "kcal": 107.0,
+    "fat": 0.5,
+    "satFat": 0.1,
+    "carbs": 16.3,
+    "sugars": 1.6,
+    "fiber": 5.8,
+    "protein": 6.4,
+    "salt": 0.0
+   },
+   "source": {
+    "db": "CH-NWD",
+    "version": "7.1",
+    "ref": 356,
+    "name": "Knoblauch, roh"
+   },
+   "status": "ok",
+   "proxy": false,
+   "note": "Knoblauch, roh"
+  },
+  {
+   "id": "salt",
+   "group": "spice",
+   "allergens": [],
+   "allergensToCheck": [],
+   "per100g": {
+    "kcal": 0.0,
+    "fat": 0.0,
+    "satFat": 0.0,
+    "carbs": 0.0,
+    "sugars": 0.0,
+    "fiber": 0.0,
+    "protein": 0.0,
+    "salt": 98.0
+   },
+   "source": {
+    "db": "CH-NWD",
+    "version": "7.1",
+    "ref": 762,
+    "name": "Kochsalz mit Jod"
+   },
+   "status": "ok",
+   "proxy": false,
+   "note": "Kochsalz mit Jod"
+  },
+  {
+   "id": "black_pepper",
+   "group": "spice",
+   "allergens": [],
+   "allergensToCheck": [],
+   "per100g": null,
+   "source": null,
+   "status": "zu_pruefen",
+   "note": "nicht in CH-NWD"
+  },
+  {
+   "id": "chicken_breast",
+   "group": "meat",
+   "allergens": [],
+   "allergensToCheck": [],
+   "per100g": {
+    "kcal": 107.0,
+    "fat": 1.0,
+    "satFat": 0.3,
+    "carbs": 0.0,
+    "sugars": 0.0,
+    "fiber": 0.0,
+    "protein": 24.6,
+    "salt": 0.1
+   },
+   "source": {
+    "db": "CH-NWD",
+    "version": "7.1",
+    "ref": 22,
+    "name": "Poulet, Brust, ohne Haut, roh"
+   },
+   "status": "ok",
+   "proxy": false,
+   "note": "Poulet, Brust, ohne Haut, roh"
+  },
+  {
+   "id": "coconut_milk",
+   "group": "pantry",
+   "allergens": [],
+   "allergensToCheck": [],
+   "per100g": {
+    "kcal": 214.0,
+    "fat": 21.3,
+    "satFat": 18.9,
+    "carbs": 3.1,
+    "sugars": 1.7,
+    "fiber": 0.1,
+    "protein": 2.4,
+    "salt": 0.0
+   },
+   "source": {
+    "db": "CH-NWD",
+    "version": "7.1",
+    "ref": 13458,
+    "name": "Kokosnussmilch"
+   },
+   "status": "ok",
+   "proxy": false,
+   "note": "Kokosnussmilch (Dichte 1,02)",
+   "density": 1.02
+  },
+  {
+   "id": "red_curry_paste",
+   "group": "pantry",
+   "allergens": [],
+   "allergensToCheck": [
+    "crustaceans"
+   ],
+   "per100g": null,
+   "source": null,
+   "status": "zu_pruefen",
+   "note": "nicht in CH-NWD; Fertigpasten enthalten oft Krevettenpaste"
+  },
+  {
+   "id": "red_bell_pepper",
+   "group": "veg",
+   "allergens": [],
+   "allergensToCheck": [],
+   "per100g": {
+    "kcal": 32.0,
+    "fat": 0.1,
+    "satFat": 0.0,
+    "carbs": 5.9,
+    "sugars": 5.2,
+    "fiber": 1.7,
+    "protein": 0.9,
+    "salt": 0.0
+   },
+   "source": {
+    "db": "CH-NWD",
+    "version": "7.1",
+    "ref": 360,
+    "name": "Peperoni, rot, roh"
+   },
+   "status": "ok",
+   "proxy": false,
+   "note": "Peperoni, rot, roh"
+  },
+  {
+   "id": "aubergine",
+   "group": "veg",
+   "allergens": [],
+   "allergensToCheck": [],
+   "per100g": {
+    "kcal": 21.0,
+    "fat": 0.1,
+    "satFat": 0.0,
+    "carbs": 2.4,
+    "sugars": 2.4,
+    "fiber": 2.7,
+    "protein": 1.1,
+    "salt": 0.0
+   },
+   "source": {
+    "db": "CH-NWD",
+    "version": "7.1",
+    "ref": 349,
+    "name": "Aubergine, roh"
+   },
+   "status": "ok",
+   "proxy": false,
+   "note": "Aubergine, roh"
+  },
+  {
+   "id": "rapeseed_oil",
+   "group": "pantry",
+   "allergens": [],
+   "allergensToCheck": [],
+   "per100g": {
+    "kcal": 900.0,
+    "fat": 100.0,
+    "satFat": 6.9,
+    "carbs": 0.0,
+    "sugars": 0.0,
+    "fiber": 0.0,
+    "protein": 0.0,
+    "salt": 0.0
+   },
+   "source": {
+    "db": "CH-NWD",
+    "version": "7.1",
+    "ref": 600,
+    "name": "Rapsöl"
+   },
+   "status": "ok",
+   "proxy": false,
+   "note": "Rapsöl",
+   "density": 0.92
+  },
+  {
+   "id": "fish_sauce",
+   "group": "pantry",
+   "allergens": [
+    "fish"
+   ],
+   "allergensToCheck": [],
+   "per100g": null,
+   "source": null,
+   "status": "zu_pruefen",
+   "note": "nicht in CH-NWD; sehr salzig"
+  },
+  {
+   "id": "sugar",
+   "group": "pantry",
+   "allergens": [],
+   "allergensToCheck": [],
+   "per100g": {
+    "kcal": 400.0,
+    "fat": 0.0,
+    "satFat": 0.0,
+    "carbs": 100.0,
+    "sugars": 100.0,
+    "fiber": 0.0,
+    "protein": 0.0,
+    "salt": 0.0
+   },
+   "source": {
+    "db": "CH-NWD",
+    "version": "7.1",
+    "ref": 470,
+    "name": "Zucker, weiss"
+   },
+   "status": "ok",
+   "proxy": false,
+   "note": "Zucker, weiss (statt Palmzucker)"
+  },
+  {
+   "id": "thai_basil",
+   "group": "spice",
+   "allergens": [],
+   "allergensToCheck": [],
+   "per100g": {
+    "kcal": 46.0,
+    "fat": 0.8,
+    "satFat": 0.1,
+    "carbs": 5.1,
+    "sugars": 5.0,
+    "fiber": 3.1,
+    "protein": 3.1,
+    "salt": 0.0
+   },
+   "source": {
+    "db": "CH-NWD",
+    "version": "7.1",
+    "ref": 464,
+    "name": "Basilikum, roh"
+   },
+   "status": "zu_pruefen",
+   "proxy": true,
+   "note": "Näherung: Basilikum, roh (Thai-Basilikum nicht in CH-NWD)"
+  },
+  {
+   "id": "kaffir_lime_leaves",
+   "group": "spice",
+   "allergens": [],
+   "allergensToCheck": [],
+   "per100g": null,
+   "source": null,
+   "status": "zu_pruefen",
+   "note": "nicht in CH-NWD; Menge vernachlässigbar"
+  },
+  {
+   "id": "jasmine_rice",
+   "group": "pantry",
+   "allergens": [],
+   "allergensToCheck": [],
+   "per100g": {
+    "kcal": 352.0,
+    "fat": 0.9,
+    "satFat": 0.2,
+    "carbs": 78.0,
+    "sugars": 0.2,
+    "fiber": 1.0,
+    "protein": 7.4,
+    "salt": 0.0
+   },
+   "source": {
+    "db": "CH-NWD",
+    "version": "7.1",
+    "ref": 427,
+    "name": "Reis poliert, trocken"
+   },
+   "status": "ok",
+   "proxy": false,
+   "note": "Reis poliert, trocken (Jasminreis ist polierter Reis)"
+  },
+  {
+   "id": "beef_broth",
+   "group": "pantry",
+   "allergens": [],
+   "allergensToCheck": [
+    "celery"
+   ],
+   "per100g": {
+    "kcal": 5.0,
+    "fat": 0.3,
+    "satFat": 0.2,
+    "carbs": 0.2,
+    "sugars": 0.0,
+    "fiber": null,
+    "protein": 0.3,
+    "salt": 1.1
+   },
+   "source": {
+    "db": "CH-NWD",
+    "version": "7.1",
+    "ref": 668,
+    "name": "Bouillon, Fleisch, zubereitet"
+   },
+   "status": "ok",
+   "proxy": false,
+   "note": "Bouillon, Fleisch, zubereitet (Dichte 1,01)",
+   "density": 1.01
+  },
+  {
+   "id": "onion",
+   "group": "veg",
+   "allergens": [],
+   "allergensToCheck": [],
+   "per100g": {
+    "kcal": 39.0,
+    "fat": 0.6,
+    "satFat": 0.2,
+    "carbs": 6.3,
+    "sugars": 4.8,
+    "fiber": 1.9,
+    "protein": 1.1,
+    "salt": 0.0
+   },
+   "source": {
+    "db": "CH-NWD",
+    "version": "7.1",
+    "ref": 368,
+    "name": "Zwiebel, roh"
+   },
+   "status": "ok",
+   "proxy": false,
+   "note": "Zwiebel, roh"
+  },
+  {
+   "id": "ginger",
+   "group": "veg",
+   "allergens": [],
+   "allergensToCheck": [],
+   "per100g": {
+    "kcal": 33.0,
+    "fat": 1.1,
+    "satFat": 0.1,
+    "carbs": 3.4,
+    "sugars": 1.0,
+    "fiber": 2.7,
+    "protein": 1.1,
+    "salt": 0.0
+   },
+   "source": {
+    "db": "CH-NWD",
+    "version": "7.1",
+    "ref": 14239,
+    "name": "Ingwer, roh"
+   },
+   "status": "ok",
+   "proxy": false,
+   "note": "Ingwer, roh"
+  },
+  {
+   "id": "star_anise",
+   "group": "spice",
+   "allergens": [],
+   "allergensToCheck": [],
+   "per100g": null,
+   "source": null,
+   "status": "zu_pruefen",
+   "note": "nicht in CH-NWD; wird abgesiebt"
+  },
+  {
+   "id": "cinnamon_stick",
+   "group": "spice",
+   "allergens": [],
+   "allergensToCheck": [],
+   "per100g": {
+    "kcal": 317.0,
+    "fat": 3.2,
+    "satFat": 0.9,
+    "carbs": 56.0,
+    "sugars": 55.4,
+    "fiber": 24.4,
+    "protein": 3.9,
+    "salt": 0.1
+   },
+   "source": {
+    "db": "CH-NWD",
+    "version": "7.1",
+    "ref": 911,
+    "name": "Zimt"
+   },
+   "status": "ok",
+   "proxy": false,
+   "note": "Zimt; wird abgesiebt"
+  },
+  {
+   "id": "cloves",
+   "group": "spice",
+   "allergens": [],
+   "allergensToCheck": [],
+   "per100g": null,
+   "source": null,
+   "status": "zu_pruefen",
+   "note": "nicht in CH-NWD; wird abgesiebt"
+  },
+  {
+   "id": "rice_noodles",
+   "group": "pantry",
+   "allergens": [],
+   "allergensToCheck": [],
+   "per100g": {
+    "kcal": 352.0,
+    "fat": 0.9,
+    "satFat": 0.2,
+    "carbs": 78.0,
+    "sugars": 0.2,
+    "fiber": 1.0,
+    "protein": 7.4,
+    "salt": 0.0
+   },
+   "source": {
+    "db": "CH-NWD",
+    "version": "7.1",
+    "ref": 427,
+    "name": "Reis poliert, trocken"
+   },
+   "status": "zu_pruefen",
+   "proxy": true,
+   "note": "Näherung: Reis poliert, trocken (flache Reisnudeln nicht in CH-NWD)"
+  },
+  {
+   "id": "beef_sirloin",
+   "group": "meat",
+   "allergens": [],
+   "allergensToCheck": [],
+   "per100g": {
+    "kcal": 133.0,
+    "fat": 4.5,
+    "satFat": 2.0,
+    "carbs": 0.0,
+    "sugars": 0.0,
+    "fiber": 0.0,
+    "protein": 23.2,
+    "salt": 0.1
+   },
+   "source": {
+    "db": "CH-NWD",
+    "version": "7.1",
+    "ref": 30,
+    "name": "Rind, Entrecôte, roh"
+   },
+   "status": "ok",
+   "proxy": false,
+   "note": "Rind, Entrecôte, roh"
+  },
+  {
+   "id": "bean_sprouts",
+   "group": "veg",
+   "allergens": [],
+   "allergensToCheck": [],
+   "per100g": null,
+   "source": null,
+   "status": "zu_pruefen",
+   "note": "nicht in CH-NWD"
+  },
+  {
+   "id": "spring_onion",
+   "group": "veg",
+   "allergens": [],
+   "allergensToCheck": [],
+   "per100g": null,
+   "source": null,
+   "status": "zu_pruefen",
+   "note": "nicht in CH-NWD"
+  },
+  {
+   "id": "coriander_fresh",
+   "group": "spice",
+   "allergens": [],
+   "allergensToCheck": [],
+   "per100g": null,
+   "source": null,
+   "status": "zu_pruefen",
+   "note": "nicht in CH-NWD"
+  },
+  {
+   "id": "lime",
+   "group": "fruit",
+   "allergens": [],
+   "allergensToCheck": [],
+   "per100g": null,
+   "source": null,
+   "status": "zu_pruefen",
+   "note": "nicht in CH-NWD"
+  },
+  {
+   "id": "oats",
+   "group": "pantry",
+   "allergens": [
+    "gluten"
+   ],
+   "allergensToCheck": [],
+   "per100g": {
+    "kcal": 381.0,
+    "fat": 7.5,
+    "satFat": 0.9,
+    "carbs": 59.5,
+    "sugars": 1.0,
+    "fiber": 10.5,
+    "protein": 13.5,
+    "salt": 0.0
+   },
+   "source": {
+    "db": "CH-NWD",
+    "version": "7.1",
+    "ref": 198,
+    "name": "Haferflocken"
+   },
+   "status": "ok",
+   "proxy": false,
+   "note": "Haferflocken"
+  },
+  {
+   "id": "milk",
+   "group": "dairy",
+   "allergens": [
+    "milk"
+   ],
+   "allergensToCheck": [],
+   "per100g": {
+    "kcal": 68.0,
+    "fat": 4.0,
+    "satFat": 2.4,
+    "carbs": 4.7,
+    "sugars": 4.7,
+    "fiber": 0.0,
+    "protein": 3.2,
+    "salt": 0.1
+   },
+   "source": {
+    "db": "CH-NWD",
+    "version": "7.1",
+    "ref": 62,
+    "name": "Vollmilch, pasteurisiert"
+   },
+   "status": "ok",
+   "proxy": false,
+   "note": "Vollmilch, pasteurisiert (Dichte 1,03)",
+   "density": 1.03
+  },
+  {
+   "id": "yogurt",
+   "group": "dairy",
+   "allergens": [
+    "milk"
+   ],
+   "allergensToCheck": [],
+   "per100g": {
+    "kcal": 66.0,
+    "fat": 3.6,
+    "satFat": 2.2,
+    "carbs": 4.5,
+    "sugars": 4.5,
+    "fiber": 0.0,
+    "protein": 3.9,
+    "salt": 0.1
+   },
+   "source": {
+    "db": "CH-NWD",
+    "version": "7.1",
+    "ref": 52,
+    "name": "Joghurt, nature"
+   },
+   "status": "ok",
+   "proxy": false,
+   "note": "Joghurt, nature"
+  },
+  {
+   "id": "apple",
+   "group": "fruit",
+   "allergens": [],
+   "allergensToCheck": [],
+   "per100g": {
+    "kcal": 52.0,
+    "fat": 0.3,
+    "satFat": 0.1,
+    "carbs": 11.6,
+    "sugars": 11.5,
+    "fiber": 1.4,
+    "protein": 0.3,
+    "salt": 0.0
+   },
+   "source": {
+    "db": "CH-NWD",
+    "version": "7.1",
+    "ref": 378,
+    "name": "Apfel, roh"
+   },
+   "status": "ok",
+   "proxy": false,
+   "note": "Apfel, roh"
+  },
+  {
+   "id": "hazelnuts",
+   "group": "pantry",
+   "allergens": [
+    "nuts"
+   ],
+   "allergensToCheck": [],
+   "per100g": {
+    "kcal": 661.0,
+    "fat": 59.5,
+    "satFat": 4.2,
+    "carbs": 10.1,
+    "sugars": 3.0,
+    "fiber": 9.7,
+    "protein": 16.4,
+    "salt": 0.0
+   },
+   "source": {
+    "db": "CH-NWD",
+    "version": "7.1",
+    "ref": 270,
+    "name": "Haselnuss"
+   },
+   "status": "ok",
+   "proxy": false,
+   "note": "Haselnuss"
+  },
+  {
+   "id": "honey",
+   "group": "pantry",
+   "allergens": [],
+   "allergensToCheck": [],
+   "per100g": {
+    "kcal": 306.0,
+    "fat": 0.0,
+    "satFat": 0.0,
+    "carbs": 76.0,
+    "sugars": 76.0,
+    "fiber": 0.0,
+    "protein": 0.4,
+    "salt": 0.0
+   },
+   "source": {
+    "db": "CH-NWD",
+    "version": "7.1",
+    "ref": 472,
+    "name": "Honig (Blütenhonig)"
+   },
+   "status": "ok",
+   "proxy": false,
+   "note": "Honig (Blütenhonig)",
+   "density": 1.43
+  },
+  {
+   "id": "red_lentils",
+   "group": "pantry",
+   "allergens": [],
+   "allergensToCheck": [],
+   "per100g": {
+    "kcal": 325.0,
+    "fat": 1.5,
+    "satFat": 0.3,
+    "carbs": 41.8,
+    "sugars": 1.8,
+    "fiber": 18.2,
+    "protein": 27.0,
+    "salt": 0.0
+   },
+   "source": {
+    "db": "CH-NWD",
+    "version": "7.1",
+    "ref": 13385,
+    "name": "Linse, geschält, getrocknet"
+   },
+   "status": "ok",
+   "proxy": false,
+   "note": "Linse, geschält, getrocknet (rote Linsen sind geschält)"
+  },
+  {
+   "id": "canned_tomatoes",
+   "group": "pantry",
+   "allergens": [],
+   "allergensToCheck": [],
+   "per100g": {
+    "kcal": 22.0,
+    "fat": 0.1,
+    "satFat": 0.0,
+    "carbs": 3.8,
+    "sugars": 3.8,
+    "fiber": 0.8,
+    "protein": 1.1,
+    "salt": 0.0
+   },
+   "source": {
+    "db": "CH-NWD",
+    "version": "7.1",
+    "ref": 637,
+    "name": "Tomate, geschält (Konserve)"
+   },
+   "status": "ok",
+   "proxy": false,
+   "note": "Tomate, geschält (Konserve)"
+  },
+  {
+   "id": "vegetable_broth",
+   "group": "pantry",
+   "allergens": [],
+   "allergensToCheck": [
+    "celery"
+   ],
+   "per100g": {
+    "kcal": 6.0,
+    "fat": 0.4,
+    "satFat": 0.1,
+    "carbs": 0.4,
+    "sugars": 0.1,
+    "fiber": null,
+    "protein": 0.3,
+    "salt": 0.9
+   },
+   "source": {
+    "db": "CH-NWD",
+    "version": "7.1",
+    "ref": 664,
+    "name": "Bouillon, Gemüse, zubereitet"
+   },
+   "status": "ok",
+   "proxy": false,
+   "note": "Bouillon, Gemüse, zubereitet (Dichte 1,01)",
+   "density": 1.01
+  },
+  {
+   "id": "spinach",
+   "group": "veg",
+   "allergens": [],
+   "allergensToCheck": [],
+   "per100g": {
+    "kcal": 25.0,
+    "fat": 0.6,
+    "satFat": 0.1,
+    "carbs": 1.3,
+    "sugars": 0.1,
+    "fiber": 1.9,
+    "protein": 2.6,
+    "salt": 0.2
+   },
+   "source": {
+    "db": "CH-NWD",
+    "version": "7.1",
+    "ref": 365,
+    "name": "Spinat, roh"
+   },
+   "status": "ok",
+   "proxy": false,
+   "note": "Spinat, roh"
+  },
+  {
+   "id": "curry_powder",
+   "group": "spice",
+   "allergens": [],
+   "allergensToCheck": [
+    "mustard",
+    "celery"
+   ],
+   "per100g": null,
+   "source": null,
+   "status": "zu_pruefen",
+   "note": "nicht in CH-NWD; Mischungen können Senf/Sellerie enthalten"
+  },
+  {
+   "id": "cumin",
+   "group": "spice",
+   "allergens": [],
+   "allergensToCheck": [],
+   "per100g": null,
+   "source": null,
+   "status": "zu_pruefen",
+   "note": "nicht in CH-NWD"
+  },
+  {
+   "id": "eggs",
+   "group": "dairy",
+   "allergens": [
+    "eggs"
+   ],
+   "allergensToCheck": [],
+   "per100g": {
+    "kcal": 140.0,
+    "fat": 9.8,
+    "satFat": 2.6,
+    "carbs": 0.3,
+    "sugars": 0.3,
+    "fiber": 0.0,
+    "protein": 12.6,
+    "salt": 0.4
+   },
+   "source": {
+    "db": "CH-NWD",
+    "version": "7.1",
+    "ref": 290,
+    "name": "Hühnerei, ganz, roh"
+   },
+   "status": "ok",
+   "proxy": false,
+   "note": "Hühnerei, ganz, roh"
+  },
+  {
+   "id": "bread",
+   "group": "bakery",
+   "allergens": [
+    "gluten"
+   ],
+   "allergensToCheck": [],
+   "per100g": {
+    "kcal": 234.0,
+    "fat": 1.2,
+    "satFat": 0.2,
+    "carbs": 44.3,
+    "sugars": 0.5,
+    "fiber": 4.1,
+    "protein": 9.5,
+    "salt": 1.6
+   },
+   "source": {
+    "db": "CH-NWD",
+    "version": "7.1",
+    "ref": 829,
+    "name": "Ruchbrot"
+   },
+   "status": "ok",
+   "proxy": false,
+   "note": "Ruchbrot (Standard-Brot)"
+  },
+  {
+   "id": "butter",
+   "group": "dairy",
+   "allergens": [
+    "milk"
+   ],
+   "allergensToCheck": [],
+   "per100g": {
+    "kcal": 746.0,
+    "fat": 82.3,
+    "satFat": 49.4,
+    "carbs": 0.7,
+    "sugars": 0.6,
+    "fiber": 0.0,
+    "protein": 0.7,
+    "salt": 0.0
+   },
+   "source": {
+    "db": "CH-NWD",
+    "version": "7.1",
+    "ref": 49,
+    "name": "Vorzugsbutter"
+   },
+   "status": "ok",
+   "proxy": false,
+   "note": "Vorzugsbutter"
+  },
+  {
+   "id": "gruyere",
+   "group": "dairy",
+   "allergens": [
+    "milk"
+   ],
+   "allergensToCheck": [],
+   "per100g": {
+    "kcal": 394.0,
+    "fat": 32.0,
+    "satFat": 19.2,
+    "carbs": 0.0,
+    "sugars": 0.0,
+    "fiber": 0.0,
+    "protein": 26.4,
+    "salt": 1.5
+   },
+   "source": {
+    "db": "CH-NWD",
+    "version": "7.1",
+    "ref": 530,
+    "name": "Greyerzer, vollfett"
+   },
+   "status": "ok",
+   "proxy": false,
+   "note": "Greyerzer, vollfett"
+  },
+  {
+   "id": "tomato",
+   "group": "veg",
+   "allergens": [],
+   "allergensToCheck": [],
+   "per100g": {
+    "kcal": 21.0,
+    "fat": 0.3,
+    "satFat": 0.1,
+    "carbs": 3.3,
+    "sugars": 3.2,
+    "fiber": 1.2,
+    "protein": 0.9,
+    "salt": 0.0
+   },
+   "source": {
+    "db": "CH-NWD",
+    "version": "7.1",
+    "ref": 348,
+    "name": "Tomate, roh"
+   },
+   "status": "ok",
+   "proxy": false,
+   "note": "Tomate, roh"
+  },
+  {
+   "id": "cucumber",
+   "group": "veg",
+   "allergens": [],
+   "allergensToCheck": [],
+   "per100g": {
+    "kcal": 12.0,
+    "fat": 0.0,
+    "satFat": 0.0,
+    "carbs": 1.8,
+    "sugars": 1.8,
+    "fiber": 0.8,
+    "protein": 0.7,
+    "salt": 0.0
+   },
+   "source": {
+    "db": "CH-NWD",
+    "version": "7.1",
+    "ref": 354,
+    "name": "Gurke, roh"
+   },
+   "status": "ok",
+   "proxy": false,
+   "note": "Gurke, roh"
+  },
+  {
+   "id": "banana",
+   "group": "fruit",
+   "allergens": [],
+   "allergensToCheck": [],
+   "per100g": {
+    "kcal": 90.0,
+    "fat": 0.2,
+    "satFat": 0.1,
+    "carbs": 19.7,
+    "sugars": 15.6,
+    "fiber": 2.7,
+    "protein": 1.1,
+    "salt": 0.0
+   },
+   "source": {
+    "db": "CH-NWD",
+    "version": "7.1",
+    "ref": 381,
+    "name": "Banane, roh"
+   },
+   "status": "ok",
+   "proxy": false,
+   "note": "Banane, roh"
+  },
+  {
+   "id": "chickpeas",
+   "group": "pantry",
+   "allergens": [],
+   "allergensToCheck": [],
+   "per100g": {
+    "kcal": 131.0,
+    "fat": 2.0,
+    "satFat": 0.3,
+    "carbs": 16.8,
+    "sugars": 0.9,
+    "fiber": 8.4,
+    "protein": 7.3,
+    "salt": 0.0
+   },
+   "source": {
+    "db": "CH-NWD",
+    "version": "7.1",
+    "ref": 1059,
+    "name": "Kichererbse, gekocht (ohne Zugabe von Fett und Salz)"
+   },
+   "status": "ok",
+   "proxy": false,
+   "note": "Kichererbse, gekocht (Dose, abgetropft)"
+  },
+  {
+   "id": "quinoa",
+   "group": "pantry",
+   "allergens": [],
+   "allergensToCheck": [],
+   "per100g": {
+    "kcal": 362.0,
+    "fat": 6.6,
+    "satFat": 0.5,
+    "carbs": 58.2,
+    "sugars": 3.1,
+    "fiber": 8.3,
+    "protein": 13.3,
+    "salt": 0.0
+   },
+   "source": {
+    "db": "CH-NWD",
+    "version": "7.1",
+    "ref": 13394,
+    "name": "Quinoa, roh"
+   },
+   "status": "ok",
+   "proxy": false,
+   "note": "Quinoa, roh"
+  },
+  {
+   "id": "berries",
+   "group": "fruit",
+   "allergens": [],
+   "allergensToCheck": [],
+   "per100g": {
+    "kcal": 43.0,
+    "fat": 0.5,
+    "satFat": 0.1,
+    "carbs": 7.0,
+    "sugars": 6.6,
+    "fiber": 3.7,
+    "protein": 0.9,
+    "salt": 0.0
+   },
+   "source": {
+    "db": "CH-NWD",
+    "version": "7.1",
+    "ref": 1119,
+    "name": "Beeren (Durchschnitt), roh"
+   },
+   "status": "ok",
+   "proxy": false,
+   "note": "Beeren (Durchschnitt), roh"
+  },
+  {
+   "id": "pasta",
+   "group": "pantry",
+   "allergens": [
+    "gluten"
+   ],
+   "allergensToCheck": [],
+   "per100g": {
+    "kcal": 353.0,
+    "fat": 1.2,
+    "satFat": 0.2,
+    "carbs": 70.5,
+    "sugars": 0.4,
+    "fiber": 5.1,
+    "protein": 12.6,
+    "salt": 0.0
+   },
+   "source": {
+    "db": "CH-NWD",
+    "version": "7.1",
+    "ref": 800,
+    "name": "Teigwaren ohne Ei, trocken"
+   },
+   "status": "ok",
+   "proxy": false,
+   "note": "Teigwaren ohne Ei, trocken"
+  },
+  {
+   "id": "lettuce",
+   "group": "veg",
+   "allergens": [],
+   "allergensToCheck": [],
+   "per100g": {
+    "kcal": 16.0,
+    "fat": 0.4,
+    "satFat": 0.1,
+    "carbs": 1.1,
+    "sugars": 0.7,
+    "fiber": 1.3,
+    "protein": 1.3,
+    "salt": 0.0
+   },
+   "source": {
+    "db": "CH-NWD",
+    "version": "7.1",
+    "ref": 448,
+    "name": "Kopfsalat, roh"
+   },
+   "status": "ok",
+   "proxy": false,
+   "note": "Kopfsalat, roh"
+  }
+ ]
+}
