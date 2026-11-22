@@ -12,6 +12,7 @@ graphify-out/
 # Abhängigkeiten, Build und Test-Artefakte (E0)
 node_modules/
 dist/
+dist-pages/
 coverage/
 playwright-report/
 test-results/

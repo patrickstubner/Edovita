@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router';
+import { publicUrl } from '../app/publicBase.ts';
 import { Icon, Screen } from '../components/index.ts';
 import type { ThemePreference } from '../domain/index.ts';
 import { useTheme } from '../hooks/index.ts';
@@ -28,8 +29,8 @@ export function HomePage() {
 
   const logoSrc =
     effective === 'dark'
-      ? '/assets/edovita_logo_dark_transparent.svg'
-      : '/assets/edovita_logo.svg';
+      ? publicUrl('/assets/edovita_logo_dark_transparent.svg')
+      : publicUrl('/assets/edovita_logo.svg');
 
   return (
     <Screen

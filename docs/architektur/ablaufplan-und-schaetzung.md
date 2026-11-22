@@ -43,4 +43,4 @@ E2 und E3 sind unabhängig und können parallel laufen. Passt das Drittel nur f�
 
 ## Pro PR (Dauerregeln)
 
-Sicherheitsprüfung nach jeder Codeänderung mit Schweregrad und Fix-Vorschlag, `npm audit`, Meldung an den Projektinhaber. Merge nur nach dem Ja des Projektinhabers (für Edovita gibt es keine gespeicherte Merge-Regel). Kein Deploy ohne Freigabe.
+Sicherheitsprüfung nach jeder Codeänderung mit Schweregrad und Fix-Vorschlag, `pnpm audit`, Meldung an den Projektinhaber. Merge nur nach dem Ja des Projektinhabers. Deploy nur über den Pages-Workflow nach Merge auf `main`; andere Deploys nur mit Freigabe.

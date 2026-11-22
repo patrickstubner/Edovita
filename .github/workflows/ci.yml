@@ -50,6 +50,18 @@ jobs:
       - name: Security checks (DOM sinks, CSP, supply-chain config)
         run: pnpm run security:check
 
+      - name: Build with GitHub Pages prefix
+        env:
+          GITHUB_PAGES: 'true'
+          PAGES_DIST: dist-pages
+        run: pnpm run build
+
+      - name: Security checks on Pages build (prefix, CSP meta)
+        env:
+          GITHUB_PAGES: 'true'
+          DIST_DIR: dist-pages
+        run: pnpm run security:check
+
       - name: Dependency vulnerability audit
         run: pnpm audit --audit-level=high
 

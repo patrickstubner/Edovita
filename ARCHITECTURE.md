@@ -1,15 +1,15 @@
 # ARCHITECTURE.md – Edovita
 
-Stand 22.11.2026, Basis `main` `40aa5b5` + Paket E0 (`feat/e0-scaffold`, Version `0.1.0`). Das Grundgerüst (Phase 1) steht mit allen Schicht- und Sicherheitsleitplanken; Details in `docs/architektur/`.
+Stand 22.11.2026, `main` enthält E0 (`7f49e3d`, Version `0.1.0`). Das Grundgerüst (Phase 1) steht mit allen Schicht- und Sicherheitsleitplanken; Details in `docs/architektur/`. Vorschau nach Merge des Pages-Workflows: https://patrickstubner.github.io/Edovita/.
 
 ## Heute im Repo
 | Ort | Inhalt |
 |---|---|
 | `src/` | Produktiv-Grundgerüst (E0): React 19, TypeScript (strict), Rsbuild, `createHashRouter`, `Screen`/`BottomActions`, Theme (System/Hell/Dunkel, `#0B7F6B`), SVG-Icon-Sprite, leere Dienst-Einstiege für E1–E7 |
 | `content/` | Zielordner für geprüfte Inhalte (Übernahme aus `docs/architektur/inhalte/` ab E1/E2) |
-| `public/` | `_headers` mit strikter CSP (`connect-src 'self'`), `theme-init.js` (ohne Inline-Skript), finale Logo-SVGs |
+| `public/` | `_headers` mit strikter CSP (`connect-src 'self'`; auf GitHub Pages zusätzlich als CSP-Meta-Tag, ohne `frame-ancestors`), `theme-init.js` (ohne Inline-Skript), finale Logo-SVGs |
 | `tests/`, `scripts/` | Rstest `0.12.6` (ADR-006), Testing Library, `fake-indexeddb`, Playwright (`390×844`, Hell/Dunkel + CSP-Header), ADR-001-Negativtests (`test-arch-guard.mjs`), `security-check.mjs` |
-| `.github/` | Hardened CI-Workflow (SHA-gepinnt, Lint, Tests, Build, Audit, `gitleaks 8.30.1`) und Dependabot (4-Tage-Cooldown) |
+| `.github/` | Hardened CI-Workflow (SHA-gepinnt, Lint, Tests, Build, Audit, `gitleaks 8.30.1`), Pages-Deploy (`deploy-pages.yml`, nur nach Merge auf `main`) und Dependabot (4-Tage-Cooldown) |
 | `SECURITY.md` | Sicherheitsmodell und laufende Sicherheitsprüfungen der App |
 | `README.md` | Überblick, lokaler Start mit `pnpm`, Einstieg für Agents (Cursor, Antigravity) |
 | `prototype/` | Klick-Prototyp v5.4.1: HTML/CSS/Vanilla-JS, 37 Screens, 7 Sprachen. Eingefrorene Design-Referenz (nicht anfassen). |

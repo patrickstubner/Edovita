@@ -1,4 +1,13 @@
-# STATUS.md – Stand 22.11.2026, Branch `feat/e0-scaffold`, Basis main 40aa5b5 (inkl. PR #1–#5, #14)
+# STATUS.md – Stand 22.11.2026, `main` `7f49e3d` (E0 gemergt als PR #15; inkl. PR #1–#5, #14)
+
+## Nachtrag 22.11.2026 (Abend): E0b – Deploy auf GitHub Pages
+Branch `feat/e0b-github-pages` (Draft-PR, Basis `main` `7f49e3d`, Issue `#21`). Nicht mergen bis Ok des Stabschefs. Der Projektinhaber hat am 22.11.2026 entschieden, dass das E0-Grundgerüst unter https://patrickstubner.github.io/Edovita/ ansehbar sein soll. Kein bestehendes Issue (#7–#13) deckte Pages ab.
+- **Workflow** `.github/workflows/deploy-pages.yml`: nur `push` auf `main` und `workflow_dispatch`. Alle Actions SHA-gepinnt (`pnpm/action-setup` wie in `ci.yml`; `configure-pages` `v6.0.0`, `upload-pages-artifact` `v5.0.0`, `deploy-pages` `v5.0.1`, jeweils älter als 4 Tage). Schreibrechte `pages: write` und `id-token: write` nur im Deploy-Job. Concurrency-Gruppe `pages`, laufende Deploys werden nicht abgebrochen. Environment `github-pages` auf Branch `main` beschränkt.
+- **Build:** Asset-Prefix `/Edovita/` nur wenn `GITHUB_PAGES=true`; lokal weiter `/`. Hash-Router unverändert. `publicUrl()` für Logo- und Public-Pfade. CI baut zusätzlich nach `dist-pages/` und prüft Prefix plus CSP-Meta.
+- **CSP:** GitHub Pages ignoriert `_headers`. Dieselbe Policy wird als `<meta http-equiv>` aus `_headers` erzeugt, ohne `frame-ancestors`. Dokumentiert in `SECURITY.md`.
+- **Doku:** `AGENTS.md`, `README.md`, `ARCHITECTURE.md`, `STATUS.md`, `docs/architektur/issues-entwuerfe.md`, `ablaufplan-und-schaetzung.md`: Deploy nur über den Pages-Workflow nach Merge auf `main`. Keine neuen Pakete, keine Kosten (öffentliches Repo).
+- **Lokal geprüft (22.11.2026, Europe/Zurich):** `pnpm run lint` grün; `test:arch` 3/3; `pnpm test` 10/10 (Rstest 0.12.6); `content:check` OK; `pnpm run build` OK; `security:check` OK (auch auf `dist-pages` mit Prefix `/Edovita/`); `pnpm audit --audit-level=high` 0 Funde; Playwright E2E 2/2 (390×844 Hell/Dunkel); Preview `GITHUB_PAGES=true PAGES_DIST=dist-pages pnpm run preview` unter http://127.0.0.1:4173/Edovita/: alle Assets HTTP 200, Logo `/Edovita/assets/…`, Hash-Route `#/status`, 0 Konsolenfehler; `gitleaks 8.30.1 dir` 0 Funde; `actionlint 1.7.12` 0 Funde.
+- **Lokale Tools:** `rg`, Lesen der Dateien, `pnpm`, Playwright, `gitleaks`, `actionlint`. Kein Cloud Agent (Kontingent bis 27.11.2026 erschöpft).
 
 ## Nachtrag 22.11.2026 (Antigravity): Paket E0 – Grundgerüst mit Leitplanken (v0.1.0)
 Branch `feat/e0-scaffold` (Draft-PR, Basis `main` `40aa5b5`, nicht mergen bis Stabschef-Ok und Ja des Projektinhabers). Version `0.1.0`, Issue `#6`.
