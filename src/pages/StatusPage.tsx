@@ -19,7 +19,7 @@ export function StatusPage() {
           >
             <Icon name="left" />
           </button>
-          <h1>Grundgerüst E0</h1>
+          <h1>Übersicht</h1>
         </div>
       }
       actions={
@@ -32,35 +32,37 @@ export function StatusPage() {
           <span>Zurück zur Startseite</span>
         </button>
       }
-      actionsLabel="Projektstand Aktionen"
+      actionsLabel="Übersicht Aktionen"
     >
       <div className="edo-stack">
         <section className="edo-card edo-stack">
-          <h2>Aktive Leitplanken</h2>
+          <h2>Bereit für den Aufbau</h2>
           <p className="edo-sub">
-            Schichten nach ADR-001 (dependency-cruiser), logische CSS-Regeln für
-            RTL, strikte CSP und Rstest als Testrunner (ADR-006).
+            Das Grundgerüst steht. Die Funktionen der App werden Schritt für
+            Schritt ergänzt.
           </p>
         </section>
 
         <section className="edo-card edo-stack">
-          <h2>Nächste Schritte</h2>
+          <h2>Geplante Bereiche</h2>
           <ul className="edo-list">
             <li className="edo-list-item">
-              <Icon name="check" size="sm" />
-              <span className="edo-sub">E1: Domäne, Lebensmittel-Katalog und Rezepte</span>
+              <Icon name="clock" size="sm" />
+              <span className="edo-sub">Lebensmittel-Katalog und Rezepte</span>
             </li>
             <li className="edo-list-item">
-              <Icon name="check" size="sm" />
-              <span className="edo-sub">E2: i18n-Laufzeit und Sprach-Registry</span>
+              <Icon name="clock" size="sm" />
+              <span className="edo-sub">Mehrsprachigkeit und Zweitsprache</span>
             </li>
             <li className="edo-list-item">
-              <Icon name="check" size="sm" />
-              <span className="edo-sub">E3: Lokale Speicherung mit Dexie</span>
+              <Icon name="clock" size="sm" />
+              <span className="edo-sub">
+                Einkaufsliste mit den Zuständen offen, im Korb und zu Hause
+              </span>
             </li>
             <li className="edo-list-item">
-              <Icon name="check" size="sm" />
-              <span className="edo-sub">E4–E6: Rezept-Detail, Einkaufsliste &amp; Zweitsprache</span>
+              <Icon name="clock" size="sm" />
+              <span className="edo-sub">Offline-Nutzung für unterwegs</span>
             </li>
           </ul>
         </section>

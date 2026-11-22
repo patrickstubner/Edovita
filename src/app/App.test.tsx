@@ -39,12 +39,10 @@ describe('App Grundgerüst (E0)', () => {
   it('navigiert per Hash-Router zur Statusseite und wieder zurück', async () => {
     render(<App />);
 
-    fireEvent.click(
-      screen.getByRole('button', { name: /Weiter zum Projektstand/i }),
-    );
+    fireEvent.click(screen.getByRole('button', { name: /Weiter/i }));
 
     expect(
-      await screen.findByRole('heading', { name: 'Grundgerüst E0' }),
+      await screen.findByRole('heading', { name: 'Übersicht' }),
     ).toBeInTheDocument();
 
     fireEvent.click(

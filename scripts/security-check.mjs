@@ -63,6 +63,23 @@ if (!existsSync(headersPath)) {
   if (!headers.includes("frame-ancestors 'none'")) {
     errors.push("CSP in public/_headers muss frame-ancestors 'none' enthalten.");
   }
+  if (!headers.includes('X-Robots-Tag: noindex, nofollow, noarchive')) {
+    errors.push('public/_headers muss X-Robots-Tag: noindex, nofollow, noarchive enthalten.');
+  }
+}
+
+// 2b. Sicherstellen, dass rsbuild.config.ts die Header direkt aus public/_headers liest
+const rsbuildConfigPath = resolve(ROOT, 'rsbuild.config.ts');
+if (!existsSync(rsbuildConfigPath)) {
+  errors.push('rsbuild.config.ts fehlt.');
+} else {
+  const rsbuildSrc = readFileSync(rsbuildConfigPath, 'utf8');
+  if (!rsbuildSrc.includes('public/_headers')) {
+    errors.push('rsbuild.config.ts muss Sicherheits-Header aus public/_headers laden (Single Source of Truth).');
+  }
+  if (/Content-Security-Policy['"]?\s*:/.test(rsbuildSrc)) {
+    errors.push('rsbuild.config.ts darf keine duplizierte CSP-Zeichenkette neben public/_headers definieren.');
+  }
 }
 
 // 3. Gebautes dist/index.html prüfen (falls Build bereits gelaufen ist): keine Inline-Skripte

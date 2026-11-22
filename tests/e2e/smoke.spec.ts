@@ -41,6 +41,7 @@ test('Startseite rendert im Handy-Viewport (390x844) mit strikter CSP und fixen 
   expect(headers['x-content-type-options']).toBe('nosniff');
   expect(headers['x-frame-options']).toBe('DENY');
   expect(headers['referrer-policy']).toBe('no-referrer');
+  expect(headers['x-robots-tag']).toBe('noindex, nofollow, noarchive');
 
   await expect(
     page.getByRole('heading', { name: 'Willkommen bei Edovita' }),
@@ -65,10 +66,8 @@ test('Startseite rendert im Handy-Viewport (390x844) mit strikter CSP und fixen 
   await page.getByRole('button', { name: 'Hell' }).click();
   await expect(page.locator('html')).toHaveAttribute('data-eff', 'light');
 
-  await page.getByRole('button', { name: /Weiter zum Projektstand/i }).click();
-  await expect(
-    page.getByRole('heading', { name: 'Grundgerüst E0' }),
-  ).toBeVisible();
+  await page.getByRole('button', { name: /Weiter/i }).click();
+  await expect(page.getByRole('heading', { name: 'Übersicht' })).toBeVisible();
   expect(page.url()).toContain('#/status');
 
   const runtimeViolations = await page.evaluate(() => {

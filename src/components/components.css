@@ -10,14 +10,14 @@
   flex-direction: column;
   flex: 1 1 auto;
   min-block-size: 0;
-  padding-block-start: 16px;
+  padding-block: 16px 0;
   padding-inline: 20px;
   overflow: hidden;
 }
 
 .edo-screen-header {
   flex: none;
-  margin-block-end: 12px;
+  margin-block-end: 14px;
 }
 
 .edo-screen-body {
@@ -26,7 +26,11 @@
   overflow-block: auto;
   overflow-inline: hidden;
   overscroll-behavior: contain;
-  padding-block-end: 20px;
+  padding-block-end: 16px;
+}
+
+.edo-screen:not(:has(> .edo-actions)) > .edo-screen-body {
+  padding-block-end: calc(24px + env(safe-area-inset-bottom, 0px));
 }
 
 .edo-actions {
@@ -35,10 +39,17 @@
   flex-direction: column;
   gap: 10px;
   padding-block: 12px calc(12px + env(safe-area-inset-bottom, 0px));
+  padding-inline: 0;
   background: var(--edo-bg);
   border-block-start: 1px solid var(--edo-border);
   box-shadow: 0 -8px 20px -12px rgb(20 33 31 / 18%);
   z-index: 6;
+}
+
+.edo-app-shell.has-tab .edo-screen > .edo-actions {
+  padding-block-end: calc(
+    12px + var(--edo-tabbar-h) + env(safe-area-inset-bottom, 0px)
+  );
 }
 
 .edo-ic {
@@ -68,11 +79,11 @@
   justify-content: center;
   gap: 10px;
   inline-size: 100%;
-  min-block-size: 56px;
-  border-radius: 28px;
+  min-block-size: 60px;
+  border-radius: 30px;
   background: var(--edo-primary);
   color: var(--edo-on-primary);
-  font-size: 18px;
+  font-size: 19px;
   font-weight: 700;
   padding-inline: 20px;
   text-align: center;
@@ -82,8 +93,14 @@
   background: var(--edo-surface);
   color: var(--edo-primary);
   border: 2px solid var(--edo-primary);
-  min-block-size: 48px;
-  font-size: 16px;
+  min-block-size: 52px;
+  font-size: 17px;
+}
+
+html[data-eff='dark'] .edo-btn-secondary {
+  border-color: var(--edo-primary);
+  color: var(--edo-primary-dark);
+  background: var(--edo-surface);
 }
 
 .edo-card {
@@ -124,33 +141,33 @@
   border-radius: 18px;
   padding-block: 6px;
   padding-inline: 12px;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
 }
 
+/* Segment-Schalter exakt wie Prototyp (.seg): Pillen-Container, aktiver Knopf weiss */
 .edo-segmented {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 8px;
+  display: flex;
+  background: var(--edo-bg);
+  border-radius: 16px;
+  padding-block: 4px;
+  padding-inline: 4px;
+  gap: 2px;
 }
 
 .edo-seg-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  min-block-size: 46px;
-  border-radius: 14px;
-  border: 1.5px solid var(--edo-border-strong);
-  background: var(--edo-surface);
+  flex: 1;
+  text-align: center;
+  padding-block: 10px;
+  padding-inline: 0;
+  border-radius: 12px;
+  font-weight: 700;
   color: var(--edo-text-muted);
-  font-size: 15px;
-  font-weight: 600;
-  padding-inline: 8px;
+  min-block-size: 46px;
 }
 
 .edo-seg-btn[aria-pressed='true'] {
-  background: var(--edo-primary);
-  border-color: var(--edo-primary);
-  color: var(--edo-on-primary);
+  background: var(--edo-surface);
+  color: var(--edo-text);
+  box-shadow: var(--edo-shadow);
 }

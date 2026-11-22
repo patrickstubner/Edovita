@@ -1,19 +1,37 @@
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import { defineConfig } from '@rsbuild/core';
 import { pluginReact } from '@rsbuild/plugin-react';
 
-// Verbindliche Sicherheits-Header (ADR-004, docs/architektur/SECURITY.md).
-// Identisch zu public/_headers; connect-src 'self' für lazy geladene Inhalte,
-// strikt ohne 'unsafe-inline' und ohne 'unsafe-eval'.
-export const SECURITY_HEADERS: Record<string, string> = {
-  'Content-Security-Policy':
-    "default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; media-src 'self'; object-src 'none'; frame-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'",
-  'X-Content-Type-Options': 'nosniff',
-  'X-Frame-Options': 'DENY',
-  'Referrer-Policy': 'no-referrer',
-  'Permissions-Policy':
-    'camera=(), microphone=(), geolocation=(), interest-cohort=()',
-  'Cross-Origin-Opener-Policy': 'same-origin',
-};
+/**
+ * Liest alle Sicherheits-Header direkt aus `public/_headers` (Single Source of Truth,
+ * ADR-004 / docs/architektur/SECURITY.md), damit Preview-Server und Auslieferung
+ * garantiert identische CSP- und Sicherheits-Header verwenden.
+ */
+export function loadSecurityHeaders(
+  headersFile = resolve(process.cwd(), 'public/_headers'),
+): Record<string, string> {
+  const raw = readFileSync(headersFile, 'utf8');
+  const headers: Record<string, string> = {};
+  for (const line of raw.split(/\r?\n/)) {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed === '/*' || trimmed.startsWith('#')) {
+      continue;
+    }
+    const sep = trimmed.indexOf(':');
+    if (sep <= 0) {
+      continue;
+    }
+    const name = trimmed.slice(0, sep).trim();
+    const value = trimmed.slice(sep + 1).trim();
+    if (name && value) {
+      headers[name] = value;
+    }
+  }
+  return headers;
+}
+
+export const SECURITY_HEADERS = loadSecurityHeaders();
 
 export default defineConfig({
   plugins: [pluginReact()],

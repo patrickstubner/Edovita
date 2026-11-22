@@ -6,16 +6,21 @@ import { useTheme } from '../hooks/index.ts';
 const THEME_OPTIONS: ReadonlyArray<{
   value: ThemePreference;
   label: string;
-  icon: 'spark' | 'sun' | 'moon';
 }> = [
-  { value: 'system', label: 'System', icon: 'spark' },
-  { value: 'light', label: 'Hell', icon: 'sun' },
-  { value: 'dark', label: 'Dunkel', icon: 'moon' },
+  { value: 'system', label: 'System' },
+  { value: 'light', label: 'Hell' },
+  { value: 'dark', label: 'Dunkel' },
 ];
 
+const THEME_NOTES: Record<ThemePreference, string> = {
+  system: 'Folgt der Einstellung deines Geräts.',
+  light: 'Immer hell.',
+  dark: 'Immer dunkel.',
+};
+
 /**
- * Startseite des Phase-1-Grundgerüsts (E0).
- * Prüft Shell, Theme (System/Hell/Dunkel), SVG-Sprite, Hash-Routing und fixe BottomActions.
+ * Startseite der Edovita-App (E0).
+ * Zeigt Logo, Darstellungswahl im Prototyp-Stil, Datenschutzhinweise und fixe BottomActions.
  */
 export function HomePage() {
   const { preference, effective, setPreference } = useTheme();
@@ -28,24 +33,13 @@ export function HomePage() {
 
   return (
     <Screen
-      header={
-        <div className="edo-row edo-row-between">
-          <span className="edo-chip">
-            <Icon name="leaf" size="sm" />
-            <span>v0.1.0 · Phase 1</span>
-          </span>
-          <span className="edo-cap" data-testid="theme-indicator">
-            {effective === 'dark' ? 'Dunkel' : 'Hell'}
-          </span>
-        </div>
-      }
       actions={
         <button
           type="button"
           className="edo-btn"
           onClick={() => navigate('/status')}
         >
-          <span>Weiter zum Projektstand</span>
+          <span>Weiter</span>
           <Icon name="chev" size="sm" />
         </button>
       }
@@ -57,8 +51,8 @@ export function HomePage() {
             src={logoSrc}
             alt="Edovita"
             className="edo-logo-img"
-            width={140}
-            height={132}
+            width={150}
+            height={142}
           />
         </div>
 
@@ -71,10 +65,7 @@ export function HomePage() {
         </div>
 
         <section className="edo-card edo-stack" aria-labelledby="theme-heading">
-          <div className="edo-row edo-row-between">
-            <h2 id="theme-heading">Darstellung</h2>
-            <span className="edo-cap">Kontrast #0B7F6B</span>
-          </div>
+          <h2 id="theme-heading">Darstellung</h2>
           <div
             className="edo-segmented"
             role="group"
@@ -88,25 +79,28 @@ export function HomePage() {
                 aria-pressed={preference === opt.value}
                 onClick={() => setPreference(opt.value)}
               >
-                <Icon name={opt.icon} size="sm" />
-                <span>{opt.label}</span>
+                {opt.label}
               </button>
             ))}
           </div>
+          <p className="edo-cap" data-testid="theme-note">
+            {THEME_NOTES[preference]}
+          </p>
         </section>
 
         <section
           className="edo-card edo-card-mint edo-stack"
           aria-labelledby="privacy-heading"
         >
-          <h2 id="privacy-heading">Schutz von Anfang an</h2>
+          <h2 id="privacy-heading">Deine Daten bleiben bei dir</h2>
           <ul className="edo-list">
             <li className="edo-list-item">
               <span className="edo-icon-badge" aria-hidden="true">
                 <Icon name="shield" size="sm" />
               </span>
               <span className="edo-sub">
-                Kein Konto, kein Server, keine Analyse-Tracker in Phase 1.
+                Kein Konto, kein Server und keine Werbung – alles bleibt direkt
+                auf deinem Gerät.
               </span>
             </li>
             <li className="edo-list-item">
@@ -114,16 +108,8 @@ export function HomePage() {
                 <Icon name="lock" size="sm" />
               </span>
               <span className="edo-sub">
-                Strenge CSP ohne Inline-Skripte, alle Daten bleiben lokal.
-              </span>
-            </li>
-            <li className="edo-list-item">
-              <span className="edo-icon-badge" aria-hidden="true">
-                <Icon name="book" size="sm" />
-              </span>
-              <span className="edo-sub">
-                Als Nächstes folgen Katalog &amp; Rezepte (E1), Sprachen (E2)
-                und lokale Speicherung (E3).
+                Deine Angaben und Einkaufslisten gehören nur dir und lassen sich
+                jederzeit löschen.
               </span>
             </li>
           </ul>

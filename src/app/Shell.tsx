@@ -20,10 +20,12 @@ export function Shell() {
     syncHeight();
     window.addEventListener('resize', syncHeight);
     window.visualViewport?.addEventListener('resize', syncHeight);
+    window.visualViewport?.addEventListener('scroll', syncHeight);
 
     return () => {
       window.removeEventListener('resize', syncHeight);
       window.visualViewport?.removeEventListener('resize', syncHeight);
+      window.visualViewport?.removeEventListener('scroll', syncHeight);
     };
   }, []);
 
