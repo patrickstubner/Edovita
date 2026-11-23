@@ -1,6 +1,6 @@
 # ARCHITECTURE.md – Edovita
 
-Stand 22.11.2026, Basis `main` `a6c47cb35de675d3b3b71d1ec8bceca3cb936f97` (enthält E0 `7f49e3d`, E0b Pages `e7d46884` und Nachzug `#23` `a6c47cb3`, Version `0.1.0`), erweitert um Paket **E1** (Issue `#7`, Draft-PR `#24`, Branch `feat/e1-domain-content`). Die lokale Analyse von E1 (`codebase-memory-mcp`, Leitplanken, Rstest, Playwright, `gitleaks`, GitHub-CI-Run `45074835911`) bezieht sich auf den geprüften Code-Stand `eb71c25a0bfc68c9cbb185f0ce45e9a9d5d453f1` (E0-Referenzstand: `9e45e9e9688d33e781d03d3b8e722b0af55f68d6`). Details in `docs/architektur/`. Vorschau: https://patrickstubner.github.io/Edovita/.
+Stand 23.11.2026, Basis `main` `bd3e0246d91066fd28ab381879cf28b7ff4410b9` (enthält E0 `7f49e3d`, E0b Pages `e7d46884`, Nachzug `#23` `a6c47cb3` und E1 PR `#24` `bd3e0246`, Version `0.1.0`). Die lokale Analyse von E1 (`codebase-memory-mcp`, Leitplanken, Rstest, Playwright, `gitleaks`, GitHub-CI-Run `45074835911`) bezieht sich auf den vor dem Merge geprüften Code-Stand `eb71c25a0bfc68c9cbb185f0ce45e9a9d5d453f1` (E0-Referenzstand: `9e45e9e9688d33e781d03d3b8e722b0af55f68d6`; von Stabschef freigegebener Head vor dem Squash-Merge: `691863e1d7e38071cc3561ad3ccd781fd156f2a9`). Details in `docs/architektur/`. Vorschau: https://patrickstubner.github.io/Edovita/.
 
 ## Heute im Repo
 | Ort | Inhalt |

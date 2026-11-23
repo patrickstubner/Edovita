@@ -1,4 +1,13 @@
-# STATUS.md – Stand 22.11.2026, Basis `main` `a6c47cb35de675d3b3b71d1ec8bceca3cb936f97` (E0 PR #15, E0b PR #22, Nachzug PR #23; E1 als Draft-PR #24)
+# STATUS.md – Stand 23.11.2026, Basis `main` `bd3e0246d91066fd28ab381879cf28b7ff4410b9` (E0 PR #15, E0b PR #22, Nachzug PR #23, E1 PR #24)
+
+## Nachtrag 23.11.2026: E1 auf main gemergt
+Paket **E1** (Issue `#7`) ist über PR `#24` squash-gemergt als `bd3e0246d91066fd28ab381879cf28b7ff4410b9` (von Stabschef freigegebener Head `691863e1d7e38071cc3561ad3ccd781fd156f2a9`, Basis war `a6c47cb3`). Der frühere Zustand «Draft / wartet auf OK» für E1 entfällt. Nächster Schritt: Paket **E2** (Issue `#8`, i18n).
+
+Offene Folgepunkte aus der Stabschef-Prüfung von `#24` (niedrig, kein Blocker; in E2 oder als Issue):
+- **N1:** `review.sources` erlaubt `javascript:`/`data:`-URLs; nur `https` zulassen.
+- **N2:** `foodName`/`getRecipeText` lesen ohne `Object.hasOwn`, `uiLang` nicht gewhitelistet.
+
+**Hinweis vor Release (unverändert):** Die Entwicklungs-Route `#/status` (`StatusPage`) und die Dev-/Platzhaltertexte vor der Veröffentlichung entfernen.
 
 ## Nachtrag 22.11.2026 (Antigravity): Paket E1 – Domäne, Lebensmittel-Katalog, Rezept-Schema, Inhaltsprüfung
 Branch `feat/e1-domain-content` (Draft-PR `#24`, Issue `#7`, Basis `main` `a6c47cb35de675d3b3b71d1ec8bceca3cb936f97`, nicht mergen bis Stabschef-Ok und Ja des Projektinhabers). Geprüfter Code-Stand (Commit A): `eb71c25a0bfc68c9cbb185f0ce45e9a9d5d453f1` (GitHub Actions CI Run `45074835911` grün: `Lint, Tests, Build & Audit` 1m26s, `Secret Scan (gitleaks)` 7s).
@@ -96,7 +105,7 @@ Phase 1 ab 27.11.2026: Grundgerüst (E0), dann zuerst Rezept-Detailseite (E4) un
 - Architektur-Doku, ADR-001 bis ADR-005 akzeptiert (15.11.2026), ADR-006 akzeptiert (22.11.2026).
 - GitHub-Issues `#6`–`#13` für E0–E7 angelegt (22.11.2026).
 - Paket **E0** (PR `#15`, `7f49e3d`), **E0b** GitHub Pages (PR `#22`, `e7d46884`) und Nachzug `#23` (`a6c47cb3`) auf `main` gemergt (22.11.2026).
-- Paket **E1** (Issue `#7`, Domäne mit `zod@4.6.7`, Katalog, Nährwerte, Inhaltsprüfung inkl. Übernahme nach `content/`) umgesetzt auf Branch `feat/e1-domain-content` (22.11.2026, Draft-PR `#24`, wartet auf Stabschef-Ok und Ja des Projektinhabers).
+- Paket **E1** (Issue `#7`, Domäne mit `zod@4.6.7`, Katalog, Nährwerte, Inhaltsprüfung inkl. Übernahme nach `content/`) über PR `#24` auf `main` gemergt als `bd3e0246d91066fd28ab381879cf28b7ff4410b9` (23.11.2026; geprüfter Head `691863e1d7e38071cc3561ad3ccd781fd156f2a9`).
 
 ## Entscheide (15.11. & 22.11.2026)
 - Dexie in der Web-Phase, SQLite später mit der Handy-App (ADR-002).
@@ -110,8 +119,8 @@ Phase 1 ab 27.11.2026: Grundgerüst (E0), dann zuerst Rezept-Detailseite (E4) un
 | Paket | Issue | Inhalt | Status / Voraussetzung |
 |---|---|---|---|
 | E0 | `#6` | Grundgerüst mit Leitplanken (Scaffold Phase 1), CI, SECURITY.md | erledigt (gemergt PR `#15`, Pages `#22`, Nachzug `#23`) |
-| E1 | `#7` | Domäne, Lebensmittel-Katalog, Rezept-Schema, Inhaltsprüfung, übernimmt `docs/architektur/inhalte/` | umgesetzt (Draft-PR `#24`, `feat/e1-domain-content`) |
-| E2 | `#8` | i18n-Laufzeit und Registry | offen (nach E0) |
+| E1 | `#7` | Domäne, Lebensmittel-Katalog, Rezept-Schema, Inhaltsprüfung, übernimmt `docs/architektur/inhalte/` | erledigt (gemergt PR `#24`, `bd3e0246`) |
+| E2 | `#8` | i18n-Laufzeit und Registry | offen (nächster Schritt, nach E1) |
 | E3 | `#9` | Speicherung mit Dexie | offen (nach E0) |
 | E4 | `#10` | Rezept-Detailseite | offen (nach E1, E2, E3) |
 | E5 | `#11` | Einkaufsliste mit drei Zuständen | offen (nach E1, E3) |
@@ -122,10 +131,12 @@ Details: `docs/architektur/issues-entwuerfe.md`, `docs/architektur/ablaufplan-un
 ## Offen / Entscheide nötig (wer?)
 - Nährwerte für 12 fehlende Lebensmittel (USDA) und 2 Näherungen (`rice_noodles`, `thai_basil`), Pho-Salzgehalt (5,7 g/Portion ohne Fischsauce), Probekochen, JA/PT-Namen gegenlesen (offen bis 26.11.) – Projektinhaber
 - Vor Release: Entwicklungs-Route `#/status` (`StatusPage`) und Platzhaltertexte entfernen; Rechtstexte und medizinische Grenzwerte prüfen – Projektinhaber
+- **N1** (niedrig, Stabschef-Prüfung `#24`): `review.sources` erlaubt `javascript:`/`data:`-URLs; nur `https` zulassen – in E2 oder als Issue
+- **N2** (niedrig, Stabschef-Prüfung `#24`): `foodName`/`getRecipeText` lesen ohne `Object.hasOwn`, `uiLang` nicht gewhitelistet – in E2 oder als Issue
 
-## PR-Status (22.11.2026)
-- Gemergt auf `main` (`a6c47cb3`): PR `#1`–`#5`, `#14` (pnpm & ADR-006 Rstest), `#15` (E0 Scaffold), `#22` (E0b GitHub Pages), `#23` (Nachzug Stabschef-Hinweise & H1/N1 Deploy-Absicherung).
-- Offen (Draft-PR): **PR `#24`** (`feat/e1-domain-content`, Paket E1 – Domäne, Lebensmittel-Katalog, Rezept-Schema und Inhaltsprüfung, Issue `#7`).
+## PR-Status (23.11.2026)
+- Gemergt auf `main` (`bd3e0246`): PR `#1`–`#5`, `#14` (pnpm & ADR-006 Rstest), `#15` (E0 Scaffold), `#22` (E0b GitHub Pages), `#23` (Nachzug Stabschef-Hinweise & H1/N1 Deploy-Absicherung), `#24` (E1 Domäne, Katalog, Rezept-Schema, Inhaltsprüfung).
+- Kein offener Feature-PR. Nächster Arbeitsschritt: E2 (Issue `#8`, i18n).
 
 ## Bekannte Probleme / Risiken
 - Rstest (`0.12.6`) ist noch vor 1.0 (ADR-006): exakt gepinnt, in Dependabot ausgenommen, Rückweg zu Vitest dokumentiert.
