@@ -151,4 +151,30 @@ describe('Inhaltsprüfung content/ (Port von validate.py, ADR-005 & ADR-006)', (
       missReport.errors.some((e) => e.includes('Glossar ja: broccoli fehlt')),
     ).toBe(true);
   });
+
+  it('Negativtest (N1): review.sources lehnt javascript:, data:, http: und file: URLs ab', () => {
+    const unsafeUrls = [
+      `${'javascript'}:alert(1)`,
+      'data:text/html,<script>alert(1)</script>',
+      'http://example.org/rezept',
+      'file:///etc/passwd',
+    ];
+
+    for (const badUrl of unsafeUrls) {
+      const broken = cloneBundle(loadRawContentBundle());
+      const firstRecipe = broken.recipes[0]!.recipe as {
+        review: { sources: string[] };
+      };
+      firstRecipe.review.sources = [
+        'https://example.org/valid-source',
+        badUrl,
+      ];
+
+      const report = validateContentBundle(broken);
+      expect(report.ok).toBe(false);
+      expect(
+        report.errors.some((e) => e.includes('review.sources')),
+      ).toBe(true);
+    }
+  });
 });

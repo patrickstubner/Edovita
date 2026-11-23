@@ -37,7 +37,8 @@ function isSavedId(
   if (saved instanceof Set) {
     return saved.has(id);
   }
-  return Boolean((saved as Readonly<Record<string, boolean>>)[id]);
+  const map = saved as Readonly<Record<string, boolean>>;
+  return Object.hasOwn(map, id) && Boolean(map[id]);
 }
 
 export function getRecipe(id: RecipeId | string): Recipe | undefined {
@@ -48,8 +49,16 @@ export function getRecipeText(
   id: RecipeId | string,
   lang: LangCode,
 ): RecipeLocaleText | undefined {
+  if (typeof id !== 'string' || typeof lang !== 'string') {
+    return undefined;
+  }
+  if (!Object.hasOwn(RECIPE_LOCALES, id)) {
+    return undefined;
+  }
   const byLang = RECIPE_LOCALES[id];
-  if (!byLang) return undefined;
+  if (!byLang || !Object.hasOwn(byLang, lang)) {
+    return undefined;
+  }
   return byLang[lang];
 }
 

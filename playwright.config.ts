@@ -7,6 +7,7 @@ export default defineConfig({
   use: {
     baseURL: 'http://127.0.0.1:4173',
     viewport: { width: 390, height: 844 },
+    locale: 'de-CH',
     trace: 'retain-on-failure',
   },
   projects: [

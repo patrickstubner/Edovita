@@ -23,6 +23,13 @@ describe('catalog/foods', () => {
     // ADR-003: fehlende Sprache oder fehlende ID -> null, kein EN-Fallback
     expect(foodName('broccoli', 'ar')).toBeNull();
     expect(foodName('unbekannt', 'de')).toBeNull();
+    // N2: Prototype-Schlüssel liefern immer null (Object.hasOwn)
+    expect(foodName('constructor', 'de')).toBeNull();
+    expect(foodName('__proto__', 'de')).toBeNull();
+    expect(foodName('toString', 'de')).toBeNull();
+    expect(foodName('broccoli', 'constructor')).toBeNull();
+    expect(foodName('broccoli', '__proto__')).toBeNull();
+    expect(foodName('toString', 'constructor')).toBeNull();
   });
 
   it('filtert Lebensmittel gemäss Vorlieben und Allergien (isAllowed)', () => {

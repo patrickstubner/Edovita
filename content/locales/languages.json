@@ -1,0 +1,70 @@
+{
+  "fallback": "en",
+  "ui": ["de", "en", "fr", "it", "es", "ja", "pt"],
+  "secondary": ["de", "en", "pt", "ja"],
+  "meta": {
+    "de": {
+      "code": "de",
+      "name": "Deutsch",
+      "englishName": "German",
+      "locale": "de-CH",
+      "dir": "ltr",
+      "legalApproved": true,
+      "reviewed": true
+    },
+    "en": {
+      "code": "en",
+      "name": "English",
+      "englishName": "English",
+      "locale": "en-GB",
+      "dir": "ltr",
+      "legalApproved": true,
+      "reviewed": false
+    },
+    "fr": {
+      "code": "fr",
+      "name": "Français",
+      "englishName": "French",
+      "locale": "fr-CH",
+      "dir": "ltr",
+      "legalApproved": false,
+      "reviewed": false
+    },
+    "it": {
+      "code": "it",
+      "name": "Italiano",
+      "englishName": "Italian",
+      "locale": "it-CH",
+      "dir": "ltr",
+      "legalApproved": false,
+      "reviewed": false
+    },
+    "es": {
+      "code": "es",
+      "name": "Español",
+      "englishName": "Spanish",
+      "locale": "es-ES",
+      "dir": "ltr",
+      "legalApproved": false,
+      "reviewed": false
+    },
+    "ja": {
+      "code": "ja",
+      "name": "日本語",
+      "englishName": "Japanese",
+      "locale": "ja-JP",
+      "dir": "ltr",
+      "legalApproved": false,
+      "reviewed": false
+    },
+    "pt": {
+      "code": "pt",
+      "name": "Português",
+      "englishName": "Portuguese",
+      "locale": "pt-BR",
+      "dir": "ltr",
+      "legalApproved": false,
+      "reviewed": false
+    }
+  }
+}

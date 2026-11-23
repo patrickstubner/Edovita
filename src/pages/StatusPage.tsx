@@ -1,12 +1,13 @@
 import { useNavigate } from 'react-router';
 import { Icon, Screen } from '../components/index.ts';
-import { t } from '../i18n/index.ts';
+import { useI18n } from '../hooks/index.ts';
 
 /**
  * Zweite Route (#/status) zur Prüfung von Hash-Router und Zurück-Navigation in E0.
  * Vor Release entfernen (Dev-/Platzhaltertexte); siehe STATUS.md.
  */
 export function StatusPage() {
+  const { t } = useI18n();
   const navigate = useNavigate();
 
   return (
