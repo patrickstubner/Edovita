@@ -1,0 +1,144 @@
+import {
+  RECIPES,
+  RECIPE_LOCALES,
+} from '../../content/generated/catalog-index.ts';
+import {
+  asRecipeId,
+  type DietaryPref,
+  type LangCode,
+  type Meal,
+  type Recipe,
+  type RecipeId,
+  type RecipeLocaleText,
+} from '../domain/index.ts';
+import { getFood, isAllowed } from './foods.ts';
+
+const RECIPES_BY_ID: ReadonlyMap<RecipeId, Recipe> = new Map(
+  RECIPES.map((recipe) => [recipe.id, recipe]),
+);
+
+const DEFAULT_POPULARITY = 7;
+
+export interface RecipeFilter {
+  meal?: Meal | 'all';
+  fast?: boolean;
+  protein?: boolean;
+  savedOnly?: boolean;
+  savedIds?: Readonly<Record<string, boolean>> | ReadonlySet<string>;
+  prefs?: Readonly<Partial<Record<DietaryPref, boolean>>>;
+  tag?: string;
+}
+
+function isSavedId(
+  id: string,
+  saved?: Readonly<Record<string, boolean>> | ReadonlySet<string>,
+): boolean {
+  if (!saved) return false;
+  if (saved instanceof Set) {
+    return saved.has(id);
+  }
+  return Boolean((saved as Readonly<Record<string, boolean>>)[id]);
+}
+
+export function getRecipe(id: RecipeId | string): Recipe | undefined {
+  return RECIPES_BY_ID.get(asRecipeId(id));
+}
+
+export function getRecipeText(
+  id: RecipeId | string,
+  lang: LangCode,
+): RecipeLocaleText | undefined {
+  const byLang = RECIPE_LOCALES[id];
+  if (!byLang) return undefined;
+  return byLang[lang];
+}
+
+export function isRecipeAllowed(
+  recipe: Recipe,
+  prefs?: Readonly<Partial<Record<DietaryPref, boolean>>>,
+): boolean {
+  if (!prefs) return true;
+  for (const ing of recipe.ingredients) {
+    if (ing.strained) continue;
+    const food = getFood(ing.food);
+    if (food && !isAllowed(food, prefs)) {
+      return false;
+    }
+  }
+  return true;
+}
+
+/**
+ * Filtert den Rezeptkatalog nach Mahlzeit, Eigenschaften (schnell <= 15 min,
+ * proteinreich >= 30 g, gemerkt), Tag und Vorlieben (wie Prototyp `rlist`).
+ */
+export function listRecipes(filter?: RecipeFilter): Recipe[] {
+  if (!filter) {
+    return [...RECIPES];
+  }
+  return RECIPES.filter((recipe) => {
+    if (filter.meal && filter.meal !== 'all' && recipe.meal !== filter.meal) {
+      return false;
+    }
+    if (filter.fast && recipe.minutes > 15) {
+      return false;
+    }
+    if (filter.protein && recipe.nutritionPerServing.values.protein < 30) {
+      return false;
+    }
+    if (filter.savedOnly && !isSavedId(recipe.id, filter.savedIds)) {
+      return false;
+    }
+    if (filter.tag && !recipe.tags.includes(filter.tag)) {
+      return false;
+    }
+    if (filter.prefs && !isRecipeAllowed(recipe, filter.prefs)) {
+      return false;
+    }
+    return true;
+  });
+}
+
+/**
+ * Bewertet und sortiert Rezepte gemäss Prototyp `rscore` + `rlist` (`prototype/app.js` Z. 731–747):
+ * - Punktzahl: `(sterne ? sterne * 2 : 5) + pop / 2 + (gemerkt ? 1 : 0)`
+ * - Vielfalt: nie zweimal hintereinander dieselbe Küche, solange eine Alternative da ist.
+ */
+export function rankRecipes(
+  list: readonly Recipe[],
+  ratings: Readonly<Record<string, number>> = {},
+  saved?: Readonly<Record<string, boolean>> | ReadonlySet<string>,
+  popularity: Readonly<Record<string, number>> = {},
+): Recipe[] {
+  const score = (recipe: Recipe): number => {
+    const stars = ratings[recipe.id];
+    const pop = popularity[recipe.id] ?? DEFAULT_POPULARITY;
+    const savedBonus = isSavedId(recipe.id, saved) ? 1 : 0;
+    return (stars && stars > 0 ? stars * 2 : 5) + pop / 2 + savedBonus;
+  };
+
+  const remaining = [...list].sort((a, b) => {
+    const diff = score(b) - score(a);
+    if (diff !== 0) return diff;
+    return a.id.localeCompare(b.id);
+  });
+
+  const ordered: Recipe[] = [];
+  while (remaining.length > 0) {
+    const lastCuisine =
+      ordered.length > 0 ? ordered[ordered.length - 1]?.cuisine : undefined;
+    let pickIndex = 0;
+    if (lastCuisine !== undefined) {
+      const altIndex = remaining.findIndex((r) => r.cuisine !== lastCuisine);
+      if (altIndex !== -1) {
+        pickIndex = altIndex;
+      }
+    }
+    const [picked] = remaining.splice(pickIndex, 1);
+    if (picked) {
+      ordered.push(picked);
+    }
+  }
+
+  return ordered;
+}

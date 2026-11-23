@@ -1,0 +1,16 @@
+{
+ "title": "Lentil curry with coconut milk and spinach",
+ "steps": [
+  "Finely chop the onion, grate the garlic and ginger. Rinse the lentils in a sieve until the water runs clear.",
+  "Heat the oil and soften the onion for 5 minutes. Add the garlic and ginger for 1 minute, then toast the curry powder and cumin for 30 seconds.",
+  "Add the lentils, tomatoes, coconut milk and stock, bring to the boil and simmer uncovered for 18–20 minutes until the lentils break down. Stir often, they catch easily.",
+  "Stir in the spinach until it wilts. Season with salt and lime juice."
+ ],
+ "notes": {
+  "lentil_curry.ing.onion": "1 onion (assumed 100 g)",
+  "lentil_curry.ing.garlic": "2 cloves",
+  "lentil_curry.ing.rapeseed_oil": "about 1 tbsp",
+  "lentil_curry.ing.curry_powder": "assumed 3 g/tsp",
+  "lentil_curry.ing.lime": "juice"
+ }
+}

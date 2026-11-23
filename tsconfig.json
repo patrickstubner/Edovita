@@ -24,7 +24,8 @@
     "rsbuild.config.ts",
     "rstest.config.ts",
     "playwright.config.ts",
-    "content/**/*.json"
+    "content/**/*.json",
+    "content/**/*.ts"
   ],
   "exclude": ["node_modules", "dist", "prototype", "design", "docs"]
 }

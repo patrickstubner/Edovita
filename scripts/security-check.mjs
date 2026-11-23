@@ -69,9 +69,10 @@ function extractMetaCsp(html) {
   return content ? content[2] : '';
 }
 
-// 1. Gefährliche DOM-/Ausführungs-Senken in src/ und public/ prüfen
+// 1. Gefährliche DOM-/Ausführungs-Senken in src/, content/ und public/ prüfen
 const codeFiles = [
   ...walkFiles(resolve(ROOT, 'src'), new Set(['.ts', '.tsx', '.js', '.jsx'])),
+  ...walkFiles(resolve(ROOT, 'content'), new Set(['.ts', '.tsx', '.js', '.jsx'])),
   ...walkFiles(resolve(ROOT, 'public'), new Set(['.js', '.html'])),
 ];
 

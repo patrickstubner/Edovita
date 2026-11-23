@@ -9,7 +9,7 @@ function runDepcruise() {
   try {
     const out = execFileSync(
       DEPCRUISE_BIN,
-      ['src', '--config', '.dependency-cruiser.mjs'],
+      ['src', 'content', '--config', '.dependency-cruiser.mjs'],
       { cwd: ROOT, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] },
     );
     return { ok: true, output: out };
@@ -27,7 +27,7 @@ if (!clean.ok) {
   process.exit(1);
 }
 
-// 2. Negativprüfungen: absichtlich falsche Importe MÜSSEN anschlagen (E0-Akzeptanzkriterium).
+// 2. Negativprüfungen: absichtlich falsche Importe MÜSSEN anschlagen (ADR-001).
 const negativeCases = [
   {
     file: resolve(ROOT, 'src/domain/__arch_guard_test__.ts'),
@@ -43,6 +43,11 @@ const negativeCases = [
     file: resolve(ROOT, 'src/pages/__arch_guard_test__.ts'),
     content: "export { STORAGE_LAYER_VERSION } from '../storage/index.ts';\n",
     expectedRule: 'pages-no-direct-storage-or-content',
+  },
+  {
+    file: resolve(ROOT, 'content/generated/__arch_guard_test__.ts'),
+    content: "export { STORAGE_LAYER_VERSION } from '../../src/storage/index.ts';\n",
+    expectedRule: 'content-only-domain',
   },
 ];
 

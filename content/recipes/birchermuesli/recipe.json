@@ -1,0 +1,96 @@
+{
+ "format": 1,
+ "id": "birchermuesli",
+ "cuisine": "swiss",
+ "meal": "breakfast",
+ "minutes": 10,
+ "servings": 2,
+ "tags": [
+  "vegetarian"
+ ],
+ "ingredients": [
+  {
+   "food": "oats",
+   "amount": 80,
+   "unit": "g",
+   "grams": 80
+  },
+  {
+   "food": "milk",
+   "amount": 150,
+   "unit": "ml",
+   "grams": 154.5
+  },
+  {
+   "food": "yogurt",
+   "amount": 180,
+   "unit": "g",
+   "grams": 180
+  },
+  {
+   "food": "apple",
+   "amount": 2,
+   "unit": "pc",
+   "grams": 300,
+   "noteKey": "birchermuesli.ing.apple"
+  },
+  {
+   "food": "lemon",
+   "amount": 0.5,
+   "unit": "pc",
+   "grams": 15,
+   "noteKey": "birchermuesli.ing.lemon"
+  },
+  {
+   "food": "hazelnuts",
+   "amount": 30,
+   "unit": "g",
+   "grams": 30
+  },
+  {
+   "food": "honey",
+   "amount": 10,
+   "unit": "g",
+   "grams": 10,
+   "optional": true,
+   "noteKey": "birchermuesli.ing.honey"
+  }
+ ],
+ "steps": 4,
+ "allergens": [
+  "gluten",
+  "milk",
+  "nuts"
+ ],
+ "allergensToCheck": [],
+ "nutritionPerServing": {
+  "values": {
+   "kcal": 443,
+   "fat": 18.8,
+   "satFat": 5.0,
+   "carbs": 50.6,
+   "sugars": 26.0,
+   "fiber": 7.9,
+   "protein": 14.4,
+   "salt": 0.2
+  },
+  "isMinimum": false,
+  "notIncluded": [],
+  "proxies": [],
+  "basis": "CH-NWD 7.1, pro 100 g essbarer Anteil, roh; Garverluste nicht berücksichtigt"
+ },
+ "review": {
+  "status": "zu_pruefen",
+  "checkedAt": "2026-11-15",
+  "by": "Master Bot (Abgleich von Zutaten und Mengenverhältnissen, keine Texte übernommen)",
+  "sources": [
+   "https://de.wikipedia.org/wiki/Bircherm%C3%BCesli",
+   "https://www.srf.ch/radio-srf-1/kochen/rezepte/original-birchermueesli",
+   "https://museum-meilen.ch/esskultur/ch-rezepte/birchermuesli/"
+  ],
+  "open": [
+   "Probekochen durch einen Menschen",
+   "Nährwerte gegenlesen"
+  ]
+ }
+}
