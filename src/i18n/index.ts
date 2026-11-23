@@ -13,6 +13,8 @@ export {
 } from '../../content/generated/locales-index.ts';
 
 export {
+  SECONDARY_LANGS,
+  SUPPORTED_UI_LANGS,
   approved,
   detectUiLang,
   getApprovedUiLanguages,
@@ -23,6 +25,7 @@ export {
   getUiLanguages,
   isSupportedUiLang,
   resolveApprovedUiLang,
+  resolveSecondLang,
   type DetectedLang,
 } from './registry.ts';
 
@@ -32,9 +35,7 @@ export {
   LANG_STORAGE_KEY,
   applyLangToDocument,
   createI18nInstance,
-  i18n,
   readStoredUiLang,
-  t,
   writeStoredUiLang,
   type CreateI18nOptions,
 } from './instance.ts';

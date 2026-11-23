@@ -1,8 +1,8 @@
 import { isSafeRecordKey } from './schemas.ts';
 import {
   DEFAULT_UI_LANG,
-  SUPPORTED_UI_LANGS,
   type LangCode,
+  type LanguagesRegistry,
 } from './types.ts';
 
 /**
@@ -21,20 +21,75 @@ export function normalizeLangBase(tag: unknown): string | null {
 }
 
 /**
- * Prüft `uiLang` strikt gegen eine Whitelist unterstützter Sprachen (N2).
- * Unbekannte Werte, Nicht-Strings und Prototype-Schlüssel (`constructor`, `__proto__`)
- * fallen deterministisch auf `fallback` (`en`) zurück.
+ * Prüft das Rechts-Gate (ADR-003, F1) direkt gegen eine Sprach-Registry.
+ */
+export function isApprovedUiLang(
+  code: unknown,
+  registry: LanguagesRegistry,
+): code is LangCode {
+  if (typeof code !== 'string' || !isSafeRecordKey(code)) {
+    return false;
+  }
+  if (!registry.ui.includes(code) || !Object.hasOwn(registry.meta, code)) {
+    return false;
+  }
+  return registry.meta[code]?.legalApproved === true;
+}
+
+/**
+ * Liefert alle freigegebenen UI-Sprachen aus einer Sprach-Registry (F1).
+ */
+export function getApprovedUiLangsFromRegistry(
+  registry: LanguagesRegistry,
+): LangCode[] {
+  return registry.ui.filter((code) => isApprovedUiLang(code, registry));
+}
+
+/**
+ * Prüft, ob ein Sprachcode als Zweitsprache in `registry.secondary` eingetragen ist (F3a).
+ * Zweitsprachen unterliegen gemäss ADR-003 keinem Rechts-Gate.
+ */
+export function isSupportedSecondaryLang(
+  code: unknown,
+  registry: LanguagesRegistry,
+): code is LangCode {
+  return (
+    typeof code === 'string' &&
+    isSafeRecordKey(code) &&
+    registry.secondary.includes(code)
+  );
+}
+
+function isLanguagesRegistry(
+  value: readonly LangCode[] | LanguagesRegistry,
+): value is LanguagesRegistry {
+  return !Array.isArray(value);
+}
+
+/**
+ * Prüft `uiLang` strikt gegen eine Whitelist (oder direkt die freigegebenen Sprachen
+ * einer Sprach-Registry, F1/N2). Unbekannte Werte, nicht freigegebene Sprachen und
+ * Prototype-Schlüssel (`constructor`, `__proto__`) fallen deterministisch auf `fallback` (`en`) zurück.
  */
 export function coerceUiLang(
   value: unknown,
-  allowed: readonly LangCode[] = SUPPORTED_UI_LANGS,
-  fallback: LangCode = DEFAULT_UI_LANG,
+  allowedOrRegistry: readonly LangCode[] | LanguagesRegistry,
+  fallback?: LangCode,
 ): LangCode {
+  const allowed = isLanguagesRegistry(allowedOrRegistry)
+    ? getApprovedUiLangsFromRegistry(allowedOrRegistry)
+    : allowedOrRegistry;
+  const preferredFallback =
+    fallback ??
+    (isLanguagesRegistry(allowedOrRegistry)
+      ? allowedOrRegistry.fallback
+      : DEFAULT_UI_LANG);
+
   const safeFallback =
-    typeof fallback === 'string' &&
-    isSafeRecordKey(fallback) &&
-    allowed.includes(fallback)
-      ? fallback
+    typeof preferredFallback === 'string' &&
+    isSafeRecordKey(preferredFallback) &&
+    allowed.includes(preferredFallback)
+      ? preferredFallback
       : (allowed[0] ?? DEFAULT_UI_LANG);
 
   if (typeof value !== 'string') {
@@ -52,4 +107,36 @@ export function coerceUiLang(
     return base;
   }
   return safeFallback;
+}
+
+/**
+ * Prüft `secondLang` gegen `registry.secondary` (oder eine explizite Whitelist, F3a).
+ * Ungültige, nicht gelistete oder reservierte Schlüssel fallen sicher auf `null` (keine Zweitsprache) zurück.
+ */
+export function coerceSecondLang(
+  value: unknown,
+  allowedOrRegistry: readonly LangCode[] | LanguagesRegistry,
+): LangCode | null {
+  if (value === null || value === undefined || value === '') {
+    return null;
+  }
+  if (typeof value !== 'string') {
+    return null;
+  }
+  const allowed = isLanguagesRegistry(allowedOrRegistry)
+    ? allowedOrRegistry.secondary
+    : allowedOrRegistry;
+
+  const trimmed = value.trim();
+  if (!trimmed || !isSafeRecordKey(trimmed)) {
+    return null;
+  }
+  if (allowed.includes(trimmed)) {
+    return trimmed;
+  }
+  const base = normalizeLangBase(trimmed);
+  if (base && allowed.includes(base)) {
+    return base;
+  }
+  return null;
 }

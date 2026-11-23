@@ -1,21 +1,44 @@
 import { useMemo } from 'react';
 import { RouterProvider } from 'react-router';
 import type { LangCode } from '../domain/index.ts';
+import { createDexieStorage, type StorageBundle } from '../storage/index.ts';
 import { I18nProvider } from './I18nProvider.tsx';
+import { RatingsProvider } from './RatingsProvider.tsx';
 import { createAppRouter } from './router.tsx';
+import { SettingsProvider } from './SettingsProvider.tsx';
+import { ShoppingProvider } from './ShoppingProvider.tsx';
 import { ThemeProvider } from './ThemeProvider.tsx';
 
 export interface AppProps {
   initialLang?: LangCode;
   navigatorLanguages?: readonly string[];
+  storage?: StorageBundle;
+}
+
+let defaultStorage: StorageBundle | null = null;
+
+function getDefaultStorage(): StorageBundle {
+  if (!defaultStorage) {
+    defaultStorage = createDexieStorage();
+  }
+  return defaultStorage;
 }
 
 /**
  * Wurzelkomponente der Edovita-App.
- * Provider bleiben strikt nach Bereich getrennt (ADR-001 Regel 6).
+ * Provider bleiben strikt nach Bereich getrennt (ADR-001 Regel 6),
+ * Repositories werden injiziert (Standard: Dexie/IndexedDB, Tests: Memory).
  */
-export function App({ initialLang, navigatorLanguages }: AppProps = {}) {
+export function App({
+  initialLang,
+  navigatorLanguages,
+  storage,
+}: AppProps = {}) {
   const router = useMemo(() => createAppRouter(), []);
+  const activeStorage = useMemo(
+    () => storage ?? getDefaultStorage(),
+    [storage],
+  );
 
   return (
     <I18nProvider
@@ -23,7 +46,13 @@ export function App({ initialLang, navigatorLanguages }: AppProps = {}) {
       navigatorLanguages={navigatorLanguages}
     >
       <ThemeProvider>
-        <RouterProvider router={router} />
+        <SettingsProvider repository={activeStorage.settings}>
+          <ShoppingProvider repository={activeStorage.shopping}>
+            <RatingsProvider repository={activeStorage.ratings}>
+              <RouterProvider router={router} />
+            </RatingsProvider>
+          </ShoppingProvider>
+        </SettingsProvider>
       </ThemeProvider>
     </I18nProvider>
   );

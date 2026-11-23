@@ -8,12 +8,12 @@ import {
   PACES,
   SEX_FOR_CALC,
   SHOP_STATES,
-  SUPPORTED_UI_LANGS,
   TEXT_DIRS,
   UNITS,
   asCuisineId,
   asFoodId,
   asRecipeId,
+  type LanguagesRegistry,
 } from './types.ts';
 
 // Strikte CSP ohne 'unsafe-eval': Zod-v4-JIT (`new Function`-Probe) global deaktivieren,
@@ -227,13 +227,47 @@ export const profileSchema = z.strictObject({
   pace: z.enum(PACES),
 });
 
-export const settingsSchema = z.strictObject({
-  uiLang: z.enum(SUPPORTED_UI_LANGS),
-  secondLang: langCodeSchema.nullable(),
-  theme: z.enum(['system', 'light', 'dark']),
-  sound: z.boolean(),
-  hymn: z.enum(HYMN_IDS),
-});
+function isApprovedInRegistry(
+  code: string,
+  registry: LanguagesRegistry,
+): boolean {
+  return (
+    isSafeRecordKey(code) &&
+    registry.ui.includes(code) &&
+    Object.hasOwn(registry.meta, code) &&
+    registry.meta[code]?.legalApproved === true
+  );
+}
+
+function isSecondaryInRegistry(
+  code: string,
+  registry: LanguagesRegistry,
+): boolean {
+  return isSafeRecordKey(code) && registry.secondary.includes(code);
+}
+
+/**
+ * Erzeugt das strenge Settings-Schema gebunden an die Sprach-Registry (F1, F3a).
+ * - `uiLang`: akzeptiert ausschliesslich rechtlich freigegebene UI-Sprachen (`legalApproved === true`).
+ * - `secondLang`: akzeptiert `null` oder Einträge aus `registry.secondary`.
+ */
+export function createSettingsSchema(registry: LanguagesRegistry) {
+  return z.strictObject({
+    uiLang: langCodeSchema.refine(
+      (code) => isApprovedInRegistry(code, registry),
+      'UI-Sprache ist nicht freigegeben (legalApproved).',
+    ),
+    secondLang: langCodeSchema
+      .refine(
+        (code) => isSecondaryInRegistry(code, registry),
+        'Zweitsprache ist nicht in registry.secondary enthalten.',
+      )
+      .nullable(),
+    theme: z.enum(['system', 'light', 'dark']),
+    sound: z.boolean(),
+    hymn: z.enum(HYMN_IDS),
+  });
+}
 
 export const langMetaSchema = z.strictObject({
   code: langCodeSchema,
@@ -264,17 +298,27 @@ export const uiLocaleSchema = z
     'Reservierter Schlüssel in UI-Locale nicht zulässig.',
   );
 
-export const exportBundleV1Schema = z.strictObject({
-  format: z.literal(1),
-  exportedAt: z.string().min(1),
-  data: z.strictObject({
-    settings: settingsSchema.optional(),
-    profile: profileSchema.nullable().optional(),
-    shopping: z.array(shoppingItemSchema).max(500).optional(),
-    ratings: z
-      .record(z.string(), z.number().int().min(1).max(5))
-      .refine((obj) => Object.keys(obj).every(isSafeRecordKey))
-      .optional(),
-    saved: z.array(recipeIdSchema).max(500).optional(),
-  }),
-});
+/**
+ * Erzeugt das strenge Export-Bundle-Schema (Format 1) gebunden an die Sprach-Registry (ADR-002, F1, F3a).
+ */
+export function createExportBundleV1Schema(registry: LanguagesRegistry) {
+  return z.strictObject({
+    format: z.literal(1),
+    exportedAt: z.string().min(1),
+    data: z.strictObject({
+      settings: createSettingsSchema(registry).optional(),
+      profile: profileSchema.nullable().optional(),
+      shopping: z.array(shoppingItemSchema).max(500).optional(),
+      ratings: z
+        .record(
+          z
+            .string()
+            .regex(RECIPE_ID_RE, 'Ungültige Rezept-ID in ratings.')
+            .refine(isSafeRecordKey, 'Reservierter Schlüssel nicht zulässig.'),
+          z.number().int().min(1).max(5),
+        )
+        .optional(),
+      saved: z.array(recipeIdSchema).max(500).optional(),
+    }),
+  });
+}
