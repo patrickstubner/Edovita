@@ -1,6 +1,6 @@
 # ARCHITECTURE.md – Edovita
 
-Stand 23.11.2026, Basis `main` `e0c7cadf75ebabf81dfc60676e5ac1470ed379f5` (enthält E0 `7f49e3d`, E0b Pages `e7d46884`, Nachzug `#23` `a6c47cb3`, E1 PR `#24` `bd3e0246` und Dependabot-Updates inkl. TypeScript 6.0.3, Version `0.1.0`), erweitert um Paket **E2** (Issue `#8`, Branch `feat/e2-i18n`, inkl. E1-Nachzüge N1 & N2). Der E2-Analyse-SHA wird im Folge-Commit nach grüner CI ergänzt (E1-Referenzstand: `eb71c25a0bfc68c9cbb185f0ce45e9a9d5d453f1`). Details in `docs/architektur/`. Vorschau: https://patrickstubner.github.io/Edovita/.
+Stand 23.11.2026, Basis `main` `e0c7cadf75ebabf81dfc60676e5ac1470ed379f5` (enthält E0 `7f49e3d`, E0b Pages `e7d46884`, Nachzug `#23` `a6c47cb3`, E1 PR `#24` `bd3e0246` und Dependabot-Updates inkl. TypeScript 6.0.3, Version `0.1.0`), erweitert um Paket **E2** (Issue `#8`, Draft-PR `#26`, Branch `feat/e2-i18n`, inkl. E1-Nachzüge N1 & N2). Die lokale Analyse von E2 (`codebase-memory-mcp`, Leitplanken, Rstest, Playwright, `gitleaks`, GitHub-CI-Run `45176624124`) bezieht sich auf den geprüften Code-Stand `797033297b658485d7dedfc360058674ea28177b` (E1-Referenzstand: `eb71c25a0bfc68c9cbb185f0ce45e9a9d5d453f1`). Details in `docs/architektur/`. Vorschau: https://patrickstubner.github.io/Edovita/.
 
 ## Heute im Repo
 | Ort | Inhalt |

@@ -1,11 +1,18 @@
-# STATUS.md – Stand 23.11.2026, Basis `main` `bd3e0246d91066fd28ab381879cf28b7ff4410b9` (E0 PR #15, E0b PR #22, Nachzug PR #23, E1 PR #24)
+# STATUS.md – Stand 23.11.2026, Basis `main` `e0c7cadf75ebabf81dfc60676e5ac1470ed379f5` (E0 PR #15, E0b PR #22, Nachzug PR #23, E1 PR #24, Dependabot/TS 6; E2 als Draft-PR #26)
+
+## Nachtrag 23.11.2026 (Antigravity): Paket E2 – Mehrsprachigkeit (i18n) sowie E1-Nachzüge N1 & N2
+Branch `feat/e2-i18n` (Draft-PR `#26`, Issue `#8`, Basis `main` `e0c7cadf75ebabf81dfc60676e5ac1470ed379f5`, nicht mergen bis Stabschef-Ok und Ja des Projektinhabers). Geprüfter Code-Stand (Commit A): `797033297b658485d7dedfc360058674ea28177b` (GitHub Actions CI Run `45176624124` grün: `Lint, Tests, Build & Audit` 1m9s, `Secret Scan (gitleaks)` 7s).
+- **Sprach-Registry & UI-Locales (`content/locales/`):** `languages.json` (`fallback: "en"`, `ui`: 7 Sprachen, `secondary`: 4 Sprachen, `meta` mit `dir`, `locale`, `legalApproved`, `reviewed`), alle 7 UI-Dateien `{de,en,fr,it,es,ja,pt}/ui.json` (nur genutzte Schlüssel der gebauten Screens, aus `prototype/locales/` übernommen, ohne HTML), generierter Sprach-Index `content/generated/locales-index.ts` via `pnpm run content:build` (ADR-003: neue Sprache ohne Codeänderung).
+- **i18n-Laufzeit & Prototyp-UI (`src/i18n/`, `src/app/I18nProvider.tsx`, `src/hooks/useI18n.ts`):** `i18next@27.2.2` + `react-i18next@18.0.3` + `i18next-icu@2.7.1` + `intl-messageformat@12.2.0` (alle > 4 Tage alt gemäss `minimumReleaseAge: 5760`, 0 Audit-/Peer-Funde). `src/i18n/` bleibt React-frei (ADR-001): `approved()` (Rechts-Gate: nur DE/EN wählbar), `detectUiLang()` (`de-CH` → `de`, `pt-BR` → Fallback `en`), `Intl`-Formatierer (`fmtNumber`, `fmtAmount` metrisch, `fmtDate`), `validateLocalesBundle()`. Eigener Bereichs-Provider `I18nProvider` (ADR-001 Regel 6) mit Live-Sprachwechsel ohne Neustart und Zustandserhalt (Journey J6); Startseite zeigt Erkennungs-Banner, freigegebene und ausgegraute Sprachen («In Prüfung») im Prototyp-Stil (logische CSS-Eigenschaften).
+- **E1-Nachzüge N1 & N2 geschlossen:** **N1** – `httpsUrlSchema` in `src/domain/schemas.ts` lehnt `javascript:`, `data:`, `http:` und `file:` in `review.sources` ab (Negativtests in `tests/unit/content.check.test.ts`). **N2** – `foodName`, `getRecipeText`, `isSavedId` und `getLangMeta` nutzen `Object.hasOwn`; `coerceUiLang`, `resolveApprovedUiLang` und `settingsSchema.uiLang` prüfen strikt gegen Whitelist mit Fallback auf `en` (Tests in `lang.test.ts`, `foods.test.ts`, `recipes.test.ts`, `i18n.test.ts`).
+- **Tests & Prüfungen:** Rstest `0.12.6` (14 Dateien, 61/61 Tests grün, inkl. `tests/unit/languages.complete.test.ts` mit Negativtest fehlender Schlüssel in `fr`, Platzhalter-/HTML-/Glossar-Prüfung und 0 Warnungen zu ungenutzten Schlüsseln). `dependency-cruiser` (`src` + `content`): 92 Module / 150 Abhängigkeiten, 0 Verstösse, 4/4 Negativtests grün. Playwright `390×844` Hell & Dunkel: 6/6 grün (`smoke.spec.ts` + `i18n.spec.ts`, 0 CSP-Verstösse). `gitleaks 8.30.1` und `actionlint 1.7.12`: 0 Funde. `prototype/` unverändert. Details in `SECURITY.md`.
 
 ## Nachtrag 23.11.2026: E1 auf main gemergt
 Paket **E1** (Issue `#7`) ist über PR `#24` squash-gemergt als `bd3e0246d91066fd28ab381879cf28b7ff4410b9` (von Stabschef freigegebener Head `691863e1d7e38071cc3561ad3ccd781fd156f2a9`, Basis war `a6c47cb3`). Der frühere Zustand «Draft / wartet auf OK» für E1 entfällt. Nächster Schritt: Paket **E2** (Issue `#8`, i18n).
 
-Offene Folgepunkte aus der Stabschef-Prüfung von `#24` (niedrig, kein Blocker; in E2 oder als Issue):
-- **N1:** `review.sources` erlaubt `javascript:`/`data:`-URLs; nur `https` zulassen.
-- **N2:** `foodName`/`getRecipeText` lesen ohne `Object.hasOwn`, `uiLang` nicht gewhitelistet.
+Folgepunkte aus der Stabschef-Prüfung von `#24` (niedrig; **beide in PR `#26` / E2 behoben**):
+- **N1 (behoben in PR `#26`):** `review.sources` lässt nur noch `https:`-URLs zu (`httpsUrlSchema`).
+- **N2 (behoben in PR `#26`):** `foodName`/`getRecipeText` nutzen `Object.hasOwn`, `uiLang` wird über Whitelist mit Fallback geprüft.
 
 **Hinweis vor Release (unverändert):** Die Entwicklungs-Route `#/status` (`StatusPage`) und die Dev-/Platzhaltertexte vor der Veröffentlichung entfernen.
 
@@ -106,6 +113,7 @@ Phase 1 ab 27.11.2026: Grundgerüst (E0), dann zuerst Rezept-Detailseite (E4) un
 - GitHub-Issues `#6`–`#13` für E0–E7 angelegt (22.11.2026).
 - Paket **E0** (PR `#15`, `7f49e3d`), **E0b** GitHub Pages (PR `#22`, `e7d46884`) und Nachzug `#23` (`a6c47cb3`) auf `main` gemergt (22.11.2026).
 - Paket **E1** (Issue `#7`, Domäne mit `zod@4.6.7`, Katalog, Nährwerte, Inhaltsprüfung inkl. Übernahme nach `content/`) über PR `#24` auf `main` gemergt als `bd3e0246d91066fd28ab381879cf28b7ff4410b9` (23.11.2026; geprüfter Head `691863e1d7e38071cc3561ad3ccd781fd156f2a9`).
+- Paket **E2** (Issue `#8`, `i18next` + `react-i18next` + `i18next-icu`, Sprach-Registry mit Rechts-Gate, 7 UI-Locales, `Intl`-Formatierer, Live-Wechsel J6, sowie E1-Nachzüge N1 & N2) umgesetzt auf Branch `feat/e2-i18n` (23.11.2026, Draft-PR `#26`, wartet auf Stabschef-Ok und Ja des Projektinhabers).
 
 ## Entscheide (15.11. & 22.11.2026)
 - Dexie in der Web-Phase, SQLite später mit der Handy-App (ADR-002).
@@ -120,8 +128,8 @@ Phase 1 ab 27.11.2026: Grundgerüst (E0), dann zuerst Rezept-Detailseite (E4) un
 |---|---|---|---|
 | E0 | `#6` | Grundgerüst mit Leitplanken (Scaffold Phase 1), CI, SECURITY.md | erledigt (gemergt PR `#15`, Pages `#22`, Nachzug `#23`) |
 | E1 | `#7` | Domäne, Lebensmittel-Katalog, Rezept-Schema, Inhaltsprüfung, übernimmt `docs/architektur/inhalte/` | erledigt (gemergt PR `#24`, `bd3e0246`) |
-| E2 | `#8` | i18n-Laufzeit und Registry | offen (nächster Schritt, nach E1) |
-| E3 | `#9` | Speicherung mit Dexie | offen (nach E0) |
+| E2 | `#8` | i18n-Laufzeit und Registry (+ E1-Nachzüge N1 & N2) | umgesetzt (Draft-PR `#26`, `feat/e2-i18n`) |
+| E3 | `#9` | Speicherung mit Dexie | offen (nächster Schritt) |
 | E4 | `#10` | Rezept-Detailseite | offen (nach E1, E2, E3) |
 | E5 | `#11` | Einkaufsliste mit drei Zuständen | offen (nach E1, E3) |
 | E6 | `#12` | Zweitsprache | offen (nach E2, E5) |
@@ -131,12 +139,10 @@ Details: `docs/architektur/issues-entwuerfe.md`, `docs/architektur/ablaufplan-un
 ## Offen / Entscheide nötig (wer?)
 - Nährwerte für 12 fehlende Lebensmittel (USDA) und 2 Näherungen (`rice_noodles`, `thai_basil`), Pho-Salzgehalt (5,7 g/Portion ohne Fischsauce), Probekochen, JA/PT-Namen gegenlesen (offen bis 26.11.) – Projektinhaber
 - Vor Release: Entwicklungs-Route `#/status` (`StatusPage`) und Platzhaltertexte entfernen; Rechtstexte und medizinische Grenzwerte prüfen – Projektinhaber
-- **N1** (niedrig, Stabschef-Prüfung `#24`): `review.sources` erlaubt `javascript:`/`data:`-URLs; nur `https` zulassen – in E2 oder als Issue
-- **N2** (niedrig, Stabschef-Prüfung `#24`): `foodName`/`getRecipeText` lesen ohne `Object.hasOwn`, `uiLang` nicht gewhitelistet – in E2 oder als Issue
 
 ## PR-Status (23.11.2026)
-- Gemergt auf `main` (`bd3e0246`): PR `#1`–`#5`, `#14` (pnpm & ADR-006 Rstest), `#15` (E0 Scaffold), `#22` (E0b GitHub Pages), `#23` (Nachzug Stabschef-Hinweise & H1/N1 Deploy-Absicherung), `#24` (E1 Domäne, Katalog, Rezept-Schema, Inhaltsprüfung).
-- Kein offener Feature-PR. Nächster Arbeitsschritt: E2 (Issue `#8`, i18n).
+- Gemergt auf `main` (`e0c7cadf`): PR `#1`–`#5`, `#14` (pnpm & ADR-006 Rstest), `#15` (E0 Scaffold), `#22` (E0b GitHub Pages), `#23` (Nachzug Stabschef-Hinweise & H1/N1 Deploy-Absicherung), `#24` (E1 Domäne, Katalog, Rezept-Schema, Inhaltsprüfung) sowie Dependabot-Updates (inkl. TypeScript 6.0.3).
+- Offen (Draft-PR): **PR `#26`** (`feat/e2-i18n`, Paket E2 – Mehrsprachigkeit & E1-Nachzüge N1/N2, Issue `#8`).
 
 ## Bekannte Probleme / Risiken
 - Rstest (`0.12.6`) ist noch vor 1.0 (ADR-006): exakt gepinnt, in Dependabot ausgenommen, Rückweg zu Vitest dokumentiert.
@@ -153,10 +159,17 @@ Details: `docs/architektur/issues-entwuerfe.md`, `docs/architektur/ablaufplan-un
   - **`rg`**, **`pnpm audit`** (0 Schwachstellen), **Rstest `0.12.6`** (6/6 grün), **Playwright `390×844`** Hell & Dunkel (2/2 grün, HTTP-CSP- & `X-Robots-Tag`-Header geprüft).
   - **Vermiedene Cloud-Agent-Nutzung:** E0 inkl. Review-Nachbesserungen komplett ohne Cursor-Cloud-Agent-Kontingent umgesetzt (~1–1,5 Agent-Tage gespart).
   - **Rückmeldung zu den Tools:** `rg`, `ast-grep` (glibc) und `actionlint` laufen sehr schnell und zuverlässig. `codebase-memory-mcp` liefert hilfreiche Aufrufer-/Paketübersichten (kleine Kante: `parse_partial` bei kompakten CSS-Keyframe-Zeilen in `logo-anim.css`, unkritisch). **Rstest `0.12.6`** startet mit `@rstest/adapter-rsbuild` sehr schnell (~210–335 ms Build); für `@testing-library/jest-dom` braucht es `globals: true` in `rstest.config.ts` plus eine kleine Typ-Augmentierung (`tests/jest-dom.d.ts`). Playwright mit `rsbuild preview` erfordert auf Linux explizit `server.host: '127.0.0.1'`, da `rsbuild` sonst auf IPv6 `[::1]` bindet.
-- 22.11. (Antigravity-VM, E1, analysierter Code-Stand Commit `eb71c25a0bfc68c9cbb185f0ce45e9a9d5d453f1`, Draft-PR `#24`):
+- 22.11. (Antigravity-VM, E1, analysierter Code-Stand Commit `eb71c25a0bfc68c9cbb185f0ce45e9a9d5d453f1`, PR `#24`):
   - **`codebase-memory-mcp 0.12.1`** (Stand `eb71c25a`): Repository indexiert mit **10'777 Knoten / 12'704 Kanten** (`parse_unusable: 0`; 51 TypeScript-Dateien, neue Pakete `domain` 59, `catalog` 17, `nutrition` 7, `build-content-index` 4). **`dependency-cruiser`** (`src` + `content`): 72 Module / 109 Abhängigkeiten, 0 Verstösse + 4/4 Negativtests grün.
   - **Rstest `0.12.6`**: 11 Dateien, 43/43 Tests grün (inkl. `content.check.test.ts` mit CH-NWD-V7.1-xlsx-SHA-256 & 4 Negativtest-Blöcken, Build ~388 ms).
   - **Playwright `390×844`** Hell & Dunkel (2/2 grün): deckte einen echten CSP-Fund auf (Zod v4 `allowsEval` `new Function`-Probe → behoben mit `z.config({ jitless: true })`, danach 0 CSP-Verstösse).
   - **`gitleaks 8.30.1`** (`dir` & `git` lokal + CI Run `45074835911`), **`actionlint 1.7.12`**, **`pnpm audit --audit-level=moderate`**, **`pnpm peers check`**, **`rg`**, **`diff -rq`** (byte-identische Inhaltsübernahme): alle 0 Funde.
   - **Vermiedene Cloud-Agent-Nutzung:** E1 komplett ohne Cursor-Cloud-Agent-Kontingent umgesetzt (~1–1,5 Agent-Tage gespart).
   - **Rückmeldung zu den Tools:** Playwright-CSP-Prüfung auf dem echten Build hat ihren Wert direkt bewiesen (Zod-v4-JIT-Fund vor Push entdeckt). `rstest` + `content:check` laufen in ~1,4 s durch. `codebase-memory-mcp` indexierte den Zuwachs (+851 Knoten / +1'393 Kanten) zuverlässig ohne unlesbare Dateien.
+- 23.11. (Antigravity-VM, E2 + N1/N2, analysierter Code-Stand Commit `797033297b658485d7dedfc360058674ea28177b`, Draft-PR `#26`):
+  - **`codebase-memory-mcp 0.12.1`** (Stand `79703329`): Repository indexiert mit **11'128 Knoten / 13'338 Kanten** (`parse_unusable: 0`; 63 TypeScript-Dateien, Paket `i18n` 45, `domain` 64, `build-content-index` 6). **`dependency-cruiser`** (`src` + `content`): 92 Module / 150 Abhängigkeiten, 0 Verstösse + 4/4 Negativtests grün.
+  - **Rstest `0.12.6`**: 14 Dateien, 61/61 Tests grün (inkl. `languages.complete.test.ts` + N1/N2-Tests; `content:check` 2 Dateien / 11 Tests in ~3,1 s).
+  - **Playwright `390×844`** Hell & Dunkel: 6/6 grün (2× stabil hintereinander lokal + grün in GitHub Actions Run `45176624124`, 0 CSP-Verstösse).
+  - **`pnpm` (`minimumReleaseAge: 5760`)**, **`pnpm audit --audit-level=moderate`**, **`pnpm peers check`**, **`gitleaks 8.30.1`**, **`actionlint 1.7.12`**, **`rg`**: alle 0 Funde; 4-Tage-Regel übersprang automatisch tagesaktuelle Releases (`i18next@27.2.5`, `intl-messageformat@12.2.1`).
+  - **Vermiedene Cloud-Agent-Nutzung:** E2 inkl. N1/N2 komplett ohne Cursor-Cloud-Agent-Kontingent umgesetzt (~1–1,5 Agent-Tage gespart).
+  - **Rückmeldung zu den Tools:** `minimumReleaseAge: 5760` hat in der Praxis sofort gegriffen und frische Releases automatisch gefiltert. TypeScript 6.0.3 prüfte `i18next@27.2.2` und `ReadonlySet`-Signaturen strikt und schnell. Bei Playwright-Locale-Tests ist `test.use({ locale: 'pt-BR' })` im eigenen `describe`-Block deutlich sauberer als manuelles `browser.newContext()`.
