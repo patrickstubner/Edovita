@@ -57,8 +57,14 @@ export function foodName(
   id: FoodId | string,
   lang: LangCode,
 ): string | null {
+  if (typeof lang !== 'string' || typeof id !== 'string') {
+    return null;
+  }
+  if (!Object.hasOwn(GLOSSARIES, lang)) {
+    return null;
+  }
   const glossary = GLOSSARIES[lang];
-  if (!glossary) {
+  if (!glossary || !Object.hasOwn(glossary, id)) {
     return null;
   }
   const value = glossary[id];

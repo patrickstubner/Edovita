@@ -8,6 +8,7 @@ import {
   PACES,
   SEX_FOR_CALC,
   SHOP_STATES,
+  SUPPORTED_UI_LANGS,
   TEXT_DIRS,
   UNITS,
   asCuisineId,
@@ -152,11 +153,32 @@ export const nutritionSummarySchema = z.strictObject({
   basis: z.string().min(1),
 });
 
+export const httpsUrlSchema = z
+  .string()
+  .url()
+  .refine((raw) => {
+    try {
+      const parsed = new URL(raw);
+      return parsed.protocol === 'https:' && parsed.hostname.length > 0;
+    } catch {
+      return false;
+    }
+  }, 'Quelle muss eine gültige https-URL sein.');
+
+export const LANG_CODE_RE = /^[a-z]{2,3}(?:-[A-Za-z0-9]{2,8})*$/;
+
+export const langCodeSchema = z
+  .string()
+  .min(2)
+  .max(16)
+  .regex(LANG_CODE_RE, 'Ungültiger Sprachcode.')
+  .refine(isSafeRecordKey, 'Reservierter Sprachcode nicht zulässig.');
+
 export const recipeReviewSchema = z.strictObject({
   status: z.enum(['ok', 'zu_pruefen']),
   checkedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Datum muss YYYY-MM-DD sein.'),
   by: z.string().min(1),
-  sources: z.array(z.string().url()).min(2),
+  sources: z.array(httpsUrlSchema).min(2),
   open: z.array(z.string().min(1)).optional(),
 });
 
@@ -206,15 +228,15 @@ export const profileSchema = z.strictObject({
 });
 
 export const settingsSchema = z.strictObject({
-  uiLang: z.string().min(2).max(16),
-  secondLang: z.string().min(2).max(16).nullable(),
+  uiLang: z.enum(SUPPORTED_UI_LANGS),
+  secondLang: langCodeSchema.nullable(),
   theme: z.enum(['system', 'light', 'dark']),
   sound: z.boolean(),
   hymn: z.enum(HYMN_IDS),
 });
 
 export const langMetaSchema = z.strictObject({
-  code: z.string().min(2).max(16),
+  code: langCodeSchema,
   name: safeContentStringSchema,
   englishName: safeContentStringSchema.optional(),
   locale: z.string().min(2).max(16),
@@ -222,6 +244,25 @@ export const langMetaSchema = z.strictObject({
   legalApproved: z.boolean(),
   reviewed: z.boolean(),
 });
+
+export const languagesRegistrySchema = z.strictObject({
+  fallback: langCodeSchema,
+  ui: z.array(langCodeSchema).min(1),
+  secondary: z.array(langCodeSchema).min(1),
+  meta: z
+    .record(z.string(), langMetaSchema)
+    .refine(
+      (obj) => Object.keys(obj).every(isSafeRecordKey),
+      'Reservierter Schlüssel in languages.meta nicht zulässig.',
+    ),
+});
+
+export const uiLocaleSchema = z
+  .record(z.string(), safeContentStringSchema)
+  .refine(
+    (obj) => Object.keys(obj).every(isSafeRecordKey),
+    'Reservierter Schlüssel in UI-Locale nicht zulässig.',
+  );
 
 export const exportBundleV1Schema = z.strictObject({
   format: z.literal(1),

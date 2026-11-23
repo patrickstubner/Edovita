@@ -171,3 +171,113 @@ html[data-eff='dark'] .edo-btn-secondary {
   color: var(--edo-text);
   box-shadow: var(--edo-shadow);
 }
+
+.edo-grow {
+  flex: 1 1 auto;
+  min-inline-size: 0;
+}
+
+.edo-row-top {
+  align-items: flex-start;
+}
+
+/* Sprach-Banner und Sprachauswahl exakt wie Prototyp (.banner.ok, .set, .langrow, .radio) */
+.edo-banner {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  background: var(--edo-primary-soft);
+  color: var(--edo-primary-dark);
+  border-radius: 18px;
+  padding-block: 14px;
+  padding-inline: 16px;
+  inline-size: 100%;
+}
+
+.edo-banner b {
+  display: block;
+  font-size: 17px;
+}
+
+.edo-banner .edo-grow > span {
+  display: block;
+  font-size: 16px;
+}
+
+.edo-circ {
+  inline-size: 44px;
+  block-size: 44px;
+  border-radius: 50%;
+  background: var(--edo-primary-soft);
+  color: var(--edo-primary-dark);
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+
+.edo-set {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-block-size: 64px;
+  inline-size: 100%;
+  padding-block: 8px;
+  padding-inline: 0;
+}
+
+.edo-set + .edo-set {
+  border-block-start: 1px solid var(--edo-border);
+}
+
+.edo-set-tx b {
+  display: block;
+  font-size: 17px;
+}
+
+.edo-set-tx small {
+  display: block;
+  font-size: 15px;
+  color: var(--edo-text-muted);
+}
+
+.edo-langrow {
+  text-align: start;
+}
+
+.edo-langrow .edo-circ-code {
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+.edo-langrow-cur .edo-circ-code {
+  background: var(--edo-primary);
+  color: var(--edo-on-primary);
+}
+
+.edo-radio {
+  inline-size: 24px;
+  block-size: 24px;
+  border-radius: 50%;
+  border: 2.5px solid var(--edo-border-strong);
+  background: var(--edo-surface);
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+
+.edo-radio-on {
+  border-color: var(--edo-primary);
+  background: var(--edo-primary);
+  box-shadow: inset 0 0 0 4px var(--edo-surface);
+}
+
+.edo-langrow-dis {
+  opacity: 0.5;
+  filter: grayscale(1);
+  cursor: not-allowed;
+}
+
+.edo-langrow-dis .edo-ic {
+  color: var(--edo-text-muted);
+}

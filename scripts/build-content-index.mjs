@@ -134,12 +134,82 @@ export function isCatalogIndexUpToDate(
   return actual === expected;
 }
 
+const LOCALES_OUTPUT_FILE = resolve(CONTENT_DIR, 'generated/locales-index.ts');
+
+export function generateLocalesIndexSource(contentDir = CONTENT_DIR) {
+  const localesDir = resolve(contentDir, 'locales');
+  const langCodes = readdirSync(localesDir, { withFileTypes: true })
+    .filter(
+      (entry) =>
+        entry.isDirectory() &&
+        existsSync(resolve(localesDir, entry.name, 'ui.json')),
+    )
+    .map((entry) => entry.name)
+    .sort();
+
+  for (const code of langCodes) {
+    assertSafeIdent(code, 'locales');
+  }
+
+  const lines = [
+    '/* Auto-generiert von scripts/build-content-index.mjs – nicht von Hand bearbeiten. */',
+    'import type {',
+    '  LanguagesRegistry,',
+    '  UiLocaleDict,',
+    "} from '../../src/domain/index.ts';",
+    "import languagesFile from '../locales/languages.json';",
+  ];
+
+  for (const code of langCodes) {
+    lines.push(
+      `import ui${toPascal(code)} from '../locales/${code}/ui.json';`,
+    );
+  }
+
+  lines.push('');
+  lines.push(
+    'export const LANGUAGES_REGISTRY: LanguagesRegistry = languagesFile as unknown as LanguagesRegistry;',
+  );
+  lines.push('');
+  lines.push(
+    'export type UiKey = keyof typeof uiEn;',
+  );
+  lines.push('');
+  lines.push(
+    'export const UI_LOCALES: Readonly<Record<string, UiLocaleDict>> = {',
+  );
+  for (const code of langCodes) {
+    lines.push(`  ${code}: ui${toPascal(code)},`);
+  }
+  lines.push('};');
+  lines.push('');
+
+  return lines.join('\n');
+}
+
+export function isLocalesIndexUpToDate(
+  contentDir = CONTENT_DIR,
+  outputFile = LOCALES_OUTPUT_FILE,
+) {
+  if (!existsSync(outputFile)) {
+    return false;
+  }
+  const expected = generateLocalesIndexSource(contentDir);
+  const actual = readFileSync(outputFile, 'utf8');
+  return actual === expected;
+}
+
 const isMain =
   process.argv[1] && resolve(process.argv[1]) === resolve(import.meta.filename);
 
 if (isMain) {
-  const source = generateCatalogIndexSource();
+  const catalogSource = generateCatalogIndexSource();
   mkdirSync(dirname(OUTPUT_FILE), { recursive: true });
-  writeFileSync(OUTPUT_FILE, source, 'utf8');
+  writeFileSync(OUTPUT_FILE, catalogSource, 'utf8');
   console.log('Typisierter Inhalts-Index erzeugt: content/generated/catalog-index.ts');
+
+  const localesSource = generateLocalesIndexSource();
+  mkdirSync(dirname(LOCALES_OUTPUT_FILE), { recursive: true });
+  writeFileSync(LOCALES_OUTPUT_FILE, localesSource, 'utf8');
+  console.log('Typisierter Sprach-Index erzeugt: content/generated/locales-index.ts');
 }

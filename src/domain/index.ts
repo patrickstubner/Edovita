@@ -6,8 +6,11 @@ export {
   type ThemePreference,
 } from './theme.ts';
 
+export { coerceUiLang, normalizeLangBase } from './lang.ts';
+
 export {
   ALLERGENS,
+  DEFAULT_UI_LANG,
   DIETARY_PREFS,
   FOOD_GROUPS,
   GOALS,
@@ -18,6 +21,7 @@ export {
   RECIPE_TAGS,
   SEX_FOR_CALC,
   SHOP_STATES,
+  SUPPORTED_UI_LANGS,
   TEXT_DIRS,
   UNITS,
   asCuisineId,
@@ -40,6 +44,7 @@ export {
   type ImportShopItem,
   type LangCode,
   type LangMeta,
+  type LanguagesRegistry,
   type Meal,
   type NutrientKey,
   type Nutrients,
@@ -59,13 +64,16 @@ export {
   type ShopImportError,
   type ShopState,
   type ShoppingItem,
+  type SupportedUiLang,
   type TextDir,
+  type UiLocaleDict,
   type Unit,
 } from './types.ts';
 
 export {
   CUISINE_ID_RE,
   FOOD_ID_RE,
+  LANG_CODE_RE,
   QR_ID_RE,
   RECIPE_ID_RE,
   UNSAFE_QR_NAME_RE,
@@ -81,8 +89,11 @@ export {
   foodSchema,
   foodSourceSchema,
   glossarySchema,
+  httpsUrlSchema,
   isSafeRecordKey,
+  langCodeSchema,
   langMetaSchema,
+  languagesRegistrySchema,
   mealSchema,
   nutrientsSchema,
   nutritionSummarySchema,
@@ -96,6 +107,7 @@ export {
   settingsSchema,
   shopStateSchema,
   shoppingItemSchema,
+  uiLocaleSchema,
   unitSchema,
 } from './schemas.ts';
 

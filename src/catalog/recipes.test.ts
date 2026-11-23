@@ -71,4 +71,14 @@ describe('catalog/recipes', () => {
     );
     expect(withSaved[0]?.id).toBe('b_ind');
   });
+
+  it('lehnt Prototype-Schlüssel in getRecipeText und savedIds ab (N2 / Object.hasOwn)', () => {
+    expect(getRecipeText('constructor', 'de')).toBeUndefined();
+    expect(getRecipeText('__proto__', 'de')).toBeUndefined();
+    expect(getRecipeText('toString', 'de')).toBeUndefined();
+    expect(getRecipeText('oven_salmon', 'constructor')).toBeUndefined();
+    expect(getRecipeText('oven_salmon', '__proto__')).toBeUndefined();
+    expect(getRecipeText('constructor', 'toString')).toBeUndefined();
+    expect(listRecipes({ savedOnly: true, savedIds: {} })).toEqual([]);
+  });
 });

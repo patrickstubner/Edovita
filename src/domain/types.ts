@@ -109,6 +109,19 @@ export const DIETARY_PREFS = [
 ] as const;
 export type DietaryPref = (typeof DIETARY_PREFS)[number];
 
+export const SUPPORTED_UI_LANGS = [
+  'de',
+  'en',
+  'fr',
+  'it',
+  'es',
+  'ja',
+  'pt',
+] as const;
+export type SupportedUiLang = (typeof SUPPORTED_UI_LANGS)[number];
+
+export const DEFAULT_UI_LANG: SupportedUiLang = 'en';
+
 export type LangCode = string;
 
 export interface LangMeta {
@@ -120,6 +133,15 @@ export interface LangMeta {
   legalApproved: boolean;
   reviewed: boolean;
 }
+
+export interface LanguagesRegistry {
+  fallback: LangCode;
+  ui: readonly LangCode[];
+  secondary: readonly LangCode[];
+  meta: Readonly<Record<string, LangMeta>>;
+}
+
+export type UiLocaleDict = Readonly<Record<string, string>>;
 
 export interface Nutrients {
   kcal: number;

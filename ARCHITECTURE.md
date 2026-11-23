@@ -1,14 +1,14 @@
 # ARCHITECTURE.md – Edovita
 
-Stand 23.11.2026, Basis `main` `bd3e0246d91066fd28ab381879cf28b7ff4410b9` (enthält E0 `7f49e3d`, E0b Pages `e7d46884`, Nachzug `#23` `a6c47cb3` und E1 PR `#24` `bd3e0246`, Version `0.1.0`). Die lokale Analyse von E1 (`codebase-memory-mcp`, Leitplanken, Rstest, Playwright, `gitleaks`, GitHub-CI-Run `45074835911`) bezieht sich auf den vor dem Merge geprüften Code-Stand `eb71c25a0bfc68c9cbb185f0ce45e9a9d5d453f1` (E0-Referenzstand: `9e45e9e9688d33e781d03d3b8e722b0af55f68d6`; von Stabschef freigegebener Head vor dem Squash-Merge: `691863e1d7e38071cc3561ad3ccd781fd156f2a9`). Details in `docs/architektur/`. Vorschau: https://patrickstubner.github.io/Edovita/.
+Stand 23.11.2026, Basis `main` `e0c7cadf75ebabf81dfc60676e5ac1470ed379f5` (enthält E0 `7f49e3d`, E0b Pages `e7d46884`, Nachzug `#23` `a6c47cb3`, E1 PR `#24` `bd3e0246` und Dependabot-Updates inkl. TypeScript 6.0.3, Version `0.1.0`), erweitert um Paket **E2** (Issue `#8`, Draft-PR `#26`, Branch `feat/e2-i18n`, inkl. E1-Nachzüge N1 & N2). Die lokale Analyse von E2 (`codebase-memory-mcp`, Leitplanken, Rstest, Playwright, `gitleaks`, GitHub-CI-Run `45176624124`) bezieht sich auf den geprüften Code-Stand `797033297b658485d7dedfc360058674ea28177b` (E1-Referenzstand: `eb71c25a0bfc68c9cbb185f0ce45e9a9d5d453f1`). Details in `docs/architektur/`. Vorschau: https://patrickstubner.github.io/Edovita/.
 
 ## Heute im Repo
 | Ort | Inhalt |
 |---|---|
-| `src/` | Produktiv-Basis (E0 + E1): React 19, TypeScript (strict), Rsbuild, `createHashRouter`, `Screen`/`BottomActions`, Theme (System/Hell/Dunkel, `#0B7F6B`), SVG-Icon-Sprite, `src/domain` (Typen, `zod`-Schemas, `parseShopImport`, `validateContentBundle`), `src/catalog` (Lebensmittel, Glossare, Rezepte, Filter/Ranking), `src/nutrition` (Portionsskalierung, Nährwertsummen), Basis-`src/i18n` (`de/ui.json`) sowie Einstiege für E2–E7 |
-| `content/` | Geprüfte Inhalte (E1): `foods/foods.json` (55 Lebensmittel, CH-NWD V7.1), `foods/glossary/{de,en,pt,ja}.json`, 5 Rezepte unter `recipes/<id>/{recipe,de,en}.json`, typisierter Index `generated/catalog-index.ts`, sowie `locales/de/ui.json` (weitere Locales ab E2) |
+| `src/` | Produktiv-Basis (E0 + E1 + E2): React 19, TypeScript 6 (strict), Rsbuild, `createHashRouter`, `Screen`/`BottomActions`, Theme (`ThemeProvider`, System/Hell/Dunkel, `#0B7F6B`), Mehrsprachigkeit (`I18nProvider`, `useI18n`, `src/i18n` mit `i18next` + `i18next-icu`, Rechts-Gate, `detectUiLang`, `Intl`-Formatierer), SVG-Icon-Sprite, `src/domain` (Typen, `zod`-Schemas inkl. `httpsUrlSchema` N1 und `coerceUiLang` N2, `parseShopImport`, `validateContentBundle`), `src/catalog` (Lebensmittel, Glossare, Rezepte mit `Object.hasOwn` N2, Filter/Ranking), `src/nutrition` sowie Einstiege für E3–E7 |
+| `content/` | Geprüfte Inhalte (E1 + E2): `foods/foods.json` (55 Lebensmittel, CH-NWD V7.1), `foods/glossary/{de,en,pt,ja}.json`, 5 Rezepte unter `recipes/<id>/{recipe,de,en}.json`, Sprach-Registry `locales/languages.json`, 7 UI-Locales `locales/{de,en,fr,it,es,ja,pt}/ui.json` sowie typisierte Indizes `generated/catalog-index.ts` und `generated/locales-index.ts` |
 | `public/` | `_headers` mit strikter CSP (`connect-src 'self'`; auf GitHub Pages zusätzlich als CSP-Meta-Tag, ohne `frame-ancestors`), `theme-init.js` (ohne Inline-Skript), finale Logo-SVGs |
-| `tests/`, `scripts/` | Rstest `0.12.6` (ADR-006), Testing Library, `fake-indexeddb`, Inhaltsprüfung (`tests/unit/content.check.test.ts`, Port von `validate.py` inkl. xlsx-SHA-256 & Negativtests), Playwright (`390×844`, Hell/Dunkel + CSP-Header), `build-content-index.mjs`, ADR-001-Negativtests (`test-arch-guard.mjs`, 4 Regeln inkl. `content-only-domain`), `security-check.mjs` |
+| `tests/`, `scripts/` | Rstest `0.12.6` (ADR-006), Testing Library, `fake-indexeddb`, Inhalts- & Sprachprüfungen (`content.check.test.ts`, `languages.complete.test.ts` inkl. Negativtests), Playwright (`390×844`, Hell/Dunkel, i18n/J6 + CSP-Header), `build-content-index.mjs`, ADR-001-Negativtests (`test-arch-guard.mjs`, 4 Regeln inkl. `content-only-domain`), `security-check.mjs` |
 | `.github/` | Hardened CI-Workflow (SHA-gepinnt, Lint, Tests, Build, Audit, `gitleaks 8.30.1`), Pages-Deploy (`deploy-pages.yml`, nur nach grüner `push`-CI auf `main` des eigenen Repos) und Dependabot (4-Tage-Cooldown) |
 | `SECURITY.md` | Sicherheitsmodell und laufende Sicherheitsprüfungen der App |
 | `README.md` | Überblick, lokaler Start mit `pnpm`, Einstieg für Agents (Cursor, Antigravity) |
@@ -19,22 +19,22 @@ Stand 23.11.2026, Basis `main` `bd3e0246d91066fd28ab381879cf28b7ff4410b9` (enth�
 ## Schichtstruktur (ADR-001, durchgesetzt per `dependency-cruiser` & ESLint)
 ```
 src/
-  pages/        Routen, dünne Komposition (HomePage, StatusPage; ab E4 RecipeDetailPage, ShoppingListPage …)
+  pages/        Routen, dünne Komposition (HomePage mit Sprachwahl/Theme, StatusPage; ab E4 RecipeDetailPage, ShoppingListPage …)
   components/   reine Darstellung (Screen, BottomActions, Icon, IconSprite)
-  hooks/        React-Bausteine (useTheme; ab E4 useRecipe, useServings, useShoppingList, useSecondLang …)
-  app/          Provider pro Bereich (ThemeProvider), Router (createHashRouter), Shell, Tokens
+  hooks/        React-Bausteine (useTheme, useI18n; ab E4 useRecipe, useServings, useShoppingList, useSecondLang …)
+  app/          Provider pro Bereich (I18nProvider, ThemeProvider), Router (createHashRouter), Shell, Tokens
   storage/      Repository-Schnittstellen, Dexie- und Memory-Implementierungen, Migrationen (E3)
-  catalog/      Rezepte, Lebensmittel, Glossare, Filter/Ranking (E1 aktiv)
-  i18n/         Basis-Textzugriff (`locales/de/ui.json`); i18next, Registry, Intl-Formatierer (E2)
+  catalog/      Rezepte, Lebensmittel, Glossare (`Object.hasOwn`), Filter/Ranking (E1 aktiv)
+  i18n/         i18next + i18next-icu, Registry mit Rechts-Gate, Gerätesprache, Intl-Formatierer, Locale-Prüfung (E2 aktiv, ohne React)
   nutrition/    Portionsskalierung (`scaleIngredients`), Nährwertsummen (`nutrientsPerServing`, `nutrientsForServings`) (E1 aktiv)
   health/       Schutzregeln, reine Funktionen (Onboarding)
   pwa/          Service Worker, Update-Hinweis (E7)
-  domain/       Typen, Branded IDs, Whitelist-Normalisierung, `zod`-Schemas, `parseShopImport`, `validateContentBundle`; importiert nichts aus anderen `src/`-Ordnern (E1 aktiv)
-content/        nur Daten (Rezepte, Lebensmittel, Glossare, Locales, generierter Index `generated/catalog-index.ts`)
+  domain/       Typen, Branded IDs, Whitelist-Normalisierung (`coerceThemePreference`, `coerceUiLang`), `zod`-Schemas (`jitless: true`, `httpsUrlSchema`), `parseShopImport`, `validateContentBundle`; importiert nichts aus anderen `src/`-Ordnern (E1/E2 aktiv)
+content/        nur Daten (Rezepte, Lebensmittel, Glossare, Locales, generierte Indizes unter `generated/`)
 ```
 
-## Datenfluss (aktiv ab E1 / Ziel)
-- **Inhalte (aktiv ab E1):** `content/{foods,recipes}` → `pnpm run content:build` (`content/generated/catalog-index.ts`) & `pnpm run content:check` (`zod` + Nährwert-/Allergen-/Glossar-/xlsx-SHA-256-Prüfung) → `src/catalog/` & `src/nutrition/` → Hooks → Seiten.
+## Datenfluss (aktiv ab E1/E2 / Ziel)
+- **Inhalte & Sprachen (aktiv ab E1/E2):** `content/{foods,recipes,locales}` → `pnpm run content:build` (`catalog-index.ts`, `locales-index.ts`) & `pnpm run content:check` (`zod`, Nährwerte/Allergene/xlsx-SHA-256, Schlüssel/ICU-Platzhalter/Glossare) → `src/catalog/`, `src/nutrition/`, `src/i18n/` → Provider/Hooks → Seiten.
 - **Nutzerdaten (Ziel ab E3):** Seiten → Hooks → Provider pro Bereich → `*Repository` (Dexie, Tests mit Memory). Beim Lesen `coerce*()` (Whitelist).
 - **Einkaufsliste (Ziel ab E5; Import-Parser aktiv ab E1):** Rezept-Detail → `addRecipe(list, recipe, servings)` → `ShoppingRepository`. Teilen nur Lebensmittel-IDs, Mengen, Zustände (`parseShopImport`/`encodeShopImport` in `src/domain`).
 - **Kein Netzwerk** ausser eigenen statischen Dateien (CSP `connect-src 'self'`).
