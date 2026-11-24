@@ -1072,3 +1072,11 @@
 1072|Rimuovi {name}
 1073|{name}, {n} porzioni
 1074|Creata dal piano di {n} giorni
+1075|Colazione
+1076|Pranzo
+1077|Cena
+1078|Snack
+1079|Aggiunto alla lista e pianificato per {when}
+1080|Aggiunto alla lista. Nessuno spazio adatto rimasto nel piano.
+1081|Aggiunto alla lista. Era già nel piano.
+1082|Annulla

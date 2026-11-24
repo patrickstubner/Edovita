@@ -141,7 +141,7 @@
  "rezepte.mahlzeit": "MAHLZEIT",
  "rezepte.mahlzeit_2": "Mahlzeit",
  "rezepte.alle": "Alle",
- "rezepte.zwischenmahlzeit": "Zwischenmahlzeit",
+ "rezepte.zwischenmahlzeit": "Snacks",
  "rezepte.eigenschaften_mehrere_moglich": "EIGENSCHAFTEN (MEHRERE MÖGLICH)",
  "rezepte.eigenschaften": "Eigenschaften",
  "rezepte.schnell_bis_15_min": "Schnell, bis 15 Min.",
@@ -526,7 +526,7 @@
  "meal.breakfast": "Frühstück",
  "meal.lunch": "Mittagessen",
  "meal.dinner": "Abendessen",
- "meal.snack": "Zwischenmahlzeit",
+ "meal.snack": "Snacks",
  "recipe.kcal": "{n} kcal",
  "recipe.min": "{n} Min.",
  "recipe.protein": "{n} g Eiweiss",
@@ -1072,5 +1072,13 @@
  "plan.portions.aria": "Portionen, {n}",
  "plan.slot.remove": "{name} entfernen",
  "plan.filled": "{name}, {n} Portionen",
- "shop.from.plan": "Aus dem Plan für {n} Tage erstellt"
+ "shop.from.plan": "Aus dem Plan für {n} Tage erstellt",
+ "meal.short.breakfast": "Frühstück",
+ "meal.short.lunch": "Mittag",
+ "meal.short.dinner": "Abend",
+ "meal.short.snack": "Snacks",
+ "toast.addlist.planned": "Auf Liste und für {when} eingeplant",
+ "toast.addlist.noslot": "Auf die Liste gesetzt. Kein passender Plan-Slot mehr frei.",
+ "toast.addlist.already": "Auf die Liste gesetzt. War bereits im Plan.",
+ "toast.undo": "Rückgängig"
 }

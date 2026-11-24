@@ -1,12 +1,15 @@
-# Edovita – Klick-Prototyp v5.7 (Essensplan und Zweitsprache in der Kopfzeile)
+# Edovita – Klick-Prototyp v5.8 (Rezeptbilder, Snacks, Liste mit Planeinplanung)
 
 **Nicht produktiver Code.** Dieser Ordner ist die Design-Referenz und der klickbare Prototyp für UX-Versuche. Er wird nicht in die echte App übernommen; die App entsteht neu (React + TypeScript + Rsbuild).
 
-- **Version:** v5.7 (24.11.2026), auf v5.6 aufbauend
+- **Version:** v5.8 (24.11.2026), auf v5.7 aufbauend
 - **Live:** als Cloudflare-Worker-Demo veröffentlicht (URL bewusst nicht im Repo)
 - **Technik:** statisches HTML/CSS/Vanilla-JS, keine Laufzeit-Abhängigkeiten ausser `vendor/qrcode-generator.js` (MIT), keine Netzwerkaufrufe, strenge CSP
 - **Daten:** nur erfundene Demo-Daten. Es werden keine Gesundheitsdaten gespeichert (localStorage nur Sprache, Zweitsprache (manuelle Wahl), Plan, Einkaufsliste, Darstellung, Ton, Region; keine Standortdaten)
 - **Starten:** im Ordner `python3 -m http.server` und `http://localhost:8000/` öffnen (Handy-Breite, z. B. 390×844)
+
+## Neu in v5.8
+Lokale Rezeptbilder (nur Pexels, Lizenz ohne Pflicht zur Namensnennung; Herkunft intern in `IMAGES.md` und `images/recipes/manifest.json`). 12 von 15 Beispielrezepten haben ein Foto in Liste, Detail und Plan (Miniatur), drei behalten den neutralen Platzhalter. Bilder sind WebP ohne EXIF/GPS und im Worker gebündelt (CSP `img-src 'self'`, kein Hotlinking). Der Plan-Slot heisst «Snacks». «Auf die Einkaufsliste» aus einem Rezept setzt das Gericht zusätzlich in den nächsten freien passenden Slot (ab heute, im Planzeitraum; Toast mit Rückgängig). Zutaten werden nur einmal gezählt (Verknüpfung mit dem Plan-Slot). Details in `ENTWICKLUNG.md`, `IMAGES.md` und `SECURITY.md`.
 
 ## Neu in v5.7
 Zweitsprache fest als zweiter kompakter Umschalter **links neben** dem Hauptumschalter in der Kopfzeile (Variante B). Variante A, Demo-Leiste und `?variant` entfallen. Standard der Zweitsprache folgt dem Ort (Zeitzone bzw. Sprache-Region, ohne Geolocation), sonst Englisch, sonst keine; eine manuelle Wahl hat Vorrang und wird erst dann gespeichert. Glossar-DE: «Brokkoli».

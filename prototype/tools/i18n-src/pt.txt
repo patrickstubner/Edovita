@@ -1072,3 +1072,11 @@
 1072|Remover {name}
 1073|{name}, {n} porções
 1074|Criada a partir do plano de {n} dias
+1075|Café da manhã
+1076|Almoço
+1077|Jantar
+1078|Lanches
+1079|Adicionado à lista e planejado para {when}
+1080|Adicionado à lista. Não há mais horário adequado no plano.
+1081|Adicionado à lista. Já estava no plano.
+1082|Desfazer

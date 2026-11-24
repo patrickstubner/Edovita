@@ -119,7 +119,7 @@ h3{font-size:17px;font-weight:700}
 .tile3{display:flex;flex-direction:column;gap:8px;align-items:flex-start;min-height:110px;font-weight:700;font-size:16px;line-height:1.25}
 .big-n{font-size:26px;font-weight:800}
 .recipe .img,.img{background:var(--ps);color:var(--pd);display:grid;place-items:center;font-size:14px;font-weight:600}
-.recipe.feat .img{height:150px}
+.recipe.feat .img{aspect-ratio:16/9;height:auto;max-height:180px}
 .recipe.sm{display:flex;gap:14px;align-items:center}
 .recipe.sm .img{width:96px;height:96px;border-radius:16px;flex:none}
 .recipe .meta{display:flex;gap:12px;align-items:center;font-size:16px;font-weight:600}
@@ -329,8 +329,16 @@ button.radio{cursor:pointer}
 .rimg{position:relative;overflow:hidden}
 .rimg.c1{background:#E3F5F0;color:#0B6E5E}.rimg.c2{background:#FDF0DE;color:#7A430A}.rimg.c3{background:#FDE6E4;color:#7A1F1A}
 .rimg.c4{background:#E5EEFD;color:#2A5FC4}.rimg.c5{background:#EEF6DA;color:#4D6B12}.rimg.c6{background:#F1E8FB;color:#5B2E8C}
-html[data-eff=dark] .rimg{filter:brightness(.55) saturate(1.2)}
-.cui{position:absolute;left:10px;bottom:10px;background:rgba(255,255,255,.92);color:#14211F;border-radius:12px;padding:3px 10px;font-size:13px;font-weight:700}
+html[data-eff=dark] .rimg.ph{filter:brightness(.55) saturate(1.2)}
+html[data-eff=dark] .rimg.has-photo img{filter:brightness(.92)}
+.rimg img,.rezept-hero img,.plan-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.rimg,.rezept-hero,.plan-thumb{position:relative;overflow:hidden;background:var(--ps)}
+.rezept-hero{aspect-ratio:4/3;border-radius:20px;margin:0 0 14px}
+.plan-thumb{width:56px;height:56px;border-radius:14px;flex:none;aspect-ratio:1}
+.toast{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+.toast-undo{min-height:44px;padding:8px 12px;border-radius:12px;font-weight:700;font-size:15px;color:var(--toast-bg);background:var(--toast-t);flex:none}
+.toast-undo:focus-visible{outline:3px solid var(--pd);outline-offset:2px}
+.cui{z-index:1;position:absolute;left:10px;bottom:10px;background:rgba(255,255,255,.92);color:#14211F;border-radius:12px;padding:3px 10px;font-size:13px;font-weight:700}
 .fthumb{width:40px;height:40px;border-radius:12px;background:var(--ps);color:var(--pd);display:grid;place-items:center;flex:none}
 .blk{display:block}
 .shoprow{display:flex;align-items:center;gap:10px;min-height:56px}

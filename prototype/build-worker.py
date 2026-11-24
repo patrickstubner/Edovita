@@ -14,6 +14,12 @@ import base64
 AUDIO=['hymne_H1.mp3','hymne_H5.mp3','hymne_H4.mp3','A_aufbruch.mp3','B_erfolg.mp3','C_zusammen.mp3']
 for f in AUDIO:
     F['/audio/'+f]={'t':'audio/mpeg','b64':base64.b64encode(open('audio/'+f,'rb').read()).decode('ascii')}
+# Rezeptbilder: lokal gebündelt, CSP img-src 'self' (kein Hotlinking)
+REC_IMG='images/recipes'
+if os.path.isdir(REC_IMG):
+    for f in sorted(os.listdir(REC_IMG)):
+        if f.endswith('.webp'):
+            F['/images/recipes/'+f]={'t':'image/webp','b64':base64.b64encode(open(os.path.join(REC_IMG,f),'rb').read()).decode('ascii')}
 csp="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; media-src 'self'; object-src 'none'; frame-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'"
 tpl=open('worker.tpl.mjs',encoding='utf-8').read()
 worker=tpl.replace('__FILES__',json.dumps(F,ensure_ascii=False)).replace('__CSP__',json.dumps(csp))

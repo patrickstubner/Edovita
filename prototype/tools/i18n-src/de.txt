@@ -140,7 +140,7 @@
 140|MAHLZEIT
 141|Mahlzeit
 142|Alle
-143|Zwischenmahlzeit
+143|Snacks
 144|EIGENSCHAFTEN (MEHRERE MÖGLICH)
 145|Eigenschaften
 146|Schnell, bis 15 Min.
@@ -525,7 +525,7 @@
 525|Frühstück
 526|Mittagessen
 527|Abendessen
-528|Zwischenmahlzeit
+528|Snacks
 529|{n} kcal
 530|{n} Min.
 531|{n} g Eiweiss
@@ -1072,3 +1072,11 @@
 1072|{name} entfernen
 1073|{name}, {n} Portionen
 1074|Aus dem Plan für {n} Tage erstellt
+1075|Frühstück
+1076|Mittag
+1077|Abend
+1078|Snacks
+1079|Auf Liste und für {when} eingeplant
+1080|Auf die Liste gesetzt. Kein passender Plan-Slot mehr frei.
+1081|Auf die Liste gesetzt. War bereits im Plan.
+1082|Rückgängig

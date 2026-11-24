@@ -1,0 +1,230 @@
+{
+  "as_of": "2026-11-24",
+  "timezone": "Europe/Zurich",
+  "license": "Pexels License (https://www.pexels.com/license/) — free use, attribution not required. See IMAGES.md.",
+  "internal_only": true,
+  "note": "This manifest is not shown in the UI. Images are bundled locally; no hotlinking, no API.",
+  "placeholders": [
+    {
+      "recipeId": "quinoa_pan",
+      "reason": "Kein Foto, das klar eine Quinoa-Gemüsepfanne mit Kichererbsen zeigt, ohne irreführende Zutaten (z. B. Fleisch oder Buchweizen)."
+    },
+    {
+      "recipeId": "mushroom_polenta",
+      "reason": "Kein Foto, das Pilze und Polenta zusammen und erkennbar zeigt."
+    },
+    {
+      "recipeId": "hummus_wrap",
+      "reason": "Kein schlichtes, passendes Hummus-Gemüse-Wrap-Foto (Kandidaten waren Döner mit Pommes, Party-Röllchen oder stark stilisiert)."
+    }
+  ],
+  "images": [
+    {
+      "recipeId": "oven_salmon",
+      "source": "Pexels",
+      "pexelsId": 20182302,
+      "originalUrl": "https://www.pexels.com/photo/potatoes-and-fish-in-a-meal-20182302/",
+      "photographer": "Valeria Boltneva",
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "oven_salmon.webp",
+        "thumb": "oven_salmon-thumb.webp"
+      },
+      "bytes": {
+        "full": 31054,
+        "thumb": 11222
+      }
+    },
+    {
+      "recipeId": "thai_curry",
+      "source": "Pexels",
+      "pexelsId": 10527603,
+      "originalUrl": "https://www.pexels.com/photo/cooked-food-on-white-ceramic-bowl-10527603/",
+      "photographer": "Nourishment DECODED",
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "thai_curry.webp",
+        "thumb": "thai_curry-thumb.webp"
+      },
+      "bytes": {
+        "full": 62808,
+        "thumb": 20212
+      }
+    },
+    {
+      "recipeId": "pho",
+      "source": "Pexels",
+      "pexelsId": 6646022,
+      "originalUrl": "https://www.pexels.com/photo/cooked-food-in-the-bowl-6646022/",
+      "photographer": "Ana Karotkaya Photography",
+      "photographerSource": "EXIF Artist (Pexels-HTML wegen Bot-Schutz nicht zuverlässig auslesbar)",
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "pho.webp",
+        "thumb": "pho-thumb.webp"
+      },
+      "bytes": {
+        "full": 65054,
+        "thumb": 18762
+      }
+    },
+    {
+      "recipeId": "summer_rolls",
+      "source": "Pexels",
+      "pexelsId": 6646031,
+      "originalUrl": "https://www.pexels.com/photo/spring-rolls-on-the-plate-6646031/",
+      "photographer": "Ana Karotkaya Photography",
+      "photographerSource": "EXIF Artist (gleiche Serie wie 6646022)",
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "summer_rolls.webp",
+        "thumb": "summer_rolls-thumb.webp"
+      },
+      "bytes": {
+        "full": 31256,
+        "thumb": 10868
+      }
+    },
+    {
+      "recipeId": "birchermuesli",
+      "source": "Pexels",
+      "pexelsId": 6133456,
+      "originalUrl": "https://www.pexels.com/photo/oatmeal-served-for-breakfast-6133456/",
+      "photographer": "Regina Ferraz",
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "birchermuesli.webp",
+        "thumb": "birchermuesli-thumb.webp"
+      },
+      "bytes": {
+        "full": 51732,
+        "thumb": 17834
+      }
+    },
+    {
+      "recipeId": "yogurt_bowl",
+      "source": "Pexels",
+      "pexelsId": 4220141,
+      "originalUrl": "https://www.pexels.com/photo/healthy-breakfast-bowl-with-oatmeal-and-fruits-4220141/",
+      "photographer": "Javier Disabato",
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "yogurt_bowl.webp",
+        "thumb": "yogurt_bowl-thumb.webp"
+      },
+      "bytes": {
+        "full": 80788,
+        "thumb": 24224
+      }
+    },
+    {
+      "recipeId": "lentil_curry",
+      "source": "Pexels",
+      "pexelsId": 28286241,
+      "originalUrl": "https://www.pexels.com/photo/vegan-lentil-dhal-28286241/",
+      "photographer": "Nic Wood",
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "lentil_curry.webp",
+        "thumb": "lentil_curry-thumb.webp"
+      },
+      "bytes": {
+        "full": 101706,
+        "thumb": 26418
+      }
+    },
+    {
+      "recipeId": "scrambled_eggs",
+      "source": "Pexels",
+      "pexelsId": 32134464,
+      "originalUrl": "https://www.pexels.com/photo/scrambled-eggs-and-avocado-on-toast-with-greens-32134464/",
+      "photographer": "Anthony Rahayel",
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "scrambled_eggs.webp",
+        "thumb": "scrambled_eggs-thumb.webp"
+      },
+      "bytes": {
+        "full": 62002,
+        "thumb": 16466
+      }
+    },
+    {
+      "recipeId": "chicken_bowl",
+      "source": "Pexels",
+      "pexelsId": 17308548,
+      "originalUrl": "https://www.pexels.com/photo/close-up-of-a-dish-with-rice-and-chicken-in-sauce-topped-with-spring-onion-17308548/",
+      "photographer": "Vitaliy Haiduk",
+      "photographerNote": "Pexels-Seitenangabe; EXIF Artist laut Datei: Makarchuk Oleksandr / Capitan_Despot",
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "chicken_bowl.webp",
+        "thumb": "chicken_bowl-thumb.webp"
+      },
+      "bytes": {
+        "full": 53750,
+        "thumb": 14630
+      }
+    },
+    {
+      "recipeId": "miso_salmon",
+      "source": "Pexels",
+      "pexelsId": 39641632,
+      "originalUrl": "https://www.pexels.com/photo/delicious-glazed-salmon-with-spinach-and-edamame-39641632/",
+      "photographer": "Valeria Boltneva",
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "miso_salmon.webp",
+        "thumb": "miso_salmon-thumb.webp"
+      },
+      "bytes": {
+        "full": 49736,
+        "thumb": 16874
+      }
+    },
+    {
+      "recipeId": "shakshuka",
+      "source": "Pexels",
+      "pexelsId": 35672951,
+      "originalUrl": "https://www.pexels.com/photo/delicious-shakshuka-in-cast-iron-skillet-35672951/",
+      "photographer": "Valeria Boltneva",
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "shakshuka.webp",
+        "thumb": "shakshuka-thumb.webp"
+      },
+      "bytes": {
+        "full": 59700,
+        "thumb": 19326
+      }
+    },
+    {
+      "recipeId": "burrito_bowl",
+      "source": "Pexels",
+      "pexelsId": 16123122,
+      "originalUrl": "https://www.pexels.com/photo/close-up-of-salad-16123122/",
+      "photographer": "Raphael Loquellano",
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "burrito_bowl.webp",
+        "thumb": "burrito_bowl-thumb.webp"
+      },
+      "bytes": {
+        "full": 54224,
+        "thumb": 18426
+      }
+    }
+  ]
+}

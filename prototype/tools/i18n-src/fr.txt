@@ -1072,3 +1072,11 @@
 1072|Retirer {name}
 1073|{name}, {n} portions
 1074|Créée à partir du planning sur {n} jours
+1075|Petit-déjeuner
+1076|Midi
+1077|Soir
+1078|Snacks
+1079|Ajouté à la liste et prévu pour {when}
+1080|Ajouté à la liste. Plus de créneau adapté dans le planning.
+1081|Ajouté à la liste. Déjà dans le planning.
+1082|Annuler

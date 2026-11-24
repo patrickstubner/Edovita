@@ -1072,5 +1072,13 @@
  "plan.portions.aria": "人分、{n}",
  "plan.slot.remove": "{name}を削除",
  "plan.filled": "{name}、{n}人分",
- "shop.from.plan": "{n}日分のプランから作成"
+ "shop.from.plan": "{n}日分のプランから作成",
+ "meal.short.breakfast": "朝食",
+ "meal.short.lunch": "ランチ",
+ "meal.short.dinner": "夕食",
+ "meal.short.snack": "スナック",
+ "toast.addlist.planned": "リストに追加し、{when}に予定しました",
+ "toast.addlist.noslot": "リストに追加しました。プランに合う空きがありません。",
+ "toast.addlist.already": "リストに追加しました。すでにプランにあります。",
+ "toast.undo": "元に戻す"
 }

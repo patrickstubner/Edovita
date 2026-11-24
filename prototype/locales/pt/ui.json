@@ -1072,5 +1072,13 @@
  "plan.portions.aria": "Porções, {n}",
  "plan.slot.remove": "Remover {name}",
  "plan.filled": "{name}, {n} porções",
- "shop.from.plan": "Criada a partir do plano de {n} dias"
+ "shop.from.plan": "Criada a partir do plano de {n} dias",
+ "meal.short.breakfast": "Café da manhã",
+ "meal.short.lunch": "Almoço",
+ "meal.short.dinner": "Jantar",
+ "meal.short.snack": "Lanches",
+ "toast.addlist.planned": "Adicionado à lista e planejado para {when}",
+ "toast.addlist.noslot": "Adicionado à lista. Não há mais horário adequado no plano.",
+ "toast.addlist.already": "Adicionado à lista. Já estava no plano.",
+ "toast.undo": "Desfazer"
 }

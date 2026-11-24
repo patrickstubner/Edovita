@@ -1072,5 +1072,13 @@
  "plan.portions.aria": "Portions, {n}",
  "plan.slot.remove": "Retirer {name}",
  "plan.filled": "{name}, {n} portions",
- "shop.from.plan": "Créée à partir du planning sur {n} jours"
+ "shop.from.plan": "Créée à partir du planning sur {n} jours",
+ "meal.short.breakfast": "Petit-déjeuner",
+ "meal.short.lunch": "Midi",
+ "meal.short.dinner": "Soir",
+ "meal.short.snack": "Snacks",
+ "toast.addlist.planned": "Ajouté à la liste et prévu pour {when}",
+ "toast.addlist.noslot": "Ajouté à la liste. Plus de créneau adapté dans le planning.",
+ "toast.addlist.already": "Ajouté à la liste. Déjà dans le planning.",
+ "toast.undo": "Annuler"
 }

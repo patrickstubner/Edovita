@@ -68,7 +68,7 @@ D = {
 "prefsum.d_mush": "ohne Pilze", "prefsum.d_fish": "ohne Fisch", "prefsum.d_onion": "ohne Zwiebeln", "prefsum.d_cil": "ohne Koriander",
 "prefsum.none": "Keine Einschränkungen",
 "pref.note": "Bei Allergien prüfe immer die Zutatenliste auf der Verpackung. Dieser Prototyp gibt keine Garantie.",
-"meal.breakfast": "Frühstück", "meal.lunch": "Mittagessen", "meal.dinner": "Abendessen", "meal.snack": "Zwischenmahlzeit",
+"meal.breakfast": "Frühstück", "meal.lunch": "Mittagessen", "meal.dinner": "Abendessen", "meal.snack": "Snacks",
 "recipe.kcal": "{n} kcal", "recipe.min": "{n} Min.", "recipe.protein": "{n} g Eiweiss",
 "recipe.top": "Top-Treffer", "recipe.addlist": "Zutaten auf die Einkaufsliste", "recipe.img": "Bildplatzhalter",
 "recipe.none.title": "Keine passenden Rezepte",

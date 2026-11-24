@@ -1,3 +1,8 @@
+# Stand v5.8 (24. November 2026)
+Lokale Rezeptbilder (Pexels, ohne Pflicht zur Namensnennung, intern in `IMAGES.md` dokumentiert) in Liste, Detail und Plan. Plan-Slot «Zwischenmahlzeit» heisst «Snacks». «Auf die Einkaufsliste» plant das Rezept zusätzlich in den nächsten freien passenden Slot (Toast mit Rückgängig; Zutaten nur einmal gezählt). Dark/Light und Sprachumschalter unverändert.
+
+---
+
 # Stand v5.7 (24. November 2026)
 Zweitsprache fest in der Kopfzeile links neben dem Hauptumschalter. Orts-Standard ohne Geolocation (Zeitzone/Sprachtags), nicht gespeichert bis zur manuellen Wahl. Essensplan für 3–7 Tage, Einkaufsliste aus dem Plan (skaliert, zusammengeführt, mit Rezeptangabe). Glossar «Brokkoli». Dark/Light unverändert.
 

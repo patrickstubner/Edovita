@@ -1072,3 +1072,11 @@
 1072|Quitar {name}
 1073|{name}, {n} raciones
 1074|Creada a partir del plan de {n} días
+1075|Desayuno
+1076|Comida
+1077|Cena
+1078|Snacks
+1079|Añadido a la lista y planificado para {when}
+1080|Añadido a la lista. No queda ningún hueco adecuado en el plan.
+1081|Añadido a la lista. Ya estaba en el plan.
+1082|Deshacer

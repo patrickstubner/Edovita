@@ -1,3 +1,30 @@
+# Sicherheitsprüfung v5.8 (24. November 2026, Europe/Zurich)
+
+**Stand:** UX-Versuch Rezeptbilder (lokal gebündelt), Plan-Slot «Snacks», «Auf die Einkaufsliste» mit automatischer Planeinplanung und Rückgängig. Branch `prototype/lang-switcher` (nicht auf `main` mergen). Bestehender Cloudflare-Worker `edovita-prototyp` wird aktualisiert, keine neuen Ressourcen oder Pakete. Dark/Light und Sprachumschalter unverändert.
+**Quelle der Prüfung:** Code-Review der geänderten Dateien (`styles.css`, `app.js`, `build-worker.py`, `locales/*`, `tools/i18n-src/*`, `images/recipes/*`, `IMAGES.md`), grep-Scans (innerHTML/eval/Netzwerk/Geheimnisse/Geolocation/externe Bildhosts), Prüfung der WebP-Dateien auf EXIF/GPS (0 Treffer), Headless Playwright (Chrome, Viewport 390×844): Rezeptliste/Detail/Plan mit lokalen Bildern, keine Requests an Pexels/Unsplash, Toast mit Rückgängig, bereits geplante Rezepte werden nicht doppelt eingeplant, 0 Konsolenfehler. Keine neuen Laufzeit-Abhängigkeiten, deshalb kein `pnpm audit` im Prototyp.
+
+| # | Thema | Ergebnis | Schwere |
+|---|--------|----------|---------|
+| 1 | Eingabevalidierung | Unverändert zu v5.7 für Sprache, Plan und Einkaufsliste. Neue Bildpfade entstehen nur aus der festen Rezept-Whitelist (`RECIPE_PHOTOS` bzw. bekannte Rezept-IDs), nicht aus Nutzereingaben oder URL-Parametern. Der Toast-Undo stellt ausschliesslich eine im selben Lauf gemachte Speicher-Kopie von Plan und Liste wieder her, keine Daten aus der URL. | kein Befund |
+| 2 | Injection / XSS | Keine neuen Sinks: kein `innerHTML`/`eval`/`document.write`. Rezepttitel als `alt`, Toast-Text und «Rückgängig» per `textContent`/`createElement`. CSP unverändert (`script-src 'self'`, `style-src 'self'`, `connect-src 'none'`, `img-src 'self' data:`). | kein Befund |
+| 3 | Geheimnisse | Keine Schlüssel, Tokens, API-Konten oder Passwörter. Unsplash- und Pexels-API wurden nicht verwendet. | kein Befund |
+| 4 | Bilder / CSP / Speicher | 24 WebP-Dateien lokal unter `images/recipes/`, im Worker als Base64 eingebettet und unter `img-src 'self'` ausgeliefert. **Kein Hotlinking, kein `fetch`, keine externen Bildhosts.** Beim Umrechnen (neues RGB-WebP) werden EXIF- und GPS-Daten nicht übernommen (Prüfung: 0 Dateien mit EXIF/GPS). Namensnennung und Ursprungs-URLs nur intern (`IMAGES.md`, `manifest.json`), nicht in der UI. Keine neuen localStorage-Keys. Keine Standortdaten. | kein Befund |
+| 5 | Abhängigkeiten | Keine neuen Laufzeit- oder Build-Abhängigkeiten. Screenshot-Lauf über vorhandenes Playwright-Core, kein neues Paket im Prototyp. | kein Befund |
+| 6 | Fehlermeldungen / Angriffsfläche | Keine Stacktraces nach aussen. Worker-Skriptgrösse nach dem Einbetten der Bilder ca. 3,5 MB (unter dem Free-Limit). | kein Befund |
+
+**SHA-256 (geänderte Kern-Dateien):**
+```
+f0aa357ca29155c9d76a28015e8e989b59c2c608fbd386e501a22dbcc36f1250  prototype/index.html
+709fa788f25006cbc33ed640ae7181e7c38698585d59ecce5288adfc3aa90bb5  prototype/styles.css
+67d07eeea3d26199336ad10b7cf5cdc9cea1bf098018a78b63d53b986c31e5bc  prototype/app.js
+5b54686200f5fcb34be34c3070a741b5c436deddc21e38144f7fd4c2d0bc0786  prototype/i18n.js
+736389de8e41d6e4fe9e7594fbedd4bf9711d2ddfd90fdce1ae727b6d5f44252  prototype/locales.js
+272ac1a8d67a975a915d00a1a88ced1839e8fa12f749a7c1c4db2367a1ae1ac9  prototype/build-worker.py
+dac3e1dc1cb9eaa0a48d88dd1aec6727abf21597b7b8806ed8ad1944ff8a4dc9  prototype/IMAGES.md
+```
+
+---
+
 # Sicherheitsprüfung v5.7 (24. November 2026, Europe/Zurich)
 
 **Stand:** UX-Versuch Essensplan plus Einkaufsliste, Zweitsprache fest als zweiter Umschalter in der Kopfzeile (Variante B). Branch `prototype/lang-switcher` (nicht auf `main` mergen). Bestehender Cloudflare-Worker wird aktualisiert, keine neuen Ressourcen oder Pakete. Dark/Light unverändert.

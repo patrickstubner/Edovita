@@ -140,7 +140,7 @@
 140|MEAL
 141|Meal
 142|All
-143|Snack
+143|Snacks
 144|PROPERTIES (SEVERAL POSSIBLE)
 145|Properties
 146|Quick, up to 15 min
@@ -525,7 +525,7 @@
 525|Breakfast
 526|Lunch
 527|Dinner
-528|Snack
+528|Snacks
 529|{n} kcal
 530|{n} min
 531|{n} g protein
@@ -1072,3 +1072,11 @@
 1072|Remove {name}
 1073|{name}, {n} servings
 1074|Created from the plan for {n} days
+1075|Breakfast
+1076|Lunch
+1077|Dinner
+1078|Snacks
+1079|Added to the list and planned for {when}
+1080|Added to the list. No matching plan slot left.
+1081|Added to the list. Already in the plan.
+1082|Undo

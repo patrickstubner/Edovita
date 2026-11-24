@@ -70,11 +70,28 @@
     if (cur !== id) history_.push(cur);
     location.hash = '#/' + id;
   }
-  function toast(msg) {
-    var t = $('#toast');
-    t.textContent = msg; t.hidden = false;
+  function toast(msg, opts) {
+    var t = $('#toast'), btn, ms;
+    opts = opts || {};
+    t.textContent = '';
+    t.appendChild(document.createTextNode(msg));
+    if (opts.undo) {
+      btn = mk('button', 'toast-undo');
+      btn.type = 'button';
+      btn.textContent = T('toast.undo');
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        clearTimeout(toast.h);
+        t.hidden = true;
+        if (typeof opts.undo === 'function') opts.undo();
+      });
+      t.appendChild(btn);
+    }
+    t.hidden = false;
     clearTimeout(toast.h);
-    toast.h = setTimeout(function () { t.hidden = true; }, 2600);
+    ms = opts.undo ? 6500 : 2600;
+    toast.h = setTimeout(function () { t.hidden = true; }, ms);
   }
 
   // ---------- Körperdaten, BMI, Kalorienbedarf ----------
@@ -731,6 +748,29 @@
     { id: 'burrito_bowl', cui: 'mexican', kcal: 530, min: 20, p: 30, meal: 'lunch', has: ['onion', 'cilantro'], pop: 7, c: 'c3' }
   ];
   var RMEALS = { all: 1, breakfast: 1, lunch: 1, dinner: 1, snack: 1 }, RPROPS = { fast: 1, protein: 1, saved: 1 };
+  var RECIPE_PHOTOS = { oven_salmon: 1, thai_curry: 1, pho: 1, summer_rolls: 1, birchermuesli: 1, yogurt_bowl: 1, lentil_curry: 1, scrambled_eggs: 1, chicken_bowl: 1, miso_salmon: 1, shakshuka: 1, burrito_bowl: 1 };
+  function hasRecipePhoto(id) { return !!RECIPE_PHOTOS[id]; }
+  function recipePhoto(id, kind) {
+    var img = mk('img');
+    var thumb = kind === 'thumb';
+    img.src = 'images/recipes/' + id + (thumb ? '-thumb' : '') + '.webp';
+    img.alt = rget('recipes', id);
+    img.loading = thumb ? 'lazy' : 'eager';
+    img.decoding = 'async';
+    img.width = thumb ? 400 : 800;
+    img.height = thumb ? 300 : 600;
+    return img;
+  }
+  function recipeFigure(r, kind, featured) {
+    var box = mk('div', 'img rimg ' + (hasRecipePhoto(r.id) ? 'has-photo' : ('ph ' + r.c)));
+    if (hasRecipePhoto(r.id)) box.appendChild(recipePhoto(r.id, kind));
+    else {
+      box.setAttribute('role', 'img');
+      box.setAttribute('aria-label', T('recipe.img'));
+      box.appendChild(icon('leaf', featured ? 'l' : ''));
+    }
+    return box;
+  }
   function rscore(r) { var s = state.ratings[r.id]; return (s ? s * 2 : 5) + r.pop / 2 + (state.saved[r.id] ? 1 : 0); }
   function rlist() {
     var f = RECIPES.filter(function (r) {
@@ -774,7 +814,7 @@
     var box = $('#recipeList'); box.textContent = '';
     var ok = rlist();
     ok.forEach(function (r, i) {
-      var card, img = mk('div', 'img rimg ' + r.c); img.setAttribute('role', 'img'); img.setAttribute('aria-label', T('recipe.img')); img.appendChild(icon('leaf', i === 0 ? 'l' : ''));
+      var card, img = recipeFigure(r, i === 0 ? 'full' : 'thumb', i === 0);
       var cui = mk('span', 'cui', rget('cuisines', r.cui));
       if (i === 0) {
         card = mk('div', 'card hcard recipe feat'); img.appendChild(cui); card.appendChild(img);
@@ -1631,6 +1671,9 @@
     if (cui) cui.textContent = T('meal.' + rec.meal) + ' · ' + rget('cuisines', rec.cui);
     if (add) add.setAttribute('data-addlist', rec.id);
     body.textContent = '';
+    var hero = recipeFigure(rec, 'full', true);
+    hero.className = 'rezept-hero rimg ' + (hasRecipePhoto(rec.id) ? 'has-photo' : ('ph ' + rec.c));
+    body.appendChild(hero);
     var ings = recipeIngList(rec.id), factor = 1;
     var ingBox = mk('div', 'card');
     ingBox.appendChild(mk('h2', '', T('recipe.ingredients')));
@@ -1839,6 +1882,12 @@
         filled.forEach(function (it) {
           var rec = RECIPES.filter(function (r) { return r.id === it.recipeId; })[0];
           var row = mk('div', 'plan-item');
+          if (rec) {
+            var thumb = recipeFigure(rec, 'thumb', false);
+            thumb.className = 'plan-thumb rimg ' + (hasRecipePhoto(rec.id) ? 'has-photo' : ('ph ' + rec.c));
+            thumb.setAttribute('aria-hidden', 'true');
+            row.appendChild(thumb);
+          }
           var main = mk('button', 'grow');
           main.type = 'button';
           main.setAttribute('data-plan-open', it.recipeId);
@@ -2033,9 +2082,107 @@
     renderShop();
     return true;
   }
+  function recipeAlreadyInPlan(recipeId) {
+    return getPlan().items.some(function (it) { return it.recipeId === recipeId; });
+  }
+  function slotTargetsFor(recipeId) {
+    var rec = RECIPES.filter(function (r) { return r.id === recipeId; })[0];
+    var meal = rec && SLOT_SET[rec.meal] ? rec.meal : 'lunch';
+    if (meal === 'breakfast') return ['breakfast'];
+    if (meal === 'snack') return ['snack'];
+    return ['lunch', 'dinner'];
+  }
+  function slotIsFree(date, slot) {
+    return itemsOn(date, slot).length === 0;
+  }
+  function findNextFreeSlot(recipeId) {
+    var targets = slotTargetsFor(recipeId), dates = planWindowDates(), d, s, i, j;
+    for (i = 0; i < dates.length; i++) {
+      d = dates[i];
+      for (j = 0; j < targets.length; j++) {
+        s = targets[j];
+        if (slotIsFree(d, s)) return { date: d, slot: s };
+      }
+    }
+    return null;
+  }
+  function weekdayShort(iso) {
+    var p = String(iso).split('-'), dt = new Date(+p[0], +p[1] - 1, +p[2]), lab;
+    try { lab = I.date(dt, { weekday: 'short' }); } catch (e) { lab = iso; }
+    return String(lab || iso).replace(/\.$/, '');
+  }
+  function planWhenLabel(date, slot) {
+    return weekdayShort(date) + ' ' + T('meal.short.' + slot);
+  }
+  function snapshotShopAndPlan() {
+    return {
+      items: JSON.parse(JSON.stringify(getPlan().items)),
+      shop: JSON.parse(JSON.stringify(getShopItems()))
+    };
+  }
+  function restoreShopAndPlan(snap) {
+    if (!snap) return;
+    getPlan().items = snap.items || [];
+    savePlan();
+    shopLive = snap.shop || [];
+    saveShopItems();
+    renderPlan();
+    renderShop();
+    if (curScreen === 'rezept') renderRezept();
+  }
+  function ensurePlanRecipeOnList(planItems) {
+    var added = false;
+    planItems.forEach(function (it) {
+      var already = getShopItems().some(function (s) {
+        return (s.recipesPlan || []).indexOf(it.recipeId) !== -1;
+      });
+      if (!already) {
+        addIngBundle(ingsForPlanEntry(it), 'plan');
+        added = true;
+      }
+    });
+    if (added) saveShopItems();
+    return added;
+  }
+  function addRecipeToListAndMaybePlan(recipeId) {
+    if (!knownRecipe(recipeId)) return;
+    var portions = recipeServings(recipeId);
+    var snap = snapshotShopAndPlan();
+    var existing = getPlan().items.filter(function (it) { return it.recipeId === recipeId; });
+    var slot, item, when;
+    if (existing.length) {
+      ensurePlanRecipeOnList(existing);
+      renderShop();
+      renderPlan();
+      toast(T('toast.addlist.already'));
+      return;
+    }
+    slot = findNextFreeSlot(recipeId);
+    if (!slot) {
+      addRecipeIngredientsToShop(recipeId, portions);
+      toast(T('toast.addlist.noslot'), { undo: function () { restoreShopAndPlan(snap); } });
+      return;
+    }
+    item = { id: newPlanItemId(), date: slot.date, slot: slot.slot, recipeId: recipeId, portions: coercePortions(portions) };
+    if (!upsertPlanItem(item)) {
+      addRecipeIngredientsToShop(recipeId, portions);
+      toast(T('toast.addlist.noslot'), { undo: function () { restoreShopAndPlan(snap); } });
+      return;
+    }
+    addIngBundle(ingsForPlanEntry(item), 'plan');
+    saveShopItems();
+    renderShop();
+    renderPlan();
+    when = planWhenLabel(item.date, item.slot);
+    toast(T('toast.addlist.planned', { when: when }), { undo: function () { restoreShopAndPlan(snap); } });
+  }
   function shopQtyOf(it) {
-    var a = it.qtyPlan || 0, b = it.qtyExtra || 0;
+    var a = it.qtyPlan || 0, b = it.qtyExtra || 0, extra, only;
     if (!it.unit) return null;
+    extra = it.recipesExtra || [];
+    only = extra.filter(function (id) { return (it.recipesPlan || []).indexOf(id) === -1; });
+    // Dieselbe Rezeptquelle nicht aus Liste und Plan doppelt zählen
+    if (extra.length && !only.length) return a;
     return a + b;
   }
   function shopRecipesOf(it) {
@@ -2351,8 +2498,7 @@
     if (el.hasAttribute('data-toast')) { toast(el.getAttribute('data-toast')); return; }
     if (el.hasAttribute('data-addlist')) {
       var arid = el.getAttribute('data-addlist') || state.recipeId;
-      addRecipeIngredientsToShop(arid, recipeServings(arid));
-      toast(T('toast.addlist'));
+      addRecipeToListAndMaybePlan(arid);
       setTimeout(function () { go('einkauf'); }, 700);
       return;
     }
