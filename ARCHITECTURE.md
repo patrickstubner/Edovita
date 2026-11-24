@@ -1,6 +1,6 @@
 # ARCHITECTURE.md – Edovita
 
-Stand 24.11.2026, Basis `main` `3d1daef4a4d530039f2e111a781bc42e2a116afc` (enthält E0 `7f49e3d`, E0b Pages `e7d46884`, Nachzug `#23` `a6c47cb3`, E1 PR `#24` `bd3e0246`, Dependabot/TS 6 `e0c7cadf`, E2 PR `#26` `f7dcd628`, E3 PR `#27` `1ef9b440`, E4 PR `#28` `7dd734d4` und Kompakter Sprachumschalter/F1/F2 PR `#29` `3d1daef4`, Version `0.1.0`), erweitert um Paket **E5** (Issue `#11`, Draft-PR `#30`, Branch `feat/e5-shopping-list`: Einkaufsliste `#/einkauf` mit drei Zuständen, Rezept-Abzug, Katalog-Suche, Hausmarken, Teilen & sicherem QR-Import). Details in `docs/architektur/`. Vorschau: https://patrickstubner.github.io/Edovita/.
+Stand 24.11.2026, Basis `main` `3d1daef4a4d530039f2e111a781bc42e2a116afc` (enthält E0 `7f49e3d`, E0b Pages `e7d46884`, Nachzug `#23` `a6c47cb3`, E1 PR `#24` `bd3e0246`, Dependabot/TS 6 `e0c7cadf`, E2 PR `#26` `f7dcd628`, E3 PR `#27` `1ef9b440`, E4 PR `#28` `7dd734d4` und Kompakter Sprachumschalter/F1/F2 PR `#29` `3d1daef4`, Version `0.1.0`), erweitert um Paket **E5** (Issue `#11`, Draft-PR `#30`, Branch `feat/e5-shopping-list`: Einkaufsliste `#/einkauf` mit drei Zuständen, Rezept-Abzug, Katalog-Suche, Hausmarken, Teilen & sicherem QR-Import; geprüfter Code- und Analyse-Stand: `5672c1b5cf372ed93406386628d97c3f5d167227`, GitHub Actions CI Run `45396815676` grün). Details in `docs/architektur/`. Vorschau: https://patrickstubner.github.io/Edovita/.
 
 ## Heute im Repo
 | Ort | Inhalt |
