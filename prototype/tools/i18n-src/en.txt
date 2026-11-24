@@ -296,7 +296,7 @@
 296|HELP
 297|Help with eating problems
 298|Free counselling in Switzerland
-299|Edovita · click prototype v5.4, no real data
+299|Edovita · click prototype v5.10, no real data
 300|Gentle reminders, no pressure. You decide which ones you get.
 301|Meals
 302|Weigh-in
@@ -396,7 +396,7 @@
 396|Prototype: everything would be deleted here after a confirmation.
 397|Delete all data
 398|Deletes everything on this device
-399|This prototype only remembers language, appearance and sound in the browser. All other data is made up and disappears on reload.
+399|This prototype stores language, second language, display, sound, meal plan and shopping list on this device only. Body data are sample values. The export contains only the meal plan and shopping list, no health data.
 400|Legal
 401|Main navigation
 402|Edovita – {screen}
@@ -1098,3 +1098,19 @@
 1098|More at home
 1099|Less at home
 1100|Already at home
+1101|More features (demo)
+1102|Import data
+1103|Meal plan and shopping list from a file
+1104|File saved
+1105|Export not possible
+1106|Apply this data?
+1107|Plan: {n} entries, {d} days
+1108|Shopping list: {n} items
+1109|Data applied
+1110|Invalid file, nothing changed
+1111|Apply
+1112|Cancel
+1113|Apply list?
+1114|Apply {n} items?
+1115|Replace
+1116|Merge

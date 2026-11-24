@@ -296,7 +296,7 @@
 296|HILFE
 297|Hilfe bei Essproblemen
 298|Kostenlose Beratung in der Schweiz
-299|Edovita · Klick-Prototyp v5.4, keine echten Daten
+299|Edovita · Klick-Prototyp v5.10, keine echten Daten
 300|Sanfte Erinnerungen, ohne Druck. Du bestimmst, welche du bekommst.
 301|Mahlzeiten
 302|Wiegen
@@ -396,7 +396,7 @@
 396|Prototyp: Hier würde nach einer Rückfrage alles gelöscht.
 397|Alle Daten löschen
 398|Löscht alles auf diesem Gerät
-399|Dieser Prototyp merkt sich nur Sprache, Darstellung und Ton im Browser. Alle anderen Angaben sind erfunden und verschwinden beim Neuladen.
+399|Dieser Prototyp speichert Sprache, Zweitsprache, Darstellung, Ton, Plan und Einkaufsliste nur auf diesem Gerät. Körperdaten sind Beispielwerte. Der Export enthält nur Plan und Einkaufsliste, keine Gesundheitsdaten.
 400|Rechtliches
 401|Hauptnavigation
 402|Edovita – {screen}
@@ -1098,3 +1098,19 @@
 1098|Mehr vorhanden
 1099|Weniger vorhanden
 1100|Schon zu Hause
+1101|Weitere Funktionen (Demo)
+1102|Daten importieren
+1103|Plan und Einkaufsliste aus einer Datei
+1104|Datei gespeichert
+1105|Export nicht möglich
+1106|Diese Daten übernehmen?
+1107|Plan: {n} Einträge, {d} Tage
+1108|Einkaufsliste: {n} Artikel
+1109|Daten übernommen
+1110|Datei ungültig, nichts geändert
+1111|Übernehmen
+1112|Abbrechen
+1113|Liste übernehmen?
+1114|{n} Artikel übernehmen?
+1115|Ersetzen
+1116|Ergänzen

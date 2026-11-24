@@ -86,7 +86,7 @@ h3{font-size:17px;font-weight:700}
 .dots i{width:8px;height:8px;border-radius:4px;background:var(--b)}.dots i:first-child{width:26px;background:var(--p)}
 .brand{display:flex;gap:8px;align-items:center;font-weight:700;color:var(--pd)}
 .brand .circ{width:32px;height:32px}
-.tabbar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:var(--w);border-top:1px solid var(--b);display:grid;grid-template-columns:repeat(5,1fr);padding:8px 4px calc(10px + env(safe-area-inset-bottom));z-index:10}
+.tabbar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:var(--w);border-top:1px solid var(--b);display:grid;grid-template-columns:repeat(3,1fr);padding:8px 4px calc(10px + env(safe-area-inset-bottom));z-index:10}
 .tabbar.hide{display:none}
 .tab{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:14px;font-weight:600;color:var(--t2);min-height:58px;justify-content:center;border-radius:14px}
 .tab.on{color:var(--p);font-weight:800}
@@ -526,9 +526,9 @@ html[data-eff=dark] .lang-menu{box-shadow:0 0 0 1px rgba(255,255,255,.08),0 16px
 .recipe.feat,.recipe.sm{cursor:pointer}
 .card.recipe:focus-visible{outline:3px solid var(--pd);outline-offset:2px}
 
-.tabbar{grid-template-columns:repeat(6,1fr);padding:6px 2px calc(10px + env(safe-area-inset-bottom))}
-.tab{font-size:11px;line-height:1.15;gap:2px;min-height:54px;padding:0 1px;text-align:center}
-.tab .ic{width:24px;height:24px}
+.tabbar{grid-template-columns:repeat(3,1fr);padding:6px 8px calc(10px + env(safe-area-inset-bottom))}
+.tab{font-size:13px;line-height:1.15;gap:2px;min-height:56px;padding:0 4px;text-align:center}
+#tabbar .tab .ic{width:28px;height:28px}
 
 .plan-day{display:flex;flex-direction:column;gap:8px}
 .plan-day-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
@@ -560,3 +560,10 @@ html[data-eff=dark] .plan-empty{border-color:#2A3533}
 
 #planDays,.sheet .seg{flex-wrap:wrap}
 #planDays button,.sheet .seg button{flex:1 1 30%;min-width:88px}
+
+.import-preview{list-style:none;margin:0;padding:0}
+.import-preview li{padding:10px 0;border-top:1px solid var(--b);font-weight:600;min-height:44px}
+.import-preview li:first-child{border-top:0}
+.import-preview .cap{font-weight:500}
+.shop-import-sheet{max-height:80%}
+.shop-import-sheet .shop-have-actions{margin-top:16px}

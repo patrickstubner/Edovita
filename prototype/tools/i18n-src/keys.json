@@ -1098,5 +1098,21 @@
  "shop.have.aria.home",
  "shop.have.step.plus",
  "shop.have.step.minus",
- "shop.have.slider"
+ "shop.have.slider",
+ "profil.demo.section",
+ "datenschutz.daten_importieren",
+ "datenschutz.import.sub",
+ "datenschutz.export.done",
+ "datenschutz.export.fail",
+ "datenschutz.import.confirm",
+ "datenschutz.import.preview.plan",
+ "datenschutz.import.preview.shop",
+ "datenschutz.import.ok",
+ "datenschutz.import.bad",
+ "datenschutz.import.apply",
+ "datenschutz.import.cancel",
+ "qrshop.confirm.title",
+ "qrshop.confirm.body",
+ "qrshop.replace",
+ "qrshop.merge"
 ]

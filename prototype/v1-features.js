@@ -409,12 +409,12 @@
       if (/#\/einkauf#import=/.test(location.hash)) toast(T('qrshop.bad', { e: parsed.err }));
       return;
     }
+    try { history.replaceState(null, '', '#/einkauf'); } catch (e) { location.hash = '#/einkauf'; }
     try {
-      if (window.EdoApp && typeof window.EdoApp.applyShopImport === 'function') window.EdoApp.applyShopImport(parsed.items);
+      if (window.EdoApp && typeof window.EdoApp.offerShopImport === 'function') window.EdoApp.offerShopImport(parsed.items);
+      else if (window.EdoApp && typeof window.EdoApp.applyShopImport === 'function') window.EdoApp.applyShopImport(parsed.items);
       else toast(T('qrshop.imported', { n: fmt(parsed.items.length) }));
     } catch (e) { toast(T('qrshop.bad', { e: 'apply' })); }
-    // strip import fragment to avoid re-import
-    history.replaceState(null, '', '#/einkauf');
   }
 
   // ---------- 9 Reisemodus ----------

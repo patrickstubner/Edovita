@@ -1,6 +1,6 @@
 (function () {
   'use strict';
-  // Reiner Klick-Prototyp v5.9: keine Netzwerkaufrufe. Gespeichert: Sprache, Zweitsprache (manuelle Wahl), Plan, Einkaufsliste (inkl. vorhandene Teilmengen), Darstellung, Ton, Melodie. Keine Standort- oder Gesundheitsdaten. Sprachcodes nur nach Whitelist.
+  // Reiner Klick-Prototyp v5.10: keine Netzwerkaufrufe. Gespeichert: Sprache, Zweitsprache (manuelle Wahl), Plan, Einkaufsliste (inkl. vorhandene Teilmengen), Darstellung, Ton, Melodie. Keine Standort- oder Gesundheitsdaten. Sprachcodes nur nach Whitelist.
   // Alle Texte kommen aus locales/<code>/*.json (über i18n.js) und werden nur per textContent/setAttribute gesetzt.
   var I = window.EdoI18n;
   var T = function (k, v) { return I.t(k, v); };
@@ -41,6 +41,7 @@
     if (id !== curScreen) { prevScreen = curScreen; curScreen = id; }
     if (typeof closeShopSrc === 'function') closeShopSrc(true);
     if (typeof closeShopHave === 'function') closeShopHave(true);
+    if (typeof closeDataImport === 'function') closeDataImport(true);
     if (id === 'rezept') renderRezept();
     if (id === 'plan') renderPlan();
     $$('.screen').forEach(function (s) { s.classList.toggle('active', s.id === id); });
@@ -65,7 +66,7 @@
     shownOnce = true;
   }
   var shownOnce = false;
-  function route() { var h = (location.hash || '').replace(/^#\/?/, '') || 'start'; if (h.indexOf('einkauf#import=') === 0) h = 'einkauf'; h = h.split('?')[0].split('&')[0]; show(h); }
+  function route() { var h = (location.hash || '').replace(/^#\/?/, '') || 'start'; if (h.indexOf('einkauf#import=') === 0) h = 'einkauf'; if (h === 'profil/sprache' || h.indexOf('profil/sprache') === 0) h = 'sprache'; h = h.split('?')[0].split('&')[0]; show(h); }
   function go(id) {
     if (LANG_MENU_OPEN) setLangMenu(false);
     var cur = (location.hash || '').replace(/^#\/?/, '') || 'start';
@@ -1187,6 +1188,7 @@
     if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') { var s = $('#splash'); if (s && !s.hidden) { e.preventDefault(); endSplash(); return; } }
     if (e.key === 'Escape' && typeof isPlanSheetOpen === 'function' && isPlanSheetOpen()) { e.preventDefault(); closePlanSheet(); return; }
     if (e.key === 'Escape' && typeof isShopHaveOpen === 'function' && isShopHaveOpen()) { e.preventDefault(); closeShopHave(); return; }
+    if (e.key === 'Escape' && typeof isDataImportOpen === 'function' && isDataImportOpen()) { e.preventDefault(); closeDataImport(); return; }
     if (e.key === 'Escape' && typeof isShopSrcOpen === 'function' && isShopSrcOpen()) { e.preventDefault(); closeShopSrc(); return; }
     if ((e.key === 'Enter' || e.key === ' ') && e.target && e.target.getAttribute && e.target.getAttribute('data-recipe') && !SECOND_MENU_OPEN && !LANG_MENU_OPEN) {
       if (!e.target.closest('[data-rate], [data-save], [data-addlist]')) { e.preventDefault(); openRecipe(e.target.getAttribute('data-recipe')); return; }
@@ -1390,6 +1392,7 @@
   var SECOND_KEY = 'edovita.secondLang';
   var PLAN_KEY = 'edovita.plan';
   var SHOP_KEY = 'edovita.shopItems';
+  var SHOP_ST_KEY = 'edovita.shopStatus';
   var SLOTS = ['breakfast', 'lunch', 'dinner', 'snack'];
   var SLOT_SET = { breakfast: 1, lunch: 1, dinner: 1, snack: 1 };
   var QTY_UNITS = { g: 1, ml: 1, pc: 1, tbsp: 1, tsp: 1, pinch: 1, bottle: 1 };
@@ -2077,6 +2080,35 @@
     shopLive.forEach(capHaveToNeed);
     try { window.localStorage.setItem(SHOP_KEY, JSON.stringify(shopLive)); } catch (e) { /* nur bis zum Neuladen */ }
   }
+  function isUnsafeStoreKey(k) {
+    var head = String(k || '').split('\0')[0];
+    return !head || head === '__proto__' || head === 'constructor' || head === 'prototype';
+  }
+  function sanitizeShopStatus(raw) {
+    var out = Object.create(null);
+    if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return out;
+    Object.keys(raw).slice(0, 200).forEach(function (k) {
+      var v = raw[k], parts, unit;
+      if (!SHOP_ST[v]) return;
+      if (typeof k !== 'string' || k.length > 80 || isUnsafeStoreKey(k)) return;
+      parts = k.split('\0');
+      if (parts.length > 2 || !/^[a-zA-Z0-9_.-]+$/.test(parts[0] || '')) return;
+      unit = parts[1] || '';
+      if (unit && !QTY_UNITS[unit]) return;
+      out[k] = v;
+    });
+    return out;
+  }
+  function loadShopStatus() {
+    try {
+      var raw = window.localStorage.getItem(SHOP_ST_KEY);
+      if (!raw) return state.shop;
+      return sanitizeShopStatus(JSON.parse(raw));
+    } catch (e) { return state.shop; }
+  }
+  function saveShopStatus() {
+    try { window.localStorage.setItem(SHOP_ST_KEY, JSON.stringify(sanitizeShopStatus(state.shop))); } catch (e) { /* nur bis zum Neuladen */ }
+  }
   function getShopItems() {
     if (!shopLive) shopLive = loadShopItems();
     return shopLive;
@@ -2560,6 +2592,7 @@
       if (state.shop[key] === 'home') state.shop[key] = 'open';
       if (!item.unit && state.shop[item.id] === 'home') state.shop[item.id] = 'open';
     }
+    saveShopStatus();
     saveShopItems();
     closeShopHave(true);
     renderShop();
@@ -2573,6 +2606,7 @@
       key = shopStatusKey(item);
       state.shop[key] = 'open';
       if (!item.unit) state.shop[item.id] = 'open';
+      saveShopStatus();
       saveShopItems();
     }
     closeShopHave(true);
@@ -2786,6 +2820,7 @@
     if (e.target && e.target.id === 'planSheetBack') { closePlanSheet(); return; }
     if (e.target && e.target.id === 'shopSrcBack') { closeShopSrc(); return; }
     if (e.target && e.target.id === 'shopHaveBack') { closeShopHave(); return; }
+    if (e.target && e.target.id === 'dataImportBack') { closeDataImport(); return; }
     var recCard = e.target.closest ? e.target.closest('[data-recipe]') : null;
     if (recCard && !(e.target.closest && e.target.closest('[data-rate], [data-save], [data-addlist], [data-second], .second-chip, #secondSwitchBtn'))) {
       openRecipe(recCard.getAttribute('data-recipe')); return;
@@ -2817,6 +2852,12 @@
     if (el.id === 'planSheetClose' || el.id === 'planSheetCancel' || el.id === 'planSheetBack') { closePlanSheet(); return; }
     if (el.id === 'shopSrcClose' || el.id === 'shopSrcBack') { closeShopSrc(); return; }
     if (el.id === 'shopHaveClose' || el.id === 'shopHaveBack') { closeShopHave(); return; }
+    if (el.id === 'dataExport') { exportUserData(); return; }
+    if (el.id === 'dataImport') { var fi = $('#dataImportFile'); if (fi) { fi.value = ''; fi.click(); } return; }
+    if (el.id === 'dataImportClose' || (el.getAttribute && el.getAttribute('data-import-act') === 'cancel')) { closeDataImport(); return; }
+    if (el.getAttribute && el.getAttribute('data-import-act') === 'apply') { confirmDataImport(); return; }
+    if (el.getAttribute && el.getAttribute('data-import-act') === 'replace') { confirmQrImport('replace'); return; }
+    if (el.getAttribute && el.getAttribute('data-import-act') === 'merge') { confirmQrImport('merge'); return; }
     if (el.id === 'shopHaveApply') { applyShopHave(); return; }
     if (el.id === 'shopHaveReset') { resetShopHave(); return; }
     if (el.id === 'shopHaveAll') { if (shopHaveDraft) setHaveDraftValue(shopHaveDraft.all ? 0 : (shopHaveDraft.need || 1), !shopHaveDraft.all); return; }
@@ -2923,6 +2964,7 @@
       if (sid && SHOP_ST[sst] && getShopItems().some(function (x) { return x.id === sid && (x.unit || '') === sunit; })) {
         state.shop[sid + '\0' + sunit] = sst;
         if (!sunit) state.shop[sid] = sst;
+        saveShopStatus();
         renderShop();
       }
       return;
@@ -2997,6 +3039,299 @@
 
 
   // ---------- V1-Bridge für v1-features.js ----------
+  var dataImportPending = null;
+  var dataImportMode = '';
+  var dataImportLastFocus = null;
+  var EXPORT_KIND = 'edovita-prototype-export';
+  var EXPORT_MAX = 100000;
+
+  function isDataImportOpen() {
+    var sh = $('#dataImportSheet');
+    return !!(sh && !sh.hidden);
+  }
+  function closeDataImport() {
+    var sh = $('#dataImportSheet'), bd = $('#dataImportBack'), body = $('#dataImportBody'), actions = $('#dataImportActions');
+    if (sh) sh.hidden = true;
+    if (bd) bd.hidden = true;
+    if (body) body.textContent = '';
+    if (actions) actions.textContent = '';
+    dataImportPending = null;
+    dataImportMode = '';
+    if (dataImportLastFocus && dataImportLastFocus.focus) {
+      try { dataImportLastFocus.focus(); } catch (e) { /* */ }
+    }
+    dataImportLastFocus = null;
+  }
+  function openDataImportSheet(titleText, bodyEls, actionEls) {
+    var sh = $('#dataImportSheet'), bd = $('#dataImportBack'), title = $('#dataImportTitle'), body = $('#dataImportBody'), actions = $('#dataImportActions');
+    var i;
+    if (!sh || !body || !actions) return;
+    if (typeof closeShopSrc === 'function') closeShopSrc(true);
+    if (typeof closeShopHave === 'function') closeShopHave(true);
+    dataImportLastFocus = document.activeElement;
+    if (title) title.textContent = titleText || '';
+    body.textContent = '';
+    for (i = 0; i < bodyEls.length; i++) body.appendChild(bodyEls[i]);
+    actions.textContent = '';
+    for (i = 0; i < actionEls.length; i++) actions.appendChild(actionEls[i]);
+    if (bd) bd.hidden = false;
+    sh.hidden = false;
+    var closeBtn = $('#dataImportClose');
+    if (closeBtn) closeBtn.focus();
+  }
+  function mkImportBtn(cls, key, act, primary) {
+    var b = mk('button', primary ? 'btn' : 'btn line', '');
+    b.type = 'button';
+    b.setAttribute('data-import-act', act);
+    fillBilingual(b, key);
+    return b;
+  }
+  function knownIngredientIdMap() {
+    var ids = {}, gloss = foodData().glossary && foodData().glossary.de;
+    if (gloss) Object.keys(gloss).forEach(function (k) { ids[k] = 1; });
+    SHOP.forEach(function (it) { ids[it.id] = 1; });
+    RECIPES.forEach(function (r) { recipeIngList(r.id).forEach(function (it) { ids[it.id] = 1; }); });
+    return ids;
+  }
+  function buildExportBundle() {
+    return {
+      v: 1,
+      kind: EXPORT_KIND,
+      plan: sanitizePlan(getPlan()),
+      shopItems: sanitizeShopItems(getShopItems()),
+      shopStatus: sanitizeShopStatus(state.shop)
+    };
+  }
+  function parseExportBundle(text) {
+    var data, ids, i, it, unit, key, seen, min, max, po, qp, qe, qh, rp, re, st;
+    if (typeof text !== 'string' || text.length > EXPORT_MAX) return { ok: false, err: 'size' };
+    try { data = JSON.parse(text); } catch (e) { return { ok: false, err: 'parse' }; }
+    if (!data || typeof data !== 'object' || Array.isArray(data) || data.v !== 1 || data.kind !== EXPORT_KIND) return { ok: false, err: 'schema' };
+    var plan = null, shop = null, status = null;
+    if (data.plan != null) {
+      if (typeof data.plan !== 'object' || Array.isArray(data.plan)) return { ok: false, err: 'plan' };
+      if (data.plan.days != null && (typeof data.plan.days !== 'number' || !isFinite(data.plan.days) || data.plan.days < 3 || data.plan.days > 7 || data.plan.days !== Math.round(data.plan.days))) return { ok: false, err: 'days' };
+      if (data.plan.items != null && !Array.isArray(data.plan.items)) return { ok: false, err: 'plan' };
+      if (Array.isArray(data.plan.items) && data.plan.items.length > 80) return { ok: false, err: 'plan-count' };
+      min = addDaysISO(todayISO(), -1); max = addDaysISO(todayISO(), 14); seen = {};
+      for (i = 0; i < (data.plan.items || []).length; i++) {
+        it = data.plan.items[i];
+        if (!it || typeof it !== 'object') return { ok: false, err: 'plan' };
+        if (!validPlanItemId(it.id) || seen[it.id]) return { ok: false, err: 'plan-id' };
+        seen[it.id] = 1;
+        if (!isIsoDate(it.date) || !isoInRange(it.date, min, max)) return { ok: false, err: 'plan-date' };
+        if (!SLOT_SET[it.slot]) return { ok: false, err: 'plan-slot' };
+        if (!knownRecipe(it.recipeId)) return { ok: false, err: 'plan-recipe' };
+        if (it.portions != null) {
+          po = Number(it.portions);
+          if (!isFinite(po) || po < 1 || po > 8) return { ok: false, err: 'plan-portions' };
+        }
+      }
+      plan = sanitizePlan(data.plan);
+      if (!plan) return { ok: false, err: 'plan' };
+    }
+    if (data.shopItems != null) {
+      if (!Array.isArray(data.shopItems) || data.shopItems.length > 120) return { ok: false, err: 'shop-count' };
+      ids = knownIngredientIdMap();
+      seen = {};
+      for (i = 0; i < data.shopItems.length; i++) {
+        it = data.shopItems[i];
+        if (!it || typeof it !== 'object') return { ok: false, err: 'shop' };
+        if (typeof it.id !== 'string' || !ids[it.id]) return { ok: false, err: 'shop-id' };
+        unit = (it.unit === '' || it.unit == null) ? '' : String(it.unit);
+        if (unit && !QTY_UNITS[unit]) return { ok: false, err: 'shop-unit' };
+        key = it.id + '\0' + unit;
+        if (seen[key]) return { ok: false, err: 'shop-dup' };
+        seen[key] = 1;
+        qp = it.qtyPlan; qe = it.qtyExtra; qh = it.qtyHave;
+        if (qp != null && (typeof qp !== 'number' || !isFinite(qp) || qp < 0 || qp > 1e6)) return { ok: false, err: 'shop-qty' };
+        if (qe != null && (typeof qe !== 'number' || !isFinite(qe) || qe < 0 || qe > 1e6)) return { ok: false, err: 'shop-qty' };
+        if (qh != null && (typeof qh !== 'number' || !isFinite(qh) || qh < 0 || qh > 1e6)) return { ok: false, err: 'shop-qty' };
+        if (it.recipesPlan != null) {
+          if (!Array.isArray(it.recipesPlan) || it.recipesPlan.length > 20) return { ok: false, err: 'shop-rec' };
+          for (rp = 0; rp < it.recipesPlan.length; rp++) { if (!knownRecipe(it.recipesPlan[rp])) return { ok: false, err: 'shop-rec' }; }
+        }
+        if (it.recipesExtra != null) {
+          if (!Array.isArray(it.recipesExtra) || it.recipesExtra.length > 20) return { ok: false, err: 'shop-rec' };
+          for (re = 0; re < it.recipesExtra.length; re++) { if (!knownRecipe(it.recipesExtra[re])) return { ok: false, err: 'shop-rec' }; }
+        }
+      }
+      shop = sanitizeShopItems(data.shopItems);
+      if (!shop) return { ok: false, err: 'shop' };
+    }
+    if (data.shopStatus != null) {
+      if (typeof data.shopStatus !== 'object' || Array.isArray(data.shopStatus)) return { ok: false, err: 'status' };
+      st = sanitizeShopStatus(data.shopStatus);
+      status = st;
+    }
+    if (!plan && !shop) return { ok: false, err: 'empty' };
+    return { ok: true, plan: plan, shopItems: shop, shopStatus: status };
+  }
+  function applyExportBundle(bundle) {
+    if (!bundle || !bundle.ok) return false;
+    if (bundle.plan) {
+      planState = bundle.plan;
+      savePlan();
+    }
+    if (bundle.shopItems) {
+      shopLive = bundle.shopItems;
+      saveShopItems();
+    }
+    if (bundle.shopStatus) {
+      state.shop = bundle.shopStatus;
+      saveShopStatus();
+    }
+    if (bundle.plan) refreshPlanQuantities();
+    renderPlan();
+    renderShop();
+    render();
+    return true;
+  }
+  function exportUserData() {
+    var bundle, json, blob, url, a;
+    bundle = buildExportBundle();
+    if (!bundle.plan) { toast(T('datenschutz.export.fail')); return; }
+    try { json = JSON.stringify(bundle, null, 2); } catch (e) { toast(T('datenschutz.export.fail')); return; }
+    if (json.length > EXPORT_MAX) { toast(T('datenschutz.export.fail')); return; }
+    try {
+      blob = new Blob([json], { type: 'application/json' });
+      url = URL.createObjectURL(blob);
+      a = document.createElement('a');
+      a.href = url;
+      a.download = 'edovita-plan-einkauf.json';
+      a.rel = 'noopener';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(function () { try { URL.revokeObjectURL(url); } catch (e2) { /* */ } }, 1500);
+      toast(T('datenschutz.export.done'));
+    } catch (e) { toast(T('datenschutz.export.fail')); }
+  }
+  function previewExport(bundle) {
+    var els = [], ul, li, i, name, items, max = 8;
+    if (bundle.plan) els.push(mk('p', 'cap', T('datenschutz.import.preview.plan', { n: String(bundle.plan.items.length), d: String(bundle.plan.days) })));
+    if (bundle.shopItems) els.push(mk('p', 'cap', T('datenschutz.import.preview.shop', { n: String(bundle.shopItems.length) })));
+    items = bundle.shopItems || [];
+    if (items.length) {
+      ul = mk('ul', 'import-preview');
+      for (i = 0; i < items.length && i < max; i++) {
+        name = rget('ingredients', items[i].id) || items[i].id;
+        li = mk('li', '', name);
+        ul.appendChild(li);
+      }
+      if (items.length > max) {
+        li = mk('li', 'cap', '…');
+        ul.appendChild(li);
+      }
+      els.push(ul);
+    }
+    return els;
+  }
+  function offerFileImport(bundle) {
+    dataImportPending = bundle;
+    dataImportMode = 'file';
+    openDataImportSheet(T('datenschutz.import.confirm'), previewExport(bundle), [
+      mkImportBtn('btn line', 'datenschutz.import.cancel', 'cancel', false),
+      mkImportBtn('btn', 'datenschutz.import.apply', 'apply', true)
+    ]);
+  }
+  function startFileImport(input) {
+    var f, reader;
+    if (!input || !input.files || !input.files[0]) return;
+    f = input.files[0];
+    input.value = '';
+    if (f.size > EXPORT_MAX) { toast(T('datenschutz.import.bad')); return; }
+    if (f.type && f.type !== 'application/json' && f.type !== 'text/plain' && f.type !== '') {
+      /* Typ ist nur ein Hinweis; der Inhalt wird geprüft. */
+    }
+    try {
+      reader = new FileReader();
+      reader.onload = function () {
+        var parsed = parseExportBundle(typeof reader.result === 'string' ? reader.result : '');
+        if (!parsed.ok) { toast(T('datenschutz.import.bad')); return; }
+        offerFileImport(parsed);
+      };
+      reader.onerror = function () { toast(T('datenschutz.import.bad')); };
+      reader.readAsText(f);
+    } catch (e) { toast(T('datenschutz.import.bad')); }
+  }
+  function confirmDataImport() {
+    var bundle = dataImportPending;
+    if (dataImportMode !== 'file' || !bundle) { closeDataImport(); return; }
+    closeDataImport();
+    if (applyExportBundle(bundle)) toast(T('datenschutz.import.ok'));
+    else toast(T('datenschutz.import.bad'));
+  }
+  function clearQrImportHash() {
+    if (/#\/einkauf#import=/.test(location.hash)) {
+      try { history.replaceState(null, '', '#/einkauf'); } catch (e) { location.hash = '#/einkauf'; }
+    }
+  }
+  function liveShopForSnapshot() {
+    return getShopItems().filter(function (it) {
+      return (it.qtyPlan && it.qtyPlan > 0) || (it.qtyExtra && it.qtyExtra > 0) || (it.unit === '' && ((it.recipesPlan && it.recipesPlan.length) || (it.recipesExtra && it.recipesExtra.length))) || state.shop[it.id] || state.shop[shopStatusKey(it)];
+    });
+  }
+  function shopSnapshotItems() {
+    return liveShopForSnapshot().map(function (it) {
+      var st = stOfItem(it), name = rget('ingredients', it.id) || it.id, buy, safe;
+      if (isPartialHave(it)) {
+        st = 'open';
+        buy = shopBuyQty(it);
+        if (buy != null && it.unit) name = name + ' (' + formatQty(buy, it.unit) + ')';
+      }
+      safe = String(name).replace(/[<>&"']/g, '');
+      return { id: it.id, name: safe || it.id, st: st };
+    }).slice(0, 40);
+  }
+  function applyShopImportItems(items, mode) {
+    var n = 0;
+    if (mode === 'replace') state.shop = {};
+    (items || []).forEach(function (it) {
+      var st;
+      if (!it || !it.id || typeof it.id !== 'string' || !/^[a-zA-Z0-9_.-]+$/.test(it.id) || isUnsafeStoreKey(it.id)) return;
+      st = it.st || 'open';
+      if (!SHOP_ST[st]) return;
+      if (SHOP.some(function (x) { return x.id === it.id; })) {
+        state.shop[it.id] = st;
+        n += 1;
+      }
+    });
+    saveShopStatus();
+    renderShop();
+    return n;
+  }
+  function offerShopImport(items) {
+    var els = [], ul, li, i, max = 8, lab, n;
+    items = items || [];
+    n = items.length;
+    dataImportPending = items;
+    dataImportMode = 'qr';
+    els.push(mk('p', 'cap', T('qrshop.confirm.body', { n: String(n) })));
+    if (n) {
+      ul = mk('ul', 'import-preview');
+      for (i = 0; i < n && i < max; i++) {
+        lab = items[i].name || rget('ingredients', items[i].id) || items[i].id;
+        li = mk('li', '', String(lab).replace(/[<>&"']/g, ''));
+        ul.appendChild(li);
+      }
+      if (n > max) ul.appendChild(mk('li', 'cap', '…'));
+      els.push(ul);
+    }
+    openDataImportSheet(T('qrshop.confirm.title'), els, [
+      mkImportBtn('btn line', 'datenschutz.import.cancel', 'cancel', false),
+      mkImportBtn('btn line', 'qrshop.merge', 'merge', false),
+      mkImportBtn('btn', 'qrshop.replace', 'replace', true)
+    ]);
+  }
+  function confirmQrImport(mode) {
+    var items = dataImportPending, n;
+    if (dataImportMode !== 'qr' || !items) { closeDataImport(); return; }
+    closeDataImport();
+    n = applyShopImportItems(items, mode);
+    toast(T('qrshop.imported', { n: String(n) }));
+  }
+
   window.EdoApp = {
     addMeal: function (o) { addExtra({ name: function () { return o.name; }, kcal: o.kcal, p: o.p, tag: o.tag || 'tag.meal' }); render(); },
     weight: function () { return state.weight; },
@@ -3004,18 +3339,9 @@
       k = Math.round(Number(k) || 0);
       if (k > 0) { state.goalKcal = Math.round((state.goalKcal + k) / 50) * 50; render(); }
     },
-    shopSnapshot: function () {
-      return SHOP.filter(function (it) { return allowed(it.has); }).map(function (it) {
-        return { id: it.id, name: rget('ingredients', it.id) || it.id, st: state.shop[it.id] || 'open' };
-      });
-    },
-    applyShopImport: function (items) {
-      (items || []).forEach(function (it) {
-        if (!it || !it.id) return;
-        if (SHOP.some(function (x) { return x.id === it.id; })) state.shop[it.id] = it.st || 'open';
-      });
-      renderShop(); toast(T('qrshop.imported', { n: String((items || []).length) }));
-    }
+    shopSnapshot: function () { return shopSnapshotItems(); },
+    applyShopImport: function (items, mode) { return applyShopImportItems(items, mode || 'merge'); },
+    offerShopImport: function (items) { offerShopImport(items); }
   };
 
 
@@ -3072,6 +3398,10 @@
     window.visualViewport.addEventListener('resize', syncAppHeight);
     window.visualViewport.addEventListener('scroll', syncAppHeight);
   }
+  document.addEventListener('change', function (e) {
+    if (e.target && e.target.id === 'dataImportFile') startFileImport(e.target);
+  });
+  state.shop = loadShopStatus();
   I.applyDom(document);
   (function () { var p = String(state.dob).split('-'); state.age = ageFrom(+p[0], +p[1], +p[2]); })();
   buildForms(); buildPace(); buildPrefs(); buildFavs(); applyWidths(); render(); renderLangUI(); renderSoundUI(); renderQr(); renderSwitchTexts(); route(); renderTheme();

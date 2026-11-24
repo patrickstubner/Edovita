@@ -1,3 +1,7 @@
+# Stand v5.10 (24. November 2026)
+
+Tab-Leiste nur Rezepte, Plan, Profil; Demo-Funktionen (Heute, Erfassen, Fortschritt) über Profil. Alias `#/profil/sprache`. Echter Export/Import von Plan und Einkaufsliste (Bestätigung, transaktional, ohne Gesundheitsdaten). Listenstatus in `edovita.shopStatus`. QR-Import mit Bestätigung (Ersetzen/Ergänzen). Siehe `SECURITY.md`. Darunter der Stand v5.9.
+
 # Stand v5.9 (24. November 2026)
 
 Einkaufsliste: Namen und relevante UI-Texte in Haupt- und Zweitsprache (zweizeilig, sonst einzeilig). ⓘ-Sheet mit Gericht, Plan-Slot, Menge und Summe. «Hab ich» mit Teilmenge (Sheet, Schieber/Stepper, Zurücksetzen); Kaufmenge plus durchgestrichene Bedarfsmenge; Zustand «Teilweise»; Speicherung in der Einkaufsliste, Deckelung bei Plan-Änderungen. Siehe `SECURITY.md`. Darunter der Stand v5.8.1.

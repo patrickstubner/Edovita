@@ -1,12 +1,15 @@
-# Edovita – Klick-Prototyp v5.9 (zweisprachige Liste, Teilmenge zu Hause)
+# Edovita – Klick-Prototyp v5.10 (Tab-Leiste, Export/Import, Listenstatus)
 
 **Nicht produktiver Code.** Dieser Ordner ist die Design-Referenz und der klickbare Prototyp für UX-Versuche. Er wird nicht in die echte App übernommen; die App entsteht neu (React + TypeScript + Rsbuild).
 
-- **Version:** v5.9 (24.11.2026), auf v5.8.1 aufbauend
+- **Version:** v5.10 (24.11.2026), auf v5.9 aufbauend
 - **Live:** als Cloudflare-Worker-Demo veröffentlicht (URL bewusst nicht im Repo)
 - **Technik:** statisches HTML/CSS/Vanilla-JS, keine Laufzeit-Abhängigkeiten ausser `vendor/qrcode-generator.js` (MIT), keine Netzwerkaufrufe, strenge CSP
-- **Daten:** nur erfundene Demo-Daten. Es werden keine Gesundheitsdaten gespeichert (localStorage nur Sprache, Zweitsprache (manuelle Wahl), Plan, Einkaufsliste, Darstellung, Ton, Region; keine Standortdaten)
+- **Daten:** nur erfundene Demo-Daten. Es werden keine Gesundheitsdaten gespeichert (localStorage nur Sprache, Zweitsprache (manuelle Wahl), Plan, Einkaufsliste inkl. Listenstatus, Darstellung, Ton, Region; keine Standortdaten). Export/Import enthalten nur Plan und Einkaufsliste.
 - **Starten:** im Ordner `python3 -m http.server` und `http://localhost:8000/` öffnen (Handy-Breite, z. B. 390×844)
+
+## Neu in v5.10
+Die Tab-Leiste zeigt nur Rezepte, Plan und Profil; Heute, Erfassen und Fortschritt bleiben als Demo-Bildschirme über Profil › Weitere Funktionen (Demo) erreichbar. `#/profil/sprache` führt auf die Sprachseite. Unter Datenschutz gibt es einen echten Export und Import von Plan und Einkaufsliste (Bestätigung, transaktional, ohne Körperdaten). Der Listenstatus (offen / Einkaufswagen / zu Hause) bleibt nach dem Neuladen erhalten (`edovita.shopStatus`). Ein QR-Import fragt vor dem Übernehmen mit Ersetzen oder Ergänzen nach. Katalogsuche in der Einkaufsliste und PWA bleiben bewusst draussen. Details in `ENTWICKLUNG.md` und `SECURITY.md`.
 
 ## Neu in v5.9
 Einkaufsliste zweisprachig (Haupt- und Zweitsprache aus den Dropdowns): Name in der ersten Zeile, Zweitsprache gedämpft plus Menge in der zweiten; ohne Zweitsprache bleibt die Zeile einzeilig. Das ⓘ-Sheet zeigt pro Gericht den zweisprachigen Namen, den Plan-Slot und die benötigte Menge, plus eine Summenzeile (Icon unverändert 28×28, Tippfläche 56×56). «Hab ich» öffnet ein Sheet: «Alles vorhanden» (vorausgewählt) oder Schieber/Stepper «Davon schon zu Hause», plus Zurücksetzen. Eine Teilmenge erscheint als Kaufmenge plus durchgestrichene Bedarfsmenge (z. B. 50 g und 100 g) und oranger «Teilweise»-Knopf (mind. 48×48). Vollständig vorhandene Mengen gelten als erledigt. Vorhandenes wird in `edovita.shopItems` gespeichert und bei Plan-Änderungen auf den neuen Bedarf gedeckelt. Details in `ENTWICKLUNG.md` und `SECURITY.md`.

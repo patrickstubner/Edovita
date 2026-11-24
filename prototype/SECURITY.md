@@ -1,3 +1,32 @@
+# Sicherheitsprüfung v5.10 (24. November 2026, Europe/Zurich)
+
+**Stand:** Tab-Leiste nur Rezepte, Plan, Profil (Heute/Erfassen/Fortschritt über Profil › Weitere Funktionen). Alias `#/profil/sprache`. Echter Export und Import von Plan und Einkaufsliste (Bestätigung, transaktional, ohne Körperdaten). Listenstatus in `edovita.shopStatus` bleibt nach dem Neuladen erhalten. QR-Import mit Bestätigung (Ersetzen oder Ergänzen). Branch `prototype/lang-switcher` (nicht auf `main` mergen). Bestehender Cloudflare-Worker wird aktualisiert, keine neuen Ressourcen oder Pakete. CSP unverändert. Dark/Light, kompakter Sprachumschalter und grosse Tippflächen bleiben.
+
+**Quelle der Prüfung:** Code-Review der geänderten Dateien (`index.html`, `styles.css`, `app.js`, `v1-features.js`, `locales/*`, `tools/i18n-src/*`, `README.md`, `ENTWICKLUNG.md`), grep-Scans (innerHTML/eval/Netzwerk/Geheimnisse/Geolocation), Headless Playwright (Chrome, Viewport 390×844, Hell und Dunkel): drei Tabs, Demo-Links, Sprach-Alias, Export ohne Gesundheitsdaten, ungültiger Import wird abgelehnt, Bestätigungs-Sheet (Abbrechen ändert nichts, Übernehmen setzt Plan/Liste transaktional), persistenter Listenstatus, QR-Bestätigung mit Ersetzen/Ergänzen, 0 Konsolenfehler. Keine neuen Laufzeit-Abhängigkeiten, deshalb kein `pnpm audit` im Prototyp.
+
+**Ergebnis:** keine Befunde (keine kritischen, hohen, mittleren oder niedrigen).
+
+| # | Prüfpunkt | Ergebnis | Schweregrad |
+|---|-----------|----------|-------------|
+| 1 | Eingabevalidierung | Export-Bündel festes Schema `{v:1, kind:'edovita-prototype-export', plan, shopItems, shopStatus}`, max. 100000 Zeichen. Import prüft zuerst (Tage 3–7, Plan ≤80, Liste ≤120, Mengen 0…1e6, Einheiten/Rezepte/Status nach Whitelist, bekannte Zutaten-IDs, keine Doppel-Schlüssel) und wendet nur bei vollständig gültigem Inhalt alles an, sonst nichts. Alte Bündel ohne `plan` bleiben gültig. Dateityp ist nur Hinweis, der Inhalt entscheidet. QR-Import bleibt über `EdoQR.parseImport` begrenzt (max. 40, IDs, Namen ohne `<>&"'`, Status-Whitelist) und braucht eine Bestätigung. `edovita.shopStatus` wird beim Laden bereinigt (bekannte Status, Schlüsselmenge, Einheiten). | kein Befund |
+| 2 | Injection / XSS | Keine neuen Sinks: kein `innerHTML`/`eval`/`document.write`/`fetch`. Vorschau- und Dateinamen, Toast und Sheet-Texte nur per `textContent` / `createElement` / `setAttribute`. Export-Dateiname ist fest (`edovita-plan-einkauf.json`). Objekt-URL nach dem Download widerrufen. CSP unverändert (`script-src 'self'`, `style-src 'self'`, `connect-src 'none'`, `img-src 'self' data:`, `form-action 'none'`). Status-Schlüssel verwerfen `__proto__`/`constructor`/`prototype`; Speicherobjekt mit `Object.create(null)`. | kein Befund |
+| 3 | Geheimnisse | Keine Schlüssel, Tokens, API-Konten oder Passwörter. | kein Befund |
+| 4 | Speicher / Netz / Rechte | Neu: `localStorage`-Key `edovita.shopStatus` (nur Listenstatus). Export enthält ausschliesslich Plan und Einkaufsliste, keine Körper- oder Gesundheitsdaten. Import und Export laufen nur auf dem Gerät (FileReader bzw. Download, kein `fetch`, keine Geolocation). | kein Befund |
+| 5 | Abhängigkeiten | Keine neuen Laufzeit- oder Build-Abhängigkeiten. Screenshot-Lauf über vorhandenes Playwright-Core, kein neues Paket im Prototyp. Der Produkt-`package.json` im Repo-Root gehört nicht zum Prototyp und wurde nicht verändert. | kein Befund |
+| 6 | Fehlermeldungen / Angriffsfläche | Keine Stacktraces nach aussen. Ungültige Datei: generischer Hinweis, nichts wird übernommen. Import- und QR-Sheet: `role="dialog"` / `aria-modal`, Schliessen mit Escape, Hintergrund und Schliessen-Knopf verwerfen ohne Anwendung. | kein Befund |
+
+**SHA-256 (geänderte Kern-Dateien):**
+```
+3ba1e6d0103ca695a49d8207e0d366667c50c3503f12e3cbc7ef6c827bf159ae  prototype/index.html
+aa925c45ed3e02f4a2441661fcd6bba2b54a86d9e7d13c734ef4701264762b06  prototype/styles.css
+a0f57338f10dd0466f21b58cae85516e789ae6da4ff0891166e505c580d84441  prototype/app.js
+8952c184a859cafefa79ef968b8cfa1aa704989d538a4f837b6c812bb3a41f0d  prototype/v1-features.js
+a830abf27e8c24e4bedc00d618615fe6bd74375d1506f31ce8cf715e9d232873  prototype/locales.js
+3d812e809dea64e016905523827d28211f3270809f29a79399400048f8eeeebf  prototype/tools/i18n-src/keys.json
+```
+
+---
+
 # Sicherheitsprüfung v5.9 (24. November 2026, Europe/Zurich)
 
 **Stand:** Zweisprachige Einkaufsliste, erweitertes Herkunfts-Sheet und Teilmengen «schon zu Hause». Branch `prototype/lang-switcher` (nicht auf `main` mergen). Bestehender Cloudflare-Worker wird aktualisiert, keine neuen Ressourcen oder Pakete. Dark/Light, kompakter Sprachumschalter und ⓘ-Masse (Icon 28×28, Tippfläche 56×56) bleiben unverändert.

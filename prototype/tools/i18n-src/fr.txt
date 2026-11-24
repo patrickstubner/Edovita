@@ -296,7 +296,7 @@
 296|AIDE
 297|Aide en cas de troubles alimentaires
 298|Conseil gratuit en Suisse
-299|Edovita · prototype cliquable v5.4, aucune donnée réelle
+299|Edovita · prototype cliquable v5.10, aucune donnée réelle
 300|Des rappels doux, sans pression. Tu choisis lesquels tu reçois.
 301|Repas
 302|Pesée
@@ -396,7 +396,7 @@
 396|Prototype : tout serait supprimé ici après confirmation.
 397|Supprimer toutes les données
 398|Supprime tout sur cet appareil
-399|Ce prototype ne mémorise que la langue, l'affichage et le son dans le navigateur. Toutes les autres données sont fictives et disparaissent au rechargement.
+399|Ce prototype enregistre langue, langue secondaire, affichage, son, plan de repas et liste de courses uniquement sur cet appareil. Les données corporelles sont des exemples. L’export ne contient que le plan et la liste, aucune donnée de santé.
 400|Mentions légales
 401|Navigation principale
 402|Edovita – {screen}
@@ -1098,3 +1098,19 @@
 1098|Plus à la maison
 1099|Moins à la maison
 1100|Déjà à la maison
+1101|Autres fonctions (démo)
+1102|Importer des données
+1103|Plan et liste de courses depuis un fichier
+1104|Fichier enregistré
+1105|Export impossible
+1106|Appliquer ces données ?
+1107|Plan : {n} entrées, {d} jours
+1108|Liste : {n} articles
+1109|Données appliquées
+1110|Fichier invalide, rien n’a été modifié
+1111|Appliquer
+1112|Annuler
+1113|Appliquer la liste ?
+1114|Appliquer {n} articles ?
+1115|Remplacer
+1116|Ajouter
