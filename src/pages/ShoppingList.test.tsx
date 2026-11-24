@@ -31,11 +31,13 @@ afterEach(() => {
   document.documentElement.removeAttribute('dir');
 });
 
-describe('Paket E5: Einkaufsliste, drei Zustände, Hausmarken, Teilen & QR-Import (Issue #11)', () => {
-  it('zeigt drei Zustände (offen / im Korb / schon zu Hause), Rückgängig, Katalog-Suche, Hausmarken und QR-Sheet', async () => {
+describe('Paket E5 + E5b: Einkaufsliste v5.9 (ⓘ-Sheet, «Hab ich»-Sheet, Teilmenge, Hausmarken, Teilen & QR-Import)', () => {
+  it('zeigt keine Rezept-Chips, bietet ⓘ-Herkunfts-Sheet (ohne Abhaken, mit Summe & Fokus-Rückkehr), «Hab ich»-Sheet mit Teilmenge und Katalog-Suche', async () => {
     const storage = createMemoryStorage();
     const salmon = getRecipe('oven_salmon')!;
-    await storage.shopping.replaceAll(addRecipe([], salmon, 2));
+    const lentil = getRecipe('lentil_curry')!;
+    const combined = addRecipe(addRecipe([], salmon, 2), lentil, 2);
+    await storage.shopping.replaceAll(combined);
     window.location.hash = '#/einkauf';
 
     render(<App navigatorLanguages={['de-CH']} storage={storage} />);
@@ -44,45 +46,140 @@ describe('Paket E5: Einkaufsliste, drei Zustände, Hausmarken, Teilen & QR-Impor
       await screen.findByRole('heading', { name: 'Einkaufsliste' }),
     ).toBeInTheDocument();
 
-    // Artikel in Gruppen: Kartoffeln & Broccoli unter veg
+    // 1) Keine Rezept-Chips mehr in der Einkaufsliste (v5.9)
+    expect(screen.queryByTestId('shop-recipe-chips')).toBeNull();
+
+    // Artikel in Gruppen: Kartoffeln, Broccoli, Knoblauch (4 Stk. aus 2 Rezepten)
     const vegGroup = await screen.findByTestId('shop-group-veg');
     expect(vegGroup).toHaveTextContent('Kartoffeln');
     expect(vegGroup).toHaveTextContent('500 g');
+    expect(vegGroup).toHaveTextContent('4 Stk.');
 
-    // 1) Antippen -> liegt im Korb
+    // 2) ⓘ-Knopf auf Knoblauch: löst KEIN Abhaken aus, zeigt beide Gerichte + Summe, Escape gibt Fokus zurück
+    const garlicSrcBtn = screen.getByTestId('shop-src-garlic__pc');
+    const garlicToggleBtn = screen.getByTestId('shop-toggle-garlic__pc');
+    expect(garlicToggleBtn).toHaveAttribute('aria-pressed', 'false');
+    expect(garlicSrcBtn).toHaveAttribute('aria-haspopup', 'dialog');
+    expect(garlicSrcBtn).toHaveAttribute('aria-expanded', 'false');
+
+    fireEvent.click(garlicSrcBtn);
+    expect(garlicToggleBtn).toHaveAttribute('aria-pressed', 'false');
+    expect(garlicSrcBtn).toHaveAttribute('aria-expanded', 'true');
+
+    const srcSheet = await screen.findByTestId('shop-src-sheet');
+    expect(srcSheet).toHaveAttribute('role', 'dialog');
+    expect(srcSheet).toHaveAttribute('aria-modal', 'true');
+    expect(within(srcSheet).getByRole('heading', { name: 'Knoblauch' })).toBeInTheDocument();
+    expect(srcSheet).toHaveTextContent('Ofenlachs mit Broccoli und Kartoffeln, 2 Stk.');
+    expect(srcSheet).toHaveTextContent('Linsen-Curry mit Kokosmilch und Spinat, 2 Stk.');
+    expect(screen.getByTestId('shop-src-sum')).toHaveTextContent('Summe: 4 Stk.');
+
+    // Escape schliesst Sheet und gibt Fokus ans ⓘ zurück
+    fireEvent.keyDown(window, { key: 'Escape' });
+    expect(screen.queryByTestId('shop-src-sheet')).toBeNull();
+    expect(document.activeElement).toBe(garlicSrcBtn);
+
+    // 3) Antippen -> liegt im Korb; im Korb gibt es KEINEN «Hab ich»-Knopf
     fireEvent.click(screen.getByTestId('shop-toggle-potato__g'));
     const cartSec = await screen.findByTestId('shop-section-cart');
     expect(within(cartSec).getByTestId('shop-row-potato__g')).toHaveAttribute(
       'data-state',
       'cart',
     );
+    expect(screen.queryByTestId('shop-have-potato__g')).toBeNull();
 
-    // 2) «Hab ich» -> wandert nach «Schon zu Hause» + Toast mit Rückgängig
-    fireEvent.click(screen.getByTestId('shop-have-broccoli__g'));
+    // 4) «Hab ich» auf Broccoli (400 g) öffnet Sheet mit vorausgewähltem «Alles vorhanden»
+    const brocHaveBtn = screen.getByTestId('shop-have-broccoli__g');
+    fireEvent.click(brocHaveBtn);
+    const haveSheet = await screen.findByTestId('shop-have-sheet');
+    expect(haveSheet).toHaveAttribute('role', 'dialog');
+    expect(screen.getByTestId('shop-have-all')).toHaveAttribute('aria-checked', 'true');
+
+    // Verwerfen mit Escape ändert nichts
+    fireEvent.keyDown(window, { key: 'Escape' });
+    expect(screen.queryByTestId('shop-have-sheet')).toBeNull();
+    expect(screen.getByTestId('shop-row-broccoli__g')).toHaveAttribute('data-state', 'open');
+    expect(document.activeElement).toBe(brocHaveBtn);
+
+    // Erneut öffnen -> Teilmenge 150 g per Schieber einstellen -> «Übernehmen»
+    fireEvent.click(brocHaveBtn);
+    await screen.findByTestId('shop-have-sheet');
+    fireEvent.change(screen.getByTestId('shop-have-range'), {
+      target: { value: '150' },
+    });
+    expect(screen.getByTestId('shop-have-all')).toHaveAttribute('aria-checked', 'false');
+    expect(screen.getByTestId('shop-have-out')).toHaveTextContent('150 g');
+    fireEvent.click(screen.getByTestId('shop-have-apply'));
+
+    // Teilmenge bleibt offen: Kaufmenge 250 g, Bedarf 400 g durchgestrichen, Screenreader-Label, oranger «Teilweise»-Knopf
+    await waitFor(() => {
+      const brocRow = screen.getByTestId('shop-row-broccoli__g');
+      expect(brocRow).toHaveAttribute('data-state', 'open');
+      expect(brocRow).toHaveAttribute('data-partial', 'true');
+    });
+    const brocQty = screen.getByTestId('shop-qty-broccoli__g');
+    expect(brocQty).toHaveAttribute('aria-label', 'kaufen 250 g von 400 g');
+    expect(brocQty).toHaveTextContent('250 g');
+    expect(brocQty).toHaveTextContent('400 g');
+    expect(
+      screen.getByTestId('shop-toggle-broccoli__g').getAttribute('aria-label'),
+    ).toContain('kaufen 250 g von 400 g');
+    const partialBtn = screen.getByTestId('shop-have-broccoli__g');
+    expect(partialBtn).toHaveTextContent('Teilweise');
+    expect(partialBtn).toHaveClass('edo-havebtn-partial');
+
+    // «Teilweise» erneut öffnen -> «Alles vorhanden» aktivieren -> «Übernehmen» -> «Schon zu Hause»
+    fireEvent.click(partialBtn);
+    await screen.findByTestId('shop-have-sheet');
+    fireEvent.click(screen.getByTestId('shop-have-all'));
+    expect(screen.getByTestId('shop-have-all')).toHaveAttribute('aria-checked', 'true');
+    fireEvent.click(screen.getByTestId('shop-have-apply'));
+
     const homeSec = await screen.findByTestId('shop-section-home');
     expect(within(homeSec).getByTestId('shop-row-broccoli__g')).toHaveAttribute(
       'data-state',
       'home',
     );
-    const undoBtn = await screen.findByTestId('toast-undo');
-    fireEvent.click(undoBtn);
+
+    // «Doch kaufen» in «Schon zu Hause» öffnet dasselbe Sheet -> «Zurücksetzen» holt Artikel zurück in die offene Liste
+    const homeHaveBtn = within(homeSec).getByTestId('shop-have-broccoli__g');
+    expect(homeHaveBtn).toHaveTextContent('Doch kaufen');
+    fireEvent.click(homeHaveBtn);
+    await screen.findByTestId('shop-have-sheet');
+    fireEvent.click(screen.getByTestId('shop-have-reset'));
+
     await waitFor(() => {
       expect(screen.getByTestId('shop-row-broccoli__g')).toHaveAttribute(
         'data-state',
         'open',
       );
+      expect(screen.getByTestId('shop-have-broccoli__g')).toHaveTextContent('Hab ich');
     });
 
-    // 3) Katalog-Suche: Haferflocken manuell hinzufügen
+    // 5) Katalog-Suche (bewusste Ergänzung): Haferflocken manuell hinzufügen -> KEIN ⓘ-Knopf, aber «Hab ich» mit Teilmenge
     fireEvent.change(screen.getByTestId('catalog-search-input'), {
       target: { value: 'Hafer' },
     });
     fireEvent.click(await screen.findByTestId('catalog-add-oats'));
-    expect(await screen.findByTestId('shop-row-oats__manual')).toHaveTextContent(
-      'Haferflocken',
-    );
+    const oatsRow = await screen.findByTestId('shop-row-oats__g');
+    expect(oatsRow).toHaveTextContent('Haferflocken');
+    expect(screen.queryByTestId('shop-src-oats__g')).toBeNull();
 
-    // 4) Hausmarken-Info-Dialog oben
+    fireEvent.click(screen.getByTestId('shop-have-oats__g'));
+    await screen.findByTestId('shop-have-sheet');
+    fireEvent.change(screen.getByTestId('shop-have-range'), {
+      target: { value: '100' },
+    });
+    fireEvent.click(screen.getByTestId('shop-have-apply'));
+    await waitFor(() => {
+      expect(screen.getByTestId('shop-have-oats__g')).toHaveTextContent('Teilweise');
+      expect(screen.getByTestId('shop-qty-oats__g')).toHaveAttribute(
+        'aria-label',
+        'kaufen 100 g von 200 g',
+      );
+    });
+
+    // 6) Hausmarken-Info-Dialog oben
     fireEvent.click(screen.getByTestId('brands-info-btn'));
     const brandsSheet = await screen.findByTestId('brands-sheet');
     expect(brandsSheet).toHaveTextContent('Migros');
@@ -90,7 +187,7 @@ describe('Paket E5: Einkaufsliste, drei Zustände, Hausmarken, Teilen & QR-Impor
     fireEvent.click(screen.getByTestId('brands-sheet-close'));
     expect(screen.queryByTestId('brands-sheet')).toBeNull();
 
-    // 5) QR-Einkaufsliste-Dialog mit lokalem React-SVG (kein innerHTML)
+    // 7) QR-Einkaufsliste-Dialog mit lokalem React-SVG (kein innerHTML)
     fireEvent.click(screen.getByTestId('shop-qr-btn'));
     const qrSheet = await screen.findByTestId('qr-sheet');
     const qrSvg = qrSheet.querySelector('svg.edo-qr-svg');
@@ -149,10 +246,13 @@ describe('Paket E5: Einkaufsliste, drei Zustände, Hausmarken, Teilen & QR-Impor
     expect(await storage.shopping.list()).toHaveLength(2);
   });
 
-  it('teilt über Web Share API ausschliesslich Artikelnamen, Mengen und Zustände (nie G-Daten)', async () => {
+  it('teilt über Web Share API ausschliesslich Artikelnamen, Mengen und Zustände (nie G-Daten und nie qtyHave)', async () => {
     const storage = createMemoryStorage();
     const salmon = getRecipe('oven_salmon')!;
-    await storage.shopping.replaceAll(addRecipe([], salmon, 2));
+    const initial = addRecipe([], salmon, 2).map((it) =>
+      it.id === 'potato__g' ? { ...it, qtyHave: 200 } : it,
+    );
+    await storage.shopping.replaceAll(initial);
     window.location.hash = '#/einkauf';
 
     const sharedPayloads: ShareData[] = [];
@@ -176,6 +276,8 @@ describe('Paket E5: Einkaufsliste, drei Zustände, Hausmarken, Teilen & QR-Impor
       expect(text).toContain('Kartoffeln');
       expect(text).toContain('500 g');
       expect(text).toContain('[Offen]');
+      expect(text).not.toContain('qtyHave');
+      expect(text).not.toContain('200 g');
       expect(text).not.toMatch(/BMI|kcal|Gewicht|Geburtsdatum|Profil/i);
     } finally {
       Object.defineProperty(navigator, 'share', {

@@ -17,6 +17,8 @@ export {
 
 export {
   DEFAULT_SETTINGS,
+  MAX_QTY_HAVE,
+  coerceQtyHave,
   coerceRating,
   coerceSettings,
   coerceShoppingItem,

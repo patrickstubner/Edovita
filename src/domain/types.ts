@@ -243,6 +243,8 @@ export interface ShoppingItem {
   food: FoodId;
   amount?: number;
   unit?: Unit;
+  /** Bereits zu Hause vorhandene Menge (0 … Bedarf, gedeckelt auf Bedarf; Prototyp v5.9). */
+  qtyHave?: number;
   state: ShopState;
   fromRecipes: RecipeId[];
   /** Pro Rezept-ID beigesteuerte Menge, damit `removeRecipe` exakt abzieht (ADR-002). */

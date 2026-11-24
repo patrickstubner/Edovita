@@ -241,6 +241,7 @@ export const shoppingItemSchema = z.strictObject({
   food: foodIdSchema,
   amount: z.number().finite().positive().optional(),
   unit: unitSchema.optional(),
+  qtyHave: z.number().finite().min(0).max(1_000_000).optional(),
   state: shopStateSchema,
   fromRecipes: z.array(recipeIdSchema),
   recipeAmounts: z

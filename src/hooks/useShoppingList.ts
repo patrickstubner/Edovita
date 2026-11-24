@@ -11,11 +11,16 @@ import type {
 import {
   addCatalogItem,
   addRecipe as addRecipeToList,
+  applyHave as applyItemHave,
   applyShopImport,
   clearDone as clearDoneItems,
+  defaultCatalogAmountForGroup,
+  effectiveShopState,
   groupItems,
   removeRecipe as removeRecipeFromList,
+  resetHave as resetItemHave,
   setState as setItemState,
+  type ApplyHaveOptions,
   type GroupedShoppingList,
 } from '../shopping/index.ts';
 import { useI18n } from './useI18n.ts';
@@ -36,8 +41,8 @@ export interface UseShoppingListResult {
   readonly resolveItemName: (item: ShoppingItem) => string;
   readonly resolveItemAmount: (item: ShoppingItem) => string;
   readonly toggleCart: (id: string) => Promise<void>;
-  readonly markHome: (id: string) => Promise<void>;
-  readonly markOpen: (id: string) => Promise<void>;
+  readonly applyHave: (id: string, options: ApplyHaveOptions) => Promise<void>;
+  readonly resetHave: (id: string) => Promise<void>;
   readonly undo: () => Promise<boolean>;
   readonly addRecipe: (recipe: Recipe, servings: number) => Promise<void>;
   readonly removeRecipe: (recipeId: RecipeId) => Promise<void>;
@@ -56,7 +61,7 @@ export interface UseShoppingListResult {
 /**
  * Verbindet `ShoppingProvider` mit der reinen Einkaufslisten-Logik (`src/shopping/`),
  * lokalisiert Namen/Mengen über `useI18n` und hält einen Undo-Snapshot für schnelle
- * Rückgängig-Aktionen («Hab ich», Rezept entfernen, Korb leeren).
+ * Rückgängig-Aktionen (Korb leeren, QR-Import).
  */
 export function useShoppingList(): UseShoppingListResult {
   const { items, loading, replaceAll } = useShopping();
@@ -106,22 +111,24 @@ export function useShoppingList(): UseShoppingListResult {
     async (id: string): Promise<void> => {
       const target = items.find((it) => it.id === id);
       if (!target) return;
-      const nextState = target.state === 'cart' ? 'open' : 'cart';
+      const currentState = effectiveShopState(target);
+      if (currentState === 'home') return;
+      const nextState = currentState === 'cart' ? 'open' : 'cart';
       await commit(setItemState(items, id, nextState));
     },
     [commit, items],
   );
 
-  const markHome = useCallback(
-    async (id: string): Promise<void> => {
-      await commit(setItemState(items, id, 'home'), true);
+  const applyHave = useCallback(
+    async (id: string, options: ApplyHaveOptions): Promise<void> => {
+      await commit(applyItemHave(items, id, options));
     },
     [commit, items],
   );
 
-  const markOpen = useCallback(
+  const resetHave = useCallback(
     async (id: string): Promise<void> => {
-      await commit(setItemState(items, id, 'open'));
+      await commit(resetItemHave(items, id));
     },
     [commit, items],
   );
@@ -150,7 +157,11 @@ export function useShoppingList(): UseShoppingListResult {
 
   const addFromCatalog = useCallback(
     async (foodId: FoodId, amount?: number, unit?: Unit): Promise<void> => {
-      await commit(addCatalogItem(items, foodId, { amount, unit }));
+      const defaults =
+        amount === undefined && unit === undefined
+          ? defaultCatalogAmountForGroup(getFood(foodId)?.group ?? 'pantry')
+          : { amount, unit };
+      await commit(addCatalogItem(items, foodId, defaults));
     },
     [commit, items],
   );
@@ -176,8 +187,8 @@ export function useShoppingList(): UseShoppingListResult {
     resolveItemName,
     resolveItemAmount,
     toggleCart,
-    markHome,
-    markOpen,
+    applyHave,
+    resetHave,
     undo,
     addRecipe,
     removeRecipe,

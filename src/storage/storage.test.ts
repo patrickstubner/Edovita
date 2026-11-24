@@ -2,10 +2,13 @@ import { afterEach, describe, expect, it } from '@rstest/core';
 import {
   asFoodId,
   asRecipeId,
+  coerceQtyHave,
+  coerceShoppingItem,
   type Settings,
   type ShoppingItem,
 } from '../domain/index.ts';
 import {
+  EDOVITA_MIGRATIONS,
   EDOVITA_SCHEMA_V1,
   EdovitaDb,
   coerceSettings,
@@ -294,7 +297,9 @@ describe('Speicher: Neuladen, Coercion, Export/Import/Wipe und Migrationen (E3)'
     const dbName = nextDbName('migration');
 
     // 1. Altdaten in v1 anlegen
-    const v1Db = new EdovitaDb(dbName);
+    const v1Db = new EdovitaDb(dbName, [
+      { version: 1, stores: { ...EDOVITA_SCHEMA_V1 } },
+    ]);
     await v1Db.settings.put({
       key: 'current',
       value: {
@@ -332,6 +337,141 @@ describe('Speicher: Neuladen, Coercion, Export/Import/Wipe und Migrationen (E3)'
     const migrated = await v2Db.settings.get('current');
     expect(migrated?.value.uiLang).toBe('de');
     expect(migrated?.value.secondLang).toBe('en');
+  });
+
+  it('E5b Dexie-Migration v1 -> v2: ergänzt fehlendes qtyHave mit 0 und deckelt/bereinigt Altwerte (Issue #31)', async () => {
+    const dbName = nextDbName('migration_v2_qtyhave');
+
+    // 1. Altdaten in v1 (ohne qtyHave sowie mit ungültigen/übergrossen Werten) schreiben
+    const v1Db = new EdovitaDb(dbName, [
+      { version: 1, stores: { ...EDOVITA_SCHEMA_V1 } },
+    ]);
+    await v1Db.shopping.bulkPut([
+      {
+        id: 'old_no_have',
+        food: asFoodId('broccoli'),
+        amount: 400,
+        unit: 'g',
+        state: 'open',
+        fromRecipes: [asRecipeId('oven_salmon')],
+        addedAt: '2026-11-23T08:00:00.000Z',
+      },
+      {
+        id: 'old_over_cap',
+        food: asFoodId('oats'),
+        amount: 100,
+        unit: 'g',
+        qtyHave: 999,
+        state: 'open',
+        fromRecipes: [],
+        addedAt: '2026-11-23T08:01:00.000Z',
+      },
+      {
+        id: 'old_negative',
+        food: asFoodId('garlic'),
+        amount: 4,
+        unit: 'pc',
+        qtyHave: -5,
+        state: 'open',
+        fromRecipes: [],
+        addedAt: '2026-11-23T08:02:00.000Z',
+      },
+      {
+        id: 'old_corrupt',
+        food: asFoodId('salt'),
+        amount: 10,
+        unit: 'g',
+        qtyHave: 'kaputt' as unknown as number,
+        state: 'open',
+        fromRecipes: [],
+        addedAt: '2026-11-23T08:03:00.000Z',
+      },
+    ]);
+    v1Db.close();
+
+    // 2. Mit produktiven EDOVITA_MIGRATIONS (v2) öffnen
+    expect(EDOVITA_MIGRATIONS.some((m) => m.version === 2)).toBe(true);
+    const storage = createDexieStorage(dbName);
+    createdDbs.push(storage.db);
+
+    const list = await storage.shopping.list();
+    const byId = new Map(list.map((it) => [it.id, it]));
+    expect(byId.get('old_no_have')?.qtyHave).toBe(0);
+    expect(byId.get('old_over_cap')?.qtyHave).toBe(100);
+    expect(byId.get('old_negative')?.qtyHave).toBe(0);
+    expect(byId.get('old_corrupt')?.qtyHave).toBe(0);
+  });
+
+  it('E5b coerceQtyHave & coerceShoppingItem bereinigen negative Werte, NaN, Strings und 1e9 und deckeln auf Bedarf', () => {
+    expect(coerceQtyHave(undefined)).toBe(0);
+    expect(coerceQtyHave(-5, 100)).toBe(0);
+    expect(coerceQtyHave(Number.NaN, 100)).toBe(0);
+    expect(coerceQtyHave(Number.POSITIVE_INFINITY, 100)).toBe(0);
+    expect(coerceQtyHave('50', 100)).toBe(0);
+    expect(coerceQtyHave(1e9, 100)).toBe(0);
+    expect(coerceQtyHave(1e9)).toBe(0);
+    expect(coerceQtyHave(250, 100)).toBe(100);
+    expect(coerceQtyHave(50, 100)).toBe(50);
+
+    const coercedNeg = coerceShoppingItem({
+      id: 'item_neg',
+      food: 'oats',
+      amount: 100,
+      unit: 'g',
+      qtyHave: -10,
+      state: 'open',
+      fromRecipes: [],
+      addedAt: '2026-11-24T10:00:00.000Z',
+    });
+    expect(coercedNeg?.qtyHave).toBe(0);
+
+    const coercedStr = coerceShoppingItem({
+      id: 'item_str',
+      food: 'oats',
+      amount: 100,
+      unit: 'g',
+      qtyHave: 'abc',
+      state: 'open',
+      fromRecipes: [],
+      addedAt: '2026-11-24T10:00:00.000Z',
+    });
+    expect(coercedStr?.qtyHave).toBe(0);
+
+    const coercedHuge = coerceShoppingItem({
+      id: 'item_huge',
+      food: 'oats',
+      amount: 100,
+      unit: 'g',
+      qtyHave: 1e9,
+      state: 'open',
+      fromRecipes: [],
+      addedAt: '2026-11-24T10:00:00.000Z',
+    });
+    expect(coercedHuge?.qtyHave).toBe(0);
+
+    const coercedOverCap = coerceShoppingItem({
+      id: 'item_over',
+      food: 'oats',
+      amount: 100,
+      unit: 'g',
+      qtyHave: 250,
+      state: 'open',
+      fromRecipes: [],
+      addedAt: '2026-11-24T10:00:00.000Z',
+    });
+    expect(coercedOverCap?.qtyHave).toBe(100);
+
+    const coercedNan = coerceShoppingItem({
+      id: 'item_nan',
+      food: 'oats',
+      amount: 100,
+      unit: 'g',
+      qtyHave: Number.NaN,
+      state: 'open',
+      fromRecipes: [],
+      addedAt: '2026-11-24T10:00:00.000Z',
+    });
+    expect(coercedNan?.qtyHave).toBe(0);
   });
 
   it('G2: importAll läuft atomar in einer Dexie-Transaktion – Fehler mitten im Import lässt Altbestand unverändert', async () => {

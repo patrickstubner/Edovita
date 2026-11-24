@@ -89,6 +89,28 @@ export function coerceSettings(
   };
 }
 
+export const MAX_QTY_HAVE = 1_000_000;
+
+/**
+ * Normalisiert `qtyHave`: nur endliche Zahl in `[0, 1e6]`, ungültige Werte -> `0`.
+ * Ist ein positiver Bedarf (`need`) bekannt, wird `qtyHave` strikt darauf gedeckelt (v5.9).
+ */
+export function coerceQtyHave(raw: unknown, need?: number): number {
+  if (
+    typeof raw !== 'number' ||
+    !Number.isFinite(raw) ||
+    raw <= 0 ||
+    raw > MAX_QTY_HAVE
+  ) {
+    return 0;
+  }
+  const rounded = Math.round((raw + Number.EPSILON) * 10) / 10;
+  if (typeof need === 'number' && Number.isFinite(need) && need > 0) {
+    return Math.min(rounded, need);
+  }
+  return rounded;
+}
+
 /**
  * Normalisiert einen gelesenen Einkaufsartikel über Whitelists (ADR-002).
  * Gibt `null` zurück, wenn Pflichtfelder (`id`, `food`) fehlen oder ungültig sind.
@@ -124,6 +146,9 @@ export function coerceShoppingItem(raw: unknown): ShoppingItem | null {
       : undefined;
 
   const unit = coerceUnit(ownField(raw, 'unit'));
+  const rawQtyHave = ownField(raw, 'qtyHave');
+  const qtyHave =
+    rawQtyHave !== undefined ? coerceQtyHave(rawQtyHave, amount) : undefined;
   const state = coerceShopState(ownField(raw, 'state'));
 
   const rawFrom = ownField(raw, 'fromRecipes');
@@ -186,6 +211,9 @@ export function coerceShoppingItem(raw: unknown): ShoppingItem | null {
   }
   if (unit !== undefined) {
     item.unit = unit;
+  }
+  if (qtyHave !== undefined) {
+    item.qtyHave = qtyHave;
   }
   if (recipeAmounts !== undefined) {
     item.recipeAmounts = recipeAmounts;

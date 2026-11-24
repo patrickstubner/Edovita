@@ -5,6 +5,24 @@ export {
   type StoreRegionCode,
 } from './brands.ts';
 export {
+  applyHave,
+  buildSourceSummary,
+  capHaveToNeed,
+  defaultCatalogAmountForGroup,
+  effectiveShopState,
+  haveStepOf,
+  isHaveAll,
+  isPartialHave,
+  resetHave,
+  shopBuyQty,
+  shopHaveOf,
+  shopNeedOf,
+  snapHaveQty,
+  type ApplyHaveOptions,
+  type ShopSourceEntry,
+  type ShopSourceSummary,
+} from './have.ts';
+export {
   SHOP_GROUP_ORDER,
   addCatalogItem,
   addRecipe,

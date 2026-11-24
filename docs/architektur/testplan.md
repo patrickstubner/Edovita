@@ -8,23 +8,24 @@ Unit- und Komponententests: Rstest mit `@rstest/adapter-rsbuild` (aktuell 0.12.6
 |---|---|---|
 | J1 | Rezepte → Kachel antippen → Detail → Portionen 2 → 4 → «Zur Einkaufsliste» → Einkauf | Mengen verdoppelt, Toast, Artikel in Gruppen, Hauptbutton immer sichtbar |
 | J2 | Zwei Rezepte mit gleicher Zutat hinzufügen → eins entfernen | Mengen zusammengezählt und korrekt abgezogen |
-| J3 | Einkauf: Artikel antippen (Korb) → «Hab ich» → «Rückgängig» → Neuladen | drei Zustände, Zustand bleibt nach Neuladen |
+| J3 | Einkauf: Artikel antippen (Korb) → «Hab ich»-Sheet («Alles vorhanden» / Verwerfen) → Neuladen → «Doch kaufen»-Sheet («Zurücksetzen») | drei Zustände, ⓘ-Herkunfts-Sheet (28/56/16 px, Tastatur/Escape, Fokus-Rückkehr, kein Abhaken), Zustand bleibt nach Neuladen |
 | J4 | Zweitsprache PT wählen → Liste und Rezept-Detail zeigen «Brokkoli · brócolis», Schritte nur Deutsch → Zweitsprache = App-Sprache → kein Zweitname | Zweitsprache-Regeln |
 | J5 | Zweitsprache `ar-XB` (Pseudo-RTL) | Zweitname rechts-nach-links isoliert, Layout nicht verschoben (Screenshot-Vergleich) |
 | J6 | UI-Sprache DE → EN im Profil, ohne Neustart | Liste und Portionen bleiben, Zahlen im neuen Format |
 | J7 | QR-Fragment mit 41 Items / `<script>` im Namen / falschem `st` öffnen | abgelehnt mit Hinweis, nichts übernommen; gültiges Fragment → Bestätigungsdialog |
 | J8 | Offline: App einmal laden, Netz aus, Rezepte und Liste bedienen | Service Worker liefert Shell und Inhalte |
+| J9 | Einkauf Teilmenge: «Hab ich»-Sheet → Teilmenge per Stepper/Schieber → «Übernehmen» → Neuladen; Katalog-Artikel ohne ⓘ mit Teilmenge | Kaufmenge normal + Bedarf durchgestrichen, oranger «Teilweise»-Knopf (≥ 48×48), Screenreader «kaufen … von …», `qtyHave` persistent & nie in Share/QR |
 
 ## Unit- und Vertragstests
 
 - `nutrition/scale`: Rundungsregeln je Einheit, 1–12 Portionen, `pc` mit halben Stücken, keine negativen Mengen.
 - `nutrition/sum`: bekannte Rezepte gegen von Hand nachgerechnete Werte (Toleranz ±2 %).
-- `shopping/merge`: zusammenführen, entfernen, Zustand `home` bleibt, gleiche Zutat mit anderer Einheit getrennt (oder über `gramsPer` umgerechnet).
+- `shopping/merge` & `shopping/have` (v5.9): zusammenführen, entfernen (inkl. Deckelung von `qtyHave`), Zustand `home` bleibt, gleiche Zutat mit anderer Einheit getrennt, Teilmenge (`isPartialHave`/`isHaveAll`), Schrittweiten (`haveStepOf`/`snapHaveQty` für `g`/`ml`/`pc`/`tbsp`/`tsp`/`pinch`/`bottle`), Herkunfts-Summe, `qtyHave` nie in Share/QR.
 - `catalog/recipes rankRecipes`: Vielfalt, Bewertung, Merkliste (Fälle aus Prototyp `rlist`).
 - `health/*`: alle Grenzwerte aus Handoff §3 als Tabellentest, 100 % Zweigabdeckung.
-- `domain/parseShopImport`: alle Ablehnungsgründe (`format`, `size`, `count`, `id`, `name`, `schema`, `parse`).
+- `domain/parseShopImport` & `coerceQtyHave`: alle Ablehnungsgründe (`format`, `size`, `count`, `id`, `name`, `schema`, `parse`), ungültige `qtyHave` (negativ, `NaN`, String, `1e9`) bereinigt und auf Bedarf gedeckelt.
 - **Repository-Vertragstest:** dieselbe Testsuite läuft gegen `Memory*` und `Dexie*` (später `Sqlite*`).
-- **Migrationstest:** pro Dexie-Version ein alter Datensatz → aktuelles Schema.
+- **Migrationstest:** pro Dexie-Version ein alter Datensatz → aktuelles Schema (inkl. v1 → v2 `qtyHave`).
 - `coerceSettings`: unbekannte/ungültige Werte fallen auf Standard (Muster Travel Talk).
 
 ## Inhaltsprüfungen (`content:check`, auch in CI)
