@@ -1083,5 +1083,20 @@
  "toast.undo",
  "shop.usedin",
  "shop.src.line.plan",
- "shop.src.line.extra"
+ "shop.src.line.extra",
+ "shop.have.partial",
+ "shop.have.all",
+ "shop.have.athome",
+ "shop.have.reset",
+ "shop.have.apply",
+ "shop.have.title",
+ "shop.qty.buyof",
+ "shop.src.sum",
+ "shop.src.whenqty",
+ "shop.have.aria",
+ "shop.have.aria.partial",
+ "shop.have.aria.home",
+ "shop.have.step.plus",
+ "shop.have.step.minus",
+ "shop.have.slider"
 ]

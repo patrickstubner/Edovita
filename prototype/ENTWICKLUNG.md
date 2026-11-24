@@ -1,3 +1,7 @@
+# Stand v5.9 (24. November 2026)
+
+Einkaufsliste: Namen und relevante UI-Texte in Haupt- und Zweitsprache (zweizeilig, sonst einzeilig). ⓘ-Sheet mit Gericht, Plan-Slot, Menge und Summe. «Hab ich» mit Teilmenge (Sheet, Schieber/Stepper, Zurücksetzen); Kaufmenge plus durchgestrichene Bedarfsmenge; Zustand «Teilweise»; Speicherung in der Einkaufsliste, Deckelung bei Plan-Änderungen. Siehe `SECURITY.md`. Darunter der Stand v5.8.1.
+
 # Stand v5.8.1 (24. November 2026)
 
 Kurznachtrag zur Einkaufsliste: Herkunftstext unter den Zutaten entfernt, dafür Info-Button (ⓘ 28×28 CSS-Pixel in einer Tippfläche 56×56, 16 CSS-Pixel Abstand zur Abhakzeile) und Bottom-Sheet mit Rezept/Plan-Slot. Siehe `SECURITY.md`. Darunter der Stand v5.8.

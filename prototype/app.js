@@ -1,6 +1,6 @@
 (function () {
   'use strict';
-  // Reiner Klick-Prototyp v5.7: keine Netzwerkaufrufe. Gespeichert: Sprache, Zweitsprache (manuelle Wahl), Plan, Einkaufsliste, Darstellung, Ton, Melodie. Keine Standort- oder Gesundheitsdaten. Sprachcodes nur nach Whitelist.
+  // Reiner Klick-Prototyp v5.9: keine Netzwerkaufrufe. Gespeichert: Sprache, Zweitsprache (manuelle Wahl), Plan, Einkaufsliste (inkl. vorhandene Teilmengen), Darstellung, Ton, Melodie. Keine Standort- oder Gesundheitsdaten. Sprachcodes nur nach Whitelist.
   // Alle Texte kommen aus locales/<code>/*.json (über i18n.js) und werden nur per textContent/setAttribute gesetzt.
   var I = window.EdoI18n;
   var T = function (k, v) { return I.t(k, v); };
@@ -40,6 +40,7 @@
     if (SCREENS.indexOf(id) === -1) id = 'heute';
     if (id !== curScreen) { prevScreen = curScreen; curScreen = id; }
     if (typeof closeShopSrc === 'function') closeShopSrc(true);
+    if (typeof closeShopHave === 'function') closeShopHave(true);
     if (id === 'rezept') renderRezept();
     if (id === 'plan') renderPlan();
     $$('.screen').forEach(function (s) { s.classList.toggle('active', s.id === id); });
@@ -1185,6 +1186,7 @@
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') { var s = $('#splash'); if (s && !s.hidden) { e.preventDefault(); endSplash(); return; } }
     if (e.key === 'Escape' && typeof isPlanSheetOpen === 'function' && isPlanSheetOpen()) { e.preventDefault(); closePlanSheet(); return; }
+    if (e.key === 'Escape' && typeof isShopHaveOpen === 'function' && isShopHaveOpen()) { e.preventDefault(); closeShopHave(); return; }
     if (e.key === 'Escape' && typeof isShopSrcOpen === 'function' && isShopSrcOpen()) { e.preventDefault(); closeShopSrc(); return; }
     if ((e.key === 'Enter' || e.key === ' ') && e.target && e.target.getAttribute && e.target.getAttribute('data-recipe') && !SECOND_MENU_OPEN && !LANG_MENU_OPEN) {
       if (!e.target.closest('[data-rate], [data-save], [data-addlist]')) { e.preventDefault(); openRecipe(e.target.getAttribute('data-recipe')); return; }
@@ -1518,17 +1520,62 @@
     var a = uiFoodName(id), b = secondFoodName(id);
     return b ? a + ' · ' + b : a;
   }
-  function bilingualName(id) {
-    var wrap = mk('span', 'biname');
+  function bilingualName(id, stacked) {
+    var wrap = mk('span', stacked ? 'biname biname-stack' : 'biname');
     wrap.appendChild(mk('span', 'biname-main', uiFoodName(id)));
     var sec = secondFoodName(id);
     if (sec) {
-      wrap.appendChild(document.createTextNode(' · '));
+      if (!stacked) wrap.appendChild(document.createTextNode(' · '));
       var bdi = mk('bdi', 'biname-sec', sec);
       var meta = secondMeta(effectiveSecond());
       bdi.setAttribute('lang', meta.locale);
       bdi.setAttribute('dir', meta.dir);
       wrap.appendChild(bdi);
+    }
+    return wrap;
+  }
+  function tIn(code, key, vars) {
+    var r = I.res(code), msg;
+    if (r && r.ui && Object.prototype.hasOwnProperty.call(r.ui, key)) msg = r.ui[key];
+    else {
+      r = I.res(I.fallback);
+      msg = r && r.ui && Object.prototype.hasOwnProperty.call(r.ui, key) ? r.ui[key] : key;
+    }
+    return I.format(msg, vars);
+  }
+  function tSecond(key, vars) {
+    var s = effectiveSecond();
+    if (!s) return '';
+    var a = T(key, vars), b = tIn(s, key, vars);
+    return b && b !== a ? b : '';
+  }
+  function fillBilingual(el, key, vars) {
+    el.textContent = '';
+    el.appendChild(mk('span', 'i18n-main', T(key, vars)));
+    var sec = tSecond(key, vars);
+    if (sec) {
+      var bdi = mk('bdi', 'i18n-sec', sec);
+      var meta = secondMeta(effectiveSecond());
+      bdi.setAttribute('lang', meta.locale);
+      bdi.setAttribute('dir', meta.dir);
+      el.appendChild(bdi);
+    }
+    return el;
+  }
+  function bilingualRecipeTitle(id) {
+    var wrap = mk('span', 'biname biname-stack');
+    wrap.appendChild(mk('span', 'biname-main', recipeTitle(id)));
+    var s = effectiveSecond(), sec, pack, bdi, meta;
+    if (s) {
+      pack = I.res(s);
+      sec = pack && pack.recipes && pack.recipes.recipes ? pack.recipes.recipes[id] : null;
+      if (sec && sec !== recipeTitle(id)) {
+        bdi = mk('bdi', 'biname-sec', sec);
+        meta = secondMeta(s);
+        bdi.setAttribute('lang', meta.locale);
+        bdi.setAttribute('dir', meta.dir);
+        wrap.appendChild(bdi);
+      }
     }
     return wrap;
   }
@@ -1991,7 +2038,7 @@
   function defaultShopItems() {
     return SHOP.map(function (it) {
       var q = typeof it.qty === 'number' ? it.qty : null, u = it.unit || '';
-      return { id: it.id, unit: u, qtyPlan: 0, qtyExtra: q, recipesPlan: [], recipesExtra: [], grp: it.grp || foodGroup(it.id) };
+      return { id: it.id, unit: u, qtyPlan: 0, qtyExtra: q, qtyHave: 0, recipesPlan: [], recipesExtra: [], grp: it.grp || foodGroup(it.id) };
     });
   }
   function sanitizeShopItems(raw) {
@@ -2012,7 +2059,8 @@
       qe = (typeof it.qtyExtra === 'number' && isFinite(it.qtyExtra) && it.qtyExtra >= 0 && it.qtyExtra <= 1e6) ? it.qtyExtra : 0;
       var rp = Array.isArray(it.recipesPlan) ? it.recipesPlan.filter(knownRecipe).slice(0, 20) : [];
       var re = Array.isArray(it.recipesExtra) ? it.recipesExtra.filter(knownRecipe).slice(0, 20) : [];
-      out.push({ id: it.id, unit: unit, qtyPlan: qp, qtyExtra: qe, recipesPlan: rp, recipesExtra: re, grp: foodGroup(it.id) });
+      var qh = (typeof it.qtyHave === 'number' && isFinite(it.qtyHave) && it.qtyHave >= 0 && it.qtyHave <= 1e6) ? it.qtyHave : 0;
+      out.push({ id: it.id, unit: unit, qtyPlan: qp, qtyExtra: qe, qtyHave: qh, recipesPlan: rp, recipesExtra: re, grp: foodGroup(it.id) });
     });
     return out;
   }
@@ -2026,6 +2074,7 @@
   function saveShopItems() {
     if (!shopLive) return;
     shopLive = sanitizeShopItems(shopLive);
+    shopLive.forEach(capHaveToNeed);
     try { window.localStorage.setItem(SHOP_KEY, JSON.stringify(shopLive)); } catch (e) { /* nur bis zum Neuladen */ }
   }
   function getShopItems() {
@@ -2045,7 +2094,7 @@
       if (!e || typeof e.id !== 'string') return;
       var unit = e.unit || '', item = findShopItem(e.id, unit);
       if (!item) {
-        item = { id: e.id, unit: unit, qtyPlan: 0, qtyExtra: 0, recipesPlan: [], recipesExtra: [], grp: foodGroup(e.id) };
+        item = { id: e.id, unit: unit, qtyPlan: 0, qtyExtra: 0, qtyHave: 0, recipesPlan: [], recipesExtra: [], grp: foodGroup(e.id) };
         getShopItems().push(item);
       }
       if (dest === 'plan') {
@@ -2075,6 +2124,7 @@
     shopLive = getShopItems().filter(function (it) {
       return (it.qtyPlan && it.qtyPlan > 0) || (it.qtyExtra && it.qtyExtra > 0) || (it.unit === '' && (it.recipesPlan.length || it.recipesExtra.length)) || state.shop[it.id];
     });
+    shopLive.forEach(capHaveToNeed);
     saveShopItems();
   }
   function addRecipeIngredientsToShop(recipeId, portions) {
@@ -2187,6 +2237,67 @@
     if (extra.length && !only.length) return a;
     return a + b;
   }
+  function shopHaveOf(it) {
+    var n = it && it.qtyHave;
+    return (typeof n === 'number' && isFinite(n) && n > 0) ? n : 0;
+  }
+  function capHaveToNeed(it) {
+    var need = shopQtyOf(it), have = shopHaveOf(it);
+    if (need != null && need >= 0) it.qtyHave = Math.min(have, need);
+  }
+  function shopBuyQty(it) {
+    var need = shopQtyOf(it);
+    if (need == null) return null;
+    return Math.max(0, need - shopHaveOf(it));
+  }
+  function isPartialHave(it) {
+    var need = shopQtyOf(it), have = shopHaveOf(it);
+    return need != null && need > 0 && have > 0 && have < need;
+  }
+  function isHaveAll(it) {
+    var need = shopQtyOf(it), have = shopHaveOf(it);
+    if (need != null && need > 0) return have >= need;
+    return have > 0;
+  }
+  function haveStepOf(need, unit) {
+    if (unit === 'pc' || unit === 'bottle') return need >= 5 ? 1 : (need % 1 ? 0.5 : 1);
+    if (unit === 'tbsp' || unit === 'tsp') return 0.5;
+    if (unit === 'pinch') return 1;
+    if (need >= 500) return 50;
+    if (need >= 200) return 25;
+    if (need >= 50) return 10;
+    if (need >= 20) return 5;
+    return 1;
+  }
+  function snapHaveQty(v, need, unit) {
+    var step = haveStepOf(need, unit), n;
+    if (!(need > 0)) return 0;
+    if (v >= need) return need;
+    if (v <= 0) return 0;
+    n = Math.round(v / step) * step;
+    if (n > need) n = need;
+    if (n < 0) n = 0;
+    if (unit === 'g' || unit === 'ml') n = need >= 10 ? Math.round(n) : Math.round(n * 10) / 10;
+    else n = Math.round(n * 10) / 10;
+    return n;
+  }
+  function shopQtyBlock(it) {
+    var need = shopQtyOf(it), have = shopHaveOf(it), buy, wrap, buyEl, needEl;
+    var cap = formatQty(need, it.unit);
+    if (need != null && need > 0 && have > 0 && have < need) {
+      buy = Math.max(0, need - have);
+      wrap = mk('span', 'shop-qty');
+      wrap.setAttribute('aria-label', T('shop.qty.buyof', { buy: formatQty(buy, it.unit), need: cap }));
+      buyEl = mk('span', 'shop-qty-buy', formatQty(buy, it.unit));
+      buyEl.setAttribute('aria-hidden', 'true');
+      needEl = mk('span', 'shop-qty-need', cap);
+      needEl.setAttribute('aria-hidden', 'true');
+      wrap.appendChild(buyEl);
+      wrap.appendChild(needEl);
+      return wrap;
+    }
+    return mk('span', 'cap', cap);
+  }
   function shopRecipesOf(it) {
     var all = [], seen = {};
     (it.recipesPlan || []).concat(it.recipesExtra || []).forEach(function (id) {
@@ -2238,6 +2349,7 @@
     var sh = $('#shopSrcSheet'), bd = $('#shopSrcBack'), title = $('#shopSrcTitle'), body = $('#shopSrcBody'), closeBtn = $('#shopSrcClose');
     var lines, key;
     if (!sh || !body || !it) return;
+    if (typeof closeShopHave === 'function') closeShopHave(true);
     key = it.id + '\0' + (it.unit || '');
     if (isShopSrcOpen() && shopSrcKey === key) { closeShopSrc(); return; }
     lines = shopSourceLines(it);
@@ -2246,13 +2358,34 @@
     shopSrcBtn = btn || null;
     $$('.shop-src-btn').forEach(function (b) { b.setAttribute('aria-expanded', 'false'); });
     if (btn) btn.setAttribute('aria-expanded', 'true');
-    if (title) title.textContent = uiFoodName(it.id);
+    if (title) {
+      title.textContent = '';
+      title.appendChild(bilingualName(it.id, true));
+    }
     body.textContent = '';
     lines.forEach(function (line) {
-      var li = mk('li', '');
-      li.textContent = formatShopSrcLine(line);
+      var li = mk('li', 'shop-src-item');
+      var name = mk('div', 'shop-src-name');
+      name.appendChild(bilingualRecipeTitle(line.recipeId));
+      li.appendChild(name);
+      var meta = mk('div', 'shop-src-meta');
+      if (line.when && line.qty != null && line.unit) meta.textContent = T('shop.src.whenqty', { when: line.when, qty: formatQty(line.qty, line.unit) });
+      else if (line.qty != null && line.unit) meta.textContent = formatQty(line.qty, line.unit);
+      else if (line.when) meta.textContent = line.when;
+      else meta.textContent = formatShopSrcLine(line);
+      li.appendChild(meta);
       body.appendChild(li);
     });
+    if (lines.length) {
+      var sum = 0, unit = it.unit || '', can = !!unit, sumEl;
+      lines.forEach(function (line) {
+        if (line.qty == null || !line.unit || line.unit !== unit) can = false;
+        else sum += line.qty;
+      });
+      sumEl = mk('li', 'shop-src-sum');
+      fillBilingual(sumEl, 'shop.src.sum', { qty: can ? formatQty(sum, unit) : (shopQtyOf(it) != null ? formatQty(shopQtyOf(it), it.unit) : T('shop.amount.missing')) });
+      body.appendChild(sumEl);
+    }
     if (bd) bd.hidden = false;
     sh.hidden = false;
     if (closeBtn) { closeBtn.setAttribute('aria-label', T('plan.close')); closeBtn.focus({ preventScroll: true }); }
@@ -2270,31 +2403,242 @@
     b.appendChild(icon('info'));
     return b;
   }
+  var shopHaveKey = null, shopHaveBtn = null, shopHaveDraft = null;
+  function isShopHaveOpen() {
+    var sh = $('#shopHaveSheet');
+    return !!(sh && !sh.hidden);
+  }
+  function closeShopHave(silent) {
+    var sh = $('#shopHaveSheet'), bd = $('#shopHaveBack'), last = shopHaveBtn;
+    if (sh) sh.hidden = true;
+    if (bd) bd.hidden = true;
+    shopHaveKey = null;
+    shopHaveBtn = null;
+    shopHaveDraft = null;
+    $$('.havebtn[aria-expanded="true"]').forEach(function (b) { b.setAttribute('aria-expanded', 'false'); });
+    if (!silent && last && last.focus) last.focus();
+  }
+  function currentHaveDraftNeed() {
+    return shopHaveDraft ? shopHaveDraft.need : 0;
+  }
+  function syncHaveSheet() {
+    var d = shopHaveDraft, body, allBtn, lab, rng, out, need, step;
+    if (!d) return;
+    need = d.need;
+    allBtn = $('#shopHaveAll');
+    if (allBtn) {
+      allBtn.setAttribute('aria-checked', d.all ? 'true' : 'false');
+      allBtn.classList.toggle('on', !!d.all);
+    }
+    lab = $('#shopHaveAmt');
+    if (lab) fillBilingual(lab, 'shop.have.athome', { qty: (need != null && d.unit) ? formatQty(d.all ? need : d.value, d.unit) : T('shop.amount.missing') });
+    rng = $('#shopHaveRange');
+    out = $('#shopHaveVal');
+    if (rng) {
+      rng.value = String(d.all && need != null ? need : d.value);
+      rng.setAttribute('aria-valuetext', (need != null && d.unit) ? formatQty(d.all && need != null ? need : d.value, d.unit) : '');
+      rng.disabled = !(need != null && need > 0 && d.unit);
+    }
+    if (out && need != null && d.unit) out.textContent = formatQty(d.all ? need : d.value, d.unit);
+  }
+  function setHaveDraftValue(v, fromAll) {
+    var d = shopHaveDraft, need;
+    if (!d) return;
+    need = d.need;
+    if (need == null || need <= 0 || !d.unit) {
+      d.all = !!fromAll || v > 0;
+      d.value = d.all ? 1 : 0;
+      syncHaveSheet();
+      return;
+    }
+    v = snapHaveQty(v, need, d.unit);
+    if (fromAll || v >= need) { d.all = true; d.value = need; }
+    else { d.all = false; d.value = v; }
+    syncHaveSheet();
+  }
+  function openShopHave(it, btn) {
+    var sh = $('#shopHaveSheet'), bd = $('#shopHaveBack'), title = $('#shopHaveTitle'), body = $('#shopHaveBody'), closeBtn = $('#shopHaveClose');
+    var key, need, have, all, row, box, lab, stepper, minus, plus, rng, out, actions, reset, apply, hint;
+    if (!sh || !body || !it) return;
+    if (typeof closeShopSrc === 'function') closeShopSrc(true);
+    key = it.id + '\0' + (it.unit || '');
+    if (isShopHaveOpen() && shopHaveKey === key) { closeShopHave(); return; }
+    need = shopQtyOf(it);
+    have = shopHaveOf(it);
+    all = isHaveAll(it) || (!(have > 0) && !isPartialHave(it));
+    // Neu geöffnet und noch keine Menge: «Alles vorhanden» vorausgewählt (noch nicht gespeichert)
+    if (!isHaveAll(it) && !isPartialHave(it)) all = true;
+    shopHaveKey = key;
+    shopHaveBtn = btn || null;
+    shopHaveDraft = {
+      id: it.id,
+      unit: it.unit || '',
+      need: need,
+      value: all && need != null ? need : have,
+      all: all && (need == null || need <= 0 || have >= need || !isPartialHave(it))
+    };
+    if (!isHaveAll(it) && !isPartialHave(it)) {
+      shopHaveDraft.all = true;
+      shopHaveDraft.value = need != null && need > 0 ? need : 1;
+    } else if (isHaveAll(it)) {
+      shopHaveDraft.all = true;
+      shopHaveDraft.value = need != null && need > 0 ? need : 1;
+    } else {
+      shopHaveDraft.all = false;
+      shopHaveDraft.value = have;
+    }
+    $$('.havebtn').forEach(function (b) { b.setAttribute('aria-expanded', 'false'); });
+    if (btn) btn.setAttribute('aria-expanded', 'true');
+    if (title) { title.textContent = ''; title.appendChild(bilingualName(it.id, true)); }
+    hint = $('#shopHaveHint');
+    if (hint) fillBilingual(hint, 'shop.have.title');
+    body.textContent = '';
+    row = mk('button', 'shop-have-all');
+    row.type = 'button';
+    row.id = 'shopHaveAll';
+    row.setAttribute('role', 'checkbox');
+    row.setAttribute('aria-checked', shopHaveDraft.all ? 'true' : 'false');
+    var mark = mk('span', 'cb'); mark.appendChild(icon('check'));
+    row.appendChild(mark);
+    row.appendChild(fillBilingual(mk('span', 'grow shop-have-all-lab'), 'shop.have.all'));
+    body.appendChild(row);
+    lab = mk('p', 'shop-have-amt'); lab.id = 'shopHaveAmt';
+    body.appendChild(lab);
+    if (need != null && need > 0 && it.unit) {
+      box = mk('div', 'shop-have-ctrl');
+      stepper = mk('div', 'stepper shop-have-step');
+      minus = mk('button', 'stepbtn', '–'); minus.type = 'button'; minus.id = 'shopHaveMinus';
+      minus.setAttribute('aria-label', T('shop.have.step.minus'));
+      plus = mk('button', 'stepbtn', '+'); plus.type = 'button'; plus.id = 'shopHavePlus';
+      plus.setAttribute('aria-label', T('shop.have.step.plus'));
+      out = mk('output', 'shop-have-out'); out.id = 'shopHaveVal';
+      stepper.appendChild(minus); stepper.appendChild(out); stepper.appendChild(plus);
+      box.appendChild(stepper);
+      rng = document.createElement('input');
+      rng.type = 'range';
+      rng.id = 'shopHaveRange';
+      rng.min = '0';
+      rng.max = String(need);
+      rng.step = String(haveStepOf(need, it.unit));
+      rng.setAttribute('aria-label', T('shop.have.slider'));
+      box.appendChild(rng);
+      body.appendChild(box);
+      rng.addEventListener('input', function () {
+        setHaveDraftValue(Number(rng.value), false);
+      });
+    }
+    actions = mk('div', 'shop-have-actions');
+    reset = mk('button', 'btn line', ''); reset.type = 'button'; reset.id = 'shopHaveReset';
+    fillBilingual(reset, 'shop.have.reset');
+    apply = mk('button', 'btn', ''); apply.type = 'button'; apply.id = 'shopHaveApply';
+    fillBilingual(apply, 'shop.have.apply');
+    actions.appendChild(reset);
+    actions.appendChild(apply);
+    body.appendChild(actions);
+    syncHaveSheet();
+    if (bd) bd.hidden = false;
+    sh.hidden = false;
+    if (closeBtn) { closeBtn.setAttribute('aria-label', T('plan.close')); closeBtn.focus({ preventScroll: true }); }
+  }
+  function applyShopHave() {
+    var d = shopHaveDraft, item, need, val, key;
+    if (!d) { closeShopHave(); return; }
+    item = findShopItem(d.id, d.unit);
+    if (!item) { closeShopHave(); return; }
+    need = shopQtyOf(item);
+    if (d.all) {
+      item.qtyHave = (need != null && need > 0) ? need : 1;
+    } else {
+      val = (need != null && need > 0) ? snapHaveQty(d.value, need, item.unit) : 0;
+      item.qtyHave = val;
+    }
+    key = shopStatusKey(item);
+    if (isHaveAll(item)) {
+      state.shop[key] = 'home';
+      if (!item.unit) state.shop[item.id] = 'home';
+    } else {
+      if (state.shop[key] === 'home') state.shop[key] = 'open';
+      if (!item.unit && state.shop[item.id] === 'home') state.shop[item.id] = 'open';
+    }
+    saveShopItems();
+    closeShopHave(true);
+    renderShop();
+  }
+  function resetShopHave() {
+    var d = shopHaveDraft, item, key;
+    if (!d) { closeShopHave(); return; }
+    item = findShopItem(d.id, d.unit);
+    if (item) {
+      item.qtyHave = 0;
+      key = shopStatusKey(item);
+      state.shop[key] = 'open';
+      if (!item.unit) state.shop[item.id] = 'open';
+      saveShopItems();
+    }
+    closeShopHave(true);
+    renderShop();
+  }
+  function shopHaveButton(it, st) {
+    var h = mk('button', 'havebtn' + (st === 'home' ? '' : isPartialHave(it) ? ' partial' : ''));
+    var need = shopQtyOf(it), have = shopHaveOf(it), buy, lab;
+    h.type = 'button';
+    h.setAttribute('data-shop-have', it.id + ':' + (it.unit || ''));
+    if (st === 'home') {
+      h.textContent = T('shop.undo');
+      h.setAttribute('aria-label', T('shop.have.aria.home', { name: foodAria(it.id) }));
+    } else if (isPartialHave(it)) {
+      h.textContent = T('shop.have.partial');
+      buy = formatQty(shopBuyQty(it), it.unit);
+      h.setAttribute('aria-label', T('shop.have.aria.partial', { name: foodAria(it.id), buy: buy, need: formatQty(need, it.unit) }));
+    } else {
+      h.textContent = T('shop.have');
+      h.setAttribute('aria-label', T('shop.have.aria', { name: foodAria(it.id) }));
+    }
+    return h;
+  }
   function shopRow(it, st) {
-    var qty = shopQtyOf(it), srcBtn = shopSrcButton(it);
-    var row = mk('div', 'shoprow' + (st === 'cart' ? ' incart' : st === 'home' ? ' athome' : ''));
-    var cap = formatQty(qty, it.unit);
+    var srcBtn = shopSrcButton(it);
+    var row = mk('div', 'shoprow' + (st === 'cart' ? ' incart' : st === 'home' ? ' athome' : '') + (isPartialHave(it) ? ' partial' : ''));
+    var qtyEl = shopQtyBlock(it);
+    function nameCol(id) {
+      var col = mk('span', 'nm grow shop-nm'), sub = mk('span', 'shop-nm-2'), sec = secondFoodName(id), bdi, meta;
+      col.appendChild(mk('span', 'biname-main', uiFoodName(id)));
+      if (sec) {
+        col.classList.add('has-sec');
+        bdi = mk('bdi', 'biname-sec', sec);
+        meta = secondMeta(effectiveSecond());
+        bdi.setAttribute('lang', meta.locale);
+        bdi.setAttribute('dir', meta.dir);
+        sub.appendChild(bdi);
+      } else col.classList.add('one-line');
+      sub.appendChild(qtyEl);
+      col.appendChild(sub);
+      return col;
+    }
     if (st === 'home') {
       var c0 = mk('span', 'circ sm'); c0.appendChild(icon('home', 's')); row.appendChild(c0);
-      var g0 = mk('span', 'nm grow'); g0.appendChild(bilingualName(it.id));
-      row.appendChild(g0);
-      row.appendChild(mk('span', 'cap', cap));
+      row.appendChild(nameCol(it.id));
       if (srcBtn) row.appendChild(srcBtn);
-      var u = mk('button', 'havebtn', T('shop.undo')); u.setAttribute('data-shop', it.id + ':' + (it.unit || '') + ':open'); row.appendChild(u); return row;
+      row.appendChild(shopHaveButton(it, st));
+      return row;
     }
     var b = mk('button', 'chk grow' + (st === 'cart' ? ' on' : ''));
+    var aria = T(st === 'cart' ? 'shop.fromcart' : 'shop.tocart', { name: foodAria(it.id) });
+    if (isPartialHave(it)) aria += ', ' + T('shop.qty.buyof', { buy: formatQty(shopBuyQty(it), it.unit), need: formatQty(shopQtyOf(it), it.unit) });
     b.setAttribute('data-shop', it.id + ':' + (it.unit || '') + ':' + (st === 'cart' ? 'open' : 'cart'));
     b.setAttribute('aria-pressed', st === 'cart' ? 'true' : 'false');
-    b.setAttribute('aria-label', T(st === 'cart' ? 'shop.fromcart' : 'shop.tocart', { name: foodAria(it.id) }));
+    b.setAttribute('aria-label', aria);
     var cb = mk('span', 'cb'); cb.appendChild(icon('check')); b.appendChild(cb);
-    var ng = mk('span', 'nm grow'); ng.appendChild(bilingualName(it.id));
-    b.appendChild(ng); b.appendChild(mk('span', 'cap', cap)); row.appendChild(b);
+    b.appendChild(nameCol(it.id)); row.appendChild(b);
     if (srcBtn) row.appendChild(srcBtn);
-    if (st !== 'cart') { var h = mk('button', 'havebtn', T('shop.have')); h.setAttribute('data-shop', it.id + ':' + (it.unit || '') + ':home'); row.appendChild(h); }
+    if (st !== 'cart') row.appendChild(shopHaveButton(it, st));
     return row;
   }
   function shopStatusKey(it) { return it.id + '\0' + (it.unit || ''); }
-  function stOfItem(it) { return state.shop[shopStatusKey(it)] || state.shop[it.id] || 'open'; }
+  function stOfItem(it) {
+    if (isHaveAll(it)) return 'home';
+    return state.shop[shopStatusKey(it)] || state.shop[it.id] || 'open';
+  }
   function renderShop() {
     var box = $('#shopList'); if (!box) return; box.textContent = '';
     var vis = getShopItems().filter(function (it) {
@@ -2306,20 +2650,33 @@
       var its = vis.filter(function (it) { return (it.grp || foodGroup(it.id)) === g && stOfItem(it) === 'open'; });
       if (!its.length) return;
       anyOpen = true;
-      var w = mk('div'); w.appendChild(mk('p', 'grph', T('shop.grp.' + g))); var c = mk('div', 'card');
+      var w = mk('div'); w.appendChild(fillBilingual(mk('p', 'grph'), 'shop.grp.' + g)); var c = mk('div', 'card');
       its.forEach(function (it) { c.appendChild(shopRow(it, 'open')); }); w.appendChild(c); box.appendChild(w);
     });
     if (!anyOpen) { var d = mk('div', 'banner ok'); d.appendChild(icon('check')); d.appendChild(mk('b', 'grow', T('shop.done'))); box.appendChild(d); }
     ['cart', 'home'].forEach(function (s) {
       var its = vis.filter(function (it) { return stOfItem(it) === s; }); if (!its.length) return;
-      var w = mk('div'); w.appendChild(mk('p', 'grph', T('shop.sec.' + s) + ' (' + its.length + ')')); var c = mk('div', 'card');
+      var w = mk('div'); var gh = fillBilingual(mk('p', 'grph'), 'shop.sec.' + s); gh.appendChild(mk('span', 'i18n-main', ' (' + its.length + ')')); w.appendChild(gh); var c = mk('div', 'card');
       its.forEach(function (it) { c.appendChild(shopRow(it, s)); }); w.appendChild(c); box.appendChild(w);
     });
     var sub = $('#shopSub');
     if (sub) {
       var planN = 0;
       getShopItems().forEach(function (it) { planN += (it.recipesPlan || []).length ? 1 : 0; });
-      if (planN) sub.textContent = T('shop.from.plan', { n: String(getPlan().days) });
+      if (planN) fillBilingual(sub, 'shop.from.plan', { n: String(getPlan().days) });
+    }
+    var h1 = $('#einkauf h1'), secT, secTxt;
+    if (h1) {
+      secT = h1.parentNode.querySelector('.shop-title-sec');
+      secTxt = tSecond('einkauf.einkaufsliste');
+      if (secTxt) {
+        if (!secT) { secT = mk('p', 'shop-title-sec'); h1.insertAdjacentElement('afterend', secT); }
+        secT.textContent = secTxt;
+        var sm = secondMeta(effectiveSecond());
+        secT.setAttribute('lang', sm.locale);
+        secT.setAttribute('dir', sm.dir);
+        secT.hidden = false;
+      } else if (secT) secT.hidden = true;
     }
   }
   function makeShopFromPlan() {
@@ -2375,6 +2732,7 @@
     $('#toast').hidden = true;
     buildForms(); buildPace(); buildPrefs(); buildFavs();
     renderLangUI(); renderSoundUI(); render(); renderTheme(); renderItems(); renderBarFit(); renderQr(); renderSwitchTexts();
+    if (typeof renderSecondLangUI === 'function') renderSecondLangUI();
     if (tInt) trainLabel();
     var scr = document.getElementById(curScreen); if (scr) document.title = T('doc.title', { screen: scr.getAttribute('data-title') });
     if ($('#fortschritt').classList.contains('active') || $('#koerper').classList.contains('active')) drawCharts();
@@ -2427,6 +2785,7 @@
     }
     if (e.target && e.target.id === 'planSheetBack') { closePlanSheet(); return; }
     if (e.target && e.target.id === 'shopSrcBack') { closeShopSrc(); return; }
+    if (e.target && e.target.id === 'shopHaveBack') { closeShopHave(); return; }
     var recCard = e.target.closest ? e.target.closest('[data-recipe]') : null;
     if (recCard && !(e.target.closest && e.target.closest('[data-rate], [data-save], [data-addlist], [data-second], .second-chip, #secondSwitchBtn'))) {
       openRecipe(recCard.getAttribute('data-recipe')); return;
@@ -2457,6 +2816,18 @@
     if (el.id === 'planMakeShop') { makeShopFromPlan(); return; }
     if (el.id === 'planSheetClose' || el.id === 'planSheetCancel' || el.id === 'planSheetBack') { closePlanSheet(); return; }
     if (el.id === 'shopSrcClose' || el.id === 'shopSrcBack') { closeShopSrc(); return; }
+    if (el.id === 'shopHaveClose' || el.id === 'shopHaveBack') { closeShopHave(); return; }
+    if (el.id === 'shopHaveApply') { applyShopHave(); return; }
+    if (el.id === 'shopHaveReset') { resetShopHave(); return; }
+    if (el.id === 'shopHaveAll') { if (shopHaveDraft) setHaveDraftValue(shopHaveDraft.all ? 0 : (shopHaveDraft.need || 1), !shopHaveDraft.all); return; }
+    if (el.id === 'shopHaveMinus' && shopHaveDraft) { setHaveDraftValue((shopHaveDraft.all ? shopHaveDraft.need : shopHaveDraft.value) - haveStepOf(shopHaveDraft.need || 0, shopHaveDraft.unit), false); return; }
+    if (el.id === 'shopHavePlus' && shopHaveDraft) { setHaveDraftValue((shopHaveDraft.all ? shopHaveDraft.need : shopHaveDraft.value) + haveStepOf(shopHaveDraft.need || 0, shopHaveDraft.unit), false); return; }
+    if (el.hasAttribute('data-shop-have')) {
+      var hk = el.getAttribute('data-shop-have').split(':');
+      var hitem = getShopItems().filter(function (x) { return x.id === hk[0] && (x.unit || '') === (hk[1] || ''); })[0];
+      if (hitem) openShopHave(hitem, el);
+      return;
+    }
     if (el.hasAttribute('data-shop-src')) {
       var sk = el.getAttribute('data-shop-src').split(':');
       var sitem = getShopItems().filter(function (x) { return x.id === sk[0] && (x.unit || '') === (sk[1] || ''); })[0];

@@ -157,7 +157,7 @@
 157|Mit Sam geteilt
 158|So funktioniert die Liste
 159|Antippen = liegt im Korb (durchgestrichen, wandert nach unten).
-160|«Hab ich» = schon zu Hause, wird nicht gekauft.
+160|«Hab ich» = alles oder einen Teil schon zu Hause; die Kaufmenge wird angepasst.
 161|Aktionen deiner Läden
 162|Nach V1
 163|Später: Laden wählen (z. B. Migros, Coop, Lidl, Aldi), passende Rezepte zu Aktionen. Mit Kundenkarte oder App markiert, z. B. «nur mit Karte».
@@ -1083,3 +1083,18 @@
 1083|Verwendet in {recipes}
 1084|{recipe} · {when}, {qty}
 1085|{recipe}, {qty}
+1086|Teilweise
+1087|Alles vorhanden
+1088|Davon schon zu Hause: {qty}
+1089|Zurücksetzen
+1090|Übernehmen
+1091|Schon zu Hause?
+1092|kaufen {buy} von {need}
+1093|Summe: {qty}
+1094|{when} · {qty}
+1095|{name}: schon zu Hause festlegen
+1096|{name}: teilweise vorhanden, {buy} von {need} kaufen. Anpassen
+1097|{name}: alles vorhanden. Anpassen
+1098|Mehr vorhanden
+1099|Weniger vorhanden
+1100|Schon zu Hause

@@ -1,12 +1,15 @@
-# Edovita – Klick-Prototyp v5.8.1 (kompakte Einkaufsliste)
+# Edovita – Klick-Prototyp v5.9 (zweisprachige Liste, Teilmenge zu Hause)
 
 **Nicht produktiver Code.** Dieser Ordner ist die Design-Referenz und der klickbare Prototyp für UX-Versuche. Er wird nicht in die echte App übernommen; die App entsteht neu (React + TypeScript + Rsbuild).
 
-- **Version:** v5.8.1 (24.11.2026), auf v5.8 aufbauend
+- **Version:** v5.9 (24.11.2026), auf v5.8.1 aufbauend
 - **Live:** als Cloudflare-Worker-Demo veröffentlicht (URL bewusst nicht im Repo)
 - **Technik:** statisches HTML/CSS/Vanilla-JS, keine Laufzeit-Abhängigkeiten ausser `vendor/qrcode-generator.js` (MIT), keine Netzwerkaufrufe, strenge CSP
 - **Daten:** nur erfundene Demo-Daten. Es werden keine Gesundheitsdaten gespeichert (localStorage nur Sprache, Zweitsprache (manuelle Wahl), Plan, Einkaufsliste, Darstellung, Ton, Region; keine Standortdaten)
 - **Starten:** im Ordner `python3 -m http.server` und `http://localhost:8000/` öffnen (Handy-Breite, z. B. 390×844)
+
+## Neu in v5.9
+Einkaufsliste zweisprachig (Haupt- und Zweitsprache aus den Dropdowns): Name in der ersten Zeile, Zweitsprache gedämpft plus Menge in der zweiten; ohne Zweitsprache bleibt die Zeile einzeilig. Das ⓘ-Sheet zeigt pro Gericht den zweisprachigen Namen, den Plan-Slot und die benötigte Menge, plus eine Summenzeile (Icon unverändert 28×28, Tippfläche 56×56). «Hab ich» öffnet ein Sheet: «Alles vorhanden» (vorausgewählt) oder Schieber/Stepper «Davon schon zu Hause», plus Zurücksetzen. Eine Teilmenge erscheint als Kaufmenge plus durchgestrichene Bedarfsmenge (z. B. 50 g und 100 g) und oranger «Teilweise»-Knopf (mind. 48×48). Vollständig vorhandene Mengen gelten als erledigt. Vorhandenes wird in `edovita.shopItems` gespeichert und bei Plan-Änderungen auf den neuen Bedarf gedeckelt. Details in `ENTWICKLUNG.md` und `SECURITY.md`.
 
 ## Neu in v5.8.1
 Die Einkaufsliste ist einzeilig: die Herkunftszeile unter jeder Zutat entfällt. Stattdessen erscheint rechts ein Info-Button (sichtbares Icon 28×28 CSS-Pixel, Tippfläche 56×56, 16 CSS-Pixel Abstand zur Abhakzeile), der ein Bottom-Sheet mit Rezept und Plan-Slot öffnet, z. B. «Ofenlachs mit Brokkoli · Di Abend, 400 g». Das Icon kommt nur bei Zutaten aus Rezepten, löst das Abhaken nicht aus und schliesst mit Escape oder Tipp ausserhalb. Details in `ENTWICKLUNG.md` und `SECURITY.md`.

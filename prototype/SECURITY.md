@@ -1,3 +1,31 @@
+# Sicherheitsprüfung v5.9 (24. November 2026, Europe/Zurich)
+
+**Stand:** Zweisprachige Einkaufsliste, erweitertes Herkunfts-Sheet und Teilmengen «schon zu Hause». Branch `prototype/lang-switcher` (nicht auf `main` mergen). Bestehender Cloudflare-Worker wird aktualisiert, keine neuen Ressourcen oder Pakete. Dark/Light, kompakter Sprachumschalter und ⓘ-Masse (Icon 28×28, Tippfläche 56×56) bleiben unverändert.
+
+**Quelle der Prüfung:** Code-Review der geänderten Dateien (`index.html`, `styles.css`, `app.js`, `locales/*`, `tools/i18n-src/*`), grep-Scans (innerHTML/eval/Netzwerk/Geheimnisse/Geolocation), Headless Playwright (Chrome, Viewport 390×844, Hell und Dunkel): zweisprachige Liste, Herkunfts-Sheet mit Mengen und Summe, «Hab ich»-Sheet mit Teilmenge, durchgestrichene Bedarfsmenge, persistente `qtyHave`, Deckelung auf den neuen Bedarf, 0 Konsolenfehler. Keine neuen Laufzeit-Abhängigkeiten, deshalb kein `pnpm audit` im Prototyp.
+
+**Ergebnis:** keine Befunde (keine kritischen, hohen, mittleren oder niedrigen).
+
+| # | Prüfpunkt | Ergebnis | Schweregrad |
+|---|-----------|----------|-------------|
+| 1 | Eingabevalidierung | `qtyHave` nur als endliche Zahl 0…1e6, beim Speichern und nach Plan-Neuberechnung auf den aktuellen Bedarf (`shopQtyOf`) gedeckelt, Schrittweite abhängig von der Einheit. Schieber- und Stepperwerte werden vor der Übernahme gerastet. `data-shop-have` und `data-shop-src` sind `id:unit` aus dem Listeneintrag; Öffnen sucht den Eintrag erneut in `getShopItems()`, unbekannte Werte öffnen nichts. | kein Befund |
+| 2 | Injection / XSS | Keine neuen Sinks: kein `innerHTML`/`eval`/`document.write`. Namen, Sheet-Titel, Herkunfts- und Summenzeilen, Mengen und Labels nur per `textContent` / `createElement` / `setAttribute`. `insertAdjacentElement` fügt ein per `createElement` erzeugtes Element ein, keinen HTML-String. Durchgestrichene Mengen sind visuell per CSS, für Screenreader zusätzlich `aria-label` («kaufen {buy} von {need}»), die durchgestrichene Zahl ist `aria-hidden`. CSP unverändert (`script-src 'self'`, `style-src 'self'`, `connect-src 'none'`, `img-src 'self' data:`). | kein Befund |
+| 3 | Geheimnisse | Keine Schlüssel, Tokens, API-Konten oder Passwörter. | kein Befund |
+| 4 | Speicher / Netz / Rechte | `qtyHave` liegt in der bestehenden `localStorage`-Liste `edovita.shopItems` (wie Mengen und Rezeptquellen). Kein neuer Key, kein `fetch`, keine Geolocation. Ein Zustand, der den Bedarf deckt, gilt als erledigt; Teilmengen bleiben in der offenen Liste. | kein Befund |
+| 5 | Abhängigkeiten | Keine neuen Laufzeit- oder Build-Abhängigkeiten. Screenshot-Lauf über vorhandenes Playwright-Core, kein neues Paket im Prototyp. | kein Befund |
+| 6 | Fehlermeldungen / Angriffsfläche | Keine Stacktraces nach aussen. Beide Sheets: `role="dialog"` / `aria-modal`, Schliessen mit Escape, Hintergrund und Schliessen-Knopf, ohne Übernahme beim Verwerfen. | kein Befund |
+
+**SHA-256 (geänderte Kern-Dateien):**
+```
+4bb7b5039a7b4aa90308eced98448786484bff3abcb79b18fe715d5b7d00095f  prototype/index.html
+6c00a4dd8a0bddd37c85d8054ea571d52e5a9fd2cd3d09f5ff980e84bd7574fc  prototype/styles.css
+5018acf0746ffd0be603932dd9b0cfbcebf51f0b95517507e3a1cb09707f89ab  prototype/app.js
+0f6a686424220a8962ce104dfee0482bcfd0ba4658fd1e103e02aa753c52400a  prototype/locales.js
+00a82fabd7c7f5a5062c7d19bfb9beed091cd8ad820389255b4d27eba529335f  prototype/tools/i18n-src/keys.json
+```
+
+---
+
 # Sicherheitsprüfung v5.8.1 (24. November 2026, Europe/Zurich)
 
 **Stand:** Kompakte Einkaufsliste: Herkunftszeilen unter den Zutaten entfallen. Stattdessen ein Info-Button rechts in der Zeile (nur wenn die Zutat aus Rezepten stammt), der ein Bottom-Sheet mit Rezept und Plan-Slot öffnet. Sichtbares ⓘ-Icon 28×28 CSS-Pixel, Tippfläche 56×56 CSS-Pixel, 16 CSS-Pixel Abstand zur Abhak-/Mengenzeile. Branch `prototype/lang-switcher` (nicht auf `main` mergen). Bestehender Cloudflare-Worker wird aktualisiert, keine neuen Ressourcen oder Pakete. Dark/Light und der kompakte Sprachumschalter bleiben unverändert.

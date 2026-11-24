@@ -157,7 +157,7 @@
 157|Compartilhada com Sam
 158|Como a lista funciona
 159|Toque = no carrinho (riscado, vai para baixo).
-160|“Já tenho” = já está em casa, não será comprado.
+160|“Já tenho” = tudo ou uma parte já em casa; a quantidade a comprar é ajustada.
 161|Ofertas nos seus mercados
 162|Depois da V1
 163|Mais tarde: escolha seus mercados (ex.: Migros, Coop, Lidl, Aldi) e receba receitas que combinam com as ofertas. Marcado quando é preciso cartão ou app de fidelidade, ex.: “só com cartão”.
@@ -1083,3 +1083,18 @@
 1083|Usado em {recipes}
 1084|{recipe} · {when}, {qty}
 1085|{recipe}, {qty}
+1086|Parcial
+1087|Tudo em casa
+1088|Já em casa: {qty}
+1089|Redefinir
+1090|Aplicar
+1091|Já em casa?
+1092|comprar {buy} de {need}
+1093|Total: {qty}
+1094|{when} · {qty}
+1095|{name}: indicar quanto você já tem
+1096|{name}: em parte em casa, comprar {buy} de {need}. Ajustar
+1097|{name}: tudo em casa. Ajustar
+1098|Mais em casa
+1099|Menos em casa
+1100|Já em casa

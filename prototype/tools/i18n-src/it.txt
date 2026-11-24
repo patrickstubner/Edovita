@@ -157,7 +157,7 @@
 157|Condivisa con Sam
 158|Come funziona la lista
 159|Tocca = nel carrello (barrato, scende in basso).
-160|«Ce l'ho» = già a casa, non verrà comprato.
+160|«Ce l'ho» = tutto o una parte già a casa; la quantità da comprare viene adattata.
 161|Offerte dei tuoi negozi
 162|Dopo V1
 163|Più avanti: scegli i negozi (es. Migros, Coop, Lidl, Aldi) e ricevi ricette in base alle offerte. Segnalato se serve una carta cliente o un'app, es. «solo con carta».
@@ -1083,3 +1083,18 @@
 1083|Usato in {recipes}
 1084|{recipe} · {when}, {qty}
 1085|{recipe}, {qty}
+1086|In parte
+1087|Tutto in casa
+1088|Già in casa: {qty}
+1089|Reimposta
+1090|Applica
+1091|Già in casa?
+1092|compra {buy} di {need}
+1093|Totale: {qty}
+1094|{when} · {qty}
+1095|{name}: indica quanto hai già in casa
+1096|{name}: in parte in casa, compra {buy} di {need}. Modifica
+1097|{name}: tutto in casa. Modifica
+1098|Di più in casa
+1099|Di meno in casa
+1100|Già in casa

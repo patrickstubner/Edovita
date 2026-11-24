@@ -157,7 +157,7 @@
 157|Compartida con Sam
 158|Cómo funciona la lista
 159|Tocar = en la cesta (tachado, baja al final).
-160|«Lo tengo» = ya en casa, no se compra.
+160|«Lo tengo» = todo o una parte ya en casa; la cantidad a comprar se ajusta.
 161|Ofertas de tus tiendas
 162|Después de V1
 163|Más adelante: elegir tiendas (p. ej. Migros, Coop, Lidl, Aldi) y recibir recetas según sus ofertas. Marcado si hace falta tarjeta de cliente o app, p. ej. «solo con tarjeta».
@@ -1083,3 +1083,18 @@
 1083|Usado en {recipes}
 1084|{recipe} · {when}, {qty}
 1085|{recipe}, {qty}
+1086|Parcial
+1087|Todo en casa
+1088|Ya en casa: {qty}
+1089|Restablecer
+1090|Aplicar
+1091|¿Ya en casa?
+1092|comprar {buy} de {need}
+1093|Total: {qty}
+1094|{when} · {qty}
+1095|{name}: indicar cuánto tienes ya
+1096|{name}: en parte en casa, comprar {buy} de {need}. Ajustar
+1097|{name}: todo en casa. Ajustar
+1098|Más en casa
+1099|Menos en casa
+1100|Ya en casa

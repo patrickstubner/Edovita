@@ -157,7 +157,7 @@
 157|Shared with Sam
 158|How the list works
 159|Tap = in the basket (crossed out, moves down).
-160|“Got it” = already at home, won't be bought.
+160|“Got it” = all or part already at home; the amount to buy is adjusted.
 161|Deals at your shops
 162|After V1
 163|Later: choose your shops (e.g. Migros, Coop, Lidl, Aldi) and get recipes matching their deals. Marked when a loyalty card or app is needed, e.g. “card only”.
@@ -1083,3 +1083,18 @@
 1083|Used in {recipes}
 1084|{recipe} · {when}, {qty}
 1085|{recipe}, {qty}
+1086|Partial
+1087|All at home
+1088|Already at home: {qty}
+1089|Reset
+1090|Apply
+1091|Already at home?
+1092|buy {buy} of {need}
+1093|Total: {qty}
+1094|{when} · {qty}
+1095|{name}: set how much you already have
+1096|{name}: partially at home, buy {buy} of {need}. Adjust
+1097|{name}: all at home. Adjust
+1098|More at home
+1099|Less at home
+1100|Already at home

@@ -157,7 +157,7 @@
 157|Partagée avec Sam
 158|Comment fonctionne la liste
 159|Toucher = dans le panier (barré, descend en bas).
-160|« J'en ai » = déjà à la maison, ne sera pas acheté.
+160|« J'en ai » = tout ou une partie déjà à la maison ; la quantité à acheter est ajustée.
 161|Actions de tes magasins
 162|Après V1
 163|Plus tard : choisir tes magasins (p. ex. Migros, Coop, Lidl, Aldi) et recevoir des recettes selon leurs actions. Signalé si une carte client ou une app est nécessaire, p. ex. « uniquement avec carte ».
@@ -1083,3 +1083,18 @@
 1083|Utilisé dans {recipes}
 1084|{recipe} · {when}, {qty}
 1085|{recipe}, {qty}
+1086|En partie
+1087|Tout à la maison
+1088|Déjà à la maison : {qty}
+1089|Réinitialiser
+1090|Valider
+1091|Déjà à la maison ?
+1092|acheter {buy} sur {need}
+1093|Total : {qty}
+1094|{when} · {qty}
+1095|{name} : indiquer ce que vous avez déjà
+1096|{name} : en partie à la maison, acheter {buy} sur {need}. Modifier
+1097|{name} : tout à la maison. Modifier
+1098|Plus à la maison
+1099|Moins à la maison
+1100|Déjà à la maison
