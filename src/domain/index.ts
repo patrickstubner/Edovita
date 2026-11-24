@@ -6,7 +6,21 @@ export {
   type ThemePreference,
 } from './theme.ts';
 
-export { coerceUiLang, normalizeLangBase } from './lang.ts';
+export {
+  coerceSecondLang,
+  coerceUiLang,
+  getApprovedUiLangsFromRegistry,
+  isApprovedUiLang,
+  isSupportedSecondaryLang,
+  normalizeLangBase,
+} from './lang.ts';
+
+export {
+  DEFAULT_SETTINGS,
+  coerceRating,
+  coerceSettings,
+  coerceShoppingItem,
+} from './coerce.ts';
 
 export {
   ALLERGENS,
@@ -21,7 +35,6 @@ export {
   RECIPE_TAGS,
   SEX_FOR_CALC,
   SHOP_STATES,
-  SUPPORTED_UI_LANGS,
   TEXT_DIRS,
   UNITS,
   asCuisineId,
@@ -64,7 +77,6 @@ export {
   type ShopImportError,
   type ShopState,
   type ShoppingItem,
-  type SupportedUiLang,
   type TextDir,
   type UiLocaleDict,
   type Unit,
@@ -79,8 +91,9 @@ export {
   UNSAFE_QR_NAME_RE,
   UNSAFE_TEXT_RE,
   allergenSchema,
+  createExportBundleV1Schema,
+  createSettingsSchema,
   cuisineIdSchema,
-  exportBundleV1Schema,
   foodCatalogFileSchema,
   foodCatalogSourceMetaSchema,
   foodGroupSchema,
@@ -104,7 +117,6 @@ export {
   recipeReviewSchema,
   recipeSchema,
   safeContentStringSchema,
-  settingsSchema,
   shopStateSchema,
   shoppingItemSchema,
   uiLocaleSchema,

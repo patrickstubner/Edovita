@@ -1,5 +1,7 @@
 import { describe, expect, it } from '@rstest/core';
 import {
+  SECONDARY_LANGS,
+  SUPPORTED_UI_LANGS,
   approved,
   createI18nInstance,
   detectUiLang,
@@ -8,8 +10,10 @@ import {
   fmtNumber,
   getApprovedUiLanguages,
   getLangMeta,
+  getSecondaryLanguages,
   getUiLanguages,
   resolveApprovedUiLang,
+  resolveSecondLang,
 } from './index.ts';
 
 describe('i18n/registry & Rechts-Gate (ADR-003)', () => {
@@ -60,7 +64,10 @@ describe('i18n/registry & Rechts-Gate (ADR-003)', () => {
     });
   });
 
-  it('normalisiert uiLang gegen die Whitelist freigegebener Sprachen (N2)', () => {
+  it('normalisiert uiLang gegen die Whitelist freigegebener Sprachen (N2, F1)', () => {
+    expect(SUPPORTED_UI_LANGS).toEqual(getUiLanguages());
+    expect(SECONDARY_LANGS).toEqual(getSecondaryLanguages());
+
     expect(resolveApprovedUiLang('de')).toBe('de');
     expect(resolveApprovedUiLang('de-CH')).toBe('de');
     expect(resolveApprovedUiLang('en')).toBe('en');
@@ -69,6 +76,19 @@ describe('i18n/registry & Rechts-Gate (ADR-003)', () => {
     expect(resolveApprovedUiLang('constructor')).toBe('en');
     expect(resolveApprovedUiLang('__proto__')).toBe('en');
     expect(resolveApprovedUiLang(null)).toBe('en');
+  });
+
+  it('prüft secondLang gegen registry.secondary mit Fallback null (F3a)', () => {
+    expect(resolveSecondLang('pt')).toBe('pt');
+    expect(resolveSecondLang('pt-BR')).toBe('pt');
+    expect(resolveSecondLang('ja-JP')).toBe('ja');
+    expect(resolveSecondLang('de')).toBe('de');
+    expect(resolveSecondLang('en')).toBe('en');
+    expect(resolveSecondLang(null)).toBeNull();
+    expect(resolveSecondLang('fr')).toBeNull();
+    expect(resolveSecondLang('xx')).toBeNull();
+    expect(resolveSecondLang('constructor')).toBeNull();
+    expect(resolveSecondLang('__proto__')).toBeNull();
   });
 });
 

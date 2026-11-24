@@ -1,12 +1,21 @@
 import { LANGUAGES_REGISTRY } from '../../content/generated/locales-index.ts';
 import {
   DEFAULT_UI_LANG,
+  coerceSecondLang,
   coerceUiLang,
+  isApprovedUiLang,
   normalizeLangBase,
   type LangCode,
   type LangMeta,
   type LanguagesRegistry,
 } from '../domain/index.ts';
+
+/** Aus der Sprach-Registry abgeleitete UI-Sprachen (F1, nicht hartkodiert). */
+export const SUPPORTED_UI_LANGS: readonly LangCode[] = LANGUAGES_REGISTRY.ui;
+
+/** Aus der Sprach-Registry abgeleitete Zweitsprachen (F3a, nicht hartkodiert). */
+export const SECONDARY_LANGS: readonly LangCode[] =
+  LANGUAGES_REGISTRY.secondary;
 
 export interface DetectedLang {
   code: LangCode;
@@ -67,10 +76,7 @@ export function approved(
   code: unknown,
   registry: LanguagesRegistry = LANGUAGES_REGISTRY,
 ): code is LangCode {
-  if (!isSupportedUiLang(code, registry)) {
-    return false;
-  }
-  return registry.meta[code]?.legalApproved === true;
+  return isApprovedUiLang(code, registry);
 }
 
 export function getApprovedUiLanguages(
@@ -81,17 +87,24 @@ export function getApprovedUiLanguages(
 
 /**
  * Validiert eine beliebige Eingabe gegen die Whitelist freigegebener UI-Sprachen
- * und fällt deterministisch auf `registry.fallback` (`en`) zurück (N2).
+ * und fällt deterministisch auf `registry.fallback` (`en`) zurück (N2, F1).
  */
 export function resolveApprovedUiLang(
   value: unknown,
   registry: LanguagesRegistry = LANGUAGES_REGISTRY,
 ): LangCode {
-  const allowed = getApprovedUiLanguages(registry);
-  const fallback = approved(registry.fallback, registry)
-    ? registry.fallback
-    : (allowed[0] ?? DEFAULT_UI_LANG);
-  return coerceUiLang(value, allowed, fallback);
+  return coerceUiLang(value, registry);
+}
+
+/**
+ * Validiert `secondLang` gegen `registry.secondary` und fällt bei unbekannten
+ * oder reservierten Werten auf `null` (keine Zweitsprache) zurück (F3a).
+ */
+export function resolveSecondLang(
+  value: unknown,
+  registry: LanguagesRegistry = LANGUAGES_REGISTRY,
+): LangCode | null {
+  return coerceSecondLang(value, registry);
 }
 
 /**

@@ -1,7 +1,18 @@
-# STATUS.md – Stand 23.11.2026, Basis `main` `e0c7cadf75ebabf81dfc60676e5ac1470ed379f5` (E0 PR #15, E0b PR #22, Nachzug PR #23, E1 PR #24, Dependabot/TS 6; E2 als Draft-PR #26)
+# STATUS.md – Stand 23.11.2026, Basis `main` `f7dcd628a8655690739dea644443a36319fbe4be` (E0 PR #15, E0b PR #22, Nachzug PR #23, E1 PR #24, Dependabot/TS 6, E2 PR #26; E3 als Draft-PR #27)
 
-## Nachtrag 23.11.2026 (Antigravity): Paket E2 – Mehrsprachigkeit (i18n) sowie E1-Nachzüge N1 & N2
-Branch `feat/e2-i18n` (Draft-PR `#26`, Issue `#8`, Basis `main` `e0c7cadf75ebabf81dfc60676e5ac1470ed379f5`, nicht mergen bis Stabschef-Ok und Ja des Projektinhabers). Geprüfter Code-Stand (Commit A): `797033297b658485d7dedfc360058674ea28177b` (GitHub Actions CI Run `45176624124` grün: `Lint, Tests, Build & Audit` 1m9s, `Secret Scan (gitleaks)` 7s).
+## Nachtrag 23.11.2026 (Antigravity): Paket E3 – Lokale Speicherung (Dexie, Repositories) sowie E2-Nachzüge F1, F2 & F3a
+Branch `feat/e3-storage-dexie` (Draft-PR `#27`, Issue `#9`, Basis `main` `f7dcd628a8655690739dea644443a36319fbe4be`, nicht mergen bis Stabschef-Ok und Ja des Projektinhabers). Geprüfter Code-Stand (Commit A): `79cdf5dfd60c9bf97ba6c51208c5f02e3390cfa3` (GitHub Actions CI Run `45293169792` grün: `Lint, Tests, Build & Audit` 5m17s, `Secret Scan (gitleaks)` 11s).
+- **Speicherschicht (`src/storage/`, rein ohne React-Import gemäss ADR-001/ADR-002):** `dexie@4.4.7` (Apache-2.0, veröffentlicht `2026-10-19`, > 4 Tage alt gemäss `minimumReleaseAge: 5760`, 0 transitive Abhängigkeiten). `EdovitaDb` (`edovita`, Schema-Version `1`, Tabellen `settings`, `shopping`, `ratings`, `saved`) inkl. `EDOVITA_MIGRATIONS` und `applyMigrations` für geordnete `version(n).upgrade()`-Migrationen. Repository-Schnittstellen (`SettingsRepository`, `ShoppingRepository`, `RatingsRepository`, `StorageBundle`) jeweils als `Dexie*Repository` und `Memory*Repository` umgesetzt und gegen identische Vertrags-Tests (`src/storage/repositories.contract.test.ts` mit `fake-indexeddb`) geprüft.
+- **Korruptions-Schutz, Export/Import & «Alles löschen» (`src/domain/coerce.ts`, `src/storage/exportImport.ts`):** `DEFAULT_SETTINGS`, `coerceSettings`, `coerceShoppingItem`, `coerceRating` schützen beim Lesen vor korrupten/unvollständigen DB-Einträgen. `exportAll` (`format: 1`), `importAll` (strenge Vorab-Prüfung auf `__proto__`/`constructor`/`prototype` via `Object.getOwnPropertyNames` + Registry-gebundenes Zod-Schema; bestehender Speicher bleibt bei Fehler unberührt) und `wipeAll` (IndexedDB + `edovita.*` `localStorage`).
+- **Getrennte Bereichs-Provider & Hooks (`src/app/`, `src/hooks/`, ADR-001 Regel 6):** `SettingsProvider`, `ShoppingProvider`, `RatingsProvider` (mit Repository-Injektion, kein God-Context) sowie `useSettings`, `useShopping`, `useRatings`; `App` nimmt optional `storage?: StorageBundle` entgegen (Standard: `createDexieStorage()`).
+- **E2-Nachzüge F1, F2 & F3a geschlossen:** **F1** – `SUPPORTED_UI_LANGS` aus `LANGUAGES_REGISTRY.ui` abgeleitet (`src/i18n/registry.ts`); `createSettingsSchema(registry)`/`settingsSchema.uiLang` verlangt `legalApproved === true`, `coerceSettings` fällt sonst auf `en` zurück; Rechts-Gate-Satz in `SECURITY.md` präzisiert. **F2** – ungenutzte globale Exporte `i18n` und `t` aus `src/i18n/instance.ts` und `src/i18n/index.ts` entfernt. **F3a** – `secondLang` gegen `registry.secondary` geprüft (`isSupportedSecondaryLang`, `coerceSecondLang`, `resolveSecondLang`, Fallback `null`); die 4 transitiven E2-Pakete in `SECURITY.md` nachgetragen.
+- **Tests & Prüfungen:** Rstest `0.12.6` (17 Dateien, 75/75 Tests grün, inkl. Vertrags-Tests `Memory*`/`Dexie*`, Reload-, Migrations- v1→v2-, Export-/Import-/Wipe-, Provider- und F1/F3a-Tests). `dependency-cruiser` (`src` + `content`): 108 Module / 212 Abhängigkeiten, 0 Verstösse, 4/4 Negativtests grün. Playwright `390×844` Hell & Dunkel: 6/6 grün (0 CSP-Verstösse). `pnpm audit --audit-level=moderate`: 0 Funde, `pnpm peers check`: 0 Funde, `gitleaks 8.30.1` und `actionlint 1.7.12`: 0 Funde. `prototype/` unverändert. Details inkl. vor Push behobenem Zod-v4-`__proto__`-Fund in `SECURITY.md`.
+
+## Nachtrag 23.11.2026: E2 auf main gemergt
+Paket **E2** (Issue `#8`, Mehrsprachigkeit & E1-Nachzüge N1/N2) ist über PR `#26` squash-gemergt als `f7dcd628a8655690739dea644443a36319fbe4be` (Basis war `e0c7cadf`). Die drei Prüfpunkte aus der E2-Prüfung (**F1**, **F2**, **F3a**) sind vollständig in PR `#27` (E3) geschlossen.
+
+## Nachtrag 23.11.2026 (Antigravity): Paket E2 – Mehrsprachigkeit (i18next + ICU, Sprach-Registry) sowie E1-Nachzüge N1 & N2
+Branch `feat/e2-i18n` (PR `#26`, gemergt als `f7dcd628`, Issue `#8`, Basis `main` `e0c7cadf75ebabf81dfc60676e5ac1470ed379f5`). Geprüfter Code-Stand (Commit A): `797033297b658485d7dedfc360058674ea28177b` (GitHub Actions CI Run `45176624124` grün: `Lint, Tests, Build & Audit` 1m9s, `Secret Scan (gitleaks)` 7s).
 - **Sprach-Registry & UI-Locales (`content/locales/`):** `languages.json` (`fallback: "en"`, `ui`: 7 Sprachen, `secondary`: 4 Sprachen, `meta` mit `dir`, `locale`, `legalApproved`, `reviewed`), alle 7 UI-Dateien `{de,en,fr,it,es,ja,pt}/ui.json` (nur genutzte Schlüssel der gebauten Screens, aus `prototype/locales/` übernommen, ohne HTML), generierter Sprach-Index `content/generated/locales-index.ts` via `pnpm run content:build` (ADR-003: neue Sprache ohne Codeänderung).
 - **i18n-Laufzeit & Prototyp-UI (`src/i18n/`, `src/app/I18nProvider.tsx`, `src/hooks/useI18n.ts`):** `i18next@27.2.2` + `react-i18next@18.0.3` + `i18next-icu@2.7.1` + `intl-messageformat@12.2.0` (alle > 4 Tage alt gemäss `minimumReleaseAge: 5760`, 0 Audit-/Peer-Funde). `src/i18n/` bleibt React-frei (ADR-001): `approved()` (Rechts-Gate: nur DE/EN wählbar), `detectUiLang()` (`de-CH` → `de`, `pt-BR` → Fallback `en`), `Intl`-Formatierer (`fmtNumber`, `fmtAmount` metrisch, `fmtDate`), `validateLocalesBundle()`. Eigener Bereichs-Provider `I18nProvider` (ADR-001 Regel 6) mit Live-Sprachwechsel ohne Neustart und Zustandserhalt (Journey J6); Startseite zeigt Erkennungs-Banner, freigegebene und ausgegraute Sprachen («In Prüfung») im Prototyp-Stil (logische CSS-Eigenschaften).
 - **E1-Nachzüge N1 & N2 geschlossen:** **N1** – `httpsUrlSchema` in `src/domain/schemas.ts` lehnt `javascript:`, `data:`, `http:` und `file:` in `review.sources` ab (Negativtests in `tests/unit/content.check.test.ts`). **N2** – `foodName`, `getRecipeText`, `isSavedId` und `getLangMeta` nutzen `Object.hasOwn`; `coerceUiLang`, `resolveApprovedUiLang` und `settingsSchema.uiLang` prüfen strikt gegen Whitelist mit Fallback auf `en` (Tests in `lang.test.ts`, `foods.test.ts`, `recipes.test.ts`, `i18n.test.ts`).
@@ -113,7 +124,8 @@ Phase 1 ab 27.11.2026: Grundgerüst (E0), dann zuerst Rezept-Detailseite (E4) un
 - GitHub-Issues `#6`–`#13` für E0–E7 angelegt (22.11.2026).
 - Paket **E0** (PR `#15`, `7f49e3d`), **E0b** GitHub Pages (PR `#22`, `e7d46884`) und Nachzug `#23` (`a6c47cb3`) auf `main` gemergt (22.11.2026).
 - Paket **E1** (Issue `#7`, Domäne mit `zod@4.6.7`, Katalog, Nährwerte, Inhaltsprüfung inkl. Übernahme nach `content/`) über PR `#24` auf `main` gemergt als `bd3e0246d91066fd28ab381879cf28b7ff4410b9` (23.11.2026; geprüfter Head `691863e1d7e38071cc3561ad3ccd781fd156f2a9`).
-- Paket **E2** (Issue `#8`, `i18next` + `react-i18next` + `i18next-icu`, Sprach-Registry mit Rechts-Gate, 7 UI-Locales, `Intl`-Formatierer, Live-Wechsel J6, sowie E1-Nachzüge N1 & N2) umgesetzt auf Branch `feat/e2-i18n` (23.11.2026, Draft-PR `#26`, wartet auf Stabschef-Ok und Ja des Projektinhabers).
+- Paket **E2** (Issue `#8`, `i18next` + `react-i18next` + `i18next-icu`, Sprach-Registry mit Rechts-Gate, 7 UI-Locales, `Intl`-Formatierer, Live-Wechsel J6, sowie E1-Nachzüge N1 & N2) über PR `#26` auf `main` gemergt als `f7dcd628a8655690739dea644443a36319fbe4be` (23.11.2026).
+- Paket **E3** (Issue `#9`, `dexie@4.4.7`, Repository-Schnittstellen mit `Dexie*` & `Memory*`, Migrations-Gerüst, `coerce*`, Export/Import `format: 1`, `wipeAll`, getrennte Bereichs-Provider & Hooks, sowie E2-Nachzüge F1, F2 & F3a) umgesetzt auf Branch `feat/e3-storage-dexie` (23.11.2026, Draft-PR `#27`, wartet auf Stabschef-Ok und Ja des Projektinhabers).
 
 ## Entscheide (15.11. & 22.11.2026)
 - Dexie in der Web-Phase, SQLite später mit der Handy-App (ADR-002).
@@ -128,9 +140,9 @@ Phase 1 ab 27.11.2026: Grundgerüst (E0), dann zuerst Rezept-Detailseite (E4) un
 |---|---|---|---|
 | E0 | `#6` | Grundgerüst mit Leitplanken (Scaffold Phase 1), CI, SECURITY.md | erledigt (gemergt PR `#15`, Pages `#22`, Nachzug `#23`) |
 | E1 | `#7` | Domäne, Lebensmittel-Katalog, Rezept-Schema, Inhaltsprüfung, übernimmt `docs/architektur/inhalte/` | erledigt (gemergt PR `#24`, `bd3e0246`) |
-| E2 | `#8` | i18n-Laufzeit und Registry (+ E1-Nachzüge N1 & N2) | umgesetzt (Draft-PR `#26`, `feat/e2-i18n`) |
-| E3 | `#9` | Speicherung mit Dexie | offen (nächster Schritt) |
-| E4 | `#10` | Rezept-Detailseite | offen (nach E1, E2, E3) |
+| E2 | `#8` | i18n-Laufzeit und Registry (+ E1-Nachzüge N1 & N2) | erledigt (gemergt PR `#26`, `f7dcd628`) |
+| E3 | `#9` | Speicherung mit Dexie und Repositories (+ E2-Nachzüge F1, F2 & F3a) | umgesetzt (Draft-PR `#27`, `feat/e3-storage-dexie`) |
+| E4 | `#10` | Rezept-Detailseite | offen (nächster Schritt, nach E1, E2, E3) |
 | E5 | `#11` | Einkaufsliste mit drei Zuständen | offen (nach E1, E3) |
 | E6 | `#12` | Zweitsprache | offen (nach E2, E5) |
 | E7 | `#13` | PWA und Offline | offen (nach E0, eher Dez./Jan.) |
@@ -141,8 +153,8 @@ Details: `docs/architektur/issues-entwuerfe.md`, `docs/architektur/ablaufplan-un
 - Vor Release: Entwicklungs-Route `#/status` (`StatusPage`) und Platzhaltertexte entfernen; Rechtstexte und medizinische Grenzwerte prüfen – Projektinhaber
 
 ## PR-Status (23.11.2026)
-- Gemergt auf `main` (`e0c7cadf`): PR `#1`–`#5`, `#14` (pnpm & ADR-006 Rstest), `#15` (E0 Scaffold), `#22` (E0b GitHub Pages), `#23` (Nachzug Stabschef-Hinweise & H1/N1 Deploy-Absicherung), `#24` (E1 Domäne, Katalog, Rezept-Schema, Inhaltsprüfung) sowie Dependabot-Updates (inkl. TypeScript 6.0.3).
-- Offen (Draft-PR): **PR `#26`** (`feat/e2-i18n`, Paket E2 – Mehrsprachigkeit & E1-Nachzüge N1/N2, Issue `#8`).
+- Gemergt auf `main` (`f7dcd628`): PR `#1`–`#5`, `#14` (pnpm & ADR-006 Rstest), `#15` (E0 Scaffold), `#22` (E0b GitHub Pages), `#23` (Nachzug Stabschef-Hinweise & H1/N1 Deploy-Absicherung), `#24` (E1 Domäne, Katalog, Rezept-Schema, Inhaltsprüfung), Dependabot-Updates (inkl. TypeScript 6.0.3) sowie `#26` (E2 Mehrsprachigkeit & E1-Nachzüge N1/N2).
+- Offen (Draft-PR): **PR `#27`** (`feat/e3-storage-dexie`, Paket E3 – Lokale Speicherung mit Dexie & Repositories inkl. E2-Nachzüge F1/F2/F3a, Issue `#9`).
 
 ## Bekannte Probleme / Risiken
 - Rstest (`0.12.6`) ist noch vor 1.0 (ADR-006): exakt gepinnt, in Dependabot ausgenommen, Rückweg zu Vitest dokumentiert.
@@ -166,10 +178,17 @@ Details: `docs/architektur/issues-entwuerfe.md`, `docs/architektur/ablaufplan-un
   - **`gitleaks 8.30.1`** (`dir` & `git` lokal + CI Run `45074835911`), **`actionlint 1.7.12`**, **`pnpm audit --audit-level=moderate`**, **`pnpm peers check`**, **`rg`**, **`diff -rq`** (byte-identische Inhaltsübernahme): alle 0 Funde.
   - **Vermiedene Cloud-Agent-Nutzung:** E1 komplett ohne Cursor-Cloud-Agent-Kontingent umgesetzt (~1–1,5 Agent-Tage gespart).
   - **Rückmeldung zu den Tools:** Playwright-CSP-Prüfung auf dem echten Build hat ihren Wert direkt bewiesen (Zod-v4-JIT-Fund vor Push entdeckt). `rstest` + `content:check` laufen in ~1,4 s durch. `codebase-memory-mcp` indexierte den Zuwachs (+851 Knoten / +1'393 Kanten) zuverlässig ohne unlesbare Dateien.
-- 23.11. (Antigravity-VM, E2 + N1/N2, analysierter Code-Stand Commit `797033297b658485d7dedfc360058674ea28177b`, Draft-PR `#26`):
+- 23.11. (Antigravity-VM, E2 + N1/N2, analysierter Code-Stand Commit `797033297b658485d7dedfc360058674ea28177b`, PR `#26`, gemergt als `f7dcd628`):
   - **`codebase-memory-mcp 0.12.1`** (Stand `79703329`): Repository indexiert mit **11'128 Knoten / 13'338 Kanten** (`parse_unusable: 0`; 63 TypeScript-Dateien, Paket `i18n` 45, `domain` 64, `build-content-index` 6). **`dependency-cruiser`** (`src` + `content`): 92 Module / 150 Abhängigkeiten, 0 Verstösse + 4/4 Negativtests grün.
   - **Rstest `0.12.6`**: 14 Dateien, 61/61 Tests grün (inkl. `languages.complete.test.ts` + N1/N2-Tests; `content:check` 2 Dateien / 11 Tests in ~3,1 s).
   - **Playwright `390×844`** Hell & Dunkel: 6/6 grün (2× stabil hintereinander lokal + grün in GitHub Actions Run `45176624124`, 0 CSP-Verstösse).
   - **`pnpm` (`minimumReleaseAge: 5760`)**, **`pnpm audit --audit-level=moderate`**, **`pnpm peers check`**, **`gitleaks 8.30.1`**, **`actionlint 1.7.12`**, **`rg`**: alle 0 Funde; 4-Tage-Regel übersprang automatisch tagesaktuelle Releases (`i18next@27.2.5`, `intl-messageformat@12.2.1`).
   - **Vermiedene Cloud-Agent-Nutzung:** E2 inkl. N1/N2 komplett ohne Cursor-Cloud-Agent-Kontingent umgesetzt (~1–1,5 Agent-Tage gespart).
   - **Rückmeldung zu den Tools:** `minimumReleaseAge: 5760` hat in der Praxis sofort gegriffen und frische Releases automatisch gefiltert. TypeScript 6.0.3 prüfte `i18next@27.2.2` und `ReadonlySet`-Signaturen strikt und schnell. Bei Playwright-Locale-Tests ist `test.use({ locale: 'pt-BR' })` im eigenen `describe`-Block deutlich sauberer als manuelles `browser.newContext()`.
+- 23.11. (Antigravity-VM, E3 + F1/F2/F3a, analysierter Code-Stand Commit `79cdf5dfd60c9bf97ba6c51208c5f02e3390cfa3`, Draft-PR `#27`):
+  - **`codebase-memory-mcp 0.12.1`** (Stand `79cdf5df`): Repository indexiert mit **11'281 Knoten / 14'073 Kanten** (`parse_unusable: 0`; 78 TypeScript-Dateien, Pakete `app` 176, `domain` 80, `storage` 76, `i18n` 45, `hooks` 6). **`dependency-cruiser`** (`src` + `content`): 108 Module / 212 Abhängigkeiten, 0 Verstösse + 4/4 Negativtests grün.
+  - **Rstest `0.12.6` + `fake-indexeddb`**: 17 Dateien, 75/75 Tests grün (inkl. identischer Repository-Vertragstests gegen `Memory*` & `Dexie*`, v1→v2-Migrationstest und `__proto__`-Import-Negativtest).
+  - **Playwright `390×844`** Hell & Dunkel: 6/6 grün lokal und in GitHub Actions Run `45293169792` (0 CSP-Verstösse).
+  - **`pnpm` (`minimumReleaseAge: 5760`)**, **`pnpm audit --audit-level=moderate`**, **`pnpm peers check`**, **`gitleaks 8.30.1`**, **`actionlint 1.7.12`**, **`rg`**: alle 0 Funde; `dexie@4.4.7` (0 transitive Abhängigkeiten, 0 `eval`/`new Function`).
+  - **Vermiedene Cloud-Agent-Nutzung:** E3 inkl. F1/F2/F3a komplett ohne Cursor-Cloud-Agent-Kontingent umgesetzt (~1–1,5 Agent-Tage gespart).
+  - **Rückmeldung zu den Tools:** Die Rstest-Negativtests mit `fake-indexeddb` deckten vor Push eine echte Zod-v4-Eigenheit auf (`z.record(z.string(), ...)` überspringt `"__proto__"` vor nachgelagerten `.refine`-Prüfungen), was direkt mit `hasForbiddenOwnKey` + explizitem Schlüssel-Schema behoben wurde. `codebase-memory-mcp` indexierte die neue `storage`-Schicht (76 Knoten) sauber ohne unlesbare Dateien.

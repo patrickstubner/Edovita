@@ -3,7 +3,6 @@ import ICU from 'i18next-icu';
 import {
   LANGUAGES_REGISTRY,
   UI_LOCALES,
-  type UiKey,
 } from '../../content/generated/locales-index.ts';
 import type {
   LangCode,
@@ -110,16 +109,4 @@ export function createI18nInstance(
   });
 
   return instance;
-}
-
-export const i18n: I18nInstance = createI18nInstance();
-
-/**
- * Übersetzt einen UI-Schlüssel über die aktive i18next-Instanz (inkl. ICU-Platzhalter).
- */
-export function t(
-  key: UiKey,
-  vars?: Readonly<Record<string, string | number>>,
-): string {
-  return vars ? i18n.t(key, { ...vars }) : i18n.t(key);
 }

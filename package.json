@@ -24,6 +24,7 @@
     "content:check": "node scripts/content-check.mjs"
   },
   "dependencies": {
+    "dexie": "^4.4.7",
     "i18next": "^27.2.2",
     "i18next-icu": "^2.7.1",
     "intl-messageformat": "^12.2.0",

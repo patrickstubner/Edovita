@@ -2,8 +2,8 @@ import { describe, expect, it } from '@rstest/core';
 import {
   asFoodId,
   asRecipeId,
+  createExportBundleV1Schema,
   encodeShopImport,
-  exportBundleV1Schema,
   parseShopImport,
 } from './index.ts';
 
@@ -134,9 +134,42 @@ describe('parseShopImport', () => {
   });
 });
 
-describe('exportBundleV1Schema', () => {
-  it('akzeptiert gültiges Export-Bundle Format 1 und lehnt unbekannte Felder ab', () => {
-    const valid = exportBundleV1Schema.safeParse({
+describe('createExportBundleV1Schema', () => {
+  const testRegistry = {
+    fallback: 'en',
+    ui: ['de', 'en', 'fr'],
+    secondary: ['de', 'en', 'pt', 'ja'],
+    meta: {
+      de: {
+        code: 'de',
+        name: 'Deutsch',
+        locale: 'de-CH',
+        dir: 'ltr' as const,
+        legalApproved: true,
+        reviewed: true,
+      },
+      en: {
+        code: 'en',
+        name: 'English',
+        locale: 'en-GB',
+        dir: 'ltr' as const,
+        legalApproved: true,
+        reviewed: false,
+      },
+      fr: {
+        code: 'fr',
+        name: 'Français',
+        locale: 'fr-CH',
+        dir: 'ltr' as const,
+        legalApproved: false,
+        reviewed: false,
+      },
+    },
+  };
+  const bundleSchema = createExportBundleV1Schema(testRegistry);
+
+  it('akzeptiert gültiges Export-Bundle Format 1 und lehnt unbekannte Felder oder unfreigegebene Sprachen ab', () => {
+    const valid = bundleSchema.safeParse({
       format: 1,
       exportedAt: '2026-11-22T12:00:00.000Z',
       data: {
@@ -162,11 +195,26 @@ describe('exportBundleV1Schema', () => {
     });
     expect(valid.success).toBe(true);
 
-    const invalid = exportBundleV1Schema.safeParse({
+    const invalidFormat = bundleSchema.safeParse({
       format: 2,
       exportedAt: '2026-11-22T12:00:00.000Z',
       data: {},
     });
-    expect(invalid.success).toBe(false);
+    expect(invalidFormat.success).toBe(false);
+
+    const invalidUiLang = bundleSchema.safeParse({
+      format: 1,
+      exportedAt: '2026-11-22T12:00:00.000Z',
+      data: {
+        settings: {
+          uiLang: 'fr',
+          secondLang: null,
+          theme: 'system',
+          sound: true,
+          hymn: 'H1',
+        },
+      },
+    });
+    expect(invalidUiLang.success).toBe(false);
   });
 });

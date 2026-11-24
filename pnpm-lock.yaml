@@ -175,6 +175,9 @@ importers:
 
   .:
     dependencies:
+      dexie:
+        specifier: ^4.4.7
+        version: 4.4.7
       i18next:
         specifier: ^27.2.2
         version: 27.2.2(typescript@6.0.3)
@@ -1048,6 +1051,9 @@ packages:
   dequal@2.0.3:
     resolution: {integrity: sha512-0je+qPKHEMohvfRTCEo3CrPG6cAzAYgmzKyxRiYSSDkS6eGJdyVJm7WaYA5ECaAD9wLB2T4EEeymA5aFVcYXCA==}
     engines: {node: '>=6'}
+
+  dexie@4.4.7:
+    resolution: {integrity: sha512-wemFiCl3DTCnfzyqepUTX1ugbYbkTrw3aEZOG7YjAOUoEQB5g5PrEywPzk5JpbX/SxqQ9IvjUpxCDIEjoOWEfA==}
 
   dir-glob@3.0.1:
     resolution: {integrity: sha512-WkrWp9GR4KXfKGYzOLmTuGVi1UWFfws377n9cc55/tb6DuqyF6pcQ5AbiHEshaDpY9v6oaSr2XCDidGmMwdzIA==}
@@ -3171,6 +3177,8 @@ snapshots:
       watskeburt: 6.0.0
 
   dequal@2.0.3: {}
+
+  dexie@4.4.7: {}
 
   dir-glob@3.0.1:
     dependencies:
