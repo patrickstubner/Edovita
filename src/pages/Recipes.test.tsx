@@ -17,6 +17,7 @@ import { NutritionPanel } from '../components/index.ts';
 import {
   isSafeHttpsUrl,
   sanitizeExternalHttpsUrl,
+  type LanguagesRegistry,
 } from '../domain/index.ts';
 import {
   LANGUAGES_REGISTRY,
@@ -269,7 +270,7 @@ describe('Paket E4: Rezeptliste, Rezept-Detailseite & F3b (Issue #10)', () => {
       active: true,
       legalApproved: true,
     };
-    const frRegistry = {
+    const frRegistry: LanguagesRegistry = {
       ...LANGUAGES_REGISTRY,
       meta: {
         ...LANGUAGES_REGISTRY.meta,
