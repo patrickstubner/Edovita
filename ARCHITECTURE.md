@@ -1,6 +1,6 @@
 # ARCHITECTURE.md – Edovita
 
-Stand 23.11.2026, Basis `main` `f7dcd628a8655690739dea644443a36319fbe4be` (enthält E0 `7f49e3d`, E0b Pages `e7d46884`, Nachzug `#23` `a6c47cb3`, E1 PR `#24` `bd3e0246`, Dependabot/TS 6 `e0c7cadf` und E2 PR `#26` `f7dcd628`, Version `0.1.0`), erweitert um Paket **E3** (Issue `#9`, Branch `feat/e3-storage-dexie`, inkl. E2-Nachzüge F1, F2, F3a). Der E3-Analyse-SHA wird im Folge-Commit nach grüner CI ergänzt (E2-Referenzstand: `797033297b658485d7dedfc360058674ea28177b`). Details in `docs/architektur/`. Vorschau: https://patrickstubner.github.io/Edovita/.
+Stand 23.11.2026, Basis `main` `f7dcd628a8655690739dea644443a36319fbe4be` (enthält E0 `7f49e3d`, E0b Pages `e7d46884`, Nachzug `#23` `a6c47cb3`, E1 PR `#24` `bd3e0246`, Dependabot/TS 6 `e0c7cadf` und E2 PR `#26` `f7dcd628`, Version `0.1.0`), erweitert um Paket **E3** (Issue `#9`, Draft-PR `#27`, Branch `feat/e3-storage-dexie`, inkl. E2-Nachzüge F1, F2, F3a; geprüfter Code- und Analyse-Stand: `79cdf5dfd60c9bf97ba6c51208c5f02e3390cfa3`, GitHub Actions CI Run `45293169792` grün). Details in `docs/architektur/`. Vorschau: https://patrickstubner.github.io/Edovita/.
 
 ## Heute im Repo
 | Ort | Inhalt |
