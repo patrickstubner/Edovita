@@ -425,8 +425,14 @@ button.chip, .chip { min-height: 44px; }
 .lang-opt[aria-selected=true]{background:var(--ps);color:var(--pd)}
 .lang-opt .lang-name{flex:1;min-width:0}
 .lang-opt .lang-code-sm{font-size:12px;font-weight:800;color:var(--t2);letter-spacing:.4px;flex:none}
-/* Umschalter sitzen in der Demo-Leiste, daher keine extra Reserve in den Screen-Köpfen. */
-#app.has-lang-switch .demo-bar{padding-inline-end:96px}
+/* Zwei Umschalter oben rechts: Reserve rechts, Titel unter Zurück/Info. */
+#app.has-lang-switch .status,#app.has-lang-switch .topbar{padding-inline-end:152px}
+#app.has-lang-switch .topbar{flex-wrap:wrap;row-gap:2px}
+#app.has-lang-switch .topbar > h1,
+#app.has-lang-switch .topbar > .grow{flex:1 1 100%;order:5;min-width:0}
+#app.has-lang-switch .topbar h1{font-size:26px;overflow-wrap:normal}
+#app.has-lang-switch #heute h1{overflow-wrap:anywhere}
+.lang-switch-btn{padding:0 8px 0 6px;gap:4px;font-size:12px}
 html[data-eff=dark] .lang-flag{box-shadow:0 0 0 1px rgba(255,255,255,.28)}
 html[data-eff=dark] .lang-menu{box-shadow:0 0 0 1px rgba(255,255,255,.08),0 16px 40px rgba(0,0,0,.55)}
 @media (prefers-reduced-motion:no-preference){
@@ -434,27 +440,12 @@ html[data-eff=dark] .lang-menu{box-shadow:0 0 0 1px rgba(255,255,255,.08),0 16px
 }
 @keyframes lang-pop{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
 
-/* ---------- v5.6: Zweitsprache, Varianten A/B ---------- */
-.demo-bar{flex:none;display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;padding:8px 16px;padding-inline-end:96px;min-height:52px;background:var(--w);border-bottom:1px solid var(--b);z-index:21;position:relative;pointer-events:none}
-#app.variant-b .demo-bar{padding-inline-end:180px}
-.demo-bar > *{pointer-events:auto}
-.demo-bar-label{font-size:12px;font-weight:700;color:var(--t2);letter-spacing:.2px;flex:1 1 120px;min-width:0}
-.demo-seg{flex:none}
-.demo-seg button{min-height:44px;padding:0 12px;font-size:13px;font-weight:700}
-.biname{display:inline}
-.biname-sec{font-weight:600;color:var(--t2)}
-#langSwitch{top:8px}
-#app.variant-b.has-lang-switch .demo-bar{padding-inline-end:180px}
-#secondSwitch{position:absolute;top:8px;inset-inline-end:88px;z-index:23}
+/* ---------- v5.7: Zweitsprache fest in der Kopfzeile + Essensplan ---------- */
+#secondSwitch{position:absolute;top:8px;inset-inline-end:80px;z-index:23}
 #secondSwitch[hidden]{display:none!important}
 .second-switch-btn.is-none .lang-flag{display:none}
-.second-chip{min-height:44px;padding:0 12px;display:inline-flex;align-items:center;gap:8px;border-radius:22px;background:var(--w);box-shadow:var(--sh);color:var(--t);font-weight:700;font-size:14px;position:relative}
-.second-chip-slot{margin:10px 0 0;position:relative}
-.second-chip .lang-flag{width:20px;height:14px}
-.second-chip-wrap{position:relative;display:inline-block;max-width:100%}
-.second-chip-wrap .lang-menu{inset-inline-start:0;inset-inline-end:auto}
-#app.variant-b [data-secondchip]{display:none!important}
-#app.variant-a #secondSwitch{display:none!important}
+.biname{display:inline}
+.biname-sec{font-weight:600;color:var(--t2)}
 .ing-row{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;min-height:44px;padding:8px 0}
 .ing-row+.ing-row{border-top:1px solid var(--b)}
 .ing-row .qty{flex:none;color:var(--t2);font-weight:600;font-size:15px}
@@ -463,4 +454,39 @@ html[data-eff=dark] .lang-menu{box-shadow:0 0 0 1px rgba(255,255,255,.08),0 16px
 .step-list li::before{content:counter(s);position:absolute;left:0;top:10px;width:24px;height:24px;border-radius:12px;background:var(--ps);color:var(--pd);font-size:13px;font-weight:800;display:grid;place-items:center}
 .recipe.feat,.recipe.sm{cursor:pointer}
 .card.recipe:focus-visible{outline:3px solid var(--pd);outline-offset:2px}
-html[data-eff=dark] .demo-bar{box-shadow:0 0 0 1px rgba(255,255,255,.06)}
+.shop-from{display:block;margin-top:2px;font-size:13px;font-weight:600;color:var(--t2)}
+
+.tabbar{grid-template-columns:repeat(6,1fr);padding:6px 2px calc(10px + env(safe-area-inset-bottom))}
+.tab{font-size:11px;line-height:1.15;gap:2px;min-height:54px;padding:0 1px;text-align:center}
+.tab .ic{width:24px;height:24px}
+
+.plan-day{display:flex;flex-direction:column;gap:8px}
+.plan-day-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.plan-day-head b{font-size:17px}
+.plan-slot{display:flex;flex-direction:column;gap:6px}
+.plan-slot-label{font-size:13px;font-weight:700;color:var(--t2);letter-spacing:.2px}
+.plan-empty,.plan-item{min-height:44px;width:100%;display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:16px;text-align:left}
+.plan-empty{border:1.5px dashed var(--b);background:transparent;color:var(--pd);font-weight:700}
+.plan-empty:focus-visible,.plan-item:focus-visible{outline:3px solid var(--pd);outline-offset:2px}
+.plan-item{background:var(--w);box-shadow:var(--sh);color:var(--t)}
+.plan-item .grow{min-width:0}
+.plan-item .plan-actions{display:flex;flex:none;gap:4px}
+.plan-item .iconbtn{width:44px;height:44px;border-radius:22px;display:grid;place-items:center;color:var(--t2)}
+.plan-item .iconbtn:focus-visible{outline:3px solid var(--pd);outline-offset:2px}
+
+.sheet-back{position:absolute;inset:0;background:rgba(15,20,19,.45);z-index:30}
+.sheet-back[hidden],.sheet[hidden]{display:none!important}
+.sheet{position:absolute;left:0;right:0;bottom:0;max-height:88%;overflow:auto;overscroll-behavior:contain;background:var(--w);border-radius:22px 22px 0 0;padding:16px 20px calc(20px + env(safe-area-inset-bottom,0px));z-index:31;box-shadow:0 -16px 40px rgba(20,33,31,.2)}
+.sheet h2{font-size:20px;font-weight:800}
+.stepper{display:flex;align-items:center;gap:10px}
+.stepper button{width:44px;height:44px;border-radius:22px;display:grid;place-items:center;background:var(--ps);color:var(--pd);font-weight:800}
+.stepper output{min-width:2.5rem;text-align:center;font-weight:800;font-size:18px}
+.pick-row{min-height:44px;width:100%;display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:14px;text-align:left;background:var(--w);color:var(--t);font-weight:600}
+.pick-row:focus-visible,.stepper button:focus-visible{outline:3px solid var(--pd);outline-offset:2px}
+.pick-row[aria-pressed=true]{background:var(--ps);color:var(--pd)}
+html[data-eff=dark] .sheet{box-shadow:0 -16px 40px rgba(0,0,0,.55)}
+html[data-eff=dark] .sheet-back{background:rgba(0,0,0,.6)}
+html[data-eff=dark] .plan-empty{border-color:#2A3533}
+
+#planDays,.sheet .seg{flex-wrap:wrap}
+#planDays button,.sheet .seg button{flex:1 1 30%;min-width:88px}

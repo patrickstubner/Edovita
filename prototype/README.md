@@ -1,12 +1,17 @@
-# Edovita – Klick-Prototyp v5.6 (UX-Versuch Zweitsprache)
+# Edovita – Klick-Prototyp v5.7 (Essensplan und Zweitsprache in der Kopfzeile)
 
 **Nicht produktiver Code.** Dieser Ordner ist die Design-Referenz und der klickbare Prototyp für UX-Versuche. Er wird nicht in die echte App übernommen; die App entsteht neu (React + TypeScript + Rsbuild).
 
-- **Version:** v5.6 (24.11.2026), auf v5.5 aufbauend
+- **Version:** v5.7 (24.11.2026), auf v5.6 aufbauend
 - **Live:** als Cloudflare-Worker-Demo veröffentlicht (URL bewusst nicht im Repo)
 - **Technik:** statisches HTML/CSS/Vanilla-JS, keine Laufzeit-Abhängigkeiten ausser `vendor/qrcode-generator.js` (MIT), keine Netzwerkaufrufe, strenge CSP
-- **Daten:** nur erfundene Demo-Daten. Es werden keine Gesundheitsdaten gespeichert (localStorage nur Sprache, Zweitsprache, Variante, Darstellung, Ton, Region)
+- **Daten:** nur erfundene Demo-Daten. Es werden keine Gesundheitsdaten gespeichert (localStorage nur Sprache, Zweitsprache (manuelle Wahl), Plan, Einkaufsliste, Darstellung, Ton, Region; keine Standortdaten)
 - **Starten:** im Ordner `python3 -m http.server` und `http://localhost:8000/` öffnen (Handy-Breite, z. B. 390×844)
+
+## Neu in v5.7
+Zweitsprache fest als zweiter kompakter Umschalter **links neben** dem Hauptumschalter in der Kopfzeile (Variante B). Variante A, Demo-Leiste und `?variant` entfallen. Standard der Zweitsprache folgt dem Ort (Zeitzone bzw. Sprache-Region, ohne Geolocation), sonst Englisch, sonst keine; eine manuelle Wahl hat Vorrang und wird erst dann gespeichert. Glossar-DE: «Brokkoli».
+
+Neuer **Essensplan** (Tab «Plan», 3–7 Tage ab heute, Slots Frühstück/Mittag/Abend/Snacks). Rezepte lassen sich aus dem Detail mit «Zum Plan hinzufügen» oder per «+ Rezept» einfügen, tauschen und entfernen. «Einkaufsliste erstellen» sammelt die Zutaten im gewählten Zeitraum, skaliert nach Portionen, führt gleiche Artikel mit Mengen zusammen und zeigt die Herkunftsrezepte. Direktes Hinzufügen eines einzelnen Rezepts zur Liste bleibt möglich. Tagestotale kcal/Protein aus den vorhandenen Rezept-Beispieldaten. Details in `ENTWICKLUNG.md` und `SECURITY.md`.
 
 ## Neu in v5.6
 Zwei vergleichbare Varianten für die **Zweitsprache** (Inhalte wie Lebensmittel- und Zutatenname, ADR-003). Umschaltbar über die Demo-Leiste und `?variant=a` / `?variant=b`.

@@ -1034,3 +1034,41 @@
 1034|Ingredients
 1035|Method
 1036|Open recipe
+1037|Automatic (location)
+1038|Automatic (location) · {code}
+1039|Automatic (location) · none
+1040|Plan
+1041|Recipes for the next days, then shop for all of them together
+1042|Period
+1043|{n} days
+1044|Add to plan
+1045|Add to plan
+1046|+ Recipe
+1047|Remove
+1048|Swap
+1049|Servings
+1050|Day
+1051|Meal
+1052|Create shopping list
+1053|Shopping list updated
+1054|{kcal} kcal · {p} g protein
+1055|Nothing planned yet. Tap “+ Recipe”.
+1056|Choose a recipe
+1057|Today
+1058|Tomorrow
+1059|Add
+1060|Cancel
+1061|Close
+1062|For {recipes}
+1063|Meat and fish
+1064|{n} tbsp
+1065|{n} tsp
+1066|{n} pinch
+1067|{n} g
+1068|{n} ml
+1069|As in the recipe
+1070|Added to the plan
+1071|Servings, {n}
+1072|Remove {name}
+1073|{name}, {n} servings
+1074|Created from the plan for {n} days

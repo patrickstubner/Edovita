@@ -1034,3 +1034,41 @@
 1034|Ingredientes
 1035|Preparación
 1036|Abrir receta
+1037|Automático (lugar)
+1038|Automático (lugar) · {code}
+1039|Automático (lugar) · ninguna
+1040|Plan
+1041|Recetas para los próximos días y luego una sola compra
+1042|Periodo
+1043|{n} días
+1044|Añadir al plan
+1045|Añadir al plan
+1046|+ Receta
+1047|Quitar
+1048|Cambiar
+1049|Raciones
+1050|Día
+1051|Comida
+1052|Crear lista de la compra
+1053|Lista de la compra actualizada
+1054|{kcal} kcal · {p} g de proteína
+1055|Aún no hay nada planificado. Pulsa «+ Receta».
+1056|Elige una receta
+1057|Hoy
+1058|Mañana
+1059|Añadir
+1060|Cancelar
+1061|Cerrar
+1062|Para {recipes}
+1063|Carne y pescado
+1064|{n} cda
+1065|{n} cdta
+1066|{n} pizca
+1067|{n} g
+1068|{n} ml
+1069|Según la receta
+1070|Añadido al plan
+1071|Raciones, {n}
+1072|Quitar {name}
+1073|{name}, {n} raciones
+1074|Creada a partir del plan de {n} días

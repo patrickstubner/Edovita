@@ -1,3 +1,8 @@
+# Stand v5.7 (24. November 2026)
+Zweitsprache fest in der Kopfzeile links neben dem Hauptumschalter. Orts-Standard ohne Geolocation (Zeitzone/Sprachtags), nicht gespeichert bis zur manuellen Wahl. Essensplan für 3–7 Tage, Einkaufsliste aus dem Plan (skaliert, zusammengeführt, mit Rezeptangabe). Glossar «Brokkoli». Dark/Light unverändert.
+
+---
+
 # Stand v5.6 (24. November 2026)
 Zweitsprache zum Vergleich in zwei Varianten (A auf der Seite, B oben rechts neben dem Hauptumschalter). Umschaltung über Demo-Leiste und `?variant=a|b`. Standard «keine», Whitelist `de/en/pt/ja`, nicht gleich der UI-Sprache, Speicher `edovita.secondLang`. Zweisprachige Namen nur bei Zutaten und Einkaufspositionen (ADR-003); Schritte und UI bleiben in der Hauptsprache. Neue Datei `data/glossary.js`. Hauptumschalter und Dark/Light unverändert.
 

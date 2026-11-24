@@ -1,10 +1,10 @@
 (function () {
   'use strict';
-  // Reiner Klick-Prototyp v5.6: keine Netzwerkaufrufe. Gespeichert werden nur Sprache, Zweitsprache, Variante, Darstellung, Ton und Melodie (localStorage, keine Gesundheitsdaten). Sprachcodes nur nach Whitelist.
+  // Reiner Klick-Prototyp v5.7: keine Netzwerkaufrufe. Gespeichert: Sprache, Zweitsprache (manuelle Wahl), Plan, Einkaufsliste, Darstellung, Ton, Melodie. Keine Standort- oder Gesundheitsdaten. Sprachcodes nur nach Whitelist.
   // Alle Texte kommen aus locales/<code>/*.json (über i18n.js) und werden nur per textContent/setAttribute gesetzt.
   var I = window.EdoI18n;
   var T = function (k, v) { return I.t(k, v); };
-  var SCREENS = ['start','onboarding','onboarding2','onboarding3','onboarding4','daten','ziel','vorlieben','erinnerungen','hilfe','heute','details','erfassen','rezepte','rezept','einkauf','restaurant','woche','kraft','fortschritt','koerper','profil','partner','arzt','sprache','toene','datenschutz','rechtliches','reste','saison','eintipp','portionen','bardb','fenster','aktivitaet','qrshop','reise','marken'];
+  var SCREENS = ['start','onboarding','onboarding2','onboarding3','onboarding4','daten','ziel','vorlieben','erinnerungen','hilfe','heute','details','erfassen','rezepte','rezept','plan','einkauf','restaurant','woche','kraft','fortschritt','koerper','profil','partner','arzt','sprache','toene','datenschutz','rechtliches','reste','saison','eintipp','portionen','bardb','fenster','aktivitaet','qrshop','reise','marken'];
   var GOALS = { lose: 1, gain: 1, keep: 1 };
   var gname = function (g) { return T('goal.' + g); };
   var state = { goal: 'lose', goalKcal: 1900, eaten: 720, protein: 48, target: 110, dinnerSaved: false,
@@ -40,6 +40,7 @@
     if (SCREENS.indexOf(id) === -1) id = 'heute';
     if (id !== curScreen) { prevScreen = curScreen; curScreen = id; }
     if (id === 'rezept') renderRezept();
+    if (id === 'plan') renderPlan();
     $$('.screen').forEach(function (s) { s.classList.toggle('active', s.id === id); });
     var scr = document.getElementById(id);
     var tab = scr.getAttribute('data-tab');
@@ -812,46 +813,16 @@
 
   // ---------- Einkaufsliste: offen / im Korb / schon zu Hause ----------
   var SHOP = [
-    { id: 'broccoli', grp: 'veg', q: function () { return '500 g'; }, has: [] },
-    { id: 'berries', grp: 'veg', q: function () { return '250 g'; }, has: [] },
-    { id: 'yogurt', grp: 'dairy', q: function () { return '500 g'; }, has: ['dairy'] },
-    { id: 'eggs', grp: 'dairy', q: function () { return T('shop.pcs', { n: 6 }); }, has: ['egg'] },
-    { id: 'chickpeas', grp: 'pantry', q: function () { return '400 g'; }, has: [] },
-    { id: 'quinoa', grp: 'pantry', q: function () { return '500 g'; }, has: [] },
-    { id: 'nuts', grp: 'pantry', q: function () { return '200 g'; }, has: ['nuts'] },
-    { id: 'olive_oil', grp: 'pantry', q: function () { return T('shop.bottle', { n: 1 }); }, has: [] }
+    { id: 'broccoli', grp: 'veg', qty: 500, unit: 'g', has: [] },
+    { id: 'berries', grp: 'veg', qty: 250, unit: 'g', has: [] },
+    { id: 'yogurt', grp: 'dairy', qty: 500, unit: 'g', has: ['dairy'] },
+    { id: 'eggs', grp: 'dairy', qty: 6, unit: 'pc', has: ['egg'] },
+    { id: 'chickpeas', grp: 'pantry', qty: 400, unit: 'g', has: [] },
+    { id: 'quinoa', grp: 'pantry', qty: 500, unit: 'g', has: [] },
+    { id: 'nuts', grp: 'pantry', qty: 200, unit: 'g', has: ['nuts'] },
+    { id: 'olive_oil', grp: 'pantry', qty: 1, unit: 'bottle', has: [] }
   ];
   var SHOP_ST = { open: 1, cart: 1, home: 1 };
-  function shopRow(it, st) {
-    var row = mk('div', 'shoprow' + (st === 'cart' ? ' incart' : st === 'home' ? ' athome' : '')), nm = uiFoodName(it.id);
-    if (st === 'home') {
-      var c0 = mk('span', 'circ sm'); c0.appendChild(icon('home', 's')); row.appendChild(c0);
-      var g0 = mk('span', 'grow'); g0.appendChild(bilingualName(it.id)); g0.appendChild(mk('small', 'cap', ' ' + it.q())); row.appendChild(g0);
-      var u = mk('button', 'havebtn', T('shop.undo')); u.setAttribute('data-shop', it.id + ':open'); row.appendChild(u); return row;
-    }
-    var b = mk('button', 'chk grow' + (st === 'cart' ? ' on' : ''));
-    b.setAttribute('data-shop', it.id + ':' + (st === 'cart' ? 'open' : 'cart')); b.setAttribute('aria-pressed', st === 'cart' ? 'true' : 'false');
-    b.setAttribute('aria-label', T(st === 'cart' ? 'shop.fromcart' : 'shop.tocart', { name: foodAria(it.id) }));
-    var cb = mk('span', 'cb'); cb.appendChild(icon('check')); b.appendChild(cb);
-    var ng = mk('span', 'nm grow'); ng.appendChild(bilingualName(it.id)); b.appendChild(ng); b.appendChild(mk('span', 'cap', it.q())); row.appendChild(b);
-    if (st !== 'cart') { var h = mk('button', 'havebtn', T('shop.have')); h.setAttribute('data-shop', it.id + ':home'); row.appendChild(h); }
-    return row;
-  }
-  function renderShop() {
-    var box = $('#shopList'); if (!box) return; box.textContent = '';
-    var vis = SHOP.filter(function (it) { return allowed(it.has); }), stOf = function (it) { return state.shop[it.id] || 'open'; };
-    ['veg', 'dairy', 'pantry'].forEach(function (g) {
-      var its = vis.filter(function (it) { return it.grp === g && stOf(it) === 'open'; }); if (!its.length) return;
-      var w = mk('div'); w.appendChild(mk('p', 'grph', T('shop.grp.' + g))); var c = mk('div', 'card');
-      its.forEach(function (it) { c.appendChild(shopRow(it, 'open')); }); w.appendChild(c); box.appendChild(w);
-    });
-    if (!vis.some(function (it) { return stOf(it) === 'open'; })) { var d = mk('div', 'banner ok'); d.appendChild(icon('check')); d.appendChild(mk('b', 'grow', T('shop.done'))); box.appendChild(d); }
-    ['cart', 'home'].forEach(function (s) {
-      var its = vis.filter(function (it) { return stOf(it) === s; }); if (!its.length) return;
-      var w = mk('div'); w.appendChild(mk('p', 'grph', T('shop.sec.' + s) + ' (' + its.length + ')')); var c = mk('div', 'card');
-      its.forEach(function (it) { c.appendChild(shopRow(it, s)); }); w.appendChild(c); box.appendChild(w);
-    });
-  }
 
   // ---------- Erfassen per Text oder Stimme (Simulation) ----------
   var FOODS = [
@@ -987,7 +958,7 @@
     $('#wRemain').classList.toggle('ok', toN <= 0.04);
     renderForms();
     $$('.goal').forEach(function (b) { var g = b.getAttribute('data-goal'), on = g === state.goal; b.classList.toggle('on', on); b.setAttribute('aria-pressed', on ? 'true' : 'false'); if (g === 'lose') { var dis = loseBlocked(); b.disabled = dis; b.classList.toggle('dis', dis); } });
-    renderPace(); renderSafe(); renderPrefs(); renderRecipes(); renderExtras(); renderAdapt(); renderWater(); renderFood(); renderPartner();
+    renderPace(); renderSafe(); renderPrefs(); renderRecipes(); renderExtras(); renderAdapt(); renderWater(); renderFood(); renderPartner(); renderPlan();
     bind('wgoal', fmt(state.waterGoal)); bind('wgl', String(Math.round(state.waterGoal / 250)));
     bind('pacesummary', state.goal === 'keep' ? T(state.pmode === 'kcal' ? 'pacesum.keep.kcal' : 'pacesum.keep', { k: fmt(state.goalKcal) }) : (state.pmode === 'kcal' ? T('pacesum.kcal', { t: f1(state.tweight), k: fmt(state.goalKcal) }) : T('pacesum', { t: f1(state.tweight), mode: T(PACE_KEYS[state.pmode]), r: rt(paceInfo().eff) })));
     bind('prefsummary', activePrefs().length ? activePrefs().map(prefSum).join(', ') : T('prefsum.none'));
@@ -1172,6 +1143,7 @@
   document.addEventListener('click', function (e) { if (e.target.closest && e.target.closest('#splash')) endSplash(); });
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') { var s = $('#splash'); if (s && !s.hidden) { e.preventDefault(); endSplash(); return; } }
+    if (e.key === 'Escape' && typeof isPlanSheetOpen === 'function' && isPlanSheetOpen()) { e.preventDefault(); closePlanSheet(); return; }
     if ((e.key === 'Enter' || e.key === ' ') && e.target && e.target.getAttribute && e.target.getAttribute('data-recipe') && !SECOND_MENU_OPEN && !LANG_MENU_OPEN) {
       if (!e.target.closest('[data-rate], [data-save], [data-addlist]')) { e.preventDefault(); openRecipe(e.target.getAttribute('data-recipe')); return; }
     }
@@ -1271,6 +1243,7 @@
   }
   // Kompakter Sprachumschalter (Flagge + Kürzel, Dropdown). Nur freigegebene Codes sind wählbar.
   var LANG_MENU_OPEN = false;
+  var SECOND_MENU_OPEN = false;
   function flagSvg(code) {
     var svg = document.createElementNS(NS_, 'svg');
     svg.setAttribute('viewBox', '0 0 60 42');
@@ -1371,39 +1344,111 @@
     // ---------- Zweitsprache (ADR-003): nur Zutaten und Einkaufsartikel, ohne Rechts-Gate ----------
   var SECONDARY = (window.EDO_FOODS && window.EDO_FOODS.secondary) || ['de', 'en', 'pt', 'ja'];
   var SECOND_KEY = 'edovita.secondLang';
-  var VARIANT_KEY = 'edovita.secondLangVariant';
-  var SECOND_MENU_OPEN = false;
-  function foodData() { return window.EDO_FOODS || { glossary: {}, recipeIngredients: {}, recipeSteps: {}, locales: {}, dir: {} }; }
+  var PLAN_KEY = 'edovita.plan';
+  var SHOP_KEY = 'edovita.shopItems';
+  var SLOTS = ['breakfast', 'lunch', 'dinner', 'snack'];
+  var SLOT_SET = { breakfast: 1, lunch: 1, dinner: 1, snack: 1 };
+  var QTY_UNITS = { g: 1, ml: 1, pc: 1, tbsp: 1, tsp: 1, pinch: 1, bottle: 1 };
+  var SHOP_GRPS = ['veg', 'meat', 'dairy', 'pantry'];
+  var TZ_COUNTRY = {
+    'Europe/Zurich': 'CH', 'Europe/Vaduz': 'LI', 'Europe/Berlin': 'DE', 'Europe/Vienna': 'AT',
+    'Europe/Lisbon': 'PT', 'Atlantic/Azores': 'PT', 'Atlantic/Madeira': 'PT',
+    'Europe/London': 'GB', 'Europe/Dublin': 'IE', 'Europe/Paris': 'FR', 'Europe/Rome': 'IT',
+    'Europe/Madrid': 'ES', 'Europe/Amsterdam': 'NL', 'Europe/Brussels': 'BE',
+    'America/Sao_Paulo': 'BR', 'America/Fortaleza': 'BR', 'America/Recife': 'BR', 'America/Bahia': 'BR',
+    'America/Manaus': 'BR', 'America/Belem': 'BR', 'America/Noronha': 'BR', 'America/Porto_Velho': 'BR',
+    'America/Rio_Branco': 'BR', 'America/Cuiaba': 'BR', 'America/Campo_Grande': 'BR',
+    'America/Santarem': 'BR', 'America/Araguaina': 'BR', 'America/Maceio': 'BR',
+    'Asia/Tokyo': 'JP', 'Asia/Ho_Chi_Minh': 'VN', 'Asia/Saigon': 'VN', 'Asia/Manila': 'PH',
+    'America/New_York': 'US', 'America/Chicago': 'US', 'America/Denver': 'US',
+    'America/Los_Angeles': 'US', 'America/Phoenix': 'US', 'America/Anchorage': 'US', 'Pacific/Honolulu': 'US',
+    'Australia/Sydney': 'AU', 'Australia/Melbourne': 'AU', 'Australia/Brisbane': 'AU', 'Pacific/Auckland': 'NZ'
+  };
+  var COUNTRY_LANG = {
+    PT: 'pt', BR: 'pt', AO: 'pt', MZ: 'pt', CV: 'pt', GW: 'pt', ST: 'pt', TL: 'pt',
+    JP: 'ja', CH: 'de', DE: 'de', AT: 'de', LI: 'de',
+    VN: 'vi', PH: 'en', US: 'en', GB: 'en', AU: 'en', NZ: 'en', IE: 'en', CA: 'en',
+    FR: 'fr', BE: 'fr', IT: 'it', ES: 'es', MX: 'es', AR: 'es', CO: 'es', CL: 'es', PE: 'es'
+  };
   function isSecondary(code) { return typeof code === 'string' && SECONDARY.indexOf(code) !== -1; }
+  function foodData() { return window.EDO_FOODS || { secondary: SECONDARY, locales: {}, dir: {}, glossary: {}, recipeIngredients: {}, recipeSteps: {}, recipeAmounts: {}, groups: {} }; }
   function secondMeta(code) {
-    var d = foodData(), m = I.meta(code) || {};
+    var d = foodData(), m = (I.meta && I.meta(code)) || {};
     return {
       name: m.name || code,
       locale: m.locale || d.locales[code] || code,
       dir: (m.direction === 'rtl' || d.dir[code] === 'rtl') ? 'rtl' : 'ltr'
     };
   }
+  function countryFromTimeZone() {
+    var tz = '';
+    try { tz = String((Intl.DateTimeFormat().resolvedOptions() || {}).timeZone || ''); } catch (e) { tz = ''; }
+    if (tz && Object.prototype.hasOwnProperty.call(TZ_COUNTRY, tz)) return TZ_COUNTRY[tz];
+    return null;
+  }
+  function countryFromLanguages() {
+    var langs = [];
+    try { langs = (navigator.languages && navigator.languages.length) ? Array.prototype.slice.call(navigator.languages) : [navigator.language]; } catch (e) { langs = []; }
+    var i, tag, loc, m;
+    for (i = 0; i < langs.length; i++) {
+      tag = String(langs[i] || '');
+      try {
+        if (typeof Intl !== 'undefined' && Intl.Locale) {
+          loc = new Intl.Locale(tag);
+          if (loc.region && /^[A-Za-z]{2}$/.test(loc.region)) return loc.region.toUpperCase();
+        }
+      } catch (e2) { /* weiter mit dem Tag */ }
+      m = tag.match(/[-_]([A-Za-z]{2})\b/);
+      if (m) return m[1].toUpperCase();
+    }
+    return null;
+  }
+  function inferCountry() { return countryFromTimeZone() || countryFromLanguages(); }
+  function autoSecondLang(ui) {
+    var cc = inferCountry(), lang = cc && COUNTRY_LANG[cc] ? COUNTRY_LANG[cc] : null;
+    if (lang && isSecondary(lang) && lang !== ui) return lang;
+    if (ui !== 'en' && isSecondary('en')) return 'en';
+    return null;
+  }
   function storedSecond() {
     try {
       var v = window.localStorage.getItem(SECOND_KEY);
-      if (v === null || v === '' || v === 'none') return null;
+      if (v === null || v === '' || v === 'auto') return null;
+      if (v === 'none') return 'none';
       if (isSecondary(v)) return v;
-      window.localStorage.setItem(SECOND_KEY, 'none');
+      window.localStorage.removeItem(SECOND_KEY);
       return null;
     } catch (e) { return null; }
   }
+  function isAutoSecond() { return storedSecond() === null; }
   function effectiveSecond() {
     var s = storedSecond();
-    return (s && s !== I.lang()) ? s : null;
+    if (s === 'none') return null;
+    if (s && s !== I.lang()) return s;
+    if (s && s === I.lang()) return null;
+    return autoSecondLang(I.lang());
   }
   function setSecondLang(code) {
-    if (code === null || code === 'none' || code === '') {
-      try { window.localStorage.setItem(SECOND_KEY, 'none'); } catch (e) { /* nur bis zum Neuladen */ }
+    try {
+      if (code === null || code === '' || code === 'auto') {
+        window.localStorage.removeItem(SECOND_KEY);
+        return true;
+      }
+      if (code === 'none') { window.localStorage.setItem(SECOND_KEY, 'none'); return true; }
+      if (!isSecondary(code) || code === I.lang()) return false;
+      window.localStorage.setItem(SECOND_KEY, code);
       return true;
-    }
-    if (!isSecondary(code) || code === I.lang()) return false;
-    try { window.localStorage.setItem(SECOND_KEY, code); } catch (e) { /* nur bis zum Neuladen */ }
-    return true;
+    } catch (e) { return false; }
+  }
+  function clearLegacyVariant() {
+    try { window.localStorage.removeItem('edovita.secondLangVariant'); } catch (e) { /* ignorieren */ }
+    try {
+      var u = new URL(location.href);
+      if (u.searchParams.has('variant')) {
+        u.searchParams.delete('variant');
+        history.replaceState(null, '', u.pathname + (u.search || '') + u.hash);
+      }
+    } catch (e2) { /* ignorieren */ }
   }
   function glossName(lang, id) {
     if (typeof id !== 'string' || !lang) return null;
@@ -1445,33 +1490,43 @@
     }
     return wrap;
   }
-  function parseVariantParam() {
-    var fromQ = '';
-    try { fromQ = String(new URLSearchParams(location.search).get('variant') || '').toLowerCase(); } catch (e) { fromQ = ''; }
-    var h = location.hash || '', fromH = '';
-    if (h.indexOf('?') !== -1) {
-      try { fromH = String(new URLSearchParams(h.split('?')[1]).get('variant') || '').toLowerCase(); } catch (e2) { fromH = ''; }
+  function foodGroup(id) {
+    var g = (foodData().groups || {})[id];
+    return SHOP_GRPS.indexOf(g) !== -1 ? g : 'pantry';
+  }
+  function recipeServings(id) {
+    var pack = (foodData().recipeAmounts || {})[id];
+    var n = pack && pack.servings;
+    return (typeof n === 'number' && n >= 1 && n <= 8) ? n : 2;
+  }
+  function recipeIngList(id) {
+    var pack = (foodData().recipeAmounts || {})[id];
+    if (pack && pack.items && pack.items.length) {
+      return pack.items.map(function (it) {
+        return { id: it.id, amount: it.amount, unit: it.unit || '', grams: it.grams };
+      });
     }
-    var v = fromQ || fromH;
-    return v === 'a' || v === 'b' ? v : null;
+    return ((foodData().recipeIngredients || {})[id] || []).map(function (fid) {
+      return { id: fid, amount: null, unit: '', grams: null };
+    });
   }
-  function secondVariant() {
-    return getPref(VARIANT_KEY, ['a', 'b'], parseVariantParam() || 'a');
+  function fmtQtyNum(n) {
+    if (typeof n !== 'number' || !isFinite(n)) return '';
+    var r = Math.round(n * 10) / 10;
+    if (Math.abs(r - Math.round(r)) < 0.05) return fmt(Math.round(r));
+    return String(r).replace('.', ',');
   }
-  function setSecondVariant(v) {
-    if (v !== 'a' && v !== 'b') return false;
-    setPref(VARIANT_KEY, v);
-    try {
-      var url = new URL(location.href);
-      url.searchParams.set('variant', v);
-      history.replaceState(null, '', url.pathname + url.search + url.hash);
-    } catch (e) { /* ignorieren */ }
-    renderSecondLangUI();
-    return true;
-  }
-  function initSecondVariant() {
-    var q = parseVariantParam();
-    if (q) setPref(VARIANT_KEY, q);
+  function formatQty(qty, unit) {
+    if (qty == null || qty === '' || !unit) return T('shop.amount.missing');
+    var n = qty, key;
+    if (unit === 'g' || unit === 'ml') n = qty >= 10 ? Math.round(qty) : Math.round(qty * 10) / 10;
+    else if (unit === 'pc' || unit === 'bottle') n = Math.round(qty * 2) / 2;
+    else n = Math.round(qty * 10) / 10;
+    if (unit === 'pc') return T('shop.pcs', { n: fmtQtyNum(n) });
+    if (unit === 'bottle') return T('shop.bottle', { n: fmtQtyNum(n) });
+    key = 'shop.qty.' + unit;
+    if (unit === 'g' || unit === 'ml' || unit === 'tbsp' || unit === 'tsp' || unit === 'pinch') return T(key, { n: fmtQtyNum(n) });
+    return fmtQtyNum(n) + ' ' + unit;
   }
   function syncLangBackdrop() {
     var bd = $('#langBackdrop');
@@ -1483,33 +1538,35 @@
   function fillSecondOptions(menu) {
     menu.textContent = '';
     menu.setAttribute('aria-label', T('second.label'));
-    var cur = effectiveSecond();
-    var add = function (code, label, flagCode) {
+    var manual = storedSecond(), cur = effectiveSecond(), auto = autoSecondLang(I.lang());
+    var add = function (code, label, flagCode, selected) {
       var opt = mk('button', 'lang-opt');
       opt.type = 'button';
       opt.setAttribute('role', 'option');
       opt.setAttribute('data-second', code);
-      opt.setAttribute('aria-selected', (code === 'none' ? !cur : code === cur) ? 'true' : 'false');
+      opt.setAttribute('aria-selected', selected ? 'true' : 'false');
       if (flagCode) {
         opt.setAttribute('lang', secondMeta(flagCode).locale);
         var fl = mk('span', 'lang-flag'); fl.setAttribute('aria-hidden', 'true'); fl.appendChild(flagSvg(flagCode));
         opt.appendChild(fl);
       }
       opt.appendChild(mk('span', 'lang-name', label));
-      if (code !== 'none') opt.appendChild(mk('span', 'lang-code-sm', code.toUpperCase()));
+      if (code !== 'none' && code !== 'auto') opt.appendChild(mk('span', 'lang-code-sm', code.toUpperCase()));
       menu.appendChild(opt);
     };
-    add('none', T('second.none'), null);
+    add('auto', auto ? T('second.auto.current', { code: auto.toUpperCase() }) : T('second.auto.none'), auto, manual === null);
+    add('none', T('second.none'), null, manual === 'none');
     SECONDARY.forEach(function (c) {
       if (c === I.lang()) return;
-      add(c, secondMeta(c).name, c);
+      add(c, secondMeta(c).name, c, manual === c);
     });
   }
   function setSecondMenus(open, sourceBtn) {
     if (open) setLangMenu(false);
     SECOND_MENU_OPEN = !!open;
-    $$('.second-chip-wrap .lang-menu, #secondMenu').forEach(function (m) { m.hidden = true; });
-    $$('.second-chip, #secondSwitchBtn').forEach(function (b) { b.setAttribute('aria-expanded', 'false'); });
+    $$('#secondMenu').forEach(function (m) { m.hidden = true; });
+    var btn = $('#secondSwitchBtn');
+    if (btn) btn.setAttribute('aria-expanded', 'false');
     if (SECOND_MENU_OPEN && sourceBtn) {
       sourceBtn.setAttribute('aria-expanded', 'true');
       var wrap = sourceBtn.parentNode, menu = wrap ? wrap.querySelector('.lang-menu') : null;
@@ -1523,8 +1580,12 @@
     syncLangBackdrop();
   }
   function paintSecondButton(btn, flagBox, codeEl) {
-    var sec = effectiveSecond();
-    var label = sec ? T('second.label.current', { name: secondMeta(sec).name }) : T('second.label.none');
+    var sec = effectiveSecond(), auto = isAutoSecond();
+    var label;
+    if (sec && auto) label = T('second.auto.current', { code: sec.toUpperCase() });
+    else if (sec) label = T('second.label.current', { name: secondMeta(sec).name });
+    else if (auto) label = T('second.auto.none');
+    else label = T('second.label.none');
     btn.setAttribute('aria-label', label);
     btn.setAttribute('title', label);
     btn.classList.toggle('is-none', !sec);
@@ -1534,37 +1595,15 @@
       if (sec) flagBox.appendChild(flagSvg(sec));
     }
   }
-  function fillSecondChip(host) {
-    host.textContent = '';
-    if (secondVariant() !== 'a') return;
-    var wrap = mk('div', 'second-chip-wrap');
-    var btn = mk('button', 'second-chip');
-    btn.type = 'button';
-    btn.setAttribute('aria-haspopup', 'listbox');
-    btn.setAttribute('aria-expanded', 'false');
-    var sec = effectiveSecond();
-    var flag = mk('span', 'lang-flag'); flag.setAttribute('aria-hidden', 'true');
-    if (sec) flag.appendChild(flagSvg(sec));
-    else flag.hidden = true;
-    btn.appendChild(flag);
-    btn.appendChild(mk('span', '', sec ? T('second.chip', { code: sec.toUpperCase() }) : T('second.chip.none')));
-    paintSecondButton(btn, flag, null);
-    var menu = mk('div', 'lang-menu');
-    menu.hidden = true;
-    menu.setAttribute('role', 'listbox');
-    wrap.appendChild(btn);
-    wrap.appendChild(menu);
-    host.appendChild(wrap);
-  }
   function renderSecondPickerList() {
     var box = $('#secondLangList'); if (!box) return;
     box.textContent = '';
-    var cur = effectiveSecond();
-    var row = function (code, name, flagCode) {
-      var b = mk('button', 'set langrow' + ((code === 'none' ? !cur : code === cur) ? ' cur' : ''));
+    var manual = storedSecond(), curEff = effectiveSecond();
+    var row = function (code, name, flagCode, selected) {
+      var b = mk('button', 'set langrow' + (selected ? ' cur' : ''));
       b.type = 'button';
       b.setAttribute('data-second', code);
-      b.setAttribute('aria-pressed', (code === 'none' ? !cur : code === cur) ? 'true' : 'false');
+      b.setAttribute('aria-pressed', selected ? 'true' : 'false');
       if (flagCode) {
         var circ = mk('span', 'circ code'); circ.appendChild(flagSvg(flagCode)); b.appendChild(circ);
         b.setAttribute('lang', secondMeta(flagCode).locale);
@@ -1572,13 +1611,15 @@
         b.appendChild(mk('span', 'circ code', '–'));
       }
       var tx = mk('span', 'tx grow'); tx.appendChild(mk('b', '', name)); b.appendChild(tx);
-      var r = mk('span', 'radio' + ((code === 'none' ? !cur : code === cur) ? ' on' : '')); r.setAttribute('aria-hidden', 'true'); b.appendChild(r);
+      var r = mk('span', 'radio' + (selected ? ' on' : '')); r.setAttribute('aria-hidden', 'true'); b.appendChild(r);
       box.appendChild(b);
     };
-    row('none', T('second.none'), null);
+    var auto = autoSecondLang(I.lang());
+    row('auto', auto ? T('second.auto.current', { code: auto.toUpperCase() }) : T('second.auto.none'), auto, manual === null);
+    row('none', T('second.none'), null, manual === 'none');
     SECONDARY.forEach(function (c) {
       if (c === I.lang()) return;
-      row(c, secondMeta(c).name, c);
+      row(c, secondMeta(c).name, c, manual === c);
     });
   }
   function renderRezept() {
@@ -1590,12 +1631,13 @@
     if (cui) cui.textContent = T('meal.' + rec.meal) + ' · ' + rget('cuisines', rec.cui);
     if (add) add.setAttribute('data-addlist', rec.id);
     body.textContent = '';
-    var ings = (foodData().recipeIngredients || {})[rec.id] || [];
+    var ings = recipeIngList(rec.id), factor = 1;
     var ingBox = mk('div', 'card');
     ingBox.appendChild(mk('h2', '', T('recipe.ingredients')));
-    ings.forEach(function (fid) {
+    ings.forEach(function (it) {
       var row = mk('div', 'ing-row');
-      row.appendChild(bilingualName(fid));
+      row.appendChild(bilingualName(it.id));
+      if (it.amount != null && it.unit) row.appendChild(mk('span', 'qty', formatQty(it.amount * factor, it.unit)));
       ingBox.appendChild(row);
     });
     if (!ings.length) ingBox.appendChild(mk('p', 'cap', T('recipe.none.text')));
@@ -1618,18 +1660,10 @@
     renderRezept();
   }
   function renderSecondLangUI() {
-    initSecondVariant();
-    var v = secondVariant();
-    $('#app').classList.toggle('variant-a', v === 'a');
-    $('#app').classList.toggle('variant-b', v === 'b');
-    $$('[data-variant]').forEach(function (b) {
-      var on = b.getAttribute('data-variant') === v;
-      b.classList.toggle('on', on);
-      b.setAttribute('aria-pressed', on ? 'true' : 'false');
-    });
+    clearLegacyVariant();
     var head = $('#secondSwitch');
     if (head) {
-      head.hidden = v !== 'b';
+      head.hidden = false;
       var btn = $('#secondSwitchBtn'), flag = $('#secondSwitchFlag'), code = $('#secondSwitchCode'), menu = $('#secondMenu');
       if (btn) {
         btn.setAttribute('aria-haspopup', 'listbox');
@@ -1637,11 +1671,452 @@
         if (menu) fillSecondOptions(menu);
       }
     }
-    $$('[data-secondchip]').forEach(fillSecondChip);
     renderSecondPickerList();
     renderShop();
     if (curScreen === 'rezept') renderRezept();
+    if (curScreen === 'plan') renderPlan();
     setSecondMenus(false);
+  }
+
+  // ---------- Essensplan und daraus erzeugte Einkaufsliste ----------
+  var planState = null, shopLive = null, planSheet = null;
+  function pad2(n) { return (n < 10 ? '0' : '') + n; }
+  function todayISO() {
+    var d = new Date();
+    return d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate());
+  }
+  function addDaysISO(iso, n) {
+    var p = String(iso).split('-'), d = new Date(+p[0], +p[1] - 1, +p[2] + n);
+    return d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate());
+  }
+  function isoInRange(iso, from, to) { return typeof iso === 'string' && iso >= from && iso <= to; }
+  function isIsoDate(v) { return typeof v === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(v) && !isNaN(Date.parse(v + 'T00:00:00')); }
+  function knownRecipe(id) { return RECIPES.some(function (r) { return r.id === id; }); }
+  function newPlanItemId() { return 'p' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6); }
+  function validPlanItemId(id) { return typeof id === 'string' && /^p[a-z0-9]{4,20}$/.test(id); }
+  function coercePortions(n) {
+    var x = typeof n === 'number' ? n : parseInt(n, 10);
+    if (!isFinite(x)) return 2;
+    return Math.max(1, Math.min(8, Math.round(x)));
+  }
+  function coerceDays(n) {
+    var x = typeof n === 'number' ? n : parseInt(n, 10);
+    if (!isFinite(x)) return 5;
+    return Math.max(3, Math.min(7, Math.round(x)));
+  }
+  function defaultPlan() {
+    var t = todayISO();
+    return {
+      days: 5,
+      items: [
+        { id: 'pseed01aa', date: t, slot: 'breakfast', recipeId: 'birchermuesli', portions: 2 },
+        { id: 'pseed01ab', date: t, slot: 'lunch', recipeId: 'pho', portions: 2 },
+        { id: 'pseed01ac', date: t, slot: 'dinner', recipeId: 'oven_salmon', portions: 2 },
+        { id: 'pseed01ad', date: t, slot: 'snack', recipeId: 'yogurt_bowl', portions: 1 },
+        { id: 'pseed02aa', date: addDaysISO(t, 1), slot: 'breakfast', recipeId: 'scrambled_eggs', portions: 2 },
+        { id: 'pseed02ab', date: addDaysISO(t, 1), slot: 'dinner', recipeId: 'thai_curry', portions: 2 },
+        { id: 'pseed03aa', date: addDaysISO(t, 2), slot: 'lunch', recipeId: 'chicken_bowl', portions: 2 }
+      ]
+    };
+  }
+  function sanitizePlan(raw) {
+    var min = addDaysISO(todayISO(), -1), max = addDaysISO(todayISO(), 14), out = { days: 5, items: [] }, seen = {};
+    if (!raw || typeof raw !== 'object') return null;
+    out.days = coerceDays(raw.days);
+    if (!Array.isArray(raw.items)) return out;
+    raw.items.slice(0, 80).forEach(function (it) {
+      if (!it || typeof it !== 'object') return;
+      var id = validPlanItemId(it.id) ? it.id : newPlanItemId();
+      if (seen[id]) return;
+      if (!isIsoDate(it.date) || !isoInRange(it.date, min, max)) return;
+      if (!SLOT_SET[it.slot]) return;
+      if (!knownRecipe(it.recipeId)) return;
+      seen[id] = 1;
+      out.items.push({ id: id, date: it.date, slot: it.slot, recipeId: String(it.recipeId), portions: coercePortions(it.portions) });
+    });
+    return out;
+  }
+  function loadPlan() {
+    try {
+      var raw = window.localStorage.getItem(PLAN_KEY);
+      if (!raw) return defaultPlan();
+      var parsed = JSON.parse(raw);
+      var clean = sanitizePlan(parsed);
+      if (!clean) return defaultPlan();
+      return clean;
+    } catch (e) { return defaultPlan(); }
+  }
+  function savePlan() {
+    if (!planState) return;
+    var clean = sanitizePlan(planState);
+    if (!clean) return;
+    planState = clean;
+    try { window.localStorage.setItem(PLAN_KEY, JSON.stringify(clean)); } catch (e) { /* nur bis zum Neuladen */ }
+  }
+  function getPlan() {
+    if (!planState) planState = loadPlan();
+    return planState;
+  }
+  function planWindowDates() {
+    var p = getPlan(), t = todayISO(), i, out = [];
+    for (i = 0; i < p.days; i++) out.push(addDaysISO(t, i));
+    return out;
+  }
+  function itemsOn(date, slot) {
+    return getPlan().items.filter(function (it) { return it.date === date && (!slot || it.slot === slot); });
+  }
+  function recipeTitle(id) { return rget('recipes', id); }
+  function dayLabel(iso) {
+    var t = todayISO();
+    if (iso === t) return T('plan.today');
+    if (iso === addDaysISO(t, 1)) return T('plan.tomorrow');
+    var p = String(iso).split('-'), dt = new Date(+p[0], +p[1] - 1, +p[2]);
+    try { return I.date(dt, { weekday: 'short', day: 'numeric', month: 'short' }); } catch (e) { return iso; }
+  }
+  function dayTotals(date) {
+    var kcal = 0, p = 0, n = 0;
+    itemsOn(date).forEach(function (it) {
+      var rec = RECIPES.filter(function (r) { return r.id === it.recipeId; })[0];
+      if (!rec) return;
+      if (typeof rec.kcal === 'number') { kcal += rec.kcal * it.portions; n++; }
+      if (typeof rec.p === 'number') p += rec.p * it.portions;
+    });
+    return n ? { kcal: Math.round(kcal), p: Math.round(p) } : null;
+  }
+  function setPlanDays(n) {
+    getPlan().days = coerceDays(n);
+    savePlan();
+    renderPlan();
+  }
+  function upsertPlanItem(item) {
+    var p = getPlan(), clean, i;
+    clean = sanitizePlan({ days: p.days, items: [item] });
+    if (!clean || !clean.items.length) return false;
+    item = clean.items[0];
+    if (item.slot !== 'snack') {
+      p.items = p.items.filter(function (x) { return !(x.date === item.date && x.slot === item.slot && x.id !== item.id); });
+    }
+    i = -1;
+    p.items.forEach(function (x, idx) { if (x.id === item.id) i = idx; });
+    if (i >= 0) p.items[i] = item; else p.items.push(item);
+    savePlan();
+    renderPlan();
+    return true;
+  }
+  function removePlanItem(id) {
+    var p = getPlan();
+    if (!validPlanItemId(id)) return;
+    p.items = p.items.filter(function (x) { return x.id !== id; });
+    savePlan();
+    renderPlan();
+  }
+  function renderPlan() {
+    var daysBox = $('#planDays'), list = $('#planList'); if (!list) return;
+    var p = getPlan(), dates = planWindowDates();
+    if (daysBox) {
+      daysBox.textContent = '';
+      [3, 4, 5, 6, 7].forEach(function (n) {
+        var b = mk('button', p.days === n ? 'on' : '');
+        b.type = 'button';
+        b.setAttribute('data-plan-days', String(n));
+        b.setAttribute('aria-pressed', p.days === n ? 'true' : 'false');
+        b.textContent = T('plan.days.n', { n: String(n) });
+        daysBox.appendChild(b);
+      });
+    }
+    list.textContent = '';
+    dates.forEach(function (iso) {
+      var day = mk('div', 'plan-day');
+      var head = mk('div', 'plan-day-head');
+      head.appendChild(mk('b', '', dayLabel(iso)));
+      var tot = dayTotals(iso);
+      if (tot) head.appendChild(mk('span', 'cap', T('plan.total', { kcal: fmt(tot.kcal), p: String(tot.p) })));
+      day.appendChild(head);
+      SLOTS.forEach(function (slot) {
+        var box = mk('div', 'plan-slot');
+        box.appendChild(mk('p', 'plan-slot-label', T('meal.' + slot)));
+        var filled = itemsOn(iso, slot);
+        filled.forEach(function (it) {
+          var rec = RECIPES.filter(function (r) { return r.id === it.recipeId; })[0];
+          var row = mk('div', 'plan-item');
+          var main = mk('button', 'grow');
+          main.type = 'button';
+          main.setAttribute('data-plan-open', it.recipeId);
+          main.setAttribute('aria-label', T('plan.filled', { name: recipeTitle(it.recipeId), n: String(it.portions) }));
+          main.appendChild(mk('b', '', recipeTitle(it.recipeId)));
+          var meta = T('plan.portions') + ' · ' + it.portions;
+          if (rec && typeof rec.kcal === 'number') meta += ' · ' + T('plan.total', { kcal: fmt(rec.kcal * it.portions), p: String(rec.p * it.portions) });
+          main.appendChild(mk('span', 'cap blk', meta));
+          row.appendChild(main);
+          var acts = mk('div', 'plan-actions');
+          var sw = mk('button', 'iconbtn'); sw.type = 'button'; sw.setAttribute('data-plan-swap', it.id); sw.setAttribute('aria-label', T('plan.swap')); sw.appendChild(icon('utensils', 's'));
+          var rm = mk('button', 'iconbtn'); rm.type = 'button'; rm.setAttribute('data-plan-remove', it.id); rm.setAttribute('aria-label', T('plan.slot.remove', { name: recipeTitle(it.recipeId) })); rm.appendChild(icon('trash', 's'));
+          acts.appendChild(sw); acts.appendChild(rm); row.appendChild(acts);
+          box.appendChild(row);
+        });
+        if (slot === 'snack' || !filled.length) {
+          var add = mk('button', 'plan-empty');
+          add.type = 'button';
+          add.setAttribute('data-plan-add', iso + '|' + slot);
+          add.textContent = T('plan.empty');
+          box.appendChild(add);
+        }
+        day.appendChild(box);
+      });
+      list.appendChild(day);
+    });
+  }
+  function closePlanSheet() {
+    planSheet = null;
+    var sh = $('#planSheet'), bd = $('#planSheetBack');
+    if (sh) sh.hidden = true;
+    if (bd) bd.hidden = true;
+  }
+  function isPlanSheetOpen() { return !!(planSheet && $('#planSheet') && !$('#planSheet').hidden); }
+  function openPlanSheet(spec) {
+    planSheet = spec || {};
+    if (planSheet.portions == null) planSheet.portions = planSheet.recipeId ? recipeServings(planSheet.recipeId) : 2;
+    if (!planSheet.date) planSheet.date = todayISO();
+    if (!planSheet.slot) planSheet.slot = planSheet.recipeId ? ((RECIPES.filter(function (r) { return r.id === planSheet.recipeId; })[0] || {}).meal || 'dinner') : 'dinner';
+    if (!SLOT_SET[planSheet.slot]) planSheet.slot = 'dinner';
+    if (planWindowDates().indexOf(planSheet.date) === -1) planSheet.date = todayISO();
+    renderPlanSheet();
+  }
+  function renderPlanSheet() {
+    var sh = $('#planSheet'), bd = $('#planSheetBack'), body = $('#planSheetBody'), title = $('#planSheetTitle');
+    if (!sh || !body || !planSheet) return;
+    bd.hidden = false; sh.hidden = false;
+    body.textContent = '';
+    var mode = planSheet.mode || 'form';
+    title.textContent = mode === 'pick' ? T('plan.pick') : T('plan.add.title');
+    if (mode === 'pick') {
+      var filter = planSheet.filterMeal;
+      RECIPES.forEach(function (r) {
+        if (filter && filter !== 'snack' && r.meal !== filter && r.meal !== 'snack') return;
+        var b = mk('button', 'pick-row');
+        b.type = 'button';
+        b.setAttribute('data-plan-pick', r.id);
+        b.appendChild(mk('b', 'grow', recipeTitle(r.id)));
+        b.appendChild(mk('span', 'cap', T('meal.' + r.meal)));
+        body.appendChild(b);
+      });
+      return;
+    }
+    if (planSheet.recipeId) body.appendChild(mk('p', '', recipeTitle(planSheet.recipeId)));
+    body.appendChild(mk('p', 'grph', T('plan.day')));
+    var days = mk('div', 'seg'); days.setAttribute('role', 'group');
+    planWindowDates().forEach(function (iso) {
+      var b = mk('button', iso === planSheet.date ? 'on' : '');
+      b.type = 'button'; b.setAttribute('data-plan-day', iso);
+      b.setAttribute('aria-pressed', iso === planSheet.date ? 'true' : 'false');
+      b.textContent = dayLabel(iso);
+      days.appendChild(b);
+    });
+    body.appendChild(days);
+    body.appendChild(mk('p', 'grph', T('plan.meal')));
+    var meals = mk('div', 'seg'); meals.setAttribute('role', 'group');
+    SLOTS.forEach(function (s) {
+      var b = mk('button', s === planSheet.slot ? 'on' : '');
+      b.type = 'button'; b.setAttribute('data-plan-slot', s);
+      b.setAttribute('aria-pressed', s === planSheet.slot ? 'true' : 'false');
+      b.textContent = T('meal.' + s);
+      meals.appendChild(b);
+    });
+    body.appendChild(meals);
+    body.appendChild(mk('p', 'grph', T('plan.portions')));
+    var st = mk('div', 'stepper');
+    var minus = mk('button', ''); minus.type = 'button'; minus.setAttribute('data-plan-step', '-1'); minus.setAttribute('aria-label', T('plan.portions') + ' −'); minus.textContent = '−';
+    var out = mk('output', ''); out.setAttribute('data-plan-out', '1'); out.textContent = String(planSheet.portions);
+    out.setAttribute('aria-live', 'polite');
+    var plus = mk('button', ''); plus.type = 'button'; plus.setAttribute('data-plan-step', '1'); plus.setAttribute('aria-label', T('plan.portions') + ' +'); plus.textContent = '+';
+    st.appendChild(minus); st.appendChild(out); st.appendChild(plus);
+    body.appendChild(st);
+    var ok = mk('button', 'btn'); ok.type = 'button'; ok.setAttribute('data-plan-confirm', '1'); ok.textContent = T('plan.confirm');
+    var cancel = mk('button', 'btn line'); cancel.type = 'button'; cancel.id = 'planSheetCancel'; cancel.textContent = T('plan.cancel');
+    body.appendChild(ok); body.appendChild(cancel);
+    var focus = sh.querySelector('h2'); if (focus) { focus.setAttribute('tabindex', '-1'); focus.focus({ preventScroll: true }); }
+  }
+
+  function defaultShopItems() {
+    return SHOP.map(function (it) {
+      var q = typeof it.qty === 'number' ? it.qty : null, u = it.unit || '';
+      return { id: it.id, unit: u, qtyPlan: 0, qtyExtra: q, recipesPlan: [], recipesExtra: [], grp: it.grp || foodGroup(it.id) };
+    });
+  }
+  function sanitizeShopItems(raw) {
+    var out = [], seen = {}, ids = {};
+    (foodData().glossary && foodData().glossary.de ? Object.keys(foodData().glossary.de) : []).forEach(function (id) { ids[id] = 1; });
+    SHOP.forEach(function (it) { ids[it.id] = 1; });
+    RECIPES.forEach(function (r) { recipeIngList(r.id).forEach(function (it) { ids[it.id] = 1; }); });
+    if (!Array.isArray(raw)) return defaultShopItems();
+    raw.slice(0, 120).forEach(function (it) {
+      if (!it || typeof it !== 'object') return;
+      if (typeof it.id !== 'string' || !ids[it.id]) return;
+      var unit = (it.unit === '' || it.unit == null) ? '' : String(it.unit);
+      if (unit && !QTY_UNITS[unit]) return;
+      var key = it.id + '\0' + unit, qp, qe;
+      if (seen[key]) return;
+      seen[key] = 1;
+      qp = (typeof it.qtyPlan === 'number' && isFinite(it.qtyPlan) && it.qtyPlan >= 0 && it.qtyPlan <= 1e6) ? it.qtyPlan : 0;
+      qe = (typeof it.qtyExtra === 'number' && isFinite(it.qtyExtra) && it.qtyExtra >= 0 && it.qtyExtra <= 1e6) ? it.qtyExtra : 0;
+      var rp = Array.isArray(it.recipesPlan) ? it.recipesPlan.filter(knownRecipe).slice(0, 20) : [];
+      var re = Array.isArray(it.recipesExtra) ? it.recipesExtra.filter(knownRecipe).slice(0, 20) : [];
+      out.push({ id: it.id, unit: unit, qtyPlan: qp, qtyExtra: qe, recipesPlan: rp, recipesExtra: re, grp: foodGroup(it.id) });
+    });
+    return out;
+  }
+  function loadShopItems() {
+    try {
+      var raw = window.localStorage.getItem(SHOP_KEY);
+      if (!raw) return defaultShopItems();
+      return sanitizeShopItems(JSON.parse(raw));
+    } catch (e) { return defaultShopItems(); }
+  }
+  function saveShopItems() {
+    if (!shopLive) return;
+    shopLive = sanitizeShopItems(shopLive);
+    try { window.localStorage.setItem(SHOP_KEY, JSON.stringify(shopLive)); } catch (e) { /* nur bis zum Neuladen */ }
+  }
+  function getShopItems() {
+    if (!shopLive) shopLive = loadShopItems();
+    return shopLive;
+  }
+  function shopKey(id, unit) { return id + '\0' + (unit || ''); }
+  function findShopItem(id, unit) {
+    var k = shopKey(id, unit || ''), found = null;
+    getShopItems().forEach(function (it) { if (shopKey(it.id, it.unit) === k) found = it; });
+    return found;
+  }
+  function uniquePush(arr, v) { if (arr.indexOf(v) === -1) arr.push(v); }
+  function addIngBundle(entries, dest) {
+    // entries: [{id, qty, unit, recipeId}], dest 'plan' | 'extra'
+    entries.forEach(function (e) {
+      if (!e || typeof e.id !== 'string') return;
+      var unit = e.unit || '', item = findShopItem(e.id, unit);
+      if (!item) {
+        item = { id: e.id, unit: unit, qtyPlan: 0, qtyExtra: 0, recipesPlan: [], recipesExtra: [], grp: foodGroup(e.id) };
+        getShopItems().push(item);
+      }
+      if (dest === 'plan') {
+        if (typeof e.qty === 'number' && isFinite(e.qty)) item.qtyPlan += e.qty;
+        if (e.recipeId) uniquePush(item.recipesPlan, e.recipeId);
+      } else {
+        if (typeof e.qty === 'number' && isFinite(e.qty)) item.qtyExtra += e.qty;
+        if (e.recipeId) uniquePush(item.recipesExtra, e.recipeId);
+      }
+    });
+  }
+  function ingsForPlanEntry(it) {
+    var factor = it.portions / recipeServings(it.recipeId), out = [];
+    recipeIngList(it.recipeId).forEach(function (ing) {
+      var qty = (ing.amount != null && ing.unit) ? ing.amount * factor : null;
+      out.push({ id: ing.id, qty: qty, unit: ing.unit || '', recipeId: it.recipeId });
+    });
+    return out;
+  }
+  function refreshPlanQuantities() {
+    getShopItems().forEach(function (it) { it.qtyPlan = 0; it.recipesPlan = []; });
+    var dates = planWindowDates();
+    getPlan().items.forEach(function (it) {
+      if (dates.indexOf(it.date) === -1) return;
+      addIngBundle(ingsForPlanEntry(it), 'plan');
+    });
+    shopLive = getShopItems().filter(function (it) {
+      return (it.qtyPlan && it.qtyPlan > 0) || (it.qtyExtra && it.qtyExtra > 0) || (it.unit === '' && (it.recipesPlan.length || it.recipesExtra.length)) || state.shop[it.id];
+    });
+    saveShopItems();
+  }
+  function addRecipeIngredientsToShop(recipeId, portions) {
+    if (!knownRecipe(recipeId)) return false;
+    addIngBundle(ingsForPlanEntry({ recipeId: recipeId, portions: coercePortions(portions || recipeServings(recipeId)) }), 'extra');
+    saveShopItems();
+    renderShop();
+    return true;
+  }
+  function shopQtyOf(it) {
+    var a = it.qtyPlan || 0, b = it.qtyExtra || 0;
+    if (!it.unit) return null;
+    return a + b;
+  }
+  function shopRecipesOf(it) {
+    var all = [], seen = {};
+    (it.recipesPlan || []).concat(it.recipesExtra || []).forEach(function (id) {
+      if (knownRecipe(id) && !seen[id]) { seen[id] = 1; all.push(id); }
+    });
+    return all;
+  }
+  function shopRow(it, st) {
+    var qty = shopQtyOf(it), src = shopRecipesOf(it);
+    var row = mk('div', 'shoprow' + (st === 'cart' ? ' incart' : st === 'home' ? ' athome' : ''));
+    var cap = formatQty(qty, it.unit);
+    var srcTxt = src.length ? T('shop.from', { recipes: src.map(recipeTitle).join(', ') }) : '';
+    if (st === 'home') {
+      var c0 = mk('span', 'circ sm'); c0.appendChild(icon('home', 's')); row.appendChild(c0);
+      var g0 = mk('span', 'grow'); g0.appendChild(bilingualName(it.id));
+      g0.appendChild(mk('small', 'cap', ' ' + cap));
+      if (srcTxt) g0.appendChild(mk('span', 'shop-from', srcTxt));
+      row.appendChild(g0);
+      var u = mk('button', 'havebtn', T('shop.undo')); u.setAttribute('data-shop', it.id + ':' + (it.unit || '') + ':open'); row.appendChild(u); return row;
+    }
+    var b = mk('button', 'chk grow' + (st === 'cart' ? ' on' : ''));
+    b.setAttribute('data-shop', it.id + ':' + (it.unit || '') + ':' + (st === 'cart' ? 'open' : 'cart'));
+    b.setAttribute('aria-pressed', st === 'cart' ? 'true' : 'false');
+    b.setAttribute('aria-label', T(st === 'cart' ? 'shop.fromcart' : 'shop.tocart', { name: foodAria(it.id) }));
+    var cb = mk('span', 'cb'); cb.appendChild(icon('check')); b.appendChild(cb);
+    var ng = mk('span', 'nm grow'); ng.appendChild(bilingualName(it.id));
+    if (srcTxt) ng.appendChild(mk('span', 'shop-from', srcTxt));
+    b.appendChild(ng); b.appendChild(mk('span', 'cap', cap)); row.appendChild(b);
+    if (st !== 'cart') { var h = mk('button', 'havebtn', T('shop.have')); h.setAttribute('data-shop', it.id + ':' + (it.unit || '') + ':home'); row.appendChild(h); }
+    return row;
+  }
+  function shopStatusKey(it) { return it.id + '\0' + (it.unit || ''); }
+  function stOfItem(it) { return state.shop[shopStatusKey(it)] || state.shop[it.id] || 'open'; }
+  function renderShop() {
+    var box = $('#shopList'); if (!box) return; box.textContent = '';
+    var vis = getShopItems().filter(function (it) {
+      var src = SHOP.filter(function (s) { return s.id === it.id; })[0];
+      return !src || allowed(src.has || []);
+    });
+    var anyOpen = false;
+    SHOP_GRPS.forEach(function (g) {
+      var its = vis.filter(function (it) { return (it.grp || foodGroup(it.id)) === g && stOfItem(it) === 'open'; });
+      if (!its.length) return;
+      anyOpen = true;
+      var w = mk('div'); w.appendChild(mk('p', 'grph', T('shop.grp.' + g))); var c = mk('div', 'card');
+      its.forEach(function (it) { c.appendChild(shopRow(it, 'open')); }); w.appendChild(c); box.appendChild(w);
+    });
+    if (!anyOpen) { var d = mk('div', 'banner ok'); d.appendChild(icon('check')); d.appendChild(mk('b', 'grow', T('shop.done'))); box.appendChild(d); }
+    ['cart', 'home'].forEach(function (s) {
+      var its = vis.filter(function (it) { return stOfItem(it) === s; }); if (!its.length) return;
+      var w = mk('div'); w.appendChild(mk('p', 'grph', T('shop.sec.' + s) + ' (' + its.length + ')')); var c = mk('div', 'card');
+      its.forEach(function (it) { c.appendChild(shopRow(it, s)); }); w.appendChild(c); box.appendChild(w);
+    });
+    var sub = $('#shopSub');
+    if (sub) {
+      var planN = 0;
+      getShopItems().forEach(function (it) { planN += (it.recipesPlan || []).length ? 1 : 0; });
+      if (planN) sub.textContent = T('shop.from.plan', { n: String(getPlan().days) });
+    }
+  }
+  function makeShopFromPlan() {
+    refreshPlanQuantities();
+    renderShop();
+    toast(T('plan.shop.done'));
+    go('einkauf');
+  }
+  function confirmPlanSheet() {
+    if (!planSheet || !planSheet.recipeId) return;
+    var item = {
+      id: (planSheet.itemId && validPlanItemId(planSheet.itemId)) ? planSheet.itemId : newPlanItemId(),
+      date: planSheet.date,
+      slot: planSheet.slot,
+      recipeId: planSheet.recipeId,
+      portions: coercePortions(planSheet.portions)
+    };
+    if (!upsertPlanItem(item)) return;
+    closePlanSheet();
+    toast(T('recipe.addplan.toast'));
+    if (curScreen !== 'plan') go('plan');
   }
 
     function renderLangBinds() {
@@ -1726,6 +2201,7 @@
     if (e.target && (e.target.id === 'langBackdrop' || (e.target.closest && e.target.closest('#langBackdrop')))) {
       setLangMenu(false); setSecondMenus(false); return;
     }
+    if (e.target && e.target.id === 'planSheetBack') { closePlanSheet(); return; }
     var recCard = e.target.closest ? e.target.closest('[data-recipe]') : null;
     if (recCard && !(e.target.closest && e.target.closest('[data-rate], [data-save], [data-addlist], [data-second], .second-chip, #secondSwitchBtn'))) {
       openRecipe(recCard.getAttribute('data-recipe')); return;
@@ -1737,21 +2213,54 @@
     if (el.id === 'langSwitchBtn' || (el.closest && el.closest('#langSwitchBtn'))) {
       setLangMenu(!LANG_MENU_OPEN); return;
     }
-    if (el.hasAttribute('data-variant')) {
-      setSecondVariant(el.getAttribute('data-variant')); return;
-    }
     if (el.id === 'secondSwitchBtn' || el.classList.contains('second-chip')) {
       setSecondMenus(!SECOND_MENU_OPEN || el.getAttribute('aria-expanded') !== 'true', el); return;
     }
     if (el.hasAttribute('data-second')) {
       var sc = el.getAttribute('data-second');
-      if (sc === 'none') setSecondLang(null);
+      if (sc === 'auto') { setSecondLang('auto'); }
+      else if (sc === 'none') { setSecondLang('none'); }
       else if (sc === I.lang()) { toast(T('second.same')); setSecondMenus(false); return; }
-      else if (!setSecondLang(sc)) { toast(T('lang.notApproved')); setSecondMenus(false); return; }
+      else if (!setSecondLang(sc)) { toast(T('second.same')); setSecondMenus(false); return; }
       setSecondMenus(false);
       renderSecondLangUI();
       return;
     }
+    if (el.id === 'rezeptAddPlan') {
+      openPlanSheet({ mode: 'form', recipeId: state.recipeId || 'oven_salmon' }); return;
+    }
+    if (el.id === 'planMakeShop') { makeShopFromPlan(); return; }
+    if (el.id === 'planSheetClose' || el.id === 'planSheetCancel' || el.id === 'planSheetBack') { closePlanSheet(); return; }
+    if (el.hasAttribute('data-plan-days')) { setPlanDays(el.getAttribute('data-plan-days')); return; }
+    if (el.hasAttribute('data-plan-add')) {
+      var pa = el.getAttribute('data-plan-add').split('|');
+      if (pa.length === 2) openPlanSheet({ mode: 'pick', date: pa[0], slot: pa[1], filterMeal: pa[1] });
+      return;
+    }
+    if (el.hasAttribute('data-plan-swap')) {
+      var swid = el.getAttribute('data-plan-swap'), swit = getPlan().items.filter(function (x) { return x.id === swid; })[0];
+      if (swit) openPlanSheet({ mode: 'pick', date: swit.date, slot: swit.slot, itemId: swit.id, portions: swit.portions, filterMeal: swit.slot });
+      return;
+    }
+    if (el.hasAttribute('data-plan-remove')) { removePlanItem(el.getAttribute('data-plan-remove')); return; }
+    if (el.hasAttribute('data-plan-open')) { openRecipe(el.getAttribute('data-plan-open')); return; }
+    if (el.hasAttribute('data-plan-pick')) {
+      planSheet = planSheet || {};
+      planSheet.recipeId = el.getAttribute('data-plan-pick');
+      planSheet.mode = 'form';
+      if (planSheet.portions == null) planSheet.portions = recipeServings(planSheet.recipeId);
+      renderPlanSheet();
+      return;
+    }
+    if (el.hasAttribute('data-plan-day')) { planSheet.date = el.getAttribute('data-plan-day'); renderPlanSheet(); return; }
+    if (el.hasAttribute('data-plan-slot')) { planSheet.slot = el.getAttribute('data-plan-slot'); renderPlanSheet(); return; }
+    if (el.hasAttribute('data-plan-step')) {
+      var stv = parseInt(el.getAttribute('data-plan-step'), 10);
+      planSheet.portions = coercePortions((planSheet.portions || 2) + (isFinite(stv) ? stv : 0));
+      renderPlanSheet();
+      return;
+    }
+    if (el.hasAttribute('data-plan-confirm')) { confirmPlanSheet(); return; }
     if (el.hasAttribute('data-lang')) {
       var lc = el.getAttribute('data-lang');
       if (!I.approved(lc)) { toast(T('lang.notApproved')); setLangMenu(false); return; }
@@ -1807,7 +2316,12 @@
     }
     if (el.hasAttribute('data-shop')) {
       var sh = el.getAttribute('data-shop').split(':');
-      if (SHOP.some(function (x) { return x.id === sh[0]; }) && SHOP_ST[sh[1]]) { state.shop[sh[0]] = sh[1]; renderShop(); }
+      var sid = sh[0], sunit = sh.length === 3 ? sh[1] : '', sst = sh.length === 3 ? sh[2] : sh[1];
+      if (sid && SHOP_ST[sst] && getShopItems().some(function (x) { return x.id === sid && (x.unit || '') === sunit; })) {
+        state.shop[sid + '\0' + sunit] = sst;
+        if (!sunit) state.shop[sid] = sst;
+        renderShop();
+      }
       return;
     }
     if (el.hasAttribute('data-portion')) { var po = el.getAttribute('data-portion'); if (PORTION[po]) { state.portion = po; renderFood(); } return; }
@@ -1835,7 +2349,13 @@
     if (el.id === 'bkOn') { if (!state.bkAgree) return; state.backup = true; $('#bkConsent').hidden = true; renderBackup(); toast(T('bk.toast.on')); return; }
     if (el.id === 'bkCancel') { state.bkAgree = false; $('#bkConsent').hidden = true; renderBackup(); return; }
     if (el.hasAttribute('data-toast')) { toast(el.getAttribute('data-toast')); return; }
-    if (el.hasAttribute('data-addlist')) { toast(T('toast.addlist')); setTimeout(function () { go('einkauf'); }, 700); return; }
+    if (el.hasAttribute('data-addlist')) {
+      var arid = el.getAttribute('data-addlist') || state.recipeId;
+      addRecipeIngredientsToShop(arid, recipeServings(arid));
+      toast(T('toast.addlist'));
+      setTimeout(function () { go('einkauf'); }, 700);
+      return;
+    }
     if (el.id === 'shutter') { analyse(); return; }
     if (el.id === 'confirm') { state.dinnerSaved = true; render(); go('heute'); showReward('reward.meal'); return; }
     if (el.id === 'trainBtn') { toggleTimer(); return; }

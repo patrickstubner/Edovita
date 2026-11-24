@@ -1034,3 +1034,41 @@
 1034|Ingredienti
 1035|Preparazione
 1036|Apri la ricetta
+1037|Automatico (luogo)
+1038|Automatico (luogo) · {code}
+1039|Automatico (luogo) · nessuna
+1040|Piano
+1041|Ricette per i prossimi giorni, poi spesa unica
+1042|Periodo
+1043|{n} giorni
+1044|Aggiungi al piano
+1045|Aggiungi al piano
+1046|+ Ricetta
+1047|Rimuovi
+1048|Sostituisci
+1049|Porzioni
+1050|Giorno
+1051|Pasto
+1052|Crea lista della spesa
+1053|Lista della spesa aggiornata
+1054|{kcal} kcal · {p} g di proteine
+1055|Non c’è ancora nulla in piano. Tocca «+ Ricetta».
+1056|Scegli una ricetta
+1057|Oggi
+1058|Domani
+1059|Aggiungi
+1060|Annulla
+1061|Chiudi
+1062|Per {recipes}
+1063|Carne e pesce
+1064|{n} cucch.
+1065|{n} cucc.
+1066|{n} pizzico
+1067|{n} g
+1068|{n} ml
+1069|Secondo la ricetta
+1070|Aggiunto al piano
+1071|Porzioni, {n}
+1072|Rimuovi {name}
+1073|{name}, {n} porzioni
+1074|Creata dal piano di {n} giorni

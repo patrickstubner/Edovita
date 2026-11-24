@@ -1,3 +1,29 @@
+# Sicherheitsprüfung v5.7 (24. November 2026, Europe/Zurich)
+
+**Stand:** UX-Versuch Essensplan plus Einkaufsliste, Zweitsprache fest als zweiter Umschalter in der Kopfzeile (Variante B). Branch `prototype/lang-switcher` (nicht auf `main` mergen). Bestehender Cloudflare-Worker wird aktualisiert, keine neuen Ressourcen oder Pakete. Dark/Light unverändert.
+**Quelle der Prüfung:** Code-Review der geänderten Dateien (`index.html`, `styles.css`, `app.js`, `data/glossary.js`, `locales/*`, `tools/i18n-src/*`), grep-Scans (innerHTML/eval/Netzwerk/Geheimnisse/Geolocation/Inline-Handler), Headless Playwright (Chrome, Viewport 390×844 und 360×844): Whitelist und XSS-Proben für `edovita.secondLang` und `edovita.plan`, Mengen- und Datumsgrenzen, automatische Zweitsprache ohne Geolocation, 0 Konsolenfehler. Keine neuen Laufzeit-Abhängigkeiten, deshalb kein `pnpm audit` im Prototyp.
+
+| # | Thema | Ergebnis | Schwere |
+|---|--------|----------|---------|
+| 1 | Eingabevalidierung | Zweitsprache: nur Whitelist `de/en/pt/ja` oder ausdrücklich `none`; ungültige Werte werden gelöscht (Fallback: automatisch). Automatische Wahl aus `Intl.DateTimeFormat().resolvedOptions().timeZone` (kleine Tabelle) oder Region in `navigator.languages`, dann Land→Sprache; nur gesetzt, wenn die Sprache in der Inhalts-Whitelist liegt und ungleich der UI-Sprache ist, sonst Englisch, sonst keine. Die automatische Wahl wird nicht gespeichert, eine manuelle Wahl schon. Plan (`edovita.plan`): `days` nur 3–7, max. 80 Einträge, `id` nur `p` + alphanumerisch, Datum `YYYY-MM-DD` im Fenster heute−1 bis heute+14, Slot nur `breakfast/lunch/dinner/snack`, `recipeId` nur bekannte Rezepte, Portionen ganzzahlig 1–8. Einkaufsliste (`edovita.shopItems`): nur bekannte Lebensmittel-IDs, Einheiten-Whitelist (`g/ml/pc/tbsp/tsp/pinch/bottle`), Mengen 0–1e6, Rezeptquellen gegen die Rezeptliste. `?variant` wird entfernt, alter Key `edovita.secondLangVariant` gelöscht. Getestet: Payloads und unmögliche Plan-Felder erscheinen nicht im DOM. | kein Befund |
+| 2 | Injection / XSS | Keine neuen Sinks: kein `innerHTML`/`eval`/`document.write`. Namen, Mengen, Plan- und Listenzeilen per `createElement`/`textContent`/`setAttribute`. `data-plan-*` und `data-second` nur aus Whitelist bzw. geprüften IDs. CSP unverändert (`script-src 'self'`, `connect-src 'none'`). | kein Befund |
+| 3 | Geheimnisse | Keine Schlüssel, Tokens oder Passwörter in den geänderten Dateien (Scan). | kein Befund |
+| 4 | Standort / Speicher | **Keine Geolocation-API, kein Berechtigungs-Popup, keine Koordinaten.** Es werden weder Zeitzone noch Land noch abgeleitete Ortsdaten gespeichert oder gesendet (`connect-src 'none'`). Zusätzliche Keys: `edovita.plan`, `edovita.shopItems` (fiktive Demo-Daten). Keine Gesundheitsdaten darüber hinaus. | kein Befund |
+| 5 | Abhängigkeiten | Keine neuen Laufzeit- oder Build-Abhängigkeiten. | kein Befund |
+| 6 | Fehlermeldungen / Angriffsfläche | Keine Stacktraces nach aussen. Keine Netzwerkaufrufe. | kein Befund |
+
+**SHA-256 (geänderte Kern-Dateien):**
+```
+f0aa357ca29155c9d76a28015e8e989b59c2c608fbd386e501a22dbcc36f1250  prototype/index.html
+f9d5c2d4da75538cdf2aa61075ac9fafdcb44bf2a25debe082ccb636ff144aa0  prototype/styles.css
+36b63c2c6febf6412623fa6b53990f9e22678533ece80991172408f43fbec328  prototype/app.js
+5b54686200f5fcb34be34c3070a741b5c436deddc21e38144f7fd4c2d0bc0786  prototype/i18n.js
+60ff99ca9262ddb732519d45bd6db531724985bcc24461398aedd3357ddeac51  prototype/locales.js
+03ed82e8c549578601f31f6fe60e6c4b0f35a64e5292601ba6024a2dbd73b1f7  prototype/data/glossary.js
+```
+
+---
+
 # Sicherheitsprüfung v5.6 (24. November 2026, Europe/Zurich)
 
 **Stand:** UX-Versuch Zweitsprache (Varianten A und B) im Klick-Prototyp. Branch `prototype/lang-switcher` (nicht auf `main` mergen). Bestehender Cloudflare-Worker wird aktualisiert, keine neuen Ressourcen oder Pakete. Hauptsprache-Umschalter und Dark/Light bleiben wie in v5.5.
