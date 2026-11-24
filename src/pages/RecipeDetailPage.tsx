@@ -23,6 +23,7 @@ import {
   useI18n,
   useRatings,
   useRecipe,
+  useSecondLang,
   useServings,
   useShopping,
 } from '../hooks/index.ts';
@@ -53,11 +54,11 @@ interface ToastState {
 }
 
 /**
- * Rezept-Detailseite (#/rezept/:id) gemäss Issue #10, ADR-003 und ADR-005:
+ * Rezept-Detailseite (#/rezept/:id) gemäss Issues #10/#12, ADR-003 und ADR-005:
  * - RecipeHeader (Sterne & Merken persistent über RatingsRepository)
  * - ServingsStepper (1–12, Tastatur-bedienbar, aria-live)
- * - IngredientList (skalierte Mengen, Allergene inkl. «Kann enthalten»)
- * - StepList (nur App-Sprache)
+ * - IngredientList (skalierte Mengen, Zweitsprache via `BilingualName` mit `<bdi>`, Allergene inkl. «Kann enthalten»)
+ * - StepList (nur App-Sprache, darunter Hinweis `second.hint`)
  * - NutritionPanel (berechnete Werte, CH-NWD-Quelle, «mindestens»-Hinweis, sichere review.sources F3b)
  * - Fixe BottomActions «Zur Einkaufsliste hinzufügen» mit Toast & «Rückgängig» (bleibt auf der Seite)
  * - Unbekannte ID zeigt «Rezept nicht gefunden» mit Zurück-Navigation.
@@ -66,6 +67,7 @@ export function RecipeDetailPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { lang, t, fmtNumber, fmtAmount } = useI18n();
+  const { effectiveMeta: secondMeta, secondFoodName } = useSecondLang();
   const { recipe, text, missingText, nutrition, catalogSource, notFound } =
     useRecipe(id);
   const {
@@ -113,6 +115,9 @@ export function RecipeDetailPage() {
       const missingName = translatedName === null;
       const displayName =
         translatedName ?? t('detail.missing_food_name', { id: ing.food });
+      const secondaryName = missingName
+        ? null
+        : secondFoodName(ing.food, displayName);
       const note =
         ing.noteKey && text && Object.hasOwn(text.notes, ing.noteKey)
           ? text.notes[ing.noteKey]
@@ -128,6 +133,9 @@ export function RecipeDetailPage() {
         key: `${ing.food}-${idx}`,
         amountText: fmtAmount(ing.scaledAmount, ing.unit),
         name: displayName,
+        secondaryName,
+        secondaryLocale: secondMeta?.locale,
+        secondaryDir: secondMeta?.dir,
         missingName,
         note,
         optional: ing.optional,
@@ -136,7 +144,17 @@ export function RecipeDetailPage() {
         allergensToCheck,
       };
     });
-  }, [fmtAmount, lang, recipe, scaledIngredients, t, text]);
+  }, [
+    fmtAmount,
+    lang,
+    recipe,
+    scaledIngredients,
+    secondFoodName,
+    secondMeta?.dir,
+    secondMeta?.locale,
+    t,
+    text,
+  ]);
 
   const nutritionRows = useMemo<readonly NutritionRowData[]>(() => {
     if (!nutrition || !totalNutrients) return [];
@@ -419,7 +437,13 @@ export function RecipeDetailPage() {
           disclaimerLabel={t('detail.allergens.disclaimer')}
         />
 
-        {text ? <StepList heading={t('detail.steps')} steps={text.steps} /> : null}
+        {text ? (
+          <StepList
+            heading={t('detail.steps')}
+            steps={text.steps}
+            hint={t('second.hint')}
+          />
+        ) : null}
 
         <NutritionPanel
           heading={t('detail.nutrition')}

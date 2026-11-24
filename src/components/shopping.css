@@ -113,12 +113,13 @@
   opacity: 1;
 }
 
-.edo-shop-nm-line {
+.edo-shop-nm {
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 8px;
+  flex-direction: column;
+  align-items: stretch;
   min-inline-size: 0;
+  gap: 1px;
+  overflow: hidden;
 }
 
 .edo-shoprow-nm {
@@ -129,6 +130,37 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.edo-shop-nm-2 {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  min-inline-size: 0;
+}
+
+.edo-shop-nm-2 .edo-biname-sec {
+  flex: 1 1 auto;
+  min-inline-size: 0;
+  font-size: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.edo-shop-nm-one-line {
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.edo-shop-nm-one-line .edo-shoprow-nm {
+  flex: 1 1 auto;
+}
+
+.edo-shop-nm-one-line .edo-shop-nm-2 {
+  flex: none;
 }
 
 .edo-chk-on .edo-shoprow-nm {

@@ -760,29 +760,36 @@ html[data-eff='dark'] .edo-rimg {
   flex: none;
 }
 
-/* Kompakter Sprachumschalter oben rechts (in RTL links), exakt nach Prototyp v5.5 (13e323e0) */
+/* Kompakter Sprachumschalter & Zweitsprache oben rechts (in RTL links), exakt nach Prototyp v5.5–v5.10 */
 .edo-lang-switch {
   position: absolute;
   inset-block-start: 12px;
   inset-inline-end: 16px;
-  z-index: 20;
+  z-index: 23;
+}
+
+.edo-second-switch {
+  position: absolute;
+  inset-block-start: 12px;
+  inset-inline-end: 80px;
+  z-index: 23;
 }
 
 .edo-lang-switch-btn {
   min-inline-size: 44px;
   min-block-size: 44px;
   padding-block: 0;
-  padding-inline: 8px 10px;
+  padding-inline: 6px 8px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 4px;
   border-radius: 22px;
   background: var(--edo-surface);
   box-shadow: var(--edo-shadow);
   color: var(--edo-text);
   font-weight: 800;
-  font-size: 13px;
+  font-size: 12px;
   letter-spacing: 0.4px;
 }
 
@@ -884,8 +891,38 @@ html[data-eff='dark'] .edo-rimg {
   flex: none;
 }
 
+/* Zwei Umschalter oben rechts: 152 px Reserve rechts, Titel bricht sauber unter Zurück/Info */
 .edo-app-shell.has-lang-switch .edo-screen-header {
-  padding-inline-end: 96px;
+  padding-inline-end: 152px;
+}
+
+.edo-app-shell.has-lang-switch .edo-screen-header > .edo-row {
+  flex-wrap: wrap;
+  row-gap: 4px;
+}
+
+.edo-app-shell.has-lang-switch .edo-screen-header > .edo-row > h1,
+.edo-app-shell.has-lang-switch .edo-screen-header > .edo-row > .edo-grow {
+  flex: 1 1 100%;
+  order: 5;
+  min-inline-size: 0;
+}
+
+.edo-biname {
+  display: inline;
+}
+
+.edo-biname-sec {
+  font-weight: 600;
+  color: var(--edo-text-muted);
+}
+
+.edo-section-heading {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--edo-text-muted);
 }
 
 html[data-eff='dark'] .edo-lang-flag {

@@ -44,9 +44,9 @@ Kleine Pakete, je ein PR, je ca. 0,5–1,5 Agent-Tage. Jedes Issue verweist auf 
 **Akzeptanz:** J1–J3 und J7 grün; Zustand bleibt nach Neuladen; geteilter Text enthält nur Namen, Mengen, Zustände.
 
 ## E6 – Zweitsprache für Lebensmittel
-**Ziel:** Wunsch des Projektinhabers vom 07./10.11.
-**Umfang:** `secondLang` in Settings, `useSecondLang`, `BilingualName` mit `<bdi>`, `LangChip` + `SecondLangSheet` in der Liste und Auswahl im Profil, Glossare pt und ja (liegen in `inhalte/foods/glossary/`), kein Rechts-Gate für die Zweitsprache, Pseudo-Sprache `ar-XB` nur im Testbuild, Registry-Eintrag `secondary`.
-**Akzeptanz:** J4 und J5 grün; neue Zweitsprache nur durch Glossar-Datei + Registry-Eintrag (Test fügt `xx` hinzu, ohne Codeänderung sichtbar); fehlender Glossareintrag → nur App-Name.
+**Ziel:** Wunsch des Projektinhabers vom 07./10.11. (Prototyp v5.7–v5.10 «Variante B»).
+**Umfang:** `secondLang` dreiwertig in Settings (`null` = automatisch nach Ort über feste Zeitzonen-/Sprachtabelle ohne Geolocation-API, `'none'` = keine, Sprachcode = manuell), `useSecondLang`, `BilingualName` mit `<bdi>` (Rezept-Detail einzeilig, Einkaufsliste zweizeilig), `SecondLangSwitcher` in der Kopfzeile links neben dem Hauptumschalter (kein Chip in der Einkaufsliste) sowie Abschnitt «Zweitsprache» unter Profil › Sprache, Glossare de/en/pt/ja (`content/foods/glossary/`), kein Rechts-Gate für die Zweitsprache, Pseudo-Sprache `ar-XB` nur für Tests, Registry-Eintrag `secondary`.
+**Akzeptanz:** J4 und J5 grün; Orts-Standard per Test belegt (Automatik nicht gespeichert, manuelle Wahl schon; kein `navigator.geolocation`); neue Zweitsprache nur durch Glossar-Datei + Registry-Eintrag (Test fügt `xx` hinzu, ohne Codeänderung sichtbar); fehlender Glossareintrag → nur App-Name.
 
 ## E7 – PWA und Offline
 **Ziel:** Offline-Pflicht für Web.

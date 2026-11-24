@@ -19,6 +19,9 @@ export interface LangSwitcherProps {
   readonly options: readonly LangSwitcherOption[];
   readonly buttonLabel: string;
   readonly menuLabel: string;
+  readonly open?: boolean;
+  readonly onOpenChange?: (open: boolean) => void;
+  readonly hideBackdrop?: boolean;
   readonly onSelect: (code: LangCode) => void;
 }
 
@@ -34,12 +37,26 @@ export function LangSwitcher({
   options,
   buttonLabel,
   menuLabel,
+  open: controlledOpen,
+  onOpenChange,
+  hideBackdrop = false,
   onSelect,
 }: LangSwitcherProps) {
-  const [open, setOpen] = useState<boolean>(false);
+  const [uncontrolledOpen, setUncontrolledOpen] = useState<boolean>(false);
+  const open = controlledOpen ?? uncontrolledOpen;
   const btnRef = useRef<HTMLButtonElement | null>(null);
   const menuRef = useRef<HTMLDivElement | null>(null);
   const pendingFocusRef = useRef<OpenFocusTarget | null>(null);
+
+  const setOpenState = useCallback(
+    (next: boolean) => {
+      if (controlledOpen === undefined) {
+        setUncontrolledOpen(next);
+      }
+      onOpenChange?.(next);
+    },
+    [controlledOpen, onOpenChange],
+  );
 
   const getOptionButtons = useCallback((): HTMLButtonElement[] => {
     if (!menuRef.current) return [];
@@ -48,18 +65,24 @@ export function LangSwitcher({
     );
   }, []);
 
-  const openMenu = useCallback((focusTarget: OpenFocusTarget = 'selected') => {
-    pendingFocusRef.current = focusTarget;
-    setOpen(true);
-  }, []);
+  const openMenu = useCallback(
+    (focusTarget: OpenFocusTarget = 'selected') => {
+      pendingFocusRef.current = focusTarget;
+      setOpenState(true);
+    },
+    [setOpenState],
+  );
 
-  const closeMenu = useCallback((returnFocusToButton: boolean) => {
-    pendingFocusRef.current = null;
-    setOpen(false);
-    if (returnFocusToButton) {
-      btnRef.current?.focus();
-    }
-  }, []);
+  const closeMenu = useCallback(
+    (returnFocusToButton: boolean) => {
+      pendingFocusRef.current = null;
+      setOpenState(false);
+      if (returnFocusToButton) {
+        btnRef.current?.focus();
+      }
+    },
+    [setOpenState],
+  );
 
   useEffect(() => {
     if (!open || pendingFocusRef.current === null) {
@@ -151,13 +174,15 @@ export function LangSwitcher({
 
   return (
     <>
-      <div
-        id="langBackdrop"
-        className="edo-lang-backdrop"
-        hidden={!open}
-        onClick={() => closeMenu(false)}
-        data-testid="lang-switch-backdrop"
-      />
+      {!hideBackdrop ? (
+        <div
+          id="langBackdrop"
+          className="edo-lang-backdrop"
+          hidden={!open}
+          onClick={() => closeMenu(false)}
+          data-testid="lang-switch-backdrop"
+        />
+      ) : null}
       <div
         id="langSwitch"
         className="edo-lang-switch"

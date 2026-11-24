@@ -1,3 +1,4 @@
+export { BilingualName, type BilingualNameProps } from './BilingualName.tsx';
 export { BottomActions, type BottomActionsProps } from './BottomActions.tsx';
 export {
   BrandsSheet,
@@ -41,6 +42,12 @@ export {
 export { RecipeHeader, type RecipeHeaderProps } from './RecipeHeader.tsx';
 export { SaveButton, type SaveButtonProps } from './SaveButton.tsx';
 export { Screen, type ScreenProps } from './Screen.tsx';
+export {
+  SecondLangSwitcher,
+  type SecondLangOptionValue,
+  type SecondLangSwitcherOption,
+  type SecondLangSwitcherProps,
+} from './SecondLangSwitcher.tsx';
 export {
   ServingsStepper,
   type ServingsStepperProps,

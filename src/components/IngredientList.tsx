@@ -1,9 +1,14 @@
+import type { TextDir } from '../domain/index.ts';
+import { BilingualName } from './BilingualName.tsx';
 import { Icon } from './Icon.tsx';
 
 export interface IngredientRowItem {
   readonly key: string;
   readonly amountText: string;
   readonly name: string;
+  readonly secondaryName?: string | null;
+  readonly secondaryLocale?: string;
+  readonly secondaryDir?: TextDir;
   readonly missingName?: boolean;
   readonly note?: string;
   readonly optional?: boolean;
@@ -26,8 +31,8 @@ export interface IngredientListProps {
 }
 
 /**
- * Zutatenliste mit skalierten Mengen, optionalen Hinweisen und Allergen-Kennzeichnung
- * inklusive «Kann enthalten» für `allergensToCheck` (Issue #10, ADR-005).
+ * Zutatenliste mit skalierten Mengen, optionaler Zweitsprache (`BilingualName` mit `<bdi>`),
+ * Hinweisen und Allergen-Kennzeichnung inklusive «Kann enthalten» für `allergensToCheck` (Issues #10/#12, ADR-003/ADR-005).
  */
 export function IngredientList({
   heading,
@@ -71,7 +76,16 @@ export function IngredientList({
                     item.missingName ? `missing-food-${item.key}` : undefined
                   }
                 >
-                  {item.name}
+                  {item.missingName ? (
+                    item.name
+                  ) : (
+                    <BilingualName
+                      main={item.name}
+                      secondary={item.secondaryName}
+                      secondaryLang={item.secondaryLocale}
+                      secondaryDir={item.secondaryDir}
+                    />
+                  )}
                 </span>
                 {item.optional ? (
                   <span className="edo-cap"> ({optionalLabel})</span>

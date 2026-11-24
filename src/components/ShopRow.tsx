@@ -1,4 +1,5 @@
-import type { FoodId, ShopState, Unit } from '../domain/index.ts';
+import type { FoodId, ShopState, TextDir, Unit } from '../domain/index.ts';
+import { BilingualName } from './BilingualName.tsx';
 import { Icon } from './Icon.tsx';
 
 export interface ShopRowProps {
@@ -6,6 +7,9 @@ export interface ShopRowProps {
   readonly food: FoodId;
   readonly unit?: Unit;
   readonly name: string;
+  readonly secondaryName?: string | null;
+  readonly secondaryLocale?: string;
+  readonly secondaryDir?: TextDir;
   readonly amountText: string;
   readonly buyAmountText?: string;
   readonly isPartial: boolean;
@@ -24,7 +28,9 @@ export interface ShopRowProps {
 }
 
 /**
- * Einzelne Einkaufszeile gemäss Prototyp v5.9 (`shopRow` in `prototype/app.js` / `styles.css`):
+ * Einzelne Einkaufszeile gemäss Prototyp v5.9 / v5.10 (`shopRow` in `prototype/app.js` / `styles.css`):
+ * - Mit Zweitsprache zweizeilig (Zeile 1 Name, Zeile 2 Zweitname gedämpft `<bdi>` + Menge),
+ *   ohne Zweitsprache einzeilig (`BilingualName layout="stacked"`)
  * - Keine Rezept-/Herkunftszeile unter der Zutat; stattdessen ⓘ-Knopf (Icon 28×28,
  *   Tippfläche 56×56, 16 px Abstand zur Abhakfläche, Geschwister-Button ohne Abhaken)
  * - Teilmenge: Kaufmenge normal + Bedarf durchgestrichen (`aria-hidden`), Screenreader
@@ -36,6 +42,9 @@ export function ShopRow({
   food,
   unit,
   name,
+  secondaryName,
+  secondaryLocale,
+  secondaryDir,
   amountText,
   buyAmountText,
   isPartial,
@@ -73,6 +82,17 @@ export function ShopRow({
         {amountText}
       </span>
     ) : null;
+
+  const nameColumn = (
+    <BilingualName
+      layout="stacked"
+      main={name}
+      secondary={secondaryName}
+      secondaryLang={secondaryLocale}
+      secondaryDir={secondaryDir}
+      trailing={qtyBlock}
+    />
+  );
 
   const sourceBtn = hasSource ? (
     <button
@@ -128,10 +148,7 @@ export function ShopRow({
         <span className="edo-circ edo-circ-sm" aria-hidden="true">
           <Icon name="home" size="sm" />
         </span>
-        <span className="edo-grow edo-shop-nm-line">
-          <span className="edo-shoprow-nm">{name}</span>
-          {qtyBlock}
-        </span>
+        {nameColumn}
         {sourceBtn}
         {haveBtn}
       </div>
@@ -158,10 +175,7 @@ export function ShopRow({
         <span className="edo-cb" aria-hidden="true">
           <Icon name="check" size="sm" />
         </span>
-        <span className="edo-grow edo-shop-nm-line">
-          <span className="edo-shoprow-nm">{name}</span>
-          {qtyBlock}
-        </span>
+        {nameColumn}
       </button>
       {sourceBtn}
       {haveBtn}

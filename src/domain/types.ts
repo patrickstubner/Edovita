@@ -264,9 +264,12 @@ export interface Profile {
   pace: Pace;
 }
 
+/** Dreiwertige Einstellung für die Zweitsprache (E6 / Prototyp v5.10): `null` = automatisch, `'none'` = keine, Sprachcode = manuelle Wahl. */
+export type SecondLangSetting = LangCode | 'none' | null;
+
 export interface Settings {
   uiLang: LangCode;
-  secondLang: LangCode | null;
+  secondLang: SecondLangSetting;
   theme: 'system' | 'light' | 'dark';
   sound: boolean;
   hymn: HymnId;

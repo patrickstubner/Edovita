@@ -28,8 +28,8 @@ Jede Sprache hat `dir` (`ltr`/`rtl`). Eine neue Sprache braucht **nur** Inhalt +
 
 ### 3. Zweitsprache
 
-- Wählbar in Einkaufsliste (Chip oben) und Profil › Sprache, auch «keine».
-- Angezeigt **nur** bei Zutaten (Rezept-Detail) und Einkaufsartikeln: `Brokkoli · broccoli`. Kochschritte, Titel und UI bleiben in der App-Sprache.
+- Wählbar über einen zweiten kompakten Umschalter in der Kopfzeile (links neben dem Hauptumschalter, in RTL entsprechend gespiegelt) und unter Profil › Sprache (kein Chip in der Einkaufsliste). Standard ist **automatisch nach Ort** (feste Zeitzonen-/Sprach-Tabelle ohne Geolocation-API, nicht gespeichert); ausserdem «Keine» (`'none'`) und manuelle Wahl (gespeichert).
+- Angezeigt **nur** bei Zutaten im Rezept-Detail (einzeilig: `Broccoli · brócolis`) und bei Einkaufsartikeln (zweizeilig: Zeile 1 Name, Zeile 2 Zweitname gedämpft plus Menge; ohne Zweitsprache einzeilig). Kochschritte, Titel und UI bleiben in der App-Sprache (Hinweis `second.hint` unter den Kochschritten).
 - Gleiche Sprache wie die App = ausgeblendet. Fehlt ein Eintrag im Glossar: nur App-Name, kein englischer Ersatz (sonst irreführend im Laden).
 - Darstellung über Komponente `BilingualName` mit `<bdi lang dir>` für den Zweitnamen. Layout nur mit logischen CSS-Eigenschaften, damit Arabisch/Urdu/Persisch ohne Codeänderung gehen. Pseudo-Sprache `ar-XB` für den RTL-Test.
 - Start: **de, en, pt, ja** (Projektinhaber 07.11.), vorbereitet in `inhalte/foods/glossary/`. Die Zweitsprache ist **frei wählbar ohne Rechts-Gate**, weil sie nur Lebensmittelnamen zeigt; `legalApproved` gilt weiterhin nur für die UI-Sprache. Unsichere Übersetzungen stehen in `_status.json` und werden in der App trotzdem gezeigt, bis sie gegengelesen sind.

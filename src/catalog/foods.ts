@@ -56,14 +56,15 @@ export function getGlossaryLangs(): readonly string[] {
 export function foodName(
   id: FoodId | string,
   lang: LangCode,
+  glossaries: Readonly<Record<string, Readonly<Record<string, string>>>> = GLOSSARIES,
 ): string | null {
   if (typeof lang !== 'string' || typeof id !== 'string') {
     return null;
   }
-  if (!Object.hasOwn(GLOSSARIES, lang)) {
+  if (!Object.hasOwn(glossaries, lang)) {
     return null;
   }
-  const glossary = GLOSSARIES[lang];
+  const glossary = glossaries[lang];
   if (!glossary || !Object.hasOwn(glossary, id)) {
     return null;
   }

@@ -224,5 +224,13 @@
   "shop.have.aria": "{name}: schon zu Hause festlegen",
   "shop.have.aria.partial": "{name}: teilweise vorhanden, {buy} von {need} kaufen. Anpassen",
   "shop.have.aria.home": "{name}: alles vorhanden. Anpassen",
-  "shop.amount.missing": "Nach Rezept"
+  "shop.amount.missing": "Nach Rezept",
+  "second.none": "Keine",
+  "second.label": "Zweitsprache",
+  "second.label.current": "Zweitsprache, aktuell {name}",
+  "second.label.none": "Zweitsprache, keine",
+  "second.hint": "Zusätzlicher Name für Zutaten und Einkaufsartikel. Schritte und Menüs bleiben in der App-Sprache.",
+  "second.same": "Die Zweitsprache darf nicht der App-Sprache entsprechen.",
+  "second.auto.current": "Automatisch (Ort) · {code}",
+  "second.auto.none": "Automatisch (Ort) · keine"
 }

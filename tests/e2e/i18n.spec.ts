@@ -154,7 +154,7 @@ test.describe('E2 + v5.5 Kompakter Umschalter: Tastatur, Live-Wechsel J6, alle S
     const headerPadEnd = await page
       .locator('.edo-screen-header')
       .evaluate((el) => getComputedStyle(el).paddingInlineEnd);
-    expect(headerPadEnd).toBe('96px');
+    expect(headerPadEnd).toBe('152px');
 
     await page.goto('/#/rezepte');
     await expect(btn).toBeVisible();

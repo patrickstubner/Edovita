@@ -224,5 +224,13 @@
   "shop.have.aria": "{name}: indicar quanto você já tem",
   "shop.have.aria.partial": "{name}: em parte em casa, comprar {buy} de {need}. Ajustar",
   "shop.have.aria.home": "{name}: tudo em casa. Ajustar",
-  "shop.amount.missing": "Conforme a receita"
+  "shop.amount.missing": "Conforme a receita",
+  "second.none": "Nenhuma",
+  "second.label": "Segundo idioma",
+  "second.label.current": "Segundo idioma, atualmente {name}",
+  "second.label.none": "Segundo idioma, nenhum",
+  "second.hint": "Nome extra para ingredientes e itens da lista. Os passos e os menus continuam no idioma do app.",
+  "second.same": "O segundo idioma não pode ser o mesmo do app.",
+  "second.auto.current": "Automático (local) · {code}",
+  "second.auto.none": "Automático (local) · nenhuma"
 }

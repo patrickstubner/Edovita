@@ -8,6 +8,7 @@ import {
   type LangCode,
   type LangMeta,
   type LanguagesRegistry,
+  type SecondLangSetting,
 } from '../domain/index.ts';
 
 /** Aus der Sprach-Registry abgeleitete UI-Sprachen (F1, nicht hartkodiert). */
@@ -97,13 +98,13 @@ export function resolveApprovedUiLang(
 }
 
 /**
- * Validiert `secondLang` gegen `registry.secondary` und fällt bei unbekannten
- * oder reservierten Werten auf `null` (keine Zweitsprache) zurück (F3a).
+ * Validiert `secondLang` dreiwertig gegen `registry.secondary` (`null` = automatisch,
+ * `'none'` = keine, Sprachcode = manuell; unbekannte Werte fallen auf `null` zurück).
  */
 export function resolveSecondLang(
   value: unknown,
   registry: LanguagesRegistry = LANGUAGES_REGISTRY,
-): LangCode | null {
+): SecondLangSetting {
   return coerceSecondLang(value, registry);
 }
 

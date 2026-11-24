@@ -301,9 +301,9 @@ function isSecondaryInRegistry(
 }
 
 /**
- * Erzeugt das strenge Settings-Schema gebunden an die Sprach-Registry (F1, F3a).
+ * Erzeugt das strenge Settings-Schema gebunden an die Sprach-Registry (F1, F3a, E6).
  * - `uiLang`: akzeptiert ausschliesslich aktive und rechtlich freigegebene UI-Sprachen (`active !== false && legalApproved === true`).
- * - `secondLang`: akzeptiert `null` oder Einträge aus `registry.secondary`.
+ * - `secondLang`: akzeptiert `null` (automatisch), `'none'` (keine) oder Einträge aus `registry.secondary`.
  */
 export function createSettingsSchema(registry: LanguagesRegistry) {
   return z.strictObject({
@@ -311,11 +311,14 @@ export function createSettingsSchema(registry: LanguagesRegistry) {
       (code) => isApprovedInRegistry(code, registry),
       'UI-Sprache ist nicht aktiv und freigegeben (active & legalApproved).',
     ),
-    secondLang: langCodeSchema
-      .refine(
-        (code) => isSecondaryInRegistry(code, registry),
-        'Zweitsprache ist nicht in registry.secondary enthalten.',
-      )
+    secondLang: z
+      .union([
+        z.literal('none'),
+        langCodeSchema.refine(
+          (code) => isSecondaryInRegistry(code, registry),
+          'Zweitsprache ist nicht in registry.secondary enthalten.',
+        ),
+      ])
       .nullable(),
     theme: z.enum(['system', 'light', 'dark']),
     sound: z.boolean(),

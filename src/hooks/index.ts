@@ -6,6 +6,11 @@ export {
   type RankedRecipeItem,
   type RecipesFilterState,
 } from './useRecipes.ts';
+export {
+  useSecondLang,
+  type SecondLangContextValue,
+  type SetSecondLangResult,
+} from './useSecondLang.ts';
 export { useServings, type UseServingsResult } from './useServings.ts';
 export { useSettings } from './useSettings.ts';
 export {
