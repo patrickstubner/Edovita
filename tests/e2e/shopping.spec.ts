@@ -94,8 +94,10 @@ test.describe('E5 + E5b Journeys J1, J3, J7 & J9: Einkaufsliste v5.9, ⓘ-Sheet,
     const srcSheet = page.getByTestId('shop-src-sheet');
     await expect(srcSheet).toBeVisible();
     await expect(srcSheet).toContainText('Knoblauch');
-    await expect(srcSheet).toContainText('Ofenlachs mit Broccoli und Kartoffeln, 4 Stk.');
-    await expect(srcSheet).toContainText('Linsen-Curry mit Kokosmilch und Spinat, 2 Stk.');
+    await expect(srcSheet).toContainText('Ofenlachs mit Broccoli und Kartoffeln');
+    await expect(srcSheet).toContainText('4 Stk.');
+    await expect(srcSheet).toContainText('Linsen-Curry mit Kokosmilch und Spinat');
+    await expect(srcSheet).toContainText('2 Stk.');
     await expect(page.getByTestId('shop-src-sum')).toContainText('Summe: 6 Stk.');
 
     // Escape schliesst ⓘ-Sheet und gibt Fokus an ⓘ zurück

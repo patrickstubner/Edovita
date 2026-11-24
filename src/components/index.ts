@@ -1,4 +1,5 @@
 export { BilingualName, type BilingualNameProps } from './BilingualName.tsx';
+export { BilingualText, type BilingualTextProps } from './BilingualText.tsx';
 export { BottomActions, type BottomActionsProps } from './BottomActions.tsx';
 export {
   BrandsSheet,

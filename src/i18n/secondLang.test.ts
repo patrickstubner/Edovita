@@ -18,7 +18,10 @@ import {
   effectiveSecondLang,
   isPseudoRtlEnabled,
   pseudoRtlFoodName,
+  pseudoRtlRecipeTitle,
   readStoredSecondLang,
+  tIn,
+  tSecond,
   withPseudoRtlRegistry,
   writeStoredSecondLang,
 } from './index.ts';
@@ -297,5 +300,71 @@ describe('i18n/secondLang (E6, Issue #12, Prototyp v5.10)', () => {
     const headers = readFileSync(join(repoRoot, 'public/_headers'), 'utf8');
     expect(headers).toContain('Permissions-Policy:');
     expect(headers).toContain('geolocation=()');
+  });
+
+  it('tIn und tSecond liefern Zweitsprachen-UI-Texte mit ICU, leer bei Gleichheit oder fehlendem Schlüssel (kein EN-Ersatz)', () => {
+    // Regulärer Text & ICU-Platzhalter auf PT
+    expect(tIn('pt', 'einkauf.einkaufsliste')).toBe('Lista de compras');
+    expect(tSecond('pt', 'de', 'einkauf.einkaufsliste')).toBe(
+      'Lista de compras',
+    );
+    expect(tSecond('pt', 'de', 'shop.src.sum', { qty: '400 g' })).toBe(
+      'Total: 400 g',
+    );
+    expect(tSecond('pt', 'de', 'shop.have.athome', { qty: '150 g' })).toBe(
+      'Já em casa: 150 g',
+    );
+
+    // ICU-Plural korrekt in Zweitsprache formatiert
+    const customLocales = {
+      de: {
+        'demo.same': 'Identisch',
+        'demo.items': '{n, plural, one {# Artikel} other {# Artikel}}',
+      },
+      pt: {
+        'demo.same': 'Identisch',
+        'demo.items': '{n, plural, one {# item} other {# itens}}',
+      },
+      en: {
+        'demo.only_en': 'Only in English',
+      },
+    };
+    expect(
+      tSecond('pt', 'de', 'demo.items', { n: 1 }, { locales: customLocales }),
+    ).toBe('1 item');
+    expect(
+      tSecond('pt', 'de', 'demo.items', { n: 3 }, { locales: customLocales }),
+    ).toBe('3 itens');
+
+    // Gleich Haupttext -> leer
+    expect(
+      tSecond('pt', 'de', 'demo.same', undefined, { locales: customLocales }),
+    ).toBe('');
+    // Keine Zweitsprache oder gleich UI-Sprache -> leer
+    expect(tSecond(null, 'de', 'einkauf.einkaufsliste')).toBe('');
+    expect(tSecond('de', 'de', 'einkauf.einkaufsliste')).toBe('');
+
+    // Fehlender Schlüssel in PT -> leer (KEIN englischer Ersatz!)
+    expect(
+      tSecond('pt', 'de', 'demo.only_en', undefined, { locales: customLocales }),
+    ).toBe('');
+    expect(tSecond('pt', 'de', 'unbekannter.schluessel')).toBe('');
+    expect(tSecond('xx', 'de', 'einkauf.einkaufsliste')).toBe('');
+    // Prototype-Keys -> leer
+    expect(tIn('pt', 'toString')).toBe('');
+    expect(tIn('pt', '__proto__')).toBe('');
+    expect(tIn('constructor', 'einkauf.einkaufsliste')).toBe('');
+
+    // Pseudo-RTL ar-XB liefert RTL-UI-Texte und Rezepttitel nur für bekannte Schlüssel
+    expect(tSecond(PSEUDO_RTL_LANG, 'de', 'einkauf.einkaufsliste')).toBe(
+      'قائمة التسوق',
+    );
+    expect(
+      tSecond(PSEUDO_RTL_LANG, 'de', 'shop.src.sum', { qty: '400 g' }),
+    ).toBe('المجموع: 400 g');
+    expect(tSecond(PSEUDO_RTL_LANG, 'de', 'unbekannt.key')).toBe('');
+    expect(pseudoRtlRecipeTitle('oven_salmon')).toBe(
+      'سلمون في الفرن مع بروكلي وبطاطس',
+    );
   });
 });

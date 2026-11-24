@@ -79,7 +79,12 @@ export function ShoppingListPage() {
   const navigate = useNavigate();
   const location = useLocation();
   const { lang, t, fmtAmount } = useI18n();
-  const { effectiveMeta: secondMeta, secondFoodName } = useSecondLang();
+  const {
+    effectiveMeta: secondMeta,
+    secondFoodName,
+    secondRecipeTitle,
+    tSecond,
+  } = useSecondLang();
   const {
     items,
     grouped,
@@ -522,41 +527,62 @@ export function ShoppingListPage() {
 
   const sourceSheetData = useMemo<{
     readonly title: string;
+    readonly titleSecondary: string | null;
     readonly lines: readonly ShopSourceLineItem[];
     readonly sumText: string;
+    readonly sumSecondary: string;
   } | null>(() => {
     if (!activeSourceItem) return null;
     const summary = buildSourceSummary(activeSourceItem);
     const missingLabel = t('shop.amount.missing');
-    const lines: ShopSourceLineItem[] = summary.lines.map((line) => ({
-      key: line.recipeId,
-      text: t('shop.src.line.extra', {
-        recipe: getRecipeText(line.recipeId, lang)?.title ?? line.recipeId,
-        qty:
+    const title = resolveItemName(activeSourceItem);
+    const titleSecondary = activeSourceItem.customLabel
+      ? null
+      : secondFoodName(activeSourceItem.food, title);
+    const lines: ShopSourceLineItem[] = summary.lines.map((line) => {
+      const recipeTitle = getRecipeText(line.recipeId, lang)?.title ?? line.recipeId;
+      return {
+        key: line.recipeId,
+        recipeTitle,
+        recipeTitleSecondary: secondRecipeTitle(line.recipeId, recipeTitle),
+        qtyText:
           line.amount !== null && line.unit
             ? fmtAmount(line.amount, line.unit)
             : missingLabel,
-      }),
-    }));
+      };
+    });
     const sumQty =
       summary.sumAmount !== null && summary.unit
         ? fmtAmount(summary.sumAmount, summary.unit)
         : missingLabel;
     return {
-      title: resolveItemName(activeSourceItem),
+      title,
+      titleSecondary,
       lines,
       sumText: t('shop.src.sum', { qty: sumQty }),
+      sumSecondary: tSecond('shop.src.sum', { qty: sumQty }),
     };
-  }, [activeSourceItem, fmtAmount, lang, resolveItemName, t]);
+  }, [
+    activeSourceItem,
+    fmtAmount,
+    lang,
+    resolveItemName,
+    secondFoodName,
+    secondRecipeTitle,
+    t,
+    tSecond,
+  ]);
 
   const haveSheetData = useMemo<{
     readonly title: string;
+    readonly titleSecondary: string | null;
     readonly need: number | null;
     readonly step: number;
     readonly draftAll: boolean;
     readonly draftValue: number;
     readonly formattedValue: string;
     readonly atHomeLabel: string;
+    readonly atHomeSecondary: string;
   } | null>(() => {
     if (!activeHaveItem || !haveDraft) return null;
     const need = shopNeedOf(activeHaveItem);
@@ -567,16 +593,32 @@ export function ShoppingListPage() {
       need !== null && activeHaveItem.unit
         ? fmtAmount(displayVal, activeHaveItem.unit)
         : t('shop.amount.missing');
+    const title = resolveItemName(activeHaveItem);
+    const titleSecondary = activeHaveItem.customLabel
+      ? null
+      : secondFoodName(activeHaveItem.food, title);
     return {
-      title: resolveItemName(activeHaveItem),
+      title,
+      titleSecondary,
       need,
       step,
       draftAll: haveDraft.all,
       draftValue: haveDraft.value,
       formattedValue,
       atHomeLabel: t('shop.have.athome', { qty: formattedValue }),
+      atHomeSecondary: tSecond('shop.have.athome', { qty: formattedValue }),
     };
-  }, [activeHaveItem, fmtAmount, haveDraft, resolveItemName, t]);
+  }, [
+    activeHaveItem,
+    fmtAmount,
+    haveDraft,
+    resolveItemName,
+    secondFoodName,
+    t,
+    tSecond,
+  ]);
+
+  const titleSecondary = tSecond('einkauf.einkaufsliste');
 
   const subtitle =
     grouped.recipeIds.length > 0
@@ -597,6 +639,13 @@ export function ShoppingListPage() {
           </button>
           <div className="edo-grow">
             <h1>{t('einkauf.einkaufsliste')}</h1>
+            {titleSecondary ? (
+              <p className="edo-shop-title-sec" data-testid="shop-title-sec">
+                <bdi lang={secondMeta?.locale} dir={secondMeta?.dir ?? 'ltr'}>
+                  {titleSecondary}
+                </bdi>
+              </p>
+            ) : null}
             <p className="edo-cap" data-testid="shop-subtitle">
               {subtitle}
             </p>
@@ -683,16 +732,22 @@ export function ShoppingListPage() {
               </p>
             </section>
 
-            {grouped.openGroups.map((group) => (
-              <ShopGroup
-                key={group.group}
-                title={t(FOOD_GROUP_LABEL_KEYS[group.group])}
-                count={group.count}
-                testId={`shop-group-${group.group}`}
-              >
-                {group.items.map((item) => renderShopRow(item, 'open'))}
-              </ShopGroup>
-            ))}
+            {grouped.openGroups.map((group) => {
+              const grpKey = FOOD_GROUP_LABEL_KEYS[group.group];
+              return (
+                <ShopGroup
+                  key={group.group}
+                  title={t(grpKey)}
+                  secondaryTitle={tSecond(grpKey)}
+                  secondaryLocale={secondMeta?.locale}
+                  secondaryDir={secondMeta?.dir}
+                  count={group.count}
+                  testId={`shop-group-${group.group}`}
+                >
+                  {group.items.map((item) => renderShopRow(item, 'open'))}
+                </ShopGroup>
+              );
+            })}
 
             {grouped.counts.open === 0 ? (
               <div
@@ -707,6 +762,9 @@ export function ShoppingListPage() {
             {grouped.cartItems.length > 0 ? (
               <ShopGroup
                 title={t('shop.sec.cart')}
+                secondaryTitle={tSecond('shop.sec.cart')}
+                secondaryLocale={secondMeta?.locale}
+                secondaryDir={secondMeta?.dir}
                 count={grouped.cartItems.length}
                 testId="shop-section-cart"
                 action={
@@ -728,6 +786,9 @@ export function ShoppingListPage() {
             {grouped.homeItems.length > 0 ? (
               <ShopGroup
                 title={t('shop.sec.home')}
+                secondaryTitle={tSecond('shop.sec.home')}
+                secondaryLocale={secondMeta?.locale}
+                secondaryDir={secondMeta?.dir}
                 count={grouped.homeItems.length}
                 testId="shop-section-home"
               >
@@ -757,8 +818,12 @@ export function ShoppingListPage() {
       <ShopSourceSheet
         open={sourceSheetData !== null}
         title={sourceSheetData?.title ?? ''}
+        titleSecondary={sourceSheetData?.titleSecondary}
+        secondaryLocale={secondMeta?.locale}
+        secondaryDir={secondMeta?.dir}
         lines={sourceSheetData?.lines ?? []}
         sumText={sourceSheetData?.sumText ?? ''}
+        sumSecondary={sourceSheetData?.sumSecondary}
         closeLabel={t('dialog.close')}
         onClose={handleCloseSource}
       />
@@ -766,11 +831,19 @@ export function ShoppingListPage() {
       <ShopHaveSheet
         open={haveSheetData !== null}
         title={haveSheetData?.title ?? ''}
+        titleSecondary={haveSheetData?.titleSecondary}
+        secondaryLocale={secondMeta?.locale}
+        secondaryDir={secondMeta?.dir}
         hint={t('shop.have.title')}
+        hintSecondary={tSecond('shop.have.title')}
         allLabel={t('shop.have.all')}
+        allSecondary={tSecond('shop.have.all')}
         atHomeLabel={haveSheetData?.atHomeLabel ?? ''}
+        atHomeSecondary={haveSheetData?.atHomeSecondary}
         resetLabel={t('shop.have.reset')}
+        resetSecondary={tSecond('shop.have.reset')}
         applyLabel={t('shop.have.apply')}
+        applySecondary={tSecond('shop.have.apply')}
         sliderLabel={t('shop.have.slider')}
         minusLabel={t('shop.have.step.minus')}
         plusLabel={t('shop.have.step.plus')}

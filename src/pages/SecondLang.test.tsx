@@ -9,6 +9,7 @@ import {
 } from '@testing-library/react';
 import { App } from '../app/App.tsx';
 import { getRecipe } from '../catalog/index.ts';
+import { BilingualText } from '../components/index.ts';
 import type { LanguagesRegistry } from '../domain/index.ts';
 import {
   LANGUAGES_REGISTRY,
@@ -278,5 +279,153 @@ describe('Paket E6: Zweitsprache für Lebensmittel, Kopfzeilen-Umschalter, Bidi 
     expect(outcomes).toEqual(['same']);
     expect(screen.getByTestId('probe-eff')).toHaveTextContent('pt');
     expect(window.localStorage.getItem(SECOND_LANG_STORAGE_KEY)).toBeNull();
+  });
+
+  it('BilingualText rendert Haupttext + <bdi lang dir> und lässt <bdi> ohne Zweittext weg (E6b)', () => {
+    const { rerender } = render(
+      <p data-testid="bt-host">
+        <BilingualText
+          main="Im Korb"
+          suffix=" (2)"
+          secondary="No carrinho"
+          secondaryLang="pt-BR"
+          secondaryDir="ltr"
+        />
+      </p>,
+    );
+    const host = screen.getByTestId('bt-host');
+    expect(host).toHaveTextContent('Im Korb (2)');
+    const bdi = host.querySelector('bdi');
+    expect(bdi).not.toBeNull();
+    expect(bdi).toHaveTextContent('No carrinho');
+    expect(bdi).toHaveAttribute('lang', 'pt-BR');
+    expect(bdi).toHaveAttribute('dir', 'ltr');
+
+    rerender(
+      <p data-testid="bt-host">
+        <BilingualText main="Im Korb" suffix=" (2)" secondary="" />
+      </p>,
+    );
+    expect(host.querySelector('bdi')).toBeNull();
+  });
+
+  it('E6b: Einkaufsliste zeigt Titel, Gruppen, Abschnitte und beide Sheets zweisprachig in PT (ohne EN-Ersatz bei Rezepttitel), Zeilen-Knopf einsprachig, und schaltet auf «Keine» einzeilig zurück', async () => {
+    const storage = createMemoryStorage();
+    const salmon = getRecipe('oven_salmon')!;
+    await storage.shopping.replaceAll(addRecipe([], salmon, 2));
+    window.location.hash = '#/einkauf';
+
+    render(
+      <App
+        navigatorLanguages={['de-CH']}
+        timeZone="America/Sao_Paulo"
+        storage={storage}
+      />,
+    );
+
+    // 1) Seitentitel zweisprachig (PT)
+    const titleSec = await screen.findByTestId('shop-title-sec');
+    const titleBdi = titleSec.querySelector('bdi');
+    expect(titleBdi).toHaveTextContent('Lista de compras');
+    expect(titleBdi).toHaveAttribute('lang', 'pt-BR');
+    expect(titleBdi).toHaveAttribute('dir', 'ltr');
+
+    // 2) Gruppenüberschrift zweisprachig, Anzahl nur einmal
+    const vegGroup = screen.getByTestId('shop-group-veg');
+    const vegHead = vegGroup.querySelector('.edo-grph')!;
+    expect(vegHead.querySelector('.edo-i18n-main')).toHaveTextContent(
+      'Gemüse und Früchte (3)',
+    );
+    expect(vegHead.querySelector('bdi')).toHaveTextContent('Frutas e verduras');
+    expect(vegHead.querySelector('bdi')!.textContent).not.toContain('(3)');
+
+    // 3) Zeilen-Knopf «Hab ich» bleibt einsprachig (wie Prototyp)
+    const haveBtn = screen.getByTestId('shop-have-broccoli__g');
+    expect(haveBtn).toHaveTextContent('Hab ich');
+    expect(haveBtn.querySelector('bdi')).toBeNull();
+
+    // 4) Korb-Abschnitt zweisprachig mit einmaliger Anzahl
+    fireEvent.click(screen.getByTestId('shop-toggle-potato__g'));
+    const cartSec = await screen.findByTestId('shop-section-cart');
+    const cartHead = cartSec.querySelector('.edo-grph')!;
+    expect(cartHead.querySelector('.edo-i18n-main')).toHaveTextContent(
+      'Im Korb (1)',
+    );
+    expect(cartHead.querySelector('bdi')).toHaveTextContent('No carrinho');
+
+    // 5) Herkunfts-Sheet: Titel gestapelt zweizeilig, Rezepttitel OHNE PT-Übersetzung nur Haupttitel (kein EN-Ersatz!), Summe zweisprachig
+    fireEvent.click(screen.getByTestId('shop-src-broccoli__g'));
+    const srcSheet = await screen.findByTestId('shop-src-sheet');
+    const srcTitleBdi = srcSheet.querySelector('#edo-shop-src-title bdi');
+    expect(srcTitleBdi).toHaveTextContent('brócolis');
+    expect(srcTitleBdi).toHaveAttribute('lang', 'pt-BR');
+    const srcNameEl = srcSheet.querySelector('.edo-shop-src-name')!;
+    expect(srcNameEl).toHaveTextContent('Ofenlachs mit Broccoli und Kartoffeln');
+    expect(srcNameEl.querySelector('bdi')).toBeNull();
+    expect(srcSheet).not.toHaveTextContent('Oven-baked salmon');
+    const srcSum = within(srcSheet).getByTestId('shop-src-sum');
+    expect(srcSum).toHaveTextContent('Summe: 400 g');
+    expect(srcSum.querySelector('bdi')).toHaveTextContent('Total: 400 g');
+    fireEvent.click(screen.getByTestId('shop-src-close'));
+
+    // 6) «Hab ich»-Sheet: Titel, Hinweis, Alles vorhanden, Davon schon zu Hause, Zurücksetzen, Übernehmen zweisprachig
+    fireEvent.click(screen.getByTestId('shop-have-broccoli__g'));
+    const haveSheet = await screen.findByTestId('shop-have-sheet');
+    expect(haveSheet.querySelector('#edo-shop-have-title bdi')).toHaveTextContent(
+      'brócolis',
+    );
+    expect(within(haveSheet).getByTestId('shop-have-hint').querySelector('bdi')).toHaveTextContent(
+      'Já em casa?',
+    );
+    expect(within(haveSheet).getByTestId('shop-have-all').querySelector('bdi')).toHaveTextContent(
+      'Tudo em casa',
+    );
+    expect(within(haveSheet).getByTestId('shop-have-amt').querySelector('bdi')).toHaveTextContent(
+      'Já em casa: 400 g',
+    );
+    expect(within(haveSheet).getByTestId('shop-have-reset').querySelector('bdi')).toHaveTextContent(
+      'Redefinir',
+    );
+    expect(within(haveSheet).getByTestId('shop-have-apply').querySelector('bdi')).toHaveTextContent(
+      'Aplicar',
+    );
+    fireEvent.click(screen.getByTestId('shop-have-apply'));
+
+    // Abschnitt «Schon zu Hause» zweisprachig mit einmaliger Anzahl
+    const homeSec = await screen.findByTestId('shop-section-home');
+    expect(homeSec.querySelector('.edo-grph bdi')).toHaveTextContent(
+      'Já tenho em casa',
+    );
+
+    // 7) Wechsel auf EN: Herkunfts-Sheet zeigt nun den vorhandenen englischen Rezepttitel als zweite Zeile
+    fireEvent.click(screen.getByTestId('second-switch-btn'));
+    fireEvent.click(
+      screen.getByTestId('second-switch-menu').querySelector('[data-second="en"]')!,
+    );
+    await waitFor(() => {
+      expect(screen.getByTestId('shop-title-sec')).toHaveTextContent(
+        'Shopping list',
+      );
+    });
+    fireEvent.click(screen.getByTestId('shop-src-broccoli__g'));
+    const srcSheetEn = await screen.findByTestId('shop-src-sheet');
+    const enRecipeBdi = srcSheetEn.querySelector('.edo-shop-src-name bdi');
+    expect(enRecipeBdi).not.toBeNull();
+    expect(enRecipeBdi).toHaveTextContent(
+      'Oven-baked salmon with broccoli and potatoes',
+    );
+    expect(enRecipeBdi).toHaveAttribute('lang', 'en-GB');
+    fireEvent.click(screen.getByTestId('shop-src-close'));
+
+    // 8) Wechsel auf «Keine»: alles wieder einsprachig ohne <bdi>
+    fireEvent.click(screen.getByTestId('second-switch-btn'));
+    fireEvent.click(
+      screen.getByTestId('second-switch-menu').querySelector('[data-second="none"]')!,
+    );
+    await waitFor(() => {
+      expect(screen.queryByTestId('shop-title-sec')).toBeNull();
+    });
+    expect(screen.getByTestId('shop-group-veg').querySelector('bdi')).toBeNull();
+    expect(screen.getByTestId('shop-section-home').querySelector('bdi')).toBeNull();
   });
 });
