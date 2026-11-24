@@ -1020,5 +1020,19 @@
  "nav.reise": "Voyage",
  "nav.marken": "MDD",
  "lang.switch": "Langue",
- "lang.switch.current": "Langue, actuellement {name}"
+ "lang.switch.current": "Langue, actuellement {name}",
+ "second.none": "Aucune",
+ "second.chip": "aussi en : {code}",
+ "second.chip.none": "Langue secondaire",
+ "second.label": "Langue secondaire",
+ "second.label.current": "Langue secondaire, actuellement {name}",
+ "second.label.none": "Langue secondaire, aucune",
+ "second.hint": "Nom supplémentaire pour les ingrédients et les articles de la liste. Les étapes et les menus restent dans la langue de l’app.",
+ "second.same": "La langue secondaire ne peut pas être la même que celle de l’app.",
+ "demo.variant": "Comparaison : emplacement de la langue secondaire",
+ "demo.variant.a": "A, sur la page",
+ "demo.variant.b": "B, en haut à droite",
+ "recipe.ingredients": "Ingrédients",
+ "recipe.steps": "Préparation",
+ "recipe.open": "Ouvrir la recette"
 }

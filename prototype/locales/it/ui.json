@@ -1020,5 +1020,19 @@
  "nav.reise": "Viaggio",
  "nav.marken": "Marche",
  "lang.switch": "Lingua",
- "lang.switch.current": "Lingua, attualmente {name}"
+ "lang.switch.current": "Lingua, attualmente {name}",
+ "second.none": "Nessuna",
+ "second.chip": "anche in: {code}",
+ "second.chip.none": "Seconda lingua",
+ "second.label": "Seconda lingua",
+ "second.label.current": "Seconda lingua, attualmente {name}",
+ "second.label.none": "Seconda lingua, nessuna",
+ "second.hint": "Nome aggiuntivo per ingredienti e articoli della lista. I passaggi e i menu restano nella lingua dell’app.",
+ "second.same": "La seconda lingua non può coincidere con quella dell’app.",
+ "demo.variant": "Confronto: posizione della seconda lingua",
+ "demo.variant.a": "A, nella pagina",
+ "demo.variant.b": "B, in alto a destra",
+ "recipe.ingredients": "Ingredienti",
+ "recipe.steps": "Preparazione",
+ "recipe.open": "Apri la ricetta"
 }

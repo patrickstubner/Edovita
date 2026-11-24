@@ -1020,5 +1020,19 @@
  "nav.reise": "Reise",
  "nav.marken": "Hausmarken",
  "lang.switch": "Sprache",
- "lang.switch.current": "Sprache, aktuell {name}"
+ "lang.switch.current": "Sprache, aktuell {name}",
+ "second.none": "Keine",
+ "second.chip": "auch auf: {code}",
+ "second.chip.none": "Zweitsprache",
+ "second.label": "Zweitsprache",
+ "second.label.current": "Zweitsprache, aktuell {name}",
+ "second.label.none": "Zweitsprache, keine",
+ "second.hint": "Zusätzlicher Name für Zutaten und Einkaufsartikel. Schritte und Menüs bleiben in der App-Sprache.",
+ "second.same": "Die Zweitsprache darf nicht der App-Sprache entsprechen.",
+ "demo.variant": "Vergleich: Platzierung der Zweitsprache",
+ "demo.variant.a": "A, auf der Seite",
+ "demo.variant.b": "B, oben rechts",
+ "recipe.ingredients": "Zutaten",
+ "recipe.steps": "Zubereitung",
+ "recipe.open": "Rezept öffnen"
 }

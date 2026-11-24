@@ -1,10 +1,10 @@
 (function () {
   'use strict';
-  // Reiner Klick-Prototyp v5.5: keine Netzwerkaufrufe. Gespeichert werden nur Sprache, Darstellung, Ton und gewählte Melodie (localStorage, keine Gesundheitsdaten). Sprachcode nur nach Whitelist (I.approved).
+  // Reiner Klick-Prototyp v5.6: keine Netzwerkaufrufe. Gespeichert werden nur Sprache, Zweitsprache, Variante, Darstellung, Ton und Melodie (localStorage, keine Gesundheitsdaten). Sprachcodes nur nach Whitelist.
   // Alle Texte kommen aus locales/<code>/*.json (über i18n.js) und werden nur per textContent/setAttribute gesetzt.
   var I = window.EdoI18n;
   var T = function (k, v) { return I.t(k, v); };
-  var SCREENS = ['start','onboarding','onboarding2','onboarding3','onboarding4','daten','ziel','vorlieben','erinnerungen','hilfe','heute','details','erfassen','rezepte','einkauf','restaurant','woche','kraft','fortschritt','koerper','profil','partner','arzt','sprache','toene','datenschutz','rechtliches','reste','saison','eintipp','portionen','bardb','fenster','aktivitaet','qrshop','reise','marken'];
+  var SCREENS = ['start','onboarding','onboarding2','onboarding3','onboarding4','daten','ziel','vorlieben','erinnerungen','hilfe','heute','details','erfassen','rezepte','rezept','einkauf','restaurant','woche','kraft','fortschritt','koerper','profil','partner','arzt','sprache','toene','datenschutz','rechtliches','reste','saison','eintipp','portionen','bardb','fenster','aktivitaet','qrshop','reise','marken'];
   var GOALS = { lose: 1, gain: 1, keep: 1 };
   var gname = function (g) { return T('goal.' + g); };
   var state = { goal: 'lose', goalKcal: 1900, eaten: 720, protein: 48, target: 110, dinnerSaved: false,
@@ -14,7 +14,7 @@
     ratings: { oven_salmon: 5, thai_curry: 4, birchermuesli: 4, pho: 4, lentil_curry: 3 }, saved: { thai_curry: true, summer_rolls: true },
     shop: { berries: 'cart', olive_oil: 'home' }, portion: 'm', foodQ: '',
     share: { p1: true, p2: true, p3: true, p4: true, p5: false }, pconn: 'qr', backup: false, bkAgree: false,
-    sound: true, hymn: 'H1' };
+    sound: true, hymn: 'H1', recipeId: 'oven_salmon' };
   var BASE_WEIGHT = 78.4;
   var ITEMS = [
     { key: 'item.salmon', g: 150, kcal100: 206.6, p100: 21 },
@@ -39,6 +39,7 @@
   function show(id) {
     if (SCREENS.indexOf(id) === -1) id = 'heute';
     if (id !== curScreen) { prevScreen = curScreen; curScreen = id; }
+    if (id === 'rezept') renderRezept();
     $$('.screen').forEach(function (s) { s.classList.toggle('active', s.id === id); });
     var scr = document.getElementById(id);
     var tab = scr.getAttribute('data-tab');
@@ -790,6 +791,10 @@
         g.appendChild(tg); g.appendChild(mk('h3', '', rget('recipes', r.id))); g.appendChild(recipeMeta(r)); g.appendChild(stars(r));
         card.appendChild(g);
       }
+      card.setAttribute('data-recipe', r.id);
+      card.setAttribute('role', 'link');
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('aria-label', T('recipe.open') + ': ' + rget('recipes', r.id));
       box.appendChild(card);
     });
     if (!ok.length) { var e = mk('div', 'card mint stack'); e.appendChild(mk('b', '', T('recipe.none.title'))); e.appendChild(mk('p', '', T('recipe.none.text'))); box.appendChild(e); }
@@ -818,17 +823,17 @@
   ];
   var SHOP_ST = { open: 1, cart: 1, home: 1 };
   function shopRow(it, st) {
-    var row = mk('div', 'shoprow' + (st === 'cart' ? ' incart' : st === 'home' ? ' athome' : '')), nm = rget('ingredients', it.id);
+    var row = mk('div', 'shoprow' + (st === 'cart' ? ' incart' : st === 'home' ? ' athome' : '')), nm = uiFoodName(it.id);
     if (st === 'home') {
       var c0 = mk('span', 'circ sm'); c0.appendChild(icon('home', 's')); row.appendChild(c0);
-      var g0 = mk('span', 'grow'); g0.appendChild(mk('span', 'nm', nm)); g0.appendChild(mk('small', 'cap', ' ' + it.q())); row.appendChild(g0);
+      var g0 = mk('span', 'grow'); g0.appendChild(bilingualName(it.id)); g0.appendChild(mk('small', 'cap', ' ' + it.q())); row.appendChild(g0);
       var u = mk('button', 'havebtn', T('shop.undo')); u.setAttribute('data-shop', it.id + ':open'); row.appendChild(u); return row;
     }
     var b = mk('button', 'chk grow' + (st === 'cart' ? ' on' : ''));
     b.setAttribute('data-shop', it.id + ':' + (st === 'cart' ? 'open' : 'cart')); b.setAttribute('aria-pressed', st === 'cart' ? 'true' : 'false');
-    b.setAttribute('aria-label', T(st === 'cart' ? 'shop.fromcart' : 'shop.tocart', { name: nm }));
+    b.setAttribute('aria-label', T(st === 'cart' ? 'shop.fromcart' : 'shop.tocart', { name: foodAria(it.id) }));
     var cb = mk('span', 'cb'); cb.appendChild(icon('check')); b.appendChild(cb);
-    b.appendChild(mk('span', 'nm grow', nm)); b.appendChild(mk('span', 'cap', it.q())); row.appendChild(b);
+    var ng = mk('span', 'nm grow'); ng.appendChild(bilingualName(it.id)); b.appendChild(ng); b.appendChild(mk('span', 'cap', it.q())); row.appendChild(b);
     if (st !== 'cart') { var h = mk('button', 'havebtn', T('shop.have')); h.setAttribute('data-shop', it.id + ':home'); row.appendChild(h); }
     return row;
   }
@@ -1167,9 +1172,24 @@
   document.addEventListener('click', function (e) { if (e.target.closest && e.target.closest('#splash')) endSplash(); });
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') { var s = $('#splash'); if (s && !s.hidden) { e.preventDefault(); endSplash(); return; } }
+    if ((e.key === 'Enter' || e.key === ' ') && e.target && e.target.getAttribute && e.target.getAttribute('data-recipe') && !SECOND_MENU_OPEN && !LANG_MENU_OPEN) {
+      if (!e.target.closest('[data-rate], [data-save], [data-addlist]')) { e.preventDefault(); openRecipe(e.target.getAttribute('data-recipe')); return; }
+    }
+    if (SECOND_MENU_OPEN) {
+      if (e.key === 'Escape') { e.preventDefault(); var last = document.activeElement && document.activeElement.closest('.second-chip-wrap, #secondSwitch'); setSecondMenus(false); if (last) { var b = last.querySelector('button'); if (b) b.focus(); } return; }
+      if (e.key === 'ArrowDown') { e.preventDefault(); var sd = secondOptionButtons(); var i1 = sd.indexOf(document.activeElement); var n1 = sd[(i1 + 1 + sd.length) % sd.length]; if (n1) n1.focus(); return; }
+      if (e.key === 'ArrowUp') { e.preventDefault(); var su = secondOptionButtons(); var i2 = su.indexOf(document.activeElement); var n2 = su[(i2 - 1 + su.length) % su.length]; if (n2) n2.focus(); return; }
+      if (e.key === 'Tab') { setSecondMenus(false); }
+      return;
+    }
     if (!LANG_MENU_OPEN) {
-      if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && document.activeElement && document.activeElement.id === 'langSwitchBtn') {
-        e.preventDefault(); setLangMenu(true); if (e.key === 'ArrowUp') { var o = langOptions(); if (o.length) o[o.length - 1].focus(); }
+      if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && document.activeElement && (document.activeElement.id === 'langSwitchBtn' || document.activeElement.classList.contains('second-chip') || document.activeElement.id === 'secondSwitchBtn')) {
+        e.preventDefault();
+        if (document.activeElement.id === 'langSwitchBtn') {
+          setLangMenu(true); if (e.key === 'ArrowUp') { var o = langOptions(); if (o.length) o[o.length - 1].focus(); }
+        } else {
+          setSecondMenus(true, document.activeElement); if (e.key === 'ArrowUp') { var o2 = secondOptionButtons(); if (o2.length) o2[o2.length - 1].focus(); }
+        }
       }
       return;
     }
@@ -1247,7 +1267,7 @@
     var sp = $('#storePrev'); sp.textContent = '';
     var s = r.store || {};
     ['title', 'subtitle', 'short'].forEach(function (k) { var row = mk('div'); row.appendChild(mk('p', 'cap', T('store.l.' + k))); row.appendChild(mk(k === 'title' ? 'b' : 'p', '', s[k] || '–')); sp.appendChild(row); });
-    renderLegal(); renderLangBinds();
+    renderLegal(); renderLangBinds(); renderSecondLangUI();
   }
   // Kompakter Sprachumschalter (Flagge + Kürzel, Dropdown). Nur freigegebene Codes sind wählbar.
   var LANG_MENU_OPEN = false;
@@ -1300,12 +1320,13 @@
     return svg;
   }
   function setLangMenu(open) {
-    var btn = $('#langSwitchBtn'), menu = $('#langMenu'), bd = $('#langBackdrop');
+    var btn = $('#langSwitchBtn'), menu = $('#langMenu');
     if (!btn || !menu) return;
+    if (open) setSecondMenus(false);
     LANG_MENU_OPEN = !!open;
     btn.setAttribute('aria-expanded', LANG_MENU_OPEN ? 'true' : 'false');
     menu.hidden = !LANG_MENU_OPEN;
-    if (bd) bd.hidden = !LANG_MENU_OPEN;
+    syncLangBackdrop();
     if (LANG_MENU_OPEN) {
       var cur = menu.querySelector('[aria-selected="true"]') || menu.querySelector('[role="option"]');
       if (cur) cur.focus();
@@ -1345,6 +1366,282 @@
     if (i < 0) i = opts.findIndex(function (o) { return o.getAttribute('aria-selected') === 'true'; });
     var n = opts[(i + dir + opts.length) % opts.length];
     if (n) n.focus();
+  }
+
+    // ---------- Zweitsprache (ADR-003): nur Zutaten und Einkaufsartikel, ohne Rechts-Gate ----------
+  var SECONDARY = (window.EDO_FOODS && window.EDO_FOODS.secondary) || ['de', 'en', 'pt', 'ja'];
+  var SECOND_KEY = 'edovita.secondLang';
+  var VARIANT_KEY = 'edovita.secondLangVariant';
+  var SECOND_MENU_OPEN = false;
+  function foodData() { return window.EDO_FOODS || { glossary: {}, recipeIngredients: {}, recipeSteps: {}, locales: {}, dir: {} }; }
+  function isSecondary(code) { return typeof code === 'string' && SECONDARY.indexOf(code) !== -1; }
+  function secondMeta(code) {
+    var d = foodData(), m = I.meta(code) || {};
+    return {
+      name: m.name || code,
+      locale: m.locale || d.locales[code] || code,
+      dir: (m.direction === 'rtl' || d.dir[code] === 'rtl') ? 'rtl' : 'ltr'
+    };
+  }
+  function storedSecond() {
+    try {
+      var v = window.localStorage.getItem(SECOND_KEY);
+      if (v === null || v === '' || v === 'none') return null;
+      if (isSecondary(v)) return v;
+      window.localStorage.setItem(SECOND_KEY, 'none');
+      return null;
+    } catch (e) { return null; }
+  }
+  function effectiveSecond() {
+    var s = storedSecond();
+    return (s && s !== I.lang()) ? s : null;
+  }
+  function setSecondLang(code) {
+    if (code === null || code === 'none' || code === '') {
+      try { window.localStorage.setItem(SECOND_KEY, 'none'); } catch (e) { /* nur bis zum Neuladen */ }
+      return true;
+    }
+    if (!isSecondary(code) || code === I.lang()) return false;
+    try { window.localStorage.setItem(SECOND_KEY, code); } catch (e) { /* nur bis zum Neuladen */ }
+    return true;
+  }
+  function glossName(lang, id) {
+    if (typeof id !== 'string' || !lang) return null;
+    var g = foodData().glossary;
+    if (!g || !Object.prototype.hasOwnProperty.call(g, lang)) return null;
+    var pack = g[lang];
+    if (!pack || !Object.prototype.hasOwnProperty.call(pack, id)) return null;
+    var v = pack[id];
+    return typeof v === 'string' ? v : null;
+  }
+  function uiFoodName(id) {
+    var n = glossName(I.lang(), id);
+    if (n) return n;
+    var rec = rget('ingredients', id);
+    if (rec && rec !== id) return rec;
+    var fd = rget('foods', id);
+    if (fd && fd !== id) return fd;
+    return id;
+  }
+  function secondFoodName(id) {
+    var s = effectiveSecond();
+    return s ? glossName(s, id) : null;
+  }
+  function foodAria(id) {
+    var a = uiFoodName(id), b = secondFoodName(id);
+    return b ? a + ' · ' + b : a;
+  }
+  function bilingualName(id) {
+    var wrap = mk('span', 'biname');
+    wrap.appendChild(mk('span', 'biname-main', uiFoodName(id)));
+    var sec = secondFoodName(id);
+    if (sec) {
+      wrap.appendChild(document.createTextNode(' · '));
+      var bdi = mk('bdi', 'biname-sec', sec);
+      var meta = secondMeta(effectiveSecond());
+      bdi.setAttribute('lang', meta.locale);
+      bdi.setAttribute('dir', meta.dir);
+      wrap.appendChild(bdi);
+    }
+    return wrap;
+  }
+  function parseVariantParam() {
+    var fromQ = '';
+    try { fromQ = String(new URLSearchParams(location.search).get('variant') || '').toLowerCase(); } catch (e) { fromQ = ''; }
+    var h = location.hash || '', fromH = '';
+    if (h.indexOf('?') !== -1) {
+      try { fromH = String(new URLSearchParams(h.split('?')[1]).get('variant') || '').toLowerCase(); } catch (e2) { fromH = ''; }
+    }
+    var v = fromQ || fromH;
+    return v === 'a' || v === 'b' ? v : null;
+  }
+  function secondVariant() {
+    return getPref(VARIANT_KEY, ['a', 'b'], parseVariantParam() || 'a');
+  }
+  function setSecondVariant(v) {
+    if (v !== 'a' && v !== 'b') return false;
+    setPref(VARIANT_KEY, v);
+    try {
+      var url = new URL(location.href);
+      url.searchParams.set('variant', v);
+      history.replaceState(null, '', url.pathname + url.search + url.hash);
+    } catch (e) { /* ignorieren */ }
+    renderSecondLangUI();
+    return true;
+  }
+  function initSecondVariant() {
+    var q = parseVariantParam();
+    if (q) setPref(VARIANT_KEY, q);
+  }
+  function syncLangBackdrop() {
+    var bd = $('#langBackdrop');
+    if (bd) bd.hidden = !LANG_MENU_OPEN && !SECOND_MENU_OPEN;
+  }
+  function secondOptionButtons() {
+    return $$('#app .lang-menu:not([hidden]) [role="option"]');
+  }
+  function fillSecondOptions(menu) {
+    menu.textContent = '';
+    menu.setAttribute('aria-label', T('second.label'));
+    var cur = effectiveSecond();
+    var add = function (code, label, flagCode) {
+      var opt = mk('button', 'lang-opt');
+      opt.type = 'button';
+      opt.setAttribute('role', 'option');
+      opt.setAttribute('data-second', code);
+      opt.setAttribute('aria-selected', (code === 'none' ? !cur : code === cur) ? 'true' : 'false');
+      if (flagCode) {
+        opt.setAttribute('lang', secondMeta(flagCode).locale);
+        var fl = mk('span', 'lang-flag'); fl.setAttribute('aria-hidden', 'true'); fl.appendChild(flagSvg(flagCode));
+        opt.appendChild(fl);
+      }
+      opt.appendChild(mk('span', 'lang-name', label));
+      if (code !== 'none') opt.appendChild(mk('span', 'lang-code-sm', code.toUpperCase()));
+      menu.appendChild(opt);
+    };
+    add('none', T('second.none'), null);
+    SECONDARY.forEach(function (c) {
+      if (c === I.lang()) return;
+      add(c, secondMeta(c).name, c);
+    });
+  }
+  function setSecondMenus(open, sourceBtn) {
+    if (open) setLangMenu(false);
+    SECOND_MENU_OPEN = !!open;
+    $$('.second-chip-wrap .lang-menu, #secondMenu').forEach(function (m) { m.hidden = true; });
+    $$('.second-chip, #secondSwitchBtn').forEach(function (b) { b.setAttribute('aria-expanded', 'false'); });
+    if (SECOND_MENU_OPEN && sourceBtn) {
+      sourceBtn.setAttribute('aria-expanded', 'true');
+      var wrap = sourceBtn.parentNode, menu = wrap ? wrap.querySelector('.lang-menu') : null;
+      if (menu) {
+        fillSecondOptions(menu);
+        menu.hidden = false;
+        var cur = menu.querySelector('[aria-selected="true"]') || menu.querySelector('[role="option"]');
+        if (cur) cur.focus();
+      }
+    }
+    syncLangBackdrop();
+  }
+  function paintSecondButton(btn, flagBox, codeEl) {
+    var sec = effectiveSecond();
+    var label = sec ? T('second.label.current', { name: secondMeta(sec).name }) : T('second.label.none');
+    btn.setAttribute('aria-label', label);
+    btn.setAttribute('title', label);
+    btn.classList.toggle('is-none', !sec);
+    if (codeEl) codeEl.textContent = sec ? sec.toUpperCase() : '—';
+    if (flagBox) {
+      flagBox.textContent = '';
+      if (sec) flagBox.appendChild(flagSvg(sec));
+    }
+  }
+  function fillSecondChip(host) {
+    host.textContent = '';
+    if (secondVariant() !== 'a') return;
+    var wrap = mk('div', 'second-chip-wrap');
+    var btn = mk('button', 'second-chip');
+    btn.type = 'button';
+    btn.setAttribute('aria-haspopup', 'listbox');
+    btn.setAttribute('aria-expanded', 'false');
+    var sec = effectiveSecond();
+    var flag = mk('span', 'lang-flag'); flag.setAttribute('aria-hidden', 'true');
+    if (sec) flag.appendChild(flagSvg(sec));
+    else flag.hidden = true;
+    btn.appendChild(flag);
+    btn.appendChild(mk('span', '', sec ? T('second.chip', { code: sec.toUpperCase() }) : T('second.chip.none')));
+    paintSecondButton(btn, flag, null);
+    var menu = mk('div', 'lang-menu');
+    menu.hidden = true;
+    menu.setAttribute('role', 'listbox');
+    wrap.appendChild(btn);
+    wrap.appendChild(menu);
+    host.appendChild(wrap);
+  }
+  function renderSecondPickerList() {
+    var box = $('#secondLangList'); if (!box) return;
+    box.textContent = '';
+    var cur = effectiveSecond();
+    var row = function (code, name, flagCode) {
+      var b = mk('button', 'set langrow' + ((code === 'none' ? !cur : code === cur) ? ' cur' : ''));
+      b.type = 'button';
+      b.setAttribute('data-second', code);
+      b.setAttribute('aria-pressed', (code === 'none' ? !cur : code === cur) ? 'true' : 'false');
+      if (flagCode) {
+        var circ = mk('span', 'circ code'); circ.appendChild(flagSvg(flagCode)); b.appendChild(circ);
+        b.setAttribute('lang', secondMeta(flagCode).locale);
+      } else {
+        b.appendChild(mk('span', 'circ code', '–'));
+      }
+      var tx = mk('span', 'tx grow'); tx.appendChild(mk('b', '', name)); b.appendChild(tx);
+      var r = mk('span', 'radio' + ((code === 'none' ? !cur : code === cur) ? ' on' : '')); r.setAttribute('aria-hidden', 'true'); b.appendChild(r);
+      box.appendChild(b);
+    };
+    row('none', T('second.none'), null);
+    SECONDARY.forEach(function (c) {
+      if (c === I.lang()) return;
+      row(c, secondMeta(c).name, c);
+    });
+  }
+  function renderRezept() {
+    var id = state.recipeId || 'oven_salmon', rec = RECIPES.filter(function (r) { return r.id === id; })[0];
+    var title = $('#rezeptTitle'), cui = $('#rezeptCui'), body = $('#rezeptBody'), add = $('#rezeptAdd');
+    if (!title || !body) return;
+    if (!rec) { title.textContent = T('recipe.none.title'); body.textContent = ''; return; }
+    title.textContent = rget('recipes', rec.id);
+    if (cui) cui.textContent = T('meal.' + rec.meal) + ' · ' + rget('cuisines', rec.cui);
+    if (add) add.setAttribute('data-addlist', rec.id);
+    body.textContent = '';
+    var ings = (foodData().recipeIngredients || {})[rec.id] || [];
+    var ingBox = mk('div', 'card');
+    ingBox.appendChild(mk('h2', '', T('recipe.ingredients')));
+    ings.forEach(function (fid) {
+      var row = mk('div', 'ing-row');
+      row.appendChild(bilingualName(fid));
+      ingBox.appendChild(row);
+    });
+    if (!ings.length) ingBox.appendChild(mk('p', 'cap', T('recipe.none.text')));
+    body.appendChild(ingBox);
+    var lang = I.lang(), stepsMap = foodData().recipeSteps || {}, pack = stepsMap[rec.id] || stepsMap._default || {};
+    var steps = pack[lang] || pack.en || pack.de || [];
+    if (steps.length) {
+      var st = mk('div', 'card'); st.appendChild(mk('h2', '', T('recipe.steps')));
+      var ol = mk('ol', 'step-list');
+      steps.forEach(function (s) { ol.appendChild(mk('li', '', s)); });
+      st.appendChild(ol);
+      st.appendChild(mk('p', 'cap', T('second.hint')));
+      body.appendChild(st);
+    }
+  }
+  function openRecipe(id) {
+    if (!RECIPES.some(function (r) { return r.id === id; })) return;
+    state.recipeId = id;
+    go('rezept');
+    renderRezept();
+  }
+  function renderSecondLangUI() {
+    initSecondVariant();
+    var v = secondVariant();
+    $('#app').classList.toggle('variant-a', v === 'a');
+    $('#app').classList.toggle('variant-b', v === 'b');
+    $$('[data-variant]').forEach(function (b) {
+      var on = b.getAttribute('data-variant') === v;
+      b.classList.toggle('on', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    var head = $('#secondSwitch');
+    if (head) {
+      head.hidden = v !== 'b';
+      var btn = $('#secondSwitchBtn'), flag = $('#secondSwitchFlag'), code = $('#secondSwitchCode'), menu = $('#secondMenu');
+      if (btn) {
+        btn.setAttribute('aria-haspopup', 'listbox');
+        paintSecondButton(btn, flag, code);
+        if (menu) fillSecondOptions(menu);
+      }
+    }
+    $$('[data-secondchip]').forEach(fillSecondChip);
+    renderSecondPickerList();
+    renderShop();
+    if (curScreen === 'rezept') renderRezept();
+    setSecondMenus(false);
   }
 
     function renderLangBinds() {
@@ -1427,7 +1724,11 @@
   function pressGroup(sel, el) { $$(sel, el.parentNode).forEach(function (b) { var on = b === el; b.classList.toggle('on', on); b.setAttribute('aria-pressed', on ? 'true' : 'false'); }); }
   document.addEventListener('click', function (e) {
     if (e.target && (e.target.id === 'langBackdrop' || (e.target.closest && e.target.closest('#langBackdrop')))) {
-      setLangMenu(false); return;
+      setLangMenu(false); setSecondMenus(false); return;
+    }
+    var recCard = e.target.closest ? e.target.closest('[data-recipe]') : null;
+    if (recCard && !(e.target.closest && e.target.closest('[data-rate], [data-save], [data-addlist], [data-second], .second-chip, #secondSwitchBtn'))) {
+      openRecipe(recCard.getAttribute('data-recipe')); return;
     }
     var el = e.target.closest ? e.target.closest('button, [data-go], [data-back]') : null;
     if (!el) return;
@@ -1435,6 +1736,21 @@
     if (el.hasAttribute('data-sfx')) play(el.getAttribute('data-sfx'));
     if (el.id === 'langSwitchBtn' || (el.closest && el.closest('#langSwitchBtn'))) {
       setLangMenu(!LANG_MENU_OPEN); return;
+    }
+    if (el.hasAttribute('data-variant')) {
+      setSecondVariant(el.getAttribute('data-variant')); return;
+    }
+    if (el.id === 'secondSwitchBtn' || el.classList.contains('second-chip')) {
+      setSecondMenus(!SECOND_MENU_OPEN || el.getAttribute('aria-expanded') !== 'true', el); return;
+    }
+    if (el.hasAttribute('data-second')) {
+      var sc = el.getAttribute('data-second');
+      if (sc === 'none') setSecondLang(null);
+      else if (sc === I.lang()) { toast(T('second.same')); setSecondMenus(false); return; }
+      else if (!setSecondLang(sc)) { toast(T('lang.notApproved')); setSecondMenus(false); return; }
+      setSecondMenus(false);
+      renderSecondLangUI();
+      return;
     }
     if (el.hasAttribute('data-lang')) {
       var lc = el.getAttribute('data-lang');

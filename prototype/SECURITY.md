@@ -1,3 +1,30 @@
+# Sicherheitsprüfung v5.6 (24. November 2026, Europe/Zurich)
+
+**Stand:** UX-Versuch Zweitsprache (Varianten A und B) im Klick-Prototyp. Branch `prototype/lang-switcher` (nicht auf `main` mergen). Bestehender Cloudflare-Worker wird aktualisiert, keine neuen Ressourcen oder Pakete. Hauptsprache-Umschalter und Dark/Light bleiben wie in v5.5.
+**Quelle der Prüfung:** Code-Review der geänderten Dateien (`index.html`, `styles.css`, `app.js`, `data/glossary.js`, `locales/*`, `tools/i18n-src/*`, `build-worker.py`), grep-Scans (innerHTML/eval/Netzwerk/Geheimnisse/Inline-Handler), Headless Playwright (Chrome, Viewport 390×844): Whitelist und XSS-Probe für `edovita.secondLang` / `edovita.secondLangVariant`, gleiche Sprache wie UI wird unterdrückt, 0 Konsolenfehler. Keine neuen Laufzeit-Abhängigkeiten, deshalb kein `pnpm audit` im Prototyp.
+
+| # | Thema | Ergebnis | Schwere |
+|---|--------|----------|---------|
+| 1 | Eingabevalidierung | Zweitsprache (`localStorage["edovita.secondLang"]`) wird nur übernommen, wenn der Wert ein String und in der Whitelist `EDO_FOODS.secondary` bzw. fest `['de','en','pt','ja']` ist. Standard und ungültige Werte: «keine» (`none`). Ungültige Payloads werden beim Lesen auf `none` zurückgeschrieben. Die Zweitsprache darf nicht gleich der aktuellen UI-Sprache sein (`effectiveSecond`). Die Demo-Variante (`edovita.secondLangVariant` und `?variant=`) akzeptiert nur `a` oder `b`, sonst Fallback `a`. `setSecondLang` lehnt alles andere ab. Getestet: Payload `"><img src=x onerror=alert(1)>` und Variante `javascript:alert(1)` erscheinen nicht im DOM, Zweitsprache fällt auf «keine». | kein Befund |
+| 2 | Injection / XSS | Keine neuen Sinks: kein `innerHTML`/`eval`/`document.write`. Lebensmittel- und Zweitnamen, Chips und Dropdowns entstehen per `createElement`/`createElementNS`/`textContent`/`setAttribute`. Zweitname in `<bdi lang dir>`. `data-second` und `data-variant` nur aus der Whitelist. Glossar und Rezeptschritte sind fest gebündelte Texte, keine Nutzereingabe. CSP unverändert (`script-src 'self'`, `connect-src 'none'`). Neue Datei `data/glossary.js` wird vom Worker als `application/javascript` mit `nosniff` ausgeliefert. | kein Befund |
+| 3 | Geheimnisse | Keine Schlüssel, Tokens oder Passwörter in den geänderten Dateien (Scan). | kein Befund |
+| 4 | Rechte / CSP / Storage | Unverändert öffentlich, fiktive Daten. Zusätzliche Keys nur `edovita.secondLang` und `edovita.secondLangVariant`. Es werden weiterhin keine Gesundheitsdaten gespeichert. | kein Befund |
+| 5 | Abhängigkeiten | Keine neuen Laufzeit- oder Build-Abhängigkeiten. Screenshot-Lauf über vorhandenes Playwright-Core, kein neues Paket im Prototyp. | kein Befund |
+| 6 | Fehlermeldungen / Angriffsfläche | Keine Stacktraces nach aussen. Keine Netzwerkaufrufe. Dropdown und Profil-Liste enthalten nur Whitelist-Codes plus «keine», ohne die aktuelle UI-Sprache. | kein Befund |
+
+**SHA-256 (geänderte Kern-Dateien):**
+```
+925b8354ffc8067852594ff282f9d81977d3a2bb7ef2904e08344334a3e47855  prototype/index.html
+e986dc950408b6e92f8fa6c60bfb713003f8334abb7fc7130b1d094a8aa71258  prototype/styles.css
+fe6e5fe341084c330e655f6befe1c4973e3725042d9c516ce03d0b9ccbedb669  prototype/app.js
+5b54686200f5fcb34be34c3070a741b5c436deddc21e38144f7fd4c2d0bc0786  prototype/i18n.js
+ca472849fb0154876c94a2b663fc70e295aa58969997ac2e4337c8017b434e3d  prototype/locales.js
+cba1d70abf2b0bfdfb7d8481faa66213c766f8fff453ff85ccd94cea7796b1d2  prototype/data/glossary.js
+5e6638958f4f1f5cb7dfda4ee581d1379dc27b218d133d640036e8196b51d4a0  prototype/build-worker.py
+```
+
+---
+
 # Sicherheitsprüfung v5.5 (24. November 2026, 07:11 Europe/Zurich)
 
 **Stand:** UX-Versuch kompakter Sprachumschalter im Klick-Prototyp. Branch `prototype/lang-switcher` (nicht auf `main` mergen). Bestehender Cloudflare-Worker wird aktualisiert, keine neuen Ressourcen oder Pakete.

@@ -1,12 +1,19 @@
-# Edovita – Klick-Prototyp v5.5 (UX-Versuch Sprachumschalter)
+# Edovita – Klick-Prototyp v5.6 (UX-Versuch Zweitsprache)
 
 **Nicht produktiver Code.** Dieser Ordner ist die Design-Referenz und der klickbare Prototyp für UX-Versuche. Er wird nicht in die echte App übernommen; die App entsteht neu (React + TypeScript + Rsbuild).
 
-- **Version:** v5.5 (24.11.2026), auf v5.4.1 aufbauend
+- **Version:** v5.6 (24.11.2026), auf v5.5 aufbauend
 - **Live:** als Cloudflare-Worker-Demo veröffentlicht (URL bewusst nicht im Repo)
 - **Technik:** statisches HTML/CSS/Vanilla-JS, keine Laufzeit-Abhängigkeiten ausser `vendor/qrcode-generator.js` (MIT), keine Netzwerkaufrufe, strenge CSP
-- **Daten:** nur erfundene Demo-Daten. Es werden keine Gesundheitsdaten gespeichert (localStorage nur Sprache, Darstellung, Ton, Region)
+- **Daten:** nur erfundene Demo-Daten. Es werden keine Gesundheitsdaten gespeichert (localStorage nur Sprache, Zweitsprache, Variante, Darstellung, Ton, Region)
 - **Starten:** im Ordner `python3 -m http.server` und `http://localhost:8000/` öffnen (Handy-Breite, z. B. 390×844)
+
+## Neu in v5.6
+Zwei vergleichbare Varianten für die **Zweitsprache** (Inhalte wie Lebensmittel- und Zutatenname, ADR-003). Umschaltbar über die Demo-Leiste und `?variant=a` / `?variant=b`.
+- **A (empfohlen):** kompakter Chip «auch auf: PT» auf der Seite selbst (Einkaufsliste, Rezept-Detail); Kopfzeile bleibt mit nur dem Hauptumschalter schlank.
+- **B:** zweiter Chip (Flagge plus Kürzel, inkl. «keine») direkt neben dem Hauptumschalter oben rechts.
+
+Standard ist «keine», gespeichert in `localStorage`, geprüft gegen die Whitelist `de/en/pt/ja`. Die Zweitsprache darf nicht gleich der Hauptsprache sein. PT und JA dürfen in der Demo als Inhaltssprache erscheinen, auch wenn sie als UI-Sprache noch nicht freigegeben sind. Zusätzlich wählbar unter Profil › Sprache. Rezeptschritte, Titel und die restliche Oberfläche bleiben in der Hauptsprache. Dark/Light und der Hauptumschalter sind unverändert (v5.5). Details in `ENTWICKLUNG.md` und `SECURITY.md`.
 
 ## Neu in v5.5
 Kompakter Sprachumschalter fest oben rechts auf allen Screens (Flagge plus zweistelliges Kürzel, Dropdown). Die volle Sprachliste ist von der Startseite entfernt. Standard ist die Browsersprache, falls sie freigegeben ist, sonst Englisch. Die Wahl wird lokal gespeichert und gegen eine Whitelist geprüft. Details in `ENTWICKLUNG.md` und `SECURITY.md`.
@@ -16,7 +23,7 @@ Kompakter Sprachumschalter fest oben rechts auf allen Screens (Flagge plus zweis
 | Pfad | Zweck |
 |---|---|
 | `index.html`, `styles.css`, `logo-anim.css`, `theme.js` | Screens, Layout, Dark Mode, Logo-Animation |
-| `app.js`, `v1-features.js`, `data/v1-data.js` | Klicklogik, Schutzregeln, V1-Features mit Beispieldaten |
+| `app.js`, `v1-features.js`, `data/v1-data.js`, `data/glossary.js` | Klicklogik, Schutzregeln, V1-Features, Lebensmittel-Glossar (DE/EN/PT/JA) |
 | `i18n.js`, `locales/`, `locales.js` | Übersetzungen (7 Sprachen, `locales.js` aus `tools/build-locales.py` generiert) |
 | `tools/` | Werkzeuge für Übersetzungen (Python, nur Standardbibliothek) |
 | `audio/` | Erkennungsmelodie und Töne (KI-generiert, ACE-Step v1, Apache-2.0) |

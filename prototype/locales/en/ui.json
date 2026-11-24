@@ -1020,5 +1020,19 @@
  "nav.reise": "Travel",
  "nav.marken": "Store brands",
  "lang.switch": "Language",
- "lang.switch.current": "Language, currently {name}"
+ "lang.switch.current": "Language, currently {name}",
+ "second.none": "None",
+ "second.chip": "also in: {code}",
+ "second.chip.none": "Second language",
+ "second.label": "Second language",
+ "second.label.current": "Second language, currently {name}",
+ "second.label.none": "Second language, none",
+ "second.hint": "An extra name for ingredients and shopping items. Steps and menus stay in the app language.",
+ "second.same": "The second language cannot be the same as the app language.",
+ "demo.variant": "Compare: placement of the second language",
+ "demo.variant.a": "A, on the page",
+ "demo.variant.b": "B, top right",
+ "recipe.ingredients": "Ingredients",
+ "recipe.steps": "Method",
+ "recipe.open": "Open recipe"
 }

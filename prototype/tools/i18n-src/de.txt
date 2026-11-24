@@ -1020,3 +1020,17 @@
 1020|Hausmarken
 1021|Sprache
 1022|Sprache, aktuell {name}
+1023|Keine
+1024|auch auf: {code}
+1025|Zweitsprache
+1026|Zweitsprache
+1027|Zweitsprache, aktuell {name}
+1028|Zweitsprache, keine
+1029|Zusätzlicher Name für Zutaten und Einkaufsartikel. Schritte und Menüs bleiben in der App-Sprache.
+1030|Die Zweitsprache darf nicht der App-Sprache entsprechen.
+1031|Vergleich: Platzierung der Zweitsprache
+1032|A, auf der Seite
+1033|B, oben rechts
+1034|Zutaten
+1035|Zubereitung
+1036|Rezept öffnen

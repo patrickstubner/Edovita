@@ -410,7 +410,7 @@ button.chip, .chip { min-height: 44px; }
 .row.gap { gap: 8px; }
 
 /* ---------- v5.5: kompakter Sprachumschalter oben rechts ---------- */
-#langSwitch{position:absolute;top:12px;inset-inline-end:16px;z-index:20}
+#langSwitch{position:absolute;top:8px;inset-inline-end:16px;z-index:23}
 .lang-switch-btn{min-width:44px;min-height:44px;padding:0 10px 0 8px;display:inline-flex;align-items:center;justify-content:center;gap:6px;border-radius:22px;background:var(--w);box-shadow:var(--sh);color:var(--t);font-weight:800;font-size:13px;letter-spacing:.4px}
 .lang-switch-btn:focus-visible{outline:3px solid var(--pd);outline-offset:2px}
 .lang-flag{width:22px;height:16px;border-radius:2px;overflow:hidden;flex:none;box-shadow:0 0 0 1px rgba(20,33,31,.18);background:var(--bg)}
@@ -425,10 +425,42 @@ button.chip, .chip { min-height: 44px; }
 .lang-opt[aria-selected=true]{background:var(--ps);color:var(--pd)}
 .lang-opt .lang-name{flex:1;min-width:0}
 .lang-opt .lang-code-sm{font-size:12px;font-weight:800;color:var(--t2);letter-spacing:.4px;flex:none}
-#app.has-lang-switch .status,#app.has-lang-switch .topbar{padding-inline-end:96px}
+/* Umschalter sitzen in der Demo-Leiste, daher keine extra Reserve in den Screen-Köpfen. */
+#app.has-lang-switch .demo-bar{padding-inline-end:96px}
 html[data-eff=dark] .lang-flag{box-shadow:0 0 0 1px rgba(255,255,255,.28)}
 html[data-eff=dark] .lang-menu{box-shadow:0 0 0 1px rgba(255,255,255,.08),0 16px 40px rgba(0,0,0,.55)}
 @media (prefers-reduced-motion:no-preference){
   .lang-menu:not([hidden]){animation:lang-pop .16s ease-out}
 }
 @keyframes lang-pop{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+
+/* ---------- v5.6: Zweitsprache, Varianten A/B ---------- */
+.demo-bar{flex:none;display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;padding:8px 16px;padding-inline-end:96px;min-height:52px;background:var(--w);border-bottom:1px solid var(--b);z-index:21;position:relative;pointer-events:none}
+#app.variant-b .demo-bar{padding-inline-end:180px}
+.demo-bar > *{pointer-events:auto}
+.demo-bar-label{font-size:12px;font-weight:700;color:var(--t2);letter-spacing:.2px;flex:1 1 120px;min-width:0}
+.demo-seg{flex:none}
+.demo-seg button{min-height:44px;padding:0 12px;font-size:13px;font-weight:700}
+.biname{display:inline}
+.biname-sec{font-weight:600;color:var(--t2)}
+#langSwitch{top:8px}
+#app.variant-b.has-lang-switch .demo-bar{padding-inline-end:180px}
+#secondSwitch{position:absolute;top:8px;inset-inline-end:88px;z-index:23}
+#secondSwitch[hidden]{display:none!important}
+.second-switch-btn.is-none .lang-flag{display:none}
+.second-chip{min-height:44px;padding:0 12px;display:inline-flex;align-items:center;gap:8px;border-radius:22px;background:var(--w);box-shadow:var(--sh);color:var(--t);font-weight:700;font-size:14px;position:relative}
+.second-chip-slot{margin:10px 0 0;position:relative}
+.second-chip .lang-flag{width:20px;height:14px}
+.second-chip-wrap{position:relative;display:inline-block;max-width:100%}
+.second-chip-wrap .lang-menu{inset-inline-start:0;inset-inline-end:auto}
+#app.variant-b [data-secondchip]{display:none!important}
+#app.variant-a #secondSwitch{display:none!important}
+.ing-row{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;min-height:44px;padding:8px 0}
+.ing-row+.ing-row{border-top:1px solid var(--b)}
+.ing-row .qty{flex:none;color:var(--t2);font-weight:600;font-size:15px}
+.step-list{list-style:none;counter-reset:s;padding:0}
+.step-list li{position:relative;padding:10px 0 10px 36px;min-height:44px;counter-increment:s}
+.step-list li::before{content:counter(s);position:absolute;left:0;top:10px;width:24px;height:24px;border-radius:12px;background:var(--ps);color:var(--pd);font-size:13px;font-weight:800;display:grid;place-items:center}
+.recipe.feat,.recipe.sm{cursor:pointer}
+.card.recipe:focus-visible{outline:3px solid var(--pd);outline-offset:2px}
+html[data-eff=dark] .demo-bar{box-shadow:0 0 0 1px rgba(255,255,255,.06)}

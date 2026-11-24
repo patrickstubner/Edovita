@@ -1020,5 +1020,19 @@
  "nav.reise": "旅行",
  "nav.marken": "PB",
  "lang.switch": "言語",
- "lang.switch.current": "言語、現在は{name}"
+ "lang.switch.current": "言語、現在は{name}",
+ "second.none": "なし",
+ "second.chip": "併記: {code}",
+ "second.chip.none": "第二言語",
+ "second.label": "第二言語",
+ "second.label.current": "第二言語、現在は{name}",
+ "second.label.none": "第二言語、なし",
+ "second.hint": "材料と買い物リストの名前だけに併記します。手順とメニューはアプリの言語のままです。",
+ "second.same": "第二言語はアプリの言語と同じにはできません。",
+ "demo.variant": "比較：第二言語の配置",
+ "demo.variant.a": "A、ページ内",
+ "demo.variant.b": "B、右上",
+ "recipe.ingredients": "材料",
+ "recipe.steps": "作り方",
+ "recipe.open": "レシピを開く"
 }

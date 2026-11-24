@@ -1020,3 +1020,17 @@
 1020|MDD
 1021|Langue
 1022|Langue, actuellement {name}
+1023|Aucune
+1024|aussi en : {code}
+1025|Langue secondaire
+1026|Langue secondaire
+1027|Langue secondaire, actuellement {name}
+1028|Langue secondaire, aucune
+1029|Nom supplémentaire pour les ingrédients et les articles de la liste. Les étapes et les menus restent dans la langue de l’app.
+1030|La langue secondaire ne peut pas être la même que celle de l’app.
+1031|Comparaison : emplacement de la langue secondaire
+1032|A, sur la page
+1033|B, en haut à droite
+1034|Ingrédients
+1035|Préparation
+1036|Ouvrir la recette

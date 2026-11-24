@@ -1020,3 +1020,17 @@
 1020|Marche
 1021|Lingua
 1022|Lingua, attualmente {name}
+1023|Nessuna
+1024|anche in: {code}
+1025|Seconda lingua
+1026|Seconda lingua
+1027|Seconda lingua, attualmente {name}
+1028|Seconda lingua, nessuna
+1029|Nome aggiuntivo per ingredienti e articoli della lista. I passaggi e i menu restano nella lingua dell’app.
+1030|La seconda lingua non può coincidere con quella dell’app.
+1031|Confronto: posizione della seconda lingua
+1032|A, nella pagina
+1033|B, in alto a destra
+1034|Ingredienti
+1035|Preparazione
+1036|Apri la ricetta

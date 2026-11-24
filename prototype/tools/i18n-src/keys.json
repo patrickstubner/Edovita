@@ -1020,5 +1020,19 @@
  "nav.reise",
  "nav.marken",
  "lang.switch",
- "lang.switch.current"
+ "lang.switch.current",
+ "second.none",
+ "second.chip",
+ "second.chip.none",
+ "second.label",
+ "second.label.current",
+ "second.label.none",
+ "second.hint",
+ "second.same",
+ "demo.variant",
+ "demo.variant.a",
+ "demo.variant.b",
+ "recipe.ingredients",
+ "recipe.steps",
+ "recipe.open"
 ]

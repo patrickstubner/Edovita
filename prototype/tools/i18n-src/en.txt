@@ -1020,3 +1020,17 @@
 1020|Store brands
 1021|Language
 1022|Language, currently {name}
+1023|None
+1024|also in: {code}
+1025|Second language
+1026|Second language
+1027|Second language, currently {name}
+1028|Second language, none
+1029|An extra name for ingredients and shopping items. Steps and menus stay in the app language.
+1030|The second language cannot be the same as the app language.
+1031|Compare: placement of the second language
+1032|A, on the page
+1033|B, top right
+1034|Ingredients
+1035|Method
+1036|Open recipe
