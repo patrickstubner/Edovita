@@ -3,6 +3,7 @@ import {
   DEFAULT_UI_LANG,
   type LangCode,
   type LanguagesRegistry,
+  type SecondLangSetting,
 } from './types.ts';
 
 /**
@@ -112,27 +113,36 @@ export function coerceUiLang(
 }
 
 /**
- * Prüft `secondLang` gegen `registry.secondary` (oder eine explizite Whitelist, F3a).
- * Ungültige, nicht gelistete oder reservierte Schlüssel fallen sicher auf `null` (keine Zweitsprache) zurück.
+ * Prüft `secondLang` dreiwertig gegen `registry.secondary` (oder eine explizite Whitelist, F3a / E6):
+ * - `null`, `undefined`, `''`, `'auto'` → `null` (automatisch nach Ort)
+ * - `'none'` → `'none'` (explizit keine Zweitsprache)
+ * - gültiger Code in `registry.secondary` → Sprachcode
+ * - ungültige, nicht gelistete oder reservierte Schlüssel fallen sicher auf `null` (automatisch) zurück.
  */
 export function coerceSecondLang(
   value: unknown,
   allowedOrRegistry: readonly LangCode[] | LanguagesRegistry,
-): LangCode | null {
+): SecondLangSetting {
   if (value === null || value === undefined || value === '') {
     return null;
   }
   if (typeof value !== 'string') {
     return null;
   }
+  const trimmed = value.trim();
+  if (!trimmed || trimmed === 'auto') {
+    return null;
+  }
+  if (trimmed === 'none') {
+    return 'none';
+  }
+  if (!isSafeRecordKey(trimmed)) {
+    return null;
+  }
   const allowed = isLanguagesRegistry(allowedOrRegistry)
     ? allowedOrRegistry.secondary
     : allowedOrRegistry;
 
-  const trimmed = value.trim();
-  if (!trimmed || !isSafeRecordKey(trimmed)) {
-    return null;
-  }
   if (allowed.includes(trimmed)) {
     return trimmed;
   }

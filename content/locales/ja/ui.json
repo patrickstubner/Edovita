@@ -224,5 +224,13 @@
   "shop.have.aria": "{name}: 家にある量を設定",
   "shop.have.aria.partial": "{name}: 一部あり、{need}のうち{buy}を買う。変更",
   "shop.have.aria.home": "{name}: 全部ある。変更",
-  "shop.amount.missing": "レシピどおり"
+  "shop.amount.missing": "レシピどおり",
+  "second.none": "なし",
+  "second.label": "第二言語",
+  "second.label.current": "第二言語、現在は{name}",
+  "second.label.none": "第二言語、なし",
+  "second.hint": "材料と買い物リストの名前だけに併記します。手順とメニューはアプリの言語のままです。",
+  "second.same": "第二言語はアプリの言語と同じにはできません。",
+  "second.auto.current": "自動（場所） · {code}",
+  "second.auto.none": "自動（場所）· なし"
 }

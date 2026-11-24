@@ -74,6 +74,7 @@ export {
   type RecipeTag,
   type Result,
   type ScaledIngredient,
+  type SecondLangSetting,
   type Settings,
   type SexForCalc,
   type ShopImportError,

@@ -1,12 +1,13 @@
 export interface StepListProps {
   heading: string;
   steps: readonly string[];
+  hint?: string;
 }
 
 /**
  * Nummerierte Zubereitungsschritte, strikt in der App-Sprache (ADR-003).
  */
-export function StepList({ heading, steps }: StepListProps) {
+export function StepList({ heading, steps, hint }: StepListProps) {
   return (
     <section
       className="edo-card edo-stack"
@@ -24,6 +25,11 @@ export function StepList({ heading, steps }: StepListProps) {
           </li>
         ))}
       </ol>
+      {hint ? (
+        <p className="edo-cap" data-testid="second-lang-steps-hint">
+          {hint}
+        </p>
+      ) : null}
     </section>
   );
 }

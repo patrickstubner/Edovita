@@ -224,5 +224,13 @@
   "shop.have.aria": "{name} : indiquer ce que vous avez déjà",
   "shop.have.aria.partial": "{name} : en partie à la maison, acheter {buy} sur {need}. Modifier",
   "shop.have.aria.home": "{name} : tout à la maison. Modifier",
-  "shop.amount.missing": "Selon la recette"
+  "shop.amount.missing": "Selon la recette",
+  "second.none": "Aucune",
+  "second.label": "Langue secondaire",
+  "second.label.current": "Langue secondaire, actuellement {name}",
+  "second.label.none": "Langue secondaire, aucune",
+  "second.hint": "Nom supplémentaire pour les ingrédients et les articles de la liste. Les étapes et les menus restent dans la langue de l’app.",
+  "second.same": "La langue secondaire ne peut pas être la même que celle de l’app.",
+  "second.auto.current": "Automatique (lieu) · {code}",
+  "second.auto.none": "Automatique (lieu) · aucune"
 }

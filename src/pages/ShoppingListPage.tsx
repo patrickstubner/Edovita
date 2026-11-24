@@ -24,7 +24,12 @@ import {
   type ShopState,
   type ShoppingItem,
 } from '../domain/index.ts';
-import { useI18n, useShareList, useShoppingList } from '../hooks/index.ts';
+import {
+  useI18n,
+  useSecondLang,
+  useShareList,
+  useShoppingList,
+} from '../hooks/index.ts';
 import {
   BRAND_LABEL_KEYS,
   FOOD_GROUP_LABEL_KEYS,
@@ -74,6 +79,7 @@ export function ShoppingListPage() {
   const navigate = useNavigate();
   const location = useLocation();
   const { lang, t, fmtAmount } = useI18n();
+  const { effectiveMeta: secondMeta, secondFoodName } = useSecondLang();
   const {
     items,
     grouped,
@@ -440,6 +446,10 @@ export function ShoppingListPage() {
 
   const renderShopRow = (item: ShoppingItem, rowState: ShopState) => {
     const name = resolveItemName(item);
+    const secondaryName = item.customLabel
+      ? null
+      : secondFoodName(item.food, name);
+    const ariaName = secondaryName ? `${name} · ${secondaryName}` : name;
     const needText = resolveItemAmount(item);
     const partial = rowState !== 'home' && isPartialHave(item);
     const buyQty = partial ? shopBuyQty(item) : null;
@@ -453,7 +463,7 @@ export function ShoppingListPage() {
         : undefined;
     const baseToggleLabel = t(
       rowState === 'cart' ? 'shop.fromcart' : 'shop.tocart',
-      { name },
+      { name: ariaName },
     );
     const toggleLabel = qtyBuyOfAria
       ? `${baseToggleLabel}, ${qtyBuyOfAria}`
@@ -467,10 +477,10 @@ export function ShoppingListPage() {
           : t('shop.have');
     const haveButtonAriaLabel =
       rowState === 'home'
-        ? t('shop.have.aria.home', { name })
+        ? t('shop.have.aria.home', { name: ariaName })
         : partial
-          ? t('shop.have.aria.partial', { name })
-          : t('shop.have.aria', { name });
+          ? t('shop.have.aria.partial', { name: ariaName })
+          : t('shop.have.aria', { name: ariaName });
 
     const hasSource = item.fromRecipes.length > 0;
     const sourceAriaLabel = hasSource
@@ -488,6 +498,9 @@ export function ShoppingListPage() {
         food={item.food}
         unit={item.unit}
         name={name}
+        secondaryName={secondaryName}
+        secondaryLocale={secondMeta?.locale}
+        secondaryDir={secondMeta?.dir}
         amountText={needText}
         buyAmountText={buyAmountText}
         isPartial={partial}

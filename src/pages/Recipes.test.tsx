@@ -11,6 +11,7 @@ import { MemoryRouter, Route, Routes } from 'react-router';
 import { App } from '../app/App.tsx';
 import { I18nContext } from '../app/I18nProvider.tsx';
 import { RatingsProvider } from '../app/RatingsProvider.tsx';
+import { SecondLangProvider } from '../app/SecondLangProvider.tsx';
 import { ShoppingProvider } from '../app/ShoppingProvider.tsx';
 import { getRecipe } from '../catalog/index.ts';
 import { NutritionPanel } from '../components/index.ts';
@@ -299,15 +300,17 @@ describe('Paket E4: Rezeptliste, Rezept-Detailseite & F3b (Issue #10)', () => {
             fmtDate: (d) => d.toISOString(),
           }}
         >
-          <ShoppingProvider repository={storage.shopping}>
-            <RatingsProvider repository={storage.ratings}>
-              <MemoryRouter initialEntries={['/rezept/oven_salmon']}>
-                <Routes>
-                  <Route path="/rezept/:id" element={<RecipeDetailPage />} />
-                </Routes>
-              </MemoryRouter>
-            </RatingsProvider>
-          </ShoppingProvider>
+          <SecondLangProvider>
+            <ShoppingProvider repository={storage.shopping}>
+              <RatingsProvider repository={storage.ratings}>
+                <MemoryRouter initialEntries={['/rezept/oven_salmon']}>
+                  <Routes>
+                    <Route path="/rezept/:id" element={<RecipeDetailPage />} />
+                  </Routes>
+                </MemoryRouter>
+              </RatingsProvider>
+            </ShoppingProvider>
+          </SecondLangProvider>
         </I18nContext.Provider>
       </I18nextProvider>,
     );

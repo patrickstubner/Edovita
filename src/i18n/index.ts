@@ -57,3 +57,22 @@ export {
   REGION_LABEL_KEYS,
   getCuisineLabelKey,
 } from './labels.ts';
+
+export {
+  COUNTRY_LANG,
+  PSEUDO_RTL_LANG,
+  PSEUDO_RTL_META,
+  SECOND_LANG_STORAGE_KEY,
+  TZ_COUNTRY,
+  autoSecondLang,
+  countryFromLanguages,
+  countryFromTimeZone,
+  effectiveSecondLang,
+  inferCountry,
+  isPseudoRtlEnabled,
+  pseudoRtlFoodName,
+  readStoredSecondLang,
+  withPseudoRtlRegistry,
+  writeStoredSecondLang,
+  type SecondLangEnv,
+} from './secondLang.ts';

@@ -1,10 +1,11 @@
 import { useMemo } from 'react';
 import { RouterProvider } from 'react-router';
-import type { LangCode } from '../domain/index.ts';
+import type { LangCode, LanguagesRegistry } from '../domain/index.ts';
 import { createDexieStorage, type StorageBundle } from '../storage/index.ts';
 import { I18nProvider } from './I18nProvider.tsx';
 import { RatingsProvider } from './RatingsProvider.tsx';
 import { createAppRouter } from './router.tsx';
+import { SecondLangProvider } from './SecondLangProvider.tsx';
 import { SettingsProvider } from './SettingsProvider.tsx';
 import { ShoppingProvider } from './ShoppingProvider.tsx';
 import { ThemeProvider } from './ThemeProvider.tsx';
@@ -12,6 +13,10 @@ import { ThemeProvider } from './ThemeProvider.tsx';
 export interface AppProps {
   initialLang?: LangCode;
   navigatorLanguages?: readonly string[];
+  timeZone?: string | null;
+  secondLangRegistry?: LanguagesRegistry;
+  secondLangGlossaries?: Readonly<Record<string, Readonly<Record<string, string>>>>;
+  enablePseudoRtl?: boolean;
   storage?: StorageBundle;
 }
 
@@ -32,6 +37,10 @@ function getDefaultStorage(): StorageBundle {
 export function App({
   initialLang,
   navigatorLanguages,
+  timeZone,
+  secondLangRegistry,
+  secondLangGlossaries,
+  enablePseudoRtl,
   storage,
 }: AppProps = {}) {
   const router = useMemo(() => createAppRouter(), []);
@@ -46,13 +55,21 @@ export function App({
         initialLang={initialLang}
         navigatorLanguages={navigatorLanguages}
       >
-        <ThemeProvider>
-          <ShoppingProvider repository={activeStorage.shopping}>
-            <RatingsProvider repository={activeStorage.ratings}>
-              <RouterProvider router={router} />
-            </RatingsProvider>
-          </ShoppingProvider>
-        </ThemeProvider>
+        <SecondLangProvider
+          timeZone={timeZone}
+          navigatorLanguages={navigatorLanguages}
+          registry={secondLangRegistry}
+          glossaries={secondLangGlossaries}
+          enablePseudoRtl={enablePseudoRtl}
+        >
+          <ThemeProvider>
+            <ShoppingProvider repository={activeStorage.shopping}>
+              <RatingsProvider repository={activeStorage.ratings}>
+                <RouterProvider router={router} />
+              </RatingsProvider>
+            </ShoppingProvider>
+          </ThemeProvider>
+        </SecondLangProvider>
       </I18nProvider>
     </SettingsProvider>
   );

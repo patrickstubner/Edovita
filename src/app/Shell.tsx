@@ -1,30 +1,66 @@
-import { useContext, useEffect, useMemo } from 'react';
+import {
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import { Outlet } from 'react-router';
 import {
   Icon,
   IconSprite,
   LangSwitcher,
+  SecondLangSwitcher,
+  Toast,
   type LangSwitcherOption,
+  type SecondLangOptionValue,
+  type SecondLangSwitcherOption,
 } from '../components/index.ts';
-import { useI18n } from '../hooks/index.ts';
+import { useI18n, useSecondLang } from '../hooks/index.ts';
 import { RatingsContext } from './RatingsProvider.tsx';
 import { SettingsContext } from './SettingsProvider.tsx';
 import { ShoppingContext } from './ShoppingProvider.tsx';
 import type { StorageErrorCode } from './storageError.ts';
 
+type OpenHeaderMenu = 'ui' | 'second' | null;
+
 /**
  * App-Shell: Handy-Container (max. 480 px), synchronisiert `--edo-app-h`
  * mit `visualViewport`, damit die fixe Aktionsleiste auch bei geöffneter Tastatur
  * sichtbar bleibt (Muster aus Prototyp v5.4).
- * Zeigt oben rechts (in RTL oben links) den kompakten Sprachumschalter auf jedem Screen
- * (Prototyp v5.5) und bei Speicherfehlern nur eine generische Meldung (G1).
+ * Zeigt oben rechts (in RTL oben links) die beiden kompakten Sprachumschalter
+ * (`SecondLangSwitcher` links neben `LangSwitcher`, nur ein Menü gleichzeitig offen;
+ * Prototyp v5.5–v5.10) und bei Speicherfehlern nur eine generische Meldung (G1).
  */
 export function Shell() {
   const { lang, meta, uiLanguages, isApproved, metaFor, setLang, t } =
     useI18n();
+  const {
+    setting: secondSetting,
+    effective: secondEffective,
+    autoCode: secondAutoCode,
+    isAuto: secondIsAuto,
+    secondaryLanguages,
+    metaFor: secondMetaFor,
+    setSecondLang,
+  } = useSecondLang();
   const settingsCtx = useContext(SettingsContext);
   const shoppingCtx = useContext(ShoppingContext);
   const ratingsCtx = useContext(RatingsContext);
+
+  const [activeMenu, setActiveMenu] = useState<OpenHeaderMenu>(null);
+  const [sameToast, setSameToast] = useState<string | null>(null);
+  const toastTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(
+    () => () => {
+      if (toastTimerRef.current !== null) {
+        clearTimeout(toastTimerRef.current);
+      }
+    },
+    [],
+  );
 
   const activeError: StorageErrorCode | null =
     settingsCtx?.error ?? shoppingCtx?.error ?? ratingsCtx?.error ?? null;
@@ -47,6 +83,86 @@ export function Shell() {
         };
       });
   }, [isApproved, metaFor, uiLanguages]);
+
+  const secondOptions = useMemo<readonly SecondLangSwitcherOption[]>(() => {
+    const autoLabel = secondAutoCode
+      ? t('second.auto.current', { code: secondAutoCode.toUpperCase() })
+      : t('second.auto.none');
+    const autoLocale = secondAutoCode
+      ? secondMetaFor(secondAutoCode)?.locale
+      : undefined;
+
+    const list: SecondLangSwitcherOption[] = [
+      {
+        value: 'auto',
+        label: autoLabel,
+        flagCode: secondAutoCode,
+        locale: autoLocale,
+        selected: secondIsAuto,
+      },
+      {
+        value: 'none',
+        label: t('second.none'),
+        flagCode: null,
+        selected: secondSetting === 'none',
+      },
+    ];
+
+    for (const code of secondaryLanguages) {
+      if (code === lang) continue;
+      const m = secondMetaFor(code);
+      list.push({
+        value: code,
+        label: m?.name ?? code.toUpperCase(),
+        flagCode: code,
+        locale: m?.locale ?? code,
+        showCodeBadge: true,
+        selected: secondSetting === code,
+      });
+    }
+
+    return list;
+  }, [
+    lang,
+    secondAutoCode,
+    secondIsAuto,
+    secondMetaFor,
+    secondSetting,
+    secondaryLanguages,
+    t,
+  ]);
+
+  const secondButtonLabel = useMemo(() => {
+    if (secondEffective && secondIsAuto) {
+      return t('second.auto.current', { code: secondEffective.toUpperCase() });
+    }
+    if (secondEffective) {
+      return t('second.label.current', {
+        name: secondMetaFor(secondEffective)?.name ?? secondEffective,
+      });
+    }
+    if (secondIsAuto) {
+      return t('second.auto.none');
+    }
+    return t('second.label.none');
+  }, [secondEffective, secondIsAuto, secondMetaFor, t]);
+
+  const handleSelectSecond = useCallback(
+    (value: SecondLangOptionValue) => {
+      const outcome = setSecondLang(value);
+      if (outcome === 'same') {
+        if (toastTimerRef.current !== null) {
+          clearTimeout(toastTimerRef.current);
+        }
+        setSameToast(t('second.same'));
+        toastTimerRef.current = setTimeout(() => {
+          setSameToast(null);
+          toastTimerRef.current = null;
+        }, 3200);
+      }
+    },
+    [setSecondLang, t],
+  );
 
   useEffect(() => {
     const syncHeight = () => {
@@ -91,6 +207,23 @@ export function Shell() {
         </div>
       ) : null}
       <Outlet />
+      <div
+        id="langBackdrop"
+        className="edo-lang-backdrop"
+        hidden={activeMenu === null}
+        onClick={() => setActiveMenu(null)}
+        data-testid="lang-switch-backdrop"
+      />
+      <SecondLangSwitcher
+        effectiveCode={secondEffective}
+        options={secondOptions}
+        buttonLabel={secondButtonLabel}
+        menuLabel={t('second.label')}
+        open={activeMenu === 'second'}
+        onOpenChange={(next) => setActiveMenu(next ? 'second' : null)}
+        hideBackdrop
+        onSelect={handleSelectSecond}
+      />
       <LangSwitcher
         currentCode={lang}
         options={langOptions}
@@ -98,8 +231,12 @@ export function Shell() {
           name: meta.name || lang.toUpperCase(),
         })}
         menuLabel={t('lang.switch')}
+        open={activeMenu === 'ui'}
+        onOpenChange={(next) => setActiveMenu(next ? 'ui' : null)}
+        hideBackdrop
         onSelect={setLang}
       />
+      <Toast message={sameToast} />
     </main>
   );
 }
