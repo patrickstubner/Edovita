@@ -35,7 +35,7 @@ Quelle: [Pexels License](https://www.pexels.com/license/).
 
 - Kein Hotlinking, kein `fetch` in der App. Dateien liegen unter `images/recipes/` (`*.webp` ca. 800 px breit, `*-thumb.webp` ca. 400 px, Seitenverhältnis 4:3).
 - Beim Umrechnen (Pillow) werden EXIF/GPS nicht übernommen; die WebP-Dateien enthalten keine GPS-Daten.
-- Der Cloudflare-Worker bettet die Dateien als Base64 ein und liefert sie unter `img-src 'self'` aus. CSP bleibt `connect-src 'none'`.
+- Der Cloudflare-Worker liefert die Dateien ab v5.11 aus Workers KV (vorher Base64 eingebettet) unter `img-src 'self'` aus. CSP bleibt `connect-src 'none'`.
 - In der UI: Listen-, Detail- und Plan-Miniaturen mit `alt` (Rezepttitel), `loading="lazy"`, festem Seitenverhältnis gegen Layout Shift. Neutraler Platzhalter (farbige Fläche und Blatt-Icon), wenn kein passendes Foto vorliegt.
 
 ## Auswahl (12 Fotos, alle Pexels)
@@ -56,11 +56,11 @@ Quelle: [Pexels License](https://www.pexels.com/license/).
 | `burrito_bowl` | Pexels 16123122 | Raphael Loquellano | https://www.pexels.com/photo/close-up-of-salad-16123122/ | 2026-11-24 |
 
 
-## Erweiterung v5.11 (166 Fotos, alle Pexels)
+## Erweiterung v5.11 (165 Fotos, alle Pexels)
 
 Gefunden über die öffentliche Bild-Sitemap von Pexels (lokaler Suchindex, keine API, kein Konto). Heruntergeladen einmalig über `images.pexels.com` (`w=1000`), mit Pillow auf 4:3 zugeschnitten: Vollbild **640×480** (WebP q62), Miniatur **400×300** (WebP q58), ohne EXIF/GPS. Die Sitemap enthält keinen Fotografennamen; die Lizenz verlangt keine Nennung, intern ist die Pexels-ID dokumentiert.
 
-Auslieferung: Die Bilder der Erweiterung sind zu gross für die Base64-Einbettung im Worker (Free-Plan-Limit). Der Worker liefert alle Dateien unter `/images/recipes/`, die nicht eingebettet sind, aus dem Workers-KV-Namespace (Binding `IMG`) mit gleicher CSP (`img-src 'self'`). Die Dateien liegen trotzdem im Repo, damit die App lokal vollständig ist.
+Auslieferung: Ab v5.11 sind die Rezeptbilder nicht mehr im Worker eingebettet (Upload-/Grössenlimit). Der Worker liefert `/images/recipes/*.webp` aus dem Workers-KV-Namespace `edovita-prototyp-img` (Binding `IMG`, Upload `tools/kv-upload-images.py`) mit gleicher CSP (`img-src 'self'`). Die Dateien liegen trotzdem im Repo, damit die App lokal vollständig ist.
 
 | Rezept | Foto | Fotograf/in | Ursprungsseite | Abgerufen |
 |--------|------|-------------|----------------|-----------|
@@ -145,7 +145,6 @@ Auslieferung: Die Bilder der Erweiterung sind zu gross für die Base64-Einbettun
 | `edamame_quinoa_bowl` | Pexels 7660427 | – | https://www.pexels.com/photo/7660427/ | 2026-11-24 |
 | `harira` | Pexels 209540 | – | https://www.pexels.com/photo/209540/ | 2026-11-24 |
 | `couscous_chicken_salad` | Pexels 37520728 | – | https://www.pexels.com/photo/37520728/ | 2026-11-24 |
-| `zurich_geschnetzeltes` | Pexels 19193027 | – | https://www.pexels.com/photo/19193027/ | 2026-11-24 |
 | `whitefish_potatoes` | Pexels 19748960 | – | https://www.pexels.com/photo/19748960/ | 2026-11-24 |
 | `barley_risotto_chicken` | Pexels 14537683 | – | https://www.pexels.com/photo/14537683/ | 2026-11-24 |
 | `alpler_magronen_light` | Pexels 6845342 | – | https://www.pexels.com/photo/6845342/ | 2026-11-24 |
@@ -231,9 +230,9 @@ Auslieferung: Die Bilder der Erweiterung sind zu gross für die Base64-Einbettun
 | `silken_chocolate_mousse` | Pexels 34644328 | – | https://www.pexels.com/photo/34644328/ | 2026-11-24 |
 | `edamame_hummus` | Pexels 17291667 | – | https://www.pexels.com/photo/17291667/ | 2026-11-24 |
 
-**Dateigrösse gesamt:** 7755076 Bytes (7.4 MB) für 178 Rezepte × 2 Dateien, davon Vollbilder 5.1 MB. Die Erweiterung allein: 6836004 Bytes (ca. 41 KB pro Rezept).
+**Dateigrösse gesamt:** 7725496 Bytes (7.4 MB) für 177 Rezepte × 2 Dateien, davon Vollbilder 5.1 MB. Die Erweiterung allein: 6806424 Bytes (ca. 41 KB pro Rezept).
 
-## Rezepte ohne passendes Foto (neutraler Platzhalter, 22)
+## Rezepte ohne passendes Foto (neutraler Platzhalter, 23)
 
 - `mushroom_polenta` (mushroom_polenta): Kein Foto, das Pilze und Polenta zusammen und erkennbar zeigt.
 - `tofu_scramble` (Tofu-Rührei mit Gemüse): kein Foto, das das Gericht klar und ohne irreführende Zutaten zeigt.
@@ -257,5 +256,6 @@ Auslieferung: Die Bilder der Erweiterung sind zu gross für die Base64-Einbettun
 - `teriyaki_tofu` (Teriyaki-Tofu mit Brokkoli und Vollkornreis): Passende Kandidaten zeigten Teriyaki-Lachs statt Tofu (irreführend für ein veganes Gericht).
 - `hummus_wrap` (hummus_wrap): Kein schlichtes, passendes Hummus-Gemüse-Wrap-Foto (Kandidaten mit Poulet oder stark stilisiert).
 - `quinoa_pan` (quinoa_pan): Kein Foto, das klar eine Quinoa-Gemüsepfanne mit Kichererbsen zeigt, ohne irreführende Zutaten (z. B. Fleisch).
+- `zurich_geschnetzeltes` (Leichtes Zürcher Geschnetzeltes vom Poulet mit Reis): Kandidaten zeigten Rindfleisch mit Pasta oder Steak statt Poulet mit Reis (irreführend).
 
 Namensnennung in der App ist bewusst unterlassen (Lizenz erlaubt das; intern bleibt die Herkunft dokumentiert).

@@ -1,6 +1,6 @@
 # Sicherheitsprüfung v5.11 (24. November 2026, Europe/Zurich)
 
-**Stand:** Rezepterweiterung auf 200 Rezepte, aufbauend auf v5.10.1 (`5ef149a`), Branch `prototype/lang-switcher` (nicht auf `main`). Neue Ressource: kostenloser Workers-KV-Namespace `edovita-prototyp-img` (Binding `IMG`, nur Lesen im Worker). CSP unverändert (`script-src 'self'`, `connect-src 'none'`, `img-src 'self' data:`).
+**Stand:** Rezepterweiterung auf 200 Rezepte, aufbauend auf v5.10.1 (`5ef149a`), Branch `prototype/lang-switcher` (nicht auf `main`). Neue Ressource: kostenloser Workers-KV-Namespace `edovita-prototyp-img` (Binding `IMG`, nur Lesen im Worker); alle Rezeptbilder (356 Dateien) kommen daraus, keine mehr im Worker eingebettet. CSP unverändert (`script-src 'self'`, `connect-src 'none'`, `img-src 'self' data:`).
 
 **Quelle der Prüfung:** Code-Review aller geänderten Dateien (`app.js` Merge-Hook, `index.html`, `data/recipes-ext.js`, `tools/recipes-src/merge.js.tpl`, `worker.tpl.mjs`, `build-worker.py`, `tools/build-recipes.py`, `tools/validate-recipes.py`, `tools/kv-upload-images.py`), grep-Scans (innerHTML/eval/Function/fetch, Geheimnisse, `__proto__`/HTML in Daten), Node-Test des Workers mit Fake-KV (Pfade, Methoden, Fehler), Headless Chrome (Liste, Detail, Plan, Einkaufsliste; Konsole und CSP ohne Fehler), EXIF-Prüfung aller WebP. Keine neuen Laufzeit- oder Build-Abhängigkeiten (Pillow nur lokal ausserhalb des Repos), deshalb kein `pnpm audit` im Prototyp.
 
@@ -14,16 +14,16 @@
 | B1 | KV-Fehler (z. B. Tageskontingent) | Vorher hätte ein geworfener KV-Fehler eine 500-Antwort mit Cloudflare-Fehlerseite erzeugt. Jetzt `try/catch`, Antwort wie fehlende Datei (404). | niedrig, behoben |
 | B2 | Kontingent-Erschöpfung | Massenabrufe könnten das kostenlose KV-Lesekontingent (100 000/Tag) erschöpfen; dann fehlen bis zum Tageswechsel die neuen Fotos. Keine Kosten (Free Plan, hartes Limit), keine Datenpreisgabe. Browser-Cache 24 h dämpft. Optional später: Edge-Cache (`caches.default`). | niedrig, offen (akzeptiert) |
 | 4 | Geheimnisse | Keine Schlüssel/Tokens im Repo. Die KV-Namespace-ID ist kein Geheimnis (nur mit Konto-Rechten nutzbar). Uploads liefen über das Cloudflare-MCP mit der bestehenden Sitzung. | kein Befund |
-| 5 | Bilder und Datenschutz | 166 neue Pexels-Fotos, mit Pillow neu kodiert, 0 Dateien mit EXIF/XMP/GPS. Keine erkennbaren Personen als Hauptmotiv. Herkunft nur intern (`IMAGES.md`, Manifest). | kein Befund |
+| 5 | Bilder und Datenschutz | 165 neue Pexels-Fotos, mit Pillow neu kodiert, 0 Dateien mit EXIF/XMP/GPS. Keine erkennbaren Personen als Hauptmotiv. Herkunft nur intern (`IMAGES.md`, Manifest). | kein Befund |
 | 6 | Abhängigkeiten | Keine neuen Pakete, keine CDN-Skripte. | kein Befund |
 
 **SHA-256 (geänderte Kern-Dateien):**
 ```
 5e8ffed1c306512ab9086675fcdf385b840476b9ba32e0af2d1dd801c52ee7f0  prototype/app.js
 0693228a30d12a1db09849ecac561036ac3201b382ca952521bbc07927c2f9d4  prototype/index.html
-c27c2ce5f8ed56013e151457a1a16570b5a680439854c36a8a53694f8d243c18  prototype/data/recipes-ext.js
+a5b166788efd1ca9be972f3a6def93d3efab42669effb6e279829acfac22eb9e  prototype/data/recipes-ext.js
 9cbdffcb979fdfebcf6fdc6ed321e6b099215ae05c2985b0fcdf96cc65eb95b9  prototype/worker.tpl.mjs
-d699752f8f8f7b1f4b3b8c8ba5d31fe3834bb23f066dcc86c4062e35db408040  prototype/build-worker.py
+6aa7b98cf0005ad194266421d16186c6f58ec3c1bc543fa0033ffad38b86d8f4  prototype/build-worker.py
 1824b69404d15a7fe508d550152de70429d4a997c842ff4633b1ebfb92d25262  prototype/tools/build-recipes.py
 ee3395f166bff3b14670a6266356575f422e4badfe43241b6326c1e896360af4  prototype/tools/validate-recipes.py
 6a97b8cfbedc532c387d97348caa5146acf67a12d37b691dc750b394abfda47c  prototype/tools/kv-upload-images.py

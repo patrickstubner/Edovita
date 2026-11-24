@@ -15,11 +15,11 @@ AUDIO=['hymne_H1.mp3','hymne_H5.mp3','hymne_H4.mp3','A_aufbruch.mp3','B_erfolg.m
 for f in AUDIO:
     F['/audio/'+f]={'t':'audio/mpeg','b64':base64.b64encode(open('audio/'+f,'rb').read()).decode('ascii')}
 # Rezeptbilder: lokal gebündelt, CSP img-src 'self' (kein Hotlinking)
-# Ab v5.11: nur die Bilder der 15 Basisrezepte eingebettet; alle weiteren liegen in Workers KV (Binding IMG,
-# Schluessel 'images/recipes/<datei>', Upload: tools/kv-upload-images.py), sonst sprengt der Worker das Groessenlimit.
+# Ab v5.11: Rezeptbilder nicht mehr eingebettet (Worker-Groesse/Upload-Limit), sondern aus Workers KV (Binding IMG,
+# Schluessel 'images/recipes/<datei>', Upload: tools/kv-upload-images.py). EMBED_IMG: Rezept-IDs, die trotzdem eingebettet werden.
 REC_IMG='images/recipes'
 KV_NAMESPACE_ID='55206ef7c7a04d40b0e5516f48839f79'
-EMBED_IMG={'oven_salmon','quinoa_pan','thai_curry','pho','summer_rolls','birchermuesli','yogurt_bowl','lentil_curry','scrambled_eggs','chicken_bowl','mushroom_polenta','hummus_wrap','miso_salmon','shakshuka','burrito_bowl'}
+EMBED_IMG=set()
 if os.path.isdir(REC_IMG):
     for f in sorted(os.listdir(REC_IMG)):
         if f.endswith('.webp') and f[:-5].replace('-thumb','') in EMBED_IMG:

@@ -2316,7 +2316,7 @@
    ],
    "pop": 9,
    "c": "c5",
-   "photo": true,
+   "photo": false,
    "nut": {
     "kcal": 587,
     "p": 47.6,

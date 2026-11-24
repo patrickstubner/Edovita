@@ -92,6 +92,10 @@
     {
       "recipeId": "quinoa_pan",
       "reason": "Kein Foto, das klar eine Quinoa-Gemüsepfanne mit Kichererbsen zeigt, ohne irreführende Zutaten (z. B. Fleisch)."
+    },
+    {
+      "recipeId": "zurich_geschnetzeltes",
+      "reason": "Kandidaten zeigten Rindfleisch mit Pasta oder Steak statt Poulet-Geschnetzeltes mit Reis (irreführend)."
     }
   ],
   "images": [
@@ -1677,23 +1681,6 @@
       "bytes": {
         "full": 48120,
         "thumb": 22672
-      }
-    },
-    {
-      "recipeId": "zurich_geschnetzeltes",
-      "source": "Pexels",
-      "pexelsId": 19193027,
-      "originalUrl": "https://www.pexels.com/photo/19193027/",
-      "photographer": null,
-      "license": "Pexels License",
-      "retrieved": "2026-11-24",
-      "files": {
-        "full": "zurich_geschnetzeltes.webp",
-        "thumb": "zurich_geschnetzeltes-thumb.webp"
-      },
-      "bytes": {
-        "full": 20330,
-        "thumb": 9250
       }
     },
     {
