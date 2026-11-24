@@ -14,6 +14,7 @@ export interface RecipesFilterState {
 export interface RankedRecipeItem {
   readonly recipe: Recipe;
   readonly title: string;
+  readonly missingText: boolean;
   readonly rating: number | null;
   readonly saved: boolean;
 }
@@ -21,6 +22,8 @@ export interface RankedRecipeItem {
 /**
  * Filtert und sortiert die Rezeptliste mit Vielfalt-Ranking (`rankRecipes`)
  * anhand von Mahlzeit, Eigenschaften, Bewertungen und Merkliste.
+ * Kein stiller Fallback auf Englisch (F2): bei fehlender Übersetzung wird
+ * `missingText: true` markiert und die Rezept-ID statt englischem Text gezeigt.
  */
 export function useRecipes(filter: RecipesFilterState): readonly RankedRecipeItem[] {
   const { lang } = useI18n();
@@ -38,11 +41,11 @@ export function useRecipes(filter: RecipesFilterState): readonly RankedRecipeIte
     const ranked = rankRecipes(filtered, ratings, savedSet);
 
     return ranked.map((recipe) => {
-      const text =
-        getRecipeText(recipe.id, lang) ?? getRecipeText(recipe.id, 'en');
+      const text = getRecipeText(recipe.id, lang);
       return {
         recipe,
         title: text?.title ?? recipe.id,
+        missingText: text === undefined,
         rating: getRating(recipe.id),
         saved: isSaved(recipe.id),
       };

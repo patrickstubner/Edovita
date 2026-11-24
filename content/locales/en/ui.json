@@ -125,5 +125,10 @@
   "storage.error.read": "Local data could not be loaded.",
   "storage.error.write": "Changes could not be saved locally.",
   "storage.error.quota": "Local storage is full. Please free up space.",
-  "storage.error.dismiss": "Dismiss notice"
+  "storage.error.dismiss": "Dismiss notice",
+  "lang.switch": "Language",
+  "lang.switch.current": "Language, currently {name}",
+  "profil.sprache.actions_label": "Language settings actions",
+  "detail.missing_recipe_text": "Recipe text missing for this language ({lang}).",
+  "detail.missing_food_name": "Name missing ({id})"
 }

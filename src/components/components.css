@@ -760,3 +760,160 @@ html[data-eff='dark'] .edo-rimg {
   flex: none;
 }
 
+/* Kompakter Sprachumschalter oben rechts (in RTL links), exakt nach Prototyp v5.5 (13e323e0) */
+.edo-lang-switch {
+  position: absolute;
+  inset-block-start: 12px;
+  inset-inline-end: 16px;
+  z-index: 20;
+}
+
+.edo-lang-switch-btn {
+  min-inline-size: 44px;
+  min-block-size: 44px;
+  padding-block: 0;
+  padding-inline: 8px 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-radius: 22px;
+  background: var(--edo-surface);
+  box-shadow: var(--edo-shadow);
+  color: var(--edo-text);
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 0.4px;
+}
+
+.edo-lang-switch-btn:focus-visible {
+  outline: 3px solid var(--edo-primary-dark);
+  outline-offset: 2px;
+}
+
+.edo-lang-flag {
+  inline-size: 22px;
+  block-size: 16px;
+  border-radius: 2px;
+  overflow: hidden;
+  flex: none;
+  box-shadow: 0 0 0 1px rgb(20 33 31 / 18%);
+  background: var(--edo-bg);
+  display: inline-block;
+}
+
+.edo-lang-flag svg {
+  inline-size: 100%;
+  block-size: 100%;
+  display: block;
+}
+
+.edo-lang-code {
+  line-height: 1;
+}
+
+.edo-lang-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 19;
+  background: transparent;
+}
+
+.edo-lang-backdrop[hidden] {
+  display: none;
+}
+
+.edo-lang-menu {
+  position: absolute;
+  inset-block-start: calc(100% + 8px);
+  inset-inline-end: 0;
+  min-inline-size: 220px;
+  max-inline-size: min(280px, calc(100vw - 32px));
+  max-block-size: min(60dvh, 380px);
+  overflow: auto;
+  overscroll-behavior: contain;
+  background: var(--edo-surface);
+  border: 1px solid var(--edo-border);
+  border-radius: 16px;
+  box-shadow:
+    var(--edo-shadow),
+    0 16px 40px rgb(20 33 31 / 20%);
+  padding-block: 6px;
+  padding-inline: 6px;
+  z-index: 21;
+}
+
+.edo-lang-menu[hidden] {
+  display: none;
+}
+
+.edo-lang-opt {
+  inline-size: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-block-size: 44px;
+  padding-block: 8px;
+  padding-inline: 10px;
+  border-radius: 12px;
+  font-weight: 600;
+  color: var(--edo-text);
+  text-align: start;
+}
+
+.edo-lang-opt:hover,
+.edo-lang-opt:focus-visible {
+  background: var(--edo-primary-soft);
+}
+
+.edo-lang-opt[aria-selected='true'] {
+  background: var(--edo-primary-soft);
+  color: var(--edo-primary-dark);
+}
+
+.edo-lang-name {
+  flex: 1 1 auto;
+  min-inline-size: 0;
+}
+
+.edo-lang-code-sm {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--edo-text-muted);
+  letter-spacing: 0.4px;
+  flex: none;
+}
+
+.edo-app-shell.has-lang-switch .edo-screen-header {
+  padding-inline-end: 96px;
+}
+
+html[data-eff='dark'] .edo-lang-flag {
+  box-shadow: 0 0 0 1px rgb(255 255 255 / 28%);
+}
+
+html[data-eff='dark'] .edo-lang-menu {
+  box-shadow:
+    0 0 0 1px rgb(255 255 255 / 8%),
+    0 16px 40px rgb(0 0 0 / 55%);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .edo-lang-menu:not([hidden]) {
+    animation: edo-lang-pop 0.16s ease-out;
+  }
+}
+
+@keyframes edo-lang-pop {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+

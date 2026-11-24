@@ -125,5 +125,10 @@
   "storage.error.read": "Impossible de charger les données locales.",
   "storage.error.write": "Impossible d enregistrer localement les modifications.",
   "storage.error.quota": "Le stockage local est plein. Libère de l espace.",
-  "storage.error.dismiss": "Fermer l avis"
+  "storage.error.dismiss": "Fermer l avis",
+  "lang.switch": "Langue",
+  "lang.switch.current": "Langue, actuellement {name}",
+  "profil.sprache.actions_label": "Actions des paramètres de langue",
+  "detail.missing_recipe_text": "Texte de la recette manquant pour cette langue ({lang}).",
+  "detail.missing_food_name": "Nom manquant ({id})"
 }

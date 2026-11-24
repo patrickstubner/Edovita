@@ -66,7 +66,8 @@ export function RecipeDetailPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { lang, t, fmtNumber, fmtAmount } = useI18n();
-  const { recipe, text, nutrition, catalogSource, notFound } = useRecipe(id);
+  const { recipe, text, missingText, nutrition, catalogSource, notFound } =
+    useRecipe(id);
   const {
     servings,
     min,
@@ -108,8 +109,10 @@ export function RecipeDetailPage() {
     if (!recipe) return [];
     return scaledIngredients.map((ing, idx) => {
       const food = getFood(ing.food);
-      const localizedName =
-        foodName(ing.food, lang) ?? foodName(ing.food, 'en') ?? ing.food;
+      const translatedName = foodName(ing.food, lang);
+      const missingName = translatedName === null;
+      const displayName =
+        translatedName ?? t('detail.missing_food_name', { id: ing.food });
       const note =
         ing.noteKey && text && Object.hasOwn(text.notes, ing.noteKey)
           ? text.notes[ing.noteKey]
@@ -124,7 +127,8 @@ export function RecipeDetailPage() {
       return {
         key: `${ing.food}-${idx}`,
         amountText: fmtAmount(ing.scaledAmount, ing.unit),
-        name: localizedName,
+        name: displayName,
+        missingName,
         note,
         optional: ing.optional,
         strained: ing.strained,
@@ -232,7 +236,7 @@ export function RecipeDetailPage() {
     });
   }, [replaceShoppingItems, showToast, t]);
 
-  if (notFound || !recipe || !text || !nutrition) {
+  if (notFound || !recipe || !nutrition) {
     return (
       <Screen
         header={
@@ -311,7 +315,7 @@ export function RecipeDetailPage() {
     >
       <div className="edo-stack">
         <RecipeHeader
-          title={text.title}
+          title={text ? text.title : recipe.id}
           mealLabel={mealLabel}
           cuisineLabel={cuisineLabel}
           kcalLabel={t('recipe.kcal', {
@@ -355,6 +359,19 @@ export function RecipeDetailPage() {
           }}
         />
 
+        {missingText ? (
+          <div
+            className="edo-banner edo-banner-warn"
+            role="status"
+            data-testid="missing-recipe-text"
+          >
+            <Icon name="alert" size="sm" />
+            <span className="edo-grow">
+              {t('detail.missing_recipe_text', { lang })}
+            </span>
+          </div>
+        ) : null}
+
         <ServingsStepper
           value={servings}
           min={min}
@@ -391,7 +408,7 @@ export function RecipeDetailPage() {
           disclaimerLabel={t('detail.allergens.disclaimer')}
         />
 
-        <StepList heading={t('detail.steps')} steps={text.steps} />
+        {text ? <StepList heading={t('detail.steps')} steps={text.steps} /> : null}
 
         <NutritionPanel
           heading={t('detail.nutrition')}

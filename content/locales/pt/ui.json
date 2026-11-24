@@ -125,5 +125,10 @@
   "storage.error.read": "Não foi possível carregar os dados locais.",
   "storage.error.write": "Não foi possível salvar as alterações localmente.",
   "storage.error.quota": "O armazenamento local está cheio. Libere espaço.",
-  "storage.error.dismiss": "Fechar aviso"
+  "storage.error.dismiss": "Fechar aviso",
+  "lang.switch": "Idioma",
+  "lang.switch.current": "Idioma, atualmente {name}",
+  "profil.sprache.actions_label": "Ações de idioma",
+  "detail.missing_recipe_text": "Texto da receita ausente para este idioma ({lang}).",
+  "detail.missing_food_name": "Nome ausente ({id})"
 }

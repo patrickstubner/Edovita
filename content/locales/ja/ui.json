@@ -125,5 +125,10 @@
   "storage.error.read": "ローカルデータを読み込めませんでした。",
   "storage.error.write": "変更をローカルに保存できませんでした。",
   "storage.error.quota": "ローカル容量がいっぱいです。空き容量を増やしてください。",
-  "storage.error.dismiss": "通知を閉じる"
+  "storage.error.dismiss": "通知を閉じる",
+  "lang.switch": "言語",
+  "lang.switch.current": "言語、現在は{name}",
+  "profil.sprache.actions_label": "言語設定の操作",
+  "detail.missing_recipe_text": "この言語（{lang}）のレシピ本文がありません。",
+  "detail.missing_food_name": "名称未登録（{id}）"
 }

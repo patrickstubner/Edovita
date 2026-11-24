@@ -125,5 +125,10 @@
   "storage.error.read": "Lokale Daten konnten nicht geladen werden.",
   "storage.error.write": "Änderungen konnten lokal nicht gespeichert werden.",
   "storage.error.quota": "Der lokale Speicher ist voll. Bitte gib Speicherplatz frei.",
-  "storage.error.dismiss": "Hinweis schliessen"
+  "storage.error.dismiss": "Hinweis schliessen",
+  "lang.switch": "Sprache",
+  "lang.switch.current": "Sprache, aktuell {name}",
+  "profil.sprache.actions_label": "Spracheinstellungen Aktionen",
+  "detail.missing_recipe_text": "Rezepttext fehlt für diese Sprache ({lang}).",
+  "detail.missing_food_name": "Name fehlt ({id})"
 }

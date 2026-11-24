@@ -1,6 +1,11 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useMemo } from 'react';
 import { Outlet } from 'react-router';
-import { Icon, IconSprite } from '../components/index.ts';
+import {
+  Icon,
+  IconSprite,
+  LangSwitcher,
+  type LangSwitcherOption,
+} from '../components/index.ts';
 import { useI18n } from '../hooks/index.ts';
 import { RatingsContext } from './RatingsProvider.tsx';
 import { SettingsContext } from './SettingsProvider.tsx';
@@ -10,11 +15,13 @@ import type { StorageErrorCode } from './storageError.ts';
 /**
  * App-Shell: Handy-Container (max. 480 px), synchronisiert `--edo-app-h`
  * mit `visualViewport`, damit die fixe Aktionsleiste auch bei geöffneter Tastatur
- * sichtbar bleibt (Muster aus Prototyp v5.4). Zeigt bei Speicherfehlern nur eine
- * generische, übersetzte Meldung ohne Rohdaten oder Stacktrace (G1).
+ * sichtbar bleibt (Muster aus Prototyp v5.4).
+ * Zeigt oben rechts (in RTL oben links) den kompakten Sprachumschalter auf jedem Screen
+ * (Prototyp v5.5) und bei Speicherfehlern nur eine generische Meldung (G1).
  */
 export function Shell() {
-  const { t } = useI18n();
+  const { lang, meta, uiLanguages, isApproved, metaFor, setLang, t } =
+    useI18n();
   const settingsCtx = useContext(SettingsContext);
   const shoppingCtx = useContext(ShoppingContext);
   const ratingsCtx = useContext(RatingsContext);
@@ -27,6 +34,19 @@ export function Shell() {
     shoppingCtx?.clearError();
     ratingsCtx?.clearError();
   };
+
+  const langOptions = useMemo<readonly LangSwitcherOption[]>(() => {
+    return uiLanguages
+      .filter((code) => isApproved(code))
+      .map((code) => {
+        const m = metaFor(code);
+        return {
+          code,
+          name: m?.name ?? code.toUpperCase(),
+          locale: m?.locale ?? code,
+        };
+      });
+  }, [isApproved, metaFor, uiLanguages]);
 
   useEffect(() => {
     const syncHeight = () => {
@@ -50,7 +70,7 @@ export function Shell() {
   }, []);
 
   return (
-    <main id="app" className="edo-app-shell">
+    <main id="app" className="edo-app-shell has-lang-switch">
       <IconSprite />
       {activeError ? (
         <div
@@ -71,6 +91,15 @@ export function Shell() {
         </div>
       ) : null}
       <Outlet />
+      <LangSwitcher
+        currentCode={lang}
+        options={langOptions}
+        buttonLabel={t('lang.switch.current', {
+          name: meta.name || lang.toUpperCase(),
+        })}
+        menuLabel={t('lang.switch')}
+        onSelect={setLang}
+      />
     </main>
   );
 }

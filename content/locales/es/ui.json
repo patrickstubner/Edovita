@@ -125,5 +125,10 @@
   "storage.error.read": "No se pudieron cargar los datos locales.",
   "storage.error.write": "No se pudieron guardar los cambios localmente.",
   "storage.error.quota": "El almacenamiento local está lleno. Libera espacio.",
-  "storage.error.dismiss": "Cerrar aviso"
+  "storage.error.dismiss": "Cerrar aviso",
+  "lang.switch": "Idioma",
+  "lang.switch.current": "Idioma, actualmente {name}",
+  "profil.sprache.actions_label": "Acciones de idioma",
+  "detail.missing_recipe_text": "Falta el texto de la receta para este idioma ({lang}).",
+  "detail.missing_food_name": "Falta el nombre ({id})"
 }
