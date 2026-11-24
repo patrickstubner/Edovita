@@ -1,12 +1,15 @@
-# Edovita – Klick-Prototyp v5.10 (Tab-Leiste, Export/Import, Listenstatus)
+# Edovita – Klick-Prototyp v5.10.1 (Tab-Leiste, Export/Import, Listenstatus)
 
 **Nicht produktiver Code.** Dieser Ordner ist die Design-Referenz und der klickbare Prototyp für UX-Versuche. Er wird nicht in die echte App übernommen; die App entsteht neu (React + TypeScript + Rsbuild).
 
-- **Version:** v5.10 (24.11.2026), auf v5.9 aufbauend
+- **Version:** v5.10.1 (24.11.2026), auf v5.10 aufbauend
 - **Live:** als Cloudflare-Worker-Demo veröffentlicht (URL bewusst nicht im Repo)
 - **Technik:** statisches HTML/CSS/Vanilla-JS, keine Laufzeit-Abhängigkeiten ausser `vendor/qrcode-generator.js` (MIT), keine Netzwerkaufrufe, strenge CSP
 - **Daten:** nur erfundene Demo-Daten. Es werden keine Gesundheitsdaten gespeichert (localStorage nur Sprache, Zweitsprache (manuelle Wahl), Plan, Einkaufsliste inkl. Listenstatus, Darstellung, Ton, Region; keine Standortdaten). Export/Import enthalten nur Plan und Einkaufsliste.
 - **Starten:** im Ordner `python3 -m http.server` und `http://localhost:8000/` öffnen (Handy-Breite, z. B. 390×844)
+
+## Neu in v5.10.1
+Vier niedrige Befunde zu v5.10 behoben: Import von Plan und Einkaufsliste ist transaktional (Snapshot und Rollback, Fehler sichtbar). Ein QR-Fragment ohne `offerShopImport` wird abgelehnt statt still angewendet. Listenstatus nur für bekannte Lebensmittel-IDs. QR-Rückfrage und Anwendung beziehen sich auf die aktuelle Einkaufsliste (inkl. Zeilen aus dem Plan). Details in `SECURITY.md`.
 
 ## Neu in v5.10
 Die Tab-Leiste zeigt nur Rezepte, Plan und Profil; Heute, Erfassen und Fortschritt bleiben als Demo-Bildschirme über Profil › Weitere Funktionen (Demo) erreichbar. `#/profil/sprache` führt auf die Sprachseite. Unter Datenschutz gibt es einen echten Export und Import von Plan und Einkaufsliste (Bestätigung, transaktional, ohne Körperdaten). Der Listenstatus (offen / Einkaufswagen / zu Hause) bleibt nach dem Neuladen erhalten (`edovita.shopStatus`). Ein QR-Import fragt vor dem Übernehmen mit Ersetzen oder Ergänzen nach. Katalogsuche in der Einkaufsliste und PWA bleiben bewusst draussen. Details in `ENTWICKLUNG.md` und `SECURITY.md`.

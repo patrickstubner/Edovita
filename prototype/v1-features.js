@@ -412,8 +412,7 @@
     try { history.replaceState(null, '', '#/einkauf'); } catch (e) { location.hash = '#/einkauf'; }
     try {
       if (window.EdoApp && typeof window.EdoApp.offerShopImport === 'function') window.EdoApp.offerShopImport(parsed.items);
-      else if (window.EdoApp && typeof window.EdoApp.applyShopImport === 'function') window.EdoApp.applyShopImport(parsed.items);
-      else toast(T('qrshop.imported', { n: fmt(parsed.items.length) }));
+      else toast(T('qrshop.bad', { e: 'offer' }));
     } catch (e) { toast(T('qrshop.bad', { e: 'apply' })); }
   }
 

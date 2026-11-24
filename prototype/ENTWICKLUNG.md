@@ -1,3 +1,7 @@
+# Stand v5.10.1 (24. November 2026)
+
+Vier niedrige Befunde aus der Prüfung von v5.10 behoben (F1 transaktionaler Import mit Rollback, F2 kein stiller QR-Import ohne Rückfrage, F3 shopStatus nur für bekannte Lebensmittel-IDs, F4 QR-Import gegen die aktuelle Einkaufsliste). Siehe `SECURITY.md`. Darunter der Stand v5.10.
+
 # Stand v5.10 (24. November 2026)
 
 Tab-Leiste nur Rezepte, Plan, Profil; Demo-Funktionen (Heute, Erfassen, Fortschritt) über Profil. Alias `#/profil/sprache`. Echter Export/Import von Plan und Einkaufsliste (Bestätigung, transaktional, ohne Gesundheitsdaten). Listenstatus in `edovita.shopStatus`. QR-Import mit Bestätigung (Ersetzen/Ergänzen). Siehe `SECURITY.md`. Darunter der Stand v5.9.

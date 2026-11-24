@@ -1,3 +1,27 @@
+# Sicherheitsprüfung v5.10.1 (24. November 2026, Europe/Zurich)
+
+**Stand:** Nacharbeit zu den vier niedrigen Befunden von Stabschef an v5.10 (`96a83f6`). Branch `prototype/lang-switcher` (nicht auf `main` mergen). Bestehender Cloudflare-Worker wird aktualisiert, keine neuen Ressourcen oder Pakete. CSP unverändert (`script-src 'self'`, `style-src 'self'`, `connect-src 'none'`, `img-src 'self' data:`).
+
+**Quelle der Prüfung:** Code-Review der geänderten Dateien (`app.js`, `v1-features.js`, `README.md`, `ENTWICKLUNG.md`), grep-Scans (innerHTML/eval/Netzwerk/Geheimnisse), Headless Playwright (Chrome) mit einem Test pro Befund F1–F4. Keine neuen Laufzeit-Abhängigkeiten, deshalb kein `pnpm audit` im Prototyp.
+
+**Ergebnis:** keine Befunde (keine kritischen, hohen, mittleren oder niedrigen). F1–F4 sind erledigt.
+
+| # | Prüfpunkt | Ergebnis | Schweregrad |
+|---|-----------|----------|-------------|
+| F1 | Teilstand beim Datei-Import | Vor dem Schreiben wird ein Snapshot von Plan, Einkaufsliste und Listenstatus (Speicher und Arbeitsspeicher) angelegt. Alle drei Keys werden erst danach gemeinsam geschrieben. Schlägt ein Schreibvorgang fehl, stellt der Rollback den vorherigen Stand wieder her, und es erscheint der bestehende Hinweis «Datei ungültig, nichts geändert». `refreshPlanQuantities` speichert während des Imports nicht zwischendurch. Getestet: `setItem` wirft ab dem zweiten Key; alle drei Keys bleiben unverändert, Toast sichtbar. | erledigt (kein Befund) |
+| F2 | QR-Import ohne Rückfrage | In `v1-features.js` entfällt der Fallback auf `applyShopImport` und der irreführende Erfolgs-Toast. Fehlt `offerShopImport`, erscheint «Import abgelehnt (offer).», nichts wird angewendet. Getestet: `offerShopImport` entfernt, `applyShopImport` instrumentiert; 0 Aufrufe, Status unverändert, Fehler-Toast sichtbar. | erledigt (kein Befund) |
+| F3 | shopStatus ohne ID-Whitelist | `sanitizeShopStatus` lässt nur Schlüssel zu, deren Lebensmittel-ID in `knownIngredientIdMap()` vorkommt (plus bisherige Format-/Status-/Prototype-Prüfungen). Gilt beim Laden, beim Datei-Import und beim Setzen/Speichern. Unbekannte IDs und `__proto__` entfallen. Getestet: Rohdaten mit `not_a_food_xyz` und `totally_fake_id` erscheinen nach Laden bzw. Import nicht, `berries` bleibt. | erledigt (kein Befund) |
+| F4 | QR-Rückfrage und Anwendung weichen ab | Rückfrage und Anwendung laufen über `resolveQrImportItems()` gegen `getShopItems()` (inkl. Zeilen aus dem Plan), nicht mehr nur gegen die statische Demo-Liste `SHOP`. Die Vorschau zählt und listet genau die Einträge, die übernommen werden; unbekannte IDs fehlen in der Rückfrage. Getestet: Plan-Zutat `oats` und Listen-Zutat `broccoli` erscheinen und werden auf «cart» gesetzt, `zzzz_not_on_list` weder in der Vorschau noch im Speicher, Toast «2 Einträge». | erledigt (kein Befund) |
+| 5 | Injection / Geheimnisse / Abhängigkeiten | Keine neuen Sinks, kein `innerHTML`/`eval`/`fetch`. Keine neuen Pakete. HTML/CSS/CSP unverändert. | kein Befund |
+
+**SHA-256 (geänderte Kern-Dateien):**
+```
+f9263efda2d990ca7127b364a525fe0343a6e36d7c12e8cd92e2edabc13aa0b6  prototype/app.js
+c64272d12db9531a3af93ad8e51db0c6d038cc50f187ec8b675ae02e67844b3e  prototype/v1-features.js
+```
+
+---
+
 # Sicherheitsprüfung v5.10 (24. November 2026, Europe/Zurich)
 
 **Stand:** Tab-Leiste nur Rezepte, Plan, Profil (Heute/Erfassen/Fortschritt über Profil › Weitere Funktionen). Alias `#/profil/sprache`. Echter Export und Import von Plan und Einkaufsliste (Bestätigung, transaktional, ohne Körperdaten). Listenstatus in `edovita.shopStatus` bleibt nach dem Neuladen erhalten. QR-Import mit Bestätigung (Ersetzen oder Ergänzen). Branch `prototype/lang-switcher` (nicht auf `main` mergen). Bestehender Cloudflare-Worker wird aktualisiert, keine neuen Ressourcen oder Pakete. CSP unverändert. Dark/Light, kompakter Sprachumschalter und grosse Tippflächen bleiben.

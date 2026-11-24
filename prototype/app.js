@@ -1,6 +1,6 @@
 (function () {
   'use strict';
-  // Reiner Klick-Prototyp v5.10: keine Netzwerkaufrufe. Gespeichert: Sprache, Zweitsprache (manuelle Wahl), Plan, Einkaufsliste (inkl. vorhandene Teilmengen), Darstellung, Ton, Melodie. Keine Standort- oder Gesundheitsdaten. Sprachcodes nur nach Whitelist.
+  // Reiner Klick-Prototyp v5.10.1: keine Netzwerkaufrufe. Gespeichert: Sprache, Zweitsprache (manuelle Wahl), Plan, Einkaufsliste (inkl. vorhandene Teilmengen), Darstellung, Ton, Melodie. Keine Standort- oder Gesundheitsdaten. Sprachcodes nur nach Whitelist.
   // Alle Texte kommen aus locales/<code>/*.json (über i18n.js) und werden nur per textContent/setAttribute gesetzt.
   var I = window.EdoI18n;
   var T = function (k, v) { return I.t(k, v); };
@@ -2084,6 +2084,15 @@
     var head = String(k || '').split('\0')[0];
     return !head || head === '__proto__' || head === 'constructor' || head === 'prototype';
   }
+  function knownShopStatusId(id) {
+    var ids;
+    if (!id || typeof id !== 'string') return false;
+    if (typeof knownIngredientIdMap === 'function') {
+      ids = knownIngredientIdMap();
+      return !!ids[id];
+    }
+    return false;
+  }
   function sanitizeShopStatus(raw) {
     var out = Object.create(null);
     if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return out;
@@ -2093,6 +2102,7 @@
       if (typeof k !== 'string' || k.length > 80 || isUnsafeStoreKey(k)) return;
       parts = k.split('\0');
       if (parts.length > 2 || !/^[a-zA-Z0-9_.-]+$/.test(parts[0] || '')) return;
+      if (!knownShopStatusId(parts[0])) return;
       unit = parts[1] || '';
       if (unit && !QTY_UNITS[unit]) return;
       out[k] = v;
@@ -2146,7 +2156,7 @@
     });
     return out;
   }
-  function refreshPlanQuantities() {
+  function refreshPlanQuantities(opts) {
     getShopItems().forEach(function (it) { it.qtyPlan = 0; it.recipesPlan = []; });
     var dates = planWindowDates();
     getPlan().items.forEach(function (it) {
@@ -2157,7 +2167,7 @@
       return (it.qtyPlan && it.qtyPlan > 0) || (it.qtyExtra && it.qtyExtra > 0) || (it.unit === '' && (it.recipesPlan.length || it.recipesExtra.length)) || state.shop[it.id];
     });
     shopLive.forEach(capHaveToNeed);
-    saveShopItems();
+    if (!(opts && opts.skipSave)) saveShopItems();
   }
   function addRecipeIngredientsToShop(recipeId, portions) {
     if (!knownRecipe(recipeId)) return false;
@@ -3167,21 +3177,81 @@
     if (!plan && !shop) return { ok: false, err: 'empty' };
     return { ok: true, plan: plan, shopItems: shop, shopStatus: status };
   }
+  function cloneJson(v) {
+    if (v == null) return v;
+    return JSON.parse(JSON.stringify(v));
+  }
+  function snapshotUserData() {
+    var planStore = null, shopStore = null, statusStore = null;
+    try { planStore = window.localStorage.getItem(PLAN_KEY); } catch (e) { planStore = null; }
+    try { shopStore = window.localStorage.getItem(SHOP_KEY); } catch (e2) { shopStore = null; }
+    try { statusStore = window.localStorage.getItem(SHOP_ST_KEY); } catch (e3) { statusStore = null; }
+    return {
+      planMem: cloneJson(getPlan()),
+      shopMem: cloneJson(getShopItems()),
+      statusMem: sanitizeShopStatus(state.shop),
+      planStore: planStore,
+      shopStore: shopStore,
+      statusStore: statusStore
+    };
+  }
+  function restoreStorageKey(key, raw) {
+    if (raw == null) window.localStorage.removeItem(key);
+    else window.localStorage.setItem(key, raw);
+  }
+  function restoreUserData(snap) {
+    if (!snap) return false;
+    try {
+      planState = snap.planMem ? sanitizePlan(snap.planMem) : defaultPlan();
+      shopLive = snap.shopMem ? sanitizeShopItems(snap.shopMem) : defaultShopItems();
+      state.shop = sanitizeShopStatus(snap.statusMem);
+    } catch (e) { /* Speicher folgt separat */ }
+    try {
+      restoreStorageKey(PLAN_KEY, snap.planStore);
+      restoreStorageKey(SHOP_KEY, snap.shopStore);
+      restoreStorageKey(SHOP_ST_KEY, snap.statusStore);
+      return true;
+    } catch (e2) { return false; }
+  }
+  function persistAllUserData() {
+    var planClean, shopClean, stClean, planJson, shopJson, stJson;
+    planClean = sanitizePlan(getPlan());
+    if (!planClean) return false;
+    planState = planClean;
+    shopLive = sanitizeShopItems(getShopItems());
+    shopLive.forEach(capHaveToNeed);
+    shopClean = shopLive;
+    stClean = sanitizeShopStatus(state.shop);
+    state.shop = stClean;
+    try {
+      planJson = JSON.stringify(planClean);
+      shopJson = JSON.stringify(shopClean);
+      stJson = JSON.stringify(stClean);
+    } catch (e) { return false; }
+    try {
+      window.localStorage.setItem(PLAN_KEY, planJson);
+      window.localStorage.setItem(SHOP_KEY, shopJson);
+      window.localStorage.setItem(SHOP_ST_KEY, stJson);
+      return true;
+    } catch (e2) { return false; }
+  }
   function applyExportBundle(bundle) {
+    var snap;
     if (!bundle || !bundle.ok) return false;
-    if (bundle.plan) {
-      planState = bundle.plan;
-      savePlan();
+    snap = snapshotUserData();
+    try {
+      if (bundle.plan) planState = bundle.plan;
+      if (bundle.shopItems) shopLive = bundle.shopItems;
+      if (bundle.shopStatus) state.shop = sanitizeShopStatus(bundle.shopStatus);
+      if (bundle.plan) refreshPlanQuantities({ skipSave: true });
+      if (!persistAllUserData()) throw new Error('persist');
+    } catch (e) {
+      restoreUserData(snap);
+      renderPlan();
+      renderShop();
+      render();
+      return false;
     }
-    if (bundle.shopItems) {
-      shopLive = bundle.shopItems;
-      saveShopItems();
-    }
-    if (bundle.shopStatus) {
-      state.shop = bundle.shopStatus;
-      saveShopStatus();
-    }
-    if (bundle.plan) refreshPlanQuantities();
     renderPlan();
     renderShop();
     render();
@@ -3284,40 +3354,52 @@
       return { id: it.id, name: safe || it.id, st: st };
     }).slice(0, 40);
   }
-  function applyShopImportItems(items, mode) {
-    var n = 0;
-    if (mode === 'replace') state.shop = {};
+  function resolveQrImportItems(items) {
+    var live = getShopItems(), out = [], seen = {};
     (items || []).forEach(function (it) {
-      var st;
+      var st, name, safe, matches;
       if (!it || !it.id || typeof it.id !== 'string' || !/^[a-zA-Z0-9_.-]+$/.test(it.id) || isUnsafeStoreKey(it.id)) return;
+      if (!knownShopStatusId(it.id)) return;
+      if (seen[it.id]) return;
       st = it.st || 'open';
       if (!SHOP_ST[st]) return;
-      if (SHOP.some(function (x) { return x.id === it.id; })) {
-        state.shop[it.id] = st;
-        n += 1;
-      }
+      matches = live.filter(function (row) { return row.id === it.id; });
+      if (!matches.length) return;
+      seen[it.id] = 1;
+      name = it.name || rget('ingredients', it.id) || it.id;
+      safe = String(name).replace(/[<>&"']/g, '');
+      out.push({ id: it.id, name: safe || it.id, st: st });
+    });
+    return out;
+  }
+  function applyShopImportItems(items, mode) {
+    var resolved = resolveQrImportItems(items), n = 0;
+    if (mode === 'replace') state.shop = Object.create(null);
+    resolved.forEach(function (it) {
+      state.shop[it.id] = it.st;
+      getShopItems().forEach(function (row) {
+        if (row.id === it.id) state.shop[shopStatusKey(row)] = it.st;
+      });
+      n += 1;
     });
     saveShopStatus();
     renderShop();
     return n;
   }
   function offerShopImport(items) {
-    var els = [], ul, li, i, max = 8, lab, n;
-    items = items || [];
-    n = items.length;
-    dataImportPending = items;
+    var resolved = resolveQrImportItems(items), els = [], ul, li, i, max = 8, n;
+    if (!resolved.length) { toast(T('qrshop.bad', { e: 'empty' })); return; }
+    n = resolved.length;
+    dataImportPending = resolved;
     dataImportMode = 'qr';
     els.push(mk('p', 'cap', T('qrshop.confirm.body', { n: String(n) })));
-    if (n) {
-      ul = mk('ul', 'import-preview');
-      for (i = 0; i < n && i < max; i++) {
-        lab = items[i].name || rget('ingredients', items[i].id) || items[i].id;
-        li = mk('li', '', String(lab).replace(/[<>&"']/g, ''));
-        ul.appendChild(li);
-      }
-      if (n > max) ul.appendChild(mk('li', 'cap', '…'));
-      els.push(ul);
+    ul = mk('ul', 'import-preview');
+    for (i = 0; i < n && i < max; i++) {
+      li = mk('li', '', resolved[i].name);
+      ul.appendChild(li);
     }
+    if (n > max) ul.appendChild(mk('li', 'cap', '…'));
+    els.push(ul);
     openDataImportSheet(T('qrshop.confirm.title'), els, [
       mkImportBtn('btn line', 'datenschutz.import.cancel', 'cancel', false),
       mkImportBtn('btn line', 'qrshop.merge', 'merge', false),
