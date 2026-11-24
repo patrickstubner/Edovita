@@ -16,6 +16,7 @@ import type {
   SettingsRepository,
   ShoppingRepository,
   StorageBundle,
+  StorageSnapshotPatch,
 } from './repositories.ts';
 
 function clone<T>(value: T): T {
@@ -41,6 +42,13 @@ export class MemorySettingsRepository implements SettingsRepository {
   }
 
   async get(): Promise<Settings> {
+    return coerceSettings(this.raw, this.registry);
+  }
+
+  async getStored(): Promise<Settings | null> {
+    if (this.raw === undefined) {
+      return null;
+    }
     return coerceSettings(this.raw, this.registry);
   }
 
@@ -198,9 +206,61 @@ export class MemoryRatingsRepository implements RatingsRepository {
 export function createMemoryStorage(
   registry: LanguagesRegistry = LANGUAGES_REGISTRY,
 ): StorageBundle {
+  const settings = new MemorySettingsRepository(undefined, registry);
+  const shopping = new MemoryShoppingRepository();
+  const ratings = new MemoryRatingsRepository();
+
   return {
-    settings: new MemorySettingsRepository(undefined, registry),
-    shopping: new MemoryShoppingRepository(),
-    ratings: new MemoryRatingsRepository(),
+    settings,
+    shopping,
+    ratings,
+    applyImport: async (patch: StorageSnapshotPatch): Promise<void> => {
+      // Snapshot vor Änderungen sichern, damit ein Fehler den Altbestand unverändert lässt (G2)
+      const prevSettings = await settings.getStored();
+      const prevShopping = await shopping.list();
+      const prevRatings = await ratings.listRatings();
+      const prevSaved = await ratings.listSaved();
+
+      try {
+        if (patch.settings !== undefined) {
+          await settings.set(patch.settings);
+        }
+        if (patch.shopping !== undefined) {
+          await shopping.replaceAll(patch.shopping);
+        }
+        if (patch.ratings !== undefined || patch.saved !== undefined) {
+          await ratings.clear();
+          if (patch.ratings !== undefined) {
+            for (const [recipeId, stars] of Object.entries(patch.ratings)) {
+              if (isValidRecipeKey(recipeId)) {
+                await ratings.setRating(recipeId, stars);
+              }
+            }
+          }
+          if (patch.saved !== undefined) {
+            for (const recipeId of patch.saved) {
+              if (isValidRecipeKey(recipeId)) {
+                await ratings.setSaved(recipeId, true);
+              }
+            }
+          }
+        }
+      } catch (err) {
+        if (prevSettings === null) {
+          await settings.clear();
+        } else {
+          await settings.set(prevSettings);
+        }
+        await shopping.replaceAll(prevShopping);
+        await ratings.clear();
+        for (const [recipeId, stars] of Object.entries(prevRatings)) {
+          await ratings.setRating(recipeId, stars);
+        }
+        for (const recipeId of prevSaved) {
+          await ratings.setSaved(recipeId, true);
+        }
+        throw err;
+      }
+    },
   };
 }

@@ -40,6 +40,7 @@ export type {
   SettingsRepository,
   ShoppingRepository,
   StorageBundle,
+  StorageSnapshotPatch,
 } from './repositories.ts';
 
 export {

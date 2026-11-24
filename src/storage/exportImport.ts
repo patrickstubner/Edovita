@@ -1,6 +1,7 @@
 import { LANGUAGES_REGISTRY } from '../../content/generated/locales-index.ts';
 import {
   RECIPE_ID_RE,
+  asRecipeId,
   createExportBundleV1Schema,
   createSettingsSchema,
   isSafeRecordKey,
@@ -18,7 +19,7 @@ export const settingsSchema = createSettingsSchema(LANGUAGES_REGISTRY);
 export const exportBundleV1Schema =
   createExportBundleV1Schema(LANGUAGES_REGISTRY);
 
-export type ImportErrorCode = 'parse' | 'schema';
+export type ImportErrorCode = 'parse' | 'schema' | 'write';
 
 const MAX_IMPORT_JSON_BYTES = 1_000_000;
 const LOCAL_STORAGE_PREFIX = 'edovita.';
@@ -76,8 +77,8 @@ function hasForbiddenOwnKey(value: unknown): boolean {
 
 /**
  * Validiert ein Export-Bundle (`format: 1`) streng per `zod` (inkl. Rechts-Gate F1 und
- * `registry.secondary` F3a) und stellt die Daten erst nach erfolgreicher Prüfung wieder her.
- * Bei ungültigem Input bleiben bestehende Daten vollständig unverändert.
+ * `registry.secondary` F3a) und ersetzt bestehende Daten atomar in einer Transaktion (G2).
+ * Bei Validierungs- oder Schreibfehlern bleiben bestehende Daten vollständig unverändert.
  */
 export async function importAll(
   storage: StorageBundle,
@@ -108,29 +109,89 @@ export async function importAll(
   const bundle = parsed.data;
   const { settings, shopping, ratings, saved } = bundle.data;
 
-  if (settings !== undefined) {
-    await storage.settings.set(settings);
-  }
-  if (shopping !== undefined) {
-    await storage.shopping.replaceAll(shopping);
-  }
-  if (ratings !== undefined || saved !== undefined) {
-    await storage.ratings.clear();
-    if (ratings !== undefined) {
-      for (const [recipeId, stars] of Object.entries(ratings)) {
-        if (RECIPE_ID_RE.test(recipeId) && isSafeRecordKey(recipeId)) {
-          await storage.ratings.setRating(recipeId, stars);
-        }
-      }
-    }
-    if (saved !== undefined) {
-      for (const recipeId of saved) {
-        await storage.ratings.setSaved(recipeId, true);
-      }
+  const safeRatings: Record<string, number> | undefined =
+    ratings === undefined
+      ? undefined
+      : Object.fromEntries(
+          Object.entries(ratings).filter(
+            ([recipeId]) =>
+              RECIPE_ID_RE.test(recipeId) && isSafeRecordKey(recipeId),
+          ),
+        );
+
+  const safeSaved =
+    saved === undefined
+      ? undefined
+      : saved
+          .filter(
+            (recipeId) =>
+              RECIPE_ID_RE.test(recipeId) && isSafeRecordKey(recipeId),
+          )
+          .map(asRecipeId);
+
+  if (storage.applyImport) {
+    try {
+      await storage.applyImport({
+        settings,
+        shopping,
+        ratings: safeRatings,
+        saved: safeSaved,
+      });
+      return { ok: true, value: bundle };
+    } catch {
+      return { ok: false, error: 'write' };
     }
   }
 
-  return { ok: true, value: bundle };
+  // Fallback für eigene StorageBundle-Implementierungen ohne applyImport: Snapshot + Rollback
+  const prevSettings = storage.settings.getStored
+    ? await storage.settings.getStored()
+    : await storage.settings.get();
+  const prevShopping = await storage.shopping.list();
+  const prevRatings = await storage.ratings.listRatings();
+  const prevSaved = await storage.ratings.listSaved();
+
+  try {
+    if (settings !== undefined) {
+      await storage.settings.set(settings);
+    }
+    if (shopping !== undefined) {
+      await storage.shopping.replaceAll(shopping);
+    }
+    if (safeRatings !== undefined || safeSaved !== undefined) {
+      await storage.ratings.clear();
+      if (safeRatings !== undefined) {
+        for (const [recipeId, stars] of Object.entries(safeRatings)) {
+          await storage.ratings.setRating(recipeId, stars);
+        }
+      }
+      if (safeSaved !== undefined) {
+        for (const recipeId of safeSaved) {
+          await storage.ratings.setSaved(recipeId, true);
+        }
+      }
+    }
+    return { ok: true, value: bundle };
+  } catch {
+    try {
+      if (prevSettings === null) {
+        await storage.settings.clear();
+      } else {
+        await storage.settings.set(prevSettings);
+      }
+      await storage.shopping.replaceAll(prevShopping);
+      await storage.ratings.clear();
+      for (const [recipeId, stars] of Object.entries(prevRatings)) {
+        await storage.ratings.setRating(recipeId, stars);
+      }
+      for (const recipeId of prevSaved) {
+        await storage.ratings.setSaved(recipeId, true);
+      }
+    } catch {
+      // Rollback-Fehler nicht nach aussen lecken
+    }
+    return { ok: false, error: 'write' };
+  }
 }
 
 export function clearEdovitaLocalStorage(): void {

@@ -41,19 +41,19 @@ export function App({
   );
 
   return (
-    <I18nProvider
-      initialLang={initialLang}
-      navigatorLanguages={navigatorLanguages}
-    >
-      <ThemeProvider>
-        <SettingsProvider repository={activeStorage.settings}>
+    <SettingsProvider repository={activeStorage.settings}>
+      <I18nProvider
+        initialLang={initialLang}
+        navigatorLanguages={navigatorLanguages}
+      >
+        <ThemeProvider>
           <ShoppingProvider repository={activeStorage.shopping}>
             <RatingsProvider repository={activeStorage.ratings}>
               <RouterProvider router={router} />
             </RatingsProvider>
           </ShoppingProvider>
-        </SettingsProvider>
-      </ThemeProvider>
-    </I18nProvider>
+        </ThemeProvider>
+      </I18nProvider>
+    </SettingsProvider>
   );
 }

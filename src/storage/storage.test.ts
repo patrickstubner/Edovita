@@ -333,4 +333,84 @@ describe('Speicher: Neuladen, Coercion, Export/Import/Wipe und Migrationen (E3)'
     expect(migrated?.value.uiLang).toBe('de');
     expect(migrated?.value.secondLang).toBe('en');
   });
+
+  it('G2: importAll läuft atomar in einer Dexie-Transaktion – Fehler mitten im Import lässt Altbestand unverändert', async () => {
+    const dbName = nextDbName('tx_rollback');
+    const storage = createDexieStorage(dbName);
+    createdDbs.push(storage.db);
+
+    const existingItem: ShoppingItem = {
+      id: 'item_keep',
+      food: asFoodId('broccoli'),
+      amount: 400,
+      unit: 'g',
+      state: 'home',
+      fromRecipes: [asRecipeId('oven_salmon')],
+      addedAt: '2026-11-23T08:00:00.000Z',
+    };
+
+    await storage.settings.set({
+      uiLang: 'de',
+      secondLang: 'pt',
+      theme: 'dark',
+      sound: false,
+      hymn: 'H5',
+    });
+    await storage.shopping.upsert(existingItem);
+    await storage.ratings.setRating('oven_salmon', 5);
+    await storage.ratings.setSaved('oven_salmon', true);
+
+    // Fehler mitten in der Transaktion (nach settings/shopping/ratings, beim Schreiben von saved) erzwingen
+    const origBulkPut = storage.db.saved.bulkPut.bind(storage.db.saved);
+    storage.db.saved.bulkPut = (() => {
+      const err = new Error('Simulated QuotaExceededError');
+      err.name = 'QuotaExceededError';
+      throw err;
+    }) as typeof storage.db.saved.bulkPut;
+
+    try {
+      const res = await importAll(storage, {
+        format: 1,
+        exportedAt: '2026-11-23T15:00:00.000Z',
+        data: {
+          settings: {
+            uiLang: 'en',
+            secondLang: 'ja',
+            theme: 'light',
+            sound: true,
+            hymn: 'H1',
+          },
+          shopping: [
+            {
+              id: 'item_new',
+              food: asFoodId('salmon'),
+              amount: 300,
+              unit: 'g',
+              state: 'open',
+              fromRecipes: [asRecipeId('oven_salmon')],
+              addedAt: '2026-11-23T15:00:00.000Z',
+            },
+          ],
+          ratings: { pho: 4 },
+          saved: ['pho'],
+        },
+      });
+
+      expect(res).toEqual({ ok: false, error: 'write' });
+    } finally {
+      storage.db.saved.bulkPut = origBulkPut;
+    }
+
+    // Alle vier Tabellen müssen durch das Dexie-Transaktions-Rollback vollständig unverändert sein
+    expect(await storage.settings.get()).toEqual({
+      uiLang: 'de',
+      secondLang: 'pt',
+      theme: 'dark',
+      sound: false,
+      hymn: 'H5',
+    });
+    expect(await storage.shopping.list()).toEqual([existingItem]);
+    expect(await storage.ratings.listRatings()).toEqual({ oven_salmon: 5 });
+    expect(await storage.ratings.listSaved()).toEqual(['oven_salmon']);
+  });
 });
