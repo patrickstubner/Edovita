@@ -1,6 +1,6 @@
 # ARCHITECTURE.md – Edovita
 
-Stand 23.11.2026, Basis `main` `1ef9b440ede335c51429ed294f55f15fdf87b124` (enthält E0 `7f49e3d`, E0b Pages `e7d46884`, Nachzug `#23` `a6c47cb3`, E1 PR `#24` `bd3e0246`, Dependabot/TS 6 `e0c7cadf`, E2 PR `#26` `f7dcd628` und E3 PR `#27` `1ef9b440`, Version `0.1.0`), erweitert um Paket **E4** (Issue `#10`, Branch `feat/e4-recipes`, inkl. Nachzüge F3b, G1, G2, H1). Der E4-Analyse-SHA wird im Folge-Commit nach grüner CI ergänzt (E3-Referenzstand: `79cdf5dfd60c9bf97ba6c51208c5f02e3390cfa3`). Details in `docs/architektur/`. Vorschau: https://patrickstubner.github.io/Edovita/.
+Stand 23.11.2026, Basis `main` `1ef9b440ede335c51429ed294f55f15fdf87b124` (enthält E0 `7f49e3d`, E0b Pages `e7d46884`, Nachzug `#23` `a6c47cb3`, E1 PR `#24` `bd3e0246`, Dependabot/TS 6 `e0c7cadf`, E2 PR `#26` `f7dcd628` und E3 PR `#27` `1ef9b440`, Version `0.1.0`), erweitert um Paket **E4** (Issue `#10`, Draft-PR `#28`, Branch `feat/e4-recipes`, inkl. Nachzüge F3b, G1, G2, H1; geprüfter Code- und Analyse-Stand: `0c92ccec3bd5ac991ce4fa4cf5ee61440c8ebb66`, GitHub Actions CI Run `45309853470` grün). Details in `docs/architektur/`. Vorschau: https://patrickstubner.github.io/Edovita/.
 
 ## Heute im Repo
 | Ort | Inhalt |
