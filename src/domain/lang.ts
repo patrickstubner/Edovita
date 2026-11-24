@@ -21,7 +21,8 @@ export function normalizeLangBase(tag: unknown): string | null {
 }
 
 /**
- * Prüft das Rechts-Gate (ADR-003, F1) direkt gegen eine Sprach-Registry.
+ * Prüft das Aktiv- und Rechts-Gate (ADR-003, F1) direkt gegen eine Sprach-Registry.
+ * Nur Sprachen mit `active !== false` und `legalApproved === true` sind wählbar.
  */
 export function isApprovedUiLang(
   code: unknown,
@@ -33,7 +34,8 @@ export function isApprovedUiLang(
   if (!registry.ui.includes(code) || !Object.hasOwn(registry.meta, code)) {
     return false;
   }
-  return registry.meta[code]?.legalApproved === true;
+  const meta = registry.meta[code];
+  return meta?.active !== false && meta?.legalApproved === true;
 }
 
 /**

@@ -6,6 +6,12 @@ export {
   type IngredientListProps,
   type IngredientRowItem,
 } from './IngredientList.tsx';
+export { LangFlag, type LangFlagProps } from './LangFlag.tsx';
+export {
+  LangSwitcher,
+  type LangSwitcherOption,
+  type LangSwitcherProps,
+} from './LangSwitcher.tsx';
 export {
   NutritionPanel,
   type NutritionPanelProps,

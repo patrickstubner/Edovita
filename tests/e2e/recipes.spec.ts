@@ -96,8 +96,14 @@ test.describe('E4 Journey J1: Rezeptliste -> Detail -> Portionen 2->4 -> Einkauf
       page.getByRole('heading', { name: 'Rezepte für dich' }),
     ).toBeVisible();
 
-    // Desktop-Viewport (1280x800): BottomActions bei langem Rezept-Detail ebenfalls vollständig sichtbar
+    // Desktop-Viewport (1280x800): auf aktualisiertes --edo-app-h warten (F1), dann BottomActions prüfen
     await page.setViewportSize({ width: 1280, height: 800 });
+    await page.waitForFunction(
+      () =>
+        getComputedStyle(document.documentElement)
+          .getPropertyValue('--edo-app-h')
+          .trim() === '800px',
+    );
     await page.goto('/#/rezept/oven_salmon');
     await expect(
       page.getByRole('heading', {

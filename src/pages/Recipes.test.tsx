@@ -6,16 +6,27 @@ import {
   screen,
   within,
 } from '@testing-library/react';
+import { I18nextProvider } from 'react-i18next';
+import { MemoryRouter, Route, Routes } from 'react-router';
 import { App } from '../app/App.tsx';
+import { I18nContext } from '../app/I18nProvider.tsx';
+import { RatingsProvider } from '../app/RatingsProvider.tsx';
+import { ShoppingProvider } from '../app/ShoppingProvider.tsx';
 import { getRecipe } from '../catalog/index.ts';
 import { NutritionPanel } from '../components/index.ts';
 import {
   isSafeHttpsUrl,
   sanitizeExternalHttpsUrl,
 } from '../domain/index.ts';
-import { fmtAmount, fmtNumber } from '../i18n/index.ts';
+import {
+  LANGUAGES_REGISTRY,
+  createI18nInstance,
+  fmtAmount,
+  fmtNumber,
+} from '../i18n/index.ts';
 import { nutrientsForServings, scaleIngredients } from '../nutrition/index.ts';
 import { createMemoryStorage } from '../storage/index.ts';
+import { RecipeDetailPage } from './RecipeDetailPage.tsx';
 
 afterEach(() => {
   cleanup();
@@ -249,5 +260,68 @@ describe('Paket E4: Rezeptliste, Rezept-Detailseite & F3b (Issue #10)', () => {
     expect(links[0]).toHaveAttribute('rel', 'noopener noreferrer');
     expect(sourcesBox.textContent).not.toContain('evil.example');
     expect(sourcesBox.textContent).not.toContain('secret');
+  });
+
+  it('F2: zeigt fehlenden Rezepttext und fehlende Lebensmittelnamen sichtbar statt still auf Englisch zurückzufallen', async () => {
+    const storage = createMemoryStorage();
+    const frMeta = {
+      ...LANGUAGES_REGISTRY.meta.fr!,
+      active: true,
+      legalApproved: true,
+    };
+    const frRegistry = {
+      ...LANGUAGES_REGISTRY,
+      meta: {
+        ...LANGUAGES_REGISTRY.meta,
+        fr: frMeta,
+      },
+    };
+    const frInstance = createI18nInstance({
+      initialLang: 'fr',
+      registry: frRegistry,
+    });
+
+    render(
+      <I18nextProvider i18n={frInstance}>
+        <I18nContext.Provider
+          value={{
+            lang: 'fr',
+            meta: frMeta,
+            locale: frMeta.locale,
+            detected: { code: 'fr', device: 'fr-CH', matched: true },
+            uiLanguages: frRegistry.ui,
+            isApproved: (c) => c === 'fr',
+            metaFor: (c) => frRegistry.meta[c],
+            setLang: () => false,
+            fmtNumber: (v, d) => fmtNumber(v, 'fr-CH', d),
+            fmtAmount: (v, u) => fmtAmount(v, u, 'fr-CH'),
+            fmtDate: (d) => d.toISOString(),
+          }}
+        >
+          <ShoppingProvider repository={storage.shopping}>
+            <RatingsProvider repository={storage.ratings}>
+              <MemoryRouter initialEntries={['/rezept/oven_salmon']}>
+                <Routes>
+                  <Route path="/rezept/:id" element={<RecipeDetailPage />} />
+                </Routes>
+              </MemoryRouter>
+            </RatingsProvider>
+          </ShoppingProvider>
+        </I18nContext.Provider>
+      </I18nextProvider>,
+    );
+
+    // Lücke für fehlenden Rezepttext wird sichtbar ausgewiesen (kein stiller EN-Fallback)
+    const missingBanner = await screen.findByTestId('missing-recipe-text');
+    expect(missingBanner).toHaveTextContent('fr');
+    expect(screen.queryByTestId('step-list')).toBeNull();
+    expect(document.body.textContent).not.toContain('Baked salmon');
+    expect(document.body.textContent).not.toContain('Preheat the oven');
+
+    // Lücke für fehlende Lebensmittelnamen (Glossar fr existiert nicht) wird sichtbar markiert
+    const missingPotato = screen.getByTestId('missing-food-potato-0');
+    expect(missingPotato).toHaveTextContent('potato');
+    expect(missingPotato).toHaveTextContent('Nom manquant');
+    expect(document.body.textContent).not.toContain('Potatoes');
   });
 });

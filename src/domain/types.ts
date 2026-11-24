@@ -119,6 +119,7 @@ export interface LangMeta {
   englishName?: string;
   locale: string;
   dir: TextDir;
+  active?: boolean;
   legalApproved: boolean;
   reviewed: boolean;
 }

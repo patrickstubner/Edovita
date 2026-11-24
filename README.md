@@ -2,7 +2,7 @@
 
 Ernährungs-App mit Rezepten, Einkaufsliste und Zweitsprache für Lebensmittel. Web-App (PWA) zuerst, danach Handy-App mit Capacitor. Local-first: Gesundheitsdaten bleiben auf dem Gerät. App-ID `ch.edovita.app`.
 
-**Stand:** Version `0.1.0` – Pakete **E0** + **E0b** + **E1** + **E2** + **E3** + **E4** (Domäne mit `zod`, Lebensmittel-Katalog, Rezept-Schema, Nährwerte, Inhaltsprüfung, Mehrsprachigkeit mit `i18next` + `i18next-icu`, lokale Speicherung mit Dexie/IndexedDB sowie Rezeptliste `#/rezepte` und Rezept-Detailseite `#/rezept/:id` mit Portionsrechner, Allergenen, berechneten Nährwerten und Einkaufslisten-Übernahme). Vorschau nach Merge auf `main`: https://patrickstubner.github.io/Edovita/ (Deploy nur über den Pages-Workflow). Aktueller Stand und nächste Schritte: [`STATUS.md`](STATUS.md).
+**Stand:** Version `0.1.0` – Pakete **E0** + **E0b** + **E1** + **E2** + **E3** + **E4** + **kompakter UI-Sprachumschalter** (Domäne mit `zod`, Lebensmittel-Katalog, Rezept-Schema, Nährwerte, Inhaltsprüfung, Mehrsprachigkeit mit `i18next` + `i18next-icu`, kompakter Sprachumschalter oben rechts mit lokalen SVG-Flaggen und `#/profil/sprache`, lokale Speicherung mit Dexie/IndexedDB sowie Rezeptliste `#/rezepte` und Rezept-Detailseite `#/rezept/:id` mit Portionsrechner, Allergenen, berechneten Nährwerten und Einkaufslisten-Übernahme). Vorschau nach Merge auf `main`: https://patrickstubner.github.io/Edovita/ (Deploy nur über den Pages-Workflow). Aktueller Stand und nächste Schritte: [`STATUS.md`](STATUS.md).
 
 ## Inhalt
 

@@ -9,6 +9,7 @@
       "englishName": "German",
       "locale": "de-CH",
       "dir": "ltr",
+      "active": true,
       "legalApproved": true,
       "reviewed": true
     },
@@ -18,6 +19,7 @@
       "englishName": "English",
       "locale": "en-GB",
       "dir": "ltr",
+      "active": true,
       "legalApproved": true,
       "reviewed": false
     },
@@ -27,6 +29,7 @@
       "englishName": "French",
       "locale": "fr-CH",
       "dir": "ltr",
+      "active": true,
       "legalApproved": false,
       "reviewed": false
     },
@@ -36,6 +39,7 @@
       "englishName": "Italian",
       "locale": "it-CH",
       "dir": "ltr",
+      "active": true,
       "legalApproved": false,
       "reviewed": false
     },
@@ -45,6 +49,7 @@
       "englishName": "Spanish",
       "locale": "es-ES",
       "dir": "ltr",
+      "active": true,
       "legalApproved": false,
       "reviewed": false
     },
@@ -54,6 +59,7 @@
       "englishName": "Japanese",
       "locale": "ja-JP",
       "dir": "ltr",
+      "active": true,
       "legalApproved": false,
       "reviewed": false
     },
@@ -63,6 +69,7 @@
       "englishName": "Portuguese",
       "locale": "pt-BR",
       "dir": "ltr",
+      "active": true,
       "legalApproved": false,
       "reviewed": false
     }

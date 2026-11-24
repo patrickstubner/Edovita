@@ -263,12 +263,15 @@ function isApprovedInRegistry(
   code: string,
   registry: LanguagesRegistry,
 ): boolean {
-  return (
-    isSafeRecordKey(code) &&
-    registry.ui.includes(code) &&
-    Object.hasOwn(registry.meta, code) &&
-    registry.meta[code]?.legalApproved === true
-  );
+  if (
+    !isSafeRecordKey(code) ||
+    !registry.ui.includes(code) ||
+    !Object.hasOwn(registry.meta, code)
+  ) {
+    return false;
+  }
+  const meta = registry.meta[code];
+  return meta?.active !== false && meta?.legalApproved === true;
 }
 
 function isSecondaryInRegistry(
@@ -280,14 +283,14 @@ function isSecondaryInRegistry(
 
 /**
  * Erzeugt das strenge Settings-Schema gebunden an die Sprach-Registry (F1, F3a).
- * - `uiLang`: akzeptiert ausschliesslich rechtlich freigegebene UI-Sprachen (`legalApproved === true`).
+ * - `uiLang`: akzeptiert ausschliesslich aktive und rechtlich freigegebene UI-Sprachen (`active !== false && legalApproved === true`).
  * - `secondLang`: akzeptiert `null` oder Einträge aus `registry.secondary`.
  */
 export function createSettingsSchema(registry: LanguagesRegistry) {
   return z.strictObject({
     uiLang: langCodeSchema.refine(
       (code) => isApprovedInRegistry(code, registry),
-      'UI-Sprache ist nicht freigegeben (legalApproved).',
+      'UI-Sprache ist nicht aktiv und freigegeben (active & legalApproved).',
     ),
     secondLang: langCodeSchema
       .refine(
@@ -307,6 +310,7 @@ export const langMetaSchema = z.strictObject({
   englishName: safeContentStringSchema.optional(),
   locale: z.string().min(2).max(16),
   dir: z.enum(TEXT_DIRS),
+  active: z.boolean().optional(),
   legalApproved: z.boolean(),
   reviewed: z.boolean(),
 });

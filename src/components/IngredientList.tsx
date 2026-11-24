@@ -4,6 +4,7 @@ export interface IngredientRowItem {
   readonly key: string;
   readonly amountText: string;
   readonly name: string;
+  readonly missingName?: boolean;
   readonly note?: string;
   readonly optional?: boolean;
   readonly strained?: boolean;
@@ -60,7 +61,18 @@ export function IngredientList({
             <span className="edo-ing-amount">{item.amountText}</span>
             <div className="edo-grow">
               <div className="edo-ing-name-line">
-                <span className="edo-ing-name">{item.name}</span>
+                <span
+                  className={
+                    item.missingName
+                      ? 'edo-ing-name edo-chip edo-chip-sm edo-chip-warn'
+                      : 'edo-ing-name'
+                  }
+                  data-testid={
+                    item.missingName ? `missing-food-${item.key}` : undefined
+                  }
+                >
+                  {item.name}
+                </span>
                 {item.optional ? (
                   <span className="edo-cap"> ({optionalLabel})</span>
                 ) : null}
