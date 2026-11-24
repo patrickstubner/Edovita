@@ -3,6 +3,7 @@ import {
   UNSAFE_QR_NAME_RE,
   isSafeRecordKey,
   shopStateSchema,
+  unitSchema,
 } from './schemas.ts';
 import type { ImportShopItem, Result, ShopImportError } from './types.ts';
 
@@ -12,6 +13,25 @@ const MAX_JSON_LENGTH = 3000;
 const MAX_ITEMS = 40;
 const MAX_ID_LENGTH = 40;
 const MAX_NAME_LENGTH = 80;
+const MAX_AMOUNT = 100_000;
+
+function hasForbiddenOwnKey(value: unknown): boolean {
+  if (!value || typeof value !== 'object') {
+    return false;
+  }
+  if (Array.isArray(value)) {
+    return value.some(hasForbiddenOwnKey);
+  }
+  for (const key of Object.getOwnPropertyNames(value)) {
+    if (!isSafeRecordKey(key)) {
+      return true;
+    }
+    if (hasForbiddenOwnKey((value as Record<string, unknown>)[key])) {
+      return true;
+    }
+  }
+  return false;
+}
 
 function decodeBase64UrlToUtf8(input: string): string {
   const padded =
@@ -72,6 +92,10 @@ export function parseShopImport(
     return { ok: false, error: 'parse' };
   }
 
+  if (hasForbiddenOwnKey(parsed)) {
+    return { ok: false, error: 'schema' };
+  }
+
   if (
     !parsed ||
     typeof parsed !== 'object' ||
@@ -103,6 +127,8 @@ export function parseShopImport(
     const entryId = Object.hasOwn(entry, 'id') ? entry.id : undefined;
     const entryName = Object.hasOwn(entry, 'n') ? entry.n : undefined;
     const entryState = Object.hasOwn(entry, 'st') ? entry.st : undefined;
+    const entryAmount = Object.hasOwn(entry, 'a') ? entry.a : undefined;
+    const entryUnit = Object.hasOwn(entry, 'u') ? entry.u : undefined;
 
     if (entryId !== undefined && typeof entryId !== 'string') {
       return { ok: false, error: 'id' };
@@ -131,17 +157,46 @@ export function parseShopImport(
       return { ok: false, error: 'schema' };
     }
 
+    let validAmount: number | undefined;
+    if (entryAmount !== undefined) {
+      if (
+        typeof entryAmount !== 'number' ||
+        !Number.isFinite(entryAmount) ||
+        entryAmount <= 0 ||
+        entryAmount > MAX_AMOUNT
+      ) {
+        return { ok: false, error: 'schema' };
+      }
+      validAmount = Math.round((entryAmount + Number.EPSILON) * 10) / 10;
+    }
+
+    let validUnit: ImportShopItem['unit'];
+    if (entryUnit !== undefined) {
+      const unitCheck = unitSchema.safeParse(entryUnit);
+      if (!unitCheck.success) {
+        return { ok: false, error: 'schema' };
+      }
+      validUnit = unitCheck.data;
+    }
+
     const id = rawId || `i${i}`;
     const name = rawName.trim() || id;
     if (UNSAFE_QR_NAME_RE.test(name)) {
       return { ok: false, error: 'name' };
     }
 
-    items.push({
+    const item: ImportShopItem = {
       id,
       name,
       st: stateCheck.data,
-    });
+    };
+    if (validAmount !== undefined) {
+      item.amount = validAmount;
+    }
+    if (validUnit !== undefined) {
+      item.unit = validUnit;
+    }
+    items.push(item);
   }
 
   return { ok: true, value: items };
@@ -149,15 +204,35 @@ export function parseShopImport(
 
 /**
  * Kodiert Einkaufsartikel als kompaktes URL-Fragment für QR-Codes (max. 40 Artikel).
+ * Enthält ausschliesslich Artikel-IDs, Namen, optionale Mengen/Einheiten und Zustände (ADR-004).
  */
 export function encodeShopImport(items: readonly ImportShopItem[]): string {
   const payload = {
     v: 1 as const,
-    items: items.slice(0, MAX_ITEMS).map((it) => ({
-      id: it.id.slice(0, MAX_ID_LENGTH),
-      n: it.name.slice(0, MAX_NAME_LENGTH),
-      st: it.st,
-    })),
+    items: items.slice(0, MAX_ITEMS).map((it) => {
+      const entry: {
+        id: string;
+        n: string;
+        st: ImportShopItem['st'];
+        a?: number;
+        u?: ImportShopItem['unit'];
+      } = {
+        id: it.id.slice(0, MAX_ID_LENGTH),
+        n: it.name.slice(0, MAX_NAME_LENGTH),
+        st: it.st,
+      };
+      if (
+        typeof it.amount === 'number' &&
+        Number.isFinite(it.amount) &&
+        it.amount > 0
+      ) {
+        entry.a = Math.round((it.amount + Number.EPSILON) * 10) / 10;
+      }
+      if (it.unit !== undefined) {
+        entry.u = it.unit;
+      }
+      return entry;
+    }),
   };
   const b64 = encodeUtf8ToBase64Url(JSON.stringify(payload));
   return `#/einkauf#import=${b64}`;

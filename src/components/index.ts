@@ -1,4 +1,14 @@
 export { BottomActions, type BottomActionsProps } from './BottomActions.tsx';
+export {
+  BrandsSheet,
+  type BrandCardData,
+  type BrandsSheetProps,
+} from './BrandsSheet.tsx';
+export {
+  CatalogAddPanel,
+  type CatalogAddPanelProps,
+  type CatalogFoodOption,
+} from './CatalogAddPanel.tsx';
 export { Icon, type IconProps } from './Icon.tsx';
 export { IconSprite } from './IconSprite.tsx';
 export {
@@ -17,6 +27,12 @@ export {
   type NutritionPanelProps,
   type NutritionRowData,
 } from './NutritionPanel.tsx';
+export { QrCodeSvg, type QrCodeSvgProps } from './QrCodeSvg.tsx';
+export {
+  QrImportDialog,
+  type QrImportDialogProps,
+} from './QrImportDialog.tsx';
+export { QrSheet, type QrSheetProps } from './QrSheet.tsx';
 export {
   RecipeCard,
   type RecipeCardProps,
@@ -29,6 +45,8 @@ export {
   ServingsStepper,
   type ServingsStepperProps,
 } from './ServingsStepper.tsx';
+export { ShopGroup, type ShopGroupProps } from './ShopGroup.tsx';
+export { ShopRow, type ShopRowProps } from './ShopRow.tsx';
 export { Stars, type StarsProps } from './Stars.tsx';
 export { StepList, type StepListProps } from './StepList.tsx';
 export { Toast, type ToastProps } from './Toast.tsx';

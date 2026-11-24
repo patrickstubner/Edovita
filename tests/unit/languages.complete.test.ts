@@ -16,7 +16,7 @@ function readJson(filePath: string): unknown {
 
 function collectUsedUiKeys(dir: string): Set<string> {
   const used = new Set<string>();
-  const keyRe = /['"]([a-z0-9_]+(?:\.[a-z0-9_]+)+)['"]/g;
+  const keyRe = /['"]([a-zA-Z0-9_]+(?:\.[a-zA-Z0-9_]+)+)['"]/g;
 
   function walk(current: string) {
     for (const entry of readdirSync(current)) {

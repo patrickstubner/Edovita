@@ -1,5 +1,10 @@
 import { coerceSecondLang, coerceUiLang } from './lang.ts';
-import { FOOD_ID_RE, RECIPE_ID_RE, isSafeRecordKey } from './schemas.ts';
+import {
+  FOOD_ID_RE,
+  RECIPE_ID_RE,
+  UNSAFE_QR_NAME_RE,
+  isSafeRecordKey,
+} from './schemas.ts';
 import { coerceThemePreference } from './theme.ts';
 import {
   DEFAULT_UI_LANG,
@@ -139,6 +144,35 @@ export function coerceShoppingItem(raw: unknown): ShoppingItem | null {
       ? rawAddedAt
       : new Date(0).toISOString();
 
+  const rawRecipeAmounts = ownField(raw, 'recipeAmounts');
+  let recipeAmounts: Record<string, number> | undefined;
+  if (isPlainObject(rawRecipeAmounts)) {
+    const clean: Record<string, number> = {};
+    let hasAny = false;
+    for (const key of Object.getOwnPropertyNames(rawRecipeAmounts)) {
+      if (!RECIPE_ID_RE.test(key) || !isSafeRecordKey(key)) {
+        continue;
+      }
+      const val = rawRecipeAmounts[key];
+      if (typeof val === 'number' && Number.isFinite(val) && val > 0) {
+        clean[key] = val;
+        hasAny = true;
+      }
+    }
+    if (hasAny) {
+      recipeAmounts = clean;
+    }
+  }
+
+  const rawCustomLabel = ownField(raw, 'customLabel');
+  const customLabel =
+    typeof rawCustomLabel === 'string' &&
+    rawCustomLabel.trim().length > 0 &&
+    rawCustomLabel.trim().length <= 80 &&
+    !UNSAFE_QR_NAME_RE.test(rawCustomLabel.trim())
+      ? rawCustomLabel.trim()
+      : undefined;
+
   const item: ShoppingItem = {
     id: rawId,
     food: asFoodId(rawFood),
@@ -152,6 +186,12 @@ export function coerceShoppingItem(raw: unknown): ShoppingItem | null {
   }
   if (unit !== undefined) {
     item.unit = unit;
+  }
+  if (recipeAmounts !== undefined) {
+    item.recipeAmounts = recipeAmounts;
+  }
+  if (customLabel !== undefined) {
+    item.customLabel = customLabel;
   }
 
   return item;

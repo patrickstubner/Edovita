@@ -243,6 +243,24 @@ export const shoppingItemSchema = z.strictObject({
   unit: unitSchema.optional(),
   state: shopStateSchema,
   fromRecipes: z.array(recipeIdSchema),
+  recipeAmounts: z
+    .record(
+      z
+        .string()
+        .regex(RECIPE_ID_RE, 'Ungültige Rezept-ID in recipeAmounts.')
+        .refine(isSafeRecordKey, 'Reservierter Schlüssel nicht zulässig.'),
+      z.number().finite().positive(),
+    )
+    .optional(),
+  customLabel: z
+    .string()
+    .trim()
+    .min(1)
+    .max(80)
+    .refine((value) => !UNSAFE_QR_NAME_RE.test(value), {
+      message: 'Bezeichnung enthält unzulässige Zeichen.',
+    })
+    .optional(),
   addedAt: z.string().min(1),
 });
 

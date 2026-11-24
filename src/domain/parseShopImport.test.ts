@@ -132,6 +132,34 @@ describe('parseShopImport', () => {
       expect(parseShopImport(fragment)).toEqual({ ok: false, error: 'name' });
     }
   });
+
+  it('lehnt Prototype-Schlüssel im JSON ab und validiert optionale Mengen/Einheiten', () => {
+    const protoFragment = `#/einkauf#import=${toBase64Url(
+      '{"v":1,"__proto__":{"polluted":true},"items":[]}',
+    )}`;
+    expect(parseShopImport(protoFragment)).toEqual({
+      ok: false,
+      error: 'schema',
+    });
+
+    const badAmount = `#/einkauf#import=${toBase64Url(
+      JSON.stringify({
+        v: 1,
+        items: [{ id: 'broccoli', n: 'Broccoli', st: 'open', a: -5, u: 'g' }],
+      }),
+    )}`;
+    expect(parseShopImport(badAmount)).toEqual({ ok: false, error: 'schema' });
+
+    const withAmt = encodeShopImport([
+      { id: 'broccoli', name: 'Broccoli', st: 'open', amount: 400, unit: 'g' },
+    ]);
+    expect(parseShopImport(withAmt)).toEqual({
+      ok: true,
+      value: [
+        { id: 'broccoli', name: 'Broccoli', st: 'open', amount: 400, unit: 'g' },
+      ],
+    });
+  });
 });
 
 describe('createExportBundleV1Schema', () => {

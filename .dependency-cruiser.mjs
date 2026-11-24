@@ -46,16 +46,16 @@ export default {
       name: 'services-no-react-or-ui',
       severity: 'error',
       comment:
-        'ADR-001 Regel 2: Dienste (storage, catalog, i18n, nutrition, health, pwa) dürfen kein React und keine UI-/App-Schicht importieren.',
+        'ADR-001 Regel 2: Dienste (storage, catalog, i18n, nutrition, shopping, health, pwa) dürfen kein React und keine UI-/App-Schicht importieren.',
       from: {
-        path: '^src/(storage|catalog|i18n|nutrition|health|pwa)/',
+        path: '^src/(storage|catalog|i18n|nutrition|shopping|health|pwa)/',
         pathNot: '\\.test\\.tsx?$',
       },
       to: {
         path: '^(src/(pages|components|hooks|app)/|node_modules/(react|react-dom|react-router))',
       },
     },
-    // ADR-001 Regel 2: Erlaubte Querverbindungen zwischen Diensten nur nutrition->catalog und catalog->i18n
+    // ADR-001 Regel 2: Erlaubte Querverbindungen zwischen Diensten nur nutrition->catalog, catalog->i18n und shopping->catalog/nutrition
     {
       name: 'storage-no-other-services',
       severity: 'error',
@@ -66,7 +66,7 @@ export default {
         pathNot: '\\.test\\.tsx?$',
       },
       to: {
-        path: '^src/(catalog|i18n|nutrition|health|pwa)/',
+        path: '^src/(catalog|i18n|nutrition|shopping|health|pwa)/',
       },
     },
     {
@@ -79,7 +79,7 @@ export default {
         pathNot: '\\.test\\.tsx?$',
       },
       to: {
-        path: '^src/(storage|nutrition|health|pwa)/',
+        path: '^src/(storage|nutrition|shopping|health|pwa)/',
       },
     },
     {
@@ -92,7 +92,7 @@ export default {
         pathNot: '\\.test\\.tsx?$',
       },
       to: {
-        path: '^src/(storage|catalog|nutrition|health|pwa)/',
+        path: '^src/(storage|catalog|nutrition|shopping|health|pwa)/',
       },
     },
     {
@@ -102,6 +102,19 @@ export default {
         'ADR-001 Regel 2: src/nutrition darf unter Diensten nur src/catalog importieren.',
       from: {
         path: '^src/nutrition/',
+        pathNot: '\\.test\\.tsx?$',
+      },
+      to: {
+        path: '^src/(storage|i18n|shopping|health|pwa)/',
+      },
+    },
+    {
+      name: 'shopping-only-domain-catalog-and-nutrition',
+      severity: 'error',
+      comment:
+        'ADR-001 Regel 2: src/shopping darf unter Diensten nur src/catalog und src/nutrition importieren.',
+      from: {
+        path: '^src/shopping/',
         pathNot: '\\.test\\.tsx?$',
       },
       to: {
@@ -117,7 +130,7 @@ export default {
         pathNot: '\\.test\\.tsx?$',
       },
       to: {
-        path: '^src/(storage|catalog|i18n|nutrition|health)/',
+        path: '^src/(storage|catalog|i18n|nutrition|shopping|health)/',
       },
     },
     // ADR-001 Regel 3: health ist rein (nur domain + health selbst)
@@ -145,7 +158,7 @@ export default {
         pathNot: '\\.test\\.tsx?$',
       },
       to: {
-        path: '^(src/(pages|hooks|app|storage|catalog|nutrition|health|pwa)/|content/)',
+        path: '^(src/(pages|hooks|app|storage|catalog|nutrition|shopping|health|pwa)/|content/)',
       },
     },
     // ADR-001 Regel 5: pages importieren nicht direkt aus storage oder content

@@ -245,6 +245,10 @@ export interface ShoppingItem {
   unit?: Unit;
   state: ShopState;
   fromRecipes: RecipeId[];
+  /** Pro Rezept-ID beigesteuerte Menge, damit `removeRecipe` exakt abzieht (ADR-002). */
+  recipeAmounts?: Record<string, number>;
+  /** Sicher geprüfte Anzeige-Bezeichnung für importierte Nicht-Katalog-Artikel. */
+  customLabel?: string;
   addedAt: string;
 }
 
@@ -282,6 +286,8 @@ export interface ImportShopItem {
   id: string;
   name: string;
   st: ShopState;
+  amount?: number;
+  unit?: Unit;
 }
 
 export type ShopImportError =
