@@ -8,5 +8,15 @@ export {
 } from './useRecipes.ts';
 export { useServings, type UseServingsResult } from './useServings.ts';
 export { useSettings } from './useSettings.ts';
+export {
+  useShareList,
+  type ShareOutcome,
+  type UseShareListParams,
+  type UseShareListResult,
+} from './useShareList.ts';
 export { useShopping } from './useShopping.ts';
+export {
+  useShoppingList,
+  type UseShoppingListResult,
+} from './useShoppingList.ts';
 export { useTheme } from './useTheme.ts';

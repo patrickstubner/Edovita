@@ -2,13 +2,13 @@
 
 Ernährungs-App mit Rezepten, Einkaufsliste und Zweitsprache für Lebensmittel. Web-App (PWA) zuerst, danach Handy-App mit Capacitor. Local-first: Gesundheitsdaten bleiben auf dem Gerät. App-ID `ch.edovita.app`.
 
-**Stand:** Version `0.1.0` – Pakete **E0** + **E0b** + **E1** + **E2** + **E3** + **E4** + **kompakter UI-Sprachumschalter** (Domäne mit `zod`, Lebensmittel-Katalog, Rezept-Schema, Nährwerte, Inhaltsprüfung, Mehrsprachigkeit mit `i18next` + `i18next-icu`, kompakter Sprachumschalter oben rechts mit lokalen SVG-Flaggen und `#/profil/sprache`, lokale Speicherung mit Dexie/IndexedDB sowie Rezeptliste `#/rezepte` und Rezept-Detailseite `#/rezept/:id` mit Portionsrechner, Allergenen, berechneten Nährwerten und Einkaufslisten-Übernahme). Vorschau nach Merge auf `main`: https://patrickstubner.github.io/Edovita/ (Deploy nur über den Pages-Workflow). Aktueller Stand und nächste Schritte: [`STATUS.md`](STATUS.md).
+**Stand:** Version `0.1.0` – Pakete **E0** + **E0b** + **E1** + **E2** + **E3** + **E4** + **kompakter UI-Sprachumschalter** + **E5** (Domäne mit `zod`, Lebensmittel-Katalog, Rezept-Schema, Nährwerte, Inhaltsprüfung, Mehrsprachigkeit mit `i18next` + `i18next-icu`, kompakter Sprachumschalter oben rechts & `#/profil/sprache`, lokale Speicherung mit Dexie/IndexedDB, Rezeptliste `#/rezepte` & Rezept-Detailseite `#/rezept/:id` sowie Einkaufsliste `#/einkauf` mit drei Zuständen, Rezept-Abzug, Katalog-Suche, Hausmarken, Teilen & gehärtetem QR-Import). Vorschau nach Merge auf `main`: https://patrickstubner.github.io/Edovita/ (Deploy nur über den Pages-Workflow). Aktueller Stand und nächste Schritte: [`STATUS.md`](STATUS.md).
 
 ## Inhalt
 
 | Ordner | Zweck |
 |---|---|
-| `src/` | Echte App (ADR-001-Schichten: `pages`, `components`, `hooks`, `app`, `storage`, `catalog`, `i18n`, `nutrition`, `health`, `pwa`, `domain`) |
+| `src/` | Echte App (ADR-001-Schichten: `pages`, `components`, `hooks`, `app`, `storage`, `catalog`, `i18n`, `nutrition`, `shopping`, `health`, `pwa`, `domain`) |
 | `content/` | Geprüfte App-Inhalte (55 Lebensmittel, Glossare DE/EN/PT/JA, 5 Rezepte, Sprach-Registry `locales/languages.json`, 7 UI-Locales `{de,en,fr,it,es,ja,pt}/ui.json`, generierte Indizes unter `generated/`) |
 | `public/` | Statische Dateien (`_headers` mit strikter CSP, `theme-init.js`, finale Logos) |
 | `tests/` | Test-Setup (Rstest + Testing Library + `fake-indexeddb`), Inhalts- und Sprachprüfungen (`content.check.test.ts`, `languages.complete.test.ts`) und Playwright-E2E (`390×844`) |

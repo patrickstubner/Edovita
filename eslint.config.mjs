@@ -76,6 +76,7 @@ export default tseslint.config(
                 '../storage*',
                 '../catalog*',
                 '../nutrition*',
+                '../shopping*',
                 '../health*',
                 '../pwa*',
                 '**/content/*',

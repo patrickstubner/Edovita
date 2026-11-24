@@ -134,14 +134,25 @@ export function RecipesPage() {
         </div>
       }
       actions={
-        <button
-          type="button"
-          className="edo-btn edo-btn-secondary"
-          onClick={() => navigate('/')}
-        >
-          <Icon name="home" size="sm" />
-          <span>{t('status.back_home')}</span>
-        </button>
+        <>
+          <button
+            type="button"
+            className="edo-btn edo-btn-secondary"
+            data-testid="open-shopping-btn"
+            onClick={() => navigate('/einkauf')}
+          >
+            <Icon name="cart" size="sm" />
+            <span>{t('rezepte.einkaufsliste_offnen')}</span>
+          </button>
+          <button
+            type="button"
+            className="edo-btn edo-btn-secondary"
+            onClick={() => navigate('/')}
+          >
+            <Icon name="home" size="sm" />
+            <span>{t('status.back_home')}</span>
+          </button>
+        </>
       }
       actionsLabel={t('rezepte.actions_label')}
     >

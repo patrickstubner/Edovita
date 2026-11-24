@@ -1,0 +1,324 @@
+/* Einkaufsliste, QR-Code & Dialoge gemäss Prototyp (`prototype/styles.css`), strikt logische CSS-Eigenschaften (ADR-003 RTL) */
+
+.edo-shopgroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.edo-shopgroup-head {
+  padding-inline: 2px;
+}
+
+.edo-shopgroup-card {
+  padding-block: 4px;
+}
+
+.edo-shoprow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-block-size: 56px;
+}
+
+.edo-shoprow + .edo-shoprow {
+  border-block-start: 1px solid var(--edo-border);
+}
+
+.edo-chk {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-block-size: 52px;
+  inline-size: 100%;
+  padding-block: 6px;
+  padding-inline: 0;
+  border: 0;
+  background: transparent;
+  color: var(--edo-text);
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+
+.edo-chk:focus-visible {
+  outline: 3px solid var(--edo-primary);
+  outline-offset: 2px;
+  border-radius: 10px;
+}
+
+.edo-cb {
+  inline-size: 30px;
+  block-size: 30px;
+  border-radius: 9px;
+  border: 2.5px solid var(--edo-border-strong);
+  background: var(--edo-surface);
+  display: grid;
+  place-items: center;
+  color: var(--edo-on-primary);
+  flex: none;
+}
+
+.edo-cb .edo-ic {
+  inline-size: 18px;
+  block-size: 18px;
+  stroke-width: 3.4;
+  opacity: 0;
+}
+
+.edo-chk-on .edo-cb {
+  background: var(--edo-primary);
+  border-color: var(--edo-primary);
+}
+
+.edo-chk-on .edo-cb .edo-ic {
+  opacity: 1;
+}
+
+.edo-shoprow-nm {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--edo-text);
+}
+
+.edo-chk-on .edo-shoprow-nm {
+  color: var(--edo-text-muted);
+  text-decoration: line-through;
+}
+
+.edo-shoprow-athome .edo-shoprow-nm {
+  color: var(--edo-text-muted);
+}
+
+.edo-shoprow-home-text {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.edo-shoprow-amt {
+  flex: none;
+  white-space: nowrap;
+}
+
+.edo-havebtn {
+  position: relative;
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border: 1.5px solid var(--edo-border-strong);
+  border-radius: 18px;
+  padding-block: 6px;
+  padding-inline: 12px;
+  font: inherit;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--edo-text-muted);
+  background: var(--edo-surface);
+  min-block-size: 40px;
+  cursor: pointer;
+}
+
+.edo-havebtn::before {
+  content: '';
+  position: absolute;
+  inset-block: -5px;
+  inset-inline: -2px;
+}
+
+.edo-havebtn:focus-visible {
+  outline: 3px solid var(--edo-primary);
+  outline-offset: 2px;
+}
+
+.edo-circ {
+  inline-size: 40px;
+  block-size: 40px;
+  border-radius: 20px;
+  background: var(--edo-primary-soft);
+  color: var(--edo-primary-dark);
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+
+.edo-circ-sm {
+  inline-size: 34px;
+  block-size: 34px;
+  border-radius: 17px;
+}
+
+.edo-banner {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  background: var(--edo-warn);
+  color: var(--edo-warn-text);
+  border-radius: 18px;
+  padding-block: 14px;
+  padding-inline: 16px;
+  inline-size: 100%;
+}
+
+.edo-banner-ok {
+  background: var(--edo-primary-soft);
+  color: var(--edo-primary-dark);
+}
+
+.edo-banner-bad {
+  background: var(--edo-bad-bg);
+  color: var(--edo-bad-text);
+}
+
+.edo-flab {
+  display: block;
+  font-weight: 700;
+  font-size: 17px;
+}
+
+.edo-search-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.edo-inp {
+  min-block-size: 52px;
+  border: 1.5px solid var(--edo-border-strong);
+  border-radius: 14px;
+  padding-block: 0;
+  padding-inline: 14px;
+  font: inherit;
+  font-size: 17px;
+  background: var(--edo-surface);
+  color: var(--edo-text);
+  min-inline-size: 0;
+}
+
+.edo-inp:focus-visible {
+  outline: 3px solid var(--edo-primary-soft);
+  border-color: var(--edo-primary);
+}
+
+.edo-favrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  inline-size: 100%;
+  min-block-size: 56px;
+  padding-block: 8px;
+}
+
+.edo-favrow + .edo-favrow {
+  border-block-start: 1px solid var(--edo-border);
+}
+
+.edo-favrow strong {
+  display: block;
+  font-size: 17px;
+}
+
+.edo-recipe-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.edo-recipe-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-block-size: 44px;
+  padding-block: 6px;
+  padding-inline: 12px;
+  border-radius: 20px;
+  border: 1.5px solid var(--edo-border-strong);
+  background: var(--edo-surface);
+  color: var(--edo-text);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.edo-recipe-chip:focus-visible {
+  outline: 3px solid var(--edo-primary);
+  outline-offset: 2px;
+}
+
+.edo-qrbox {
+  display: flex;
+  justify-content: center;
+  padding: 12px;
+}
+
+.edo-qr-svg {
+  inline-size: min(100%, 240px);
+  block-size: auto;
+  border-radius: 12px;
+  box-shadow: var(--edo-shadow);
+}
+
+.edo-mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 13px;
+  background: var(--edo-primary-soft);
+  color: var(--edo-primary-dark);
+  border-radius: 8px;
+  padding-block: 6px;
+  padding-inline: 10px;
+  word-break: break-all;
+}
+
+.edo-center {
+  align-items: center;
+  text-align: center;
+}
+
+.edo-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: rgb(20 33 31 / 52%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.edo-modal-card {
+  inline-size: 100%;
+  max-inline-size: 460px;
+  max-block-size: calc(100vh - 32px);
+  overflow-y: auto;
+  background: var(--edo-surface);
+  color: var(--edo-text);
+  border-radius: 22px;
+  padding: 20px;
+  box-shadow: var(--edo-shadow);
+}
+
+.edo-import-preview {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-block-size: 240px;
+  overflow-y: auto;
+  border: 1px solid var(--edo-border);
+  border-radius: 14px;
+  padding-inline: 12px;
+}
+
+.edo-import-preview-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-block: 10px;
+}
+
+.edo-import-preview-row + .edo-import-preview-row {
+  border-block-start: 1px solid var(--edo-border);
+}

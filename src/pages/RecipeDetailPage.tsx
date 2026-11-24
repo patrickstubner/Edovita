@@ -301,15 +301,26 @@ export function RecipeDetailPage() {
         </div>
       }
       actions={
-        <button
-          type="button"
-          className="edo-btn"
-          onClick={handleAddToShoppingList}
-          data-testid="add-to-shopping-btn"
-        >
-          <Icon name="cart" size="sm" />
-          <span>{t('detail.add_to_list')}</span>
-        </button>
+        <>
+          <button
+            type="button"
+            className="edo-btn"
+            onClick={handleAddToShoppingList}
+            data-testid="add-to-shopping-btn"
+          >
+            <Icon name="cart" size="sm" />
+            <span>{t('detail.add_to_list')}</span>
+          </button>
+          <button
+            type="button"
+            className="edo-btn edo-btn-secondary"
+            onClick={() => navigate('/einkauf')}
+            data-testid="detail-open-shopping-btn"
+          >
+            <Icon name="cart" size="sm" />
+            <span>{t('rezepte.einkaufsliste_offnen')}</span>
+          </button>
+        </>
       }
       actionsLabel={t('detail.actions_label')}
     >

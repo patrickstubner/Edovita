@@ -50,7 +50,10 @@ export {
 
 export {
   ALLERGEN_LABEL_KEYS,
+  BRAND_LABEL_KEYS,
   CUISINE_LABEL_KEYS,
+  FOOD_GROUP_LABEL_KEYS,
   MEAL_LABEL_KEYS,
+  REGION_LABEL_KEYS,
   getCuisineLabelKey,
 } from './labels.ts';

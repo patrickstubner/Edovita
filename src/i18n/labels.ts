@@ -1,5 +1,5 @@
 import type { UiKey } from '../../content/generated/locales-index.ts';
-import type { Allergen, CuisineId, Meal } from '../domain/index.ts';
+import type { Allergen, CuisineId, FoodGroup, Meal } from '../domain/index.ts';
 
 export const MEAL_LABEL_KEYS: Readonly<Record<Meal, UiKey>> = {
   breakfast: 'meal.breakfast',
@@ -31,6 +31,41 @@ export const ALLERGEN_LABEL_KEYS: Readonly<Record<Allergen, UiKey>> = {
   sulphites: 'allergen.sulphites',
   lupin: 'allergen.lupin',
   molluscs: 'allergen.molluscs',
+};
+
+export const FOOD_GROUP_LABEL_KEYS: Readonly<Record<FoodGroup, UiKey>> = {
+  veg: 'shop.grp.veg',
+  fruit: 'shop.grp.fruit',
+  dairy: 'shop.grp.dairy',
+  meat: 'shop.grp.meat',
+  fish: 'shop.grp.fish',
+  bakery: 'shop.grp.bakery',
+  pantry: 'shop.grp.pantry',
+  spice: 'shop.grp.spice',
+  drinks: 'shop.grp.drinks',
+};
+
+export const BRAND_LABEL_KEYS: Readonly<
+  Record<'migros' | 'coop' | 'lidl' | 'aldi' | 'denner' | 'spar', UiKey>
+> = {
+  migros: 'brand.migros',
+  coop: 'brand.coop',
+  lidl: 'brand.lidl',
+  aldi: 'brand.aldi',
+  denner: 'brand.denner',
+  spar: 'brand.spar',
+};
+
+export const REGION_LABEL_KEYS: Readonly<
+  Record<'CH' | 'DE' | 'AT' | 'IT' | 'ES' | 'FR' | 'PT', UiKey>
+> = {
+  CH: 'region.CH',
+  DE: 'region.DE',
+  AT: 'region.AT',
+  IT: 'region.IT',
+  ES: 'region.ES',
+  FR: 'region.FR',
+  PT: 'region.PT',
 };
 
 export function getCuisineLabelKey(
