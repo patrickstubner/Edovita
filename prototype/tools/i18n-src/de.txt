@@ -1080,3 +1080,6 @@
 1080|Auf die Liste gesetzt. Kein passender Plan-Slot mehr frei.
 1081|Auf die Liste gesetzt. War bereits im Plan.
 1082|Rückgängig
+1083|Verwendet in {recipes}
+1084|{recipe} · {when}, {qty}
+1085|{recipe}, {qty}

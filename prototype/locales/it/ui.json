@@ -1080,5 +1080,8 @@
  "toast.addlist.planned": "Aggiunto alla lista e pianificato per {when}",
  "toast.addlist.noslot": "Aggiunto alla lista. Nessuno spazio adatto rimasto nel piano.",
  "toast.addlist.already": "Aggiunto alla lista. Era già nel piano.",
- "toast.undo": "Annulla"
+ "toast.undo": "Annulla",
+ "shop.usedin": "Usato in {recipes}",
+ "shop.src.line.plan": "{recipe} · {when}, {qty}",
+ "shop.src.line.extra": "{recipe}, {qty}"
 }

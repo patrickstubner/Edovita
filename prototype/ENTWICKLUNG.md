@@ -1,3 +1,7 @@
+# Stand v5.8.1 (24. November 2026)
+
+Kurznachtrag zur Einkaufsliste: Herkunftstext unter den Zutaten entfernt, dafür Info-Button (ⓘ 28×28 CSS-Pixel in einer Tippfläche 56×56, 16 CSS-Pixel Abstand zur Abhakzeile) und Bottom-Sheet mit Rezept/Plan-Slot. Siehe `SECURITY.md`. Darunter der Stand v5.8.
+
 # Stand v5.8 (24. November 2026)
 Lokale Rezeptbilder (Pexels, ohne Pflicht zur Namensnennung, intern in `IMAGES.md` dokumentiert) in Liste, Detail und Plan. Plan-Slot «Zwischenmahlzeit» heisst «Snacks». «Auf die Einkaufsliste» plant das Rezept zusätzlich in den nächsten freien passenden Slot (Toast mit Rückgängig; Zutaten nur einmal gezählt). Dark/Light und Sprachumschalter unverändert.
 

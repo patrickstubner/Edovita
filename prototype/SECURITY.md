@@ -1,3 +1,31 @@
+# Sicherheitsprüfung v5.8.1 (24. November 2026, Europe/Zurich)
+
+**Stand:** Kompakte Einkaufsliste: Herkunftszeilen unter den Zutaten entfallen. Stattdessen ein Info-Button rechts in der Zeile (nur wenn die Zutat aus Rezepten stammt), der ein Bottom-Sheet mit Rezept und Plan-Slot öffnet. Sichtbares ⓘ-Icon 28×28 CSS-Pixel, Tippfläche 56×56 CSS-Pixel, 16 CSS-Pixel Abstand zur Abhak-/Mengenzeile. Branch `prototype/lang-switcher` (nicht auf `main` mergen). Bestehender Cloudflare-Worker wird aktualisiert, keine neuen Ressourcen oder Pakete. Dark/Light und der kompakte Sprachumschalter bleiben unverändert.
+
+**Quelle der Prüfung:** Code-Review der geänderten Dateien (`index.html`, `styles.css`, `app.js`, `locales/*`, `tools/i18n-src/*`), grep-Scans (innerHTML/eval/Netzwerk/Geheimnisse/Geolocation), Headless Playwright (Chrome, Viewport 390×844, Hell und Dunkel): kompakte Liste ohne Herkunftszeile, Sheet-Inhalt, Icon-Tipp löst kein Abhaken aus, Schliessen mit Escape und Tipp auf den Hintergrund, gemessene Icon- und Tippflächen, 0 Konsolenfehler. Keine neuen Laufzeit-Abhängigkeiten, deshalb kein `pnpm audit` im Prototyp.
+
+**Ergebnis:** keine Befunde (keine kritischen, hohen, mittleren oder niedrigen).
+
+| # | Prüfpunkt | Ergebnis | Schweregrad |
+|---|-----------|----------|-------------|
+| 1 | Eingabevalidierung | Der Info-Button trägt `data-shop-src` nur als `id:unit` aus dem vorhandenen Listeneintrag. Beim Öffnen wird der Eintrag erneut in `getShopItems()` gesucht; unbekannte Werte öffnen nichts. Rezept-IDs in den Herkunftszeilen kommen aus dem Plan bzw. `shopRecipesOf` (Whitelist `knownRecipe`). Mengen und Slots stammen aus denselben geprüften Plan-/Rezeptdaten wie in v5.8. | kein Befund |
+| 2 | Injection / XSS | Keine neuen Sinks: kein `innerHTML`/`eval`/`document.write`. Sheet-Titel (`uiFoodName`), Herkunftszeilen (`formatShopSrcLine` / `recipeTitle` / übersetzte Muster) und `aria-label` («Verwendet in …») nur per `textContent` bzw. `setAttribute`. Die Liste im Sheet wird vorher mit `body.textContent = ''` geleert, danach `createElement` + `textContent`. CSP unverändert (`script-src 'self'`, `style-src 'self'`, `connect-src 'none'`, `img-src 'self' data:`). | kein Befund |
+| 3 | Geheimnisse | Keine Schlüssel, Tokens, API-Konten oder Passwörter. | kein Befund |
+| 4 | Speicher / Netz / Rechte | Keine neuen `localStorage`-Keys, kein `fetch`, keine Geolocation. Der Info-Button ist ein Geschwister der Abhak-Fläche (nicht darin), inkl. höherem `z-index`; ein Tipp auf ⓘ setzt den Haken nicht. | kein Befund |
+| 5 | Abhängigkeiten | Keine neuen Laufzeit- oder Build-Abhängigkeiten. Screenshot-Lauf über vorhandenes Playwright-Core, kein neues Paket im Prototyp. | kein Befund |
+| 6 | Fehlermeldungen / Angriffsfläche | Keine Stacktraces nach aussen. Dialog: `role="dialog"` / `aria-modal`, Schliessen mit Escape, Hintergrund und Schliessen-Knopf. | kein Befund |
+
+**SHA-256 (geänderte Kern-Dateien):**
+```
+c3b1c32b211ae67331109d44c736b00676d718dcd70d797aa20f86ee9189acae  prototype/index.html
+a6c30b7e47c7886488d7c94df0590a812a83790f1a1d071b607b91708da06faf  prototype/styles.css
+666e93bd68446fb7a7b70a10cbfd574bdb12fad1ff20f8801a5507d023d0fb96  prototype/app.js
+44953a5aac74bddb604ec47ee1d123a19e7299a32ec1d5a2790648123d12c2a2  prototype/locales.js
+1e0c378606696540aa933a427684d33e6d680b037ac449fffefc39b9aa7c44af  prototype/tools/i18n-src/keys.json
+```
+
+---
+
 # Sicherheitsprüfung v5.8 (24. November 2026, Europe/Zurich)
 
 **Stand:** UX-Versuch Rezeptbilder (lokal gebündelt), Plan-Slot «Snacks», «Auf die Einkaufsliste» mit automatischer Planeinplanung und Rückgängig. Branch `prototype/lang-switcher` (nicht auf `main` mergen). Bestehender Cloudflare-Worker `edovita-prototyp` wird aktualisiert, keine neuen Ressourcen oder Pakete. Dark/Light und Sprachumschalter unverändert.

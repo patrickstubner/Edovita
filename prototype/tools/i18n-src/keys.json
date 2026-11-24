@@ -1080,5 +1080,8 @@
  "toast.addlist.planned",
  "toast.addlist.noslot",
  "toast.addlist.already",
- "toast.undo"
+ "toast.undo",
+ "shop.usedin",
+ "shop.src.line.plan",
+ "shop.src.line.extra"
 ]

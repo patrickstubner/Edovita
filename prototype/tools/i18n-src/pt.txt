@@ -1080,3 +1080,6 @@
 1080|Adicionado à lista. Não há mais horário adequado no plano.
 1081|Adicionado à lista. Já estava no plano.
 1082|Desfazer
+1083|Usado em {recipes}
+1084|{recipe} · {when}, {qty}
+1085|{recipe}, {qty}

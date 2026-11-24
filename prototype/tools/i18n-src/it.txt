@@ -1080,3 +1080,6 @@
 1080|Aggiunto alla lista. Nessuno spazio adatto rimasto nel piano.
 1081|Aggiunto alla lista. Era già nel piano.
 1082|Annulla
+1083|Usato in {recipes}
+1084|{recipe} · {when}, {qty}
+1085|{recipe}, {qty}

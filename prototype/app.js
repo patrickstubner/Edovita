@@ -39,6 +39,7 @@
   function show(id) {
     if (SCREENS.indexOf(id) === -1) id = 'heute';
     if (id !== curScreen) { prevScreen = curScreen; curScreen = id; }
+    if (typeof closeShopSrc === 'function') closeShopSrc(true);
     if (id === 'rezept') renderRezept();
     if (id === 'plan') renderPlan();
     $$('.screen').forEach(function (s) { s.classList.toggle('active', s.id === id); });
@@ -1184,6 +1185,7 @@
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') { var s = $('#splash'); if (s && !s.hidden) { e.preventDefault(); endSplash(); return; } }
     if (e.key === 'Escape' && typeof isPlanSheetOpen === 'function' && isPlanSheetOpen()) { e.preventDefault(); closePlanSheet(); return; }
+    if (e.key === 'Escape' && typeof isShopSrcOpen === 'function' && isShopSrcOpen()) { e.preventDefault(); closeShopSrc(); return; }
     if ((e.key === 'Enter' || e.key === ' ') && e.target && e.target.getAttribute && e.target.getAttribute('data-recipe') && !SECOND_MENU_OPEN && !LANG_MENU_OPEN) {
       if (!e.target.closest('[data-rate], [data-save], [data-addlist]')) { e.preventDefault(); openRecipe(e.target.getAttribute('data-recipe')); return; }
     }
@@ -2192,17 +2194,92 @@
     });
     return all;
   }
+  function shopSourceLines(it) {
+    var lines = [], seen = {}, dates = planWindowDates();
+    getPlan().items.forEach(function (pitem) {
+      if (dates.indexOf(pitem.date) === -1) return;
+      ingsForPlanEntry(pitem).forEach(function (ing) {
+        if (ing.id !== it.id || (ing.unit || '') !== (it.unit || '')) return;
+        lines.push({ recipeId: pitem.recipeId, when: planWhenLabel(pitem.date, pitem.slot), qty: ing.qty, unit: ing.unit || it.unit });
+        seen[pitem.recipeId] = 1;
+      });
+    });
+    shopRecipesOf(it).forEach(function (rid) {
+      if (seen[rid]) return;
+      ingsForPlanEntry({ recipeId: rid, portions: recipeServings(rid) }).forEach(function (ing) {
+        if (ing.id !== it.id || (ing.unit || '') !== (it.unit || '')) return;
+        lines.push({ recipeId: rid, when: '', qty: ing.qty, unit: ing.unit || it.unit });
+      });
+    });
+    return lines;
+  }
+  function formatShopSrcLine(line) {
+    var recipe = recipeTitle(line.recipeId);
+    var qty = (line.qty != null && line.unit) ? formatQty(line.qty, line.unit) : '';
+    if (line.when && qty) return T('shop.src.line.plan', { recipe: recipe, when: line.when, qty: qty });
+    if (qty) return T('shop.src.line.extra', { recipe: recipe, qty: qty });
+    return line.when ? (recipe + ' · ' + line.when) : recipe;
+  }
+  var shopSrcKey = null, shopSrcBtn = null;
+  function isShopSrcOpen() {
+    var sh = $('#shopSrcSheet');
+    return !!(sh && !sh.hidden);
+  }
+  function closeShopSrc(silent) {
+    var sh = $('#shopSrcSheet'), bd = $('#shopSrcBack'), last = shopSrcBtn;
+    if (sh) sh.hidden = true;
+    if (bd) bd.hidden = true;
+    shopSrcKey = null;
+    shopSrcBtn = null;
+    $$('.shop-src-btn[aria-expanded="true"]').forEach(function (b) { b.setAttribute('aria-expanded', 'false'); });
+    if (!silent && last && last.focus) last.focus();
+  }
+  function openShopSrc(it, btn) {
+    var sh = $('#shopSrcSheet'), bd = $('#shopSrcBack'), title = $('#shopSrcTitle'), body = $('#shopSrcBody'), closeBtn = $('#shopSrcClose');
+    var lines, key;
+    if (!sh || !body || !it) return;
+    key = it.id + '\0' + (it.unit || '');
+    if (isShopSrcOpen() && shopSrcKey === key) { closeShopSrc(); return; }
+    lines = shopSourceLines(it);
+    if (!lines.length) return;
+    shopSrcKey = key;
+    shopSrcBtn = btn || null;
+    $$('.shop-src-btn').forEach(function (b) { b.setAttribute('aria-expanded', 'false'); });
+    if (btn) btn.setAttribute('aria-expanded', 'true');
+    if (title) title.textContent = uiFoodName(it.id);
+    body.textContent = '';
+    lines.forEach(function (line) {
+      var li = mk('li', '');
+      li.textContent = formatShopSrcLine(line);
+      body.appendChild(li);
+    });
+    if (bd) bd.hidden = false;
+    sh.hidden = false;
+    if (closeBtn) { closeBtn.setAttribute('aria-label', T('plan.close')); closeBtn.focus({ preventScroll: true }); }
+  }
+  function shopSrcButton(it) {
+    var src = shopRecipesOf(it), b, names;
+    if (!src.length && !shopSourceLines(it).length) return null;
+    names = src.length ? src.map(recipeTitle) : shopSourceLines(it).map(function (l) { return recipeTitle(l.recipeId); });
+    b = mk('button', 'shop-src-btn');
+    b.type = 'button';
+    b.setAttribute('data-shop-src', it.id + ':' + (it.unit || ''));
+    b.setAttribute('aria-haspopup', 'dialog');
+    b.setAttribute('aria-expanded', 'false');
+    b.setAttribute('aria-label', T('shop.usedin', { recipes: names.join(', ') }));
+    b.appendChild(icon('info'));
+    return b;
+  }
   function shopRow(it, st) {
-    var qty = shopQtyOf(it), src = shopRecipesOf(it);
+    var qty = shopQtyOf(it), srcBtn = shopSrcButton(it);
     var row = mk('div', 'shoprow' + (st === 'cart' ? ' incart' : st === 'home' ? ' athome' : ''));
     var cap = formatQty(qty, it.unit);
-    var srcTxt = src.length ? T('shop.from', { recipes: src.map(recipeTitle).join(', ') }) : '';
     if (st === 'home') {
       var c0 = mk('span', 'circ sm'); c0.appendChild(icon('home', 's')); row.appendChild(c0);
-      var g0 = mk('span', 'grow'); g0.appendChild(bilingualName(it.id));
-      g0.appendChild(mk('small', 'cap', ' ' + cap));
-      if (srcTxt) g0.appendChild(mk('span', 'shop-from', srcTxt));
+      var g0 = mk('span', 'nm grow'); g0.appendChild(bilingualName(it.id));
       row.appendChild(g0);
+      row.appendChild(mk('span', 'cap', cap));
+      if (srcBtn) row.appendChild(srcBtn);
       var u = mk('button', 'havebtn', T('shop.undo')); u.setAttribute('data-shop', it.id + ':' + (it.unit || '') + ':open'); row.appendChild(u); return row;
     }
     var b = mk('button', 'chk grow' + (st === 'cart' ? ' on' : ''));
@@ -2211,8 +2288,8 @@
     b.setAttribute('aria-label', T(st === 'cart' ? 'shop.fromcart' : 'shop.tocart', { name: foodAria(it.id) }));
     var cb = mk('span', 'cb'); cb.appendChild(icon('check')); b.appendChild(cb);
     var ng = mk('span', 'nm grow'); ng.appendChild(bilingualName(it.id));
-    if (srcTxt) ng.appendChild(mk('span', 'shop-from', srcTxt));
     b.appendChild(ng); b.appendChild(mk('span', 'cap', cap)); row.appendChild(b);
+    if (srcBtn) row.appendChild(srcBtn);
     if (st !== 'cart') { var h = mk('button', 'havebtn', T('shop.have')); h.setAttribute('data-shop', it.id + ':' + (it.unit || '') + ':home'); row.appendChild(h); }
     return row;
   }
@@ -2349,6 +2426,7 @@
       setLangMenu(false); setSecondMenus(false); return;
     }
     if (e.target && e.target.id === 'planSheetBack') { closePlanSheet(); return; }
+    if (e.target && e.target.id === 'shopSrcBack') { closeShopSrc(); return; }
     var recCard = e.target.closest ? e.target.closest('[data-recipe]') : null;
     if (recCard && !(e.target.closest && e.target.closest('[data-rate], [data-save], [data-addlist], [data-second], .second-chip, #secondSwitchBtn'))) {
       openRecipe(recCard.getAttribute('data-recipe')); return;
@@ -2378,6 +2456,13 @@
     }
     if (el.id === 'planMakeShop') { makeShopFromPlan(); return; }
     if (el.id === 'planSheetClose' || el.id === 'planSheetCancel' || el.id === 'planSheetBack') { closePlanSheet(); return; }
+    if (el.id === 'shopSrcClose' || el.id === 'shopSrcBack') { closeShopSrc(); return; }
+    if (el.hasAttribute('data-shop-src')) {
+      var sk = el.getAttribute('data-shop-src').split(':');
+      var sitem = getShopItems().filter(function (x) { return x.id === sk[0] && (x.unit || '') === (sk[1] || ''); })[0];
+      if (sitem) openShopSrc(sitem, el);
+      return;
+    }
     if (el.hasAttribute('data-plan-days')) { setPlanDays(el.getAttribute('data-plan-days')); return; }
     if (el.hasAttribute('data-plan-add')) {
       var pa = el.getAttribute('data-plan-add').split('|');

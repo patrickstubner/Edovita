@@ -1,12 +1,15 @@
-# Edovita – Klick-Prototyp v5.8 (Rezeptbilder, Snacks, Liste mit Planeinplanung)
+# Edovita – Klick-Prototyp v5.8.1 (kompakte Einkaufsliste)
 
 **Nicht produktiver Code.** Dieser Ordner ist die Design-Referenz und der klickbare Prototyp für UX-Versuche. Er wird nicht in die echte App übernommen; die App entsteht neu (React + TypeScript + Rsbuild).
 
-- **Version:** v5.8 (24.11.2026), auf v5.7 aufbauend
+- **Version:** v5.8.1 (24.11.2026), auf v5.8 aufbauend
 - **Live:** als Cloudflare-Worker-Demo veröffentlicht (URL bewusst nicht im Repo)
 - **Technik:** statisches HTML/CSS/Vanilla-JS, keine Laufzeit-Abhängigkeiten ausser `vendor/qrcode-generator.js` (MIT), keine Netzwerkaufrufe, strenge CSP
 - **Daten:** nur erfundene Demo-Daten. Es werden keine Gesundheitsdaten gespeichert (localStorage nur Sprache, Zweitsprache (manuelle Wahl), Plan, Einkaufsliste, Darstellung, Ton, Region; keine Standortdaten)
 - **Starten:** im Ordner `python3 -m http.server` und `http://localhost:8000/` öffnen (Handy-Breite, z. B. 390×844)
+
+## Neu in v5.8.1
+Die Einkaufsliste ist einzeilig: die Herkunftszeile unter jeder Zutat entfällt. Stattdessen erscheint rechts ein Info-Button (sichtbares Icon 28×28 CSS-Pixel, Tippfläche 56×56, 16 CSS-Pixel Abstand zur Abhakzeile), der ein Bottom-Sheet mit Rezept und Plan-Slot öffnet, z. B. «Ofenlachs mit Brokkoli · Di Abend, 400 g». Das Icon kommt nur bei Zutaten aus Rezepten, löst das Abhaken nicht aus und schliesst mit Escape oder Tipp ausserhalb. Details in `ENTWICKLUNG.md` und `SECURITY.md`.
 
 ## Neu in v5.8
 Lokale Rezeptbilder (nur Pexels, Lizenz ohne Pflicht zur Namensnennung; Herkunft intern in `IMAGES.md` und `images/recipes/manifest.json`). 12 von 15 Beispielrezepten haben ein Foto in Liste, Detail und Plan (Miniatur), drei behalten den neutralen Platzhalter. Bilder sind WebP ohne EXIF/GPS und im Worker gebündelt (CSP `img-src 'self'`, kein Hotlinking). Der Plan-Slot heisst «Snacks». «Auf die Einkaufsliste» aus einem Rezept setzt das Gericht zusätzlich in den nächsten freien passenden Slot (ab heute, im Planzeitraum; Toast mit Rückgängig). Zutaten werden nur einmal gezählt (Verknüpfung mit dem Plan-Slot). Details in `ENTWICKLUNG.md`, `IMAGES.md` und `SECURITY.md`.

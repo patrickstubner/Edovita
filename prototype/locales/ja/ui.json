@@ -1080,5 +1080,8 @@
  "toast.addlist.planned": "リストに追加し、{when}に予定しました",
  "toast.addlist.noslot": "リストに追加しました。プランに合う空きがありません。",
  "toast.addlist.already": "リストに追加しました。すでにプランにあります。",
- "toast.undo": "元に戻す"
+ "toast.undo": "元に戻す",
+ "shop.usedin": "{recipes}で使用",
+ "shop.src.line.plan": "{recipe} · {when}、{qty}",
+ "shop.src.line.extra": "{recipe}、{qty}"
 }

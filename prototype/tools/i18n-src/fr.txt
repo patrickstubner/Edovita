@@ -1080,3 +1080,6 @@
 1080|Ajouté à la liste. Plus de créneau adapté dans le planning.
 1081|Ajouté à la liste. Déjà dans le planning.
 1082|Annuler
+1083|Utilisé dans {recipes}
+1084|{recipe} · {when}, {qty}
+1085|{recipe}, {qty}

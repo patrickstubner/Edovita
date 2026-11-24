@@ -1080,3 +1080,6 @@
 1080|Added to the list. No matching plan slot left.
 1081|Added to the list. Already in the plan.
 1082|Undo
+1083|Used in {recipes}
+1084|{recipe} · {when}, {qty}
+1085|{recipe}, {qty}
