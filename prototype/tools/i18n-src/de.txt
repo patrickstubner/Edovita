@@ -296,7 +296,7 @@
 296|HILFE
 297|Hilfe bei Essproblemen
 298|Kostenlose Beratung in der Schweiz
-299|Edovita · Klick-Prototyp v5.10, keine echten Daten
+299|Edovita · Klick-Prototyp v5.10.1, keine echten Daten
 300|Sanfte Erinnerungen, ohne Druck. Du bestimmst, welche du bekommst.
 301|Mahlzeiten
 302|Wiegen

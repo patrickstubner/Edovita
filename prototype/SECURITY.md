@@ -20,6 +20,13 @@ f9263efda2d990ca7127b364a525fe0343a6e36d7c12e8cd92e2edabc13aa0b6  prototype/app.
 c64272d12db9531a3af93ad8e51db0c6d038cc50f187ec8b675ae02e67844b3e  prototype/v1-features.js
 ```
 
+**Nachtrag 24. November 2026, 23:33 Europe/Zurich:** Sichtbare Versionsangabe auf v5.10.1 gesetzt (`index.html`-Titel und Fusszeile, alle Locales bzw. `tools/i18n-src`). Keine Verhaltens- oder CSP-Änderung. F1b bleibt bewusst unverändert. Nur Versionstexte geprüft: keine neuen Sinks, kein Befund.
+
+```
+5d4ac43afa53d6b9f51ce88cac7ace7d0e3da849effe06a437847ed364df0c95  prototype/index.html
+26fe575cddb88de51ce79dfbbc2cb33173132e65bef520b464613d6f87308ccd  prototype/locales.js
+```
+
 ---
 
 # Sicherheitsprüfung v5.10 (24. November 2026, Europe/Zurich)
