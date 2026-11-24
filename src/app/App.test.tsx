@@ -1,6 +1,7 @@
 import { afterEach, describe, expect, it } from '@rstest/core';
 import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 import { LANG_STORAGE_KEY } from '../i18n/index.ts';
+import { createMemoryStorage } from '../storage/index.ts';
 import { App } from './App.tsx';
 import { THEME_STORAGE_KEY } from './theme.ts';
 
@@ -16,7 +17,9 @@ afterEach(() => {
 
 describe('App Grundgerüst & Mehrsprachigkeit (E0 + E2)', () => {
   it('startet bei Gerätesprache de-CH auf Deutsch, rendert BottomActions und schaltet Hell/Dunkel um', () => {
-    render(<App navigatorLanguages={['de-CH']} />);
+    render(
+      <App navigatorLanguages={['de-CH']} storage={createMemoryStorage()} />,
+    );
 
     expect(
       screen.getByRole('heading', { name: 'Willkommen bei Edovita' }),
@@ -42,7 +45,9 @@ describe('App Grundgerüst & Mehrsprachigkeit (E0 + E2)', () => {
   });
 
   it('startet bei Gerätesprache pt-BR im Fallback Englisch und zeigt FR/IT/ES/JA/PT ausgegraut (Rechts-Gate)', () => {
-    render(<App navigatorLanguages={['pt-BR']} />);
+    render(
+      <App navigatorLanguages={['pt-BR']} storage={createMemoryStorage()} />,
+    );
 
     expect(
       screen.getByRole('heading', { name: 'Welcome to Edovita' }),
@@ -59,7 +64,9 @@ describe('App Grundgerüst & Mehrsprachigkeit (E0 + E2)', () => {
   });
 
   it('wechselt Sprache DE -> EN im laufenden Betrieb ohne Neustart und behält Zustand (Journey J6)', async () => {
-    render(<App navigatorLanguages={['de-CH']} />);
+    render(
+      <App navigatorLanguages={['de-CH']} storage={createMemoryStorage()} />,
+    );
 
     // Zustand setzen (Dunkelmodus) vor Sprachwechsel
     fireEvent.click(screen.getByRole('button', { name: 'Dunkel' }));
@@ -86,7 +93,9 @@ describe('App Grundgerüst & Mehrsprachigkeit (E0 + E2)', () => {
   });
 
   it('navigiert per Hash-Router zur Statusseite und wieder zurück', async () => {
-    render(<App navigatorLanguages={['de-CH']} />);
+    render(
+      <App navigatorLanguages={['de-CH']} storage={createMemoryStorage()} />,
+    );
 
     fireEvent.click(screen.getByRole('button', { name: /Weiter/i }));
 

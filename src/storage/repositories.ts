@@ -7,6 +7,8 @@ import type { RecipeId, Settings, ShoppingItem } from '../domain/index.ts';
 
 export interface SettingsRepository {
   get(): Promise<Settings>;
+  /** Liefert `null`, wenn noch keine Einstellungen explizit gespeichert wurden (H1-Sync). */
+  getStored?(): Promise<Settings | null>;
   set(next: Settings): Promise<Settings>;
   update(patch: Partial<Settings>): Promise<Settings>;
   clear(): Promise<void>;
@@ -31,9 +33,18 @@ export interface RatingsRepository {
   clear(): Promise<void>;
 }
 
+export interface StorageSnapshotPatch {
+  readonly settings?: Settings;
+  readonly shopping?: readonly ShoppingItem[];
+  readonly ratings?: Readonly<Record<string, number>>;
+  readonly saved?: readonly RecipeId[];
+}
+
 export interface StorageBundle {
   readonly settings: SettingsRepository;
   readonly shopping: ShoppingRepository;
   readonly ratings: RatingsRepository;
+  /** Ersetzt importierte Bereiche atomar in einer Transaktion (G2). */
+  applyImport?: (patch: StorageSnapshotPatch) => Promise<void>;
   close?: () => void;
 }

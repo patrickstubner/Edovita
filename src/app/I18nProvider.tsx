@@ -1,6 +1,7 @@
 import {
   createContext,
   useCallback,
+  useContext,
   useEffect,
   useMemo,
   useState,
@@ -23,6 +24,7 @@ import {
   writeStoredUiLang,
   type DetectedLang,
 } from '../i18n/index.ts';
+import { SettingsContext } from './SettingsProvider.tsx';
 
 export interface I18nContextValue {
   lang: LangCode;
@@ -46,26 +48,56 @@ export interface I18nProviderProps {
   navigatorLanguages?: readonly string[];
 }
 
+interface LocalLangState {
+  readonly code: LangCode;
+  readonly minVersion: number;
+}
+
 /**
  * Eigener Provider nur für Sprache und Formatierung (ADR-001 Regel 6, ADR-003).
  * Sprachwechsel erfolgt im laufenden Betrieb ohne Neustart; Daten bleiben erhalten.
+ * Synchronisiert `Settings.uiLang` (IndexedDB) bidirektional mit `localStorage` (H1),
+ * abgeleitet ohne `setState` in Effekten.
  */
 export function I18nProvider({
   children,
   initialLang,
   navigatorLanguages,
 }: I18nProviderProps) {
+  const settingsCtx = useContext(SettingsContext);
+
   const detected = useMemo(
     () => detectUiLang(navigatorLanguages, LANGUAGES_REGISTRY),
     [navigatorLanguages],
   );
 
-  const [lang, setLangState] = useState<LangCode>(() => {
+  const [localLang, setLocalLang] = useState<LocalLangState>(() => {
     if (initialLang !== undefined) {
-      return resolveApprovedUiLang(initialLang, LANGUAGES_REGISTRY);
+      return {
+        code: resolveApprovedUiLang(initialLang, LANGUAGES_REGISTRY),
+        minVersion: 1,
+      };
     }
-    return readStoredUiLang(LANGUAGES_REGISTRY) ?? detected.code;
+    return {
+      code: readStoredUiLang(LANGUAGES_REGISTRY) ?? detected.code,
+      minVersion: 0,
+    };
   });
+
+  const persistedSettings = settingsCtx?.persisted ?? false;
+  const settingsLoading = settingsCtx?.loading ?? true;
+  const settingsVersion = settingsCtx?.version ?? 0;
+  const dbUiLang = settingsCtx?.settings.uiLang;
+
+  // H1: Persistierte Settings aus IndexedDB übernehmen, sobald sie neuer als die lokale Wahl sind
+  const syncedFromDb =
+    !settingsLoading &&
+    persistedSettings &&
+    typeof dbUiLang === 'string' &&
+    approved(dbUiLang, LANGUAGES_REGISTRY) &&
+    settingsVersion > localLang.minVersion;
+
+  const lang: LangCode = syncedFromDb ? dbUiLang : localLang.code;
 
   const instance = useMemo(
     () =>
@@ -83,20 +115,28 @@ export function I18nProvider({
       void instance.changeLanguage(lang);
     }
     applyLangToDocument(lang, LANGUAGES_REGISTRY);
-  }, [instance, lang]);
+    if (syncedFromDb) {
+      writeStoredUiLang(lang, LANGUAGES_REGISTRY);
+    }
+  }, [instance, lang, syncedFromDb]);
+
+  const updateSettings = settingsCtx?.updateSettings;
 
   const setLang = useCallback(
     (next: LangCode): boolean => {
       if (!approved(next, LANGUAGES_REGISTRY)) {
         return false;
       }
-      setLangState(next);
+      setLocalLang({ code: next, minVersion: settingsVersion + 1 });
       writeStoredUiLang(next, LANGUAGES_REGISTRY);
       void instance.changeLanguage(next);
       applyLangToDocument(next, LANGUAGES_REGISTRY);
+      if (updateSettings) {
+        void updateSettings({ uiLang: next });
+      }
       return true;
     },
-    [instance],
+    [instance, settingsVersion, updateSettings],
   );
 
   const meta = useMemo<LangMeta>(

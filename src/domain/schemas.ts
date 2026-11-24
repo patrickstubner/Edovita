@@ -153,17 +153,49 @@ export const nutritionSummarySchema = z.strictObject({
   basis: z.string().min(1),
 });
 
+/**
+ * Prüft eine externe URL strikt auf `https:`, nicht-leeren Hostnamen und fehlende
+ * Benutzerdaten (`username`/`password`, F3b gegen `https://user:pw@host`).
+ */
+export function isSafeHttpsUrl(raw: string): boolean {
+  if (typeof raw !== 'string' || raw.trim().length === 0) {
+    return false;
+  }
+  try {
+    const parsed = new URL(raw);
+    return (
+      parsed.protocol === 'https:' &&
+      parsed.hostname.length > 0 &&
+      parsed.username === '' &&
+      parsed.password === ''
+    );
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Liefert eine bereinigte `https:`-URL für externe Links oder `null`, falls Schema,
+ * Host oder Userinfo (`https://user:pw@host`) unzulässig sind (F3b).
+ */
+export function sanitizeExternalHttpsUrl(raw: string): string | null {
+  if (!isSafeHttpsUrl(raw)) {
+    return null;
+  }
+  try {
+    return new URL(raw).href;
+  } catch {
+    return null;
+  }
+}
+
 export const httpsUrlSchema = z
   .string()
   .url()
-  .refine((raw) => {
-    try {
-      const parsed = new URL(raw);
-      return parsed.protocol === 'https:' && parsed.hostname.length > 0;
-    } catch {
-      return false;
-    }
-  }, 'Quelle muss eine gültige https-URL sein.');
+  .refine(
+    isSafeHttpsUrl,
+    'Quelle muss eine gültige https-URL ohne Benutzerdaten sein.',
+  );
 
 export const LANG_CODE_RE = /^[a-z]{2,3}(?:-[A-Za-z0-9]{2,8})*$/;
 

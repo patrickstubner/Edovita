@@ -103,6 +103,7 @@ export {
   foodSourceSchema,
   glossarySchema,
   httpsUrlSchema,
+  isSafeHttpsUrl,
   isSafeRecordKey,
   langCodeSchema,
   langMetaSchema,
@@ -117,6 +118,7 @@ export {
   recipeReviewSchema,
   recipeSchema,
   safeContentStringSchema,
+  sanitizeExternalHttpsUrl,
   shopStateSchema,
   shoppingItemSchema,
   uiLocaleSchema,
@@ -124,6 +126,7 @@ export {
 } from './schemas.ts';
 
 export { encodeShopImport, parseShopImport } from './parseShopImport.ts';
+export { mergeRecipeIntoShoppingList } from './shopping.ts';
 
 export {
   EXPECTED_GLOSSARY_LANGS,

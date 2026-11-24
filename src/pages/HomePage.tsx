@@ -51,14 +51,24 @@ export function HomePage() {
   return (
     <Screen
       actions={
-        <button
-          type="button"
-          className="edo-btn"
-          onClick={() => navigate('/status')}
-        >
-          <span>{t('start.weiter')}</span>
-          <Icon name="chev" size="sm" />
-        </button>
+        <>
+          <button
+            type="button"
+            className="edo-btn"
+            onClick={() => navigate('/rezepte')}
+          >
+            <Icon name="utensils" size="sm" />
+            <span>{t('rezepte.rezepte')}</span>
+          </button>
+          <button
+            type="button"
+            className="edo-btn edo-btn-secondary"
+            onClick={() => navigate('/status')}
+          >
+            <span>{t('start.weiter')}</span>
+            <Icon name="chev" size="sm" />
+          </button>
+        </>
       }
       actionsLabel={t('start.actions_label')}
     >

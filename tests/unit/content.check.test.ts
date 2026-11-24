@@ -152,12 +152,14 @@ describe('Inhaltsprüfung content/ (Port von validate.py, ADR-005 & ADR-006)', (
     ).toBe(true);
   });
 
-  it('Negativtest (N1): review.sources lehnt javascript:, data:, http: und file: URLs ab', () => {
+  it('Negativtest (N1 + F3b): review.sources lehnt javascript:, data:, http:, file: und Userinfo-URLs ab', () => {
     const unsafeUrls = [
       `${'javascript'}:alert(1)`,
       'data:text/html,<script>alert(1)</script>',
       'http://example.org/rezept',
       'file:///etc/passwd',
+      'https://user:pw@example.org/rezept',
+      'https://user@example.org/rezept',
     ];
 
     for (const badUrl of unsafeUrls) {

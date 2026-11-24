@@ -17,6 +17,7 @@ import type {
   SettingsRepository,
   ShoppingRepository,
   StorageBundle,
+  StorageSnapshotPatch,
 } from './repositories.ts';
 
 function isValidRecipeKey(id: string): boolean {
@@ -38,6 +39,14 @@ export class DexieSettingsRepository implements SettingsRepository {
   async get(): Promise<Settings> {
     const row = await this.db.settings.get('current');
     return coerceSettings(row?.value, this.registry);
+  }
+
+  async getStored(): Promise<Settings | null> {
+    const row = await this.db.settings.get('current');
+    if (!row) {
+      return null;
+    }
+    return coerceSettings(row.value, this.registry);
   }
 
   async set(next: Settings): Promise<Settings> {
@@ -222,6 +231,60 @@ export function createDexieStorage(
     settings: new DexieSettingsRepository(db, registry),
     shopping: new DexieShoppingRepository(db),
     ratings: new DexieRatingsRepository(db),
+    applyImport: async (patch: StorageSnapshotPatch): Promise<void> => {
+      await db.transaction(
+        'rw',
+        [db.settings, db.shopping, db.ratings, db.saved],
+        async () => {
+          if (patch.settings !== undefined) {
+            const safeSettings = coerceSettings(patch.settings, registry);
+            await db.settings.put({ key: 'current', value: safeSettings });
+          }
+
+          if (patch.shopping !== undefined) {
+            const validItems: ShoppingItem[] = [];
+            for (const item of patch.shopping) {
+              const safe = coerceShoppingItem(item);
+              if (safe) {
+                validItems.push(safe);
+              }
+            }
+            await db.shopping.clear();
+            if (validItems.length > 0) {
+              await db.shopping.bulkPut(validItems);
+            }
+          }
+
+          if (patch.ratings !== undefined || patch.saved !== undefined) {
+            await db.ratings.clear();
+            await db.saved.clear();
+
+            if (patch.ratings !== undefined) {
+              const ratingRows: Array<{ recipeId: string; stars: number }> = [];
+              for (const [recipeId, stars] of Object.entries(patch.ratings)) {
+                const safeStars = coerceRating(stars);
+                if (isValidRecipeKey(recipeId) && safeStars !== null) {
+                  ratingRows.push({ recipeId, stars: safeStars });
+                }
+              }
+              if (ratingRows.length > 0) {
+                await db.ratings.bulkPut(ratingRows);
+              }
+            }
+
+            if (patch.saved !== undefined) {
+              const now = new Date().toISOString();
+              const savedRows = patch.saved
+                .filter((id) => isValidRecipeKey(id))
+                .map((recipeId) => ({ recipeId, savedAt: now }));
+              if (savedRows.length > 0) {
+                await db.saved.bulkPut(savedRows);
+              }
+            }
+          }
+        },
+      );
+    },
     close: () => db.close(),
   };
 }

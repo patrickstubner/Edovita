@@ -8,11 +8,17 @@ import {
 } from 'react';
 import type { RecipeId } from '../domain/index.ts';
 import type { RatingsRepository } from '../storage/index.ts';
+import {
+  classifyStorageError,
+  type StorageErrorCode,
+} from './storageError.ts';
 
 export interface RatingsContextValue {
   ratings: Readonly<Record<string, number>>;
   saved: readonly RecipeId[];
   loading: boolean;
+  error: StorageErrorCode | null;
+  clearError: () => void;
   getRating: (recipeId: RecipeId | string) => number | null;
   setRating: (recipeId: RecipeId | string, stars: number | null) => Promise<void>;
   isSaved: (recipeId: RecipeId | string) => boolean;
@@ -31,6 +37,7 @@ export interface RatingsProviderProps {
 /**
  * Eigener Bereichs-Provider nur für Bewertungen und Merkliste (ADR-001 Regel 6, ADR-002).
  * Repository wird injiziert (Web: DexieRatingsRepository, Tests: MemoryRatingsRepository).
+ * IndexedDB-/Quota-Fehler werden gefangen, `loading` zurückgesetzt und nur generisch gemeldet (G1).
  */
 export function RatingsProvider({
   repository,
@@ -39,29 +46,45 @@ export function RatingsProvider({
   const [ratings, setRatings] = useState<Record<string, number>>({});
   const [saved, setSavedState] = useState<RecipeId[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<StorageErrorCode | null>(null);
+
+  const clearError = useCallback(() => {
+    setError(null);
+  }, []);
 
   const reload = useCallback(async (): Promise<void> => {
-    const [nextRatings, nextSaved] = await Promise.all([
-      repository.listRatings(),
-      repository.listSaved(),
-    ]);
-    setRatings(nextRatings);
-    setSavedState(nextSaved);
-    setLoading(false);
+    try {
+      const [nextRatings, nextSaved] = await Promise.all([
+        repository.listRatings(),
+        repository.listSaved(),
+      ]);
+      setRatings(nextRatings);
+      setSavedState(nextSaved);
+      setError(null);
+      setLoading(false);
+    } catch (err) {
+      setError(classifyStorageError(err, 'read'));
+      setLoading(false);
+    }
   }, [repository]);
 
   useEffect(() => {
     let active = true;
-    void Promise.all([
-      repository.listRatings(),
-      repository.listSaved(),
-    ]).then(([nextRatings, nextSaved]) => {
-      if (active) {
-        setRatings(nextRatings);
-        setSavedState(nextSaved);
-        setLoading(false);
-      }
-    });
+    void Promise.all([repository.listRatings(), repository.listSaved()])
+      .then(([nextRatings, nextSaved]) => {
+        if (active) {
+          setRatings(nextRatings);
+          setSavedState(nextSaved);
+          setError(null);
+          setLoading(false);
+        }
+      })
+      .catch((err: unknown) => {
+        if (active) {
+          setError(classifyStorageError(err, 'read'));
+          setLoading(false);
+        }
+      });
     return () => {
       active = false;
     };
@@ -79,9 +102,14 @@ export function RatingsProvider({
 
   const setRating = useCallback(
     async (recipeId: RecipeId | string, stars: number | null): Promise<void> => {
-      await repository.setRating(recipeId, stars);
-      const nextRatings = await repository.listRatings();
-      setRatings(nextRatings);
+      try {
+        await repository.setRating(recipeId, stars);
+        const nextRatings = await repository.listRatings();
+        setRatings(nextRatings);
+        setError(null);
+      } catch (err) {
+        setError(classifyStorageError(err, 'write'));
+      }
     },
     [repository],
   );
@@ -94,20 +122,34 @@ export function RatingsProvider({
 
   const setSaved = useCallback(
     async (recipeId: RecipeId | string, nextFlag: boolean): Promise<void> => {
-      await repository.setSaved(recipeId, nextFlag);
-      const nextSaved = await repository.listSaved();
-      setSavedState(nextSaved);
+      try {
+        await repository.setSaved(recipeId, nextFlag);
+        const nextSaved = await repository.listSaved();
+        setSavedState(nextSaved);
+        setError(null);
+      } catch (err) {
+        setError(classifyStorageError(err, 'write'));
+      }
     },
     [repository],
   );
 
   const toggleSaved = useCallback(
     async (recipeId: RecipeId | string): Promise<boolean> => {
-      const nextFlag = !isSaved(recipeId);
-      await setSaved(recipeId, nextFlag);
-      return nextFlag;
+      const current = isSaved(recipeId);
+      const nextFlag = !current;
+      try {
+        await repository.setSaved(recipeId, nextFlag);
+        const nextSaved = await repository.listSaved();
+        setSavedState(nextSaved);
+        setError(null);
+        return nextFlag;
+      } catch (err) {
+        setError(classifyStorageError(err, 'write'));
+        return current;
+      }
     },
-    [isSaved, setSaved],
+    [isSaved, repository],
   );
 
   const value = useMemo<RatingsContextValue>(
@@ -115,6 +157,8 @@ export function RatingsProvider({
       ratings,
       saved,
       loading,
+      error,
+      clearError,
       getRating,
       setRating,
       isSaved,
@@ -126,6 +170,8 @@ export function RatingsProvider({
       ratings,
       saved,
       loading,
+      error,
+      clearError,
       getRating,
       setRating,
       isSaved,

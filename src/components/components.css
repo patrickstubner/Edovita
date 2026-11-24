@@ -281,3 +281,482 @@ html[data-eff='dark'] .edo-btn-secondary {
 .edo-langrow-dis .edo-ic {
   color: var(--edo-text-muted);
 }
+
+.edo-ic-fill {
+  fill: currentcolor;
+}
+
+.edo-sr {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Filter-Leiste und Gruppen-Ueberschriften exakt wie Prototyp (.grph, .filters, .fchip) */
+.edo-grph {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--edo-text-muted);
+  letter-spacing: 0.6px;
+  margin-block: 4px 8px;
+  margin-inline: 4px;
+}
+
+.edo-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.edo-fchip {
+  flex: none;
+  background: var(--edo-surface);
+  border: 1.5px solid var(--edo-border);
+  border-radius: 24px;
+  padding-block: 10px;
+  padding-inline: 16px;
+  font-weight: 600;
+  color: var(--edo-text-muted);
+  min-block-size: 46px;
+}
+
+.edo-fchip-on {
+  background: var(--edo-primary);
+  border-color: var(--edo-primary);
+  color: var(--edo-on-primary);
+}
+
+/* Rezept-Karten, Farbpalette (.rimg.c1..c6), Sterne und Merken */
+.edo-hcard {
+  padding-block: 0;
+  padding-inline: 0;
+  overflow: hidden;
+}
+
+.edo-hcard-body {
+  padding-block: 16px 18px;
+  padding-inline: 18px;
+}
+
+.edo-rimg {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background: var(--edo-primary-soft);
+  color: var(--edo-primary-dark);
+}
+
+.edo-rimg-c1 {
+  background: #e3f5f0;
+  color: #0b6e5e;
+}
+
+.edo-rimg-c2 {
+  background: #fdf0de;
+  color: #7a430a;
+}
+
+.edo-rimg-c3 {
+  background: #fde6e4;
+  color: #7a1f1a;
+}
+
+.edo-rimg-c4 {
+  background: #e5eefd;
+  color: #2a5fc4;
+}
+
+.edo-rimg-c5 {
+  background: #eef6da;
+  color: #4d6b12;
+}
+
+.edo-rimg-c6 {
+  background: #f1e8fb;
+  color: #5b2e8c;
+}
+
+html[data-eff='dark'] .edo-rimg {
+  filter: brightness(0.55) saturate(1.2);
+}
+
+.edo-cui {
+  position: absolute;
+  inset-inline-start: 10px;
+  inset-block-end: 10px;
+  background: rgb(255 255 255 / 92%);
+  color: #14211f;
+  border-radius: 12px;
+  padding-block: 3px;
+  padding-inline: 10px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.edo-recipe-hero-btn {
+  inline-size: 100%;
+  block-size: 150px;
+}
+
+.edo-recipe-detail-hero {
+  inline-size: 100%;
+  block-size: 160px;
+}
+
+.edo-recipe-sm {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.edo-recipe-sm-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.edo-recipe-thumb-btn {
+  inline-size: 96px;
+  block-size: 96px;
+  border-radius: 16px;
+  flex: none;
+}
+
+.edo-recipe-title-btn {
+  text-align: start;
+  inline-size: 100%;
+}
+
+.edo-recipe-title-btn h2,
+.edo-recipe-title-btn h3 {
+  overflow-wrap: anywhere;
+}
+
+.edo-recipe-tg {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--edo-primary);
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.edo-recipe-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.edo-recipe-meta > * {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.edo-stars {
+  display: inline-flex;
+  gap: 0;
+  align-items: center;
+}
+
+.edo-star {
+  position: relative;
+  inline-size: 38px;
+  block-size: 44px;
+  display: grid;
+  place-items: center;
+  color: var(--edo-border-strong);
+}
+
+.edo-star-on {
+  color: var(--edo-star-on);
+}
+
+.edo-savebtn {
+  inline-size: 44px;
+  block-size: 44px;
+  border-radius: 22px;
+  display: grid;
+  place-items: center;
+  color: var(--edo-text-muted);
+  flex: none;
+}
+
+.edo-savebtn-on {
+  color: var(--edo-primary);
+  background: var(--edo-primary-soft);
+}
+
+/* Portions-Stepper (>= 44 px Tap-Flaechen, Prototyp .step) */
+.edo-step {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--edo-primary-soft);
+  border-radius: 26px;
+  padding-block: 3px;
+  padding-inline: 3px;
+}
+
+.edo-step-btn {
+  inline-size: 48px;
+  block-size: 48px;
+  border-radius: 24px;
+  color: var(--edo-primary-dark);
+  font-size: 24px;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+  touch-action: manipulation;
+  user-select: none;
+}
+
+.edo-step-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.edo-step-val {
+  min-inline-size: 96px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 16px;
+  padding-inline: 6px;
+  border-radius: 12px;
+}
+
+.edo-step-val:focus-visible {
+  outline: 3px solid var(--edo-primary-dark);
+  outline-offset: 2px;
+}
+
+/* Zutatenliste & Allergene */
+.edo-ing-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.edo-ing-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding-block: 10px;
+}
+
+.edo-ing-row + .edo-ing-row {
+  border-block-start: 1px solid var(--edo-border);
+}
+
+.edo-ing-amount {
+  min-inline-size: 76px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--edo-primary-dark);
+  flex: none;
+}
+
+.edo-ing-name {
+  font-weight: 600;
+}
+
+.edo-ing-allergens {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-block-start: 6px;
+}
+
+.edo-chip-sm {
+  font-size: 13px;
+  padding-block: 3px;
+  padding-inline: 10px;
+}
+
+.edo-chip-warn {
+  background: var(--edo-warn);
+  color: var(--edo-warn-text);
+}
+
+.edo-banner-warn {
+  background: var(--edo-warn);
+  color: var(--edo-warn-text);
+}
+
+.edo-banner-bad {
+  background: var(--edo-bad-bg);
+  color: var(--edo-bad-text);
+}
+
+.edo-allergen-disclaimer {
+  font-size: 14px;
+  margin-block-start: 6px;
+  opacity: 0.9;
+}
+
+/* Zubereitungsschritte */
+.edo-step-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.edo-step-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.edo-step-num {
+  inline-size: 32px;
+  block-size: 32px;
+  border-radius: 16px;
+  background: var(--edo-primary-soft);
+  color: var(--edo-primary-dark);
+  font-weight: 800;
+  font-size: 15px;
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+
+/* Naehrwert-Tafel & Quellen */
+.edo-nutri-table {
+  inline-size: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+.edo-nutri-table th,
+.edo-nutri-table td {
+  padding-block: 8px;
+  padding-inline: 4px;
+  border-block-end: 1px solid var(--edo-border);
+}
+
+.edo-nutri-table thead th {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--edo-text-muted);
+}
+
+.edo-nutri-name {
+  text-align: start;
+  font-weight: 600;
+}
+
+.edo-nutri-sub .edo-nutri-name {
+  padding-inline-start: 16px;
+  font-weight: 500;
+  color: var(--edo-text-muted);
+}
+
+.edo-nutri-val {
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.edo-nutri-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.edo-sources {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-block-start: 8px;
+  border-block-start: 1px solid var(--edo-border);
+}
+
+.edo-sources-title {
+  font-weight: 700;
+}
+
+.edo-sources-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.edo-source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--edo-primary-dark);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: underline;
+  min-block-size: 36px;
+}
+
+/* Toast (Prototyp .toast, ueber fixen BottomActions) */
+.edo-toast {
+  position: fixed;
+  inset-inline-start: 50%;
+  inset-block-end: calc(96px + env(safe-area-inset-bottom, 0px));
+  transform: translateX(-50%);
+  background: var(--edo-toast-bg);
+  color: var(--edo-toast-text);
+  padding-block: 12px;
+  padding-inline: 16px;
+  border-radius: 16px;
+  font-weight: 600;
+  font-size: 15px;
+  z-index: 20;
+  max-inline-size: min(92vw, 440px);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 10px 24px rgb(0 0 0 / 24%);
+}
+
+.edo-toast-msg {
+  flex: 1 1 auto;
+}
+
+.edo-toast-undo {
+  flex: none;
+  font-weight: 800;
+  text-decoration: underline;
+  padding-block: 6px;
+  padding-inline: 8px;
+  min-block-size: 36px;
+}
+
+/* Generischer Speicherfehler-Banner (G1) */
+.edo-storage-alert {
+  margin-block: 8px 0;
+  margin-inline: 20px;
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-block: 10px;
+  padding-inline: 14px;
+  border-radius: 14px;
+  background: var(--edo-bad-bg);
+  color: var(--edo-bad-text);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.edo-storage-alert-close {
+  inline-size: 36px;
+  block-size: 36px;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+

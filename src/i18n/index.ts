@@ -47,3 +47,10 @@ export {
   type LocalesValidationReport,
   type RawLocalesBundle,
 } from './validateLocales.ts';
+
+export {
+  ALLERGEN_LABEL_KEYS,
+  CUISINE_LABEL_KEYS,
+  MEAL_LABEL_KEYS,
+  getCuisineLabelKey,
+} from './labels.ts';
