@@ -1,6 +1,6 @@
 # Sicherheitsprüfung v5.5 (24. November 2026, 07:11 Europe/Zurich)
 
-**Stand:** UX-Versuch kompakter Sprachumschalter im Klick-Prototyp. Branch `prototype/lang-switcher`, Commit `d45d2d8661baa98cd9416492741eea57f09a4c55` (nicht auf `main` mergen). Bestehender Cloudflare-Worker wird aktualisiert, keine neuen Ressourcen oder Pakete.
+**Stand:** UX-Versuch kompakter Sprachumschalter im Klick-Prototyp. Branch `prototype/lang-switcher` (nicht auf `main` mergen). Bestehender Cloudflare-Worker wird aktualisiert, keine neuen Ressourcen oder Pakete.
 **Quelle der Prüfung:** Code-Review der geänderten Dateien (`index.html`, `styles.css`, `app.js`, `i18n.js` unveränderte Whitelist, `locales/*`, `tools/i18n-src/*`), grep-Scans (innerHTML/eval/Netzwerk/Geheimnisse/Inline-Handler), Headless Playwright (Chrome, Viewport 390×844) inkl. XSS-Probe im gespeicherten Sprachcode, Default-Erkennung de-CH / Fallback fr-CH→en, Escape schliesst das Menü, 0 Konsolenfehler.
 
 | # | Thema | Ergebnis | Schwere |
