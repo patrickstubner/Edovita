@@ -2,7 +2,7 @@
 2|Welcome
 3|Prototype
 4|Welcome to Edovita
-5|Eat for life. First, choose your language.
+5|Eat for life.
 6|You can change the language at any time: via the globe chip at the top or in your profile under “Language”. The app switches instantly and your data stays as it is.
 7|Sounds
 8|Signature tune and short success sounds
@@ -1018,3 +1018,5 @@
 1018|QR list
 1019|Travel
 1020|Store brands
+1021|Language
+1022|Language, currently {name}

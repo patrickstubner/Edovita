@@ -2,7 +2,7 @@
 2|Bienvenue
 3|Prototype
 4|Bienvenue sur Edovita
-5|Manger pour la vie. Choisis d'abord ta langue.
+5|Manger pour la vie.
 6|Tu peux changer de langue à tout moment : en haut via l'icône du globe ou dans le profil sous « Langue ». L'app change aussitôt et tes données restent intactes.
 7|Sons
 8|Mélodie de marque et courts sons de réussite
@@ -1018,3 +1018,5 @@
 1018|Liste QR
 1019|Voyage
 1020|MDD
+1021|Langue
+1022|Langue, actuellement {name}

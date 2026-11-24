@@ -1,3 +1,8 @@
+# Stand v5.5 (24. November 2026)
+Kompakter Sprachumschalter oben rechts (Flagge + Kürzel, Dropdown) auf allen Screens. Volle Sprachliste von der Startseite entfernt. Default: Browsersprache, sonst Englisch. Wahl in localStorage, Whitelist in `i18n.js` (`approved`).
+
+---
+
 # Edovita – Klick-Prototyp v5
 Statischer, mobile-first Klick-Prototyp (HTML/CSS/Vanilla-JS, keine Laufzeit-Abhängigkeiten, keine echten Daten). Einstieg: **`index.html`** (Startbildschirm `#/start`). Für Töne über einen lokalen Server öffnen (z. B. `python3 -m http.server`), per Doppelklick geht alles ausser Audio je nach Browser.
 

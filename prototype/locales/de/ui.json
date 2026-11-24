@@ -3,7 +3,7 @@
  "start.willkommen": "Willkommen",
  "start.prototyp": "Prototyp",
  "start.willkommen_bei_edovita": "Willkommen bei Edovita",
- "start.iss_furs_leben_wahle": "Iss fürs Leben. Wähle zuerst deine Sprache.",
+ "start.iss_furs_leben_wahle": "Iss fürs Leben.",
  "start.du_kannst_die_sprache": "Du kannst die Sprache jederzeit ändern: oben über das Globus-Symbol oder im Profil unter «Sprache». Die App schaltet sofort um, deine Angaben bleiben erhalten.",
  "start.tone": "Töne",
  "start.erkennungsmelodie_und_kurze_erfolgs": "Erkennungsmelodie und kurze Erfolgs-Töne",
@@ -1018,5 +1018,7 @@
  "nav.aktivitaet": "Aktivität",
  "nav.qrshop": "QR-Liste",
  "nav.reise": "Reise",
- "nav.marken": "Hausmarken"
+ "nav.marken": "Hausmarken",
+ "lang.switch": "Sprache",
+ "lang.switch.current": "Sprache, aktuell {name}"
 }

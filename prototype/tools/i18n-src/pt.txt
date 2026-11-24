@@ -2,7 +2,7 @@
 2|Boas-vindas
 3|Protótipo
 4|Boas-vindas ao Edovita
-5|Coma pela vida. Primeiro, escolha seu idioma.
+5|Coma pela vida.
 6|Você pode mudar o idioma a qualquer momento: pelo chip do globo no topo ou no seu perfil em “Idioma”. O app muda na hora e seus dados continuam como estão.
 7|Sons
 8|Melodia-tema e sons curtos de sucesso
@@ -1018,3 +1018,5 @@
 1018|Lista QR
 1019|Viagem
 1020|Marcas
+1021|Idioma
+1022|Idioma, atualmente {name}

@@ -2,7 +2,7 @@
 2|Willkommen
 3|Prototyp
 4|Willkommen bei Edovita
-5|Iss fürs Leben. Wähle zuerst deine Sprache.
+5|Iss fürs Leben.
 6|Du kannst die Sprache jederzeit ändern: oben über das Globus-Symbol oder im Profil unter «Sprache». Die App schaltet sofort um, deine Angaben bleiben erhalten.
 7|Töne
 8|Erkennungsmelodie und kurze Erfolgs-Töne
@@ -1018,3 +1018,5 @@
 1018|QR-Liste
 1019|Reise
 1020|Hausmarken
+1021|Sprache
+1022|Sprache, aktuell {name}

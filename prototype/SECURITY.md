@@ -1,3 +1,28 @@
+# Sicherheitsprüfung v5.5 (24. November 2026, 07:11 Europe/Zurich)
+
+**Stand:** UX-Versuch kompakter Sprachumschalter im Klick-Prototyp. Branch `prototype/lang-switcher`, Commit `d45d2d8661baa98cd9416492741eea57f09a4c55` (nicht auf `main` mergen). Bestehender Cloudflare-Worker wird aktualisiert, keine neuen Ressourcen oder Pakete.
+**Quelle der Prüfung:** Code-Review der geänderten Dateien (`index.html`, `styles.css`, `app.js`, `i18n.js` unveränderte Whitelist, `locales/*`, `tools/i18n-src/*`), grep-Scans (innerHTML/eval/Netzwerk/Geheimnisse/Inline-Handler), Headless Playwright (Chrome, Viewport 390×844) inkl. XSS-Probe im gespeicherten Sprachcode, Default-Erkennung de-CH / Fallback fr-CH→en, Escape schliesst das Menü, 0 Konsolenfehler.
+
+| # | Thema | Ergebnis | Schwere |
+|---|--------|----------|---------|
+| 1 | Eingabevalidierung | Gespeicherte Sprache (`localStorage["edovita.lang"]`) wird nur übernommen, wenn `approved(code)` gilt: Wert ist ein String, steht in `languages.active` und `meta.legalApproved === true` (derzeit nur `de`, `en`). `setLang` lehnt alles andere ab (`pt`, Pfade, `javascript:…`, HTML-Fragmente). Getestet: gespeicherter Payload `"><img src=x onerror=alert(1)>` wird ignoriert, Start fällt auf die erkannte bzw. Fallback-Sprache zurück. | kein Befund |
+| 2 | Injection / XSS | Keine neuen Sinks: kein `innerHTML`/`eval`. Umschalter und Flaggen entstehen per `createElement`/`createElementNS`/`textContent`/`setAttribute`. Flaggen-SVG nutzt fest kodierte Farben, keine Locale-Strings. Übersetzungen weiterhin nur als Text. `data-lang` am Dropdown nur aus der Whitelist. CSP unverändert (`script-src 'self'`, `connect-src 'none'`). | kein Befund |
+| 3 | Geheimnisse | Keine Schlüssel, Tokens oder Passwörter in den geänderten Dateien (Scan). | kein Befund |
+| 4 | Rechte / CSP / Storage | Unverändert öffentlich, fiktive Daten. Es werden weiterhin keine Gesundheitsdaten gespeichert. | kein Befund |
+| 5 | Abhängigkeiten | Keine neuen Laufzeit- oder Build-Abhängigkeiten. Screenshot-Lauf über vorhandenes Playwright-Core, kein neues Paket im Prototyp. | kein Befund |
+| 6 | Fehlermeldungen / Angriffsfläche | Keine Stacktraces nach aussen. Dropdown nur mit freigegebenen Codes. | kein Befund |
+
+**SHA-256 (geänderte Kern-Dateien):**
+```
+675886b5832a13ac2d149d8917706bb09b51c48f4695bf176a8816bdf5d8a498  prototype/index.html
+d0f4947df231891c7b81ffdb51265339fa74ae62891af20bafbccaf0864767ed  prototype/styles.css
+9c06447b4d5abb3ba156bea956859e5a7c37e56caaaafa53733fc5b4da189092  prototype/app.js
+5b54686200f5fcb34be34c3070a741b5c436deddc21e38144f7fd4c2d0bc0786  prototype/i18n.js
+01ac19a3448da8d8f4893f45c89834cfac0b7b9cfef696993ac4146e5eed3519  prototype/locales.js
+```
+
+---
+
 # Sicherheitsprüfung v5.4 (6. November 2026, Europe/Zurich)
 
 **Stand:** deployt auf die Live-Demo (6.11.2026, ~18:09 Europe/Zurich). Backup: lokale Sicherung v53.

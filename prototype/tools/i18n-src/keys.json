@@ -1018,5 +1018,7 @@
  "nav.aktivitaet",
  "nav.qrshop",
  "nav.reise",
- "nav.marken"
+ "nav.marken",
+ "lang.switch",
+ "lang.switch.current"
 ]

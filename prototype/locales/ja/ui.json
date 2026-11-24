@@ -3,7 +3,7 @@
  "start.willkommen": "ようこそ",
  "start.prototyp": "プロトタイプ",
  "start.willkommen_bei_edovita": "Edovitaへようこそ",
- "start.iss_furs_leben_wahle": "一生ものの食習慣を。まず言語を選んでください。",
+ "start.iss_furs_leben_wahle": "一生ものの食習慣を。",
  "start.du_kannst_die_sprache": "言語はいつでも変更できます：上部の地球アイコン、またはプロフィールの「言語」から。アプリはすぐに切り替わり、入力したデータはそのまま残ります。",
  "start.tone": "サウンド",
  "start.erkennungsmelodie_und_kurze_erfolgs": "テーマ曲と短い達成音",
@@ -1018,5 +1018,7 @@
  "nav.aktivitaet": "活動",
  "nav.qrshop": "QRリスト",
  "nav.reise": "旅行",
- "nav.marken": "PB"
+ "nav.marken": "PB",
+ "lang.switch": "言語",
+ "lang.switch.current": "言語、現在は{name}"
 }

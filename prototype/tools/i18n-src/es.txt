@@ -2,7 +2,7 @@
 2|Bienvenida
 3|Prototipo
 4|Te damos la bienvenida a Edovita
-5|Come para la vida. Primero elige tu idioma.
+5|Come para la vida.
 6|Puedes cambiar el idioma cuando quieras: arriba con el icono del globo o en el perfil, en «Idioma». La app cambia al instante y tus datos se mantienen.
 7|Sonidos
 8|Melodía de marca y breves sonidos de logro
@@ -1018,3 +1018,5 @@
 1018|Lista QR
 1019|Viaje
 1020|Marcas
+1021|Idioma
+1022|Idioma, actualmente {name}

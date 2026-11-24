@@ -3,7 +3,7 @@
  "start.willkommen": "Welcome",
  "start.prototyp": "Prototype",
  "start.willkommen_bei_edovita": "Welcome to Edovita",
- "start.iss_furs_leben_wahle": "Eat for life. First, choose your language.",
+ "start.iss_furs_leben_wahle": "Eat for life.",
  "start.du_kannst_die_sprache": "You can change the language at any time: via the globe chip at the top or in your profile under “Language”. The app switches instantly and your data stays as it is.",
  "start.tone": "Sounds",
  "start.erkennungsmelodie_und_kurze_erfolgs": "Signature tune and short success sounds",
@@ -1018,5 +1018,7 @@
  "nav.aktivitaet": "Activity",
  "nav.qrshop": "QR list",
  "nav.reise": "Travel",
- "nav.marken": "Store brands"
+ "nav.marken": "Store brands",
+ "lang.switch": "Language",
+ "lang.switch.current": "Language, currently {name}"
 }

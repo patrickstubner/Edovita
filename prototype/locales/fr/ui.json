@@ -3,7 +3,7 @@
  "start.willkommen": "Bienvenue",
  "start.prototyp": "Prototype",
  "start.willkommen_bei_edovita": "Bienvenue sur Edovita",
- "start.iss_furs_leben_wahle": "Manger pour la vie. Choisis d'abord ta langue.",
+ "start.iss_furs_leben_wahle": "Manger pour la vie.",
  "start.du_kannst_die_sprache": "Tu peux changer de langue à tout moment : en haut via l'icône du globe ou dans le profil sous « Langue ». L'app change aussitôt et tes données restent intactes.",
  "start.tone": "Sons",
  "start.erkennungsmelodie_und_kurze_erfolgs": "Mélodie de marque et courts sons de réussite",
@@ -1018,5 +1018,7 @@
  "nav.aktivitaet": "Activité",
  "nav.qrshop": "Liste QR",
  "nav.reise": "Voyage",
- "nav.marken": "MDD"
+ "nav.marken": "MDD",
+ "lang.switch": "Langue",
+ "lang.switch.current": "Langue, actuellement {name}"
 }
