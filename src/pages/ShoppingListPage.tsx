@@ -9,17 +9,20 @@ import {
   QrSheet,
   Screen,
   ShopGroup,
+  ShopHaveSheet,
   ShopRow,
+  ShopSourceSheet,
   Toast,
   type BrandCardData,
   type CatalogFoodOption,
+  type ShopSourceLineItem,
 } from '../components/index.ts';
 import {
   parseShopImport,
   type FoodId,
   type ImportShopItem,
-  type RecipeId,
   type ShopState,
+  type ShoppingItem,
 } from '../domain/index.ts';
 import { useI18n, useShareList, useShoppingList } from '../hooks/index.ts';
 import {
@@ -27,11 +30,26 @@ import {
   FOOD_GROUP_LABEL_KEYS,
   REGION_LABEL_KEYS,
 } from '../i18n/index.ts';
-import { STORE_BRANDS } from '../shopping/index.ts';
+import {
+  STORE_BRANDS,
+  buildSourceSummary,
+  haveStepOf,
+  isHaveAll,
+  isPartialHave,
+  shopBuyQty,
+  shopHaveOf,
+  shopNeedOf,
+  snapHaveQty,
+} from '../shopping/index.ts';
 
 interface ToastState {
   readonly message: string;
   readonly canUndo: boolean;
+}
+
+interface HaveDraftState {
+  readonly all: boolean;
+  readonly value: number;
 }
 
 function normalizeSearch(value: string): string {
@@ -42,13 +60,14 @@ function normalizeSearch(value: string): string {
 }
 
 /**
- * Einkaufsliste (`#/einkauf`) gemäss Prototyp & Issue #11:
- * - Drei Zustände (offen / im Korb / schon zu Hause) persistent über `ShoppingRepository`
+ * Einkaufsliste (`#/einkauf`) gemäss Prototyp v5.9 & Issues #11 / #31:
+ * - Drei Zustände (offen / im Korb / schon zu Hause) + Teilmenge (`qtyHave`) persistent über `ShoppingRepository`
  * - Gruppen nach Lebensmittelbereich, Abschnitte «Im Korb» & «Schon zu Hause»
- * - Rezept-Herkunft (`fromRecipes`) mit Entfernen & Rückgängig
- * - Manuelle Katalog-Suche (`foods.json`), Hausmarken-Info oben
+ * - Rezept-Herkunft über ⓘ-Knopf pro Rezept-Zutat mit Herkunfts-Sheet (Gericht, Menge, Summe)
+ * - «Hab ich» / «Teilweise» / «Doch kaufen» öffnen einheitlich das Vorrats-Sheet (Alles vorhanden oder Teilmenge)
+ * - Manuelle Katalog-Suche (`foods.json`, bewusste Ergänzung), Hausmarken-Info oben
  * - Fixe `BottomActions`: «QR-Einkaufsliste» (lokales `qrcode-generator`, reines React-SVG)
- *   und «Liste teilen» (Web Share API / Zwischenablage; nie G-Daten, ADR-004)
+ *   und «Liste teilen» (Web Share API / Zwischenablage; nie G-Daten, nie `qtyHave`)
  * - Gehärteter QR-Import (`#/einkauf#import=...`) mit Validierung + Bestätigungsdialog
  */
 export function ShoppingListPage() {
@@ -61,10 +80,9 @@ export function ShoppingListPage() {
     resolveItemName,
     resolveItemAmount,
     toggleCart,
-    markHome,
-    markOpen,
+    applyHave,
+    resetHave,
     undo,
-    removeRecipe,
     addFromCatalog,
     clearDone,
     applyImport,
@@ -73,9 +91,14 @@ export function ShoppingListPage() {
   const [query, setQuery] = useState<string>('');
   const [qrOpen, setQrOpen] = useState<boolean>(false);
   const [brandsOpen, setBrandsOpen] = useState<boolean>(false);
+  const [sourceItemId, setSourceItemId] = useState<string | null>(null);
+  const [haveItemId, setHaveItemId] = useState<string | null>(null);
+  const [haveDraft, setHaveDraft] = useState<HaveDraftState | null>(null);
   const [dismissedHash, setDismissedHash] = useState<string | null>(null);
   const [toast, setToast] = useState<ToastState | null>(null);
   const toastTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const sourceTriggerRef = useRef<HTMLButtonElement | null>(null);
+  const haveTriggerRef = useRef<HTMLButtonElement | null>(null);
 
   const showToast = useCallback((next: ToastState, durationMs = 3600) => {
     if (toastTimerRef.current !== null) {
@@ -175,6 +198,17 @@ export function ShoppingListPage() {
     [t],
   );
 
+  const activeSourceItem = useMemo<ShoppingItem | null>(() => {
+    if (!sourceItemId) return null;
+    const found = items.find((it) => it.id === sourceItemId);
+    return found && found.fromRecipes.length > 0 ? found : null;
+  }, [items, sourceItemId]);
+
+  const activeHaveItem = useMemo<ShoppingItem | null>(() => {
+    if (!haveItemId) return null;
+    return items.find((it) => it.id === haveItemId) ?? null;
+  }, [haveItemId, items]);
+
   const handleToggleCart = useCallback(
     (id: string) => {
       void toggleCart(id);
@@ -182,26 +216,132 @@ export function ShoppingListPage() {
     [toggleCart],
   );
 
-  const handleMarkHome = useCallback(
-    (id: string) => {
-      const target = items.find((it) => it.id === id);
-      const name = target ? resolveItemName(target) : id;
-      void markHome(id).then(() => {
-        showToast({
-          message: t('shop.home_toast', { name }),
-          canUndo: true,
-        });
-      });
+  const handleCloseSource = useCallback(() => {
+    setSourceItemId(null);
+    const trigger = sourceTriggerRef.current;
+    if (trigger && trigger.isConnected) {
+      trigger.focus({ preventScroll: true });
+    }
+  }, []);
+
+  const handleOpenSource = useCallback(
+    (id: string, trigger: HTMLButtonElement) => {
+      setHaveItemId(null);
+      setHaveDraft(null);
+      if (sourceItemId === id) {
+        setSourceItemId(null);
+        trigger.focus({ preventScroll: true });
+        return;
+      }
+      const target = items.find(
+        (it) => it.id === id && it.fromRecipes.length > 0,
+      );
+      if (!target) return;
+      sourceTriggerRef.current = trigger;
+      setSourceItemId(target.id);
     },
-    [items, markHome, resolveItemName, showToast, t],
+    [items, sourceItemId],
   );
 
-  const handleMarkOpen = useCallback(
-    (id: string) => {
-      void markOpen(id);
+  const handleCloseHave = useCallback(() => {
+    setHaveItemId(null);
+    setHaveDraft(null);
+    const trigger = haveTriggerRef.current;
+    if (trigger && trigger.isConnected) {
+      trigger.focus({ preventScroll: true });
+    }
+  }, []);
+
+  const handleOpenHave = useCallback(
+    (id: string, trigger: HTMLButtonElement) => {
+      setSourceItemId(null);
+      if (haveItemId === id) {
+        setHaveItemId(null);
+        setHaveDraft(null);
+        trigger.focus({ preventScroll: true });
+        return;
+      }
+      const target = items.find((it) => it.id === id);
+      if (!target) return;
+      const need = shopNeedOf(target);
+      const have = shopHaveOf(target);
+      const all = isHaveAll(target);
+      const partial = isPartialHave(target);
+      haveTriggerRef.current = trigger;
+      setHaveItemId(target.id);
+      if (!all && !partial) {
+        setHaveDraft({ all: true, value: need ?? 1 });
+      } else if (all) {
+        setHaveDraft({ all: true, value: need ?? 1 });
+      } else {
+        setHaveDraft({ all: false, value: have });
+      }
     },
-    [markOpen],
+    [haveItemId, items],
   );
+
+  const handleToggleHaveAll = useCallback(() => {
+    if (!activeHaveItem || !haveDraft) return;
+    const need = shopNeedOf(activeHaveItem);
+    if (haveDraft.all) {
+      setHaveDraft({ all: false, value: 0 });
+    } else {
+      setHaveDraft({ all: true, value: need ?? 1 });
+    }
+  }, [activeHaveItem, haveDraft]);
+
+  const handleStepHave = useCallback(
+    (delta: -1 | 1) => {
+      if (!activeHaveItem || !haveDraft) return;
+      const need = shopNeedOf(activeHaveItem);
+      if (need === null) return;
+      const step = haveStepOf(need, activeHaveItem.unit);
+      const base = haveDraft.all ? need : haveDraft.value;
+      const next = snapHaveQty(base + delta * step, need, activeHaveItem.unit);
+      setHaveDraft({ all: next >= need, value: next });
+    },
+    [activeHaveItem, haveDraft],
+  );
+
+  const handleSliderHave = useCallback(
+    (rawValue: number) => {
+      if (!activeHaveItem) return;
+      const need = shopNeedOf(activeHaveItem);
+      if (need === null) return;
+      const next = snapHaveQty(rawValue, need, activeHaveItem.unit);
+      setHaveDraft({ all: next >= need, value: next });
+    },
+    [activeHaveItem],
+  );
+
+  const handleApplyHave = useCallback(() => {
+    if (!activeHaveItem || !haveDraft) return;
+    const targetId = activeHaveItem.id;
+    const draft = haveDraft;
+    setHaveItemId(null);
+    setHaveDraft(null);
+    void applyHave(targetId, { all: draft.all, qtyHave: draft.value }).then(
+      () => {
+        const trigger = haveTriggerRef.current;
+        if (trigger && trigger.isConnected) {
+          trigger.focus({ preventScroll: true });
+        }
+      },
+    );
+  }, [activeHaveItem, applyHave, haveDraft]);
+
+  const handleResetHave = useCallback(() => {
+    if (!activeHaveItem) return;
+    const targetId = activeHaveItem.id;
+    setHaveItemId(null);
+    setHaveDraft(null);
+    void resetHave(targetId).then(() => {
+      const trigger = haveTriggerRef.current;
+      if (trigger && trigger.isConnected) {
+        trigger.focus({ preventScroll: true });
+      }
+    });
+  }, [activeHaveItem, resetHave]);
 
   const handleUndo = useCallback(() => {
     void undo().then((didUndo) => {
@@ -216,18 +356,6 @@ export function ShoppingListPage() {
       }
     });
   }, [showToast, t, undo]);
-
-  const handleRemoveRecipe = useCallback(
-    (recipeId: RecipeId, title: string) => {
-      void removeRecipe(recipeId).then(() => {
-        showToast({
-          message: t('shop.recipe.removed_toast', { title }),
-          canUndo: true,
-        });
-      });
-    },
-    [removeRecipe, showToast, t],
-  );
 
   const handleCatalogAdd = useCallback(
     (foodId: FoodId, name: string) => {
@@ -261,7 +389,7 @@ export function ShoppingListPage() {
       } else if (outcome === 'copied') {
         showToast({ message: t('shop.share.copied'), canUndo: false }, 2400);
       } else {
-        showToast({ message: t('shop.share.failed'), canUndo: false }, 2600);
+        showToast({ message: t('shop.share.failed'), canUndo: false }, 2400);
       }
     });
   }, [shareList, showToast, t]);
@@ -309,6 +437,133 @@ export function ShoppingListPage() {
     },
     [fmtAmount],
   );
+
+  const renderShopRow = (item: ShoppingItem, rowState: ShopState) => {
+    const name = resolveItemName(item);
+    const needText = resolveItemAmount(item);
+    const partial = rowState !== 'home' && isPartialHave(item);
+    const buyQty = partial ? shopBuyQty(item) : null;
+    const buyAmountText =
+      partial && buyQty !== null && item.unit
+        ? fmtAmount(buyQty, item.unit)
+        : undefined;
+    const qtyBuyOfAria =
+      partial && buyAmountText && needText
+        ? t('shop.qty.buyof', { buy: buyAmountText, need: needText })
+        : undefined;
+    const baseToggleLabel = t(
+      rowState === 'cart' ? 'shop.fromcart' : 'shop.tocart',
+      { name },
+    );
+    const toggleLabel = qtyBuyOfAria
+      ? `${baseToggleLabel}, ${qtyBuyOfAria}`
+      : baseToggleLabel;
+
+    const haveButtonLabel =
+      rowState === 'home'
+        ? t('shop.undo')
+        : partial
+          ? t('shop.have.partial')
+          : t('shop.have');
+    const haveButtonAriaLabel =
+      rowState === 'home'
+        ? t('shop.have.aria.home', { name })
+        : partial
+          ? t('shop.have.aria.partial', { name })
+          : t('shop.have.aria', { name });
+
+    const hasSource = item.fromRecipes.length > 0;
+    const sourceAriaLabel = hasSource
+      ? t('shop.usedin', {
+          recipes: item.fromRecipes
+            .map((rid) => getRecipeText(rid, lang)?.title ?? rid)
+            .join(', '),
+        })
+      : undefined;
+
+    return (
+      <ShopRow
+        key={item.id}
+        id={item.id}
+        food={item.food}
+        unit={item.unit}
+        name={name}
+        amountText={needText}
+        buyAmountText={buyAmountText}
+        isPartial={partial}
+        qtyBuyOfAria={qtyBuyOfAria}
+        state={rowState}
+        toggleLabel={toggleLabel}
+        haveButtonLabel={haveButtonLabel}
+        haveButtonAriaLabel={haveButtonAriaLabel}
+        isHaveOpen={haveItemId === item.id}
+        hasSource={hasSource}
+        sourceAriaLabel={sourceAriaLabel}
+        isSourceOpen={sourceItemId === item.id}
+        onToggleCart={handleToggleCart}
+        onOpenSource={handleOpenSource}
+        onOpenHave={handleOpenHave}
+      />
+    );
+  };
+
+  const sourceSheetData = useMemo<{
+    readonly title: string;
+    readonly lines: readonly ShopSourceLineItem[];
+    readonly sumText: string;
+  } | null>(() => {
+    if (!activeSourceItem) return null;
+    const summary = buildSourceSummary(activeSourceItem);
+    const missingLabel = t('shop.amount.missing');
+    const lines: ShopSourceLineItem[] = summary.lines.map((line) => ({
+      key: line.recipeId,
+      text: t('shop.src.line.extra', {
+        recipe: getRecipeText(line.recipeId, lang)?.title ?? line.recipeId,
+        qty:
+          line.amount !== null && line.unit
+            ? fmtAmount(line.amount, line.unit)
+            : missingLabel,
+      }),
+    }));
+    const sumQty =
+      summary.sumAmount !== null && summary.unit
+        ? fmtAmount(summary.sumAmount, summary.unit)
+        : missingLabel;
+    return {
+      title: resolveItemName(activeSourceItem),
+      lines,
+      sumText: t('shop.src.sum', { qty: sumQty }),
+    };
+  }, [activeSourceItem, fmtAmount, lang, resolveItemName, t]);
+
+  const haveSheetData = useMemo<{
+    readonly title: string;
+    readonly need: number | null;
+    readonly step: number;
+    readonly draftAll: boolean;
+    readonly draftValue: number;
+    readonly formattedValue: string;
+    readonly atHomeLabel: string;
+  } | null>(() => {
+    if (!activeHaveItem || !haveDraft) return null;
+    const need = shopNeedOf(activeHaveItem);
+    const step = need !== null ? haveStepOf(need, activeHaveItem.unit) : 1;
+    const displayVal =
+      need !== null ? (haveDraft.all ? need : haveDraft.value) : 0;
+    const formattedValue =
+      need !== null && activeHaveItem.unit
+        ? fmtAmount(displayVal, activeHaveItem.unit)
+        : t('shop.amount.missing');
+    return {
+      title: resolveItemName(activeHaveItem),
+      need,
+      step,
+      draftAll: haveDraft.all,
+      draftValue: haveDraft.value,
+      formattedValue,
+      atHomeLabel: t('shop.have.athome', { qty: formattedValue }),
+    };
+  }, [activeHaveItem, fmtAmount, haveDraft, resolveItemName, t]);
 
   const subtitle =
     grouped.recipeIds.length > 0
@@ -390,30 +645,6 @@ export function ShoppingListPage() {
           </div>
         ) : null}
 
-        {grouped.recipeIds.length > 0 ? (
-          <div
-            className="edo-recipe-chips"
-            data-testid="shop-recipe-chips"
-          >
-            {grouped.recipeIds.map((rid) => {
-              const title = getRecipeText(rid, lang)?.title ?? rid;
-              return (
-                <button
-                  key={rid}
-                  type="button"
-                  className="edo-recipe-chip"
-                  data-testid={`shop-remove-recipe-${rid}`}
-                  aria-label={t('shop.recipe.remove', { title })}
-                  onClick={() => handleRemoveRecipe(rid, title)}
-                >
-                  <span>{title}</span>
-                  <Icon name="x" size="sm" />
-                </button>
-              );
-            })}
-          </div>
-        ) : null}
-
         <CatalogAddPanel
           heading={t('shop.add.heading')}
           query={query}
@@ -446,24 +677,7 @@ export function ShoppingListPage() {
                 count={group.count}
                 testId={`shop-group-${group.group}`}
               >
-                {group.items.map((item) => {
-                  const name = resolveItemName(item);
-                  return (
-                    <ShopRow
-                      key={item.id}
-                      id={item.id}
-                      name={name}
-                      amountText={resolveItemAmount(item)}
-                      state={item.state}
-                      toggleLabel={t('shop.tocart', { name })}
-                      haveLabel={t('shop.have')}
-                      undoLabel={t('shop.undo')}
-                      onToggleCart={handleToggleCart}
-                      onMarkHome={handleMarkHome}
-                      onMarkOpen={handleMarkOpen}
-                    />
-                  );
-                })}
+                {group.items.map((item) => renderShopRow(item, 'open'))}
               </ShopGroup>
             ))}
 
@@ -494,24 +708,7 @@ export function ShoppingListPage() {
                   </button>
                 }
               >
-                {grouped.cartItems.map((item) => {
-                  const name = resolveItemName(item);
-                  return (
-                    <ShopRow
-                      key={item.id}
-                      id={item.id}
-                      name={name}
-                      amountText={resolveItemAmount(item)}
-                      state={item.state}
-                      toggleLabel={t('shop.fromcart', { name })}
-                      haveLabel={t('shop.have')}
-                      undoLabel={t('shop.undo')}
-                      onToggleCart={handleToggleCart}
-                      onMarkHome={handleMarkHome}
-                      onMarkOpen={handleMarkOpen}
-                    />
-                  );
-                })}
+                {grouped.cartItems.map((item) => renderShopRow(item, 'cart'))}
               </ShopGroup>
             ) : null}
 
@@ -521,24 +718,7 @@ export function ShoppingListPage() {
                 count={grouped.homeItems.length}
                 testId="shop-section-home"
               >
-                {grouped.homeItems.map((item) => {
-                  const name = resolveItemName(item);
-                  return (
-                    <ShopRow
-                      key={item.id}
-                      id={item.id}
-                      name={name}
-                      amountText={resolveItemAmount(item)}
-                      state={item.state}
-                      toggleLabel={t('shop.tocart', { name })}
-                      haveLabel={t('shop.have')}
-                      undoLabel={t('shop.undo')}
-                      onToggleCart={handleToggleCart}
-                      onMarkHome={handleMarkHome}
-                      onMarkOpen={handleMarkOpen}
-                    />
-                  );
-                })}
+                {grouped.homeItems.map((item) => renderShopRow(item, 'home'))}
               </ShopGroup>
             ) : null}
           </>
@@ -560,6 +740,41 @@ export function ShoppingListPage() {
           </section>
         )}
       </div>
+
+      <ShopSourceSheet
+        open={sourceSheetData !== null}
+        title={sourceSheetData?.title ?? ''}
+        lines={sourceSheetData?.lines ?? []}
+        sumText={sourceSheetData?.sumText ?? ''}
+        closeLabel={t('dialog.close')}
+        onClose={handleCloseSource}
+      />
+
+      <ShopHaveSheet
+        open={haveSheetData !== null}
+        title={haveSheetData?.title ?? ''}
+        hint={t('shop.have.title')}
+        allLabel={t('shop.have.all')}
+        atHomeLabel={haveSheetData?.atHomeLabel ?? ''}
+        resetLabel={t('shop.have.reset')}
+        applyLabel={t('shop.have.apply')}
+        sliderLabel={t('shop.have.slider')}
+        minusLabel={t('shop.have.step.minus')}
+        plusLabel={t('shop.have.step.plus')}
+        closeLabel={t('dialog.close')}
+        need={haveSheetData?.need ?? null}
+        step={haveSheetData?.step ?? 1}
+        draftAll={haveSheetData?.draftAll ?? true}
+        draftValue={haveSheetData?.draftValue ?? 0}
+        formattedValue={haveSheetData?.formattedValue ?? ''}
+        onToggleAll={handleToggleHaveAll}
+        onStepMinus={() => handleStepHave(-1)}
+        onStepPlus={() => handleStepHave(1)}
+        onSliderChange={handleSliderHave}
+        onReset={handleResetHave}
+        onApply={handleApplyHave}
+        onClose={handleCloseHave}
+      />
 
       <QrSheet
         open={qrOpen}

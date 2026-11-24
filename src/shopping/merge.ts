@@ -15,6 +15,11 @@ import {
   type Unit,
 } from '../domain/index.ts';
 import { scaleIngredients } from '../nutrition/index.ts';
+import {
+  capHaveToNeed,
+  effectiveShopState,
+  isHaveAll,
+} from './have.ts';
 
 /** Einheitliche Supermarkt-Reihenfolge der Lebensmittelgruppen. */
 export const SHOP_GROUP_ORDER: readonly FoodGroup[] = [
@@ -78,7 +83,7 @@ export function addRecipe(
 /**
  * Zieht den Anteil eines Rezepts sauber aus der Einkaufsliste ab (ADR-002).
  * Artikel, die nur aus diesem Rezept stammen oder deren Restmenge ≤ 0 fällt, werden entfernt;
- * Anteile anderer Rezepte oder manuelle Mengen bleiben exakt erhalten.
+ * Anteile anderer Rezepte bleiben exakt erhalten und `qtyHave` wird auf den neuen Bedarf gedeckelt (v5.9).
  */
 export function removeRecipe(
   list: readonly ShoppingItem[],
@@ -127,7 +132,11 @@ export function removeRecipe(
         continue;
       }
       item.amount = remainingAmount;
-      next.push(item);
+      const capped = capHaveToNeed(item);
+      if (isHaveAll(capped)) {
+        capped.state = 'home';
+      }
+      next.push(capped);
       continue;
     }
 
@@ -136,7 +145,7 @@ export function removeRecipe(
       continue;
     }
 
-    next.push(item);
+    next.push(capHaveToNeed(item));
   }
 
   return next;
@@ -350,9 +359,10 @@ export function groupItems(
     for (const rid of item.fromRecipes) {
       recipeSet.add(rid);
     }
-    if (item.state === 'cart') {
+    const effState = effectiveShopState(item);
+    if (effState === 'cart') {
       cartItems.push(item);
-    } else if (item.state === 'home') {
+    } else if (effState === 'home') {
       homeItems.push(item);
     } else {
       openCount += 1;

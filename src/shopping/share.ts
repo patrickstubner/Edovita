@@ -6,6 +6,7 @@ import {
   type ImportShopItem,
   type ShoppingItem,
 } from '../domain/index.ts';
+import { effectiveShopState } from './have.ts';
 import type { GroupedShoppingList } from './merge.ts';
 
 export interface QrMatrix {
@@ -29,7 +30,8 @@ function sanitizeQrName(raw: string, fallback: string): string {
 /**
  * Wandelt Einkaufsartikel in das minimale QR-Import-Payload um (max. 40 Artikel).
  * Enthält ausschliesslich Artikel-IDs, Namen, optionale Mengen/Einheiten und Zustände –
- * niemals Gesundheitsdaten (ADR-004).
+ * niemals Gesundheitsdaten und niemals `qtyHave` (ADR-004, Issue #31).
+ * Teilmengen werden als Zustand `open` geteilt.
  */
 export function shoppingItemsToImportPayload(
   items: readonly ShoppingItem[],
@@ -39,7 +41,7 @@ export function shoppingItemsToImportPayload(
     const entry: ImportShopItem = {
       id: item.food,
       name: sanitizeQrName(resolveName(item), item.food),
-      st: item.state,
+      st: effectiveShopState(item),
     };
     if (
       typeof item.amount === 'number' &&

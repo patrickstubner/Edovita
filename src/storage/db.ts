@@ -1,8 +1,12 @@
 import Dexie, { type EntityTable, type Transaction } from 'dexie';
-import type { Settings, ShoppingItem } from '../domain/index.ts';
+import {
+  coerceQtyHave,
+  type Settings,
+  type ShoppingItem,
+} from '../domain/index.ts';
 
 export const DEFAULT_DB_NAME = 'edovita';
-export const CURRENT_DB_VERSION = 1;
+export const CURRENT_DB_VERSION = 2;
 
 export interface StoredSettingsRow {
   key: 'current';
@@ -41,6 +45,24 @@ export const EDOVITA_MIGRATIONS: readonly SchemaMigration[] = [
   {
     version: 1,
     stores: { ...EDOVITA_SCHEMA_V1 },
+  },
+  {
+    version: 2,
+    stores: { ...EDOVITA_SCHEMA_V1 },
+    upgrade: async (tx) => {
+      await tx
+        .table('shopping')
+        .toCollection()
+        .modify((row: Record<string, unknown>) => {
+          const need =
+            typeof row.amount === 'number' &&
+            Number.isFinite(row.amount) &&
+            row.amount > 0
+              ? row.amount
+              : undefined;
+          row.qtyHave = coerceQtyHave(row.qtyHave, need);
+        });
+    },
   },
 ];
 

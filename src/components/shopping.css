@@ -1,4 +1,4 @@
-/* Einkaufsliste, QR-Code & Dialoge gemäss Prototyp (`prototype/styles.css`), strikt logische CSS-Eigenschaften (ADR-003 RTL) */
+/* Einkaufsliste, Herkunfts-/Vorrats-Sheets & QR-Dialoge gemäss Prototyp v5.9 (`prototype/styles.css`), strikt logische CSS-Eigenschaften (ADR-003 RTL) */
 
 .edo-shopgroup {
   display: flex;
@@ -19,6 +19,7 @@
   align-items: center;
   gap: 10px;
   min-block-size: 56px;
+  padding-block: 6px;
 }
 
 .edo-shoprow + .edo-shoprow {
@@ -28,11 +29,13 @@
 .edo-chk {
   display: flex;
   align-items: center;
-  gap: 14px;
-  min-block-size: 52px;
-  inline-size: 100%;
-  padding-block: 6px;
-  padding-inline: 0;
+  gap: 10px;
+  min-block-size: 56px;
+  inline-size: auto;
+  flex: 1;
+  min-inline-size: 0;
+  padding-block: 4px;
+  padding-inline: 0 4px;
   border: 0;
   background: transparent;
   color: var(--edo-text);
@@ -66,6 +69,41 @@
   opacity: 0;
 }
 
+/* ⓘ-Herkunftsknopf gemäss Prototyp v5.8.1/v5.9: Icon 28×28, Tippfläche 56×56, 16 px Abstand (10 px row-gap + 6 px margin-inline-start) */
+.edo-shop-src-btn {
+  position: relative;
+  z-index: 1;
+  flex: none;
+  inline-size: 56px;
+  block-size: 56px;
+  min-inline-size: 56px;
+  min-block-size: 56px;
+  margin-inline-start: 6px;
+  border: 0;
+  border-radius: 28px;
+  display: grid;
+  place-items: center;
+  color: var(--edo-primary-dark);
+  background: var(--edo-primary-soft);
+  cursor: pointer;
+}
+
+.edo-shop-src-btn .edo-ic {
+  inline-size: 28px;
+  block-size: 28px;
+  stroke-width: 2.25;
+}
+
+.edo-shop-src-btn:focus-visible {
+  outline: 3px solid var(--edo-primary-dark);
+  outline-offset: 2px;
+}
+
+.edo-shop-src-btn[aria-expanded='true'] {
+  color: var(--edo-on-primary);
+  background: var(--edo-primary);
+}
+
 .edo-chk-on .edo-cb {
   background: var(--edo-primary);
   border-color: var(--edo-primary);
@@ -75,10 +113,22 @@
   opacity: 1;
 }
 
+.edo-shop-nm-line {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  min-inline-size: 0;
+}
+
 .edo-shoprow-nm {
   font-size: 17px;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--edo-text);
+  min-inline-size: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .edo-chk-on .edo-shoprow-nm {
@@ -90,47 +140,65 @@
   color: var(--edo-text-muted);
 }
 
-.edo-shoprow-home-text {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 6px;
-}
-
 .edo-shoprow-amt {
   flex: none;
   white-space: nowrap;
 }
 
+.edo-shop-qty {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex: none;
+}
+
+.edo-shop-qty-buy {
+  font-weight: 800;
+  font-size: 16px;
+  color: var(--edo-text);
+  white-space: nowrap;
+}
+
+.edo-shop-qty-need {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--edo-text-muted);
+  text-decoration: line-through;
+  white-space: nowrap;
+}
+
 .edo-havebtn {
   position: relative;
+  z-index: 0;
   flex: none;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 4px;
   border: 1.5px solid var(--edo-border-strong);
   border-radius: 18px;
   padding-block: 6px;
-  padding-inline: 12px;
+  padding-inline: 10px;
   font: inherit;
   font-weight: 700;
   font-size: 14px;
+  line-height: 1.15;
   color: var(--edo-text-muted);
   background: var(--edo-surface);
-  min-block-size: 40px;
+  min-inline-size: 48px;
+  min-block-size: 48px;
   cursor: pointer;
-}
-
-.edo-havebtn::before {
-  content: '';
-  position: absolute;
-  inset-block: -5px;
-  inset-inline: -2px;
 }
 
 .edo-havebtn:focus-visible {
   outline: 3px solid var(--edo-primary);
   outline-offset: 2px;
+}
+
+.edo-havebtn-partial {
+  background: var(--edo-pro);
+  border-color: var(--edo-pro);
+  color: #14211f;
 }
 
 .edo-circ {
@@ -220,34 +288,6 @@
   font-size: 17px;
 }
 
-.edo-recipe-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.edo-recipe-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  min-block-size: 44px;
-  padding-block: 6px;
-  padding-inline: 12px;
-  border-radius: 20px;
-  border: 1.5px solid var(--edo-border-strong);
-  background: var(--edo-surface);
-  color: var(--edo-text);
-  font: inherit;
-  font-size: 14px;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.edo-recipe-chip:focus-visible {
-  outline: 3px solid var(--edo-primary);
-  outline-offset: 2px;
-}
-
 .edo-qrbox {
   display: flex;
   justify-content: center;
@@ -299,6 +339,149 @@
   border-radius: 22px;
   padding: 20px;
   box-shadow: var(--edo-shadow);
+}
+
+.edo-shop-sheet {
+  max-block-size: 78vh;
+}
+
+.edo-shop-src-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.edo-shop-src-item {
+  padding-block: 12px;
+  border-block-start: 1px solid var(--edo-border);
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--edo-text);
+}
+
+.edo-shop-src-item:first-child {
+  border-block-start: 0;
+  padding-block-start: 4px;
+}
+
+.edo-shop-src-sum {
+  padding-block-start: 14px;
+  margin-block-start: 4px;
+  border-block-start: 2px solid var(--edo-border);
+  font-weight: 800;
+  font-size: 17px;
+  color: var(--edo-text);
+}
+
+.edo-shop-have-hint {
+  color: var(--edo-text-muted);
+  font-weight: 600;
+}
+
+.edo-shop-have-all {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  inline-size: 100%;
+  min-block-size: 56px;
+  padding-block: 8px;
+  padding-inline: 12px;
+  border: 2px solid var(--edo-border-strong);
+  border-radius: 16px;
+  background: var(--edo-surface);
+  color: var(--edo-text);
+  font: inherit;
+  font-weight: 700;
+  text-align: start;
+  cursor: pointer;
+}
+
+.edo-shop-have-all:focus-visible {
+  outline: 3px solid var(--edo-primary);
+  outline-offset: 2px;
+}
+
+.edo-shop-have-all-on {
+  border-color: var(--edo-primary);
+  background: var(--edo-primary-soft);
+}
+
+.edo-shop-have-all-on .edo-cb {
+  background: var(--edo-primary);
+  border-color: var(--edo-primary);
+  color: var(--edo-on-primary);
+}
+
+.edo-shop-have-all-on .edo-cb .edo-ic {
+  opacity: 1;
+}
+
+.edo-shop-have-all-lab {
+  font-weight: 700;
+  font-size: 17px;
+}
+
+.edo-shop-have-amt {
+  font-weight: 700;
+  font-size: 17px;
+}
+
+.edo-shop-have-ctrl {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.edo-stepper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.edo-shop-have-step {
+  justify-content: center;
+}
+
+.edo-stepbtn {
+  flex: none;
+  inline-size: 52px;
+  block-size: 52px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--edo-primary-soft);
+  color: var(--edo-primary-dark);
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.edo-stepbtn:focus-visible {
+  outline: 3px solid var(--edo-primary);
+  outline-offset: 2px;
+}
+
+.edo-shop-have-out {
+  min-inline-size: 5.5rem;
+  text-align: center;
+  font-weight: 800;
+  font-size: 18px;
+}
+
+.edo-shop-have-range {
+  inline-size: 100%;
+  accent-color: var(--edo-primary);
+  min-block-size: 44px;
+}
+
+.edo-shop-have-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-block-start: 8px;
 }
 
 .edo-import-preview {

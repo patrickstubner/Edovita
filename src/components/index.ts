@@ -46,7 +46,13 @@ export {
   type ServingsStepperProps,
 } from './ServingsStepper.tsx';
 export { ShopGroup, type ShopGroupProps } from './ShopGroup.tsx';
+export { ShopHaveSheet, type ShopHaveSheetProps } from './ShopHaveSheet.tsx';
 export { ShopRow, type ShopRowProps } from './ShopRow.tsx';
+export {
+  ShopSourceSheet,
+  type ShopSourceLineItem,
+  type ShopSourceSheetProps,
+} from './ShopSourceSheet.tsx';
 export { Stars, type StarsProps } from './Stars.tsx';
 export { StepList, type StepListProps } from './StepList.tsx';
 export { Toast, type ToastProps } from './Toast.tsx';
