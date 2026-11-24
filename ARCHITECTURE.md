@@ -1,6 +1,6 @@
 # ARCHITECTURE.md – Edovita
 
-Stand 24.11.2026, Basis `main` `7dd734d47d9b8101c0dcc592f492520200399d53` (enthält E0 `7f49e3d`, E0b Pages `e7d46884`, Nachzug `#23` `a6c47cb3`, E1 PR `#24` `bd3e0246`, Dependabot/TS 6 `e0c7cadf`, E2 PR `#26` `f7dcd628`, E3 PR `#27` `1ef9b440` und E4 PR `#28` `7dd734d4`, Version `0.1.0`), erweitert um den **kompakten UI-Sprachumschalter** (Prototyp-Referenz `13e323e0`, Branch `feat/lang-switcher`, inkl. E4-Nachzüge F1 & F2). Details in `docs/architektur/`. Vorschau: https://patrickstubner.github.io/Edovita/.
+Stand 24.11.2026, Basis `main` `7dd734d47d9b8101c0dcc592f492520200399d53` (enthält E0 `7f49e3d`, E0b Pages `e7d46884`, Nachzug `#23` `a6c47cb3`, E1 PR `#24` `bd3e0246`, Dependabot/TS 6 `e0c7cadf`, E2 PR `#26` `f7dcd628`, E3 PR `#27` `1ef9b440` und E4 PR `#28` `7dd734d4`, Version `0.1.0`), erweitert um den **kompakten UI-Sprachumschalter** (Prototyp-Referenz `13e323e0`, Draft-PR `#29`, Branch `feat/lang-switcher`, inkl. E4-Nachzüge F1 & F2; geprüfter Code- und Analyse-Stand: `de4934d52472fb0ff025569815cf468ac1010cb3`, GitHub Actions CI Run `45382458642` grün). Details in `docs/architektur/`. Vorschau: https://patrickstubner.github.io/Edovita/.
 
 ## Heute im Repo
 | Ort | Inhalt |
