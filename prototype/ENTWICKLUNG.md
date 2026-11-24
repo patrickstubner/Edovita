@@ -1,3 +1,7 @@
+# Stand v5.11 (24. November 2026)
+
+Rezeptsammlung von 15 auf 200 erweitert. Quelle in `tools/recipes-src/` (`foods.txt` Lebensmittel mit Nährwerten pro 100 g, Stückgewichten, Tags und Namen in 7 Sprachen; `cuisines.txt`; `recipes-*.txt` mit Kopfzeile `@ id | meal | küche | minuten | portionen | pop`, Titeln, Zutaten `i:` mit Menge und Einheit, Schritten `sd:`/`se:`). `python3 tools/build-recipes.py` berechnet kcal und Makros aus den Zutaten, leitet die Ausschluss-Tags (`has`) aus den Lebensmitteln ab und schreibt `data/recipes-ext.js` (Titel, Küchen, Glossar, Gruppen, Mengen, Schritte; Merge nur für fehlende Schlüssel). Die 15 Basisrezepte behalten Titel, Mengen und Schritte; ihre kcal/Protein-Werte kommen ebenfalls aus der Berechnung. `app.js` übernimmt die Liste über `mergeExtRecipes()` (ID-, Mahlzeit-, Zahlen- und Tag-Prüfung). `python3 tools/validate-recipes.py` prüft Pflichtfelder, Zutaten-IDs, Sprachen, Schritte, Fotos/Manifest, kcal-Plausibilität und zeigt die Proteinstatistik. Bilder: siehe `IMAGES.md`; neue Bilder liegen zusätzlich in Workers KV (`tools/kv-upload-images.py`, Binding `IMG` in `build-worker.py`). Siehe `SECURITY.md`. Darunter der Stand v5.10.1.
+
 # Stand v5.10.1 (24. November 2026)
 
 Vier niedrige Befunde aus der Prüfung von v5.10 behoben (F1 transaktionaler Import mit Rollback, F2 kein stiller QR-Import ohne Rückfrage, F3 shopStatus nur für bekannte Lebensmittel-IDs, F4 QR-Import gegen die aktuelle Einkaufsliste). Siehe `SECURITY.md`. Darunter der Stand v5.10.

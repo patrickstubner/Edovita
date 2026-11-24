@@ -1,0 +1,265 @@
+# Fruehstueck, Teil 2
+@ ricotta_berry_toast | breakfast | italian | 5 | 1 | 6
+de: Ricotta-Toast mit Beeren und Mandeln
+en: Ricotta toast with berries and almonds
+fr: Toast à la ricotta, baies et amandes
+it: Toast con ricotta, frutti di bosco e mandorle
+es: Tostada de ricotta con frutos rojos y almendras
+pt: Torrada com ricota, frutas vermelhas e amêndoas
+ja: ベリーとアーモンドのリコッタトースト
+i: bread 70g, ricotta 80g, quark_lowfat 80g, berries 80g, almonds 10g, honey 1tsp
+sd: Ricotta und Quark glatt rühren. | Brot toasten. | Creme dick auf das Brot streichen. | Beeren und gehackte Mandeln darauf verteilen und mit Honig beträufeln.
+se: Stir the ricotta and quark until smooth. | Toast the bread. | Spread the cream thickly over the toast. | Top with berries and chopped almonds and drizzle with honey.
+q: ricotta toast berries
+@ veggie_egg_muffins | breakfast | american | 30 | 3 | 7
+de: Ei-Muffins mit Gemüse und Schinken
+en: Egg muffins with vegetables and ham
+fr: Muffins aux œufs, légumes et jambon
+it: Muffin di uova con verdure e prosciutto
+es: Muffins de huevo con verduras y jamón
+pt: Muffins de ovo com legumes e presunto
+ja: 野菜とハムのエッグマフィン
+i: eggs 6pc, ham_cooked 90g, red_bell_pepper 1pc, spinach 60g, spring_onion 2pc, cottage_cheese 100g, salt 1g, black_pepper 1pinch, rapeseed_oil 1tsp
+sd: Backofen auf 180 °C vorheizen und ein Muffinblech (12 Mulden) leicht einfetten. | Peperoni, Schinken und Frühlingszwiebeln klein schneiden, Spinat grob hacken. | Eier mit Hüttenkäse, Salz und Pfeffer verquirlen. | Gemüse und Schinken auf die Mulden verteilen und mit der Eimasse auffüllen. | 20–22 Minuten backen, bis die Muffins fest sind; warm oder kalt essen (4 Stück pro Portion).
+se: Preheat the oven to 180 °C and lightly grease a 12-hole muffin tin. | Chop the pepper, ham and spring onions and roughly chop the spinach. | Whisk the eggs with the cottage cheese, salt and pepper. | Divide the vegetables and ham between the holes and fill up with the egg mixture. | Bake for 20–22 minutes until set; eat warm or cold (4 per serving).
+q: egg muffins vegetables
+@ breakfast_burrito | breakfast | mexican | 15 | 2 | 7
+de: Frühstücks-Burrito mit Ei und Bohnen
+en: Breakfast burrito with egg and beans
+fr: Burrito du matin aux œufs et haricots
+it: Burrito per colazione con uova e fagioli
+es: Burrito de desayuno con huevo y frijoles
+pt: Burrito de café da manhã com ovo e feijão
+ja: 卵と豆の朝食ブリトー
+i: whole_wheat_tortilla 2pc, eggs 4pc, black_beans 120g, tomato 1pc, avocado 0.5pc, gruyere 20g, chili_flakes 1pinch, lime 0.5pc, salt 1g
+sd: Bohnen abspülen und in einer kleinen Pfanne mit 2 EL Wasser und einer Prise Salz zerdrückt erwärmen. | Eier verquirlen und in einer beschichteten Pfanne zu weichem Rührei braten. | Tomate würfeln, Avocado mit Limettensaft und Chiliflocken zerdrücken. | Tortillas erwärmen, mit Bohnen, Rührei, Tomate, Avocado und geriebenem Käse füllen und aufrollen.
+se: Rinse the beans and warm them in a small pan with 2 tbsp water and a pinch of salt, mashing them roughly. | Beat the eggs and cook them into soft scrambled eggs in a non-stick pan. | Dice the tomato and mash the avocado with lime juice and chilli flakes. | Warm the tortillas, fill with the beans, eggs, tomato, avocado and grated cheese and roll up.
+q: breakfast burrito
+@ avocado_egg_toast | breakfast | american | 10 | 1 | 8
+de: Avocado-Toast mit pochiertem Ei
+en: Avocado toast with poached egg
+fr: Toast à l'avocat et œuf poché
+it: Avocado toast con uovo in camicia
+es: Tostada de aguacate con huevo escalfado
+pt: Torrada de abacate com ovo pochê
+ja: ポーチドエッグのアボカドトースト
+i: bread 70g, avocado 0.5pc, eggs 2pc, cottage_cheese 60g, lemon 0.25pc, chili_flakes 1pinch, salt 1g
+sd: Wasser in einem Topf zum Sieden bringen (nicht sprudelnd kochen). | Eier einzeln in eine Tasse schlagen, ins Wasser gleiten lassen und 3–4 Minuten pochieren. | Brot toasten, Avocado mit Zitronensaft und Salz zerdrücken. | Brot mit Hüttenkäse und Avocado bestreichen, pochierte Eier darauflegen und mit Chiliflocken bestreuen.
+se: Bring a pot of water to a gentle simmer. | Crack each egg into a cup, slide it into the water and poach for 3–4 minutes. | Toast the bread and mash the avocado with lemon juice and salt. | Spread the toast with cottage cheese and avocado, top with the poached eggs and sprinkle with chilli flakes.
+q: avocado toast poached egg
+@ quinoa_breakfast_porridge | breakfast | peruvian | 20 | 2 | 6
+de: Quinoa-Porridge mit Apfel und Zimt
+en: Quinoa porridge with apple and cinnamon
+fr: Porridge de quinoa à la pomme et cannelle
+it: Porridge di quinoa con mela e cannella
+es: Porridge de quinoa con manzana y canela
+pt: Mingau de quinoa com maçã e canela
+ja: りんごとシナモンのキヌアポリッジ
+i: quinoa 90g, milk_skimmed 400ml, skyr 150g, apple 1pc, cinnamon_ground 1tsp, walnuts 15g, maple_syrup 1tbsp
+sd: Quinoa in einem Sieb gründlich spülen. | Mit Milch und Zimt aufkochen und bei kleiner Hitze 15–18 Minuten köcheln, bis die Quinoa weich ist; dabei rühren. | Apfel würfeln und die letzten 5 Minuten mitgaren. | Vom Herd nehmen, Skyr unterrühren und mit Ahornsirup und gehackten Baumnüssen servieren.
+se: Rinse the quinoa thoroughly in a sieve. | Bring it to the boil with the milk and cinnamon and simmer over low heat for 15–18 minutes until soft, stirring. | Dice the apple and cook it for the last 5 minutes. | Remove from the heat, stir in the skyr and serve with maple syrup and chopped walnuts.
+q: quinoa porridge apple
+@ oat_porridge_quark | breakfast | swiss | 10 | 1 | 7
+de: Haferbrei mit Magerquark, Zimt und Birne
+en: Oat porridge with quark, cinnamon and pear
+fr: Porridge d'avoine au fromage blanc, cannelle et poire
+it: Porridge d'avena con quark, cannella e pera
+es: Gachas de avena con quark, canela y pera
+pt: Mingau de aveia com quark, canela e pera
+ja: クワルク、シナモン、洋なしのオートミール
+i: oats 50g, milk_skimmed 250ml, quark_lowfat 120g, pear 0.5pc, cinnamon_ground 1pinch, almonds 8g
+sd: Haferflocken mit Milch und Zimt aufkochen. | Bei kleiner Hitze 4–5 Minuten unter Rühren cremig köcheln. | Vom Herd nehmen und den Quark unterrühren. | Birne würfeln und mit gehackten Mandeln über den Brei geben.
+se: Bring the oats to the boil with the milk and cinnamon. | Simmer over low heat for 4–5 minutes, stirring, until creamy. | Remove from the heat and stir in the quark. | Dice the pear and scatter it over the porridge with chopped almonds.
+q: oatmeal porridge pear
+@ rosti_fried_egg | breakfast | swiss | 30 | 2 | 6
+de: Ofen-Rösti mit Spiegelei und Hüttenkäse
+en: Oven rösti with fried egg and cottage cheese
+fr: Rösti au four, œuf au plat et cottage cheese
+it: Rösti al forno con uovo e fiocchi di latte
+es: Rösti al horno con huevo frito y requesón
+pt: Rösti de forno com ovo frito e queijo cottage
+ja: 目玉焼きとカッテージチーズのオーブンレシュティ
+i: potato 400g, eggs 4pc, cottage_cheese 150g, rapeseed_oil 1tbsp, chives 5g, salt 3g, black_pepper 1pinch
+sd: Backofen auf 220 °C vorheizen. Kartoffeln schälen und grob raffeln, gut ausdrücken. | Mit Öl, Salz und Pfeffer mischen und als zwei flache Fladen auf ein Blech mit Backpapier geben. | 20–25 Minuten backen, nach der Hälfte wenden, bis die Rösti knusprig ist. | Eier in einer Pfanne zu Spiegeleiern braten. | Rösti mit Spiegelei, Hüttenkäse und Schnittlauch servieren.
+se: Preheat the oven to 220 °C. Peel and coarsely grate the potatoes and squeeze out well. | Mix with oil, salt and pepper and spread as two flat rounds on a lined tray. | Bake for 20–25 minutes, turning halfway, until crisp. | Fry the eggs in a pan. | Serve the rösti with the fried eggs, cottage cheese and chives.
+q: rosti fried egg
+@ swiss_cottage_radish_bread | breakfast | swiss | 5 | 1 | 6
+de: Vollkornbrot mit Hüttenkäse, Radiesli und Schnittlauch
+en: Wholemeal bread with cottage cheese, radishes and chives
+fr: Pain complet au cottage cheese, radis et ciboulette
+it: Pane integrale con fiocchi di latte, ravanelli ed erba cipollina
+es: Pan integral con requesón, rábanos y cebollino
+pt: Pão integral com cottage, rabanete e cebolinha
+ja: カッテージチーズとラディッシュ、チャイブの全粒粉パン
+i: bread 80g, cottage_cheese 200g, radish 60g, chives 5g, salt 1g, black_pepper 1pinch
+sd: Radiesli waschen und in feine Scheiben schneiden. | Schnittlauch fein schneiden und mit Hüttenkäse, Salz und Pfeffer mischen. | Brot mit der Hüttenkäsemasse bestreichen. | Radiesli darauf verteilen und sofort servieren.
+se: Wash the radishes and slice them thinly. | Finely snip the chives and mix them with the cottage cheese, salt and pepper. | Spread the cottage cheese mixture over the bread. | Top with the radishes and serve straight away.
+q: radish bread cottage cheese
+@ bresaola_rocket_toast | breakfast | italian | 5 | 1 | 6
+de: Bresaola-Rucola-Toast mit Parmesan
+en: Bresaola and rocket toast with Parmesan
+fr: Toast à la bresaola, roquette et parmesan
+it: Toast con bresaola, rucola e parmigiano
+es: Tostada de bresaola, rúcula y parmesano
+pt: Torrada com bresaola, rúcula e parmesão
+ja: ブレザオラとルッコラ、パルメザンのトースト
+i: bread 70g, cream_cheese_light 30g, bresaola 60g, rocket 20g, parmesan 10g, lemon 0.25pc, olive_oil 1tsp, black_pepper 1pinch
+sd: Brot toasten und mit Frischkäse bestreichen. | Rucola mit Zitronensaft und Öl anmachen. | Bresaola-Scheiben auf das Brot legen. | Rucola darauf geben, Parmesan darüberhobeln und pfeffern.
+se: Toast the bread and spread it with cream cheese. | Dress the rocket with lemon juice and oil. | Lay the bresaola slices on the bread. | Top with the rocket, shave the Parmesan over and season with pepper.
+q: bresaola arugula
+@ green_shakshuka | breakfast | middle_eastern | 20 | 2 | 7
+de: Grüne Shakshuka mit Spinat und Feta
+en: Green shakshuka with spinach and feta
+fr: Chakchouka verte aux épinards et feta
+it: Shakshuka verde con spinaci e feta
+es: Shakshuka verde con espinacas y feta
+pt: Shakshuka verde com espinafre e feta
+ja: ほうれん草とフェタのグリーンシャクシュカ
+i: eggs 4pc, spinach 250g, zucchini 1pc, leek 0.5pc, garlic 2pc, olive_oil 1tbsp, cumin 1tsp, feta 50g, greek_yogurt 80g, pita 1pc, salt 2g
+sd: Lauch in feine Ringe, Zucchetti in kleine Würfel schneiden, Knoblauch hacken. | Im Öl 5 Minuten weich dünsten, Kreuzkümmel zugeben. | Spinat portionsweise zufügen und zusammenfallen lassen, salzen. | Vier Mulden formen, Eier hineinschlagen und zugedeckt 5–7 Minuten stocken lassen. | Mit Feta und Joghurt servieren, dazu Pitabrot.
+se: Slice the leek finely, dice the courgette and chop the garlic. | Soften them in the oil for 5 minutes and add the cumin. | Add the spinach in batches, let it wilt and season with salt. | Make four hollows, crack in the eggs and cook covered for 5–7 minutes until set. | Serve with feta and yoghurt, with pitta on the side.
+q: green shakshuka spinach
+@ cilbir | breakfast | middle_eastern | 15 | 2 | 6
+de: Çılbır (pochierte Eier auf Knoblauchjoghurt)
+en: Çılbır (poached eggs on garlic yoghurt)
+fr: Çılbır (œufs pochés sur yaourt à l'ail)
+it: Çılbır (uova in camicia su yogurt all'aglio)
+es: Çılbır (huevos escalfados sobre yogur con ajo)
+pt: Çılbır (ovos pochê sobre iogurte com alho)
+ja: チュルブル（ガーリックヨーグルトのポーチドエッグ）
+i: eggs 4pc, greek_yogurt 250g, garlic 1pc, butter 1tsp, paprika 1tsp, chili_flakes 1pinch, dill 3g, bread 80g, salt 1g
+sd: Joghurt mit gepresstem Knoblauch und Salz verrühren und auf zwei Teller streichen. | Eier in siedendem Wasser 3–4 Minuten pochieren und auf den Joghurt setzen. | Butter schmelzen, Paprika und Chiliflocken einrühren. | Würzbutter über die Eier träufeln, mit Dill bestreuen und mit Brot servieren.
+se: Stir the yoghurt with crushed garlic and salt and spread it on two plates. | Poach the eggs in simmering water for 3–4 minutes and place them on the yoghurt. | Melt the butter and stir in the paprika and chilli flakes. | Drizzle the spiced butter over the eggs, sprinkle with dill and serve with bread.
+q: cilbir turkish eggs yogurt
+@ gyeran_jjim | breakfast | korean | 15 | 2 | 5
+de: Gyeran-jjim (gedämpftes Ei) mit Reis und Kimchi
+en: Gyeran-jjim (steamed egg) with rice and kimchi
+fr: Gyeran-jjim (œufs vapeur) avec riz et kimchi
+it: Gyeran-jjim (uova al vapore) con riso e kimchi
+es: Gyeran-jjim (huevo al vapor) con arroz y kimchi
+pt: Gyeran-jjim (ovo no vapor) com arroz e kimchi
+ja: ケランチム（蒸し卵）とご飯、キムチ
+i: eggs 5pc, chicken_broth 200ml, spring_onion 1pc, sesame_oil 1tsp, sesame_seeds 1tsp, sushi_rice 80g, kimchi 80g, salt 1g
+sd: Reis waschen und mit 110 ml Wasser zugedeckt 12 Minuten garen. | Eier mit Bouillon und Salz verquirlen und durch ein Sieb in einen kleinen Topf giessen. | Bei kleiner Hitze unter Rühren erwärmen, bis die Masse zu stocken beginnt, dann zugedeckt 5–6 Minuten fertig garen. | Mit Frühlingszwiebel, Sesamöl und Sesam bestreuen und mit Reis und Kimchi servieren.
+se: Wash the rice and cook it covered with 110 ml water for 12 minutes. | Whisk the eggs with the stock and salt and strain into a small pot. | Warm over low heat, stirring, until it starts to set, then cover and cook for 5–6 minutes. | Sprinkle with spring onion, sesame oil and sesame and serve with rice and kimchi.
+q: korean steamed egg
+@ kimchi_scrambled_eggs | breakfast | korean | 10 | 1 | 5
+de: Kimchi-Rührei mit Tofu
+en: Kimchi scrambled eggs with tofu
+fr: Œufs brouillés au kimchi et tofu
+it: Uova strapazzate con kimchi e tofu
+es: Huevos revueltos con kimchi y tofu
+pt: Ovos mexidos com kimchi e tofu
+ja: キムチと豆腐の炒り卵
+i: eggs 2pc, tofu_firm 100g, kimchi 60g, spring_onion 1pc, sesame_oil 1tsp, sesame_seeds 1tsp
+sd: Kimchi grob hacken, Tofu in kleine Würfel schneiden. | Sesamöl erhitzen, Tofu 3 Minuten anbraten, Kimchi 1 Minute mitbraten. | Eier verquirlen, zugeben und unter Rühren weich stocken lassen. | Mit Frühlingszwiebel und Sesam bestreuen.
+se: Roughly chop the kimchi and dice the tofu. | Heat the sesame oil, fry the tofu for 3 minutes and add the kimchi for 1 minute. | Beat the eggs, add them and stir until softly set. | Sprinkle with spring onion and sesame.
+q: kimchi scrambled eggs
+@ crepioca_chicken | breakfast | brazilian | 15 | 1 | 6
+de: Crepioca mit Poulet und Tomate
+en: Crepioca with chicken and tomato
+fr: Crepioca au poulet et tomate
+it: Crepioca con pollo e pomodoro
+es: Crepioca con pollo y tomate
+pt: Crepioca de frango com tomate
+ja: 鶏肉とトマトのクレピオカ
+i: eggs 2pc, tapioca_starch 20g, chicken_breast 80g, tomato 0.5pc, cream_cheese_light 20g, oregano_dried 0.5tsp, rapeseed_oil 1tsp, salt 1g
+sd: Poulet in kleine Würfel schneiden, salzen und im Öl 5 Minuten durchbraten. | Eier mit Tapiokastärke und einer Prise Salz glatt verquirlen. | Masse in eine heisse beschichtete Pfanne giessen und bei mittlerer Hitze 2 Minuten backen, dann wenden. | Mit Frischkäse bestreichen, Poulet und Tomatenwürfel daraufgeben, mit Oregano bestreuen und zusammenklappen.
+se: Dice the chicken, salt it and fry it in the oil for 5 minutes until cooked through. | Whisk the eggs with the tapioca starch and a pinch of salt until smooth. | Pour into a hot non-stick pan and cook over medium heat for 2 minutes, then flip. | Spread with cream cheese, add the chicken and diced tomato, sprinkle with oregano and fold over.
+q: crepioca
+@ buckwheat_galette | breakfast | french | 20 | 2 | 6
+de: Buchweizen-Galette mit Ei, Schinken und Gruyère
+en: Buckwheat galette with egg, ham and Gruyère
+fr: Galette de sarrasin complète (œuf, jambon, gruyère)
+it: Galette di grano saraceno con uovo, prosciutto e groviera
+es: Galette de trigo sarraceno con huevo, jamón y gruyère
+pt: Galette de trigo-sarraceno com ovo, presunto e gruyère
+ja: 卵とハム、グリュイエールのそば粉ガレット
+i: buckwheat_flour 70g, milk_skimmed 100ml, eggs 3pc, ham_cooked 60g, gruyere 30g, butter 1tsp, rocket 20g, salt 1g
+sd: Buchweizenmehl mit Milch, 80 ml Wasser, einem Ei und Salz glatt rühren und 10 Minuten ruhen lassen. | Pfanne mit wenig Butter auspinseln, die Hälfte des Teigs dünn ausstreichen und 2 Minuten backen. | Galette wenden, in die Mitte ein Ei schlagen, Schinken und Käse rundherum verteilen. | Ränder einschlagen und zugedeckt 3 Minuten garen, bis das Eiweiss fest ist; zweite Galette gleich zubereiten und mit Rucola servieren.
+se: Whisk the buckwheat flour with the milk, 80 ml water, one egg and salt until smooth and rest for 10 minutes. | Brush a pan with a little butter, spread half the batter thinly and cook for 2 minutes. | Turn the galette, crack an egg into the middle and arrange ham and cheese around it. | Fold in the edges and cook covered for 3 minutes until the white is set; make the second galette the same way and serve with rocket.
+q: galette complete buckwheat egg ham
+@ berry_protein_smoothie | breakfast | european | 5 | 1 | 7
+de: Beeren-Protein-Smoothie mit Skyr und Hafer
+en: Berry protein smoothie with skyr and oats
+fr: Smoothie protéiné aux baies, skyr et avoine
+it: Frullato proteico ai frutti di bosco con skyr e avena
+es: Batido proteico de frutos rojos con skyr y avena
+pt: Smoothie proteico de frutas vermelhas com skyr e aveia
+ja: スキールとオーツのベリープロテインスムージー
+i: berries 150g, skyr 150g, milk_skimmed 150ml, oats 20g, banana 0.5pc
+sd: Alle Zutaten in den Mixer geben. | 30–60 Sekunden fein mixen. | Bei Bedarf mit etwas Milch verdünnen. | Sofort in ein Glas füllen und trinken.
+se: Put all the ingredients in a blender. | Blend for 30–60 seconds until smooth. | Thin with a little milk if needed. | Pour into a glass and drink straight away.
+q: berry smoothie glass
+@ skyr_apple_compote | breakfast | nordic | 15 | 2 | 6
+de: Skyr mit warmem Apfel-Zimt-Kompott
+en: Skyr with warm apple and cinnamon compote
+fr: Skyr et compote tiède pomme-cannelle
+it: Skyr con composta tiepida di mele e cannella
+es: Skyr con compota templada de manzana y canela
+pt: Skyr com compota morna de maçã e canela
+ja: 温かいりんごシナモンコンポートのスキール
+i: skyr 400g, apple 2pc, cinnamon_ground 1tsp, lemon 0.25pc, oats 30g, walnuts 15g
+sd: Äpfel schälen, entkernen und würfeln. | Mit Zimt, Zitronensaft und 3 EL Wasser zugedeckt 8 Minuten weich dünsten. | Haferflocken und gehackte Baumnüsse in einer trockenen Pfanne rösten. | Skyr in Schalen geben, warmes Kompott und Knusper darauf verteilen.
+se: Peel, core and dice the apples. | Cook covered with the cinnamon, lemon juice and 3 tbsp water for 8 minutes until soft. | Toast the oats and chopped walnuts in a dry pan. | Spoon the skyr into bowls and top with the warm compote and crunch.
+q: yogurt apple compote cinnamon
+@ spinach_egg_wrap | breakfast | european | 10 | 1 | 6
+de: Spinat-Ei-Wrap mit Hüttenkäse
+en: Spinach and egg wrap with cottage cheese
+fr: Wrap aux œufs, épinards et cottage cheese
+it: Wrap con uova, spinaci e fiocchi di latte
+es: Wrap de huevo, espinacas y requesón
+pt: Wrap de ovo, espinafre e cottage
+ja: ほうれん草と卵、カッテージチーズのラップ
+i: whole_wheat_tortilla 1pc, eggs 2pc, spinach 50g, cottage_cheese 80g, tomato 0.5pc, rapeseed_oil 1tsp, salt 1g, black_pepper 1pinch
+sd: Eier mit Salz und Pfeffer verquirlen. | Öl erhitzen, Spinat kurz zusammenfallen lassen, Eier zugeben und zu Rührei braten. | Tortilla kurz erwärmen und mit Hüttenkäse bestreichen. | Rührei und Tomatenwürfel darauflegen und fest einrollen.
+se: Whisk the eggs with salt and pepper. | Heat the oil, wilt the spinach briefly, add the eggs and scramble. | Warm the tortilla briefly and spread with cottage cheese. | Add the eggs and diced tomato and roll up tightly.
+q: egg wrap spinach
+@ silken_tofu_smoothie | breakfast | european | 5 | 1 | 5
+de: Veganer Beeren-Smoothie mit Seidentofu
+en: Vegan berry smoothie with silken tofu
+fr: Smoothie vegan aux baies et tofu soyeux
+it: Frullato vegano ai frutti di bosco con tofu morbido
+es: Batido vegano de frutos rojos con tofu sedoso
+pt: Smoothie vegano de frutas vermelhas com tofu macio
+ja: 絹ごし豆腐のヴィーガンベリースムージー
+i: silken_tofu 200g, soy_milk 200ml, berries 150g, oats 20g, peanut_butter 1tsp, maple_syrup 1tsp
+sd: Seidentofu abtropfen lassen. | Mit Sojadrink, Beeren, Haferflocken, Erdnussbutter und Ahornsirup in den Mixer geben. | 1 Minute fein mixen. | In ein Glas füllen und sofort geniessen.
+se: Drain the silken tofu. | Put it in a blender with the soya drink, berries, oats, peanut butter and maple syrup. | Blend for 1 minute until smooth. | Pour into a glass and enjoy straight away.
+q: berry smoothie
+@ pb_banana_soy_oats | breakfast | american | 5 | 1 | 6
+de: Veganer Haferbrei mit Sojajoghurt, Erdnussbutter und Banane
+en: Vegan oats with soya yoghurt, peanut butter and banana
+fr: Flocons d'avoine vegan au yaourt de soja, beurre de cacahuète et banane
+it: Avena vegana con yogurt di soia, burro di arachidi e banana
+es: Avena vegana con yogur de soja, crema de cacahuete y plátano
+pt: Aveia vegana com iogurte de soja, pasta de amendoim e banana
+ja: 豆乳ヨーグルト、ピーナッツバター、バナナのヴィーガンオーツ
+i: oats 50g, soy_milk 200ml, soy_yogurt 150g, peanut_butter 1tbsp, banana 0.5pc, chia_seeds 1tsp
+sd: Haferflocken mit Sojadrink aufkochen und 4 Minuten cremig köcheln. | Chiasamen unterrühren und kurz quellen lassen. | In eine Schale geben und Sojajoghurt darauf verteilen. | Mit Bananenscheiben belegen und Erdnussbutter darüberträufeln.
+se: Bring the oats to the boil with the soya drink and simmer for 4 minutes until creamy. | Stir in the chia seeds and let them swell briefly. | Spoon into a bowl and top with the soya yoghurt. | Add banana slices and drizzle with peanut butter.
+q: oatmeal peanut butter banana
+@ moong_dal_chilla | breakfast | indian | 25 | 2 | 6
+de: Moong-Dal-Chilla (Linsen-Pfannkuchen) mit Minz-Sojajoghurt
+en: Moong dal chilla (lentil pancakes) with mint soya yoghurt
+fr: Moong dal chilla (crêpes de lentilles) et yaourt de soja à la menthe
+it: Moong dal chilla (crêpe di legumi) con yogurt di soia alla menta
+es: Moong dal chilla (crepes de lentejas) con yogur de soja a la menta
+pt: Moong dal chilla (panquecas de lentilha) com iogurte de soja e hortelã
+ja: ムングダール・チーラ（豆のパンケーキ）ミント豆乳ヨーグルト添え
+i: mung_dal 120g, ginger 10g, chili_fresh 0.5pc, cumin 0.5tsp, turmeric 0.25tsp, tomato 1pc, coriander_fresh 5g, rapeseed_oil 2tsp, soy_yogurt 150g, mint_fresh 5g, salt 2g
+sd: Moong Dal mindestens 3 Stunden (oder über Nacht) einweichen und abgiessen. | Mit Ingwer, Chili, Kreuzkümmel, Kurkuma, Salz und etwa 100 ml Wasser zu einem glatten Teig mixen. | Fein gewürfelte Tomate und gehackten Koriander unterrühren. | Pfanne dünn einölen, je eine Kelle Teig dünn ausstreichen und pro Seite 2 Minuten goldbraun backen. | Sojajoghurt mit gehackter Minze verrühren und dazu servieren.
+se: Soak the moong dal for at least 3 hours (or overnight) and drain. | Blend with the ginger, chilli, cumin, turmeric, salt and about 100 ml water to a smooth batter. | Stir in the finely diced tomato and chopped coriander. | Oil a pan thinly, spread a ladle of batter thinly and cook for 2 minutes per side until golden. | Stir the soya yoghurt with chopped mint and serve alongside.
+q: moong dal chilla
+@ masala_omelette | breakfast | indian | 10 | 1 | 6
+de: Masala-Omelette mit Tomate und Koriander
+en: Masala omelette with tomato and coriander
+fr: Omelette masala à la tomate et coriandre
+it: Omelette masala con pomodoro e coriandolo
+es: Tortilla masala con tomate y cilantro
+pt: Omelete masala com tomate e coentro
+ja: トマトとパクチーのマサラオムレツ
+i: eggs 3pc, red_onion 0.25pc, tomato 0.5pc, chili_fresh 0.5pc, coriander_fresh 5g, turmeric 1pinch, garam_masala 0.25tsp, rapeseed_oil 1tsp, bread 50g, salt 1g
+sd: Zwiebel, Tomate und Chili sehr fein hacken, Koriander schneiden. | Eier mit Kurkuma, Garam Masala und Salz verquirlen und das Gemüse unterrühren. | Öl erhitzen, Eimasse hineingiessen und bei mittlerer Hitze 2–3 Minuten stocken lassen, wenden und kurz fertig braten. | Mit getoastetem Brot servieren.
+se: Very finely chop the onion, tomato and chilli and chop the coriander. | Whisk the eggs with turmeric, garam masala and salt and stir in the vegetables. | Heat the oil, pour in the eggs and cook over medium heat for 2–3 minutes until set, flip and finish briefly. | Serve with toasted bread.
+q: masala omelette

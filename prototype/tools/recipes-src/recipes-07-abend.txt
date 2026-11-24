@@ -1,0 +1,133 @@
+# Abendessen, Teil 3
+@ seafood_paella | dinner | spanish | 45 | 3 | 8
+de: Meeresfrüchte-Paella mit Crevetten und Muscheln
+en: Seafood paella with prawns and mussels
+fr: Paella aux fruits de mer, crevettes et moules
+it: Paella di mare con gamberi e cozze
+es: Paella de marisco con gambas y mejillones
+pt: Paella de frutos do mar com camarão e mexilhões
+ja: エビとムール貝のシーフードパエリア
+i: risotto_rice 180g, shrimp 250g, mussels 400g, cod 200g, red_bell_pepper 1pc, peas 100g, onion 1pc, garlic 3pc, canned_tomatoes 200g, paprika 2tsp, saffron 1pinch, chicken_broth 700ml, olive_oil 1tbsp, lemon 1pc, parsley 10g, salt 3g
+sd: Muscheln waschen und offene, beschädigte Exemplare wegwerfen; Zwiebel, Knoblauch und Peperoni hacken. | Im Öl in einer grossen Pfanne 5 Minuten dünsten, Paprika und Safran zugeben, Tomaten 3 Minuten mitkochen. | Reis einrühren, heisse Bouillon angiessen, salzen und 12 Minuten ohne Rühren köcheln. | Fischstücke, Crevetten, Muscheln und Erbsen auf dem Reis verteilen, zudecken und 8–10 Minuten garen, bis sich die Muscheln geöffnet haben (geschlossene wegwerfen). | 5 Minuten ruhen lassen und mit Zitronenschnitzen und Petersilie servieren.
+se: Wash the mussels and discard any open or damaged ones; chop the onion, garlic and pepper. | Soften them in the oil in a large pan for 5 minutes, add the paprika and saffron and cook the tomatoes for 3 minutes. | Stir in the rice, pour in the hot stock, season and simmer for 12 minutes without stirring. | Spread the fish pieces, prawns, mussels and peas over the rice, cover and cook for 8–10 minutes until the mussels open (discard any that stay closed). | Rest for 5 minutes and serve with lemon wedges and parsley.
+q: seafood paella
+@ pollo_al_ajillo | dinner | spanish | 35 | 2 | 6
+de: Pollo al ajillo (Knoblauch-Poulet) mit Ofenkartoffeln und Salat
+en: Pollo al ajillo (garlic chicken) with oven potatoes and salad
+fr: Pollo al ajillo (poulet à l'ail), pommes de terre au four et salade
+it: Pollo al ajillo (pollo all'aglio) con patate al forno e insalata
+es: Pollo al ajillo con patatas al horno y ensalada
+pt: Pollo al ajillo (frango ao alho) com batatas assadas e salada
+ja: ポジョ・アル・アヒージョ（鶏肉のにんにく炒め）オーブンポテトとサラダ
+i: chicken_thigh 340g, garlic 6pc, potato 300g, olive_oil 1tbsp, chicken_broth 100ml, thyme_dried 1tsp, paprika 1tsp, lemon 0.5pc, parsley 10g, lettuce 0.25pc, tomato 1pc, salt 3g, black_pepper 1pinch
+sd: Backofen auf 220 °C vorheizen, Kartoffeln in Spalten schneiden, mit 1 TL Öl, Paprika und Salz mischen und 25 Minuten backen. | Poulet in Stücke schneiden, salzen und pfeffern und im restlichen Öl rundum 8 Minuten goldbraun braten. | Ungeschälte, angedrückte Knoblauchzehen und Thymian zugeben und 2 Minuten mitbraten. | Bouillon und Zitronensaft zugeben und 5 Minuten einkochen, bis das Poulet gar ist. | Mit Petersilie bestreuen und mit Kartoffeln und Tomatensalat servieren.
+se: Preheat the oven to 220 °C, cut the potatoes into wedges, toss with 1 tsp oil, paprika and salt and bake for 25 minutes. | Cut the chicken into pieces, season with salt and pepper and brown all over in the remaining oil for 8 minutes. | Add the unpeeled, lightly crushed garlic cloves and thyme and fry for 2 minutes. | Add the stock and lemon juice and reduce for 5 minutes until the chicken is cooked. | Sprinkle with parsley and serve with the potatoes and a tomato salad.
+q: garlic chicken spanish
+@ bacalhau_grao | dinner | portuguese | 30 | 2 | 7
+de: Bacalhau mit Kichererbsen, Ei und Petersilie
+en: Bacalhau with chickpeas, egg and parsley
+fr: Bacalhau aux pois chiches, œuf et persil
+it: Baccalà con ceci, uovo e prezzemolo
+es: Bacalao con garbanzos, huevo y perejil
+pt: Bacalhau com grão-de-bico
+ja: 干しダラとひよこ豆、卵、パセリのサラダ仕立て
+i: salt_cod 300g, chickpeas 400g, eggs 2pc, red_onion 1pc, garlic 2pc, olive_oil 1tbsp, white_wine_vinegar 1tbsp, parsley 20g, olives 30g, black_pepper 1pinch
+sd: Stockfisch nach Packungsangabe 24–48 Stunden wässern (Wasser mehrmals wechseln) oder entsalzten Bacalhau kaufen. | Fisch in siedendem Wasser 8–10 Minuten pochieren, abtropfen lassen und in grosse Flocken zupfen; Eier 9 Minuten kochen. | Kichererbsen abspülen und kurz erwärmen, Zwiebel in feine Ringe schneiden und Knoblauch hacken. | Alles mit Öl, Essig, Pfeffer und Petersilie mischen und mit Eivierteln und Oliven servieren.
+se: Soak the salt cod for 24–48 hours according to the packet, changing the water several times, or buy desalted bacalhau. | Poach the fish in simmering water for 8–10 minutes, drain and flake into large pieces; boil the eggs for 9 minutes. | Rinse the chickpeas and warm them briefly, slice the onion into thin rings and chop the garlic. | Toss everything with the oil, vinegar, pepper and parsley and serve with egg quarters and olives.
+q: bacalhau chickpeas
+@ frango_piri_piri | dinner | portuguese | 40 | 2 | 7
+de: Frango piri-piri mit Ofengemüse
+en: Piri-piri chicken with roast vegetables
+fr: Poulet piri-piri et légumes rôtis
+it: Pollo piri-piri con verdure al forno
+es: Pollo piri-piri con verduras asadas
+pt: Frango piri-piri com legumes assados
+ja: ピリピリチキンと焼き野菜
+i: chicken_thigh 340g, chili_fresh 2pc, garlic 3pc, paprika 2tsp, lemon 1pc, olive_oil 1tbsp, white_wine_vinegar 1tbsp, sweet_potato 1pc, red_bell_pepper 1pc, red_onion 1pc, rocket 30g, salt 3g
+sd: Chili, Knoblauch, Paprika, Zitronensaft, Essig, 2 TL Öl und Salz zu einer Marinade mixen und das Poulet 20 Minuten darin marinieren. | Backofen auf 220 °C vorheizen, Süsskartoffel, Peperoni und Zwiebel in Stücke schneiden und mit dem restlichen Öl mischen. | Gemüse auf einem Blech verteilen, Poulet darauflegen und 25–30 Minuten backen, bis es gar und leicht gebräunt ist. | Mit Rucola servieren.
+se: Blend the chilli, garlic, paprika, lemon juice, vinegar, 2 tsp oil and salt into a marinade and marinate the chicken for 20 minutes. | Preheat the oven to 220 °C, cut the sweet potato, pepper and onion into chunks and toss with the remaining oil. | Spread the vegetables on a tray, place the chicken on top and bake for 25–30 minutes until cooked and lightly browned. | Serve with rocket.
+q: piri piri chicken
+@ poulet_provencal | dinner | french | 40 | 2 | 6
+de: Poulet provençal mit Tomaten, Oliven und Kräutern
+en: Chicken provençal with tomatoes, olives and herbs
+fr: Poulet à la provençale
+it: Pollo alla provenzale con pomodori, olive ed erbe
+es: Pollo a la provenzal con tomates, aceitunas y hierbas
+pt: Frango à provençal com tomate, azeitonas e ervas
+ja: トマト、オリーブ、ハーブのプロヴァンス風チキン
+i: chicken_breast 320g, canned_tomatoes 400g, zucchini 1pc, red_bell_pepper 1pc, onion 1pc, garlic 3pc, olives 40g, thyme_dried 1tsp, oregano_dried 1tsp, olive_oil 1tbsp, basil_fresh 5g, white_beans 240g, salt 3g, black_pepper 1pinch
+sd: Poulet in grosse Stücke schneiden, würzen und in 1 TL Öl rundum anbraten, herausnehmen. | Zwiebel, Knoblauch, Zucchetti und Peperoni würfeln und im restlichen Öl 5 Minuten dünsten. | Tomaten, Kräuter, Oliven und Bohnen zugeben, Poulet einlegen und zugedeckt 15–20 Minuten schmoren. | Abschmecken und mit Basilikum servieren.
+se: Cut the chicken into large pieces, season and brown all over in 1 tsp oil, then remove. | Dice the onion, garlic, courgette and pepper and soften in the remaining oil for 5 minutes. | Add the tomatoes, herbs, olives and beans, put the chicken back and braise covered for 15–20 minutes. | Season and serve with basil.
+q: chicken provencal olives tomatoes
+@ ratatouille_white_beans | dinner | french | 45 | 2 | 6
+de: Ratatouille mit weissen Bohnen und Quinoa
+en: Ratatouille with white beans and quinoa
+fr: Ratatouille aux haricots blancs et quinoa
+it: Ratatouille con fagioli bianchi e quinoa
+es: Ratatouille con alubias blancas y quinoa
+pt: Ratatouille com feijão-branco e quinoa
+ja: 白いんげん豆とキヌアのラタトゥイユ
+i: aubergine 1pc, zucchini 1pc, red_bell_pepper 1pc, onion 1pc, garlic 3pc, canned_tomatoes 400g, white_beans 400g, tofu_firm 150g, quinoa 80g, thyme_dried 1tsp, olive_oil 1tbsp, basil_fresh 10g, salt 3g, black_pepper 1pinch
+sd: Quinoa spülen und in 160 ml Salzwasser 15 Minuten garen. | Aubergine, Zucchetti, Peperoni und Zwiebel in Würfel schneiden, Knoblauch hacken, Tofu würfeln. | Aubergine und Tofu im Öl 6 Minuten anbraten, restliches Gemüse und Knoblauch zugeben und 5 Minuten weiterbraten. | Tomaten, Bohnen und Thymian zugeben und zugedeckt 20 Minuten köcheln, würzen. | Mit Basilikum bestreuen und mit Quinoa servieren.
+se: Rinse the quinoa and cook it in 160 ml salted water for 15 minutes. | Dice the aubergine, courgette, pepper and onion, chop the garlic and dice the tofu. | Fry the aubergine and tofu in the oil for 6 minutes, add the remaining vegetables and garlic and fry for 5 more minutes. | Add the tomatoes, beans and thyme and simmer covered for 20 minutes, then season. | Sprinkle with basil and serve with the quinoa.
+q: ratatouille
+@ salmon_puy_lentils | dinner | french | 35 | 2 | 7
+de: Lachs auf Puy-Linsen mit Senf-Joghurt
+en: Salmon on Puy lentils with mustard yoghurt
+fr: Saumon sur lentilles du Puy, yaourt à la moutarde
+it: Salmone su lenticchie di Puy con yogurt alla senape
+es: Salmón sobre lentejas de Puy con yogur a la mostaza
+pt: Salmão sobre lentilhas de Puy com iogurte de mostarda
+ja: ピュイ産レンズ豆のサーモン マスタードヨーグルト添え
+i: salmon 260g, green_lentils 120g, carrot 1pc, celery 1pc, shallot 1pc, vegetable_broth 400ml, greek_yogurt 100g, dijon_mustard 2tsp, spinach 100g, lemon 0.5pc, olive_oil 1tsp, parsley 10g, salt 3g, black_pepper 1pinch
+sd: Schalotte, Rüebli und Sellerie fein würfeln und im Öl 3 Minuten andünsten, Linsen und Bouillon zugeben und 20–25 Minuten köcheln. | Spinat unter die Linsen heben und mit Zitronensaft, Salz und Pfeffer abschmecken. | Lachs salzen und in einer beschichteten Pfanne auf der Hautseite 5 Minuten braten, wenden und 2 Minuten fertig garen. | Joghurt mit Senf und Petersilie verrühren und mit Linsen und Lachs servieren.
+se: Finely dice the shallot, carrot and celery and sweat in the oil for 3 minutes, add the lentils and stock and simmer for 20–25 minutes. | Fold the spinach into the lentils and season with lemon juice, salt and pepper. | Salt the salmon and fry it skin side down in a non-stick pan for 5 minutes, turn and cook for 2 more minutes. | Stir the yoghurt with the mustard and parsley and serve with the lentils and salmon.
+q: salmon lentils
+@ chicken_sweet_potato_traybake | dinner | american | 40 | 2 | 8
+de: Poulet-Süsskartoffel-Blech mit Brokkoli
+en: Chicken and sweet potato traybake with broccoli
+fr: Plaque de poulet, patate douce et brocoli
+it: Teglia di pollo, patata dolce e broccoli
+es: Bandeja de pollo, boniato y brócoli al horno
+pt: Assadeira de frango, batata-doce e brócolis
+ja: 鶏肉とさつまいも、ブロッコリーの天板焼き
+i: chicken_breast 320g, sweet_potato 1.5pc, broccoli 300g, red_onion 1pc, olive_oil 1tbsp, paprika 2tsp, garlic 2pc, thyme_dried 1tsp, greek_yogurt 100g, lemon 0.5pc, salt 3g, black_pepper 1pinch
+sd: Backofen auf 210 °C vorheizen. Süsskartoffel in Würfel und Zwiebel in Spalten schneiden, mit der Hälfte des Öls, Paprika und Salz mischen und 15 Minuten backen. | Poulet in grosse Stücke schneiden, mit restlichem Öl, Knoblauch, Thymian, Salz und Pfeffer mischen. | Poulet und Brokkoliröschen aufs Blech geben und weitere 15–18 Minuten backen, bis das Poulet gar ist. | Joghurt mit Zitronensaft und Salz verrühren und dazu servieren.
+se: Preheat the oven to 210 °C. Dice the sweet potato and cut the onion into wedges, toss with half the oil, paprika and salt and bake for 15 minutes. | Cut the chicken into large pieces and mix with the remaining oil, garlic, thyme, salt and pepper. | Add the chicken and broccoli florets to the tray and bake for 15–18 minutes more until the chicken is cooked. | Stir the yoghurt with lemon juice and salt and serve alongside.
+q: chicken sweet potato sheet pan
+@ turkey_meatballs | dinner | italian | 40 | 2 | 7
+de: Truten-Hackbällchen in Tomatensauce mit Polenta
+en: Turkey meatballs in tomato sauce with polenta
+fr: Boulettes de dinde à la sauce tomate et polenta
+it: Polpette di tacchino al sugo con polenta
+es: Albóndigas de pavo en salsa de tomate con polenta
+pt: Almôndegas de peru ao molho de tomate com polenta
+ja: 七面鳥ミートボールのトマトソース煮 ポレンタ添え
+i: turkey_mince 320g, eggs 1pc, parmesan 20g, oats 20g, garlic 2pc, parsley 10g, passata 500ml, onion 0.5pc, basil_fresh 5g, olive_oil 2tsp, polenta 90g, vegetable_broth 400ml, salt 3g, black_pepper 1pinch
+sd: Hackfleisch mit Ei, Parmesan, Haferflocken, 1 Knoblauchzehe, Petersilie, Salz und Pfeffer verkneten und zu 14 Bällchen formen. | Bällchen im Öl rundum 5 Minuten anbraten. | Zwiebel und restlichen Knoblauch hacken, kurz mitdünsten, Passata zugeben und zugedeckt 15 Minuten köcheln. | Bouillon aufkochen, Polenta einrühren und 10 Minuten unter Rühren quellen lassen. | Bällchen mit Sauce auf der Polenta anrichten und mit Basilikum bestreuen.
+se: Knead the mince with the egg, Parmesan, oats, 1 garlic clove, parsley, salt and pepper and shape into 14 balls. | Brown the meatballs all over in the oil for 5 minutes. | Chop the onion and remaining garlic, sweat briefly, add the passata and simmer covered for 15 minutes. | Bring the stock to the boil, stir in the polenta and let it thicken for 10 minutes, stirring. | Spoon the meatballs and sauce over the polenta and sprinkle with basil.
+q: meatballs tomato sauce
+@ stuffed_sweet_potato | dinner | american | 50 | 2 | 6
+de: Gefüllte Süsskartoffel mit schwarzen Bohnen und Sojajoghurt
+en: Stuffed sweet potato with black beans and soya yoghurt
+fr: Patate douce farcie aux haricots noirs et yaourt de soja
+it: Patata dolce ripiena con fagioli neri e yogurt di soia
+es: Boniato relleno de frijoles negros y yogur de soja
+pt: Batata-doce recheada com feijão-preto e iogurte de soja
+ja: 黒豆と豆乳ヨーグルトのスタッフドさつまいも
+i: sweet_potato 2pc, black_beans 400g, tofu_firm 150g, sweetcorn 100g, red_onion 0.5pc, tomato 1pc, cumin 1tsp, paprika 1tsp, lime 1pc, soy_yogurt 120g, coriander_fresh 10g, rapeseed_oil 2tsp, salt 3g
+sd: Backofen auf 200 °C vorheizen, Süsskartoffeln mehrmals einstechen und 40–45 Minuten weich backen. | Tofu zerbröseln und mit gehackter Zwiebel im Öl 5 Minuten braten, Gewürze zugeben. | Abgespülte Bohnen, Mais und gewürfelte Tomate zugeben und 5 Minuten erwärmen, mit Limettensaft und Salz abschmecken. | Süsskartoffeln längs aufschneiden, auflockern, füllen und mit Sojajoghurt und Koriander servieren.
+se: Preheat the oven to 200 °C, prick the sweet potatoes several times and bake for 40–45 minutes until soft. | Crumble the tofu and fry with the chopped onion in the oil for 5 minutes, then add the spices. | Add the rinsed beans, sweetcorn and diced tomato and warm through for 5 minutes, then season with lime juice and salt. | Split the sweet potatoes lengthways, fluff the flesh, fill and serve with soya yoghurt and coriander.
+q: stuffed sweet potato black beans
+@ cod_dill_mustard | dinner | nordic | 30 | 2 | 6
+de: Kabeljau mit Dill-Senf-Sauce, Kartoffeln und Erbsen
+en: Cod with dill and mustard sauce, potatoes and peas
+fr: Cabillaud sauce aneth-moutarde, pommes de terre et petits pois
+it: Merluzzo con salsa all'aneto e senape, patate e piselli
+es: Bacalao con salsa de eneldo y mostaza, patatas y guisantes
+pt: Bacalhau fresco com molho de endro e mostarda, batatas e ervilhas
+ja: タラのディルマスタードソース ポテトとグリーンピース添え
+i: cod 340g, potato 400g, peas 150g, greek_yogurt 120g, dijon_mustard 2tsp, dill 10g, lemon 0.5pc, butter 1tsp, salt 3g, black_pepper 1pinch
+sd: Kartoffeln in Salzwasser 18–20 Minuten kochen, Erbsen die letzten 3 Minuten mitkochen. | Kabeljau salzen und in einer Pfanne mit Butter bei mittlerer Hitze pro Seite 3–4 Minuten braten. | Joghurt mit Senf, gehacktem Dill, Zitronensaft, Salz und Pfeffer verrühren. | Fisch mit Kartoffeln, Erbsen und Dill-Senf-Sauce servieren.
+se: Boil the potatoes in salted water for 18–20 minutes, adding the peas for the last 3 minutes. | Salt the cod and fry it in a pan with the butter over medium heat for 3–4 minutes per side. | Stir the yoghurt with the mustard, chopped dill, lemon juice, salt and pepper. | Serve the fish with the potatoes, peas and dill-mustard sauce.
+q: cod dill potatoes

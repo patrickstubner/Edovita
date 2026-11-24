@@ -1,6 +1,6 @@
 (function () {
   'use strict';
-  // Reiner Klick-Prototyp v5.10.1: keine Netzwerkaufrufe. Gespeichert: Sprache, Zweitsprache (manuelle Wahl), Plan, Einkaufsliste (inkl. vorhandene Teilmengen), Darstellung, Ton, Melodie. Keine Standort- oder Gesundheitsdaten. Sprachcodes nur nach Whitelist.
+  // Reiner Klick-Prototyp v5.11: keine Netzwerkaufrufe. Gespeichert: Sprache, Zweitsprache (manuelle Wahl), Plan, Einkaufsliste (inkl. vorhandene Teilmengen), Darstellung, Ton, Melodie. Keine Standort- oder Gesundheitsdaten. Sprachcodes nur nach Whitelist.
   // Alle Texte kommen aus locales/<code>/*.json (über i18n.js) und werden nur per textContent/setAttribute gesetzt.
   var I = window.EdoI18n;
   var T = function (k, v) { return I.t(k, v); };
@@ -752,6 +752,24 @@
   ];
   var RMEALS = { all: 1, breakfast: 1, lunch: 1, dinner: 1, snack: 1 }, RPROPS = { fast: 1, protein: 1, saved: 1 };
   var RECIPE_PHOTOS = { oven_salmon: 1, thai_curry: 1, pho: 1, summer_rolls: 1, birchermuesli: 1, yogurt_bowl: 1, lentil_curry: 1, scrambled_eggs: 1, chicken_bowl: 1, miso_salmon: 1, shakshuka: 1, burrito_bowl: 1 };
+  // Zusatzrezepte aus data/recipes-ext.js (generiert von tools/build-recipes.py); Werte werden geprüft
+  (function mergeExtRecipes() {
+    var x = window.EDO_RECIPES_EXT, meals = { breakfast: 1, lunch: 1, dinner: 1, snack: 1 };
+    var hasOk = { meat: 1, fish: 1, dairy: 1, egg: 1, gluten: 1, nuts: 1, mushrooms: 1, onion: 1, cilantro: 1 };
+    if (!x || !Array.isArray(x.recipes)) return;
+    function num(v, lo, hi) { return typeof v === 'number' && isFinite(v) && v >= lo && v <= hi; }
+    x.recipes.forEach(function (r) {
+      if (!r || typeof r.id !== 'string' || !/^[a-z][a-z0-9_]{1,39}$/.test(r.id) || !meals[r.meal]) return;
+      if (!num(r.kcal, 0, 3000) || !num(r.p, 0, 300) || !num(r.min, 1, 600) || !Array.isArray(r.has)) return;
+      var has = r.has.filter(function (h) { return typeof h === 'string' && hasOk[h]; });
+      var cur = RECIPES.filter(function (o) { return o.id === r.id; })[0];
+      if (cur) { cur.kcal = r.kcal; cur.p = r.p; cur.has = has; }
+      else if (typeof r.cui === 'string' && /^[a-z_]{2,30}$/.test(r.cui)) {
+        RECIPES.push({ id: r.id, cui: r.cui, kcal: r.kcal, min: r.min, p: r.p, meal: r.meal, has: has, pop: num(r.pop, 0, 10) ? r.pop : 6, c: /^c[1-6]$/.test(r.c) ? r.c : 'c1' });
+      } else return;
+      if (r.photo === true) RECIPE_PHOTOS[r.id] = 1;
+    });
+  })();
   function hasRecipePhoto(id) { return !!RECIPE_PHOTOS[id]; }
   function recipePhoto(id, kind) {
     var img = mk('img');

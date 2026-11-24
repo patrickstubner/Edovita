@@ -3,19 +3,95 @@
   "timezone": "Europe/Zurich",
   "license": "Pexels License (https://www.pexels.com/license/) — free use, attribution not required. See IMAGES.md.",
   "internal_only": true,
-  "note": "This manifest is not shown in the UI. Images are bundled locally; no hotlinking, no API.",
+  "note": "This manifest is not shown in the UI. Images are bundled locally; no hotlinking, no API. Fotos ab v5.11 über die öffentliche Pexels-Bild-Sitemap gefunden; Fotografenname dort nicht enthalten (photographer: null, Lizenz verlangt keine Nennung).",
   "placeholders": [
-    {
-      "recipeId": "quinoa_pan",
-      "reason": "Kein Foto, das klar eine Quinoa-Gemüsepfanne mit Kichererbsen zeigt, ohne irreführende Zutaten (z. B. Fleisch oder Buchweizen)."
-    },
     {
       "recipeId": "mushroom_polenta",
       "reason": "Kein Foto, das Pilze und Polenta zusammen und erkennbar zeigt."
     },
     {
+      "recipeId": "tofu_scramble",
+      "reason": "Kein Pexels-Foto gefunden, das das Gericht klar und ohne irreführende Zutaten zeigt."
+    },
+    {
+      "recipeId": "cuscuz_egg",
+      "reason": "Kein Pexels-Foto gefunden, das das Gericht klar und ohne irreführende Zutaten zeigt."
+    },
+    {
+      "recipeId": "veggie_egg_muffins",
+      "reason": "Kein Pexels-Foto gefunden, das das Gericht klar und ohne irreführende Zutaten zeigt."
+    },
+    {
+      "recipeId": "rosti_fried_egg",
+      "reason": "Kein Pexels-Foto gefunden, das das Gericht klar und ohne irreführende Zutaten zeigt."
+    },
+    {
+      "recipeId": "swiss_cottage_radish_bread",
+      "reason": "Kein Pexels-Foto gefunden, das das Gericht klar und ohne irreführende Zutaten zeigt."
+    },
+    {
+      "recipeId": "bresaola_rocket_toast",
+      "reason": "Kein Pexels-Foto gefunden, das das Gericht klar und ohne irreführende Zutaten zeigt."
+    },
+    {
+      "recipeId": "crepioca_chicken",
+      "reason": "Kein Pexels-Foto gefunden, das das Gericht klar und ohne irreführende Zutaten zeigt."
+    },
+    {
+      "recipeId": "spinach_egg_wrap",
+      "reason": "Kein Pexels-Foto gefunden, das das Gericht klar und ohne irreführende Zutaten zeigt."
+    },
+    {
+      "recipeId": "moong_dal_chilla",
+      "reason": "Kein Pexels-Foto gefunden, das das Gericht klar und ohne irreführende Zutaten zeigt."
+    },
+    {
+      "recipeId": "salpicao_frango",
+      "reason": "Kein Pexels-Foto gefunden, das das Gericht klar und ohne irreführende Zutaten zeigt."
+    },
+    {
+      "recipeId": "baked_cod_tomatoes",
+      "reason": "Kein Pexels-Foto gefunden, das das Gericht klar und ohne irreführende Zutaten zeigt."
+    },
+    {
+      "recipeId": "chili_sin_carne",
+      "reason": "Kein Pexels-Foto gefunden, das das Gericht klar und ohne irreführende Zutaten zeigt."
+    },
+    {
+      "recipeId": "pescado_veracruzana",
+      "reason": "Kein Pexels-Foto gefunden, das das Gericht klar und ohne irreführende Zutaten zeigt."
+    },
+    {
+      "recipeId": "aji_de_gallina_light",
+      "reason": "Kein Pexels-Foto gefunden, das das Gericht klar und ohne irreführende Zutaten zeigt."
+    },
+    {
+      "recipeId": "bacalhau_grao",
+      "reason": "Kein Pexels-Foto gefunden, das das Gericht klar und ohne irreführende Zutaten zeigt."
+    },
+    {
+      "recipeId": "poulet_provencal",
+      "reason": "Kein Pexels-Foto gefunden, das das Gericht klar und ohne irreführende Zutaten zeigt."
+    },
+    {
+      "recipeId": "tuna_rice_cakes",
+      "reason": "Kein Pexels-Foto gefunden, das das Gericht klar und ohne irreführende Zutaten zeigt."
+    },
+    {
+      "recipeId": "bundnerfleisch_crispbread",
+      "reason": "Kein Pexels-Foto gefunden, das das Gericht klar und ohne irreführende Zutaten zeigt."
+    },
+    {
+      "recipeId": "teriyaki_tofu",
+      "reason": "Passende Kandidaten zeigten Teriyaki-Lachs statt Tofu (irreführend für ein veganes Gericht)."
+    },
+    {
       "recipeId": "hummus_wrap",
-      "reason": "Kein schlichtes, passendes Hummus-Gemüse-Wrap-Foto (Kandidaten waren Döner mit Pommes, Party-Röllchen oder stark stilisiert)."
+      "reason": "Kein schlichtes, passendes Hummus-Gemüse-Wrap-Foto (Kandidaten mit Poulet oder stark stilisiert)."
+    },
+    {
+      "recipeId": "quinoa_pan",
+      "reason": "Kein Foto, das klar eine Quinoa-Gemüsepfanne mit Kichererbsen zeigt, ohne irreführende Zutaten (z. B. Fleisch)."
     }
   ],
   "images": [
@@ -224,6 +300,2828 @@
       "bytes": {
         "full": 54224,
         "thumb": 18426
+      }
+    },
+    {
+      "recipeId": "skyr_berry_bowl",
+      "source": "Pexels",
+      "pexelsId": 7992683,
+      "originalUrl": "https://www.pexels.com/photo/7992683/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "skyr_berry_bowl.webp",
+        "thumb": "skyr_berry_bowl-thumb.webp"
+      },
+      "bytes": {
+        "full": 14846,
+        "thumb": 7964
+      }
+    },
+    {
+      "recipeId": "quark_bircher",
+      "source": "Pexels",
+      "pexelsId": 23940631,
+      "originalUrl": "https://www.pexels.com/photo/23940631/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "quark_bircher.webp",
+        "thumb": "quark_bircher-thumb.webp"
+      },
+      "bytes": {
+        "full": 20496,
+        "thumb": 10104
+      }
+    },
+    {
+      "recipeId": "cottage_tomato_toast",
+      "source": "Pexels",
+      "pexelsId": 35672970,
+      "originalUrl": "https://www.pexels.com/photo/35672970/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "cottage_tomato_toast.webp",
+        "thumb": "cottage_tomato_toast-thumb.webp"
+      },
+      "bytes": {
+        "full": 21598,
+        "thumb": 11490
+      }
+    },
+    {
+      "recipeId": "overnight_oats_quark",
+      "source": "Pexels",
+      "pexelsId": 4725735,
+      "originalUrl": "https://www.pexels.com/photo/4725735/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "overnight_oats_quark.webp",
+        "thumb": "overnight_oats_quark-thumb.webp"
+      },
+      "bytes": {
+        "full": 9658,
+        "thumb": 4696
+      }
+    },
+    {
+      "recipeId": "veggie_omelette",
+      "source": "Pexels",
+      "pexelsId": 37287418,
+      "originalUrl": "https://www.pexels.com/photo/37287418/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "veggie_omelette.webp",
+        "thumb": "veggie_omelette-thumb.webp"
+      },
+      "bytes": {
+        "full": 18532,
+        "thumb": 10134
+      }
+    },
+    {
+      "recipeId": "spinach_feta_omelette",
+      "source": "Pexels",
+      "pexelsId": 23996321,
+      "originalUrl": "https://www.pexels.com/photo/23996321/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "spinach_feta_omelette.webp",
+        "thumb": "spinach_feta_omelette-thumb.webp"
+      },
+      "bytes": {
+        "full": 50462,
+        "thumb": 23316
+      }
+    },
+    {
+      "recipeId": "cottage_zucchini_frittata",
+      "source": "Pexels",
+      "pexelsId": 14302153,
+      "originalUrl": "https://www.pexels.com/photo/14302153/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "cottage_zucchini_frittata.webp",
+        "thumb": "cottage_zucchini_frittata-thumb.webp"
+      },
+      "bytes": {
+        "full": 23822,
+        "thumb": 12558
+      }
+    },
+    {
+      "recipeId": "protein_pancakes",
+      "source": "Pexels",
+      "pexelsId": 31098651,
+      "originalUrl": "https://www.pexels.com/photo/31098651/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "protein_pancakes.webp",
+        "thumb": "protein_pancakes-thumb.webp"
+      },
+      "bytes": {
+        "full": 25282,
+        "thumb": 12098
+      }
+    },
+    {
+      "recipeId": "huevos_rancheros",
+      "source": "Pexels",
+      "pexelsId": 16556117,
+      "originalUrl": "https://www.pexels.com/photo/16556117/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "huevos_rancheros.webp",
+        "thumb": "huevos_rancheros-thumb.webp"
+      },
+      "bytes": {
+        "full": 29572,
+        "thumb": 13758
+      }
+    },
+    {
+      "recipeId": "smoked_salmon_bread",
+      "source": "Pexels",
+      "pexelsId": 9524171,
+      "originalUrl": "https://www.pexels.com/photo/9524171/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "smoked_salmon_bread.webp",
+        "thumb": "smoked_salmon_bread-thumb.webp"
+      },
+      "bytes": {
+        "full": 17650,
+        "thumb": 9062
+      }
+    },
+    {
+      "recipeId": "tapioca_egg_cheese",
+      "source": "Pexels",
+      "pexelsId": 37050196,
+      "originalUrl": "https://www.pexels.com/photo/37050196/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "tapioca_egg_cheese.webp",
+        "thumb": "tapioca_egg_cheese-thumb.webp"
+      },
+      "bytes": {
+        "full": 17218,
+        "thumb": 8042
+      }
+    },
+    {
+      "recipeId": "acai_skyr_bowl",
+      "source": "Pexels",
+      "pexelsId": 566564,
+      "originalUrl": "https://www.pexels.com/photo/566564/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "acai_skyr_bowl.webp",
+        "thumb": "acai_skyr_bowl-thumb.webp"
+      },
+      "bytes": {
+        "full": 21360,
+        "thumb": 11648
+      }
+    },
+    {
+      "recipeId": "japanese_salmon_breakfast",
+      "source": "Pexels",
+      "pexelsId": 33706292,
+      "originalUrl": "https://www.pexels.com/photo/33706292/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "japanese_salmon_breakfast.webp",
+        "thumb": "japanese_salmon_breakfast-thumb.webp"
+      },
+      "bytes": {
+        "full": 13520,
+        "thumb": 7230
+      }
+    },
+    {
+      "recipeId": "tamagoyaki_edamame",
+      "source": "Pexels",
+      "pexelsId": 32722818,
+      "originalUrl": "https://www.pexels.com/photo/32722818/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "tamagoyaki_edamame.webp",
+        "thumb": "tamagoyaki_edamame-thumb.webp"
+      },
+      "bytes": {
+        "full": 13106,
+        "thumb": 6910
+      }
+    },
+    {
+      "recipeId": "chicken_congee",
+      "source": "Pexels",
+      "pexelsId": 32835478,
+      "originalUrl": "https://www.pexels.com/photo/32835478/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "chicken_congee.webp",
+        "thumb": "chicken_congee-thumb.webp"
+      },
+      "bytes": {
+        "full": 19366,
+        "thumb": 10412
+      }
+    },
+    {
+      "recipeId": "menemen",
+      "source": "Pexels",
+      "pexelsId": 39853243,
+      "originalUrl": "https://www.pexels.com/photo/39853243/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "menemen.webp",
+        "thumb": "menemen-thumb.webp"
+      },
+      "bytes": {
+        "full": 20038,
+        "thumb": 10032
+      }
+    },
+    {
+      "recipeId": "greek_yogurt_walnut",
+      "source": "Pexels",
+      "pexelsId": 5620415,
+      "originalUrl": "https://www.pexels.com/photo/5620415/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "greek_yogurt_walnut.webp",
+        "thumb": "greek_yogurt_walnut-thumb.webp"
+      },
+      "bytes": {
+        "full": 37048,
+        "thumb": 15754
+      }
+    },
+    {
+      "recipeId": "chia_skyr_mango",
+      "source": "Pexels",
+      "pexelsId": 6544212,
+      "originalUrl": "https://www.pexels.com/photo/6544212/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "chia_skyr_mango.webp",
+        "thumb": "chia_skyr_mango-thumb.webp"
+      },
+      "bytes": {
+        "full": 14992,
+        "thumb": 8012
+      }
+    },
+    {
+      "recipeId": "ricotta_berry_toast",
+      "source": "Pexels",
+      "pexelsId": 30900623,
+      "originalUrl": "https://www.pexels.com/photo/30900623/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "ricotta_berry_toast.webp",
+        "thumb": "ricotta_berry_toast-thumb.webp"
+      },
+      "bytes": {
+        "full": 37910,
+        "thumb": 18844
+      }
+    },
+    {
+      "recipeId": "breakfast_burrito",
+      "source": "Pexels",
+      "pexelsId": 27590340,
+      "originalUrl": "https://www.pexels.com/photo/27590340/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "breakfast_burrito.webp",
+        "thumb": "breakfast_burrito-thumb.webp"
+      },
+      "bytes": {
+        "full": 29344,
+        "thumb": 14684
+      }
+    },
+    {
+      "recipeId": "avocado_egg_toast",
+      "source": "Pexels",
+      "pexelsId": 11975658,
+      "originalUrl": "https://www.pexels.com/photo/11975658/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "avocado_egg_toast.webp",
+        "thumb": "avocado_egg_toast-thumb.webp"
+      },
+      "bytes": {
+        "full": 21710,
+        "thumb": 10914
+      }
+    },
+    {
+      "recipeId": "quinoa_breakfast_porridge",
+      "source": "Pexels",
+      "pexelsId": 11532336,
+      "originalUrl": "https://www.pexels.com/photo/11532336/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "quinoa_breakfast_porridge.webp",
+        "thumb": "quinoa_breakfast_porridge-thumb.webp"
+      },
+      "bytes": {
+        "full": 30734,
+        "thumb": 13822
+      }
+    },
+    {
+      "recipeId": "oat_porridge_quark",
+      "source": "Pexels",
+      "pexelsId": 27850091,
+      "originalUrl": "https://www.pexels.com/photo/27850091/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "oat_porridge_quark.webp",
+        "thumb": "oat_porridge_quark-thumb.webp"
+      },
+      "bytes": {
+        "full": 22534,
+        "thumb": 11950
+      }
+    },
+    {
+      "recipeId": "green_shakshuka",
+      "source": "Pexels",
+      "pexelsId": 6419606,
+      "originalUrl": "https://www.pexels.com/photo/6419606/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "green_shakshuka.webp",
+        "thumb": "green_shakshuka-thumb.webp"
+      },
+      "bytes": {
+        "full": 18214,
+        "thumb": 9064
+      }
+    },
+    {
+      "recipeId": "cilbir",
+      "source": "Pexels",
+      "pexelsId": 38085477,
+      "originalUrl": "https://www.pexels.com/photo/38085477/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "cilbir.webp",
+        "thumb": "cilbir-thumb.webp"
+      },
+      "bytes": {
+        "full": 37862,
+        "thumb": 18778
+      }
+    },
+    {
+      "recipeId": "gyeran_jjim",
+      "source": "Pexels",
+      "pexelsId": 39531113,
+      "originalUrl": "https://www.pexels.com/photo/39531113/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "gyeran_jjim.webp",
+        "thumb": "gyeran_jjim-thumb.webp"
+      },
+      "bytes": {
+        "full": 21730,
+        "thumb": 10936
+      }
+    },
+    {
+      "recipeId": "kimchi_scrambled_eggs",
+      "source": "Pexels",
+      "pexelsId": 6109498,
+      "originalUrl": "https://www.pexels.com/photo/6109498/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "kimchi_scrambled_eggs.webp",
+        "thumb": "kimchi_scrambled_eggs-thumb.webp"
+      },
+      "bytes": {
+        "full": 48358,
+        "thumb": 20080
+      }
+    },
+    {
+      "recipeId": "buckwheat_galette",
+      "source": "Pexels",
+      "pexelsId": 10821333,
+      "originalUrl": "https://www.pexels.com/photo/10821333/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "buckwheat_galette.webp",
+        "thumb": "buckwheat_galette-thumb.webp"
+      },
+      "bytes": {
+        "full": 16526,
+        "thumb": 8814
+      }
+    },
+    {
+      "recipeId": "berry_protein_smoothie",
+      "source": "Pexels",
+      "pexelsId": 11066839,
+      "originalUrl": "https://www.pexels.com/photo/11066839/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "berry_protein_smoothie.webp",
+        "thumb": "berry_protein_smoothie-thumb.webp"
+      },
+      "bytes": {
+        "full": 19246,
+        "thumb": 10064
+      }
+    },
+    {
+      "recipeId": "skyr_apple_compote",
+      "source": "Pexels",
+      "pexelsId": 7994280,
+      "originalUrl": "https://www.pexels.com/photo/7994280/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "skyr_apple_compote.webp",
+        "thumb": "skyr_apple_compote-thumb.webp"
+      },
+      "bytes": {
+        "full": 9888,
+        "thumb": 5456
+      }
+    },
+    {
+      "recipeId": "silken_tofu_smoothie",
+      "source": "Pexels",
+      "pexelsId": 33549367,
+      "originalUrl": "https://www.pexels.com/photo/33549367/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "silken_tofu_smoothie.webp",
+        "thumb": "silken_tofu_smoothie-thumb.webp"
+      },
+      "bytes": {
+        "full": 11762,
+        "thumb": 5300
+      }
+    },
+    {
+      "recipeId": "pb_banana_soy_oats",
+      "source": "Pexels",
+      "pexelsId": 7167853,
+      "originalUrl": "https://www.pexels.com/photo/7167853/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "pb_banana_soy_oats.webp",
+        "thumb": "pb_banana_soy_oats-thumb.webp"
+      },
+      "bytes": {
+        "full": 17652,
+        "thumb": 9352
+      }
+    },
+    {
+      "recipeId": "masala_omelette",
+      "source": "Pexels",
+      "pexelsId": 15801901,
+      "originalUrl": "https://www.pexels.com/photo/15801901/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "masala_omelette.webp",
+        "thumb": "masala_omelette-thumb.webp"
+      },
+      "bytes": {
+        "full": 31178,
+        "thumb": 15882
+      }
+    },
+    {
+      "recipeId": "greek_chicken_salad",
+      "source": "Pexels",
+      "pexelsId": 19295808,
+      "originalUrl": "https://www.pexels.com/photo/19295808/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "greek_chicken_salad.webp",
+        "thumb": "greek_chicken_salad-thumb.webp"
+      },
+      "bytes": {
+        "full": 27134,
+        "thumb": 14696
+      }
+    },
+    {
+      "recipeId": "tuna_nicoise",
+      "source": "Pexels",
+      "pexelsId": 36555137,
+      "originalUrl": "https://www.pexels.com/photo/36555137/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "tuna_nicoise.webp",
+        "thumb": "tuna_nicoise-thumb.webp"
+      },
+      "bytes": {
+        "full": 29138,
+        "thumb": 14312
+      }
+    },
+    {
+      "recipeId": "quinoa_feta_salad",
+      "source": "Pexels",
+      "pexelsId": 27850079,
+      "originalUrl": "https://www.pexels.com/photo/27850079/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "quinoa_feta_salad.webp",
+        "thumb": "quinoa_feta_salad-thumb.webp"
+      },
+      "bytes": {
+        "full": 17232,
+        "thumb": 9482
+      }
+    },
+    {
+      "recipeId": "lentil_feta_salad",
+      "source": "Pexels",
+      "pexelsId": 28618631,
+      "originalUrl": "https://www.pexels.com/photo/28618631/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "lentil_feta_salad.webp",
+        "thumb": "lentil_feta_salad-thumb.webp"
+      },
+      "bytes": {
+        "full": 23284,
+        "thumb": 12474
+      }
+    },
+    {
+      "recipeId": "chicken_caesar_light",
+      "source": "Pexels",
+      "pexelsId": 20321601,
+      "originalUrl": "https://www.pexels.com/photo/20321601/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "chicken_caesar_light.webp",
+        "thumb": "chicken_caesar_light-thumb.webp"
+      },
+      "bytes": {
+        "full": 26738,
+        "thumb": 13308
+      }
+    },
+    {
+      "recipeId": "turkey_veggie_wrap",
+      "source": "Pexels",
+      "pexelsId": 29535634,
+      "originalUrl": "https://www.pexels.com/photo/29535634/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "turkey_veggie_wrap.webp",
+        "thumb": "turkey_veggie_wrap-thumb.webp"
+      },
+      "bytes": {
+        "full": 20064,
+        "thumb": 10076
+      }
+    },
+    {
+      "recipeId": "salmon_poke",
+      "source": "Pexels",
+      "pexelsId": 15913488,
+      "originalUrl": "https://www.pexels.com/photo/15913488/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "salmon_poke.webp",
+        "thumb": "salmon_poke-thumb.webp"
+      },
+      "bytes": {
+        "full": 21494,
+        "thumb": 12158
+      }
+    },
+    {
+      "recipeId": "tofu_poke",
+      "source": "Pexels",
+      "pexelsId": 4828142,
+      "originalUrl": "https://www.pexels.com/photo/4828142/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "tofu_poke.webp",
+        "thumb": "tofu_poke-thumb.webp"
+      },
+      "bytes": {
+        "full": 15346,
+        "thumb": 8796
+      }
+    },
+    {
+      "recipeId": "bibimbap",
+      "source": "Pexels",
+      "pexelsId": 39594967,
+      "originalUrl": "https://www.pexels.com/photo/39594967/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "bibimbap.webp",
+        "thumb": "bibimbap-thumb.webp"
+      },
+      "bytes": {
+        "full": 25850,
+        "thumb": 9198
+      }
+    },
+    {
+      "recipeId": "chicken_shawarma_bowl",
+      "source": "Pexels",
+      "pexelsId": 8018079,
+      "originalUrl": "https://www.pexels.com/photo/8018079/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "chicken_shawarma_bowl.webp",
+        "thumb": "chicken_shawarma_bowl-thumb.webp"
+      },
+      "bytes": {
+        "full": 19478,
+        "thumb": 10290
+      }
+    },
+    {
+      "recipeId": "baked_falafel_bowl",
+      "source": "Pexels",
+      "pexelsId": 6275189,
+      "originalUrl": "https://www.pexels.com/photo/6275189/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "baked_falafel_bowl.webp",
+        "thumb": "baked_falafel_bowl-thumb.webp"
+      },
+      "bytes": {
+        "full": 30134,
+        "thumb": 13734
+      }
+    },
+    {
+      "recipeId": "chickpea_tuna_salad",
+      "source": "Pexels",
+      "pexelsId": 34429559,
+      "originalUrl": "https://www.pexels.com/photo/34429559/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "chickpea_tuna_salad.webp",
+        "thumb": "chickpea_tuna_salad-thumb.webp"
+      },
+      "bytes": {
+        "full": 46528,
+        "thumb": 24160
+      }
+    },
+    {
+      "recipeId": "chicken_caprese_salad",
+      "source": "Pexels",
+      "pexelsId": 13241857,
+      "originalUrl": "https://www.pexels.com/photo/13241857/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "chicken_caprese_salad.webp",
+        "thumb": "chicken_caprese_salad-thumb.webp"
+      },
+      "bytes": {
+        "full": 38812,
+        "thumb": 19346
+      }
+    },
+    {
+      "recipeId": "minestrone_beans",
+      "source": "Pexels",
+      "pexelsId": 16811678,
+      "originalUrl": "https://www.pexels.com/photo/16811678/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "minestrone_beans.webp",
+        "thumb": "minestrone_beans-thumb.webp"
+      },
+      "bytes": {
+        "full": 12582,
+        "thumb": 6840
+      }
+    },
+    {
+      "recipeId": "bundner_barley_soup",
+      "source": "Pexels",
+      "pexelsId": 11519066,
+      "originalUrl": "https://www.pexels.com/photo/11519066/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "bundner_barley_soup.webp",
+        "thumb": "bundner_barley_soup-thumb.webp"
+      },
+      "bytes": {
+        "full": 57916,
+        "thumb": 23140
+      }
+    },
+    {
+      "recipeId": "egg_salad_sandwich",
+      "source": "Pexels",
+      "pexelsId": 31150259,
+      "originalUrl": "https://www.pexels.com/photo/31150259/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "egg_salad_sandwich.webp",
+        "thumb": "egg_salad_sandwich-thumb.webp"
+      },
+      "bytes": {
+        "full": 16658,
+        "thumb": 8730
+      }
+    },
+    {
+      "recipeId": "black_bean_soup",
+      "source": "Pexels",
+      "pexelsId": 31985803,
+      "originalUrl": "https://www.pexels.com/photo/31985803/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "black_bean_soup.webp",
+        "thumb": "black_bean_soup-thumb.webp"
+      },
+      "bytes": {
+        "full": 15422,
+        "thumb": 7994
+      }
+    },
+    {
+      "recipeId": "chicken_tortilla_soup",
+      "source": "Pexels",
+      "pexelsId": 15780649,
+      "originalUrl": "https://www.pexels.com/photo/15780649/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "chicken_tortilla_soup.webp",
+        "thumb": "chicken_tortilla_soup-thumb.webp"
+      },
+      "bytes": {
+        "full": 17258,
+        "thumb": 9294
+      }
+    },
+    {
+      "recipeId": "beef_fajita_bowl",
+      "source": "Pexels",
+      "pexelsId": 40135711,
+      "originalUrl": "https://www.pexels.com/photo/40135711/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "beef_fajita_bowl.webp",
+        "thumb": "beef_fajita_bowl-thumb.webp"
+      },
+      "bytes": {
+        "full": 46534,
+        "thumb": 19758
+      }
+    },
+    {
+      "recipeId": "shrimp_tacos",
+      "source": "Pexels",
+      "pexelsId": 10296433,
+      "originalUrl": "https://www.pexels.com/photo/10296433/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "shrimp_tacos.webp",
+        "thumb": "shrimp_tacos-thumb.webp"
+      },
+      "bytes": {
+        "full": 18718,
+        "thumb": 9996
+      }
+    },
+    {
+      "recipeId": "prato_feito",
+      "source": "Pexels",
+      "pexelsId": 34628053,
+      "originalUrl": "https://www.pexels.com/photo/34628053/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "prato_feito.webp",
+        "thumb": "prato_feito-thumb.webp"
+      },
+      "bytes": {
+        "full": 46530,
+        "thumb": 21076
+      }
+    },
+    {
+      "recipeId": "caldo_verde_beans",
+      "source": "Pexels",
+      "pexelsId": 36429907,
+      "originalUrl": "https://www.pexels.com/photo/36429907/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "caldo_verde_beans.webp",
+        "thumb": "caldo_verde_beans-thumb.webp"
+      },
+      "bytes": {
+        "full": 40430,
+        "thumb": 19720
+      }
+    },
+    {
+      "recipeId": "cold_soba_tofu",
+      "source": "Pexels",
+      "pexelsId": 37140175,
+      "originalUrl": "https://www.pexels.com/photo/37140175/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "cold_soba_tofu.webp",
+        "thumb": "cold_soba_tofu-thumb.webp"
+      },
+      "bytes": {
+        "full": 36006,
+        "thumb": 14972
+      }
+    },
+    {
+      "recipeId": "oyakodon",
+      "source": "Pexels",
+      "pexelsId": 37297724,
+      "originalUrl": "https://www.pexels.com/photo/37297724/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "oyakodon.webp",
+        "thumb": "oyakodon-thumb.webp"
+      },
+      "bytes": {
+        "full": 16090,
+        "thumb": 8096
+      }
+    },
+    {
+      "recipeId": "gyudon_light",
+      "source": "Pexels",
+      "pexelsId": 31299650,
+      "originalUrl": "https://www.pexels.com/photo/31299650/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "gyudon_light.webp",
+        "thumb": "gyudon_light-thumb.webp"
+      },
+      "bytes": {
+        "full": 22614,
+        "thumb": 12230
+      }
+    },
+    {
+      "recipeId": "goi_ga",
+      "source": "Pexels",
+      "pexelsId": 15813486,
+      "originalUrl": "https://www.pexels.com/photo/15813486/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "goi_ga.webp",
+        "thumb": "goi_ga-thumb.webp"
+      },
+      "bytes": {
+        "full": 22594,
+        "thumb": 10586
+      }
+    },
+    {
+      "recipeId": "banh_mi_bowl",
+      "source": "Pexels",
+      "pexelsId": 34888274,
+      "originalUrl": "https://www.pexels.com/photo/34888274/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "banh_mi_bowl.webp",
+        "thumb": "banh_mi_bowl-thumb.webp"
+      },
+      "bytes": {
+        "full": 38078,
+        "thumb": 16256
+      }
+    },
+    {
+      "recipeId": "bun_chay_tofu",
+      "source": "Pexels",
+      "pexelsId": 29467676,
+      "originalUrl": "https://www.pexels.com/photo/29467676/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "bun_chay_tofu.webp",
+        "thumb": "bun_chay_tofu-thumb.webp"
+      },
+      "bytes": {
+        "full": 20200,
+        "thumb": 8598
+      }
+    },
+    {
+      "recipeId": "yum_nua",
+      "source": "Pexels",
+      "pexelsId": 35215472,
+      "originalUrl": "https://www.pexels.com/photo/35215472/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "yum_nua.webp",
+        "thumb": "yum_nua-thumb.webp"
+      },
+      "bytes": {
+        "full": 39578,
+        "thumb": 17480
+      }
+    },
+    {
+      "recipeId": "larb_gai",
+      "source": "Pexels",
+      "pexelsId": 12100417,
+      "originalUrl": "https://www.pexels.com/photo/12100417/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "larb_gai.webp",
+        "thumb": "larb_gai-thumb.webp"
+      },
+      "bytes": {
+        "full": 28486,
+        "thumb": 13290
+      }
+    },
+    {
+      "recipeId": "palak_dal",
+      "source": "Pexels",
+      "pexelsId": 28675074,
+      "originalUrl": "https://www.pexels.com/photo/28675074/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "palak_dal.webp",
+        "thumb": "palak_dal-thumb.webp"
+      },
+      "bytes": {
+        "full": 16292,
+        "thumb": 8412
+      }
+    },
+    {
+      "recipeId": "chana_masala",
+      "source": "Pexels",
+      "pexelsId": 9287035,
+      "originalUrl": "https://www.pexels.com/photo/9287035/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "chana_masala.webp",
+        "thumb": "chana_masala-thumb.webp"
+      },
+      "bytes": {
+        "full": 42420,
+        "thumb": 20142
+      }
+    },
+    {
+      "recipeId": "tandoori_chicken_salad",
+      "source": "Pexels",
+      "pexelsId": 29699526,
+      "originalUrl": "https://www.pexels.com/photo/29699526/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "tandoori_chicken_salad.webp",
+        "thumb": "tandoori_chicken_salad-thumb.webp"
+      },
+      "bytes": {
+        "full": 20380,
+        "thumb": 10006
+      }
+    },
+    {
+      "recipeId": "paneer_tikka_wrap",
+      "source": "Pexels",
+      "pexelsId": 36268517,
+      "originalUrl": "https://www.pexels.com/photo/36268517/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "paneer_tikka_wrap.webp",
+        "thumb": "paneer_tikka_wrap-thumb.webp"
+      },
+      "bytes": {
+        "full": 20238,
+        "thumb": 10270
+      }
+    },
+    {
+      "recipeId": "hot_sour_tofu_soup",
+      "source": "Pexels",
+      "pexelsId": 36680510,
+      "originalUrl": "https://www.pexels.com/photo/36680510/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "hot_sour_tofu_soup.webp",
+        "thumb": "hot_sour_tofu_soup-thumb.webp"
+      },
+      "bytes": {
+        "full": 17628,
+        "thumb": 8930
+      }
+    },
+    {
+      "recipeId": "chicken_vegetable_soup",
+      "source": "Pexels",
+      "pexelsId": 34821965,
+      "originalUrl": "https://www.pexels.com/photo/34821965/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "chicken_vegetable_soup.webp",
+        "thumb": "chicken_vegetable_soup-thumb.webp"
+      },
+      "bytes": {
+        "full": 26870,
+        "thumb": 12906
+      }
+    },
+    {
+      "recipeId": "tuna_pasta_salad",
+      "source": "Pexels",
+      "pexelsId": 37987827,
+      "originalUrl": "https://www.pexels.com/photo/37987827/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "tuna_pasta_salad.webp",
+        "thumb": "tuna_pasta_salad-thumb.webp"
+      },
+      "bytes": {
+        "full": 31524,
+        "thumb": 16500
+      }
+    },
+    {
+      "recipeId": "tonno_fagioli",
+      "source": "Pexels",
+      "pexelsId": 37081069,
+      "originalUrl": "https://www.pexels.com/photo/37081069/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "tonno_fagioli.webp",
+        "thumb": "tonno_fagioli-thumb.webp"
+      },
+      "bytes": {
+        "full": 24594,
+        "thumb": 11894
+      }
+    },
+    {
+      "recipeId": "halloumi_lentil_salad",
+      "source": "Pexels",
+      "pexelsId": 40607633,
+      "originalUrl": "https://www.pexels.com/photo/40607633/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "halloumi_lentil_salad.webp",
+        "thumb": "halloumi_lentil_salad-thumb.webp"
+      },
+      "bytes": {
+        "full": 24728,
+        "thumb": 12952
+      }
+    },
+    {
+      "recipeId": "gazpacho_shrimp",
+      "source": "Pexels",
+      "pexelsId": 38238825,
+      "originalUrl": "https://www.pexels.com/photo/38238825/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "gazpacho_shrimp.webp",
+        "thumb": "gazpacho_shrimp-thumb.webp"
+      },
+      "bytes": {
+        "full": 8822,
+        "thumb": 4308
+      }
+    },
+    {
+      "recipeId": "espinacas_garbanzos",
+      "source": "Pexels",
+      "pexelsId": 35695373,
+      "originalUrl": "https://www.pexels.com/photo/35695373/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "espinacas_garbanzos.webp",
+        "thumb": "espinacas_garbanzos-thumb.webp"
+      },
+      "bytes": {
+        "full": 20952,
+        "thumb": 10944
+      }
+    },
+    {
+      "recipeId": "gado_gado",
+      "source": "Pexels",
+      "pexelsId": 31336113,
+      "originalUrl": "https://www.pexels.com/photo/31336113/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "gado_gado.webp",
+        "thumb": "gado_gado-thumb.webp"
+      },
+      "bytes": {
+        "full": 34166,
+        "thumb": 16978
+      }
+    },
+    {
+      "recipeId": "ceviche_sweet_potato",
+      "source": "Pexels",
+      "pexelsId": 28448392,
+      "originalUrl": "https://www.pexels.com/photo/28448392/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "ceviche_sweet_potato.webp",
+        "thumb": "ceviche_sweet_potato-thumb.webp"
+      },
+      "bytes": {
+        "full": 19088,
+        "thumb": 10074
+      }
+    },
+    {
+      "recipeId": "trout_potato_salad",
+      "source": "Pexels",
+      "pexelsId": 19396430,
+      "originalUrl": "https://www.pexels.com/photo/19396430/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "trout_potato_salad.webp",
+        "thumb": "trout_potato_salad-thumb.webp"
+      },
+      "bytes": {
+        "full": 27378,
+        "thumb": 12748
+      }
+    },
+    {
+      "recipeId": "skagen_toast",
+      "source": "Pexels",
+      "pexelsId": 39413007,
+      "originalUrl": "https://www.pexels.com/photo/39413007/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "skagen_toast.webp",
+        "thumb": "skagen_toast-thumb.webp"
+      },
+      "bytes": {
+        "full": 26510,
+        "thumb": 14194
+      }
+    },
+    {
+      "recipeId": "edamame_quinoa_bowl",
+      "source": "Pexels",
+      "pexelsId": 7660427,
+      "originalUrl": "https://www.pexels.com/photo/7660427/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "edamame_quinoa_bowl.webp",
+        "thumb": "edamame_quinoa_bowl-thumb.webp"
+      },
+      "bytes": {
+        "full": 10036,
+        "thumb": 5108
+      }
+    },
+    {
+      "recipeId": "harira",
+      "source": "Pexels",
+      "pexelsId": 209540,
+      "originalUrl": "https://www.pexels.com/photo/209540/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "harira.webp",
+        "thumb": "harira-thumb.webp"
+      },
+      "bytes": {
+        "full": 22486,
+        "thumb": 11722
+      }
+    },
+    {
+      "recipeId": "couscous_chicken_salad",
+      "source": "Pexels",
+      "pexelsId": 37520728,
+      "originalUrl": "https://www.pexels.com/photo/37520728/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "couscous_chicken_salad.webp",
+        "thumb": "couscous_chicken_salad-thumb.webp"
+      },
+      "bytes": {
+        "full": 48120,
+        "thumb": 22672
+      }
+    },
+    {
+      "recipeId": "zurich_geschnetzeltes",
+      "source": "Pexels",
+      "pexelsId": 19193027,
+      "originalUrl": "https://www.pexels.com/photo/19193027/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "zurich_geschnetzeltes.webp",
+        "thumb": "zurich_geschnetzeltes-thumb.webp"
+      },
+      "bytes": {
+        "full": 20330,
+        "thumb": 9250
+      }
+    },
+    {
+      "recipeId": "whitefish_potatoes",
+      "source": "Pexels",
+      "pexelsId": 19748960,
+      "originalUrl": "https://www.pexels.com/photo/19748960/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "whitefish_potatoes.webp",
+        "thumb": "whitefish_potatoes-thumb.webp"
+      },
+      "bytes": {
+        "full": 21582,
+        "thumb": 10238
+      }
+    },
+    {
+      "recipeId": "barley_risotto_chicken",
+      "source": "Pexels",
+      "pexelsId": 14537683,
+      "originalUrl": "https://www.pexels.com/photo/14537683/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "barley_risotto_chicken.webp",
+        "thumb": "barley_risotto_chicken-thumb.webp"
+      },
+      "bytes": {
+        "full": 28062,
+        "thumb": 14300
+      }
+    },
+    {
+      "recipeId": "alpler_magronen_light",
+      "source": "Pexels",
+      "pexelsId": 6845342,
+      "originalUrl": "https://www.pexels.com/photo/6845342/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "alpler_magronen_light.webp",
+        "thumb": "alpler_magronen_light-thumb.webp"
+      },
+      "bytes": {
+        "full": 10648,
+        "thumb": 5984
+      }
+    },
+    {
+      "recipeId": "beef_steak_vegetables",
+      "source": "Pexels",
+      "pexelsId": 36829358,
+      "originalUrl": "https://www.pexels.com/photo/36829358/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "beef_steak_vegetables.webp",
+        "thumb": "beef_steak_vegetables-thumb.webp"
+      },
+      "bytes": {
+        "full": 71718,
+        "thumb": 30286
+      }
+    },
+    {
+      "recipeId": "chicken_piccata",
+      "source": "Pexels",
+      "pexelsId": 6896080,
+      "originalUrl": "https://www.pexels.com/photo/6896080/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "chicken_piccata.webp",
+        "thumb": "chicken_piccata-thumb.webp"
+      },
+      "bytes": {
+        "full": 45404,
+        "thumb": 18456
+      }
+    },
+    {
+      "recipeId": "turkey_bolognese",
+      "source": "Pexels",
+      "pexelsId": 30392939,
+      "originalUrl": "https://www.pexels.com/photo/30392939/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "turkey_bolognese.webp",
+        "thumb": "turkey_bolognese-thumb.webp"
+      },
+      "bytes": {
+        "full": 20462,
+        "thumb": 10768
+      }
+    },
+    {
+      "recipeId": "lentil_bolognese",
+      "source": "Pexels",
+      "pexelsId": 36223320,
+      "originalUrl": "https://www.pexels.com/photo/36223320/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "lentil_bolognese.webp",
+        "thumb": "lentil_bolognese-thumb.webp"
+      },
+      "bytes": {
+        "full": 19764,
+        "thumb": 9648
+      }
+    },
+    {
+      "recipeId": "shrimp_garlic_pasta",
+      "source": "Pexels",
+      "pexelsId": 37648027,
+      "originalUrl": "https://www.pexels.com/photo/37648027/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "shrimp_garlic_pasta.webp",
+        "thumb": "shrimp_garlic_pasta-thumb.webp"
+      },
+      "bytes": {
+        "full": 25512,
+        "thumb": 11940
+      }
+    },
+    {
+      "recipeId": "chicken_souvlaki",
+      "source": "Pexels",
+      "pexelsId": 37073896,
+      "originalUrl": "https://www.pexels.com/photo/37073896/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "chicken_souvlaki.webp",
+        "thumb": "chicken_souvlaki-thumb.webp"
+      },
+      "bytes": {
+        "full": 35972,
+        "thumb": 17564
+      }
+    },
+    {
+      "recipeId": "shrimp_saganaki",
+      "source": "Pexels",
+      "pexelsId": 36630842,
+      "originalUrl": "https://www.pexels.com/photo/36630842/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "shrimp_saganaki.webp",
+        "thumb": "shrimp_saganaki-thumb.webp"
+      },
+      "bytes": {
+        "full": 14912,
+        "thumb": 7822
+      }
+    },
+    {
+      "recipeId": "baked_feta_chickpeas",
+      "source": "Pexels",
+      "pexelsId": 33984950,
+      "originalUrl": "https://www.pexels.com/photo/33984950/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "baked_feta_chickpeas.webp",
+        "thumb": "baked_feta_chickpeas-thumb.webp"
+      },
+      "bytes": {
+        "full": 54282,
+        "thumb": 27012
+      }
+    },
+    {
+      "recipeId": "chicken_tagine",
+      "source": "Pexels",
+      "pexelsId": 36984667,
+      "originalUrl": "https://www.pexels.com/photo/36984667/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "chicken_tagine.webp",
+        "thumb": "chicken_tagine-thumb.webp"
+      },
+      "bytes": {
+        "full": 52222,
+        "thumb": 22882
+      }
+    },
+    {
+      "recipeId": "beef_kofta_yogurt",
+      "source": "Pexels",
+      "pexelsId": 32986492,
+      "originalUrl": "https://www.pexels.com/photo/32986492/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "beef_kofta_yogurt.webp",
+        "thumb": "beef_kofta_yogurt-thumb.webp"
+      },
+      "bytes": {
+        "full": 19280,
+        "thumb": 8216
+      }
+    },
+    {
+      "recipeId": "stuffed_peppers_turkey",
+      "source": "Pexels",
+      "pexelsId": 31953512,
+      "originalUrl": "https://www.pexels.com/photo/31953512/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "stuffed_peppers_turkey.webp",
+        "thumb": "stuffed_peppers_turkey-thumb.webp"
+      },
+      "bytes": {
+        "full": 26314,
+        "thumb": 12728
+      }
+    },
+    {
+      "recipeId": "chili_con_carne",
+      "source": "Pexels",
+      "pexelsId": 15881322,
+      "originalUrl": "https://www.pexels.com/photo/15881322/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "chili_con_carne.webp",
+        "thumb": "chili_con_carne-thumb.webp"
+      },
+      "bytes": {
+        "full": 31536,
+        "thumb": 14180
+      }
+    },
+    {
+      "recipeId": "chicken_fajitas",
+      "source": "Pexels",
+      "pexelsId": 40135708,
+      "originalUrl": "https://www.pexels.com/photo/40135708/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "chicken_fajitas.webp",
+        "thumb": "chicken_fajitas-thumb.webp"
+      },
+      "bytes": {
+        "full": 47162,
+        "thumb": 19596
+      }
+    },
+    {
+      "recipeId": "moqueca",
+      "source": "Pexels",
+      "pexelsId": 40108721,
+      "originalUrl": "https://www.pexels.com/photo/40108721/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "moqueca.webp",
+        "thumb": "moqueca-thumb.webp"
+      },
+      "bytes": {
+        "full": 43150,
+        "thumb": 16848
+      }
+    },
+    {
+      "recipeId": "picadinho",
+      "source": "Pexels",
+      "pexelsId": 34636462,
+      "originalUrl": "https://www.pexels.com/photo/34636462/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "picadinho.webp",
+        "thumb": "picadinho-thumb.webp"
+      },
+      "bytes": {
+        "full": 40698,
+        "thumb": 19184
+      }
+    },
+    {
+      "recipeId": "feijoada_light",
+      "source": "Pexels",
+      "pexelsId": 40646830,
+      "originalUrl": "https://www.pexels.com/photo/40646830/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "feijoada_light.webp",
+        "thumb": "feijoada_light-thumb.webp"
+      },
+      "bytes": {
+        "full": 34006,
+        "thumb": 17238
+      }
+    },
+    {
+      "recipeId": "bobo_camarao",
+      "source": "Pexels",
+      "pexelsId": 17346226,
+      "originalUrl": "https://www.pexels.com/photo/17346226/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "bobo_camarao.webp",
+        "thumb": "bobo_camarao-thumb.webp"
+      },
+      "bytes": {
+        "full": 38126,
+        "thumb": 17414
+      }
+    },
+    {
+      "recipeId": "galinhada",
+      "source": "Pexels",
+      "pexelsId": 17696653,
+      "originalUrl": "https://www.pexels.com/photo/17696653/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "galinhada.webp",
+        "thumb": "galinhada-thumb.webp"
+      },
+      "bytes": {
+        "full": 66690,
+        "thumb": 30734
+      }
+    },
+    {
+      "recipeId": "bulgogi",
+      "source": "Pexels",
+      "pexelsId": 5774000,
+      "originalUrl": "https://www.pexels.com/photo/5774000/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "bulgogi.webp",
+        "thumb": "bulgogi-thumb.webp"
+      },
+      "bytes": {
+        "full": 35232,
+        "thumb": 15262
+      }
+    },
+    {
+      "recipeId": "dakgalbi",
+      "source": "Pexels",
+      "pexelsId": 29173121,
+      "originalUrl": "https://www.pexels.com/photo/29173121/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "dakgalbi.webp",
+        "thumb": "dakgalbi-thumb.webp"
+      },
+      "bytes": {
+        "full": 26362,
+        "thumb": 13446
+      }
+    },
+    {
+      "recipeId": "sundubu_jjigae",
+      "source": "Pexels",
+      "pexelsId": 29902068,
+      "originalUrl": "https://www.pexels.com/photo/29902068/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "sundubu_jjigae.webp",
+        "thumb": "sundubu_jjigae-thumb.webp"
+      },
+      "bytes": {
+        "full": 29396,
+        "thumb": 14026
+      }
+    },
+    {
+      "recipeId": "kung_pao_chicken",
+      "source": "Pexels",
+      "pexelsId": 30708204,
+      "originalUrl": "https://www.pexels.com/photo/30708204/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "kung_pao_chicken.webp",
+        "thumb": "kung_pao_chicken-thumb.webp"
+      },
+      "bytes": {
+        "full": 26242,
+        "thumb": 13616
+      }
+    },
+    {
+      "recipeId": "mapo_tofu",
+      "source": "Pexels",
+      "pexelsId": 34618075,
+      "originalUrl": "https://www.pexels.com/photo/34618075/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "mapo_tofu.webp",
+        "thumb": "mapo_tofu-thumb.webp"
+      },
+      "bytes": {
+        "full": 21660,
+        "thumb": 10570
+      }
+    },
+    {
+      "recipeId": "steamed_fish_ginger",
+      "source": "Pexels",
+      "pexelsId": 33896073,
+      "originalUrl": "https://www.pexels.com/photo/33896073/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "steamed_fish_ginger.webp",
+        "thumb": "steamed_fish_ginger-thumb.webp"
+      },
+      "bytes": {
+        "full": 23564,
+        "thumb": 11188
+      }
+    },
+    {
+      "recipeId": "beef_broccoli",
+      "source": "Pexels",
+      "pexelsId": 31867670,
+      "originalUrl": "https://www.pexels.com/photo/31867670/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "beef_broccoli.webp",
+        "thumb": "beef_broccoli-thumb.webp"
+      },
+      "bytes": {
+        "full": 32104,
+        "thumb": 16400
+      }
+    },
+    {
+      "recipeId": "saba_shioyaki",
+      "source": "Pexels",
+      "pexelsId": 37189805,
+      "originalUrl": "https://www.pexels.com/photo/37189805/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "saba_shioyaki.webp",
+        "thumb": "saba_shioyaki-thumb.webp"
+      },
+      "bytes": {
+        "full": 26854,
+        "thumb": 13214
+      }
+    },
+    {
+      "recipeId": "japanese_chicken_curry",
+      "source": "Pexels",
+      "pexelsId": 30700759,
+      "originalUrl": "https://www.pexels.com/photo/30700759/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "japanese_chicken_curry.webp",
+        "thumb": "japanese_chicken_curry-thumb.webp"
+      },
+      "bytes": {
+        "full": 23536,
+        "thumb": 11952
+      }
+    },
+    {
+      "recipeId": "green_curry_shrimp",
+      "source": "Pexels",
+      "pexelsId": 31029754,
+      "originalUrl": "https://www.pexels.com/photo/31029754/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "green_curry_shrimp.webp",
+        "thumb": "green_curry_shrimp-thumb.webp"
+      },
+      "bytes": {
+        "full": 22198,
+        "thumb": 11450
+      }
+    },
+    {
+      "recipeId": "pad_kra_pao",
+      "source": "Pexels",
+      "pexelsId": 34613240,
+      "originalUrl": "https://www.pexels.com/photo/34613240/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "pad_kra_pao.webp",
+        "thumb": "pad_kra_pao-thumb.webp"
+      },
+      "bytes": {
+        "full": 35124,
+        "thumb": 15208
+      }
+    },
+    {
+      "recipeId": "tom_yum_shrimp",
+      "source": "Pexels",
+      "pexelsId": 34699476,
+      "originalUrl": "https://www.pexels.com/photo/34699476/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "tom_yum_shrimp.webp",
+        "thumb": "tom_yum_shrimp-thumb.webp"
+      },
+      "bytes": {
+        "full": 55224,
+        "thumb": 22618
+      }
+    },
+    {
+      "recipeId": "pad_thai_chicken",
+      "source": "Pexels",
+      "pexelsId": 34723308,
+      "originalUrl": "https://www.pexels.com/photo/34723308/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "pad_thai_chicken.webp",
+        "thumb": "pad_thai_chicken-thumb.webp"
+      },
+      "bytes": {
+        "full": 36968,
+        "thumb": 18060
+      }
+    },
+    {
+      "recipeId": "ca_kho",
+      "source": "Pexels",
+      "pexelsId": 38605312,
+      "originalUrl": "https://www.pexels.com/photo/38605312/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "ca_kho.webp",
+        "thumb": "ca_kho-thumb.webp"
+      },
+      "bytes": {
+        "full": 22468,
+        "thumb": 11822
+      }
+    },
+    {
+      "recipeId": "ga_xao_sa_ot",
+      "source": "Pexels",
+      "pexelsId": 41231438,
+      "originalUrl": "https://www.pexels.com/photo/41231438/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "ga_xao_sa_ot.webp",
+        "thumb": "ga_xao_sa_ot-thumb.webp"
+      },
+      "bytes": {
+        "full": 22602,
+        "thumb": 11638
+      }
+    },
+    {
+      "recipeId": "tikka_masala_light",
+      "source": "Pexels",
+      "pexelsId": 40262818,
+      "originalUrl": "https://www.pexels.com/photo/40262818/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "tikka_masala_light.webp",
+        "thumb": "tikka_masala_light-thumb.webp"
+      },
+      "bytes": {
+        "full": 26810,
+        "thumb": 13898
+      }
+    },
+    {
+      "recipeId": "palak_paneer_light",
+      "source": "Pexels",
+      "pexelsId": 31249589,
+      "originalUrl": "https://www.pexels.com/photo/31249589/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "palak_paneer_light.webp",
+        "thumb": "palak_paneer_light-thumb.webp"
+      },
+      "bytes": {
+        "full": 33154,
+        "thumb": 14748
+      }
+    },
+    {
+      "recipeId": "kerala_fish_curry",
+      "source": "Pexels",
+      "pexelsId": 38324319,
+      "originalUrl": "https://www.pexels.com/photo/38324319/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "kerala_fish_curry.webp",
+        "thumb": "kerala_fish_curry-thumb.webp"
+      },
+      "bytes": {
+        "full": 40522,
+        "thumb": 18194
+      }
+    },
+    {
+      "recipeId": "rajma",
+      "source": "Pexels",
+      "pexelsId": 35066814,
+      "originalUrl": "https://www.pexels.com/photo/35066814/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "rajma.webp",
+        "thumb": "rajma-thumb.webp"
+      },
+      "bytes": {
+        "full": 19482,
+        "thumb": 8344
+      }
+    },
+    {
+      "recipeId": "nasi_goreng",
+      "source": "Pexels",
+      "pexelsId": 30604605,
+      "originalUrl": "https://www.pexels.com/photo/30604605/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "nasi_goreng.webp",
+        "thumb": "nasi_goreng-thumb.webp"
+      },
+      "bytes": {
+        "full": 31456,
+        "thumb": 14812
+      }
+    },
+    {
+      "recipeId": "tempeh_stirfry",
+      "source": "Pexels",
+      "pexelsId": 19105514,
+      "originalUrl": "https://www.pexels.com/photo/19105514/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "tempeh_stirfry.webp",
+        "thumb": "tempeh_stirfry-thumb.webp"
+      },
+      "bytes": {
+        "full": 36286,
+        "thumb": 18138
+      }
+    },
+    {
+      "recipeId": "lomo_saltado",
+      "source": "Pexels",
+      "pexelsId": 28503582,
+      "originalUrl": "https://www.pexels.com/photo/28503582/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "lomo_saltado.webp",
+        "thumb": "lomo_saltado-thumb.webp"
+      },
+      "bytes": {
+        "full": 46756,
+        "thumb": 22090
+      }
+    },
+    {
+      "recipeId": "seafood_paella",
+      "source": "Pexels",
+      "pexelsId": 16743486,
+      "originalUrl": "https://www.pexels.com/photo/16743486/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "seafood_paella.webp",
+        "thumb": "seafood_paella-thumb.webp"
+      },
+      "bytes": {
+        "full": 44172,
+        "thumb": 19858
+      }
+    },
+    {
+      "recipeId": "pollo_al_ajillo",
+      "source": "Pexels",
+      "pexelsId": 38468824,
+      "originalUrl": "https://www.pexels.com/photo/38468824/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "pollo_al_ajillo.webp",
+        "thumb": "pollo_al_ajillo-thumb.webp"
+      },
+      "bytes": {
+        "full": 15508,
+        "thumb": 7878
+      }
+    },
+    {
+      "recipeId": "frango_piri_piri",
+      "source": "Pexels",
+      "pexelsId": 145804,
+      "originalUrl": "https://www.pexels.com/photo/145804/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "frango_piri_piri.webp",
+        "thumb": "frango_piri_piri-thumb.webp"
+      },
+      "bytes": {
+        "full": 24554,
+        "thumb": 12694
+      }
+    },
+    {
+      "recipeId": "ratatouille_white_beans",
+      "source": "Pexels",
+      "pexelsId": 39003151,
+      "originalUrl": "https://www.pexels.com/photo/39003151/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "ratatouille_white_beans.webp",
+        "thumb": "ratatouille_white_beans-thumb.webp"
+      },
+      "bytes": {
+        "full": 55692,
+        "thumb": 25116
+      }
+    },
+    {
+      "recipeId": "salmon_puy_lentils",
+      "source": "Pexels",
+      "pexelsId": 31909815,
+      "originalUrl": "https://www.pexels.com/photo/31909815/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "salmon_puy_lentils.webp",
+        "thumb": "salmon_puy_lentils-thumb.webp"
+      },
+      "bytes": {
+        "full": 28796,
+        "thumb": 14430
+      }
+    },
+    {
+      "recipeId": "chicken_sweet_potato_traybake",
+      "source": "Pexels",
+      "pexelsId": 31064161,
+      "originalUrl": "https://www.pexels.com/photo/31064161/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "chicken_sweet_potato_traybake.webp",
+        "thumb": "chicken_sweet_potato_traybake-thumb.webp"
+      },
+      "bytes": {
+        "full": 27196,
+        "thumb": 13898
+      }
+    },
+    {
+      "recipeId": "turkey_meatballs",
+      "source": "Pexels",
+      "pexelsId": 33254065,
+      "originalUrl": "https://www.pexels.com/photo/33254065/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "turkey_meatballs.webp",
+        "thumb": "turkey_meatballs-thumb.webp"
+      },
+      "bytes": {
+        "full": 37744,
+        "thumb": 16852
+      }
+    },
+    {
+      "recipeId": "stuffed_sweet_potato",
+      "source": "Pexels",
+      "pexelsId": 9219078,
+      "originalUrl": "https://www.pexels.com/photo/9219078/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "stuffed_sweet_potato.webp",
+        "thumb": "stuffed_sweet_potato-thumb.webp"
+      },
+      "bytes": {
+        "full": 31408,
+        "thumb": 16342
+      }
+    },
+    {
+      "recipeId": "cod_dill_mustard",
+      "source": "Pexels",
+      "pexelsId": 38995738,
+      "originalUrl": "https://www.pexels.com/photo/38995738/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "cod_dill_mustard.webp",
+        "thumb": "cod_dill_mustard-thumb.webp"
+      },
+      "bytes": {
+        "full": 15674,
+        "thumb": 8070
+      }
+    },
+    {
+      "recipeId": "cottage_pineapple",
+      "source": "Pexels",
+      "pexelsId": 4397310,
+      "originalUrl": "https://www.pexels.com/photo/4397310/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "cottage_pineapple.webp",
+        "thumb": "cottage_pineapple-thumb.webp"
+      },
+      "bytes": {
+        "full": 36528,
+        "thumb": 18472
+      }
+    },
+    {
+      "recipeId": "skyr_herb_dip",
+      "source": "Pexels",
+      "pexelsId": 38163955,
+      "originalUrl": "https://www.pexels.com/photo/38163955/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "skyr_herb_dip.webp",
+        "thumb": "skyr_herb_dip-thumb.webp"
+      },
+      "bytes": {
+        "full": 35802,
+        "thumb": 17976
+      }
+    },
+    {
+      "recipeId": "roasted_chickpeas",
+      "source": "Pexels",
+      "pexelsId": 6102661,
+      "originalUrl": "https://www.pexels.com/photo/6102661/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "roasted_chickpeas.webp",
+        "thumb": "roasted_chickpeas-thumb.webp"
+      },
+      "bytes": {
+        "full": 26524,
+        "thumb": 14226
+      }
+    },
+    {
+      "recipeId": "edamame_sea_salt",
+      "source": "Pexels",
+      "pexelsId": 28460870,
+      "originalUrl": "https://www.pexels.com/photo/28460870/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "edamame_sea_salt.webp",
+        "thumb": "edamame_sea_salt-thumb.webp"
+      },
+      "bytes": {
+        "full": 21658,
+        "thumb": 10950
+      }
+    },
+    {
+      "recipeId": "hummus_veggie_sticks",
+      "source": "Pexels",
+      "pexelsId": 34227783,
+      "originalUrl": "https://www.pexels.com/photo/34227783/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "hummus_veggie_sticks.webp",
+        "thumb": "hummus_veggie_sticks-thumb.webp"
+      },
+      "bytes": {
+        "full": 17488,
+        "thumb": 9820
+      }
+    },
+    {
+      "recipeId": "eggs_cucumber",
+      "source": "Pexels",
+      "pexelsId": 6823320,
+      "originalUrl": "https://www.pexels.com/photo/6823320/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "eggs_cucumber.webp",
+        "thumb": "eggs_cucumber-thumb.webp"
+      },
+      "bytes": {
+        "full": 31304,
+        "thumb": 14636
+      }
+    },
+    {
+      "recipeId": "banana_protein_shake",
+      "source": "Pexels",
+      "pexelsId": 20205955,
+      "originalUrl": "https://www.pexels.com/photo/20205955/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "banana_protein_shake.webp",
+        "thumb": "banana_protein_shake-thumb.webp"
+      },
+      "bytes": {
+        "full": 8424,
+        "thumb": 4510
+      }
+    },
+    {
+      "recipeId": "turkey_rollups",
+      "source": "Pexels",
+      "pexelsId": 28584246,
+      "originalUrl": "https://www.pexels.com/photo/28584246/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "turkey_rollups.webp",
+        "thumb": "turkey_rollups-thumb.webp"
+      },
+      "bytes": {
+        "full": 47932,
+        "thumb": 21124
+      }
+    },
+    {
+      "recipeId": "quark_berries",
+      "source": "Pexels",
+      "pexelsId": 10421049,
+      "originalUrl": "https://www.pexels.com/photo/10421049/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "quark_berries.webp",
+        "thumb": "quark_berries-thumb.webp"
+      },
+      "bytes": {
+        "full": 43844,
+        "thumb": 20526
+      }
+    },
+    {
+      "recipeId": "protein_energy_balls",
+      "source": "Pexels",
+      "pexelsId": 27850071,
+      "originalUrl": "https://www.pexels.com/photo/27850071/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "protein_energy_balls.webp",
+        "thumb": "protein_energy_balls-thumb.webp"
+      },
+      "bytes": {
+        "full": 23212,
+        "thumb": 11154
+      }
+    },
+    {
+      "recipeId": "salmon_cucumber_bites",
+      "source": "Pexels",
+      "pexelsId": 35212376,
+      "originalUrl": "https://www.pexels.com/photo/35212376/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "salmon_cucumber_bites.webp",
+        "thumb": "salmon_cucumber_bites-thumb.webp"
+      },
+      "bytes": {
+        "full": 22466,
+        "thumb": 11218
+      }
+    },
+    {
+      "recipeId": "tzatziki_pita",
+      "source": "Pexels",
+      "pexelsId": 5191819,
+      "originalUrl": "https://www.pexels.com/photo/5191819/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "tzatziki_pita.webp",
+        "thumb": "tzatziki_pita-thumb.webp"
+      },
+      "bytes": {
+        "full": 31488,
+        "thumb": 12660
+      }
+    },
+    {
+      "recipeId": "deviled_eggs_yogurt",
+      "source": "Pexels",
+      "pexelsId": 38623468,
+      "originalUrl": "https://www.pexels.com/photo/38623468/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "deviled_eggs_yogurt.webp",
+        "thumb": "deviled_eggs_yogurt-thumb.webp"
+      },
+      "bytes": {
+        "full": 19446,
+        "thumb": 10010
+      }
+    },
+    {
+      "recipeId": "sesame_tofu_bites",
+      "source": "Pexels",
+      "pexelsId": 4518604,
+      "originalUrl": "https://www.pexels.com/photo/4518604/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "sesame_tofu_bites.webp",
+        "thumb": "sesame_tofu_bites-thumb.webp"
+      },
+      "bytes": {
+        "full": 20620,
+        "thumb": 10968
+      }
+    },
+    {
+      "recipeId": "mozzarella_tomato_skewers",
+      "source": "Pexels",
+      "pexelsId": 33691783,
+      "originalUrl": "https://www.pexels.com/photo/33691783/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "mozzarella_tomato_skewers.webp",
+        "thumb": "mozzarella_tomato_skewers-thumb.webp"
+      },
+      "bytes": {
+        "full": 19584,
+        "thumb": 10812
+      }
+    },
+    {
+      "recipeId": "bresaola_rolls",
+      "source": "Pexels",
+      "pexelsId": 18229213,
+      "originalUrl": "https://www.pexels.com/photo/18229213/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "bresaola_rolls.webp",
+        "thumb": "bresaola_rolls-thumb.webp"
+      },
+      "bytes": {
+        "full": 50442,
+        "thumb": 20384
+      }
+    },
+    {
+      "recipeId": "soy_chia_pudding",
+      "source": "Pexels",
+      "pexelsId": 11280498,
+      "originalUrl": "https://www.pexels.com/photo/11280498/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "soy_chia_pudding.webp",
+        "thumb": "soy_chia_pudding-thumb.webp"
+      },
+      "bytes": {
+        "full": 7710,
+        "thumb": 3866
+      }
+    },
+    {
+      "recipeId": "apple_skyr_pb_dip",
+      "source": "Pexels",
+      "pexelsId": 6659902,
+      "originalUrl": "https://www.pexels.com/photo/6659902/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "apple_skyr_pb_dip.webp",
+        "thumb": "apple_skyr_pb_dip-thumb.webp"
+      },
+      "bytes": {
+        "full": 19778,
+        "thumb": 10068
+      }
+    },
+    {
+      "recipeId": "vitamina_banana",
+      "source": "Pexels",
+      "pexelsId": 33640921,
+      "originalUrl": "https://www.pexels.com/photo/33640921/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "vitamina_banana.webp",
+        "thumb": "vitamina_banana-thumb.webp"
+      },
+      "bytes": {
+        "full": 12454,
+        "thumb": 6330
+      }
+    },
+    {
+      "recipeId": "green_skyr_smoothie",
+      "source": "Pexels",
+      "pexelsId": 7656401,
+      "originalUrl": "https://www.pexels.com/photo/7656401/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "green_skyr_smoothie.webp",
+        "thumb": "green_skyr_smoothie-thumb.webp"
+      },
+      "bytes": {
+        "full": 10156,
+        "thumb": 4880
+      }
+    },
+    {
+      "recipeId": "labneh_zaatar",
+      "source": "Pexels",
+      "pexelsId": 38845223,
+      "originalUrl": "https://www.pexels.com/photo/38845223/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "labneh_zaatar.webp",
+        "thumb": "labneh_zaatar-thumb.webp"
+      },
+      "bytes": {
+        "full": 33710,
+        "thumb": 16962
+      }
+    },
+    {
+      "recipeId": "tuna_avocado",
+      "source": "Pexels",
+      "pexelsId": 6232551,
+      "originalUrl": "https://www.pexels.com/photo/6232551/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "tuna_avocado.webp",
+        "thumb": "tuna_avocado-thumb.webp"
+      },
+      "bytes": {
+        "full": 21710,
+        "thumb": 11594
+      }
+    },
+    {
+      "recipeId": "shrimp_cocktail",
+      "source": "Pexels",
+      "pexelsId": 28525134,
+      "originalUrl": "https://www.pexels.com/photo/28525134/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "shrimp_cocktail.webp",
+        "thumb": "shrimp_cocktail-thumb.webp"
+      },
+      "bytes": {
+        "full": 25170,
+        "thumb": 11864
+      }
+    },
+    {
+      "recipeId": "cottage_crispbread",
+      "source": "Pexels",
+      "pexelsId": 36040662,
+      "originalUrl": "https://www.pexels.com/photo/36040662/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "cottage_crispbread.webp",
+        "thumb": "cottage_crispbread-thumb.webp"
+      },
+      "bytes": {
+        "full": 50778,
+        "thumb": 21772
+      }
+    },
+    {
+      "recipeId": "paneer_tikka_bites",
+      "source": "Pexels",
+      "pexelsId": 33430556,
+      "originalUrl": "https://www.pexels.com/photo/33430556/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "paneer_tikka_bites.webp",
+        "thumb": "paneer_tikka_bites-thumb.webp"
+      },
+      "bytes": {
+        "full": 27540,
+        "thumb": 14478
+      }
+    },
+    {
+      "recipeId": "chicken_satay_skewers",
+      "source": "Pexels",
+      "pexelsId": 33434047,
+      "originalUrl": "https://www.pexels.com/photo/33434047/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "chicken_satay_skewers.webp",
+        "thumb": "chicken_satay_skewers-thumb.webp"
+      },
+      "bytes": {
+        "full": 40710,
+        "thumb": 20630
+      }
+    },
+    {
+      "recipeId": "chickpea_chaat",
+      "source": "Pexels",
+      "pexelsId": 16171917,
+      "originalUrl": "https://www.pexels.com/photo/16171917/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "chickpea_chaat.webp",
+        "thumb": "chickpea_chaat-thumb.webp"
+      },
+      "bytes": {
+        "full": 39272,
+        "thumb": 19760
+      }
+    },
+    {
+      "recipeId": "skyr_berry_bark",
+      "source": "Pexels",
+      "pexelsId": 32055278,
+      "originalUrl": "https://www.pexels.com/photo/32055278/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "skyr_berry_bark.webp",
+        "thumb": "skyr_berry_bark-thumb.webp"
+      },
+      "bytes": {
+        "full": 11916,
+        "thumb": 6314
+      }
+    },
+    {
+      "recipeId": "cocoa_protein_milk",
+      "source": "Pexels",
+      "pexelsId": 5429267,
+      "originalUrl": "https://www.pexels.com/photo/5429267/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "cocoa_protein_milk.webp",
+        "thumb": "cocoa_protein_milk-thumb.webp"
+      },
+      "bytes": {
+        "full": 21820,
+        "thumb": 11098
+      }
+    },
+    {
+      "recipeId": "tuna_onigiri",
+      "source": "Pexels",
+      "pexelsId": 39528138,
+      "originalUrl": "https://www.pexels.com/photo/39528138/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "tuna_onigiri.webp",
+        "thumb": "tuna_onigiri-thumb.webp"
+      },
+      "bytes": {
+        "full": 24370,
+        "thumb": 11442
+      }
+    },
+    {
+      "recipeId": "silken_chocolate_mousse",
+      "source": "Pexels",
+      "pexelsId": 34644328,
+      "originalUrl": "https://www.pexels.com/photo/34644328/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "silken_chocolate_mousse.webp",
+        "thumb": "silken_chocolate_mousse-thumb.webp"
+      },
+      "bytes": {
+        "full": 18336,
+        "thumb": 9668
+      }
+    },
+    {
+      "recipeId": "edamame_hummus",
+      "source": "Pexels",
+      "pexelsId": 17291667,
+      "originalUrl": "https://www.pexels.com/photo/17291667/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "edamame_hummus.webp",
+        "thumb": "edamame_hummus-thumb.webp"
+      },
+      "bytes": {
+        "full": 27784,
+        "thumb": 14782
       }
     }
   ]

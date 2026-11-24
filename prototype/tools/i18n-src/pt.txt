@@ -296,7 +296,7 @@
 296|AJUDA
 297|Ajuda com problemas alimentares
 298|Atendimento gratuito na Suíça
-299|Edovita · protótipo clicável v5.10.1, sem dados reais
+299|Edovita · protótipo clicável v5.11, sem dados reais
 300|Lembretes gentis, sem pressão. Você decide quais recebe.
 301|Refeições
 302|Pesagem

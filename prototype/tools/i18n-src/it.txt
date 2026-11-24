@@ -296,7 +296,7 @@
 296|AIUTO
 297|Aiuto per problemi alimentari
 298|Consulenza gratuita in Svizzera
-299|Edovita · prototipo cliccabile v5.10.1, nessun dato reale
+299|Edovita · prototipo cliccabile v5.11, nessun dato reale
 300|Promemoria gentili, senza pressione. Decidi tu quali ricevere.
 301|Pasti
 302|Pesata

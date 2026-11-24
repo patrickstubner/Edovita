@@ -1,0 +1,409 @@
+# Snacks
+@ cottage_pineapple | snack | european | 5 | 1 | 7
+de: Hüttenkäse mit Ananas und Kürbiskernen
+en: Cottage cheese with pineapple and pumpkin seeds
+fr: Cottage cheese à l'ananas et graines de courge
+it: Fiocchi di latte con ananas e semi di zucca
+es: Requesón con piña y pipas de calabaza
+pt: Queijo cottage com abacaxi e sementes de abóbora
+ja: パイナップルとかぼちゃの種のカッテージチーズ
+i: cottage_cheese 200g, pineapple 80g, pumpkin_seeds 10g
+sd: Hüttenkäse in eine Schale geben. | Ananas in kleine Würfel schneiden. | Ananas und Kürbiskerne darauf verteilen.
+se: Spoon the cottage cheese into a bowl. | Cut the pineapple into small cubes. | Top with the pineapple and pumpkin seeds.
+q: cottage cheese pineapple
+@ skyr_herb_dip | snack | nordic | 10 | 2 | 6
+de: Skyr-Kräuterdip mit Gemüsesticks
+en: Skyr herb dip with vegetable sticks
+fr: Dip de skyr aux herbes et bâtonnets de légumes
+it: Dip di skyr alle erbe con bastoncini di verdure
+es: Dip de skyr a las hierbas con bastones de verduras
+pt: Patê de skyr com ervas e palitos de legumes
+ja: スキールのハーブディップと野菜スティック
+i: skyr 300g, chives 5g, dill 5g, garlic 1pc, lemon 0.25pc, carrot 2pc, cucumber 0.5pc, red_bell_pepper 1pc, salt 2g, black_pepper 1pinch
+sd: Kräuter fein hacken und mit Skyr, gepresstem Knoblauch, Zitronensaft, Salz und Pfeffer verrühren. | Rüebli, Gurke und Peperoni in Stängel schneiden. | Dip in Schälchen füllen und mit dem Gemüse servieren.
+se: Finely chop the herbs and stir with the skyr, crushed garlic, lemon juice, salt and pepper. | Cut the carrots, cucumber and pepper into sticks. | Spoon the dip into small bowls and serve with the vegetables.
+q: yogurt dip vegetable sticks
+@ roasted_chickpeas | snack | mediterranean | 35 | 2 | 6
+de: Knusprige Ofen-Kichererbsen mit Paprika
+en: Crispy roasted chickpeas with paprika
+fr: Pois chiches croustillants au four et paprika
+it: Ceci croccanti al forno con paprika
+es: Garbanzos crujientes al horno con pimentón
+pt: Grão-de-bico crocante assado com páprica
+ja: パプリカ風味のカリカリ焼きひよこ豆
+i: chickpeas 400g, olive_oil 2tsp, paprika 1tsp, cumin 0.5tsp, salt 2g, edamame 100g
+sd: Backofen auf 200 °C vorheizen. Kichererbsen abspülen und sehr gut trocken tupfen. | Mit Öl, Paprika, Kreuzkümmel und Salz mischen und auf einem Blech verteilen. | 25–30 Minuten knusprig backen, dabei zweimal schütteln. | Edamame kochen, abkühlen lassen und mit den Kichererbsen mischen.
+se: Preheat the oven to 200 °C. Rinse the chickpeas and pat them very dry. | Toss with oil, paprika, cumin and salt and spread on a tray. | Roast for 25–30 minutes until crisp, shaking twice. | Boil the edamame, let them cool and mix with the chickpeas.
+q: roasted chickpeas
+@ edamame_sea_salt | snack | japanese | 10 | 1 | 6
+de: Edamame mit Meersalz und Chili
+en: Edamame with sea salt and chilli
+fr: Edamame au sel de mer et piment
+it: Edamame con sale marino e peperoncino
+es: Edamame con sal marina y chile
+pt: Edamame com sal marinho e pimenta
+ja: 塩と唐辛子の枝豆
+i: edamame 200g, salt 2g, chili_flakes 1pinch, sesame_oil 1tsp
+sd: Edamame in Salzwasser 4–5 Minuten kochen und abtropfen lassen. | Mit Sesamöl, Salz und Chiliflocken mischen. | Warm oder kalt servieren.
+se: Boil the edamame in salted water for 4–5 minutes and drain. | Toss with sesame oil, salt and chilli flakes. | Serve warm or cold.
+q: edamame
+@ hummus_veggie_sticks | snack | middle_eastern | 10 | 2 | 6
+de: Hummus mit Gemüsesticks
+en: Hummus with vegetable sticks
+fr: Houmous et bâtonnets de légumes
+it: Hummus con bastoncini di verdure
+es: Hummus con bastones de verduras
+pt: Homus com palitos de legumes
+ja: フムスと野菜スティック
+i: chickpeas 240g, tahini 2tbsp, lemon 0.5pc, garlic 1pc, cumin 1pinch, olive_oil 1tsp, paprika 1pinch, carrot 2pc, cucumber 0.5pc, salt 2g
+sd: Kichererbsen abspülen und mit Tahini, Zitronensaft, Knoblauch, Kreuzkümmel, Salz und 3–4 EL kaltem Wasser sehr fein pürieren. | In eine Schale füllen, mit Öl beträufeln und mit Paprika bestäuben. | Mit Rüebli- und Gurkensticks servieren.
+se: Rinse the chickpeas and blend very smoothly with the tahini, lemon juice, garlic, cumin, salt and 3–4 tbsp cold water. | Spoon into a bowl, drizzle with oil and dust with paprika. | Serve with carrot and cucumber sticks.
+q: hummus vegetable sticks
+@ eggs_cucumber | snack | european | 12 | 1 | 5
+de: Gekochte Eier mit Gurke und Kräutersalz
+en: Boiled eggs with cucumber and herb salt
+fr: Œufs durs, concombre et sel aux herbes
+it: Uova sode con cetriolo e sale alle erbe
+es: Huevos duros con pepino y sal de hierbas
+pt: Ovos cozidos com pepino e sal de ervas
+ja: ゆで卵ときゅうり、ハーブソルト
+i: eggs 3pc, cucumber 0.3pc, chives 3g, salt 1g, black_pepper 1pinch
+sd: Eier 8–9 Minuten kochen, kalt abschrecken und schälen. | Gurke in Stängel schneiden. | Eier halbieren und mit Salz, Pfeffer und Schnittlauch bestreuen, mit der Gurke servieren.
+se: Boil the eggs for 8–9 minutes, cool in cold water and peel. | Cut the cucumber into sticks. | Halve the eggs, sprinkle with salt, pepper and chives and serve with the cucumber.
+q: boiled eggs cucumber
+@ banana_protein_shake | snack | european | 5 | 1 | 7
+de: Bananen-Proteinshake mit Hafer
+en: Banana protein shake with oats
+fr: Shake protéiné banane et avoine
+it: Frullato proteico alla banana con avena
+es: Batido proteico de plátano con avena
+pt: Shake proteico de banana com aveia
+ja: オーツ入りバナナプロテインシェイク
+i: milk_skimmed 300ml, whey_protein 25g, banana 1pc, oats 15g, cinnamon_ground 1pinch
+sd: Alle Zutaten in den Mixer geben. | 30 Sekunden fein mixen. | Sofort trinken.
+se: Put all the ingredients in a blender. | Blend for 30 seconds until smooth. | Drink straight away.
+q: banana protein shake
+@ tuna_rice_cakes | snack | european | 5 | 1 | 6
+de: Reiswaffeln mit Thon-Joghurt-Creme
+en: Rice cakes with tuna and yoghurt spread
+fr: Galettes de riz à la crème de thon et yaourt
+it: Gallette di riso con crema di tonno e yogurt
+es: Tortitas de arroz con crema de atún y yogur
+pt: Bolachas de arroz com creme de atum e iogurte
+ja: ツナヨーグルトクリームのライスケーキ
+i: rice_cakes 3pc, tuna_canned 100g, greek_yogurt 40g, lemon 0.25pc, cherry_tomatoes 50g, chives 3g, black_pepper 1pinch
+sd: Thon abtropfen lassen und mit Joghurt, Zitronensaft und Pfeffer zu einer Creme verrühren. | Auf die Reiswaffeln streichen. | Mit halbierten Cherrytomaten und Schnittlauch belegen.
+se: Drain the tuna and stir with the yoghurt, lemon juice and pepper into a spread. | Spread it over the rice cakes. | Top with halved cherry tomatoes and chives.
+q: rice cakes tuna
+@ turkey_rollups | snack | american | 5 | 1 | 6
+de: Truten-Röllchen mit Frischkäse und Gurke
+en: Turkey roll-ups with cream cheese and cucumber
+fr: Roulés de dinde au fromage frais et concombre
+it: Involtini di tacchino con formaggio spalmabile e cetriolo
+es: Rollitos de pavo con queso crema y pepino
+pt: Rolinhos de peru com cream cheese e pepino
+ja: 七面鳥とクリームチーズ、きゅうりのロール
+i: turkey_breast 100g, cream_cheese_light 40g, cucumber 0.25pc, rocket 10g, black_pepper 1pinch
+sd: Trutenbrust kurz anbraten und abkühlen lassen oder fertig gegarte Scheiben verwenden, in dünne Scheiben schneiden. | Scheiben mit Frischkäse bestreichen und mit Gurkenstiften und Rucola belegen. | Aufrollen, pfeffern und mit Zahnstochern fixieren.
+se: Briefly fry the turkey and let it cool, or use ready-cooked slices, and slice thinly. | Spread the slices with cream cheese and add cucumber sticks and rocket. | Roll up, season with pepper and secure with cocktail sticks.
+q: turkey roll ups
+@ quark_berries | snack | swiss | 5 | 1 | 7
+de: Magerquark mit Beeren und Vanille
+en: Low-fat quark with berries and vanilla
+fr: Fromage blanc maigre aux baies et vanille
+it: Quark magro con frutti di bosco e vaniglia
+es: Quark desnatado con frutos rojos y vainilla
+pt: Quark desnatado com frutas vermelhas e baunilha
+ja: ベリーとバニラの低脂肪クワルク
+i: quark_lowfat 200g, berries 100g, vanilla_extract 0.5tsp, honey 1tsp, milk_skimmed 20ml
+sd: Quark mit Milch, Vanille und Honig cremig rühren. | Beeren waschen und abtropfen lassen. | Quark in eine Schale geben und mit den Beeren belegen.
+se: Stir the quark with the milk, vanilla and honey until creamy. | Wash and drain the berries. | Spoon the quark into a bowl and top with the berries.
+q: quark berries
+@ protein_energy_balls | snack | american | 15 | 4 | 7
+de: Protein-Energiekugeln mit Hafer und Erdnussbutter
+en: Protein energy balls with oats and peanut butter
+fr: Boules d'énergie protéinées à l'avoine et au beurre de cacahuète
+it: Palline energetiche proteiche con avena e burro di arachidi
+es: Bolitas energéticas proteicas de avena y crema de cacahuete
+pt: Bolinhas energéticas proteicas de aveia e pasta de amendoim
+ja: オーツとピーナッツバターのプロテインエナジーボール
+i: oats 80g, peanut_butter 4tbsp, whey_protein 40g, dates 4pc, cocoa_powder 1tbsp, milk_skimmed 40ml
+sd: Datteln entsteinen und sehr fein hacken. | Alle Zutaten zu einer formbaren Masse verkneten, bei Bedarf etwas mehr Milch zugeben. | 12 Kugeln formen und mindestens 30 Minuten kühl stellen (3 Stück pro Portion).
+se: Pit the dates and chop them very finely. | Knead all the ingredients into a mouldable mixture, adding a little more milk if needed. | Shape into 12 balls and chill for at least 30 minutes (3 per serving).
+q: energy balls oats
+@ salmon_cucumber_bites | snack | nordic | 10 | 2 | 6
+de: Gurken-Häppchen mit Räucherlachs und Frischkäse
+en: Cucumber bites with smoked salmon and cream cheese
+fr: Bouchées de concombre au saumon fumé et fromage frais
+it: Bocconcini di cetriolo con salmone affumicato e formaggio
+es: Bocados de pepino con salmón ahumado y queso crema
+pt: Petiscos de pepino com salmão defumado e cream cheese
+ja: スモークサーモンとクリームチーズのきゅうりカナッペ
+i: cucumber 1pc, smoked_salmon 150g, cream_cheese_light 60g, dill 3g, lemon 0.25pc, black_pepper 1pinch
+sd: Gurke in 1 cm dicke Scheiben schneiden. | Frischkäse mit etwas Zitronensaft und Pfeffer verrühren und auf die Scheiben streichen. | Mit Lachsstreifen und Dill belegen.
+se: Cut the cucumber into 1 cm slices. | Stir the cream cheese with a little lemon juice and pepper and spread it on the slices. | Top with strips of salmon and dill.
+q: cucumber smoked salmon bites
+@ tzatziki_pita | snack | greek | 10 | 2 | 6
+de: Tzatziki mit Pita und Gemüse
+en: Tzatziki with pitta and vegetables
+fr: Tzatziki, pita et légumes
+it: Tzatziki con pita e verdure
+es: Tzatziki con pita y verduras
+pt: Tzatziki com pão pita e legumes
+ja: ザジキとピタパン、野菜
+i: greek_yogurt 300g, cucumber 0.5pc, garlic 1pc, dill 5g, olive_oil 1tsp, lemon 0.25pc, pita 1pc, cherry_tomatoes 100g, salt 2g
+sd: Gurke grob raffeln, salzen und nach 5 Minuten gut ausdrücken. | Mit Joghurt, gepresstem Knoblauch, Dill, Zitronensaft und Öl verrühren. | Pita in Streifen schneiden und kurz rösten, mit Tzatziki und Cherrytomaten servieren.
+se: Coarsely grate the cucumber, salt it and squeeze it out well after 5 minutes. | Stir with the yoghurt, crushed garlic, dill, lemon juice and oil. | Cut the pitta into strips, toast briefly and serve with the tzatziki and cherry tomatoes.
+q: tzatziki pita
+@ deviled_eggs_yogurt | snack | american | 15 | 2 | 5
+de: Gefüllte Eier mit Joghurt-Senf-Creme
+en: Devilled eggs with yoghurt and mustard
+fr: Œufs mimosa au yaourt et moutarde
+it: Uova ripiene con crema di yogurt e senape
+es: Huevos rellenos con crema de yogur y mostaza
+pt: Ovos recheados com creme de iogurte e mostarda
+ja: ヨーグルトマスタードのデビルドエッグ
+i: eggs 4pc, greek_yogurt 50g, dijon_mustard 1tsp, paprika 1pinch, chives 3g, salt 1g
+sd: Eier 9 Minuten kochen, kalt abschrecken, schälen und längs halbieren. | Eigelb mit Joghurt, Senf und Salz glatt rühren. | Creme in die Eiweisshälften füllen und mit Paprika und Schnittlauch bestreuen.
+se: Boil the eggs for 9 minutes, cool in cold water, peel and halve lengthways. | Mash the yolks with the yoghurt, mustard and salt until smooth. | Fill the whites with the mixture and sprinkle with paprika and chives.
+q: deviled eggs
+@ sesame_tofu_bites | snack | japanese | 20 | 2 | 5
+de: Sesam-Tofu-Würfel mit Soja-Dip
+en: Sesame tofu bites with soy dip
+fr: Bouchées de tofu au sésame et sauce soja
+it: Bocconcini di tofu al sesamo con salsa di soia
+es: Bocados de tofu al sésamo con salsa de soja
+pt: Cubos de tofu com gergelim e molho de soja
+ja: ごま豆腐バイト 醤油ディップ添え
+i: tofu_firm 250g, sesame_seeds 2tbsp, cornstarch 1tbsp, soy_sauce 1tbsp, rice_vinegar 1tsp, rapeseed_oil 2tsp, spring_onion 1pc
+sd: Tofu gut trocken tupfen und in Würfel schneiden, in Maisstärke und Sesam wenden. | Im Öl rundum 6–8 Minuten knusprig braten. | Sojasauce mit Reisessig und gehackter Frühlingszwiebel verrühren und als Dip dazu servieren.
+se: Pat the tofu very dry and dice it, then toss in the cornflour and sesame. | Fry in the oil for 6–8 minutes, turning, until crisp. | Mix the soy sauce with rice vinegar and chopped spring onion and serve as a dip.
+q: sesame tofu bites
+@ mozzarella_tomato_skewers | snack | italian | 10 | 2 | 6
+de: Mozzarella-Tomaten-Spiesse mit Basilikum und Bresaola
+en: Mozzarella and tomato skewers with basil and bresaola
+fr: Brochettes mozzarella-tomate au basilic et bresaola
+it: Spiedini di mozzarella e pomodorini con basilico e bresaola
+es: Brochetas de mozzarella y tomate con albahaca y bresaola
+pt: Espetinhos de muçarela e tomate com manjericão e bresaola
+ja: モッツァレラとトマト、バジル、ブレザオラのピンチョス
+i: mozzarella 125g, cherry_tomatoes 150g, bresaola 60g, basil_fresh 5g, balsamic 1tsp, black_pepper 1pinch
+sd: Mozzarella in mundgerechte Stücke schneiden. | Abwechselnd Tomate, Basilikumblatt, gefaltete Bresaola und Mozzarella auf kleine Spiesse stecken. | Mit Balsamico beträufeln und pfeffern.
+se: Cut the mozzarella into bite-sized pieces. | Thread tomato, basil leaf, folded bresaola and mozzarella alternately onto small skewers. | Drizzle with balsamic and season with pepper.
+q: caprese skewers
+@ bresaola_rolls | snack | italian | 10 | 1 | 5
+de: Bresaola-Röllchen mit Rucola und Parmesan
+en: Bresaola rolls with rocket and Parmesan
+fr: Roulés de bresaola, roquette et parmesan
+it: Involtini di bresaola con rucola e parmigiano
+es: Rollitos de bresaola con rúcula y parmesano
+pt: Rolinhos de bresaola com rúcula e parmesão
+ja: ルッコラとパルメザンのブレザオラロール
+i: bresaola 70g, rocket 20g, parmesan 15g, lemon 0.25pc, olive_oil 1tsp, black_pepper 1pinch
+sd: Rucola mit Zitronensaft und Öl anmachen. | Bresaola-Scheiben auslegen, mit Rucola und Parmesanspänen belegen. | Aufrollen und pfeffern.
+se: Dress the rocket with lemon juice and oil. | Lay out the bresaola slices and top with rocket and Parmesan shavings. | Roll up and season with pepper.
+q: bresaola rolls arugula
+@ soy_chia_pudding | snack | european | 5 | 1 | 5
+de: Veganer Chia-Pudding mit Sojajoghurt und Beeren
+en: Vegan chia pudding with soya yoghurt and berries
+fr: Pudding de chia vegan au yaourt de soja et baies
+it: Budino di chia vegano con yogurt di soia e frutti di bosco
+es: Pudin de chía vegano con yogur de soja y frutos rojos
+pt: Pudim de chia vegano com iogurte de soja e frutas vermelhas
+ja: 豆乳ヨーグルトとベリーのヴィーガンチアプディング
+i: chia_seeds 2tbsp, soy_milk 150ml, soy_yogurt 150g, berries 80g, maple_syrup 1tsp, pumpkin_seeds 10g
+sd: Chiasamen mit Sojadrink und Ahornsirup verrühren, 5 Minuten stehen lassen und erneut rühren. | Mindestens 2 Stunden oder über Nacht kühl stellen. | Mit Sojajoghurt, Beeren und Kürbiskernen schichten.
+se: Stir the chia seeds with the soya drink and maple syrup, leave for 5 minutes and stir again. | Chill for at least 2 hours or overnight. | Layer with soya yoghurt, berries and pumpkin seeds.
+q: chia pudding berries
+@ apple_skyr_pb_dip | snack | american | 5 | 1 | 6
+de: Apfelschnitze mit Skyr-Erdnuss-Dip
+en: Apple slices with skyr peanut dip
+fr: Quartiers de pomme et dip skyr-cacahuète
+it: Spicchi di mela con dip di skyr e arachidi
+es: Gajos de manzana con dip de skyr y cacahuete
+pt: Fatias de maçã com patê de skyr e amendoim
+ja: スキールピーナッツディップとりんご
+i: apple 1pc, skyr 150g, peanut_butter 1tbsp, cinnamon_ground 1pinch
+sd: Skyr mit Erdnussbutter und Zimt glatt rühren. | Apfel entkernen und in Schnitze schneiden. | Apfelschnitze in den Dip tunken.
+se: Stir the skyr with the peanut butter and cinnamon until smooth. | Core the apple and cut it into wedges. | Dip the apple wedges into the dip.
+q: apple slices peanut butter dip
+@ vitamina_banana | snack | brazilian | 5 | 1 | 6
+de: Vitamina (brasilianischer Bananen-Hafer-Shake mit Joghurt)
+en: Vitamina (Brazilian banana and oat shake with yoghurt)
+fr: Vitamina (shake brésilien banane-avoine au yaourt)
+it: Vitamina (frullato brasiliano di banana e avena con yogurt)
+es: Vitamina (batido brasileño de plátano y avena con yogur)
+pt: Vitamina de banana com aveia e iogurte
+ja: ヴィタミーナ（ヨーグルト入りブラジル風バナナオーツシェイク）
+i: banana 1pc, greek_yogurt 150g, milk_skimmed 150ml, oats 15g, cinnamon_ground 1pinch
+sd: Banane in Stücke brechen. | Mit Joghurt, Milch, Haferflocken und Zimt fein mixen. | Kalt servieren.
+se: Break the banana into pieces. | Blend with the yoghurt, milk, oats and cinnamon until smooth. | Serve cold.
+q: banana smoothie oats
+@ green_skyr_smoothie | snack | nordic | 5 | 1 | 5
+de: Grüner Smoothie mit Skyr, Spinat und Kiwi
+en: Green smoothie with skyr, spinach and kiwi
+fr: Smoothie vert au skyr, épinards et kiwi
+it: Frullato verde con skyr, spinaci e kiwi
+es: Batido verde con skyr, espinacas y kiwi
+pt: Smoothie verde com skyr, espinafre e kiwi
+ja: スキールとほうれん草、キウイのグリーンスムージー
+i: skyr 150g, spinach 40g, kiwi 2pc, banana 0.5pc, milk_skimmed 100ml
+sd: Kiwis schälen und vierteln. | Mit Skyr, Spinat, Banane und Milch fein mixen. | Sofort servieren.
+se: Peel and quarter the kiwis. | Blend with the skyr, spinach, banana and milk until smooth. | Serve straight away.
+q: green smoothie kiwi spinach
+@ labneh_zaatar | snack | middle_eastern | 10 | 2 | 5
+de: Labneh-Teller mit Oregano, Olivenöl und Gemüse
+en: Labneh plate with oregano, olive oil and vegetables
+fr: Assiette de labneh à l'origan, huile d'olive et légumes
+it: Piatto di labneh con origano, olio d'oliva e verdure
+es: Plato de labneh con orégano, aceite de oliva y verduras
+pt: Prato de labneh com orégano, azeite e legumes
+ja: オレガノとオリーブオイルのラブネ、野菜添え
+i: greek_yogurt 300g, oregano_dried 1tsp, sesame_seeds 1tsp, olive_oil 1tsp, cucumber 0.5pc, cherry_tomatoes 100g, pita 1pc, salt 1g
+sd: Joghurt mit Salz verrühren, in einem mit Küchentuch ausgelegten Sieb mindestens 2 Stunden im Kühlschrank abtropfen lassen. | Auf Teller streichen, mit Oregano, Sesam und Öl bestreuen. | Mit Gurke, Tomaten und Pita servieren.
+se: Stir the yoghurt with salt and drain it in a sieve lined with a tea towel in the fridge for at least 2 hours. | Spread on plates and sprinkle with oregano, sesame and oil. | Serve with cucumber, tomatoes and pitta.
+q: labneh olive oil
+@ tuna_avocado | snack | american | 5 | 1 | 5
+de: Avocado gefüllt mit Thon und Mais
+en: Avocado stuffed with tuna and corn
+fr: Avocat farci au thon et maïs
+it: Avocado ripieno di tonno e mais
+es: Aguacate relleno de atún y maíz
+pt: Abacate recheado com atum e milho
+ja: ツナとコーンのアボカドボート
+i: avocado 0.5pc, tuna_canned 80g, sweetcorn 30g, greek_yogurt 30g, lime 0.25pc, chili_flakes 1pinch, salt 1g
+sd: Avocado halbieren und entkernen. | Thon mit Mais, Joghurt, Limettensaft und Salz mischen. | In die Avocadohälfte füllen und mit Chiliflocken bestreuen.
+se: Halve and pit the avocado. | Mix the tuna with the sweetcorn, yoghurt, lime juice and salt. | Fill the avocado half and sprinkle with chilli flakes.
+q: stuffed avocado tuna
+@ shrimp_cocktail | snack | european | 10 | 2 | 5
+de: Leichter Crevetten-Cocktail mit Joghurtsauce
+en: Light prawn cocktail with yoghurt sauce
+fr: Cocktail de crevettes léger, sauce yaourt
+it: Cocktail di gamberi leggero con salsa allo yogurt
+es: Cóctel de gambas ligero con salsa de yogur
+pt: Coquetel de camarão leve com molho de iogurte
+ja: ヨーグルトソースの軽いシュリンプカクテル
+i: shrimp 200g, greek_yogurt 80g, tomato_paste 1tsp, lemon 0.5pc, lettuce 0.2pc, avocado 0.25pc, paprika 1pinch, salt 1g
+sd: Crevetten 2–3 Minuten in siedendem Salzwasser garen und kalt abschrecken. | Joghurt mit Tomatenpüree, Zitronensaft, Salz und Paprika verrühren. | Salat in Gläser geben, Avocadowürfel und Crevetten darauf verteilen und mit Sauce beträufeln.
+se: Cook the prawns in simmering salted water for 2–3 minutes and cool in cold water. | Stir the yoghurt with tomato purée, lemon juice, salt and paprika. | Put lettuce in glasses, add diced avocado and the prawns and drizzle with the sauce.
+q: shrimp cocktail
+@ cottage_crispbread | snack | nordic | 5 | 1 | 6
+de: Knäckebrot mit Hüttenkäse, Gurke und Dill
+en: Crispbread with cottage cheese, cucumber and dill
+fr: Pain croustillant au cottage cheese, concombre et aneth
+it: Crackers con fiocchi di latte, cetriolo e aneto
+es: Pan crujiente con requesón, pepino y eneldo
+pt: Torrada sueca com cottage, pepino e endro
+ja: カッテージチーズときゅうり、ディルのクネッケ
+i: crispbread 2pc, cottage_cheese 150g, cucumber 0.2pc, dill 2g, black_pepper 1pinch
+sd: Gurke in dünne Scheiben schneiden. | Knäckebrot mit Hüttenkäse bestreichen. | Mit Gurke, Dill und Pfeffer belegen.
+se: Thinly slice the cucumber. | Spread the crispbread with cottage cheese. | Top with cucumber, dill and pepper.
+q: crispbread cottage cheese cucumber
+@ paneer_tikka_bites | snack | indian | 20 | 2 | 5
+de: Paneer-Tikka-Häppchen mit Minz-Joghurt
+en: Paneer tikka bites with mint yoghurt
+fr: Bouchées de paneer tikka et yaourt à la menthe
+it: Bocconcini di paneer tikka con yogurt alla menta
+es: Bocados de paneer tikka con yogur a la menta
+pt: Petiscos de paneer tikka com iogurte de hortelã
+ja: パニールティッカのひと口 ミントヨーグルト添え
+i: paneer 150g, greek_yogurt 120g, garam_masala 1tsp, paprika 1tsp, lemon 0.5pc, red_bell_pepper 0.5pc, mint_fresh 5g, salt 1g
+sd: Paneer und Peperoni würfeln, mit 40 g Joghurt, Gewürzen, Zitronensaft und Salz mischen. | Auf Spiesse stecken und in einer heissen Grillpfanne rundum 6 Minuten braten. | Restlichen Joghurt mit gehackter Minze verrühren und dazu servieren.
+se: Dice the paneer and pepper and mix with 40 g yoghurt, the spices, lemon juice and salt. | Thread onto skewers and cook in a hot griddle pan for 6 minutes, turning. | Stir the remaining yoghurt with chopped mint and serve alongside.
+q: paneer tikka skewers
+@ chicken_satay_skewers | snack | indonesian | 25 | 2 | 6
+de: Poulet-Satay-Spiesse mit leichter Erdnusssauce
+en: Chicken satay skewers with light peanut sauce
+fr: Brochettes de poulet satay, sauce cacahuète légère
+it: Spiedini di pollo satay con salsa di arachidi leggera
+es: Brochetas de pollo satay con salsa ligera de cacahuete
+pt: Espetinhos de frango satay com molho leve de amendoim
+ja: チキンサテ 軽いピーナッツソース添え
+i: chicken_breast 200g, soy_sauce 1tbsp, turmeric 0.25tsp, garlic 1pc, peanut_butter 1tbsp, lime 0.5pc, sambal_oelek 0.5tsp, cucumber 0.3pc, rapeseed_oil 1tsp
+sd: Poulet in Streifen schneiden und mit Sojasauce, Kurkuma und Knoblauch 15 Minuten marinieren, auf Spiesse stecken. | In einer Grillpfanne im Öl pro Seite 3–4 Minuten braten. | Erdnussbutter mit Limettensaft, Sambal und 2–3 EL heissem Wasser verrühren und mit Spiessen und Gurke servieren.
+se: Cut the chicken into strips and marinate with soy sauce, turmeric and garlic for 15 minutes, then thread onto skewers. | Cook in a griddle pan in the oil for 3–4 minutes per side. | Stir the peanut butter with lime juice, sambal and 2–3 tbsp hot water and serve with the skewers and cucumber.
+q: chicken satay skewers
+@ chickpea_chaat | snack | indian | 10 | 2 | 5
+de: Kichererbsen-Chaat mit Tomate, Gurke und Minze
+en: Chickpea chaat with tomato, cucumber and mint
+fr: Chaat de pois chiches, tomate, concombre et menthe
+it: Chaat di ceci con pomodoro, cetriolo e menta
+es: Chaat de garbanzos con tomate, pepino y menta
+pt: Chaat de grão-de-bico com tomate, pepino e hortelã
+ja: ひよこ豆のチャート（トマト、きゅうり、ミント）
+i: chickpeas 400g, tomato 1pc, cucumber 0.3pc, red_onion 0.25pc, mint_fresh 5g, coriander_fresh 5g, lemon 1pc, cumin 0.5tsp, chili_flakes 1pinch, soy_yogurt 100g, salt 2g
+sd: Kichererbsen abspülen und abtropfen lassen. | Tomate, Gurke und Zwiebel fein würfeln, Kräuter hacken. | Alles mit Zitronensaft, Kreuzkümmel, Chili und Salz mischen und mit Sojajoghurt servieren.
+se: Rinse and drain the chickpeas. | Finely dice the tomato, cucumber and onion and chop the herbs. | Mix everything with lemon juice, cumin, chilli and salt and serve with soya yoghurt.
+q: chickpea chaat salad
+@ skyr_berry_bark | snack | european | 10 | 3 | 5
+de: Gefrorene Skyr-Beeren-Tafel
+en: Frozen skyr and berry bark
+fr: Tablette glacée de skyr aux baies
+it: Barretta gelata di skyr e frutti di bosco
+es: Placa helada de skyr con frutos rojos
+pt: Placa gelada de skyr com frutas vermelhas
+ja: スキールとベリーのフローズンバーク
+i: skyr 450g, berries 150g, honey 1tbsp, almonds 20g, vanilla_extract 0.5tsp
+sd: Skyr mit Honig und Vanille verrühren und auf einem mit Backpapier belegten Blech etwa 1 cm dick ausstreichen. | Beeren und gehackte Mandeln darauf verteilen und leicht andrücken. | Mindestens 3 Stunden gefrieren lassen, in Stücke brechen und sofort geniessen.
+se: Stir the skyr with honey and vanilla and spread about 1 cm thick on a lined tray. | Scatter the berries and chopped almonds over and press lightly. | Freeze for at least 3 hours, break into pieces and enjoy straight away.
+q: frozen yogurt bark berries
+@ cocoa_protein_milk | snack | swiss | 5 | 1 | 5
+de: Kakao-Proteinmilch (warm oder kalt)
+en: Cocoa protein milk (hot or cold)
+fr: Lait protéiné au cacao (chaud ou froid)
+it: Latte proteico al cacao (caldo o freddo)
+es: Leche proteica con cacao (caliente o fría)
+pt: Leite proteico com cacau (quente ou frio)
+ja: ココアプロテインミルク（ホットまたはアイス）
+i: milk_skimmed 300ml, whey_protein 20g, cocoa_powder 1tbsp, honey 1tsp
+sd: Kakao und Honig mit einem Schluck Milch glatt rühren. | Restliche Milch und Proteinpulver zugeben und kräftig mixen oder schütteln. | Kalt trinken oder sanft erwärmen (nicht kochen).
+se: Stir the cocoa and honey with a splash of milk until smooth. | Add the remaining milk and protein powder and blend or shake well. | Drink cold or warm gently (do not boil).
+q: chocolate milk glass
+@ tuna_onigiri | snack | japanese | 25 | 2 | 6
+de: Onigiri mit Thon und Nori
+en: Tuna onigiri with nori
+fr: Onigiri au thon et nori
+it: Onigiri al tonno con alga nori
+es: Onigiri de atún con nori
+pt: Onigiri de atum com nori
+ja: ツナマヨ風おにぎり（ヨーグルト仕立て）
+i: sushi_rice 120g, tuna_canned 150g, greek_yogurt 30g, soy_sauce 1tsp, nori 2pc, sesame_seeds 1tsp, salt 1g
+sd: Reis waschen und mit 160 ml Wasser 12 Minuten garen, 10 Minuten ruhen und etwas abkühlen lassen. | Thon mit Joghurt und Sojasauce mischen. | Hände anfeuchten und salzen, je eine Portion Reis flach drücken, Thon in die Mitte geben und zu Dreiecken formen (4 Stück). | Mit Nori-Streifen umwickeln und mit Sesam bestreuen.
+se: Wash the rice and cook it with 160 ml water for 12 minutes, rest for 10 minutes and let it cool slightly. | Mix the tuna with the yoghurt and soy sauce. | Wet and salt your hands, flatten a portion of rice, put tuna in the middle and shape into triangles (4 pieces). | Wrap with nori strips and sprinkle with sesame.
+q: onigiri
+@ silken_chocolate_mousse | snack | european | 10 | 2 | 5
+de: Vegane Schokoladenmousse aus Seidentofu
+en: Vegan silken tofu chocolate mousse
+fr: Mousse au chocolat vegan au tofu soyeux
+it: Mousse al cioccolato vegana con tofu morbido
+es: Mousse de chocolate vegana con tofu sedoso
+pt: Mousse de chocolate vegana com tofu macio
+ja: 絹ごし豆腐のヴィーガンチョコレートムース
+i: silken_tofu 300g, cocoa_powder 2tbsp, maple_syrup 2tbsp, vanilla_extract 0.5tsp, berries 80g, almonds 10g
+sd: Seidentofu abtropfen lassen und mit Kakao, Ahornsirup und Vanille sehr fein pürieren. | In Gläser füllen und mindestens 1 Stunde kühl stellen. | Mit Beeren und gehackten Mandeln servieren.
+se: Drain the silken tofu and blend very smoothly with the cocoa, maple syrup and vanilla. | Spoon into glasses and chill for at least 1 hour. | Serve with berries and chopped almonds.
+q: chocolate mousse glass
+@ edamame_hummus | snack | japanese | 10 | 2 | 5
+de: Edamame-Hummus mit Reiswaffeln und Radiesli
+en: Edamame hummus with rice cakes and radishes
+fr: Houmous d'edamame, galettes de riz et radis
+it: Hummus di edamame con gallette di riso e ravanelli
+es: Hummus de edamame con tortitas de arroz y rábanos
+pt: Homus de edamame com bolachas de arroz e rabanete
+ja: 枝豆フムス ライスケーキとラディッシュ添え
+i: edamame 200g, tahini 1tbsp, lemon 0.5pc, garlic 1pc, olive_oil 1tsp, rice_cakes 4pc, radish 80g, salt 2g
+sd: Edamame 4 Minuten kochen und kalt abschrecken. | Mit Tahini, Zitronensaft, Knoblauch, Öl, Salz und 3 EL Wasser fein pürieren. | Mit Reiswaffeln und halbierten Radiesli servieren.
+se: Boil the edamame for 4 minutes and cool in cold water. | Blend smoothly with the tahini, lemon juice, garlic, oil, salt and 3 tbsp water. | Serve with rice cakes and halved radishes.
+q: edamame hummus
+@ bundnerfleisch_crispbread | snack | swiss | 5 | 1 | 6
+de: Bündnerfleisch mit Knäckebrot, Gurke und Hüttenkäse
+en: Grisons air-dried beef with crispbread, cucumber and cottage cheese
+fr: Viande des Grisons, pain croustillant, concombre et cottage cheese
+it: Carne secca dei Grigioni con crackers, cetriolo e fiocchi di latte
+es: Cecina de los Grisones con pan crujiente, pepino y requesón
+pt: Carne seca dos Grisões com torrada sueca, pepino e cottage
+ja: グラウビュンデン干し牛肉とクネッケ、きゅうり、カッテージチーズ
+i: bundnerfleisch 40g, crispbread 2pc, cottage_cheese 80g, cucumber 0.2pc, black_pepper 1pinch
+sd: Knäckebrot mit Hüttenkäse bestreichen. | Gurke in dünne Scheiben schneiden und darauflegen. | Bündnerfleisch darauf verteilen und pfeffern.
+se: Spread the crispbread with cottage cheese. | Thinly slice the cucumber and lay it on top. | Arrange the dried beef on top and season with pepper.
+q: dried beef crispbread

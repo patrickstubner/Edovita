@@ -1,0 +1,301 @@
+# Abendessen, Teil 1
+@ zurich_geschnetzeltes | dinner | swiss | 25 | 2 | 9
+de: Leichtes Zürcher Geschnetzeltes vom Poulet mit Reis
+en: Light Zurich-style sliced chicken with rice
+fr: Émincé de poulet à la zurichoise, version légère, et riz
+it: Sminuzzato di pollo alla zurighese leggero con riso
+es: Pollo en tiras a la zuriquesa, versión ligera, con arroz
+pt: Iscas de frango à moda de Zurique, versão leve, com arroz
+ja: 軽めのチューリッヒ風鶏肉のクリーム煮とライス
+i: chicken_breast 320g, mushrooms 250g, shallot 2pc, cooking_cream 100ml, chicken_broth 150ml, cornstarch 1tsp, parsley 10g, lemon 0.25pc, rapeseed_oil 2tsp, basmati_rice 120g, paprika 1pinch, salt 3g, black_pepper 1pinch
+sd: Reis nach Packungsangabe kochen. | Poulet in feine Streifen, Pilze in Scheiben schneiden, Schalotten hacken. | Poulet portionsweise im heissen Öl 2–3 Minuten anbraten, würzen und herausnehmen. | Schalotten und Pilze in der gleichen Pfanne 5 Minuten braten, Bouillon und Rahm zugeben, mit der angerührten Maisstärke binden und 2 Minuten köcheln. | Poulet zurückgeben, nur noch erwärmen, mit Zitronensaft, Salz und Pfeffer abschmecken und mit Petersilie und Reis servieren.
+se: Cook the rice according to the packet. | Cut the chicken into thin strips, slice the mushrooms and chop the shallots. | Sear the chicken in batches in the hot oil for 2–3 minutes, season and set aside. | Fry the shallots and mushrooms in the same pan for 5 minutes, add the stock and cream, thicken with the cornflour mixed with a little water and simmer for 2 minutes. | Return the chicken, just heat through, season with lemon juice, salt and pepper and serve with parsley and rice.
+q: geschnetzeltes cream sauce mushrooms rice
+@ whitefish_potatoes | dinner | swiss | 25 | 2 | 7
+de: Felchenfilets mit Kräuterkartoffeln und Spinat
+en: Whitefish fillets with herb potatoes and spinach
+fr: Filets de féra, pommes de terre aux herbes et épinards
+it: Filetti di coregone con patate alle erbe e spinaci
+es: Filetes de corégono con patatas a las hierbas y espinacas
+pt: Filés de corégono com batatas às ervas e espinafre
+ja: フェルヒェンのソテー ハーブポテトとほうれん草添え
+i: whitefish 320g, potato 400g, spinach 250g, butter 1tbsp, lemon 1pc, parsley 10g, chives 5g, wholewheat_flour 1tbsp, garlic 1pc, salt 3g, black_pepper 1pinch
+sd: Kartoffeln in Salzwasser 18–20 Minuten kochen. | Fischfilets salzen, pfeffern und hauchdünn mit Mehl bestäuben. | In der Hälfte der Butter auf der Hautseite 3 Minuten braten, wenden und 1 Minute fertig braten, mit Zitronensaft beträufeln. | Spinat mit gehacktem Knoblauch in der restlichen Butter zusammenfallen lassen. | Kartoffeln mit gehackten Kräutern mischen und mit Fisch und Spinat servieren.
+se: Boil the potatoes in salted water for 18–20 minutes. | Season the fish fillets with salt and pepper and dust very lightly with flour. | Fry skin side down in half the butter for 3 minutes, turn and cook for 1 more minute, then drizzle with lemon juice. | Wilt the spinach with chopped garlic in the remaining butter. | Toss the potatoes with the chopped herbs and serve with the fish and spinach.
+q: fish fillet potatoes lemon
+@ barley_risotto_chicken | dinner | swiss | 45 | 2 | 6
+de: Gerstotto mit Poulet, Lauch und Bergkäse
+en: Barley risotto with chicken, leek and mountain cheese
+fr: Orgeotto au poulet, poireau et fromage d'alpage
+it: Orzotto con pollo, porro e formaggio d'alpe
+es: Risotto de cebada con pollo, puerro y queso de montaña
+pt: Risoto de cevada com frango, alho-poró e queijo
+ja: 鶏肉とポロねぎ、山のチーズの大麦リゾット
+i: pearl_barley 140g, chicken_breast 280g, leek 1pc, carrot 1pc, shallot 1pc, vegetable_broth 800ml, gruyere 30g, rapeseed_oil 2tsp, parsley 10g, salt 2g, black_pepper 1pinch
+sd: Schalotte hacken, Lauch in Ringe und Rüebli in kleine Würfel schneiden. | Gerste spülen und mit dem Gemüse in 1 TL Öl 3 Minuten andünsten. | Nach und nach heisse Bouillon zugeben und unter gelegentlichem Rühren 35–40 Minuten köcheln, bis die Gerste weich ist. | Poulet in Würfel schneiden, im restlichen Öl 5 Minuten braten und würzen. | Poulet und geriebenen Käse unter das Gerstotto rühren und mit Petersilie servieren.
+se: Chop the shallot, slice the leek and dice the carrot. | Rinse the barley and sweat it with the vegetables in 1 tsp oil for 3 minutes. | Add the hot stock gradually and simmer for 35–40 minutes, stirring now and then, until the barley is tender. | Dice the chicken, fry it in the remaining oil for 5 minutes and season. | Stir the chicken and grated cheese into the barley and serve with parsley.
+q: barley risotto
+@ alpler_magronen_light | dinner | swiss | 30 | 2 | 7
+de: Leichte Älplermagronen mit Schinken und Apfelmus
+en: Light Alpine macaroni with ham and apple sauce
+fr: Macaronis du chalet légers au jambon et compote de pommes
+it: Maccheroni dell'alpe leggeri con prosciutto e composta di mele
+es: Macarrones alpinos ligeros con jamón y compota de manzana
+pt: Macarrão alpino leve com presunto e purê de maçã
+ja: ハムとアップルソース添えの軽いアルプラーマグロネン
+i: pasta 140g, potato 150g, ham_cooked 120g, cottage_cheese 150g, gruyere 30g, milk_skimmed 100ml, onion 1pc, apple 2pc, rapeseed_oil 1tsp, salt 3g, black_pepper 1pinch
+sd: Kartoffeln würfeln und mit den Teigwaren in Salzwasser al dente kochen, abgiessen. | Äpfel schälen, würfeln und mit 3 EL Wasser zu Apfelmus weich kochen. | Zwiebel in Ringe schneiden und im Öl langsam 8–10 Minuten goldbraun braten. | Schinken würfeln, mit Milch, Hüttenkäse und geriebenem Käse zu den Teigwaren geben und unter Rühren erwärmen, würzen. | Mit Zwiebeln belegen und mit Apfelmus servieren.
+se: Dice the potatoes and cook them with the pasta in salted water until al dente, then drain. | Peel and dice the apples and cook with 3 tbsp water until soft for a sauce. | Slice the onion into rings and fry slowly in the oil for 8–10 minutes until golden. | Dice the ham, add it to the pasta with the milk, cottage cheese and grated cheese and heat while stirring, then season. | Top with the onions and serve with the apple sauce.
+q: macaroni cheese potatoes onions
+@ beef_steak_vegetables | dinner | european | 30 | 2 | 7
+de: Rindshuftsteak mit Ofengemüse und Kräuterquark
+en: Rump steak with roast vegetables and herb quark
+fr: Rumsteck, légumes rôtis et fromage blanc aux herbes
+it: Bistecca di scamone con verdure al forno e quark alle erbe
+es: Filete de cadera con verduras asadas y quark a las hierbas
+pt: Bife de alcatra com legumes assados e quark de ervas
+ja: ランプステーキ 焼き野菜とハーブクワルク添え
+i: beef_steak 300g, potato 300g, zucchini 1pc, red_bell_pepper 1pc, red_onion 1pc, olive_oil 1tbsp, quark_lowfat 150g, chives 5g, parsley 5g, garlic 1pc, thyme_dried 1tsp, salt 3g, black_pepper 1pinch
+sd: Backofen auf 220 °C vorheizen. Kartoffeln, Zucchetti, Peperoni und Zwiebel in Stücke schneiden, mit 2 TL Öl, Thymian und Salz mischen und 25 Minuten rösten. | Quark mit gehackten Kräutern, gepresstem Knoblauch, Salz und Pfeffer verrühren. | Steaks trocken tupfen, würzen und im restlichen Öl in einer sehr heissen Pfanne pro Seite 2–4 Minuten braten. | 5 Minuten ruhen lassen, aufschneiden und mit Gemüse und Kräuterquark servieren.
+se: Preheat the oven to 220 °C. Cut the potatoes, courgette, pepper and onion into chunks, toss with 2 tsp oil, thyme and salt and roast for 25 minutes. | Stir the quark with chopped herbs, crushed garlic, salt and pepper. | Pat the steaks dry, season and sear in the remaining oil in a very hot pan for 2–4 minutes per side. | Rest for 5 minutes, slice and serve with the vegetables and herb quark.
+q: steak roasted vegetables
+@ chicken_piccata | dinner | italian | 25 | 2 | 7
+de: Poulet-Piccata mit Zitronensauce und Zucchetti
+en: Chicken piccata with lemon sauce and courgette
+fr: Piccata de poulet sauce citron et courgettes
+it: Piccata di pollo al limone con zucchine
+es: Piccata de pollo con salsa de limón y calabacín
+pt: Frango à piccata com molho de limão e abobrinha
+ja: レモンソースのチキンピカタとズッキーニ
+i: chicken_breast 320g, eggs 1pc, parmesan 20g, wholewheat_flour 1tbsp, lemon 1pc, chicken_broth 100ml, butter 1tsp, olive_oil 2tsp, zucchini 2pc, pasta 100g, parsley 10g, salt 2g, black_pepper 1pinch
+sd: Teigwaren in Salzwasser kochen. Poulet quer halbieren und flach klopfen, salzen, pfeffern und in Mehl wenden. | Ei mit Parmesan verquirlen, Poulet durchziehen und im Öl pro Seite 3 Minuten goldbraun braten, warm stellen. | Zucchetti in Scheiben schneiden und in der gleichen Pfanne 4 Minuten braten, herausnehmen. | Bouillon, Zitronensaft und Butter in die Pfanne geben und 2 Minuten einkochen. | Poulet mit Zucchetti und Teigwaren anrichten, Sauce darübergiessen und mit Petersilie bestreuen.
+se: Cook the pasta in salted water. Halve the chicken horizontally and flatten it, season with salt and pepper and dust with flour. | Beat the egg with the Parmesan, dip the chicken in it and fry in the oil for 3 minutes per side until golden, then keep warm. | Slice the courgettes and fry in the same pan for 4 minutes, then remove. | Add the stock, lemon juice and butter to the pan and reduce for 2 minutes. | Arrange the chicken with the courgettes and pasta, pour over the sauce and sprinkle with parsley.
+q: chicken piccata lemon
+@ turkey_bolognese | dinner | italian | 35 | 2 | 8
+de: Truten-Bolognese mit Vollkornspaghetti
+en: Turkey bolognese with wholemeal spaghetti
+fr: Bolognaise de dinde et spaghetti complets
+it: Ragù di tacchino con spaghetti integrali
+es: Boloñesa de pavo con espaguetis integrales
+pt: Bolonhesa de peru com espaguete integral
+ja: 全粒粉スパゲッティの七面鳥ボロネーゼ
+i: turkey_mince 300g, pasta 140g, passata 400ml, onion 1pc, carrot 1pc, celery 1pc, garlic 2pc, tomato_paste 1tbsp, olive_oil 2tsp, oregano_dried 1tsp, parmesan 20g, basil_fresh 5g, salt 3g, black_pepper 1pinch
+sd: Zwiebel, Rüebli, Sellerie und Knoblauch sehr fein hacken und im Öl 5 Minuten andünsten. | Hackfleisch zugeben und krümelig anbraten, Tomatenpüree kurz mitrösten. | Passata und Oregano zugeben, salzen, pfeffern und zugedeckt 20 Minuten leise köcheln. | Spaghetti in Salzwasser al dente kochen. | Mit der Sauce mischen und mit Parmesan und Basilikum servieren.
+se: Very finely chop the onion, carrot, celery and garlic and sweat them in the oil for 5 minutes. | Add the mince and fry until crumbly, then briefly toast the tomato purée. | Add the passata and oregano, season and simmer gently, covered, for 20 minutes. | Cook the spaghetti in salted water until al dente. | Toss with the sauce and serve with Parmesan and basil.
+q: spaghetti bolognese
+@ lentil_bolognese | dinner | italian | 35 | 2 | 6
+de: Linsen-Bolognese mit Vollkornspaghetti
+en: Lentil bolognese with wholemeal spaghetti
+fr: Bolognaise de lentilles et spaghetti complets
+it: Ragù di lenticchie con spaghetti integrali
+es: Boloñesa de lentejas con espaguetis integrales
+pt: Bolonhesa de lentilha com espaguete integral
+ja: 全粒粉スパゲッティのレンズ豆ボロネーゼ
+i: red_lentils 120g, pasta 140g, passata 500ml, onion 1pc, carrot 1pc, celery 1pc, garlic 2pc, tomato_paste 1tbsp, olive_oil 2tsp, oregano_dried 1tsp, tofu_firm 150g, basil_fresh 5g, salt 3g, black_pepper 1pinch
+sd: Zwiebel, Rüebli, Sellerie und Knoblauch fein hacken und im Öl 5 Minuten andünsten. | Tofu fein zerbröseln und 4 Minuten mitbraten, Tomatenpüree kurz mitrösten. | Gespülte Linsen, Passata, 250 ml Wasser und Oregano zugeben und 20 Minuten köcheln, bis die Linsen weich sind. | Spaghetti in Salzwasser al dente kochen. | Mit der Sauce mischen, abschmecken und mit Basilikum servieren.
+se: Finely chop the onion, carrot, celery and garlic and sweat them in the oil for 5 minutes. | Crumble the tofu finely and fry it for 4 minutes, then briefly toast the tomato purée. | Add the rinsed lentils, passata, 250 ml water and oregano and simmer for 20 minutes until the lentils are soft. | Cook the spaghetti in salted water until al dente. | Toss with the sauce, season and serve with basil.
+q: lentil bolognese pasta
+@ shrimp_garlic_pasta | dinner | italian | 20 | 2 | 7
+de: Vollkornspaghetti mit Knoblauch-Crevetten und Cherrytomaten
+en: Wholemeal spaghetti with garlic prawns and cherry tomatoes
+fr: Spaghetti complets aux crevettes à l'ail et tomates cerises
+it: Spaghetti integrali con gamberi all'aglio e pomodorini
+es: Espaguetis integrales con gambas al ajillo y tomates cherry
+pt: Espaguete integral com camarão ao alho e tomate-cereja
+ja: ガーリックシュリンプとミニトマトの全粒粉スパゲッティ
+i: pasta 140g, shrimp 300g, cherry_tomatoes 250g, garlic 3pc, chili_flakes 1pinch, olive_oil 1tbsp, lemon 0.5pc, parsley 15g, rocket 30g, salt 3g
+sd: Spaghetti in Salzwasser al dente kochen, etwas Kochwasser aufbewahren. | Knoblauch in Scheiben schneiden und mit Chiliflocken im Öl 1 Minute sanft anbraten. | Crevetten zugeben und 2 Minuten braten, halbierte Tomaten zufügen und 2 Minuten mitgaren. | Spaghetti mit etwas Kochwasser, Zitronensaft und Petersilie unterheben und mit Rucola servieren.
+se: Cook the spaghetti in salted water until al dente, keeping some of the cooking water. | Slice the garlic and fry it gently with the chilli flakes in the oil for 1 minute. | Add the prawns and fry for 2 minutes, then add the halved tomatoes for 2 more minutes. | Toss in the spaghetti with a little cooking water, lemon juice and parsley and serve with rocket.
+q: shrimp spaghetti garlic
+@ baked_cod_tomatoes | dinner | mediterranean | 30 | 2 | 7
+de: Ofen-Kabeljau mit Tomaten, Oliven und weissen Bohnen
+en: Baked cod with tomatoes, olives and white beans
+fr: Cabillaud au four, tomates, olives et haricots blancs
+it: Merluzzo al forno con pomodori, olive e fagioli
+es: Bacalao al horno con tomates, aceitunas y alubias
+pt: Bacalhau fresco assado com tomate, azeitonas e feijão-branco
+ja: タラのオーブン焼き トマト、オリーブ、白いんげん豆
+i: cod 340g, cherry_tomatoes 300g, white_beans 240g, olives 30g, garlic 2pc, red_onion 0.5pc, olive_oil 1tbsp, oregano_dried 1tsp, lemon 0.5pc, parsley 10g, salt 3g, black_pepper 1pinch
+sd: Backofen auf 200 °C vorheizen. | Tomaten halbieren, Zwiebel in Spalten und Knoblauch in Scheiben schneiden, mit Bohnen, Oliven, Öl, Oregano und Salz in einer Auflaufform mischen und 10 Minuten backen. | Fisch salzen, pfeffern, auf das Gemüse legen und 12–15 Minuten garen, bis er sich leicht zerteilen lässt. | Mit Zitronensaft beträufeln und mit Petersilie bestreuen.
+se: Preheat the oven to 200 °C. | Halve the tomatoes, cut the onion into wedges and slice the garlic, mix with the beans, olives, oil, oregano and salt in a baking dish and bake for 10 minutes. | Season the fish, lay it on the vegetables and cook for 12–15 minutes until it flakes easily. | Drizzle with lemon juice and sprinkle with parsley.
+q: baked cod tomatoes olives
+@ chicken_souvlaki | dinner | greek | 30 | 2 | 8
+de: Poulet-Souvlaki mit Tzatziki und Tomatensalat
+en: Chicken souvlaki with tzatziki and tomato salad
+fr: Souvlaki de poulet, tzatziki et salade de tomates
+it: Souvlaki di pollo con tzatziki e insalata di pomodori
+es: Souvlaki de pollo con tzatziki y ensalada de tomate
+pt: Souvlaki de frango com tzatziki e salada de tomate
+ja: チキンスブラキ ザジキとトマトサラダ添え
+i: chicken_breast 320g, greek_yogurt 200g, cucumber 0.5pc, garlic 2pc, lemon 1pc, oregano_dried 2tsp, olive_oil 1tbsp, tomato 2pc, red_onion 0.5pc, pita 2pc, dill 5g, salt 3g
+sd: Poulet würfeln und mit Zitronensaft, 2 TL Öl, Oregano, 1 gepressten Knoblauchzehe und Salz 20 Minuten marinieren, auf Spiesse stecken. | Gurke raffeln, ausdrücken und mit Joghurt, restlichem Knoblauch, Dill und Salz zu Tzatziki verrühren. | Spiesse in einer Grillpfanne rundum 10–12 Minuten braten. | Tomaten und Zwiebel in Scheiben schneiden, mit restlichem Öl beträufeln und mit Spiessen, Tzatziki und warmem Pita servieren.
+se: Dice the chicken and marinate it with lemon juice, 2 tsp oil, oregano, 1 crushed garlic clove and salt for 20 minutes, then thread onto skewers. | Grate the cucumber, squeeze it out and stir with the yoghurt, remaining garlic, dill and salt into tzatziki. | Cook the skewers in a griddle pan for 10–12 minutes, turning. | Slice the tomatoes and onion, drizzle with the remaining oil and serve with the skewers, tzatziki and warm pitta.
+q: chicken souvlaki tzatziki
+@ shrimp_saganaki | dinner | greek | 25 | 2 | 7
+de: Garnelen-Saganaki mit Tomaten und Feta
+en: Prawn saganaki with tomatoes and feta
+fr: Crevettes saganaki aux tomates et feta
+it: Gamberi saganaki con pomodori e feta
+es: Gambas saganaki con tomate y feta
+pt: Camarão saganaki com tomate e feta
+ja: エビのサガナキ トマトとフェタ
+i: shrimp 320g, canned_tomatoes 400g, feta 60g, onion 0.5pc, garlic 2pc, olive_oil 1tbsp, oregano_dried 1tsp, chili_flakes 1pinch, parsley 10g, bulgur 100g, salt 2g
+sd: Bulgur mit 200 ml heissem Salzwasser übergiessen und zugedeckt 10 Minuten quellen lassen. | Zwiebel und Knoblauch hacken und im Öl 3 Minuten andünsten. | Tomaten, Oregano und Chiliflocken zugeben und 10 Minuten einköcheln. | Crevetten in die Sauce legen, Feta darüberbröckeln und zugedeckt 4–5 Minuten garen, bis die Crevetten rosa sind. | Mit Petersilie bestreuen und mit Bulgur servieren.
+se: Pour 200 ml hot salted water over the bulgur and leave covered for 10 minutes. | Chop the onion and garlic and sweat them in the oil for 3 minutes. | Add the tomatoes, oregano and chilli flakes and simmer for 10 minutes. | Lay the prawns in the sauce, crumble the feta over and cook covered for 4–5 minutes until the prawns are pink. | Sprinkle with parsley and serve with the bulgur.
+q: shrimp saganaki feta
+@ baked_feta_chickpeas | dinner | greek | 30 | 2 | 6
+de: Ofen-Feta mit Kichererbsen und Cherrytomaten
+en: Baked feta with chickpeas and cherry tomatoes
+fr: Feta au four, pois chiches et tomates cerises
+it: Feta al forno con ceci e pomodorini
+es: Feta al horno con garbanzos y tomates cherry
+pt: Feta assado com grão-de-bico e tomate-cereja
+ja: ひよこ豆とミニトマトのオーブン焼きフェタ
+i: feta 150g, chickpeas 400g, cherry_tomatoes 300g, red_onion 1pc, garlic 2pc, olive_oil 1tbsp, oregano_dried 1tsp, chili_flakes 1pinch, spinach 100g, pita 1pc, salt 1g
+sd: Backofen auf 200 °C vorheizen. | Kichererbsen, Tomaten, Zwiebelspalten und Knoblauch mit Öl, Oregano und wenig Salz in einer Auflaufform mischen. | Feta in die Mitte legen, mit Chiliflocken bestreuen und 25 Minuten backen. | Spinat unterheben, sodass er zusammenfällt, und mit Pita servieren.
+se: Preheat the oven to 200 °C. | Toss the chickpeas, tomatoes, onion wedges and garlic with oil, oregano and a little salt in a baking dish. | Place the feta in the middle, sprinkle with chilli flakes and bake for 25 minutes. | Fold in the spinach so it wilts and serve with pitta.
+q: baked feta tomatoes
+@ chicken_tagine | dinner | moroccan | 45 | 2 | 7
+de: Poulet-Tajine mit Kichererbsen, Rüebli und Zitrone
+en: Chicken tagine with chickpeas, carrots and lemon
+fr: Tajine de poulet aux pois chiches, carottes et citron
+it: Tajine di pollo con ceci, carote e limone
+es: Tajín de pollo con garbanzos, zanahoria y limón
+pt: Tagine de frango com grão-de-bico, cenoura e limão
+ja: ひよこ豆とにんじん、レモンのチキンタジン
+i: chicken_thigh 320g, chickpeas 240g, carrot 2pc, onion 1pc, garlic 2pc, ginger 10g, cumin 1tsp, turmeric 0.5tsp, cinnamon_stick 1pc, chicken_broth 300ml, lemon 1pc, olives 30g, coriander_fresh 10g, couscous 80g, olive_oil 2tsp, salt 3g
+sd: Zwiebel, Knoblauch und Ingwer hacken, Rüebli in dicke Scheiben schneiden. | Poulet salzen und im Öl in einem Schmortopf rundum anbraten, herausnehmen. | Zwiebel, Knoblauch, Ingwer und Gewürze 3 Minuten andünsten, Poulet, Rüebli, Bouillon und Zimtstange zugeben und zugedeckt 25 Minuten schmoren. | Kichererbsen, Oliven und Zitronenschnitze zugeben und 10 Minuten weiterschmoren. | Couscous mit 120 ml heissem Salzwasser quellen lassen und mit der Tajine und Koriander servieren.
+se: Chop the onion, garlic and ginger and cut the carrots into thick slices. | Salt the chicken and brown it all over in the oil in a casserole, then remove. | Sweat the onion, garlic, ginger and spices for 3 minutes, add the chicken, carrots, stock and cinnamon stick and braise covered for 25 minutes. | Add the chickpeas, olives and lemon wedges and braise for 10 more minutes. | Soak the couscous in 120 ml hot salted water and serve with the tagine and coriander.
+q: chicken tagine
+@ beef_kofta_yogurt | dinner | middle_eastern | 30 | 2 | 7
+de: Rinds-Kofta mit Joghurt, Bulgur und Gurkensalat
+en: Beef kofta with yoghurt, bulgur and cucumber salad
+fr: Kefta de bœuf, yaourt, boulgour et salade de concombre
+it: Kofta di manzo con yogurt, bulgur e insalata di cetrioli
+es: Kofta de ternera con yogur, bulgur y ensalada de pepino
+pt: Kafta de carne com iogurte, bulgur e salada de pepino
+ja: 牛肉のコフタ ヨーグルト、ブルグル、きゅうりサラダ添え
+i: beef_mince_lean 300g, onion 0.5pc, garlic 1pc, parsley 15g, cumin 1tsp, paprika 1tsp, cinnamon_ground 1pinch, bulgur 100g, greek_yogurt 150g, cucumber 0.5pc, tomato 1pc, mint_fresh 5g, lemon 0.5pc, olive_oil 1tsp, salt 3g
+sd: Zwiebel sehr fein reiben, Petersilie hacken und mit Hackfleisch, Knoblauch, Gewürzen und Salz verkneten, zu 8 länglichen Kofta formen. | Bulgur mit 200 ml heissem Salzwasser übergiessen und 10 Minuten quellen lassen. | Kofta im Öl in einer Grillpfanne rundum 8–10 Minuten braten. | Gurke und Tomate würfeln und mit Minze und Zitronensaft mischen. | Kofta mit Bulgur, Salat und Joghurt servieren.
+se: Grate the onion very finely, chop the parsley and knead with the mince, garlic, spices and salt, then shape into 8 long kofta. | Pour 200 ml hot salted water over the bulgur and leave for 10 minutes. | Cook the kofta in the oil in a griddle pan for 8–10 minutes, turning. | Dice the cucumber and tomato and mix with mint and lemon juice. | Serve the kofta with bulgur, salad and yoghurt.
+q: kofta yogurt
+@ stuffed_peppers_turkey | dinner | european | 50 | 2 | 6
+de: Gefüllte Peperoni mit Truten-Hack und Reis
+en: Stuffed peppers with turkey mince and rice
+fr: Poivrons farcis à la dinde hachée et au riz
+it: Peperoni ripieni di tacchino e riso
+es: Pimientos rellenos de pavo y arroz
+pt: Pimentões recheados com peru e arroz
+ja: 七面鳥ひき肉とご飯のピーマン詰め
+i: red_bell_pepper 4pc, turkey_mince 280g, brown_rice 70g, onion 1pc, garlic 1pc, passata 300ml, paprika 1tsp, oregano_dried 1tsp, mozzarella 50g, parsley 10g, olive_oil 1tsp, salt 3g, black_pepper 1pinch
+sd: Reis nach Packungsangabe vorkochen. Backofen auf 190 °C vorheizen. | Zwiebel und Knoblauch hacken, im Öl andünsten, Hackfleisch krümelig anbraten und mit Paprika, Oregano, Salz und Pfeffer würzen. | Reis und 100 ml Passata untermischen. | Peperoni halbieren, entkernen, füllen und in eine Form mit der restlichen Passata setzen. | Mit Mozzarella belegen, zugedeckt 25 Minuten und offen 10 Minuten backen, mit Petersilie servieren.
+se: Pre-cook the rice according to the packet. Preheat the oven to 190 °C. | Chop the onion and garlic, sweat them in the oil, fry the mince until crumbly and season with paprika, oregano, salt and pepper. | Mix in the rice and 100 ml passata. | Halve and deseed the peppers, fill them and place in a dish with the remaining passata. | Top with mozzarella, bake covered for 25 minutes and uncovered for 10 minutes, and serve with parsley.
+q: stuffed peppers
+@ chili_con_carne | dinner | mexican | 45 | 3 | 8
+de: Chili con Carne mit magerem Rindfleisch
+en: Chili con carne with lean beef
+fr: Chili con carne au bœuf maigre
+it: Chili con carne di manzo magro
+es: Chili con carne de ternera magra
+pt: Chili com carne magra
+ja: 赤身牛肉のチリコンカン
+i: beef_mince_lean 400g, kidney_beans 400g, canned_tomatoes 800g, onion 1pc, garlic 2pc, red_bell_pepper 1pc, chili_fresh 1pc, cumin 2tsp, paprika 2tsp, oregano_dried 1tsp, tomato_paste 1tbsp, rapeseed_oil 2tsp, brown_rice 120g, greek_yogurt 100g, salt 4g
+sd: Reis nach Packungsangabe kochen. | Zwiebel, Knoblauch, Peperoni und Chili hacken und im Öl 5 Minuten andünsten. | Hackfleisch zugeben und krümelig braten, Gewürze und Tomatenpüree kurz mitrösten. | Tomaten und abgespülte Bohnen zugeben, salzen und zugedeckt 25–30 Minuten köcheln. | Mit Reis und einem Klecks Joghurt servieren.
+se: Cook the rice according to the packet. | Chop the onion, garlic, pepper and chilli and sweat them in the oil for 5 minutes. | Add the mince and fry until crumbly, then briefly toast the spices and tomato purée. | Add the tomatoes and rinsed beans, season with salt and simmer covered for 25–30 minutes. | Serve with rice and a dollop of yoghurt.
+q: chili con carne
+@ chili_sin_carne | dinner | mexican | 40 | 3 | 6
+de: Veganes Chili sin Carne mit Bohnen und Süsskartoffel
+en: Vegan chili sin carne with beans and sweet potato
+fr: Chili sin carne vegan aux haricots et patate douce
+it: Chili sin carne vegano con fagioli e patata dolce
+es: Chili sin carne vegano con frijoles y boniato
+pt: Chili sem carne vegano com feijão e batata-doce
+ja: 豆とさつまいものヴィーガン・チリシンカン
+i: kidney_beans 400g, black_beans 400g, tofu_firm 200g, sweet_potato 1pc, canned_tomatoes 800g, onion 1pc, garlic 2pc, red_bell_pepper 1pc, cumin 2tsp, paprika 2tsp, cocoa_powder 1tsp, rapeseed_oil 2tsp, lime 1pc, coriander_fresh 10g, salt 4g
+sd: Zwiebel, Knoblauch und Peperoni hacken, Süsskartoffel in kleine Würfel schneiden, Tofu zerbröseln. | Zwiebel, Knoblauch und Tofu im Öl 6 Minuten braten, Gewürze und Kakao kurz mitrösten. | Süsskartoffel, Peperoni, Tomaten und abgespülte Bohnen zugeben und zugedeckt 25 Minuten köcheln. | Mit Salz und Limettensaft abschmecken und mit Koriander servieren.
+se: Chop the onion, garlic and pepper, dice the sweet potato small and crumble the tofu. | Fry the onion, garlic and tofu in the oil for 6 minutes, then briefly toast the spices and cocoa. | Add the sweet potato, pepper, tomatoes and rinsed beans and simmer covered for 25 minutes. | Season with salt and lime juice and serve with coriander.
+q: vegan chili beans
+@ chicken_fajitas | dinner | mexican | 25 | 2 | 8
+de: Poulet-Fajitas mit Peperoni, Salsa und Joghurt
+en: Chicken fajitas with peppers, salsa and yoghurt
+fr: Fajitas de poulet aux poivrons, salsa et yaourt
+it: Fajitas di pollo con peperoni, salsa e yogurt
+es: Fajitas de pollo con pimientos, salsa y yogur
+pt: Fajitas de frango com pimentões, salsa e iogurte
+ja: チキンファヒータ パプリカ、サルサ、ヨーグルト
+i: chicken_breast 320g, red_bell_pepper 1pc, yellow_bell_pepper 1pc, onion 1pc, whole_wheat_tortilla 4pc, paprika 1tsp, cumin 1tsp, garlic 1pc, lime 1pc, tomato 2pc, greek_yogurt 100g, coriander_fresh 10g, rapeseed_oil 2tsp, salt 3g
+sd: Poulet in Streifen schneiden und mit Paprika, Kreuzkümmel, Knoblauch, Salz und halbem Limettensaft mischen. | Peperoni und Zwiebel in Streifen schneiden. | Tomaten fein würfeln und mit Koriander, Salz und restlichem Limettensaft zu Salsa mischen. | Poulet im Öl 5 Minuten scharf braten, Gemüse zugeben und 4 Minuten weiterbraten. | Tortillas erwärmen und mit Poulet, Gemüse, Salsa und Joghurt füllen.
+se: Cut the chicken into strips and mix with paprika, cumin, garlic, salt and half the lime juice. | Cut the peppers and onion into strips. | Finely dice the tomatoes and mix with coriander, salt and the remaining lime juice for a salsa. | Stir-fry the chicken in the oil for 5 minutes over high heat, add the vegetables and fry for 4 more minutes. | Warm the tortillas and fill with the chicken, vegetables, salsa and yoghurt.
+q: chicken fajitas
+@ pescado_veracruzana | dinner | mexican | 30 | 2 | 6
+de: Fisch nach Veracruz-Art mit Tomaten, Oliven und Reis
+en: Veracruz-style fish with tomatoes, olives and rice
+fr: Poisson à la veracruzana, tomates, olives et riz
+it: Pesce alla veracruzana con pomodori, olive e riso
+es: Pescado a la veracruzana con arroz
+pt: Peixe à veracruzana com tomate, azeitonas e arroz
+ja: ベラクルス風白身魚 トマトとオリーブ、ライス添え
+i: cod 340g, canned_tomatoes 400g, olives 40g, onion 1pc, garlic 2pc, chili_fresh 1pc, oregano_dried 1tsp, olive_oil 1tbsp, lime 1pc, basmati_rice 100g, parsley 10g, salt 3g
+sd: Reis nach Packungsangabe kochen. | Zwiebel, Knoblauch und Chili hacken und im Öl 4 Minuten andünsten. | Tomaten, Oliven und Oregano zugeben und 10 Minuten zu einer Sauce einkochen, salzen. | Fisch mit Limettensaft und Salz würzen, in die Sauce legen und zugedeckt 8–10 Minuten gar ziehen lassen. | Mit Petersilie bestreuen und mit Reis servieren.
+se: Cook the rice according to the packet. | Chop the onion, garlic and chilli and sweat them in the oil for 4 minutes. | Add the tomatoes, olives and oregano, simmer for 10 minutes to a sauce and season with salt. | Season the fish with lime juice and salt, lay it in the sauce and poach covered for 8–10 minutes. | Sprinkle with parsley and serve with rice.
+q: fish veracruz tomato olives
+@ moqueca | dinner | brazilian | 35 | 2 | 8
+de: Moqueca (brasilianischer Fischeintopf mit Kokosmilch)
+en: Moqueca (Brazilian fish stew with coconut milk)
+fr: Moqueca (ragoût de poisson brésilien au lait de coco)
+it: Moqueca (stufato brasiliano di pesce al latte di cocco)
+es: Moqueca (guiso brasileño de pescado con leche de coco)
+pt: Moqueca de peixe
+ja: ムケッカ（ココナッツミルクのブラジル風魚の煮込み）
+i: cod 300g, shrimp 120g, tomato 2pc, red_bell_pepper 1pc, onion 1pc, garlic 2pc, coconut_milk 120ml, dende_oil 1tsp, lime 1pc, coriander_fresh 10g, chili_fresh 0.5pc, basmati_rice 100g, salt 3g
+sd: Fisch in grosse Stücke schneiden und mit Limettensaft, Knoblauch und Salz 15 Minuten marinieren. | Reis nach Packungsangabe kochen. | Zwiebel, Tomaten und Peperoni in Scheiben schneiden und abwechselnd mit dem Fisch und den Crevetten in einen breiten Topf schichten. | Kokosmilch, Dendê-Öl und Chili darübergeben und zugedeckt 15 Minuten leise köcheln, nicht rühren. | Mit Koriander bestreuen und mit Reis servieren.
+se: Cut the fish into large pieces and marinate with lime juice, garlic and salt for 15 minutes. | Cook the rice according to the packet. | Slice the onion, tomatoes and pepper and layer them in a wide pot alternating with the fish and prawns. | Pour over the coconut milk, dendê oil and chilli and simmer gently, covered, for 15 minutes without stirring. | Sprinkle with coriander and serve with rice.
+q: moqueca fish stew
+@ picadinho | dinner | brazilian | 45 | 2 | 6
+de: Picadinho (brasilianisches Rindsragout) mit Reis und Kürbis
+en: Picadinho (Brazilian beef stew) with rice and pumpkin
+fr: Picadinho (ragoût de bœuf brésilien) avec riz et potiron
+it: Picadinho (spezzatino brasiliano di manzo) con riso e zucca
+es: Picadinho (guiso brasileño de ternera) con arroz y calabaza
+pt: Picadinho de carne com arroz e abóbora
+ja: ピカジーニョ（ブラジル風牛肉の煮込み）ライスとかぼちゃ添え
+i: beef_stew 320g, pumpkin 250g, onion 1pc, garlic 2pc, tomato 2pc, beef_broth 300ml, paprika 1tsp, parsley 10g, rapeseed_oil 2tsp, brown_rice 100g, salt 3g, black_pepper 1pinch
+sd: Rindfleisch in kleine Würfel schneiden, Zwiebel, Knoblauch und Tomaten hacken. | Fleisch im Öl portionsweise scharf anbraten, Zwiebel und Knoblauch zugeben und 3 Minuten mitbraten. | Tomaten, Paprika und Bouillon zugeben und zugedeckt 30 Minuten schmoren. | Kürbis würfeln, zugeben und weitere 10 Minuten schmoren; Reis nach Packungsangabe kochen. | Mit Salz, Pfeffer und Petersilie abschmecken und mit Reis servieren.
+se: Cut the beef into small cubes and chop the onion, garlic and tomatoes. | Sear the beef in the oil in batches, add the onion and garlic and fry for 3 minutes. | Add the tomatoes, paprika and stock and braise covered for 30 minutes. | Dice the pumpkin, add it and braise for 10 more minutes; cook the rice according to the packet. | Season with salt, pepper and parsley and serve with rice.
+q: beef stew pumpkin rice
+@ feijoada_light | dinner | brazilian | 50 | 3 | 7
+de: Leichte Feijoada mit Schweinsfilet und Federkohl
+en: Light feijoada with pork tenderloin and kale
+fr: Feijoada légère au filet de porc et chou kale
+it: Feijoada leggera con filetto di maiale e cavolo riccio
+es: Feijoada ligera con solomillo de cerdo y col rizada
+pt: Feijoada leve com filé-mignon suíno e couve
+ja: 豚ヒレ肉とケールの軽いフェイジョアーダ
+i: black_beans 600g, pork_tenderloin 300g, chorizo 50g, onion 1pc, garlic 3pc, beef_broth 400ml, kale 200g, orange 1pc, brown_rice 120g, rapeseed_oil 2tsp, salt 3g, black_pepper 1pinch
+sd: Zwiebel und 2 Knoblauchzehen hacken, Schweinsfilet in Würfel und Chouriço in Scheiben schneiden. | Fleisch und Chouriço in 1 TL Öl anbraten, Zwiebel und Knoblauch zugeben und 3 Minuten mitbraten. | Abgespülte Bohnen und Bouillon zugeben und zugedeckt 30 Minuten köcheln, ein paar Bohnen zerdrücken. | Federkohl in feine Streifen schneiden und mit dem restlichen Knoblauch im übrigen Öl 2 Minuten braten; Reis kochen. | Feijoada mit Reis, Federkohl und Orangenschnitzen servieren.
+se: Chop the onion and 2 garlic cloves, dice the pork and slice the chouriço. | Brown the meat and chouriço in 1 tsp oil, add the onion and garlic and fry for 3 minutes. | Add the rinsed beans and stock and simmer covered for 30 minutes, mashing a few beans. | Cut the kale into fine strips and fry with the remaining garlic in the rest of the oil for 2 minutes; cook the rice. | Serve the feijoada with rice, kale and orange segments.
+q: feijoada
+@ bobo_camarao | dinner | brazilian | 40 | 2 | 6
+de: Bobó de camarão (Crevetten in Maniok-Kokos-Creme)
+en: Bobó de camarão (prawns in cassava and coconut cream)
+fr: Bobó de camarão (crevettes à la crème de manioc et coco)
+it: Bobó de camarão (gamberi in crema di manioca e cocco)
+es: Bobó de camarão (gambas en crema de yuca y coco)
+pt: Bobó de camarão
+ja: ボボ・ジ・カマラォン（キャッサバとココナッツのエビクリーム煮）
+i: shrimp 350g, cassava 250g, coconut_milk 100ml, onion 1pc, garlic 2pc, tomato 2pc, red_bell_pepper 1pc, dende_oil 1tsp, lime 1pc, coriander_fresh 10g, salt 3g
+sd: Maniok schälen, würfeln und in Salzwasser 20 Minuten weich kochen, mit etwas Kochwasser und der Kokosmilch fein pürieren. | Crevetten mit Limettensaft, Knoblauch und Salz marinieren. | Zwiebel, Tomaten und Peperoni würfeln und im Dendê-Öl 6 Minuten dünsten. | Crevetten zugeben und 2 Minuten braten, dann die Maniokcreme unterrühren und 3 Minuten köcheln. | Mit Koriander bestreuen und servieren.
+se: Peel and dice the cassava, boil it in salted water for 20 minutes until soft and blend it smoothly with a little cooking water and the coconut milk. | Marinate the prawns with lime juice, garlic and salt. | Dice the onion, tomatoes and pepper and cook them in the dendê oil for 6 minutes. | Add the prawns and fry for 2 minutes, then stir in the cassava cream and simmer for 3 minutes. | Sprinkle with coriander and serve.
+q: shrimp stew brazilian
+@ galinhada | dinner | brazilian | 45 | 2 | 6
+de: Galinhada (brasilianischer Poulet-Reis mit Kurkuma)
+en: Galinhada (Brazilian chicken and rice with turmeric)
+fr: Galinhada (riz au poulet brésilien au curcuma)
+it: Galinhada (riso e pollo alla brasiliana con curcuma)
+es: Galinhada (arroz con pollo brasileño con cúrcuma)
+pt: Galinhada
+ja: ガリニャーダ（ターメリック風味のブラジル風チキンライス）
+i: chicken_thigh 340g, brown_rice 120g, onion 1pc, garlic 2pc, tomato 1pc, red_bell_pepper 1pc, peas 100g, turmeric 1tsp, chicken_broth 450ml, parsley 10g, spring_onion 1pc, rapeseed_oil 2tsp, lime 0.5pc, salt 3g
+sd: Poulet in Stücke schneiden, mit Limettensaft, Knoblauch und Salz würzen und im Öl in einem breiten Topf rundum anbraten. | Zwiebel, Tomate und Peperoni würfeln, zugeben und 4 Minuten mitbraten, Kurkuma einrühren. | Reis und Bouillon zugeben, aufkochen und zugedeckt bei kleiner Hitze etwa 35 Minuten garen. | Erbsen die letzten 5 Minuten mitgaren. | Mit Petersilie und Frühlingszwiebel bestreuen.
+se: Cut the chicken into pieces, season with lime juice, garlic and salt and brown all over in the oil in a wide pot. | Dice the onion, tomato and pepper, add them and fry for 4 minutes, then stir in the turmeric. | Add the rice and stock, bring to the boil and cook covered over low heat for about 35 minutes. | Add the peas for the last 5 minutes. | Sprinkle with parsley and spring onion.
+q: chicken rice turmeric one pot

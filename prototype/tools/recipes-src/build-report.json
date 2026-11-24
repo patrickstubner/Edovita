@@ -1,0 +1,4326 @@
+{
+ "recipes": [
+  {
+   "id": "oven_salmon",
+   "cui": "european",
+   "kcal": 690,
+   "min": 20,
+   "p": 41,
+   "meal": "dinner",
+   "has": [
+    "fish"
+   ],
+   "pop": 9,
+   "c": "c1",
+   "photo": true,
+   "nut": {
+    "kcal": 691,
+    "p": 40.9,
+    "c": 58.6,
+    "f": 33.1
+   }
+  },
+  {
+   "id": "quinoa_pan",
+   "cui": "mediterranean",
+   "kcal": 700,
+   "min": 25,
+   "p": 30,
+   "meal": "dinner",
+   "has": [
+    "dairy",
+    "onion"
+   ],
+   "pop": 7,
+   "c": "c2",
+   "photo": false,
+   "nut": {
+    "kcal": 696,
+    "p": 29.8,
+    "c": 94.8,
+    "f": 23.6
+   }
+  },
+  {
+   "id": "thai_curry",
+   "cui": "thai",
+   "kcal": 820,
+   "min": 25,
+   "p": 44,
+   "meal": "dinner",
+   "has": [
+    "fish",
+    "meat"
+   ],
+   "pop": 9,
+   "c": "c3",
+   "photo": true,
+   "nut": {
+    "kcal": 822,
+    "p": 43.9,
+    "c": 78.5,
+    "f": 37.3
+   }
+  },
+  {
+   "id": "pho",
+   "cui": "vietnamese",
+   "kcal": 580,
+   "min": 30,
+   "p": 34,
+   "meal": "lunch",
+   "has": [
+    "cilantro",
+    "fish",
+    "meat",
+    "onion"
+   ],
+   "pop": 8,
+   "c": "c4",
+   "photo": true,
+   "nut": {
+    "kcal": 580,
+    "p": 34.3,
+    "c": 82.9,
+    "f": 12.0
+   }
+  },
+  {
+   "id": "summer_rolls",
+   "cui": "vietnamese",
+   "kcal": 290,
+   "min": 15,
+   "p": 26,
+   "meal": "lunch",
+   "has": [
+    "cilantro",
+    "fish",
+    "nuts"
+   ],
+   "pop": 7,
+   "c": "c5",
+   "photo": true,
+   "nut": {
+    "kcal": 292,
+    "p": 25.7,
+    "c": 37.6,
+    "f": 5.0
+   }
+  },
+  {
+   "id": "birchermuesli",
+   "cui": "swiss",
+   "kcal": 450,
+   "min": 5,
+   "p": 14,
+   "meal": "breakfast",
+   "has": [
+    "dairy",
+    "gluten",
+    "nuts"
+   ],
+   "pop": 8,
+   "c": "c6",
+   "photo": true,
+   "nut": {
+    "kcal": 447,
+    "p": 14.2,
+    "c": 59.9,
+    "f": 18.1
+   }
+  },
+  {
+   "id": "yogurt_bowl",
+   "cui": "european",
+   "kcal": 230,
+   "min": 5,
+   "p": 17,
+   "meal": "snack",
+   "has": [
+    "dairy",
+    "nuts"
+   ],
+   "pop": 6,
+   "c": "c1",
+   "photo": true,
+   "nut": {
+    "kcal": 231,
+    "p": 17.1,
+    "c": 21.7,
+    "f": 9.4
+   }
+  },
+  {
+   "id": "lentil_curry",
+   "cui": "indian",
+   "kcal": 590,
+   "min": 30,
+   "p": 25,
+   "meal": "dinner",
+   "has": [
+    "onion"
+   ],
+   "pop": 7,
+   "c": "c2",
+   "photo": true,
+   "nut": {
+    "kcal": 592,
+    "p": 25.2,
+    "c": 59.5,
+    "f": 29.0
+   }
+  },
+  {
+   "id": "scrambled_eggs",
+   "cui": "european",
+   "kcal": 350,
+   "min": 10,
+   "p": 23,
+   "meal": "breakfast",
+   "has": [
+    "dairy",
+    "egg",
+    "gluten"
+   ],
+   "pop": 6,
+   "c": "c3",
+   "photo": true,
+   "nut": {
+    "kcal": 355,
+    "p": 23.2,
+    "c": 28.6,
+    "f": 15.6
+   }
+  },
+  {
+   "id": "chicken_bowl",
+   "cui": "japanese",
+   "kcal": 560,
+   "min": 25,
+   "p": 44,
+   "meal": "lunch",
+   "has": [
+    "gluten",
+    "meat",
+    "onion"
+   ],
+   "pop": 8,
+   "c": "c4",
+   "photo": true,
+   "nut": {
+    "kcal": 557,
+    "p": 44.2,
+    "c": 77.6,
+    "f": 8.0
+   }
+  },
+  {
+   "id": "mushroom_polenta",
+   "cui": "italian",
+   "kcal": 460,
+   "min": 20,
+   "p": 20,
+   "meal": "dinner",
+   "has": [
+    "dairy",
+    "mushrooms",
+    "onion"
+   ],
+   "pop": 5,
+   "c": "c5",
+   "photo": false,
+   "nut": {
+    "kcal": 456,
+    "p": 19.8,
+    "c": 61.2,
+    "f": 15.9
+   }
+  },
+  {
+   "id": "hummus_wrap",
+   "cui": "middle_eastern",
+   "kcal": 390,
+   "min": 10,
+   "p": 15,
+   "meal": "lunch",
+   "has": [
+    "gluten"
+   ],
+   "pop": 6,
+   "c": "c6",
+   "photo": false,
+   "nut": {
+    "kcal": 385,
+    "p": 15.1,
+    "c": 55.6,
+    "f": 12.6
+   }
+  },
+  {
+   "id": "miso_salmon",
+   "cui": "japanese",
+   "kcal": 600,
+   "min": 20,
+   "p": 37,
+   "meal": "dinner",
+   "has": [
+    "fish",
+    "gluten",
+    "onion"
+   ],
+   "pop": 7,
+   "c": "c1",
+   "photo": true,
+   "nut": {
+    "kcal": 600,
+    "p": 37.1,
+    "c": 59.7,
+    "f": 22.6
+   }
+  },
+  {
+   "id": "shakshuka",
+   "cui": "middle_eastern",
+   "kcal": 450,
+   "min": 20,
+   "p": 23,
+   "meal": "breakfast",
+   "has": [
+    "dairy",
+    "egg",
+    "gluten",
+    "onion"
+   ],
+   "pop": 6,
+   "c": "c2",
+   "photo": true,
+   "nut": {
+    "kcal": 446,
+    "p": 22.8,
+    "c": 37.3,
+    "f": 22.6
+   }
+  },
+  {
+   "id": "burrito_bowl",
+   "cui": "mexican",
+   "kcal": 530,
+   "min": 20,
+   "p": 23,
+   "meal": "lunch",
+   "has": [
+    "cilantro",
+    "onion"
+   ],
+   "pop": 7,
+   "c": "c3",
+   "photo": true,
+   "nut": {
+    "kcal": 527,
+    "p": 23.2,
+    "c": 86.2,
+    "f": 11.1
+   }
+  },
+  {
+   "id": "skyr_berry_bowl",
+   "cui": "nordic",
+   "kcal": 400,
+   "min": 5,
+   "p": 35,
+   "meal": "breakfast",
+   "has": [
+    "dairy",
+    "gluten"
+   ],
+   "pop": 8,
+   "c": "c4",
+   "photo": true,
+   "nut": {
+    "kcal": 396,
+    "p": 35.4,
+    "c": 45.5,
+    "f": 7.9
+   }
+  },
+  {
+   "id": "quark_bircher",
+   "cui": "swiss",
+   "kcal": 380,
+   "min": 10,
+   "p": 25,
+   "meal": "breakfast",
+   "has": [
+    "dairy",
+    "gluten",
+    "nuts"
+   ],
+   "pop": 8,
+   "c": "c5",
+   "photo": true,
+   "nut": {
+    "kcal": 384,
+    "p": 25.0,
+    "c": 53.5,
+    "f": 8.2
+   }
+  },
+  {
+   "id": "cottage_tomato_toast",
+   "cui": "european",
+   "kcal": 390,
+   "min": 5,
+   "p": 26,
+   "meal": "breakfast",
+   "has": [
+    "dairy",
+    "gluten"
+   ],
+   "pop": 7,
+   "c": "c6",
+   "photo": true,
+   "nut": {
+    "kcal": 391,
+    "p": 25.8,
+    "c": 41.2,
+    "f": 13.2
+   }
+  },
+  {
+   "id": "overnight_oats_quark",
+   "cui": "american",
+   "kcal": 390,
+   "min": 5,
+   "p": 30,
+   "meal": "breakfast",
+   "has": [
+    "dairy",
+    "gluten"
+   ],
+   "pop": 8,
+   "c": "c1",
+   "photo": true,
+   "nut": {
+    "kcal": 385,
+    "p": 29.8,
+    "c": 54.6,
+    "f": 5.1
+   }
+  },
+  {
+   "id": "veggie_omelette",
+   "cui": "french",
+   "kcal": 360,
+   "min": 15,
+   "p": 26,
+   "meal": "breakfast",
+   "has": [
+    "dairy",
+    "egg",
+    "onion"
+   ],
+   "pop": 7,
+   "c": "c2",
+   "photo": true,
+   "nut": {
+    "kcal": 357,
+    "p": 25.9,
+    "c": 8.8,
+    "f": 24.0
+   }
+  },
+  {
+   "id": "spinach_feta_omelette",
+   "cui": "greek",
+   "kcal": 370,
+   "min": 10,
+   "p": 26,
+   "meal": "breakfast",
+   "has": [
+    "dairy",
+    "egg"
+   ],
+   "pop": 7,
+   "c": "c3",
+   "photo": true,
+   "nut": {
+    "kcal": 367,
+    "p": 26.1,
+    "c": 8.5,
+    "f": 25.5
+   }
+  },
+  {
+   "id": "cottage_zucchini_frittata",
+   "cui": "italian",
+   "kcal": 330,
+   "min": 20,
+   "p": 25,
+   "meal": "breakfast",
+   "has": [
+    "dairy",
+    "egg",
+    "gluten"
+   ],
+   "pop": 6,
+   "c": "c4",
+   "photo": true,
+   "nut": {
+    "kcal": 326,
+    "p": 25.5,
+    "c": 20.4,
+    "f": 15.7
+   }
+  },
+  {
+   "id": "protein_pancakes",
+   "cui": "american",
+   "kcal": 350,
+   "min": 20,
+   "p": 24,
+   "meal": "breakfast",
+   "has": [
+    "dairy",
+    "egg",
+    "gluten"
+   ],
+   "pop": 8,
+   "c": "c5",
+   "photo": true,
+   "nut": {
+    "kcal": 345,
+    "p": 24.0,
+    "c": 39.1,
+    "f": 9.7
+   }
+  },
+  {
+   "id": "tofu_scramble",
+   "cui": "american",
+   "kcal": 390,
+   "min": 15,
+   "p": 28,
+   "meal": "breakfast",
+   "has": [
+    "gluten"
+   ],
+   "pop": 6,
+   "c": "c6",
+   "photo": false,
+   "nut": {
+    "kcal": 394,
+    "p": 28.5,
+    "c": 29.8,
+    "f": 19.1
+   }
+  },
+  {
+   "id": "huevos_rancheros",
+   "cui": "mexican",
+   "kcal": 430,
+   "min": 20,
+   "p": 25,
+   "meal": "breakfast",
+   "has": [
+    "cilantro",
+    "egg",
+    "onion"
+   ],
+   "pop": 7,
+   "c": "c1",
+   "photo": true,
+   "nut": {
+    "kcal": 429,
+    "p": 25.0,
+    "c": 50.5,
+    "f": 14.1
+   }
+  },
+  {
+   "id": "smoked_salmon_bread",
+   "cui": "nordic",
+   "kcal": 320,
+   "min": 5,
+   "p": 23,
+   "meal": "breakfast",
+   "has": [
+    "dairy",
+    "fish",
+    "gluten"
+   ],
+   "pop": 7,
+   "c": "c2",
+   "photo": true,
+   "nut": {
+    "kcal": 315,
+    "p": 23.3,
+    "c": 33.6,
+    "f": 8.6
+   }
+  },
+  {
+   "id": "tapioca_egg_cheese",
+   "cui": "brazilian",
+   "kcal": 400,
+   "min": 10,
+   "p": 20,
+   "meal": "breakfast",
+   "has": [
+    "dairy",
+    "egg"
+   ],
+   "pop": 7,
+   "c": "c3",
+   "photo": true,
+   "nut": {
+    "kcal": 404,
+    "p": 20.1,
+    "c": 40.2,
+    "f": 17.6
+   }
+  },
+  {
+   "id": "cuscuz_egg",
+   "cui": "brazilian",
+   "kcal": 430,
+   "min": 15,
+   "p": 22,
+   "meal": "breakfast",
+   "has": [
+    "dairy",
+    "egg"
+   ],
+   "pop": 6,
+   "c": "c4",
+   "photo": false,
+   "nut": {
+    "kcal": 433,
+    "p": 21.9,
+    "c": 43.4,
+    "f": 18.6
+   }
+  },
+  {
+   "id": "acai_skyr_bowl",
+   "cui": "brazilian",
+   "kcal": 450,
+   "min": 10,
+   "p": 29,
+   "meal": "breakfast",
+   "has": [
+    "dairy",
+    "gluten",
+    "nuts"
+   ],
+   "pop": 8,
+   "c": "c5",
+   "photo": true,
+   "nut": {
+    "kcal": 448,
+    "p": 29.3,
+    "c": 61.1,
+    "f": 11.3
+   }
+  },
+  {
+   "id": "japanese_salmon_breakfast",
+   "cui": "japanese",
+   "kcal": 460,
+   "min": 20,
+   "p": 29,
+   "meal": "breakfast",
+   "has": [
+    "fish",
+    "onion"
+   ],
+   "pop": 6,
+   "c": "c6",
+   "photo": true,
+   "nut": {
+    "kcal": 460,
+    "p": 28.8,
+    "c": 47.4,
+    "f": 15.8
+   }
+  },
+  {
+   "id": "tamagoyaki_edamame",
+   "cui": "japanese",
+   "kcal": 420,
+   "min": 15,
+   "p": 26,
+   "meal": "breakfast",
+   "has": [
+    "egg",
+    "gluten"
+   ],
+   "pop": 6,
+   "c": "c1",
+   "photo": true,
+   "nut": {
+    "kcal": 423,
+    "p": 25.8,
+    "c": 40.0,
+    "f": 17.4
+   }
+  },
+  {
+   "id": "chicken_congee",
+   "cui": "chinese",
+   "kcal": 390,
+   "min": 35,
+   "p": 37,
+   "meal": "breakfast",
+   "has": [
+    "egg",
+    "gluten",
+    "meat",
+    "onion"
+   ],
+   "pop": 6,
+   "c": "c2",
+   "photo": true,
+   "nut": {
+    "kcal": 386,
+    "p": 37.3,
+    "c": 32.6,
+    "f": 11.1
+   }
+  },
+  {
+   "id": "menemen",
+   "cui": "middle_eastern",
+   "kcal": 410,
+   "min": 15,
+   "p": 23,
+   "meal": "breakfast",
+   "has": [
+    "dairy",
+    "egg",
+    "gluten",
+    "onion"
+   ],
+   "pop": 6,
+   "c": "c3",
+   "photo": true,
+   "nut": {
+    "kcal": 406,
+    "p": 23.0,
+    "c": 28.6,
+    "f": 22.7
+   }
+  },
+  {
+   "id": "greek_yogurt_walnut",
+   "cui": "greek",
+   "kcal": 350,
+   "min": 5,
+   "p": 28,
+   "meal": "breakfast",
+   "has": [
+    "dairy",
+    "nuts"
+   ],
+   "pop": 7,
+   "c": "c4",
+   "photo": true,
+   "nut": {
+    "kcal": 352,
+    "p": 27.6,
+    "c": 31.0,
+    "f": 14.8
+   }
+  },
+  {
+   "id": "chia_skyr_mango",
+   "cui": "european",
+   "kcal": 340,
+   "min": 5,
+   "p": 30,
+   "meal": "breakfast",
+   "has": [
+    "dairy"
+   ],
+   "pop": 7,
+   "c": "c5",
+   "photo": true,
+   "nut": {
+    "kcal": 344,
+    "p": 30.5,
+    "c": 38.5,
+    "f": 8.3
+   }
+  },
+  {
+   "id": "ricotta_berry_toast",
+   "cui": "italian",
+   "kcal": 450,
+   "min": 5,
+   "p": 26,
+   "meal": "breakfast",
+   "has": [
+    "dairy",
+    "gluten",
+    "nuts"
+   ],
+   "pop": 6,
+   "c": "c6",
+   "photo": true,
+   "nut": {
+    "kcal": 454,
+    "p": 25.5,
+    "c": 51.0,
+    "f": 16.1
+   }
+  },
+  {
+   "id": "veggie_egg_muffins",
+   "cui": "american",
+   "kcal": 250,
+   "min": 30,
+   "p": 24,
+   "meal": "breakfast",
+   "has": [
+    "dairy",
+    "egg",
+    "meat",
+    "onion"
+   ],
+   "pop": 7,
+   "c": "c1",
+   "photo": false,
+   "nut": {
+    "kcal": 246,
+    "p": 23.6,
+    "c": 6.4,
+    "f": 13.7
+   }
+  },
+  {
+   "id": "breakfast_burrito",
+   "cui": "mexican",
+   "kcal": 450,
+   "min": 15,
+   "p": 25,
+   "meal": "breakfast",
+   "has": [
+    "dairy",
+    "egg",
+    "gluten"
+   ],
+   "pop": 7,
+   "c": "c2",
+   "photo": true,
+   "nut": {
+    "kcal": 446,
+    "p": 25.3,
+    "c": 39.1,
+    "f": 21.2
+   }
+  },
+  {
+   "id": "avocado_egg_toast",
+   "cui": "american",
+   "kcal": 480,
+   "min": 10,
+   "p": 27,
+   "meal": "breakfast",
+   "has": [
+    "dairy",
+    "egg",
+    "gluten"
+   ],
+   "pop": 8,
+   "c": "c3",
+   "photo": true,
+   "nut": {
+    "kcal": 479,
+    "p": 27.3,
+    "c": 38.4,
+    "f": 24.4
+   }
+  },
+  {
+   "id": "quinoa_breakfast_porridge",
+   "cui": "peruvian",
+   "kcal": 400,
+   "min": 20,
+   "p": 23,
+   "meal": "breakfast",
+   "has": [
+    "dairy",
+    "nuts"
+   ],
+   "pop": 6,
+   "c": "c4",
+   "photo": true,
+   "nut": {
+    "kcal": 402,
+    "p": 23.2,
+    "c": 61.4,
+    "f": 8.1
+   }
+  },
+  {
+   "id": "oat_porridge_quark",
+   "cui": "swiss",
+   "kcal": 450,
+   "min": 10,
+   "p": 32,
+   "meal": "breakfast",
+   "has": [
+    "dairy",
+    "gluten",
+    "nuts"
+   ],
+   "pop": 7,
+   "c": "c5",
+   "photo": true,
+   "nut": {
+    "kcal": 453,
+    "p": 32.2,
+    "c": 62.1,
+    "f": 8.2
+   }
+  },
+  {
+   "id": "rosti_fried_egg",
+   "cui": "swiss",
+   "kcal": 430,
+   "min": 30,
+   "p": 26,
+   "meal": "breakfast",
+   "has": [
+    "dairy",
+    "egg"
+   ],
+   "pop": 6,
+   "c": "c6",
+   "photo": false,
+   "nut": {
+    "kcal": 432,
+    "p": 25.7,
+    "c": 37.0,
+    "f": 19.7
+   }
+  },
+  {
+   "id": "swiss_cottage_radish_bread",
+   "cui": "swiss",
+   "kcal": 390,
+   "min": 5,
+   "p": 31,
+   "meal": "breakfast",
+   "has": [
+    "dairy",
+    "gluten"
+   ],
+   "pop": 6,
+   "c": "c1",
+   "photo": false,
+   "nut": {
+    "kcal": 392,
+    "p": 31.4,
+    "c": 40.8,
+    "f": 10.7
+   }
+  },
+  {
+   "id": "bresaola_rocket_toast",
+   "cui": "italian",
+   "kcal": 390,
+   "min": 5,
+   "p": 32,
+   "meal": "breakfast",
+   "has": [
+    "dairy",
+    "gluten",
+    "meat"
+   ],
+   "pop": 6,
+   "c": "c2",
+   "photo": false,
+   "nut": {
+    "kcal": 386,
+    "p": 31.7,
+    "c": 32.6,
+    "f": 13.5
+   }
+  },
+  {
+   "id": "green_shakshuka",
+   "cui": "middle_eastern",
+   "kcal": 460,
+   "min": 20,
+   "p": 29,
+   "meal": "breakfast",
+   "has": [
+    "dairy",
+    "egg",
+    "gluten",
+    "onion"
+   ],
+   "pop": 7,
+   "c": "c3",
+   "photo": true,
+   "nut": {
+    "kcal": 462,
+    "p": 29.0,
+    "c": 35.8,
+    "f": 24.0
+   }
+  },
+  {
+   "id": "cilbir",
+   "cui": "middle_eastern",
+   "kcal": 350,
+   "min": 15,
+   "p": 29,
+   "meal": "breakfast",
+   "has": [
+    "dairy",
+    "egg",
+    "gluten"
+   ],
+   "pop": 6,
+   "c": "c4",
+   "photo": true,
+   "nut": {
+    "kcal": 351,
+    "p": 28.9,
+    "c": 23.5,
+    "f": 15.2
+   }
+  },
+  {
+   "id": "gyeran_jjim",
+   "cui": "korean",
+   "kcal": 360,
+   "min": 15,
+   "p": 20,
+   "meal": "breakfast",
+   "has": [
+    "egg",
+    "fish",
+    "meat",
+    "onion"
+   ],
+   "pop": 5,
+   "c": "c5",
+   "photo": true,
+   "nut": {
+    "kcal": 363,
+    "p": 19.8,
+    "c": 34.7,
+    "f": 15.5
+   }
+  },
+  {
+   "id": "kimchi_scrambled_eggs",
+   "cui": "korean",
+   "kcal": 360,
+   "min": 10,
+   "p": 29,
+   "meal": "breakfast",
+   "has": [
+    "egg",
+    "fish",
+    "onion"
+   ],
+   "pop": 5,
+   "c": "c6",
+   "photo": true,
+   "nut": {
+    "kcal": 358,
+    "p": 29.1,
+    "c": 6.9,
+    "f": 24.5
+   }
+  },
+  {
+   "id": "crepioca_chicken",
+   "cui": "brazilian",
+   "kcal": 390,
+   "min": 15,
+   "p": 33,
+   "meal": "breakfast",
+   "has": [
+    "dairy",
+    "egg",
+    "meat"
+   ],
+   "pop": 6,
+   "c": "c1",
+   "photo": false,
+   "nut": {
+    "kcal": 394,
+    "p": 32.7,
+    "c": 22.1,
+    "f": 18.4
+   }
+  },
+  {
+   "id": "buckwheat_galette",
+   "cui": "french",
+   "kcal": 360,
+   "min": 20,
+   "p": 26,
+   "meal": "breakfast",
+   "has": [
+    "dairy",
+    "egg",
+    "meat"
+   ],
+   "pop": 6,
+   "c": "c2",
+   "photo": true,
+   "nut": {
+    "kcal": 358,
+    "p": 26.3,
+    "c": 28.3,
+    "f": 16.2
+   }
+  },
+  {
+   "id": "berry_protein_smoothie",
+   "cui": "european",
+   "kcal": 350,
+   "min": 5,
+   "p": 26,
+   "meal": "breakfast",
+   "has": [
+    "dairy",
+    "gluten"
+   ],
+   "pop": 7,
+   "c": "c3",
+   "photo": true,
+   "nut": {
+    "kcal": 351,
+    "p": 26.5,
+    "c": 55.8,
+    "f": 2.6
+   }
+  },
+  {
+   "id": "skyr_apple_compote",
+   "cui": "nordic",
+   "kcal": 310,
+   "min": 15,
+   "p": 26,
+   "meal": "breakfast",
+   "has": [
+    "dairy",
+    "gluten",
+    "nuts"
+   ],
+   "pop": 6,
+   "c": "c4",
+   "photo": true,
+   "nut": {
+    "kcal": 314,
+    "p": 25.7,
+    "c": 40.4,
+    "f": 6.7
+   }
+  },
+  {
+   "id": "spinach_egg_wrap",
+   "cui": "european",
+   "kcal": 400,
+   "min": 10,
+   "p": 28,
+   "meal": "breakfast",
+   "has": [
+    "dairy",
+    "egg",
+    "gluten"
+   ],
+   "pop": 6,
+   "c": "c5",
+   "photo": false,
+   "nut": {
+    "kcal": 405,
+    "p": 27.8,
+    "c": 27.3,
+    "f": 20.6
+   }
+  },
+  {
+   "id": "silken_tofu_smoothie",
+   "cui": "european",
+   "kcal": 390,
+   "min": 5,
+   "p": 22,
+   "meal": "breakfast",
+   "has": [
+    "gluten",
+    "nuts"
+   ],
+   "pop": 5,
+   "c": "c6",
+   "photo": true,
+   "nut": {
+    "kcal": 388,
+    "p": 21.9,
+    "c": 41.9,
+    "f": 13.6
+   }
+  },
+  {
+   "id": "pb_banana_soy_oats",
+   "cui": "american",
+   "kcal": 510,
+   "min": 5,
+   "p": 25,
+   "meal": "breakfast",
+   "has": [
+    "gluten",
+    "nuts"
+   ],
+   "pop": 6,
+   "c": "c1",
+   "photo": true,
+   "nut": {
+    "kcal": 510,
+    "p": 24.9,
+    "c": 55.4,
+    "f": 20.4
+   }
+  },
+  {
+   "id": "moong_dal_chilla",
+   "cui": "indian",
+   "kcal": 310,
+   "min": 25,
+   "p": 18,
+   "meal": "breakfast",
+   "has": [
+    "cilantro"
+   ],
+   "pop": 6,
+   "c": "c2",
+   "photo": false,
+   "nut": {
+    "kcal": 307,
+    "p": 18.4,
+    "c": 42.3,
+    "f": 7.4
+   }
+  },
+  {
+   "id": "masala_omelette",
+   "cui": "indian",
+   "kcal": 400,
+   "min": 10,
+   "p": 24,
+   "meal": "breakfast",
+   "has": [
+    "cilantro",
+    "egg",
+    "gluten",
+    "onion"
+   ],
+   "pop": 6,
+   "c": "c3",
+   "photo": true,
+   "nut": {
+    "kcal": 397,
+    "p": 24.3,
+    "c": 27.4,
+    "f": 20.3
+   }
+  },
+  {
+   "id": "greek_chicken_salad",
+   "cui": "greek",
+   "kcal": 540,
+   "min": 20,
+   "p": 44,
+   "meal": "lunch",
+   "has": [
+    "dairy",
+    "gluten",
+    "meat",
+    "onion"
+   ],
+   "pop": 8,
+   "c": "c4",
+   "photo": true,
+   "nut": {
+    "kcal": 539,
+    "p": 44.2,
+    "c": 47.9,
+    "f": 19.8
+   }
+  },
+  {
+   "id": "tuna_nicoise",
+   "cui": "french",
+   "kcal": 410,
+   "min": 25,
+   "p": 38,
+   "meal": "lunch",
+   "has": [
+    "egg",
+    "fish"
+   ],
+   "pop": 7,
+   "c": "c5",
+   "photo": true,
+   "nut": {
+    "kcal": 407,
+    "p": 37.6,
+    "c": 32.1,
+    "f": 14.7
+   }
+  },
+  {
+   "id": "quinoa_feta_salad",
+   "cui": "mediterranean",
+   "kcal": 580,
+   "min": 20,
+   "p": 24,
+   "meal": "lunch",
+   "has": [
+    "dairy",
+    "onion"
+   ],
+   "pop": 7,
+   "c": "c6",
+   "photo": true,
+   "nut": {
+    "kcal": 582,
+    "p": 24.3,
+    "c": 69.8,
+    "f": 23.8
+   }
+  },
+  {
+   "id": "lentil_feta_salad",
+   "cui": "french",
+   "kcal": 460,
+   "min": 25,
+   "p": 26,
+   "meal": "lunch",
+   "has": [
+    "dairy",
+    "onion"
+   ],
+   "pop": 6,
+   "c": "c1",
+   "photo": true,
+   "nut": {
+    "kcal": 461,
+    "p": 26.1,
+    "c": 49.3,
+    "f": 15.6
+   }
+  },
+  {
+   "id": "chicken_caesar_light",
+   "cui": "american",
+   "kcal": 390,
+   "min": 20,
+   "p": 47,
+   "meal": "lunch",
+   "has": [
+    "dairy",
+    "gluten",
+    "meat"
+   ],
+   "pop": 8,
+   "c": "c2",
+   "photo": true,
+   "nut": {
+    "kcal": 393,
+    "p": 47.2,
+    "c": 18.6,
+    "f": 13.7
+   }
+  },
+  {
+   "id": "turkey_veggie_wrap",
+   "cui": "american",
+   "kcal": 330,
+   "min": 10,
+   "p": 35,
+   "meal": "lunch",
+   "has": [
+    "dairy",
+    "gluten",
+    "meat"
+   ],
+   "pop": 7,
+   "c": "c3",
+   "photo": true,
+   "nut": {
+    "kcal": 330,
+    "p": 34.8,
+    "c": 28.1,
+    "f": 8.7
+   }
+  },
+  {
+   "id": "salmon_poke",
+   "cui": "hawaiian",
+   "kcal": 650,
+   "min": 20,
+   "p": 37,
+   "meal": "lunch",
+   "has": [
+    "fish",
+    "gluten",
+    "onion"
+   ],
+   "pop": 9,
+   "c": "c4",
+   "photo": true,
+   "nut": {
+    "kcal": 647,
+    "p": 37.2,
+    "c": 63.4,
+    "f": 27.0
+   }
+  },
+  {
+   "id": "tofu_poke",
+   "cui": "hawaiian",
+   "kcal": 600,
+   "min": 25,
+   "p": 36,
+   "meal": "lunch",
+   "has": [
+    "gluten"
+   ],
+   "pop": 7,
+   "c": "c5",
+   "photo": true,
+   "nut": {
+    "kcal": 603,
+    "p": 36.4,
+    "c": 72.1,
+    "f": 21.4
+   }
+  },
+  {
+   "id": "bibimbap",
+   "cui": "korean",
+   "kcal": 580,
+   "min": 30,
+   "p": 39,
+   "meal": "lunch",
+   "has": [
+    "egg",
+    "gluten",
+    "meat",
+    "mushrooms"
+   ],
+   "pop": 8,
+   "c": "c6",
+   "photo": true,
+   "nut": {
+    "kcal": 581,
+    "p": 38.8,
+    "c": 69.9,
+    "f": 16.8
+   }
+  },
+  {
+   "id": "chicken_shawarma_bowl",
+   "cui": "middle_eastern",
+   "kcal": 500,
+   "min": 30,
+   "p": 44,
+   "meal": "lunch",
+   "has": [
+    "dairy",
+    "gluten",
+    "meat",
+    "onion"
+   ],
+   "pop": 8,
+   "c": "c1",
+   "photo": true,
+   "nut": {
+    "kcal": 503,
+    "p": 43.7,
+    "c": 51.0,
+    "f": 15.5
+   }
+  },
+  {
+   "id": "baked_falafel_bowl",
+   "cui": "middle_eastern",
+   "kcal": 610,
+   "min": 35,
+   "p": 27,
+   "meal": "lunch",
+   "has": [
+    "cilantro",
+    "onion"
+   ],
+   "pop": 7,
+   "c": "c2",
+   "photo": true,
+   "nut": {
+    "kcal": 609,
+    "p": 27.3,
+    "c": 75.4,
+    "f": 24.1
+   }
+  },
+  {
+   "id": "chickpea_tuna_salad",
+   "cui": "mediterranean",
+   "kcal": 380,
+   "min": 10,
+   "p": 36,
+   "meal": "lunch",
+   "has": [
+    "fish",
+    "onion"
+   ],
+   "pop": 7,
+   "c": "c3",
+   "photo": true,
+   "nut": {
+    "kcal": 379,
+    "p": 36.3,
+    "c": 34.6,
+    "f": 11.3
+   }
+  },
+  {
+   "id": "chicken_caprese_salad",
+   "cui": "italian",
+   "kcal": 450,
+   "min": 20,
+   "p": 42,
+   "meal": "lunch",
+   "has": [
+    "dairy",
+    "gluten",
+    "meat"
+   ],
+   "pop": 7,
+   "c": "c4",
+   "photo": true,
+   "nut": {
+    "kcal": 453,
+    "p": 42.2,
+    "c": 22.9,
+    "f": 20.8
+   }
+  },
+  {
+   "id": "minestrone_beans",
+   "cui": "italian",
+   "kcal": 470,
+   "min": 35,
+   "p": 26,
+   "meal": "lunch",
+   "has": [
+    "dairy",
+    "gluten",
+    "onion"
+   ],
+   "pop": 6,
+   "c": "c5",
+   "photo": true,
+   "nut": {
+    "kcal": 471,
+    "p": 25.5,
+    "c": 65.6,
+    "f": 12.0
+   }
+  },
+  {
+   "id": "bundner_barley_soup",
+   "cui": "swiss",
+   "kcal": 430,
+   "min": 50,
+   "p": 30,
+   "meal": "lunch",
+   "has": [
+    "dairy",
+    "gluten",
+    "meat",
+    "onion"
+   ],
+   "pop": 7,
+   "c": "c6",
+   "photo": true,
+   "nut": {
+    "kcal": 427,
+    "p": 30.1,
+    "c": 63.0,
+    "f": 7.1
+   }
+  },
+  {
+   "id": "egg_salad_sandwich",
+   "cui": "european",
+   "kcal": 420,
+   "min": 15,
+   "p": 29,
+   "meal": "lunch",
+   "has": [
+    "dairy",
+    "egg",
+    "gluten"
+   ],
+   "pop": 6,
+   "c": "c1",
+   "photo": true,
+   "nut": {
+    "kcal": 417,
+    "p": 28.7,
+    "c": 39.0,
+    "f": 15.2
+   }
+  },
+  {
+   "id": "black_bean_soup",
+   "cui": "mexican",
+   "kcal": 490,
+   "min": 30,
+   "p": 26,
+   "meal": "lunch",
+   "has": [
+    "cilantro",
+    "onion"
+   ],
+   "pop": 6,
+   "c": "c2",
+   "photo": true,
+   "nut": {
+    "kcal": 486,
+    "p": 25.9,
+    "c": 71.6,
+    "f": 11.2
+   }
+  },
+  {
+   "id": "chicken_tortilla_soup",
+   "cui": "mexican",
+   "kcal": 530,
+   "min": 30,
+   "p": 47,
+   "meal": "lunch",
+   "has": [
+    "cilantro",
+    "meat",
+    "onion"
+   ],
+   "pop": 7,
+   "c": "c3",
+   "photo": true,
+   "nut": {
+    "kcal": 526,
+    "p": 46.7,
+    "c": 54.1,
+    "f": 14.4
+   }
+  },
+  {
+   "id": "beef_fajita_bowl",
+   "cui": "mexican",
+   "kcal": 530,
+   "min": 25,
+   "p": 42,
+   "meal": "lunch",
+   "has": [
+    "cilantro",
+    "dairy",
+    "meat",
+    "onion"
+   ],
+   "pop": 7,
+   "c": "c4",
+   "photo": true,
+   "nut": {
+    "kcal": 534,
+    "p": 41.5,
+    "c": 59.1,
+    "f": 15.3
+   }
+  },
+  {
+   "id": "shrimp_tacos",
+   "cui": "mexican",
+   "kcal": 460,
+   "min": 20,
+   "p": 41,
+   "meal": "lunch",
+   "has": [
+    "cilantro",
+    "dairy",
+    "fish"
+   ],
+   "pop": 8,
+   "c": "c5",
+   "photo": true,
+   "nut": {
+    "kcal": 456,
+    "p": 40.6,
+    "c": 48.2,
+    "f": 13.9
+   }
+  },
+  {
+   "id": "prato_feito",
+   "cui": "brazilian",
+   "kcal": 590,
+   "min": 40,
+   "p": 47,
+   "meal": "lunch",
+   "has": [
+    "meat",
+    "onion"
+   ],
+   "pop": 8,
+   "c": "c6",
+   "photo": true,
+   "nut": {
+    "kcal": 588,
+    "p": 47.3,
+    "c": 75.2,
+    "f": 10.5
+   }
+  },
+  {
+   "id": "salpicao_frango",
+   "cui": "brazilian",
+   "kcal": 370,
+   "min": 25,
+   "p": 46,
+   "meal": "lunch",
+   "has": [
+    "dairy",
+    "meat"
+   ],
+   "pop": 6,
+   "c": "c1",
+   "photo": false,
+   "nut": {
+    "kcal": 372,
+    "p": 46.1,
+    "c": 32.2,
+    "f": 6.5
+   }
+  },
+  {
+   "id": "caldo_verde_beans",
+   "cui": "portuguese",
+   "kcal": 530,
+   "min": 35,
+   "p": 38,
+   "meal": "lunch",
+   "has": [
+    "meat",
+    "onion"
+   ],
+   "pop": 6,
+   "c": "c2",
+   "photo": true,
+   "nut": {
+    "kcal": 529,
+    "p": 38.3,
+    "c": 58.3,
+    "f": 16.0
+   }
+  },
+  {
+   "id": "cold_soba_tofu",
+   "cui": "japanese",
+   "kcal": 550,
+   "min": 20,
+   "p": 39,
+   "meal": "lunch",
+   "has": [
+    "gluten",
+    "onion"
+   ],
+   "pop": 6,
+   "c": "c3",
+   "photo": true,
+   "nut": {
+    "kcal": 550,
+    "p": 38.8,
+    "c": 67.8,
+    "f": 17.7
+   }
+  },
+  {
+   "id": "oyakodon",
+   "cui": "japanese",
+   "kcal": 530,
+   "min": 25,
+   "p": 41,
+   "meal": "lunch",
+   "has": [
+    "egg",
+    "gluten",
+    "meat",
+    "onion"
+   ],
+   "pop": 7,
+   "c": "c4",
+   "photo": true,
+   "nut": {
+    "kcal": 532,
+    "p": 40.7,
+    "c": 60.0,
+    "f": 13.0
+   }
+  },
+  {
+   "id": "gyudon_light",
+   "cui": "japanese",
+   "kcal": 470,
+   "min": 20,
+   "p": 37,
+   "meal": "lunch",
+   "has": [
+    "gluten",
+    "meat",
+    "onion"
+   ],
+   "pop": 6,
+   "c": "c5",
+   "photo": true,
+   "nut": {
+    "kcal": 471,
+    "p": 36.8,
+    "c": 61.9,
+    "f": 8.0
+   }
+  },
+  {
+   "id": "goi_ga",
+   "cui": "vietnamese",
+   "kcal": 320,
+   "min": 25,
+   "p": 40,
+   "meal": "lunch",
+   "has": [
+    "cilantro",
+    "fish",
+    "meat",
+    "nuts",
+    "onion"
+   ],
+   "pop": 7,
+   "c": "c6",
+   "photo": true,
+   "nut": {
+    "kcal": 320,
+    "p": 39.5,
+    "c": 21.8,
+    "f": 9.2
+   }
+  },
+  {
+   "id": "banh_mi_bowl",
+   "cui": "vietnamese",
+   "kcal": 460,
+   "min": 25,
+   "p": 35,
+   "meal": "lunch",
+   "has": [
+    "cilantro",
+    "fish",
+    "meat"
+   ],
+   "pop": 7,
+   "c": "c1",
+   "photo": true,
+   "nut": {
+    "kcal": 457,
+    "p": 35.3,
+    "c": 59.8,
+    "f": 7.8
+   }
+  },
+  {
+   "id": "bun_chay_tofu",
+   "cui": "vietnamese",
+   "kcal": 640,
+   "min": 25,
+   "p": 36,
+   "meal": "lunch",
+   "has": [
+    "gluten",
+    "nuts"
+   ],
+   "pop": 6,
+   "c": "c2",
+   "photo": true,
+   "nut": {
+    "kcal": 635,
+    "p": 35.7,
+    "c": 71.0,
+    "f": 25.4
+   }
+  },
+  {
+   "id": "yum_nua",
+   "cui": "thai",
+   "kcal": 420,
+   "min": 20,
+   "p": 39,
+   "meal": "lunch",
+   "has": [
+    "cilantro",
+    "fish",
+    "meat",
+    "onion"
+   ],
+   "pop": 7,
+   "c": "c3",
+   "photo": true,
+   "nut": {
+    "kcal": 419,
+    "p": 38.8,
+    "c": 47.2,
+    "f": 9.0
+   }
+  },
+  {
+   "id": "larb_gai",
+   "cui": "thai",
+   "kcal": 440,
+   "min": 20,
+   "p": 43,
+   "meal": "lunch",
+   "has": [
+    "cilantro",
+    "fish",
+    "meat",
+    "onion"
+   ],
+   "pop": 7,
+   "c": "c4",
+   "photo": true,
+   "nut": {
+    "kcal": 437,
+    "p": 43.1,
+    "c": 55.2,
+    "f": 4.9
+   }
+  },
+  {
+   "id": "palak_dal",
+   "cui": "indian",
+   "kcal": 540,
+   "min": 35,
+   "p": 28,
+   "meal": "lunch",
+   "has": [
+    "onion"
+   ],
+   "pop": 6,
+   "c": "c5",
+   "photo": true,
+   "nut": {
+    "kcal": 536,
+    "p": 27.9,
+    "c": 91.6,
+    "f": 7.0
+   }
+  },
+  {
+   "id": "chana_masala",
+   "cui": "indian",
+   "kcal": 630,
+   "min": 30,
+   "p": 26,
+   "meal": "lunch",
+   "has": [
+    "cilantro",
+    "onion"
+   ],
+   "pop": 7,
+   "c": "c6",
+   "photo": true,
+   "nut": {
+    "kcal": 629,
+    "p": 25.7,
+    "c": 102.6,
+    "f": 13.4
+   }
+  },
+  {
+   "id": "tandoori_chicken_salad",
+   "cui": "indian",
+   "kcal": 420,
+   "min": 30,
+   "p": 51,
+   "meal": "lunch",
+   "has": [
+    "dairy",
+    "gluten",
+    "meat",
+    "onion"
+   ],
+   "pop": 7,
+   "c": "c1",
+   "photo": true,
+   "nut": {
+    "kcal": 416,
+    "p": 51.0,
+    "c": 38.2,
+    "f": 7.8
+   }
+  },
+  {
+   "id": "paneer_tikka_wrap",
+   "cui": "indian",
+   "kcal": 510,
+   "min": 25,
+   "p": 31,
+   "meal": "lunch",
+   "has": [
+    "dairy",
+    "gluten",
+    "onion"
+   ],
+   "pop": 6,
+   "c": "c2",
+   "photo": true,
+   "nut": {
+    "kcal": 506,
+    "p": 31.1,
+    "c": 35.8,
+    "f": 27.1
+   }
+  },
+  {
+   "id": "hot_sour_tofu_soup",
+   "cui": "chinese",
+   "kcal": 410,
+   "min": 25,
+   "p": 35,
+   "meal": "lunch",
+   "has": [
+    "egg",
+    "gluten",
+    "meat",
+    "mushrooms",
+    "onion"
+   ],
+   "pop": 5,
+   "c": "c3",
+   "photo": true,
+   "nut": {
+    "kcal": 406,
+    "p": 34.9,
+    "c": 21.9,
+    "f": 21.5
+   }
+  },
+  {
+   "id": "chicken_vegetable_soup",
+   "cui": "european",
+   "kcal": 360,
+   "min": 40,
+   "p": 38,
+   "meal": "lunch",
+   "has": [
+    "gluten",
+    "meat",
+    "onion"
+   ],
+   "pop": 7,
+   "c": "c4",
+   "photo": true,
+   "nut": {
+    "kcal": 361,
+    "p": 37.5,
+    "c": 38.7,
+    "f": 6.7
+   }
+  },
+  {
+   "id": "tuna_pasta_salad",
+   "cui": "italian",
+   "kcal": 470,
+   "min": 20,
+   "p": 37,
+   "meal": "lunch",
+   "has": [
+    "fish",
+    "gluten",
+    "onion"
+   ],
+   "pop": 6,
+   "c": "c5",
+   "photo": true,
+   "nut": {
+    "kcal": 471,
+    "p": 37.1,
+    "c": 57.4,
+    "f": 11.0
+   }
+  },
+  {
+   "id": "tonno_fagioli",
+   "cui": "italian",
+   "kcal": 490,
+   "min": 10,
+   "p": 44,
+   "meal": "lunch",
+   "has": [
+    "fish",
+    "gluten",
+    "onion"
+   ],
+   "pop": 6,
+   "c": "c6",
+   "photo": true,
+   "nut": {
+    "kcal": 487,
+    "p": 44.4,
+    "c": 53.6,
+    "f": 9.5
+   }
+  },
+  {
+   "id": "halloumi_lentil_salad",
+   "cui": "mediterranean",
+   "kcal": 520,
+   "min": 25,
+   "p": 31,
+   "meal": "lunch",
+   "has": [
+    "dairy",
+    "onion"
+   ],
+   "pop": 6,
+   "c": "c1",
+   "photo": true,
+   "nut": {
+    "kcal": 519,
+    "p": 30.7,
+    "c": 44.3,
+    "f": 23.4
+   }
+  },
+  {
+   "id": "gazpacho_shrimp",
+   "cui": "spanish",
+   "kcal": 390,
+   "min": 20,
+   "p": 33,
+   "meal": "lunch",
+   "has": [
+    "egg",
+    "fish",
+    "gluten"
+   ],
+   "pop": 6,
+   "c": "c2",
+   "photo": true,
+   "nut": {
+    "kcal": 388,
+    "p": 33.5,
+    "c": 34.4,
+    "f": 13.8
+   }
+  },
+  {
+   "id": "espinacas_garbanzos",
+   "cui": "spanish",
+   "kcal": 620,
+   "min": 25,
+   "p": 36,
+   "meal": "lunch",
+   "has": [
+    "gluten"
+   ],
+   "pop": 6,
+   "c": "c3",
+   "photo": true,
+   "nut": {
+    "kcal": 617,
+    "p": 35.6,
+    "c": 74.8,
+    "f": 21.4
+   }
+  },
+  {
+   "id": "gado_gado",
+   "cui": "indonesian",
+   "kcal": 530,
+   "min": 30,
+   "p": 36,
+   "meal": "lunch",
+   "has": [
+    "egg",
+    "gluten",
+    "nuts"
+   ],
+   "pop": 7,
+   "c": "c4",
+   "photo": true,
+   "nut": {
+    "kcal": 525,
+    "p": 35.8,
+    "c": 42.0,
+    "f": 26.4
+   }
+  },
+  {
+   "id": "ceviche_sweet_potato",
+   "cui": "peruvian",
+   "kcal": 340,
+   "min": 30,
+   "p": 34,
+   "meal": "lunch",
+   "has": [
+    "cilantro",
+    "fish",
+    "onion"
+   ],
+   "pop": 7,
+   "c": "c5",
+   "photo": true,
+   "nut": {
+    "kcal": 338,
+    "p": 33.6,
+    "c": 41.8,
+    "f": 4.2
+   }
+  },
+  {
+   "id": "trout_potato_salad",
+   "cui": "nordic",
+   "kcal": 360,
+   "min": 25,
+   "p": 33,
+   "meal": "lunch",
+   "has": [
+    "dairy",
+    "fish",
+    "onion"
+   ],
+   "pop": 6,
+   "c": "c6",
+   "photo": true,
+   "nut": {
+    "kcal": 361,
+    "p": 33.3,
+    "c": 41.3,
+    "f": 7.8
+   }
+  },
+  {
+   "id": "skagen_toast",
+   "cui": "nordic",
+   "kcal": 340,
+   "min": 15,
+   "p": 41,
+   "meal": "lunch",
+   "has": [
+    "dairy",
+    "fish",
+    "gluten",
+    "onion"
+   ],
+   "pop": 6,
+   "c": "c1",
+   "photo": true,
+   "nut": {
+    "kcal": 336,
+    "p": 41.1,
+    "c": 30.0,
+    "f": 5.5
+   }
+  },
+  {
+   "id": "edamame_quinoa_bowl",
+   "cui": "japanese",
+   "kcal": 600,
+   "min": 20,
+   "p": 35,
+   "meal": "lunch",
+   "has": [],
+   "pop": 6,
+   "c": "c2",
+   "photo": true,
+   "nut": {
+    "kcal": 596,
+    "p": 34.7,
+    "c": 65.7,
+    "f": 24.1
+   }
+  },
+  {
+   "id": "harira",
+   "cui": "moroccan",
+   "kcal": 440,
+   "min": 45,
+   "p": 37,
+   "meal": "lunch",
+   "has": [
+    "cilantro",
+    "meat",
+    "onion"
+   ],
+   "pop": 6,
+   "c": "c3",
+   "photo": true,
+   "nut": {
+    "kcal": 445,
+    "p": 37.3,
+    "c": 49.1,
+    "f": 10.7
+   }
+  },
+  {
+   "id": "couscous_chicken_salad",
+   "cui": "moroccan",
+   "kcal": 530,
+   "min": 25,
+   "p": 42,
+   "meal": "lunch",
+   "has": [
+    "gluten",
+    "meat",
+    "nuts",
+    "onion"
+   ],
+   "pop": 6,
+   "c": "c4",
+   "photo": true,
+   "nut": {
+    "kcal": 525,
+    "p": 41.6,
+    "c": 56.3,
+    "f": 15.0
+   }
+  },
+  {
+   "id": "zurich_geschnetzeltes",
+   "cui": "swiss",
+   "kcal": 590,
+   "min": 25,
+   "p": 48,
+   "meal": "dinner",
+   "has": [
+    "dairy",
+    "meat",
+    "mushrooms",
+    "onion"
+   ],
+   "pop": 9,
+   "c": "c5",
+   "photo": true,
+   "nut": {
+    "kcal": 587,
+    "p": 47.6,
+    "c": 60.7,
+    "f": 17.2
+   }
+  },
+  {
+   "id": "whitefish_potatoes",
+   "cui": "swiss",
+   "kcal": 470,
+   "min": 25,
+   "p": 39,
+   "meal": "dinner",
+   "has": [
+    "dairy",
+    "fish",
+    "gluten"
+   ],
+   "pop": 7,
+   "c": "c6",
+   "photo": true,
+   "nut": {
+    "kcal": 472,
+    "p": 39.2,
+    "c": 44.3,
+    "f": 16.0
+   }
+  },
+  {
+   "id": "barley_risotto_chicken",
+   "cui": "swiss",
+   "kcal": 630,
+   "min": 45,
+   "p": 47,
+   "meal": "dinner",
+   "has": [
+    "dairy",
+    "gluten",
+    "meat",
+    "onion"
+   ],
+   "pop": 6,
+   "c": "c1",
+   "photo": true,
+   "nut": {
+    "kcal": 627,
+    "p": 46.6,
+    "c": 78.9,
+    "f": 14.6
+   }
+  },
+  {
+   "id": "alpler_magronen_light",
+   "cui": "swiss",
+   "kcal": 640,
+   "min": 30,
+   "p": 38,
+   "meal": "dinner",
+   "has": [
+    "dairy",
+    "gluten",
+    "meat",
+    "onion"
+   ],
+   "pop": 7,
+   "c": "c2",
+   "photo": true,
+   "nut": {
+    "kcal": 644,
+    "p": 38.3,
+    "c": 92.7,
+    "f": 14.6
+   }
+  },
+  {
+   "id": "beef_steak_vegetables",
+   "cui": "european",
+   "kcal": 500,
+   "min": 30,
+   "p": 48,
+   "meal": "dinner",
+   "has": [
+    "dairy",
+    "meat",
+    "onion"
+   ],
+   "pop": 7,
+   "c": "c3",
+   "photo": true,
+   "nut": {
+    "kcal": 502,
+    "p": 47.8,
+    "c": 41.8,
+    "f": 16.0
+   }
+  },
+  {
+   "id": "chicken_piccata",
+   "cui": "italian",
+   "kcal": 560,
+   "min": 25,
+   "p": 53,
+   "meal": "dinner",
+   "has": [
+    "dairy",
+    "egg",
+    "gluten",
+    "meat"
+   ],
+   "pop": 7,
+   "c": "c4",
+   "photo": true,
+   "nut": {
+    "kcal": 561,
+    "p": 52.9,
+    "c": 47.0,
+    "f": 17.8
+   }
+  },
+  {
+   "id": "turkey_bolognese",
+   "cui": "italian",
+   "kcal": 650,
+   "min": 35,
+   "p": 49,
+   "meal": "dinner",
+   "has": [
+    "dairy",
+    "gluten",
+    "meat",
+    "onion"
+   ],
+   "pop": 8,
+   "c": "c5",
+   "photo": true,
+   "nut": {
+    "kcal": 648,
+    "p": 49.0,
+    "c": 73.8,
+    "f": 17.0
+   }
+  },
+  {
+   "id": "lentil_bolognese",
+   "cui": "italian",
+   "kcal": 740,
+   "min": 35,
+   "p": 40,
+   "meal": "dinner",
+   "has": [
+    "gluten",
+    "onion"
+   ],
+   "pop": 6,
+   "c": "c6",
+   "photo": true,
+   "nut": {
+    "kcal": 744,
+    "p": 40.3,
+    "c": 110.1,
+    "f": 14.5
+   }
+  },
+  {
+   "id": "shrimp_garlic_pasta",
+   "cui": "italian",
+   "kcal": 470,
+   "min": 20,
+   "p": 41,
+   "meal": "dinner",
+   "has": [
+    "fish",
+    "gluten"
+   ],
+   "pop": 7,
+   "c": "c1",
+   "photo": true,
+   "nut": {
+    "kcal": 475,
+    "p": 41.3,
+    "c": 57.4,
+    "f": 9.7
+   }
+  },
+  {
+   "id": "baked_cod_tomatoes",
+   "cui": "mediterranean",
+   "kcal": 400,
+   "min": 30,
+   "p": 42,
+   "meal": "dinner",
+   "has": [
+    "fish",
+    "onion"
+   ],
+   "pop": 7,
+   "c": "c2",
+   "photo": false,
+   "nut": {
+    "kcal": 396,
+    "p": 41.9,
+    "c": 33.3,
+    "f": 10.5
+   }
+  },
+  {
+   "id": "chicken_souvlaki",
+   "cui": "greek",
+   "kcal": 540,
+   "min": 30,
+   "p": 54,
+   "meal": "dinner",
+   "has": [
+    "dairy",
+    "gluten",
+    "meat",
+    "onion"
+   ],
+   "pop": 8,
+   "c": "c3",
+   "photo": true,
+   "nut": {
+    "kcal": 541,
+    "p": 54.5,
+    "c": 50.3,
+    "f": 14.4
+   }
+  },
+  {
+   "id": "shrimp_saganaki",
+   "cui": "greek",
+   "kcal": 510,
+   "min": 25,
+   "p": 45,
+   "meal": "dinner",
+   "has": [
+    "dairy",
+    "fish",
+    "gluten",
+    "onion"
+   ],
+   "pop": 7,
+   "c": "c4",
+   "photo": true,
+   "nut": {
+    "kcal": 506,
+    "p": 44.9,
+    "c": 51.2,
+    "f": 15.0
+   }
+  },
+  {
+   "id": "baked_feta_chickpeas",
+   "cui": "greek",
+   "kcal": 680,
+   "min": 30,
+   "p": 31,
+   "meal": "dinner",
+   "has": [
+    "dairy",
+    "gluten",
+    "onion"
+   ],
+   "pop": 6,
+   "c": "c5",
+   "photo": true,
+   "nut": {
+    "kcal": 680,
+    "p": 31.1,
+    "c": 77.1,
+    "f": 28.8
+   }
+  },
+  {
+   "id": "chicken_tagine",
+   "cui": "moroccan",
+   "kcal": 650,
+   "min": 45,
+   "p": 48,
+   "meal": "dinner",
+   "has": [
+    "cilantro",
+    "gluten",
+    "meat",
+    "onion"
+   ],
+   "pop": 7,
+   "c": "c6",
+   "photo": true,
+   "nut": {
+    "kcal": 653,
+    "p": 48.3,
+    "c": 77.3,
+    "f": 17.0
+   }
+  },
+  {
+   "id": "beef_kofta_yogurt",
+   "cui": "middle_eastern",
+   "kcal": 500,
+   "min": 30,
+   "p": 47,
+   "meal": "dinner",
+   "has": [
+    "dairy",
+    "gluten",
+    "meat",
+    "onion"
+   ],
+   "pop": 7,
+   "c": "c1",
+   "photo": true,
+   "nut": {
+    "kcal": 501,
+    "p": 47.2,
+    "c": 51.8,
+    "f": 12.6
+   }
+  },
+  {
+   "id": "stuffed_peppers_turkey",
+   "cui": "european",
+   "kcal": 570,
+   "min": 50,
+   "p": 43,
+   "meal": "dinner",
+   "has": [
+    "dairy",
+    "meat",
+    "onion"
+   ],
+   "pop": 6,
+   "c": "c2",
+   "photo": true,
+   "nut": {
+    "kcal": 567,
+    "p": 42.9,
+    "c": 60.8,
+    "f": 16.4
+   }
+  },
+  {
+   "id": "chili_con_carne",
+   "cui": "mexican",
+   "kcal": 630,
+   "min": 45,
+   "p": 49,
+   "meal": "dinner",
+   "has": [
+    "dairy",
+    "meat",
+    "onion"
+   ],
+   "pop": 8,
+   "c": "c3",
+   "photo": true,
+   "nut": {
+    "kcal": 634,
+    "p": 49.5,
+    "c": 77.4,
+    "f": 13.4
+   }
+  },
+  {
+   "id": "chili_sin_carne",
+   "cui": "mexican",
+   "kcal": 610,
+   "min": 40,
+   "p": 37,
+   "meal": "dinner",
+   "has": [
+    "cilantro",
+    "onion"
+   ],
+   "pop": 6,
+   "c": "c4",
+   "photo": false,
+   "nut": {
+    "kcal": 611,
+    "p": 37.1,
+    "c": 91.1,
+    "f": 11.6
+   }
+  },
+  {
+   "id": "chicken_fajitas",
+   "cui": "mexican",
+   "kcal": 610,
+   "min": 25,
+   "p": 52,
+   "meal": "dinner",
+   "has": [
+    "cilantro",
+    "dairy",
+    "gluten",
+    "meat",
+    "onion"
+   ],
+   "pop": 8,
+   "c": "c5",
+   "photo": true,
+   "nut": {
+    "kcal": 609,
+    "p": 52.0,
+    "c": 63.5,
+    "f": 16.4
+   }
+  },
+  {
+   "id": "pescado_veracruzana",
+   "cui": "mexican",
+   "kcal": 470,
+   "min": 30,
+   "p": 38,
+   "meal": "dinner",
+   "has": [
+    "fish",
+    "onion"
+   ],
+   "pop": 6,
+   "c": "c6",
+   "photo": false,
+   "nut": {
+    "kcal": 473,
+    "p": 37.9,
+    "c": 56.3,
+    "f": 11.0
+   }
+  },
+  {
+   "id": "moqueca",
+   "cui": "brazilian",
+   "kcal": 570,
+   "min": 35,
+   "p": 47,
+   "meal": "dinner",
+   "has": [
+    "cilantro",
+    "fish",
+    "onion"
+   ],
+   "pop": 8,
+   "c": "c1",
+   "photo": true,
+   "nut": {
+    "kcal": 565,
+    "p": 47.0,
+    "c": 57.3,
+    "f": 17.3
+   }
+  },
+  {
+   "id": "picadinho",
+   "cui": "brazilian",
+   "kcal": 550,
+   "min": 45,
+   "p": 42,
+   "meal": "dinner",
+   "has": [
+    "meat",
+    "onion"
+   ],
+   "pop": 6,
+   "c": "c2",
+   "photo": true,
+   "nut": {
+    "kcal": 553,
+    "p": 42.3,
+    "c": 57.9,
+    "f": 18.0
+   }
+  },
+  {
+   "id": "feijoada_light",
+   "cui": "brazilian",
+   "kcal": 690,
+   "min": 50,
+   "p": 49,
+   "meal": "dinner",
+   "has": [
+    "meat",
+    "onion"
+   ],
+   "pop": 7,
+   "c": "c3",
+   "photo": true,
+   "nut": {
+    "kcal": 689,
+    "p": 49.2,
+    "c": 87.2,
+    "f": 15.9
+   }
+  },
+  {
+   "id": "bobo_camarao",
+   "cui": "brazilian",
+   "kcal": 540,
+   "min": 40,
+   "p": 41,
+   "meal": "dinner",
+   "has": [
+    "cilantro",
+    "fish",
+    "onion"
+   ],
+   "pop": 6,
+   "c": "c4",
+   "photo": true,
+   "nut": {
+    "kcal": 544,
+    "p": 40.5,
+    "c": 65.3,
+    "f": 14.8
+   }
+  },
+  {
+   "id": "galinhada",
+   "cui": "brazilian",
+   "kcal": 580,
+   "min": 45,
+   "p": 45,
+   "meal": "dinner",
+   "has": [
+    "meat",
+    "onion"
+   ],
+   "pop": 6,
+   "c": "c5",
+   "photo": true,
+   "nut": {
+    "kcal": 581,
+    "p": 44.6,
+    "c": 68.4,
+    "f": 14.3
+   }
+  },
+  {
+   "id": "bulgogi",
+   "cui": "korean",
+   "kcal": 590,
+   "min": 30,
+   "p": 41,
+   "meal": "dinner",
+   "has": [
+    "gluten",
+    "meat",
+    "onion"
+   ],
+   "pop": 8,
+   "c": "c6",
+   "photo": true,
+   "nut": {
+    "kcal": 586,
+    "p": 41.3,
+    "c": 73.1,
+    "f": 14.3
+   }
+  },
+  {
+   "id": "dakgalbi",
+   "cui": "korean",
+   "kcal": 470,
+   "min": 30,
+   "p": 40,
+   "meal": "dinner",
+   "has": [
+    "gluten",
+    "meat",
+    "onion"
+   ],
+   "pop": 7,
+   "c": "c1",
+   "photo": true,
+   "nut": {
+    "kcal": 473,
+    "p": 39.7,
+    "c": 49.8,
+    "f": 13.0
+   }
+  },
+  {
+   "id": "sundubu_jjigae",
+   "cui": "korean",
+   "kcal": 510,
+   "min": 25,
+   "p": 36,
+   "meal": "dinner",
+   "has": [
+    "egg",
+    "fish",
+    "gluten",
+    "meat",
+    "mushrooms",
+    "onion"
+   ],
+   "pop": 6,
+   "c": "c2",
+   "photo": true,
+   "nut": {
+    "kcal": 514,
+    "p": 36.2,
+    "c": 59.2,
+    "f": 14.5
+   }
+  },
+  {
+   "id": "kung_pao_chicken",
+   "cui": "chinese",
+   "kcal": 620,
+   "min": 25,
+   "p": 48,
+   "meal": "dinner",
+   "has": [
+    "gluten",
+    "meat",
+    "nuts",
+    "onion"
+   ],
+   "pop": 8,
+   "c": "c3",
+   "photo": true,
+   "nut": {
+    "kcal": 617,
+    "p": 47.6,
+    "c": 67.3,
+    "f": 17.1
+   }
+  },
+  {
+   "id": "mapo_tofu",
+   "cui": "chinese",
+   "kcal": 700,
+   "min": 25,
+   "p": 55,
+   "meal": "dinner",
+   "has": [
+    "gluten",
+    "meat",
+    "onion"
+   ],
+   "pop": 7,
+   "c": "c4",
+   "photo": true,
+   "nut": {
+    "kcal": 702,
+    "p": 54.7,
+    "c": 62.4,
+    "f": 28.1
+   }
+  },
+  {
+   "id": "steamed_fish_ginger",
+   "cui": "chinese",
+   "kcal": 460,
+   "min": 25,
+   "p": 39,
+   "meal": "dinner",
+   "has": [
+    "cilantro",
+    "fish",
+    "gluten",
+    "onion"
+   ],
+   "pop": 6,
+   "c": "c5",
+   "photo": true,
+   "nut": {
+    "kcal": 462,
+    "p": 39.0,
+    "c": 55.0,
+    "f": 8.8
+   }
+  },
+  {
+   "id": "beef_broccoli",
+   "cui": "chinese",
+   "kcal": 560,
+   "min": 25,
+   "p": 44,
+   "meal": "dinner",
+   "has": [
+    "fish",
+    "gluten",
+    "meat"
+   ],
+   "pop": 7,
+   "c": "c6",
+   "photo": true,
+   "nut": {
+    "kcal": 565,
+    "p": 43.6,
+    "c": 67.0,
+    "f": 14.7
+   }
+  },
+  {
+   "id": "teriyaki_tofu",
+   "cui": "japanese",
+   "kcal": 640,
+   "min": 25,
+   "p": 41,
+   "meal": "dinner",
+   "has": [
+    "gluten",
+    "onion"
+   ],
+   "pop": 6,
+   "c": "c1",
+   "photo": false,
+   "nut": {
+    "kcal": 644,
+    "p": 40.8,
+    "c": 71.2,
+    "f": 24.9
+   }
+  },
+  {
+   "id": "saba_shioyaki",
+   "cui": "japanese",
+   "kcal": 610,
+   "min": 20,
+   "p": 39,
+   "meal": "dinner",
+   "has": [
+    "fish",
+    "gluten"
+   ],
+   "pop": 5,
+   "c": "c2",
+   "photo": true,
+   "nut": {
+    "kcal": 605,
+    "p": 38.9,
+    "c": 59.1,
+    "f": 23.9
+   }
+  },
+  {
+   "id": "japanese_chicken_curry",
+   "cui": "japanese",
+   "kcal": 650,
+   "min": 40,
+   "p": 47,
+   "meal": "dinner",
+   "has": [
+    "gluten",
+    "meat",
+    "onion"
+   ],
+   "pop": 6,
+   "c": "c3",
+   "photo": true,
+   "nut": {
+    "kcal": 650,
+    "p": 46.6,
+    "c": 91.8,
+    "f": 10.7
+   }
+  },
+  {
+   "id": "green_curry_shrimp",
+   "cui": "thai",
+   "kcal": 580,
+   "min": 25,
+   "p": 43,
+   "meal": "dinner",
+   "has": [
+    "fish",
+    "meat"
+   ],
+   "pop": 7,
+   "c": "c4",
+   "photo": true,
+   "nut": {
+    "kcal": 581,
+    "p": 42.9,
+    "c": 64.7,
+    "f": 18.5
+   }
+  },
+  {
+   "id": "pad_kra_pao",
+   "cui": "thai",
+   "kcal": 550,
+   "min": 20,
+   "p": 47,
+   "meal": "dinner",
+   "has": [
+    "egg",
+    "fish",
+    "gluten",
+    "meat"
+   ],
+   "pop": 8,
+   "c": "c5",
+   "photo": true,
+   "nut": {
+    "kcal": 551,
+    "p": 46.8,
+    "c": 57.4,
+    "f": 13.8
+   }
+  },
+  {
+   "id": "tom_yum_shrimp",
+   "cui": "thai",
+   "kcal": 390,
+   "min": 25,
+   "p": 43,
+   "meal": "dinner",
+   "has": [
+    "cilantro",
+    "fish",
+    "meat",
+    "mushrooms"
+   ],
+   "pop": 6,
+   "c": "c6",
+   "photo": true,
+   "nut": {
+    "kcal": 386,
+    "p": 42.7,
+    "c": 51.5,
+    "f": 2.7
+   }
+  },
+  {
+   "id": "pad_thai_chicken",
+   "cui": "thai",
+   "kcal": 690,
+   "min": 30,
+   "p": 49,
+   "meal": "dinner",
+   "has": [
+    "egg",
+    "fish",
+    "meat",
+    "nuts",
+    "onion"
+   ],
+   "pop": 8,
+   "c": "c1",
+   "photo": true,
+   "nut": {
+    "kcal": 686,
+    "p": 49.2,
+    "c": 73.1,
+    "f": 22.1
+   }
+  },
+  {
+   "id": "ca_kho",
+   "cui": "vietnamese",
+   "kcal": 450,
+   "min": 30,
+   "p": 39,
+   "meal": "dinner",
+   "has": [
+    "fish",
+    "onion"
+   ],
+   "pop": 6,
+   "c": "c2",
+   "photo": true,
+   "nut": {
+    "kcal": 451,
+    "p": 39.2,
+    "c": 63.9,
+    "f": 4.2
+   }
+  },
+  {
+   "id": "ga_xao_sa_ot",
+   "cui": "vietnamese",
+   "kcal": 540,
+   "min": 25,
+   "p": 41,
+   "meal": "dinner",
+   "has": [
+    "cilantro",
+    "fish",
+    "meat",
+    "onion"
+   ],
+   "pop": 7,
+   "c": "c3",
+   "photo": true,
+   "nut": {
+    "kcal": 540,
+    "p": 41.0,
+    "c": 66.0,
+    "f": 12.1
+   }
+  },
+  {
+   "id": "tikka_masala_light",
+   "cui": "indian",
+   "kcal": 640,
+   "min": 40,
+   "p": 53,
+   "meal": "dinner",
+   "has": [
+    "cilantro",
+    "dairy",
+    "meat",
+    "onion"
+   ],
+   "pop": 8,
+   "c": "c4",
+   "photo": true,
+   "nut": {
+    "kcal": 642,
+    "p": 53.1,
+    "c": 69.8,
+    "f": 15.5
+   }
+  },
+  {
+   "id": "palak_paneer_light",
+   "cui": "indian",
+   "kcal": 700,
+   "min": 30,
+   "p": 38,
+   "meal": "dinner",
+   "has": [
+    "dairy",
+    "onion"
+   ],
+   "pop": 6,
+   "c": "c5",
+   "photo": true,
+   "nut": {
+    "kcal": 697,
+    "p": 38.1,
+    "c": 80.6,
+    "f": 26.5
+   }
+  },
+  {
+   "id": "kerala_fish_curry",
+   "cui": "indian",
+   "kcal": 590,
+   "min": 30,
+   "p": 41,
+   "meal": "dinner",
+   "has": [
+    "cilantro",
+    "fish",
+    "onion"
+   ],
+   "pop": 6,
+   "c": "c6",
+   "photo": true,
+   "nut": {
+    "kcal": 590,
+    "p": 40.7,
+    "c": 65.3,
+    "f": 20.0
+   }
+  },
+  {
+   "id": "rajma",
+   "cui": "indian",
+   "kcal": 710,
+   "min": 35,
+   "p": 40,
+   "meal": "dinner",
+   "has": [
+    "cilantro",
+    "onion"
+   ],
+   "pop": 6,
+   "c": "c1",
+   "photo": true,
+   "nut": {
+    "kcal": 713,
+    "p": 40.0,
+    "c": 105.2,
+    "f": 15.0
+   }
+  },
+  {
+   "id": "nasi_goreng",
+   "cui": "indonesian",
+   "kcal": 570,
+   "min": 25,
+   "p": 42,
+   "meal": "dinner",
+   "has": [
+    "egg",
+    "gluten",
+    "meat",
+    "onion"
+   ],
+   "pop": 7,
+   "c": "c2",
+   "photo": true,
+   "nut": {
+    "kcal": 565,
+    "p": 42.2,
+    "c": 67.6,
+    "f": 14.4
+   }
+  },
+  {
+   "id": "tempeh_stirfry",
+   "cui": "indonesian",
+   "kcal": 670,
+   "min": 25,
+   "p": 42,
+   "meal": "dinner",
+   "has": [
+    "gluten",
+    "nuts"
+   ],
+   "pop": 6,
+   "c": "c3",
+   "photo": true,
+   "nut": {
+    "kcal": 668,
+    "p": 42.1,
+    "c": 75.2,
+    "f": 27.4
+   }
+  },
+  {
+   "id": "lomo_saltado",
+   "cui": "peruvian",
+   "kcal": 470,
+   "min": 35,
+   "p": 40,
+   "meal": "dinner",
+   "has": [
+    "cilantro",
+    "gluten",
+    "meat",
+    "onion"
+   ],
+   "pop": 7,
+   "c": "c4",
+   "photo": true,
+   "nut": {
+    "kcal": 468,
+    "p": 39.9,
+    "c": 41.9,
+    "f": 15.8
+   }
+  },
+  {
+   "id": "aji_de_gallina_light",
+   "cui": "peruvian",
+   "kcal": 670,
+   "min": 40,
+   "p": 56,
+   "meal": "dinner",
+   "has": [
+    "dairy",
+    "egg",
+    "gluten",
+    "meat",
+    "nuts",
+    "onion"
+   ],
+   "pop": 6,
+   "c": "c5",
+   "photo": false,
+   "nut": {
+    "kcal": 673,
+    "p": 56.1,
+    "c": 59.8,
+    "f": 22.4
+   }
+  },
+  {
+   "id": "seafood_paella",
+   "cui": "spanish",
+   "kcal": 590,
+   "min": 45,
+   "p": 54,
+   "meal": "dinner",
+   "has": [
+    "fish",
+    "meat",
+    "onion"
+   ],
+   "pop": 8,
+   "c": "c6",
+   "photo": true,
+   "nut": {
+    "kcal": 586,
+    "p": 54.3,
+    "c": 69.9,
+    "f": 9.9
+   }
+  },
+  {
+   "id": "pollo_al_ajillo",
+   "cui": "spanish",
+   "kcal": 420,
+   "min": 35,
+   "p": 39,
+   "meal": "dinner",
+   "has": [
+    "meat"
+   ],
+   "pop": 6,
+   "c": "c1",
+   "photo": true,
+   "nut": {
+    "kcal": 423,
+    "p": 38.9,
+    "c": 34.5,
+    "f": 14.5
+   }
+  },
+  {
+   "id": "bacalhau_grao",
+   "cui": "portuguese",
+   "kcal": 620,
+   "min": 30,
+   "p": 57,
+   "meal": "dinner",
+   "has": [
+    "egg",
+    "fish",
+    "onion"
+   ],
+   "pop": 7,
+   "c": "c2",
+   "photo": false,
+   "nut": {
+    "kcal": 621,
+    "p": 57.5,
+    "c": 51.5,
+    "f": 19.7
+   }
+  },
+  {
+   "id": "frango_piri_piri",
+   "cui": "portuguese",
+   "kcal": 440,
+   "min": 40,
+   "p": 38,
+   "meal": "dinner",
+   "has": [
+    "meat",
+    "onion"
+   ],
+   "pop": 7,
+   "c": "c3",
+   "photo": true,
+   "nut": {
+    "kcal": 445,
+    "p": 38.2,
+    "c": 40.1,
+    "f": 14.7
+   }
+  },
+  {
+   "id": "poulet_provencal",
+   "cui": "french",
+   "kcal": 520,
+   "min": 40,
+   "p": 50,
+   "meal": "dinner",
+   "has": [
+    "meat",
+    "onion"
+   ],
+   "pop": 6,
+   "c": "c4",
+   "photo": false,
+   "nut": {
+    "kcal": 520,
+    "p": 50.1,
+    "c": 45.3,
+    "f": 14.7
+   }
+  },
+  {
+   "id": "ratatouille_white_beans",
+   "cui": "french",
+   "kcal": 680,
+   "min": 45,
+   "p": 38,
+   "meal": "dinner",
+   "has": [
+    "onion"
+   ],
+   "pop": 6,
+   "c": "c5",
+   "photo": true,
+   "nut": {
+    "kcal": 678,
+    "p": 38.1,
+    "c": 93.6,
+    "f": 17.8
+   }
+  },
+  {
+   "id": "salmon_puy_lentils",
+   "cui": "french",
+   "kcal": 590,
+   "min": 35,
+   "p": 49,
+   "meal": "dinner",
+   "has": [
+    "dairy",
+    "fish",
+    "onion"
+   ],
+   "pop": 7,
+   "c": "c6",
+   "photo": true,
+   "nut": {
+    "kcal": 591,
+    "p": 49.4,
+    "c": 44.2,
+    "f": 21.9
+   }
+  },
+  {
+   "id": "chicken_sweet_potato_traybake",
+   "cui": "american",
+   "kcal": 540,
+   "min": 40,
+   "p": 49,
+   "meal": "dinner",
+   "has": [
+    "dairy",
+    "meat",
+    "onion"
+   ],
+   "pop": 8,
+   "c": "c1",
+   "photo": true,
+   "nut": {
+    "kcal": 537,
+    "p": 49.5,
+    "c": 58.2,
+    "f": 13.2
+   }
+  },
+  {
+   "id": "turkey_meatballs",
+   "cui": "italian",
+   "kcal": 640,
+   "min": 40,
+   "p": 50,
+   "meal": "dinner",
+   "has": [
+    "dairy",
+    "egg",
+    "gluten",
+    "meat",
+    "onion"
+   ],
+   "pop": 7,
+   "c": "c2",
+   "photo": true,
+   "nut": {
+    "kcal": 641,
+    "p": 50.5,
+    "c": 61.9,
+    "f": 19.7
+   }
+  },
+  {
+   "id": "stuffed_sweet_potato",
+   "cui": "american",
+   "kcal": 710,
+   "min": 50,
+   "p": 36,
+   "meal": "dinner",
+   "has": [
+    "cilantro",
+    "onion"
+   ],
+   "pop": 6,
+   "c": "c3",
+   "photo": true,
+   "nut": {
+    "kcal": 707,
+    "p": 36.5,
+    "c": 108.2,
+    "f": 15.0
+   }
+  },
+  {
+   "id": "cod_dill_mustard",
+   "cui": "nordic",
+   "kcal": 420,
+   "min": 30,
+   "p": 45,
+   "meal": "dinner",
+   "has": [
+    "dairy",
+    "fish"
+   ],
+   "pop": 6,
+   "c": "c4",
+   "photo": true,
+   "nut": {
+    "kcal": 425,
+    "p": 45.2,
+    "c": 48.6,
+    "f": 5.2
+   }
+  },
+  {
+   "id": "cottage_pineapple",
+   "cui": "european",
+   "kcal": 290,
+   "min": 5,
+   "p": 27,
+   "meal": "snack",
+   "has": [
+    "dairy"
+   ],
+   "pop": 7,
+   "c": "c5",
+   "photo": true,
+   "nut": {
+    "kcal": 292,
+    "p": 27.4,
+    "c": 16.9,
+    "f": 13.6
+   }
+  },
+  {
+   "id": "skyr_herb_dip",
+   "cui": "nordic",
+   "kcal": 170,
+   "min": 10,
+   "p": 19,
+   "meal": "snack",
+   "has": [
+    "dairy"
+   ],
+   "pop": 6,
+   "c": "c6",
+   "photo": true,
+   "nut": {
+    "kcal": 168,
+    "p": 18.8,
+    "c": 22.6,
+    "f": 0.8
+   }
+  },
+  {
+   "id": "roasted_chickpeas",
+   "cui": "mediterranean",
+   "kcal": 380,
+   "min": 35,
+   "p": 20,
+   "meal": "snack",
+   "has": [],
+   "pop": 6,
+   "c": "c1",
+   "photo": true,
+   "nut": {
+    "kcal": 384,
+    "p": 20.3,
+    "c": 49.4,
+    "f": 12.5
+   }
+  },
+  {
+   "id": "edamame_sea_salt",
+   "cui": "japanese",
+   "kcal": 280,
+   "min": 10,
+   "p": 24,
+   "meal": "snack",
+   "has": [],
+   "pop": 6,
+   "c": "c2",
+   "photo": true,
+   "nut": {
+    "kcal": 283,
+    "p": 24.0,
+    "c": 18.2,
+    "f": 14.6
+   }
+  },
+  {
+   "id": "hummus_veggie_sticks",
+   "cui": "middle_eastern",
+   "kcal": 330,
+   "min": 10,
+   "p": 12,
+   "meal": "snack",
+   "has": [],
+   "pop": 6,
+   "c": "c3",
+   "photo": true,
+   "nut": {
+    "kcal": 327,
+    "p": 12.5,
+    "c": 41.9,
+    "f": 13.8
+   }
+  },
+  {
+   "id": "eggs_cucumber",
+   "cui": "european",
+   "kcal": 230,
+   "min": 12,
+   "p": 20,
+   "meal": "snack",
+   "has": [
+    "egg"
+   ],
+   "pop": 5,
+   "c": "c4",
+   "photo": true,
+   "nut": {
+    "kcal": 230,
+    "p": 19.7,
+    "c": 4.7,
+    "f": 14.4
+   }
+  },
+  {
+   "id": "banana_protein_shake",
+   "cui": "european",
+   "kcal": 370,
+   "min": 5,
+   "p": 34,
+   "meal": "snack",
+   "has": [
+    "dairy",
+    "gluten"
+   ],
+   "pop": 7,
+   "c": "c5",
+   "photo": true,
+   "nut": {
+    "kcal": 367,
+    "p": 34.2,
+    "c": 53.8,
+    "f": 3.0
+   }
+  },
+  {
+   "id": "tuna_rice_cakes",
+   "cui": "european",
+   "kcal": 250,
+   "min": 5,
+   "p": 33,
+   "meal": "snack",
+   "has": [
+    "dairy",
+    "fish"
+   ],
+   "pop": 6,
+   "c": "c6",
+   "photo": false,
+   "nut": {
+    "kcal": 253,
+    "p": 32.6,
+    "c": 24.6,
+    "f": 2.7
+   }
+  },
+  {
+   "id": "turkey_rollups",
+   "cui": "american",
+   "kcal": 190,
+   "min": 5,
+   "p": 28,
+   "meal": "snack",
+   "has": [
+    "dairy",
+    "meat"
+   ],
+   "pop": 6,
+   "c": "c1",
+   "photo": true,
+   "nut": {
+    "kcal": 188,
+    "p": 27.9,
+    "c": 5.2,
+    "f": 5.8
+   }
+  },
+  {
+   "id": "quark_berries",
+   "cui": "swiss",
+   "kcal": 220,
+   "min": 5,
+   "p": 26,
+   "meal": "snack",
+   "has": [
+    "dairy"
+   ],
+   "pop": 7,
+   "c": "c2",
+   "photo": true,
+   "nut": {
+    "kcal": 218,
+    "p": 25.5,
+    "c": 26.0,
+    "f": 1.0
+   }
+  },
+  {
+   "id": "protein_energy_balls",
+   "cui": "american",
+   "kcal": 240,
+   "min": 15,
+   "p": 16,
+   "meal": "snack",
+   "has": [
+    "dairy",
+    "gluten",
+    "nuts"
+   ],
+   "pop": 7,
+   "c": "c3",
+   "photo": true,
+   "nut": {
+    "kcal": 239,
+    "p": 15.6,
+    "c": 22.5,
+    "f": 10.2
+   }
+  },
+  {
+   "id": "salmon_cucumber_bites",
+   "cui": "nordic",
+   "kcal": 160,
+   "min": 10,
+   "p": 17,
+   "meal": "snack",
+   "has": [
+    "dairy",
+    "fish"
+   ],
+   "pop": 6,
+   "c": "c4",
+   "photo": true,
+   "nut": {
+    "kcal": 159,
+    "p": 17.0,
+    "c": 7.5,
+    "f": 6.7
+   }
+  },
+  {
+   "id": "tzatziki_pita",
+   "cui": "greek",
+   "kcal": 230,
+   "min": 10,
+   "p": 19,
+   "meal": "snack",
+   "has": [
+    "dairy",
+    "gluten"
+   ],
+   "pop": 6,
+   "c": "c5",
+   "photo": true,
+   "nut": {
+    "kcal": 234,
+    "p": 19.2,
+    "c": 28.3,
+    "f": 6.0
+   }
+  },
+  {
+   "id": "deviled_eggs_yogurt",
+   "cui": "american",
+   "kcal": 160,
+   "min": 15,
+   "p": 15,
+   "meal": "snack",
+   "has": [
+    "dairy",
+    "egg"
+   ],
+   "pop": 5,
+   "c": "c6",
+   "photo": true,
+   "nut": {
+    "kcal": 164,
+    "p": 15.3,
+    "c": 2.0,
+    "f": 10.1
+   }
+  },
+  {
+   "id": "sesame_tofu_bites",
+   "cui": "japanese",
+   "kcal": 300,
+   "min": 20,
+   "p": 21,
+   "meal": "snack",
+   "has": [
+    "gluten",
+    "onion"
+   ],
+   "pop": 5,
+   "c": "c1",
+   "photo": true,
+   "nut": {
+    "kcal": 296,
+    "p": 21.2,
+    "c": 10.8,
+    "f": 19.9
+   }
+  },
+  {
+   "id": "mozzarella_tomato_skewers",
+   "cui": "italian",
+   "kcal": 220,
+   "min": 10,
+   "p": 22,
+   "meal": "snack",
+   "has": [
+    "dairy",
+    "meat"
+   ],
+   "pop": 6,
+   "c": "c2",
+   "photo": true,
+   "nut": {
+    "kcal": 221,
+    "p": 21.6,
+    "c": 5.0,
+    "f": 12.6
+   }
+  },
+  {
+   "id": "bresaola_rolls",
+   "cui": "italian",
+   "kcal": 210,
+   "min": 10,
+   "p": 28,
+   "meal": "snack",
+   "has": [
+    "dairy",
+    "meat"
+   ],
+   "pop": 5,
+   "c": "c3",
+   "photo": true,
+   "nut": {
+    "kcal": 213,
+    "p": 28.5,
+    "c": 2.8,
+    "f": 10.0
+   }
+  },
+  {
+   "id": "soy_chia_pudding",
+   "cui": "european",
+   "kcal": 370,
+   "min": 5,
+   "p": 19,
+   "meal": "snack",
+   "has": [],
+   "pop": 5,
+   "c": "c4",
+   "photo": true,
+   "nut": {
+    "kcal": 366,
+    "p": 18.8,
+    "c": 31.5,
+    "f": 19.2
+   }
+  },
+  {
+   "id": "apple_skyr_pb_dip",
+   "cui": "american",
+   "kcal": 270,
+   "min": 5,
+   "p": 21,
+   "meal": "snack",
+   "has": [
+    "dairy",
+    "nuts"
+   ],
+   "pop": 6,
+   "c": "c5",
+   "photo": true,
+   "nut": {
+    "kcal": 270,
+    "p": 21.0,
+    "c": 30.0,
+    "f": 8.6
+   }
+  },
+  {
+   "id": "vitamina_banana",
+   "cui": "brazilian",
+   "kcal": 330,
+   "min": 5,
+   "p": 24,
+   "meal": "snack",
+   "has": [
+    "dairy",
+    "gluten"
+   ],
+   "pop": 6,
+   "c": "c6",
+   "photo": true,
+   "nut": {
+    "kcal": 327,
+    "p": 23.8,
+    "c": 50.6,
+    "f": 4.6
+   }
+  },
+  {
+   "id": "green_skyr_smoothie",
+   "cui": "nordic",
+   "kcal": 280,
+   "min": 5,
+   "p": 24,
+   "meal": "snack",
+   "has": [
+    "dairy"
+   ],
+   "pop": 5,
+   "c": "c1",
+   "photo": true,
+   "nut": {
+    "kcal": 285,
+    "p": 23.6,
+    "c": 48.9,
+    "f": 1.5
+   }
+  },
+  {
+   "id": "labneh_zaatar",
+   "cui": "middle_eastern",
+   "kcal": 240,
+   "min": 10,
+   "p": 19,
+   "meal": "snack",
+   "has": [
+    "dairy",
+    "gluten"
+   ],
+   "pop": 5,
+   "c": "c2",
+   "photo": true,
+   "nut": {
+    "kcal": 239,
+    "p": 19.3,
+    "c": 27.8,
+    "f": 6.7
+   }
+  },
+  {
+   "id": "tuna_avocado",
+   "cui": "american",
+   "kcal": 250,
+   "min": 5,
+   "p": 26,
+   "meal": "snack",
+   "has": [
+    "dairy",
+    "fish"
+   ],
+   "pop": 5,
+   "c": "c3",
+   "photo": true,
+   "nut": {
+    "kcal": 254,
+    "p": 26.2,
+    "c": 12.6,
+    "f": 12.3
+   }
+  },
+  {
+   "id": "shrimp_cocktail",
+   "cui": "european",
+   "kcal": 150,
+   "min": 10,
+   "p": 25,
+   "meal": "snack",
+   "has": [
+    "dairy",
+    "fish"
+   ],
+   "pop": 5,
+   "c": "c4",
+   "photo": true,
+   "nut": {
+    "kcal": 152,
+    "p": 25.0,
+    "c": 5.6,
+    "f": 4.1
+   }
+  },
+  {
+   "id": "cottage_crispbread",
+   "cui": "nordic",
+   "kcal": 230,
+   "min": 5,
+   "p": 20,
+   "meal": "snack",
+   "has": [
+    "dairy",
+    "gluten"
+   ],
+   "pop": 6,
+   "c": "c5",
+   "photo": true,
+   "nut": {
+    "kcal": 226,
+    "p": 20.3,
+    "c": 19.9,
+    "f": 6.9
+   }
+  },
+  {
+   "id": "paneer_tikka_bites",
+   "cui": "indian",
+   "kcal": 290,
+   "min": 20,
+   "p": 22,
+   "meal": "snack",
+   "has": [
+    "dairy"
+   ],
+   "pop": 5,
+   "c": "c6",
+   "photo": true,
+   "nut": {
+    "kcal": 286,
+    "p": 21.9,
+    "c": 9.4,
+    "f": 18.2
+   }
+  },
+  {
+   "id": "chicken_satay_skewers",
+   "cui": "indonesian",
+   "kcal": 210,
+   "min": 25,
+   "p": 26,
+   "meal": "snack",
+   "has": [
+    "gluten",
+    "meat",
+    "nuts"
+   ],
+   "pop": 6,
+   "c": "c1",
+   "photo": true,
+   "nut": {
+    "kcal": 205,
+    "p": 25.7,
+    "c": 4.9,
+    "f": 9.0
+   }
+  },
+  {
+   "id": "chickpea_chaat",
+   "cui": "indian",
+   "kcal": 340,
+   "min": 10,
+   "p": 17,
+   "meal": "snack",
+   "has": [
+    "cilantro",
+    "onion"
+   ],
+   "pop": 5,
+   "c": "c2",
+   "photo": true,
+   "nut": {
+    "kcal": 336,
+    "p": 17.5,
+    "c": 52.9,
+    "f": 6.9
+   }
+  },
+  {
+   "id": "skyr_berry_bark",
+   "cui": "european",
+   "kcal": 180,
+   "min": 10,
+   "p": 18,
+   "meal": "snack",
+   "has": [
+    "dairy",
+    "nuts"
+   ],
+   "pop": 5,
+   "c": "c3",
+   "photo": true,
+   "nut": {
+    "kcal": 181,
+    "p": 18.3,
+    "c": 18.8,
+    "f": 3.8
+   }
+  },
+  {
+   "id": "cocoa_protein_milk",
+   "cui": "swiss",
+   "kcal": 220,
+   "min": 5,
+   "p": 28,
+   "meal": "snack",
+   "has": [
+    "dairy"
+   ],
+   "pop": 5,
+   "c": "c4",
+   "photo": true,
+   "nut": {
+    "kcal": 221,
+    "p": 28.2,
+    "c": 26.5,
+    "f": 2.3
+   }
+  },
+  {
+   "id": "tuna_onigiri",
+   "cui": "japanese",
+   "kcal": 330,
+   "min": 25,
+   "p": 27,
+   "meal": "snack",
+   "has": [
+    "dairy",
+    "fish",
+    "gluten"
+   ],
+   "pop": 6,
+   "c": "c5",
+   "photo": true,
+   "nut": {
+    "kcal": 330,
+    "p": 26.6,
+    "c": 49.7,
+    "f": 2.3
+   }
+  },
+  {
+   "id": "silken_chocolate_mousse",
+   "cui": "european",
+   "kcal": 200,
+   "min": 10,
+   "p": 10,
+   "meal": "snack",
+   "has": [
+    "nuts"
+   ],
+   "pop": 5,
+   "c": "c6",
+   "photo": true,
+   "nut": {
+    "kcal": 202,
+    "p": 10.2,
+    "c": 26.1,
+    "f": 7.7
+   }
+  },
+  {
+   "id": "edamame_hummus",
+   "cui": "japanese",
+   "kcal": 260,
+   "min": 10,
+   "p": 15,
+   "meal": "snack",
+   "has": [],
+   "pop": 5,
+   "c": "c1",
+   "photo": true,
+   "nut": {
+    "kcal": 259,
+    "p": 15.0,
+    "c": 26.5,
+    "f": 11.9
+   }
+  },
+  {
+   "id": "bundnerfleisch_crispbread",
+   "cui": "swiss",
+   "kcal": 220,
+   "min": 5,
+   "p": 26,
+   "meal": "snack",
+   "has": [
+    "dairy",
+    "gluten",
+    "meat"
+   ],
+   "pop": 6,
+   "c": "c2",
+   "photo": false,
+   "nut": {
+    "kcal": 221,
+    "p": 25.9,
+    "c": 18.2,
+    "f": 4.7
+   }
+  }
+ ]
+}

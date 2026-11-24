@@ -1,0 +1,14 @@
+# id|de|en|fr|it|es|pt|ja  (neue Kuechen; bestehende stehen in locales/*/recipes.json)
+brazilian|Brasilianisch|Brazilian|Brésilienne|Brasiliana|Brasileña|Brasileira|ブラジル
+greek|Griechisch|Greek|Grecque|Greca|Griega|Grega|ギリシャ
+korean|Koreanisch|Korean|Coréenne|Coreana|Coreana|Coreana|韓国
+chinese|Chinesisch|Chinese|Chinoise|Cinese|China|Chinesa|中華
+spanish|Spanisch|Spanish|Espagnole|Spagnola|Española|Espanhola|スペイン
+french|Französisch|French|Française|Francese|Francesa|Francesa|フランス
+american|Amerikanisch|American|Américaine|Americana|Americana|Americana|アメリカ
+portuguese|Portugiesisch|Portuguese|Portugaise|Portoghese|Portuguesa|Portuguesa|ポルトガル
+moroccan|Marokkanisch|Moroccan|Marocaine|Marocchina|Marroquí|Marroquina|モロッコ
+peruvian|Peruanisch|Peruvian|Péruvienne|Peruviana|Peruana|Peruana|ペルー
+indonesian|Indonesisch|Indonesian|Indonésienne|Indonesiana|Indonesia|Indonésia|インドネシア
+nordic|Nordisch|Nordic|Nordique|Nordica|Nórdica|Nórdica|北欧
+hawaiian|Hawaiianisch|Hawaiian|Hawaïenne|Hawaiana|Hawaiana|Havaiana|ハワイ

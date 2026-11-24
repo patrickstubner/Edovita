@@ -1,0 +1,289 @@
+# Abendessen, Teil 2
+@ bulgogi | dinner | korean | 30 | 2 | 8
+de: Bulgogi (koreanisches Rindfleisch) mit Reis und Gurke
+en: Bulgogi (Korean beef) with rice and cucumber
+fr: Bulgogi (bœuf coréen) avec riz et concombre
+it: Bulgogi (manzo coreano) con riso e cetriolo
+es: Bulgogi (ternera coreana) con arroz y pepino
+pt: Bulgogi (carne coreana) com arroz e pepino
+ja: プルコギと白ご飯、きゅうり
+i: beef_steak 300g, pear 0.5pc, soy_sauce 3tbsp, garlic 2pc, ginger 10g, sesame_oil 2tsp, sugar 1tsp, onion 0.5pc, carrot 1pc, spring_onion 2pc, sushi_rice 130g, cucumber 0.5pc, rice_vinegar 1tbsp, sesame_seeds 1tsp
+sd: Birne, Knoblauch und Ingwer fein reiben und mit Sojasauce, Zucker und 1 TL Sesamöl zu einer Marinade verrühren. | Rindfleisch hauchdünn schneiden und mindestens 20 Minuten marinieren. | Reis waschen und mit 170 ml Wasser 12 Minuten garen; Gurke in Scheiben schneiden und mit Reisessig mischen. | Zwiebel und Rüebli in Streifen schneiden und im restlichen Sesamöl 3 Minuten braten, Fleisch zugeben und 3–4 Minuten scharf braten. | Mit Frühlingszwiebeln und Sesam bestreuen und mit Reis und Gurke servieren.
+se: Finely grate the pear, garlic and ginger and stir with the soy sauce, sugar and 1 tsp sesame oil into a marinade. | Slice the beef very thinly and marinate for at least 20 minutes. | Wash the rice and cook it with 170 ml water for 12 minutes; slice the cucumber and mix it with rice vinegar. | Cut the onion and carrot into strips and fry in the remaining sesame oil for 3 minutes, add the beef and stir-fry over high heat for 3–4 minutes. | Sprinkle with spring onions and sesame and serve with rice and cucumber.
+q: bulgogi
+@ dakgalbi | dinner | korean | 30 | 2 | 7
+de: Dakgalbi (scharfes Poulet mit Kabis und Süsskartoffel)
+en: Dakgalbi (spicy chicken with cabbage and sweet potato)
+fr: Dakgalbi (poulet épicé au chou et patate douce)
+it: Dakgalbi (pollo piccante con cavolo e patata dolce)
+es: Dakgalbi (pollo picante con col y boniato)
+pt: Dakgalbi (frango picante com repolho e batata-doce)
+ja: タッカルビ
+i: chicken_thigh 340g, white_cabbage 250g, sweet_potato 1pc, onion 0.5pc, spring_onion 2pc, gochujang 2tbsp, soy_sauce 1tbsp, garlic 2pc, ginger 10g, maple_syrup 1tsp, rapeseed_oil 2tsp, sesame_seeds 1tsp
+sd: Gochujang, Sojasauce, Knoblauch, Ingwer und Ahornsirup verrühren, Poulet in Stücke schneiden und 15 Minuten darin marinieren. | Süsskartoffel in dünne Scheiben, Kabis in grobe Stücke und Zwiebel in Streifen schneiden. | Süsskartoffel im Öl in einer grossen Pfanne 5 Minuten anbraten. | Poulet mit Marinade, Kabis und Zwiebel zugeben und 10–12 Minuten unter Wenden braten, bis das Poulet durch ist. | Mit Frühlingszwiebeln und Sesam bestreuen.
+se: Mix the gochujang, soy sauce, garlic, ginger and maple syrup, cut the chicken into pieces and marinate for 15 minutes. | Thinly slice the sweet potato, cut the cabbage into large pieces and the onion into strips. | Fry the sweet potato in the oil in a large pan for 5 minutes. | Add the chicken with its marinade, the cabbage and onion and fry for 10–12 minutes, turning, until the chicken is cooked. | Sprinkle with spring onions and sesame.
+q: dakgalbi spicy chicken
+@ sundubu_jjigae | dinner | korean | 25 | 2 | 6
+de: Sundubu-jjigae (scharfer Seidentofu-Eintopf mit Ei)
+en: Sundubu-jjigae (spicy silken tofu stew with egg)
+fr: Sundubu-jjigae (ragoût épicé de tofu soyeux et œuf)
+it: Sundubu-jjigae (stufato piccante di tofu morbido e uovo)
+es: Sundubu-jjigae (guiso picante de tofu sedoso con huevo)
+pt: Sundubu-jjigae (ensopado picante de tofu macio com ovo)
+ja: スンドゥブチゲ
+i: silken_tofu 400g, eggs 2pc, shrimp 120g, kimchi 100g, zucchini 0.5pc, shiitake 80g, onion 0.5pc, garlic 2pc, gochujang 1tbsp, chili_flakes 1tsp, chicken_broth 500ml, sesame_oil 1tsp, spring_onion 1pc, sushi_rice 100g
+sd: Reis waschen und mit 130 ml Wasser 12 Minuten garen. | Zwiebel und Knoblauch hacken und mit Kimchi im Sesamöl 3 Minuten anbraten, Gochujang und Chiliflocken einrühren. | Bouillon zugeben, Zucchetti und Pilze in Scheiben dazugeben und 5 Minuten köcheln. | Seidentofu in grossen Löffelstücken und Crevetten zugeben und 3 Minuten ziehen lassen. | Eier hineinschlagen, 2 Minuten stocken lassen, mit Frühlingszwiebel bestreuen und mit Reis servieren.
+se: Wash the rice and cook it with 130 ml water for 12 minutes. | Chop the onion and garlic and fry with the kimchi in the sesame oil for 3 minutes, then stir in the gochujang and chilli flakes. | Add the stock and the sliced courgette and mushrooms and simmer for 5 minutes. | Add the silken tofu in large spoonfuls and the prawns and let them heat through for 3 minutes. | Crack in the eggs, let them set for 2 minutes, sprinkle with spring onion and serve with rice.
+q: sundubu jjigae tofu stew
+@ kung_pao_chicken | dinner | chinese | 25 | 2 | 8
+de: Kung-Pao-Poulet mit Erdnüssen und Peperoni
+en: Kung pao chicken with peanuts and peppers
+fr: Poulet kung pao aux cacahuètes et poivrons
+it: Pollo kung pao con arachidi e peperoni
+es: Pollo kung pao con cacahuetes y pimientos
+pt: Frango kung pao com amendoim e pimentões
+ja: 宮保鶏丁（ピーナッツとピーマンの鶏肉炒め）
+i: chicken_breast 320g, red_bell_pepper 1pc, green_bell_pepper 1pc, peanuts 30g, spring_onion 3pc, garlic 2pc, ginger 10g, chili_flakes 1tsp, soy_sauce 2tbsp, rice_vinegar 1tbsp, sugar 1tsp, cornstarch 2tsp, rapeseed_oil 2tsp, jasmine_rice 120g
+sd: Reis nach Packungsangabe kochen. | Poulet würfeln und mit 1 EL Sojasauce und 1 TL Maisstärke mischen. | Restliche Sojasauce, Essig, Zucker, restliche Maisstärke und 4 EL Wasser verrühren. | Poulet im heissen Öl im Wok 4 Minuten braten, Knoblauch, Ingwer, Chili und Peperoni zugeben und 3 Minuten weiterbraten. | Sauce, Erdnüsse und Frühlingszwiebeln zugeben, 1 Minute einkochen und mit Reis servieren.
+se: Cook the rice according to the packet. | Dice the chicken and mix with 1 tbsp soy sauce and 1 tsp cornflour. | Stir the remaining soy sauce, vinegar, sugar, remaining cornflour and 4 tbsp water together. | Stir-fry the chicken in the hot oil in a wok for 4 minutes, add the garlic, ginger, chilli and peppers and fry for 3 more minutes. | Add the sauce, peanuts and spring onions, let it thicken for 1 minute and serve with rice.
+q: kung pao chicken
+@ mapo_tofu | dinner | chinese | 25 | 2 | 7
+de: Mapo-Tofu mit magerem Schweinshack
+en: Mapo tofu with lean pork mince
+fr: Mapo tofu au porc haché maigre
+it: Mapo tofu con macinato di maiale magro
+es: Mapo tofu con carne picada de cerdo magra
+pt: Mapo tofu com carne suína moída magra
+ja: 麻婆豆腐
+i: tofu_firm 400g, pork_mince_lean 150g, garlic 2pc, ginger 10g, spring_onion 2pc, chili_flakes 1tsp, soy_sauce 2tbsp, miso_paste 1tbsp, chicken_broth 200ml, cornstarch 2tsp, rapeseed_oil 1tsp, pak_choi 2pc, jasmine_rice 110g
+sd: Reis nach Packungsangabe kochen; Tofu in Würfel schneiden und 2 Minuten in Salzwasser ziehen lassen, abtropfen. | Hackfleisch im Öl krümelig braten, Knoblauch, Ingwer und Chiliflocken 1 Minute mitbraten. | Miso, Sojasauce und Bouillon zugeben, Tofu vorsichtig einlegen und 5 Minuten köcheln. | Mit angerührter Maisstärke binden; Pak Choi daneben kurz dämpfen. | Mit Frühlingszwiebeln bestreuen und mit Reis und Pak Choi servieren.
+se: Cook the rice according to the packet; dice the tofu, leave it in hot salted water for 2 minutes and drain. | Fry the mince in the oil until crumbly, add the garlic, ginger and chilli flakes for 1 minute. | Add the miso, soy sauce and stock, gently add the tofu and simmer for 5 minutes. | Thicken with the cornflour mixed with water; steam the pak choi briefly alongside. | Sprinkle with spring onions and serve with rice and pak choi.
+q: mapo tofu
+@ steamed_fish_ginger | dinner | chinese | 25 | 2 | 6
+de: Gedämpfter Fisch mit Ingwer und Frühlingszwiebeln
+en: Steamed fish with ginger and spring onions
+fr: Poisson vapeur au gingembre et oignons nouveaux
+it: Pesce al vapore con zenzero e cipollotti
+es: Pescado al vapor con jengibre y cebolleta
+pt: Peixe no vapor com gengibre e cebolinha
+ja: 白身魚の生姜とねぎ蒸し
+i: sea_bass 340g, ginger 20g, spring_onion 3pc, soy_sauce 2tbsp, sesame_oil 1tsp, rapeseed_oil 1tsp, pak_choi 2pc, jasmine_rice 120g, coriander_fresh 5g
+sd: Reis nach Packungsangabe kochen. | Ingwer und Frühlingszwiebeln in feine Streifen schneiden. | Fisch auf einen Teller legen, mit der Hälfte des Ingwers belegen und im Dampfgarer oder auf einem Gitter über siedendem Wasser 8–10 Minuten dämpfen; Pak Choi die letzten 4 Minuten mitdämpfen. | Restlichen Ingwer und Frühlingszwiebeln auf den Fisch geben, Sojasauce darüberträufeln. | Beide Öle erhitzen, zischend darübergiessen und mit Koriander, Pak Choi und Reis servieren.
+se: Cook the rice according to the packet. | Cut the ginger and spring onions into fine strips. | Put the fish on a plate, top with half the ginger and steam in a steamer or on a rack over simmering water for 8–10 minutes; steam the pak choi for the last 4 minutes. | Put the remaining ginger and spring onions on the fish and drizzle with soy sauce. | Heat both oils, pour them sizzling over the fish and serve with coriander, pak choi and rice.
+q: steamed fish ginger scallion
+@ beef_broccoli | dinner | chinese | 25 | 2 | 7
+de: Rindfleisch mit Brokkoli aus dem Wok
+en: Beef and broccoli stir-fry
+fr: Bœuf sauté au brocoli
+it: Manzo saltato con broccoli
+es: Ternera salteada con brócoli
+pt: Carne salteada com brócolis
+ja: 牛肉とブロッコリーの炒め物
+i: beef_steak 300g, broccoli 350g, garlic 2pc, ginger 10g, oyster_sauce 2tbsp, soy_sauce 1tbsp, cornstarch 2tsp, rapeseed_oil 2tsp, sesame_seeds 1tsp, jasmine_rice 120g
+sd: Reis nach Packungsangabe kochen. | Rindfleisch quer zur Faser in dünne Streifen schneiden und mit Sojasauce und 1 TL Maisstärke mischen. | Brokkoli in Röschen teilen und 2 Minuten blanchieren. | Fleisch im heissen Öl 2 Minuten scharf anbraten, Knoblauch und Ingwer zugeben, dann Brokkoli. | Austernsauce mit restlicher Maisstärke und 4 EL Wasser verrühren, zugeben, kurz einkochen und mit Sesam und Reis servieren.
+se: Cook the rice according to the packet. | Slice the beef thinly across the grain and mix with soy sauce and 1 tsp cornflour. | Cut the broccoli into florets and blanch for 2 minutes. | Sear the beef in the hot oil for 2 minutes, add the garlic and ginger, then the broccoli. | Mix the oyster sauce with the remaining cornflour and 4 tbsp water, add, let it thicken briefly and serve with sesame and rice.
+q: beef broccoli stir fry
+@ teriyaki_tofu | dinner | japanese | 25 | 2 | 6
+de: Teriyaki-Tofu mit Brokkoli und Vollkornreis
+en: Teriyaki tofu with broccoli and brown rice
+fr: Tofu teriyaki, brocoli et riz complet
+it: Tofu teriyaki con broccoli e riso integrale
+es: Tofu teriyaki con brócoli y arroz integral
+pt: Tofu teriyaki com brócolis e arroz integral
+ja: 照り焼き豆腐とブロッコリー、玄米
+i: tofu_firm 400g, broccoli 300g, brown_rice 110g, soy_sauce 3tbsp, maple_syrup 1tbsp, rice_vinegar 1tbsp, ginger 10g, garlic 1pc, cornstarch 2tsp, rapeseed_oil 2tsp, sesame_seeds 1tsp, spring_onion 1pc
+sd: Vollkornreis nach Packungsangabe kochen. | Tofu trocken tupfen, in Scheiben schneiden, in 1 TL Maisstärke wenden und im Öl pro Seite 3 Minuten knusprig braten. | Brokkoli in Röschen 4 Minuten dämpfen. | Sojasauce, Ahornsirup, Essig, Ingwer, Knoblauch, restliche Maisstärke und 4 EL Wasser verrühren, in die Pfanne geben und den Tofu darin glasieren. | Mit Reis und Brokkoli anrichten und mit Sesam und Frühlingszwiebel bestreuen.
+se: Cook the brown rice according to the packet. | Pat the tofu dry, slice it, toss in 1 tsp cornflour and fry in the oil for 3 minutes per side until crisp. | Steam the broccoli florets for 4 minutes. | Mix the soy sauce, maple syrup, vinegar, ginger, garlic, remaining cornflour and 4 tbsp water, pour into the pan and glaze the tofu. | Serve with the rice and broccoli and sprinkle with sesame and spring onion.
+q: teriyaki tofu
+@ saba_shioyaki | dinner | japanese | 20 | 2 | 5
+de: Gegrillte Makrele (Saba shioyaki) mit Reis und Spinat-Sesam
+en: Grilled mackerel (saba shioyaki) with rice and sesame spinach
+fr: Maquereau grillé (saba shioyaki), riz et épinards au sésame
+it: Sgombro alla griglia (saba shioyaki) con riso e spinaci al sesamo
+es: Caballa a la parrilla (saba shioyaki) con arroz y espinacas al sésamo
+pt: Cavala grelhada (saba shioyaki) com arroz e espinafre com gergelim
+ja: サバの塩焼き ご飯とほうれん草の胡麻和え
+i: mackerel 280g, sushi_rice 120g, spinach 250g, sesame_seeds 2tsp, soy_sauce 1tbsp, sugar 1tsp, lemon 0.5pc, salt 3g, miso_paste 1tbsp, silken_tofu 100g
+sd: Reis waschen und mit 160 ml Wasser 12 Minuten garen. | Makrele beidseitig salzen, 10 Minuten ziehen lassen, trocken tupfen und unter dem Ofengrill 8–10 Minuten grillieren, bis die Haut knusprig ist. | Spinat 1 Minute blanchieren, ausdrücken; Sesam rösten, zerstossen und mit Sojasauce und Zucker mit dem Spinat mischen. | Miso in 400 ml heissem Wasser auflösen und Tofuwürfel zugeben. | Makrele mit Zitrone, Reis, Spinat und Misosuppe servieren.
+se: Wash the rice and cook it with 160 ml water for 12 minutes. | Salt the mackerel on both sides, leave for 10 minutes, pat dry and grill for 8–10 minutes until the skin is crisp. | Blanch the spinach for 1 minute and squeeze out; toast the sesame, crush it and mix with soy sauce, sugar and the spinach. | Dissolve the miso in 400 ml hot water and add diced tofu. | Serve the mackerel with lemon, rice, spinach and miso soup.
+q: grilled mackerel japanese
+@ japanese_chicken_curry | dinner | japanese | 40 | 2 | 6
+de: Japanisches Poulet-Curry mit Rüebli und Kartoffeln
+en: Japanese chicken curry with carrots and potatoes
+fr: Curry japonais au poulet, carottes et pommes de terre
+it: Curry giapponese di pollo con carote e patate
+es: Curry japonés de pollo con zanahoria y patata
+pt: Curry japonês de frango com cenoura e batata
+ja: 鶏肉とにんじん、じゃがいものカレーライス
+i: chicken_breast 320g, potato 200g, carrot 2pc, onion 1pc, apple 0.5pc, curry_powder 1tbsp, wholewheat_flour 1tbsp, chicken_broth 500ml, soy_sauce 1tbsp, honey 1tsp, rapeseed_oil 2tsp, sushi_rice 120g, salt 2g
+sd: Reis waschen und mit 160 ml Wasser 12 Minuten garen. | Zwiebel in Streifen, Kartoffeln und Rüebli in Stücke, Poulet in Würfel schneiden. | Zwiebel im Öl 6 Minuten goldbraun dünsten, Poulet kurz mitbraten, Mehl und Currypulver darüberstäuben und 1 Minute rösten. | Bouillon, Gemüse und geriebenen Apfel zugeben und 20 Minuten köcheln, bis das Gemüse weich ist. | Mit Sojasauce, Honig und Salz abschmecken und mit Reis servieren.
+se: Wash the rice and cook it with 160 ml water for 12 minutes. | Slice the onion, cut the potatoes and carrots into chunks and dice the chicken. | Cook the onion in the oil for 6 minutes until golden, briefly fry the chicken, dust with the flour and curry powder and toast for 1 minute. | Add the stock, vegetables and grated apple and simmer for 20 minutes until the vegetables are soft. | Season with soy sauce, honey and salt and serve with rice.
+q: japanese curry rice
+@ green_curry_shrimp | dinner | thai | 25 | 2 | 7
+de: Grünes Thai-Curry mit Crevetten und Gemüse
+en: Thai green curry with prawns and vegetables
+fr: Curry vert thaï aux crevettes et légumes
+it: Curry verde thai con gamberi e verdure
+es: Curry verde tailandés con gambas y verduras
+pt: Curry verde tailandês com camarão e legumes
+ja: エビと野菜のグリーンカレー
+i: shrimp 320g, coconut_milk 150ml, red_curry_paste 1tbsp, spinach 60g, green_beans 150g, zucchini 1pc, red_bell_pepper 0.5pc, fish_sauce 1tbsp, lime 1pc, thai_basil 10g, chicken_broth 200ml, jasmine_rice 120g
+sd: Reis nach Packungsangabe kochen. | Für eine grüne Paste die Currypaste mit Spinat und 2 EL Kokosmilch im Mixer fein pürieren. | Paste in einem Topf 1 Minute anrösten, restliche Kokosmilch und Bouillon zugeben und aufkochen. | Bohnen, Zucchetti und Peperoni 5 Minuten darin köcheln, Crevetten zugeben und 3 Minuten garen. | Mit Fischsauce und Limettensaft abschmecken, Basilikum unterheben und mit Reis servieren.
+se: Cook the rice according to the packet. | For a green paste, blend the curry paste with the spinach and 2 tbsp coconut milk until smooth. | Toast the paste in a pot for 1 minute, add the remaining coconut milk and stock and bring to the boil. | Simmer the beans, courgette and pepper in it for 5 minutes, add the prawns and cook for 3 minutes. | Season with fish sauce and lime juice, fold in the basil and serve with rice.
+q: thai green curry shrimp
+@ pad_kra_pao | dinner | thai | 20 | 2 | 8
+de: Pad Kra Pao (Poulet mit Thai-Basilikum und Spiegelei)
+en: Pad kra pao (chicken with Thai basil and fried egg)
+fr: Pad kra pao (poulet au basilic thaï et œuf au plat)
+it: Pad kra pao (pollo al basilico thai con uovo fritto)
+es: Pad kra pao (pollo con albahaca tailandesa y huevo frito)
+pt: Pad kra pao (frango com manjericão tailandês e ovo frito)
+ja: ガパオライス（鶏肉のバジル炒めと目玉焼き）
+i: chicken_breast 300g, eggs 2pc, thai_basil 20g, garlic 3pc, chili_fresh 2pc, green_beans 100g, oyster_sauce 1tbsp, soy_sauce 1tbsp, fish_sauce 1tsp, sugar 1tsp, rapeseed_oil 2tsp, jasmine_rice 120g
+sd: Reis nach Packungsangabe kochen. | Poulet fein hacken, Knoblauch und Chili im Mörser zerstossen, Bohnen in kurze Stücke schneiden. | Knoblauch und Chili in 1 TL Öl 30 Sekunden anbraten, Poulet zugeben und 4 Minuten krümelig braten, Bohnen 2 Minuten mitbraten. | Saucen und Zucker zugeben, Basilikum unterheben und zusammenfallen lassen. | Spiegeleier im restlichen Öl knusprig braten und mit Reis und Poulet servieren.
+se: Cook the rice according to the packet. | Finely chop the chicken, pound the garlic and chilli in a mortar and cut the beans into short pieces. | Fry the garlic and chilli in 1 tsp oil for 30 seconds, add the chicken and fry for 4 minutes until crumbly, adding the beans for 2 minutes. | Add the sauces and sugar and fold in the basil until wilted. | Fry the eggs in the remaining oil until crisp and serve with rice and the chicken.
+q: pad kra pao basil chicken egg
+@ tom_yum_shrimp | dinner | thai | 25 | 2 | 6
+de: Tom Yum mit Crevetten und Pilzen
+en: Tom yum with prawns and mushrooms
+fr: Tom yum aux crevettes et champignons
+it: Tom yum con gamberi e funghi
+es: Tom yum con gambas y champiñones
+pt: Tom yum com camarão e cogumelos
+ja: エビとキノコのトムヤムクン
+i: shrimp 320g, mushrooms 200g, cherry_tomatoes 150g, lemongrass 2pc, ginger 20g, kaffir_lime_leaves 4pc, chili_fresh 2pc, chicken_broth 900ml, fish_sauce 2tbsp, lime 2pc, coriander_fresh 10g, rice_noodles 80g
+sd: Zitronengras flach klopfen und in Stücke schneiden, Ingwer in Scheiben schneiden. | Mit Limettenblättern und Chili in der Bouillon 10 Minuten köcheln. | Pilze und Tomaten zugeben und 4 Minuten köcheln; Reisnudeln separat einweichen. | Crevetten zugeben und 2–3 Minuten garen, mit Fischsauce und Limettensaft abschmecken. | Nudeln in Schalen geben, Suppe darübergiessen und mit Koriander bestreuen (Zitronengras und Blätter nicht mitessen).
+se: Bruise the lemongrass and cut it into pieces, slice the ginger. | Simmer with the lime leaves and chilli in the stock for 10 minutes. | Add the mushrooms and tomatoes and simmer for 4 minutes; soak the rice noodles separately. | Add the prawns and cook for 2–3 minutes, then season with fish sauce and lime juice. | Put the noodles in bowls, pour over the soup and sprinkle with coriander (do not eat the lemongrass and leaves).
+q: tom yum soup shrimp
+@ pad_thai_chicken | dinner | thai | 30 | 2 | 8
+de: Pad Thai mit Poulet, Tofu und Sprossen
+en: Pad thai with chicken, tofu and bean sprouts
+fr: Pad thaï au poulet, tofu et pousses de soja
+it: Pad thai con pollo, tofu e germogli
+es: Pad thai con pollo, tofu y brotes de soja
+pt: Pad thai com frango, tofu e broto de feijão
+ja: 鶏肉と豆腐、もやしのパッタイ
+i: rice_noodles 140g, chicken_breast 220g, tofu_firm 100g, eggs 2pc, bean_sprouts 150g, spring_onion 3pc, peanuts 20g, fish_sauce 2tbsp, lime 1pc, sugar 2tsp, tomato_paste 1tsp, chili_flakes 1pinch, rapeseed_oil 2tsp, garlic 2pc
+sd: Reisnudeln nach Packungsangabe einweichen und abtropfen lassen. | Fischsauce, Limettensaft, Zucker, Tomatenpüree und 3 EL Wasser verrühren. | Poulet in Streifen und Tofu in Würfel schneiden, im Öl mit Knoblauch 5 Minuten braten, zur Seite schieben und die Eier darin stocken lassen. | Nudeln und Sauce zugeben und 2–3 Minuten unter Wenden braten. | Sprossen und Frühlingszwiebeln unterheben und mit gehackten Erdnüssen, Chili und Limettenschnitzen servieren.
+se: Soak the rice noodles according to the packet and drain. | Stir the fish sauce, lime juice, sugar, tomato purée and 3 tbsp water together. | Cut the chicken into strips and the tofu into cubes, fry with the garlic in the oil for 5 minutes, push to one side and scramble the eggs in the pan. | Add the noodles and sauce and toss for 2–3 minutes. | Fold in the sprouts and spring onions and serve with chopped peanuts, chilli and lime wedges.
+q: pad thai
+@ ca_kho | dinner | vietnamese | 30 | 2 | 6
+de: Cá kho (karamellisierter Fisch im Tontopf-Stil)
+en: Cá kho (caramelised fish, clay-pot style)
+fr: Cá kho (poisson caramélisé façon marmite)
+it: Cá kho (pesce caramellato in stile clay pot)
+es: Cá kho (pescado caramelizado al estilo cazuela)
+pt: Cá kho (peixe caramelizado na panela de barro)
+ja: カー・コー（ベトナム風魚の煮付け）
+i: cod 340g, fish_sauce 2tbsp, sugar 2tsp, shallot 2pc, garlic 2pc, ginger 10g, chili_fresh 1pc, spring_onion 2pc, black_pepper 1pinch, rapeseed_oil 1tsp, pak_choi 2pc, jasmine_rice 120g
+sd: Reis nach Packungsangabe kochen. | Zucker in einem kleinen Topf mit 1 EL Wasser hellbraun karamellisieren, Schalotten, Knoblauch und Ingwer zugeben und kurz anschwitzen. | Fischsauce und 100 ml Wasser zugeben, Fischstücke einlegen und zugedeckt 12–15 Minuten leise köcheln, bis die Sauce sirupartig ist. | Pak Choi im Öl 3 Minuten dünsten. | Fisch mit Pfeffer, Chili und Frühlingszwiebeln bestreuen und mit Reis und Pak Choi servieren.
+se: Cook the rice according to the packet. | Caramelise the sugar with 1 tbsp water in a small pot until light brown, add the shallots, garlic and ginger and sweat briefly. | Add the fish sauce and 100 ml water, lay in the fish pieces and simmer gently, covered, for 12–15 minutes until the sauce is syrupy. | Sauté the pak choi in the oil for 3 minutes. | Sprinkle the fish with pepper, chilli and spring onions and serve with rice and pak choi.
+q: vietnamese caramelized fish clay pot
+@ ga_xao_sa_ot | dinner | vietnamese | 25 | 2 | 7
+de: Gà xào sả ớt (Poulet mit Zitronengras und Chili)
+en: Gà xào sả ớt (lemongrass chilli chicken)
+fr: Gà xào sả ớt (poulet citronnelle et piment)
+it: Gà xào sả ớt (pollo alla citronella e peperoncino)
+es: Gà xào sả ớt (pollo con hierba limón y chile)
+pt: Gà xào sả ớt (frango com capim-limão e pimenta)
+ja: ガー・サオ・サー・オット（鶏肉のレモングラス唐辛子炒め）
+i: chicken_thigh 340g, lemongrass 2pc, garlic 2pc, shallot 1pc, chili_fresh 1pc, fish_sauce 1tbsp, sugar 1tsp, turmeric 0.25tsp, rapeseed_oil 2tsp, green_beans 200g, coriander_fresh 5g, jasmine_rice 120g
+sd: Reis nach Packungsangabe kochen. | Zitronengras, Knoblauch, Schalotte und Chili sehr fein hacken, Poulet in Stücke schneiden und mit der Hälfte davon, Fischsauce, Zucker und Kurkuma marinieren. | Restliche Würzmischung im Öl 1 Minute anbraten, Poulet zugeben und 8–10 Minuten goldbraun braten. | Bohnen 4 Minuten blanchieren und kurz mitbraten. | Mit Koriander bestreuen und mit Reis servieren.
+se: Cook the rice according to the packet. | Very finely chop the lemongrass, garlic, shallot and chilli, cut the chicken into pieces and marinate with half of it, the fish sauce, sugar and turmeric. | Fry the rest of the aromatics in the oil for 1 minute, add the chicken and fry for 8–10 minutes until golden. | Blanch the beans for 4 minutes and toss them in briefly. | Sprinkle with coriander and serve with rice.
+q: lemongrass chicken stir fry
+@ tikka_masala_light | dinner | indian | 40 | 2 | 8
+de: Leichtes Poulet Tikka Masala mit Basmatireis
+en: Light chicken tikka masala with basmati rice
+fr: Poulet tikka masala léger et riz basmati
+it: Pollo tikka masala leggero con riso basmati
+es: Pollo tikka masala ligero con arroz basmati
+pt: Frango tikka masala leve com arroz basmati
+ja: 軽めのチキンティッカマサラとバスマティライス
+i: chicken_breast 320g, greek_yogurt 150g, garam_masala 2tsp, paprika 1tsp, turmeric 0.5tsp, cumin 1tsp, garlic 2pc, ginger 15g, onion 1pc, passata 300ml, cooking_cream 50ml, rapeseed_oil 2tsp, basmati_rice 120g, coriander_fresh 5g, salt 3g
+sd: Poulet würfeln und mit 80 g Joghurt, der Hälfte der Gewürze und Salz mindestens 20 Minuten marinieren. | Reis nach Packungsangabe kochen. | Poulet in 1 TL Öl in einer heissen Pfanne 5 Minuten anbraten und herausnehmen. | Zwiebel, Knoblauch und Ingwer hacken, im restlichen Öl 5 Minuten dünsten, restliche Gewürze 1 Minute mitrösten, Passata zugeben und 10 Minuten köcheln. | Poulet, Rahm und restlichen Joghurt einrühren, 5 Minuten ziehen lassen und mit Koriander und Reis servieren.
+se: Dice the chicken and marinate it with 80 g yoghurt, half the spices and salt for at least 20 minutes. | Cook the rice according to the packet. | Fry the chicken in 1 tsp oil in a hot pan for 5 minutes and set aside. | Chop the onion, garlic and ginger, soften in the remaining oil for 5 minutes, toast the remaining spices for 1 minute, add the passata and simmer for 10 minutes. | Stir in the chicken, cream and remaining yoghurt, heat through for 5 minutes and serve with coriander and rice.
+q: chicken tikka masala
+@ palak_paneer_light | dinner | indian | 30 | 2 | 6
+de: Leichtes Palak Paneer mit Kichererbsen
+en: Light palak paneer with chickpeas
+fr: Palak paneer léger aux pois chiches
+it: Palak paneer leggero con ceci
+es: Palak paneer ligero con garbanzos
+pt: Palak paneer leve com grão-de-bico
+ja: ひよこ豆入りの軽めのパラックパニール
+i: paneer 150g, chickpeas 240g, spinach 400g, onion 1pc, garlic 2pc, ginger 15g, chili_fresh 0.5pc, cumin 1tsp, garam_masala 1tsp, greek_yogurt 80g, rapeseed_oil 2tsp, basmati_rice 90g, salt 3g
+sd: Reis nach Packungsangabe kochen. | Spinat 1 Minute blanchieren, kalt abschrecken und mit wenig Wasser fein pürieren. | Paneer würfeln und in 1 TL Öl goldbraun braten, herausnehmen. | Zwiebel, Knoblauch, Ingwer und Chili hacken, mit Kreuzkümmel im restlichen Öl 5 Minuten braten, Spinatpüree, Kichererbsen und Garam Masala zugeben und 5 Minuten köcheln. | Joghurt und Paneer unterrühren, salzen und mit Reis servieren.
+se: Cook the rice according to the packet. | Blanch the spinach for 1 minute, cool in cold water and blend smoothly with a little water. | Dice the paneer, fry it in 1 tsp oil until golden and set aside. | Chop the onion, garlic, ginger and chilli, fry with the cumin in the remaining oil for 5 minutes, add the spinach purée, chickpeas and garam masala and simmer for 5 minutes. | Stir in the yoghurt and paneer, season with salt and serve with rice.
+q: palak paneer
+@ kerala_fish_curry | dinner | indian | 30 | 2 | 6
+de: Kerala-Fischcurry mit Kokos und Tomaten
+en: Kerala fish curry with coconut and tomatoes
+fr: Curry de poisson du Kerala, coco et tomates
+it: Curry di pesce del Kerala con cocco e pomodori
+es: Curry de pescado de Kerala con coco y tomate
+pt: Curry de peixe de Kerala com coco e tomate
+ja: ココナッツとトマトのケララ風フィッシュカレー
+i: cod 340g, coconut_milk 120ml, tomato 2pc, onion 1pc, garlic 2pc, ginger 15g, chili_fresh 1pc, turmeric 0.5tsp, curry_powder 2tsp, rapeseed_oil 2tsp, lime 0.5pc, coriander_fresh 5g, basmati_rice 120g, spinach 100g, salt 3g
+sd: Reis nach Packungsangabe kochen. | Zwiebel, Knoblauch, Ingwer und Chili hacken und im Öl 6 Minuten dünsten, Kurkuma und Currypulver 1 Minute mitrösten. | Gewürfelte Tomaten zugeben und 5 Minuten einkochen, Kokosmilch und 100 ml Wasser angiessen. | Fischstücke und Spinat einlegen und zugedeckt 8 Minuten leise köcheln. | Mit Salz und Limettensaft abschmecken und mit Koriander und Reis servieren.
+se: Cook the rice according to the packet. | Chop the onion, garlic, ginger and chilli and soften in the oil for 6 minutes, then toast the turmeric and curry powder for 1 minute. | Add the diced tomatoes and cook down for 5 minutes, then pour in the coconut milk and 100 ml water. | Add the fish pieces and spinach and simmer gently, covered, for 8 minutes. | Season with salt and lime juice and serve with coriander and rice.
+q: fish curry coconut
+@ rajma | dinner | indian | 35 | 2 | 6
+de: Rajma (Kidneybohnen-Curry) mit Reis und Sojajoghurt
+en: Rajma (kidney bean curry) with rice and soya yoghurt
+fr: Rajma (curry de haricots rouges), riz et yaourt de soja
+it: Rajma (curry di fagioli rossi) con riso e yogurt di soia
+es: Rajma (curry de alubias rojas) con arroz y yogur de soja
+pt: Rajma (curry de feijão-vermelho) com arroz e iogurte de soja
+ja: ラジマ（レッドキドニーカレー）ライスと豆乳ヨーグルト添え
+i: kidney_beans 480g, tofu_firm 150g, canned_tomatoes 400g, onion 1pc, garlic 2pc, ginger 15g, cumin 1tsp, garam_masala 2tsp, turmeric 0.5tsp, chili_flakes 1pinch, rapeseed_oil 2tsp, basmati_rice 100g, soy_yogurt 100g, coriander_fresh 5g, salt 3g
+sd: Reis nach Packungsangabe kochen. | Zwiebel, Knoblauch und Ingwer fein hacken und mit Kreuzkümmel im Öl 6 Minuten goldbraun braten. | Restliche Gewürze 1 Minute mitrösten, Tomaten zugeben und 5 Minuten einkochen. | Abgespülte Bohnen und Tofuwürfel zugeben und 15 Minuten köcheln, einige Bohnen zerdrücken, salzen. | Mit Sojajoghurt, Koriander und Reis servieren.
+se: Cook the rice according to the packet. | Finely chop the onion, garlic and ginger and fry with the cumin in the oil for 6 minutes until golden. | Toast the remaining spices for 1 minute, add the tomatoes and cook down for 5 minutes. | Add the rinsed beans and diced tofu and simmer for 15 minutes, mashing a few beans, then season with salt. | Serve with soya yoghurt, coriander and rice.
+q: rajma kidney bean curry
+@ nasi_goreng | dinner | indonesian | 25 | 2 | 7
+de: Nasi Goreng mit Poulet, Gemüse und Spiegelei
+en: Nasi goreng with chicken, vegetables and fried egg
+fr: Nasi goreng au poulet, légumes et œuf au plat
+it: Nasi goreng con pollo, verdure e uovo fritto
+es: Nasi goreng con pollo, verduras y huevo frito
+pt: Nasi goreng com frango, legumes e ovo frito
+ja: 鶏肉と野菜、目玉焼きのナシゴレン
+i: brown_rice 120g, chicken_breast 240g, eggs 2pc, carrot 1pc, white_cabbage 150g, spring_onion 2pc, shallot 2pc, garlic 2pc, sambal_oelek 1tsp, soy_sauce 2tbsp, maple_syrup 1tsp, rapeseed_oil 2tsp, cucumber 0.5pc
+sd: Reis am Vortag oder mindestens 1 Stunde vorher kochen und auskühlen lassen. | Schalotten und Knoblauch hacken, Poulet würfeln, Rüebli und Kabis in feine Streifen schneiden. | Schalotten, Knoblauch und Sambal in 1 TL Öl anbraten, Poulet 4 Minuten mitbraten, Gemüse zugeben und 3 Minuten weiterbraten. | Reis, Sojasauce und Ahornsirup zugeben und unter Wenden 4 Minuten braten, Frühlingszwiebeln unterheben. | Spiegeleier im restlichen Öl braten und mit Gurkenscheiben auf dem Reis servieren.
+se: Cook the rice the day before or at least 1 hour ahead and let it cool. | Chop the shallots and garlic, dice the chicken and cut the carrot and cabbage into fine strips. | Fry the shallots, garlic and sambal in 1 tsp oil, add the chicken for 4 minutes, then the vegetables for 3 minutes. | Add the rice, soy sauce and maple syrup and fry, tossing, for 4 minutes, then fold in the spring onions. | Fry the eggs in the remaining oil and serve on the rice with cucumber slices.
+q: nasi goreng
+@ tempeh_stirfry | dinner | indonesian | 25 | 2 | 6
+de: Tempeh aus dem Wok mit Gemüse und Erdnusssauce
+en: Tempeh stir-fry with vegetables and peanut sauce
+fr: Tempeh sauté aux légumes et sauce cacahuète
+it: Tempeh saltato con verdure e salsa di arachidi
+es: Tempeh salteado con verduras y salsa de cacahuete
+pt: Tempeh salteado com legumes e molho de amendoim
+ja: テンペと野菜の炒め物 ピーナッツソース
+i: tempeh 300g, broccoli 250g, red_bell_pepper 1pc, carrot 1pc, garlic 2pc, ginger 10g, peanut_butter 1tbsp, soy_sauce 2tbsp, lime 1pc, sambal_oelek 1tsp, maple_syrup 1tsp, rapeseed_oil 2tsp, brown_rice 100g
+sd: Vollkornreis nach Packungsangabe kochen. | Tempeh in Scheiben schneiden und im Öl pro Seite 3 Minuten goldbraun braten, herausnehmen. | Brokkoli, Peperoni und Rüebli klein schneiden und mit Knoblauch und Ingwer 5 Minuten pfannenrühren. | Erdnussbutter, Sojasauce, Limettensaft, Sambal, Ahornsirup und 4 EL Wasser verrühren, mit dem Tempeh zugeben und 1 Minute schwenken. | Mit Reis servieren.
+se: Cook the brown rice according to the packet. | Slice the tempeh and fry in the oil for 3 minutes per side until golden, then set aside. | Cut the broccoli, pepper and carrot small and stir-fry with the garlic and ginger for 5 minutes. | Mix the peanut butter, soy sauce, lime juice, sambal, maple syrup and 4 tbsp water, add with the tempeh and toss for 1 minute. | Serve with rice.
+q: tempeh stir fry
+@ lomo_saltado | dinner | peruvian | 35 | 2 | 7
+de: Lomo saltado (Rindfleisch mit Tomaten, Zwiebeln und Ofenkartoffeln)
+en: Lomo saltado (beef with tomatoes, onions and oven potatoes)
+fr: Lomo saltado (bœuf sauté, tomates, oignons et pommes de terre au four)
+it: Lomo saltado (manzo saltato con pomodori, cipolle e patate al forno)
+es: Lomo saltado con patatas al horno
+pt: Lomo saltado (carne salteada com tomate, cebola e batatas assadas)
+ja: ロモ・サルタード（牛肉とトマト、玉ねぎの炒め物とオーブンポテト）
+i: beef_steak 300g, potato 350g, red_onion 1pc, tomato 2pc, aji_amarillo 1tbsp, garlic 2pc, soy_sauce 2tbsp, white_wine_vinegar 1tbsp, cumin 0.5tsp, rapeseed_oil 1tbsp, coriander_fresh 10g, salt 3g
+sd: Backofen auf 220 °C vorheizen. Kartoffeln in Stäbchen schneiden, mit 1 TL Öl und Salz mischen und 25 Minuten knusprig backen. | Rindfleisch in Streifen schneiden und mit Knoblauch und Kreuzkümmel würzen; Zwiebel in Spalten, Tomaten in Achtel schneiden. | Fleisch in einem sehr heissen Wok im restlichen Öl 2 Minuten anbraten, Zwiebel und Ají-Paste zugeben und 2 Minuten weiterbraten. | Tomaten, Sojasauce und Essig zugeben und nur 1 Minute schwenken, damit die Tomaten Form behalten. | Mit Koriander bestreuen und mit den Ofenkartoffeln servieren.
+se: Preheat the oven to 220 °C. Cut the potatoes into chips, toss with 1 tsp oil and salt and bake for 25 minutes until crisp. | Cut the beef into strips and season with garlic and cumin; cut the onion into wedges and the tomatoes into eighths. | Sear the beef in the remaining oil in a very hot wok for 2 minutes, add the onion and ají paste and fry for 2 more minutes. | Add the tomatoes, soy sauce and vinegar and toss for just 1 minute so the tomatoes keep their shape. | Sprinkle with coriander and serve with the oven potatoes.
+q: lomo saltado
+@ aji_de_gallina_light | dinner | peruvian | 40 | 2 | 6
+de: Leichtes Ají de gallina (Poulet in Ají-Sauce) mit Reis und Ei
+en: Light ají de gallina (chicken in ají sauce) with rice and egg
+fr: Ají de gallina léger (poulet sauce ají) avec riz et œuf
+it: Ají de gallina leggero (pollo in salsa di ají) con riso e uovo
+es: Ají de gallina ligero con arroz y huevo
+pt: Ají de gallina leve (frango ao molho de ají) com arroz e ovo
+ja: 軽めのアヒ・デ・ガジーナ（アヒソースの鶏肉）ライスと卵添え
+i: chicken_breast 320g, aji_amarillo 2tbsp, milk_skimmed 200ml, bread 30g, walnuts 15g, parmesan 15g, onion 1pc, garlic 2pc, turmeric 0.25tsp, eggs 2pc, olives 20g, basmati_rice 100g, rapeseed_oil 2tsp, salt 3g
+sd: Poulet in Salzwasser 15 Minuten gar ziehen lassen, zerzupfen; 200 ml Brühe aufbewahren. Reis kochen, Eier 9 Minuten kochen. | Brot in der Milch einweichen und mit Baumnüssen, Parmesan und Ají-Paste fein pürieren. | Zwiebel und Knoblauch hacken, im Öl 6 Minuten dünsten, Kurkuma zugeben. | Brotcreme und so viel Brühe einrühren, dass eine cremige Sauce entsteht, Poulet zugeben und 5 Minuten ziehen lassen, salzen. | Mit Reis, halbierten Eiern und Oliven servieren.
+se: Poach the chicken in salted water for 15 minutes and shred it, keeping 200 ml of the stock. Cook the rice and boil the eggs for 9 minutes. | Soak the bread in the milk and blend smoothly with the walnuts, Parmesan and ají paste. | Chop the onion and garlic, soften in the oil for 6 minutes and add the turmeric. | Stir in the bread cream and enough stock for a creamy sauce, add the chicken, heat for 5 minutes and season with salt. | Serve with rice, halved eggs and olives.
+q: aji de gallina

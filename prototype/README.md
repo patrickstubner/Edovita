@@ -1,12 +1,15 @@
-# Edovita – Klick-Prototyp v5.10.1 (Tab-Leiste, Export/Import, Listenstatus)
+# Edovita – Klick-Prototyp v5.11 (200 Rezepte)
 
 **Nicht produktiver Code.** Dieser Ordner ist die Design-Referenz und der klickbare Prototyp für UX-Versuche. Er wird nicht in die echte App übernommen; die App entsteht neu (React + TypeScript + Rsbuild).
 
-- **Version:** v5.10.1 (24.11.2026), auf v5.10 aufbauend
+- **Version:** v5.11 (24.11.2026), auf v5.10.1 aufbauend
 - **Live:** als Cloudflare-Worker-Demo veröffentlicht (URL bewusst nicht im Repo)
 - **Technik:** statisches HTML/CSS/Vanilla-JS, keine Laufzeit-Abhängigkeiten ausser `vendor/qrcode-generator.js` (MIT), keine Netzwerkaufrufe, strenge CSP
 - **Daten:** nur erfundene Demo-Daten. Es werden keine Gesundheitsdaten gespeichert (localStorage nur Sprache, Zweitsprache (manuelle Wahl), Plan, Einkaufsliste inkl. Listenstatus, Darstellung, Ton, Region; keine Standortdaten). Export/Import enthalten nur Plan und Einkaufsliste.
 - **Starten:** im Ordner `python3 -m http.server` und `http://localhost:8000/` öffnen (Handy-Breite, z. B. 390×844)
+
+## Neu in v5.11
+200 statt 15 Rezepte (45 Frühstück, 54 Mittag, 66 Abend, 35 Snacks; 23 Küchen; 74 mit Fleisch, 35 mit Fisch/Meeresfrüchten, 60 vegetarisch, 31 vegan), proteinreich: 193 von 200 erreichen den Richtwert (Hauptmahlzeit ≥ 25 g, Frühstück/Snack ≥ 15 g Protein pro Portion). Jedes Rezept hat Zutaten mit Mengen, Portionen, Schritte (de/en wie bisher), Titel in allen 7 Sprachen und Nährwerte, die `tools/build-recipes.py` aus den Zutaten berechnet. 144 neue Lebensmittel im Katalog (Namen in 7 Sprachen, Einkaufsgruppe). Daten liegen getrennt in `data/recipes-ext.js` (Quelle `tools/recipes-src/`); `app.js` hat nur einen kleinen, validierenden Merge-Hook. 178 Rezepte mit Pexels-Foto (640×480 und 400×300 WebP), 22 mit Platzhalter. Neue Bilder liefert der Worker aus Workers KV (Binding `IMG`). Prüfung: `python3 tools/validate-recipes.py`. Details in `IMAGES.md`, `ENTWICKLUNG.md` und `SECURITY.md`.
 
 ## Neu in v5.10.1
 Vier niedrige Befunde zu v5.10 behoben: Import von Plan und Einkaufsliste ist transaktional (Snapshot und Rollback, Fehler sichtbar). Ein QR-Fragment ohne `offerShopImport` wird abgelehnt statt still angewendet. Listenstatus nur für bekannte Lebensmittel-IDs. QR-Rückfrage und Anwendung beziehen sich auf die aktuelle Einkaufsliste (inkl. Zeilen aus dem Plan). Details in `SECURITY.md`.

@@ -1,0 +1,241 @@
+# Fruehstueck, Teil 1
+@ skyr_berry_bowl | breakfast | nordic | 5 | 1 | 8
+de: Skyr-Bowl mit Beeren und Haferflocken
+en: Skyr bowl with berries and oats
+fr: Bol de skyr aux baies et flocons d'avoine
+it: Bowl di skyr con frutti di bosco e avena
+es: Bol de skyr con frutos rojos y avena
+pt: Bowl de skyr com frutas vermelhas e aveia
+ja: ベリーとオーツのスキールボウル
+i: skyr 250g, berries 100g, oats 30g, pumpkin_seeds 10g, honey 1tsp
+sd: Skyr glatt rühren und in eine Schale geben. | Beeren waschen und abtropfen lassen. | Haferflocken und Kürbiskerne in einer trockenen Pfanne 2 Minuten rösten. | Beeren, Flocken und Kerne auf den Skyr geben und mit Honig beträufeln.
+se: Stir the skyr until smooth and spoon it into a bowl. | Wash and drain the berries. | Toast the oats and pumpkin seeds in a dry pan for 2 minutes. | Top the skyr with the berries, oats and seeds and drizzle with honey.
+q: skyr berries bowl
+@ quark_bircher | breakfast | swiss | 10 | 2 | 8
+de: Protein-Birchermüesli mit Magerquark
+en: Protein Bircher muesli with quark
+fr: Birchermüesli protéiné au fromage blanc
+it: Birchermüesli proteico con quark
+es: Bircher muesli proteico con quark
+pt: Bircher muesli proteico com quark
+ja: クワルク入りプロテイン・ビルヒャーミューズリー
+i: oats 80g, milk_skimmed 150ml, quark_lowfat 250g, apple 1pc, berries 100g, hazelnuts 15g, lemon 0.5pc, honey 1tsp
+sd: Haferflocken mit der Milch mischen und 10 Minuten (oder über Nacht im Kühlschrank) quellen lassen. | Apfel mit Schale grob raffeln und sofort mit Zitronensaft mischen. | Quark, Apfel und Honig unter die Flocken rühren. | Mit Beeren und gehackten Haselnüssen anrichten.
+se: Mix the oats with the milk and leave to soak for 10 minutes (or overnight in the fridge). | Coarsely grate the unpeeled apple and mix it straight away with lemon juice. | Stir the quark, apple and honey into the oats. | Serve topped with berries and chopped hazelnuts.
+q: bircher muesli apple
+@ cottage_tomato_toast | breakfast | european | 5 | 1 | 7
+de: Vollkorntoast mit Hüttenkäse und Tomaten
+en: Wholemeal toast with cottage cheese and tomatoes
+fr: Toast complet au cottage cheese et tomates
+it: Toast integrale con fiocchi di latte e pomodori
+es: Tostada integral con requesón y tomate
+pt: Torrada integral com queijo cottage e tomate
+ja: カッテージチーズとトマトの全粒粉トースト
+i: bread 80g, cottage_cheese 150g, cherry_tomatoes 100g, basil_fresh 3g, olive_oil 1tsp, salt 1g, black_pepper 1pinch
+sd: Brot im Toaster goldbraun rösten. | Cherrytomaten halbieren und mit Öl, Salz und Pfeffer mischen. | Hüttenkäse auf die Brotscheiben streichen. | Tomaten darauf verteilen und mit Basilikumblättern belegen.
+se: Toast the bread until golden. | Halve the cherry tomatoes and toss them with oil, salt and pepper. | Spread the cottage cheese over the slices. | Top with the tomatoes and basil leaves.
+q: cottage cheese toast tomato
+@ overnight_oats_quark | breakfast | american | 5 | 1 | 8
+de: Overnight Oats mit Quark und Banane
+en: Overnight oats with quark and banana
+fr: Overnight oats au fromage blanc et banane
+it: Overnight oats con quark e banana
+es: Overnight oats con quark y plátano
+pt: Overnight oats com quark e banana
+ja: クワルクとバナナのオーバーナイトオーツ
+i: oats 45g, milk_skimmed 120ml, quark_lowfat 150g, chia_seeds 1tsp, banana 0.5pc, cinnamon_ground 1pinch
+sd: Haferflocken, Chiasamen, Zimt und Milch in einem Glas verrühren. | Quark unterrühren, Glas verschliessen und über Nacht in den Kühlschrank stellen. | Am Morgen gut umrühren, bei Bedarf einen Schluck Milch zugeben. | Banane in Scheiben schneiden und darauf verteilen.
+se: Stir the oats, chia seeds, cinnamon and milk together in a jar. | Stir in the quark, close the jar and refrigerate overnight. | In the morning stir well and add a splash of milk if needed. | Slice the banana and arrange it on top.
+q: overnight oats jar banana
+@ veggie_omelette | breakfast | french | 15 | 1 | 7
+de: Gemüse-Omelette mit Peperoni und Spinat
+en: Vegetable omelette with pepper and spinach
+fr: Omelette aux légumes, poivron et épinards
+it: Omelette di verdure con peperone e spinaci
+es: Tortilla francesa de verduras con pimiento y espinacas
+pt: Omelete de legumes com pimentão e espinafre
+ja: パプリカとほうれん草の野菜オムレツ
+i: eggs 3pc, red_bell_pepper 0.5pc, spinach 50g, spring_onion 1pc, gruyere 15g, rapeseed_oil 1tsp, salt 1g, black_pepper 1pinch
+sd: Peperoni fein würfeln, Frühlingszwiebel in Ringe schneiden. | Eier mit Salz und Pfeffer verquirlen. | Öl in einer beschichteten Pfanne erhitzen, Peperoni 3 Minuten braten, Spinat und Frühlingszwiebel kurz mitdünsten. | Eier darübergiessen, bei mittlerer Hitze 3–4 Minuten stocken lassen, Käse darüberreiben, Omelette zusammenklappen und servieren.
+se: Finely dice the pepper and slice the spring onion. | Whisk the eggs with salt and pepper. | Heat the oil in a non-stick pan, fry the pepper for 3 minutes, then briefly wilt the spinach and spring onion. | Pour over the eggs, cook over medium heat for 3–4 minutes until set, grate the cheese over, fold the omelette and serve.
+q: vegetable omelette
+@ spinach_feta_omelette | breakfast | greek | 10 | 1 | 7
+de: Spinat-Feta-Omelette
+en: Spinach and feta omelette
+fr: Omelette épinards et feta
+it: Omelette con spinaci e feta
+es: Tortilla de espinacas y feta
+pt: Omelete de espinafre e feta
+ja: ほうれん草とフェタのオムレツ
+i: eggs 3pc, spinach 80g, feta 30g, cherry_tomatoes 60g, olive_oil 1tsp, oregano_dried 1tsp, black_pepper 1pinch
+sd: Eier mit Oregano und Pfeffer verquirlen (kein Salz, der Feta ist salzig). | Öl in einer Pfanne erhitzen und den Spinat 1 Minute zusammenfallen lassen. | Eier zugeben und bei mittlerer Hitze stocken lassen. | Feta darüberbröckeln, Omelette falten und mit halbierten Cherrytomaten servieren.
+se: Whisk the eggs with oregano and pepper (no salt, the feta is salty). | Heat the oil in a pan and wilt the spinach for 1 minute. | Add the eggs and let them set over medium heat. | Crumble the feta over, fold the omelette and serve with halved cherry tomatoes.
+q: spinach feta omelette
+@ cottage_zucchini_frittata | breakfast | italian | 20 | 2 | 6
+de: Frittata mit Hüttenkäse, Zucchetti und Basilikum
+en: Cottage cheese frittata with courgette and basil
+fr: Frittata au cottage cheese, courgette et basilic
+it: Frittata con fiocchi di latte, zucchine e basilico
+es: Frittata de requesón con calabacín y albahaca
+pt: Frittata de cottage com abobrinha e manjericão
+ja: カッテージチーズとズッキーニ、バジルのフリッタータ
+i: eggs 3pc, cottage_cheese 150g, zucchini 1pc, cherry_tomatoes 100g, parmesan 15g, basil_fresh 5g, olive_oil 1tsp, salt 1g, black_pepper 1pinch, bread 60g
+sd: Backofen auf 200 °C vorheizen. Zucchetti in dünne Scheiben schneiden. | Eier mit Hüttenkäse, Parmesan, Salz und Pfeffer verquirlen. | Zucchetti in einer ofenfesten Pfanne im Öl 4 Minuten anbraten, Eimasse darübergiessen und halbierte Tomaten darauf verteilen. | Im Ofen 10–12 Minuten backen, bis die Frittata fest ist. | Mit Basilikum bestreuen, in Stücke schneiden und mit Brot servieren.
+se: Preheat the oven to 200 °C. Thinly slice the courgette. | Whisk the eggs with the cottage cheese, Parmesan, salt and pepper. | Fry the courgette in the oil in an ovenproof pan for 4 minutes, pour over the egg mixture and scatter the halved tomatoes on top. | Bake for 10–12 minutes until the frittata is set. | Sprinkle with basil, cut into wedges and serve with bread.
+q: frittata zucchini
+@ protein_pancakes | breakfast | american | 20 | 2 | 8
+de: Quark-Protein-Pancakes mit Beeren
+en: Quark protein pancakes with berries
+fr: Pancakes protéinés au fromage blanc et baies
+it: Pancake proteici al quark con frutti di bosco
+es: Tortitas proteicas de quark con frutos rojos
+pt: Panquecas proteicas de quark com frutas vermelhas
+ja: クワルクのプロテインパンケーキ ベリー添え
+i: oats 60g, quark_lowfat 200g, eggs 2pc, milk_skimmed 60ml, baking_powder 1tsp, rapeseed_oil 1tsp, berries 150g, maple_syrup 1tbsp
+sd: Haferflocken im Mixer fein mahlen. | Quark, Eier, Milch und Backpulver zugeben und zu einem dicken Teig mixen, 5 Minuten ruhen lassen. | Eine beschichtete Pfanne mit wenig Öl auspinseln und pro Pancake 2 EL Teig hineingeben. | Bei mittlerer Hitze pro Seite 2–3 Minuten backen, bis sie goldbraun sind. | Mit Beeren und wenig Ahornsirup servieren.
+se: Grind the oats finely in a blender. | Add the quark, eggs, milk and baking powder and blend to a thick batter, then rest for 5 minutes. | Brush a non-stick pan with a little oil and add 2 tbsp batter per pancake. | Cook over medium heat for 2–3 minutes per side until golden. | Serve with berries and a little maple syrup.
+q: pancakes berries stack
+@ tofu_scramble | breakfast | american | 15 | 2 | 6
+de: Tofu-Rührei mit Gemüse
+en: Tofu scramble with vegetables
+fr: Brouillade de tofu aux légumes
+it: Tofu strapazzato con verdure
+es: Revuelto de tofu con verduras
+pt: Tofu mexido com legumes
+ja: 野菜入りスクランブル豆腐
+i: tofu_firm 300g, red_bell_pepper 1pc, spinach 80g, cherry_tomatoes 100g, turmeric 0.5tsp, paprika 0.5tsp, rapeseed_oil 2tsp, salt 2g, black_pepper 1pinch, bread 80g
+sd: Tofu trocken tupfen und mit einer Gabel grob zerdrücken. | Peperoni würfeln und im Öl 3 Minuten anbraten. | Tofu, Kurkuma und Paprika zugeben und 5 Minuten unter Wenden braten, bis der Tofu leicht gebräunt ist. | Spinat und halbierte Tomaten unterheben und kurz mitgaren. | Mit Salz und Pfeffer abschmecken und mit getoastetem Brot servieren.
+se: Pat the tofu dry and crumble it roughly with a fork. | Dice the pepper and fry it in the oil for 3 minutes. | Add the tofu, turmeric and paprika and fry for 5 minutes, turning, until lightly browned. | Fold in the spinach and halved tomatoes and cook briefly. | Season with salt and pepper and serve with toasted bread.
+q: tofu scramble
+@ huevos_rancheros | breakfast | mexican | 20 | 2 | 7
+de: Huevos Rancheros mit schwarzen Bohnen
+en: Huevos rancheros with black beans
+fr: Huevos rancheros aux haricots noirs
+it: Huevos rancheros con fagioli neri
+es: Huevos rancheros con frijoles negros
+pt: Huevos rancheros com feijão-preto
+ja: 黒豆入りウエボス・ランチェロス
+i: eggs 4pc, corn_tortilla 4pc, black_beans 200g, canned_tomatoes 200g, onion 0.5pc, garlic 1pc, chili_fresh 0.5pc, cumin 0.5tsp, rapeseed_oil 1tsp, coriander_fresh 5g, salt 2g
+sd: Zwiebel, Knoblauch und Chili fein hacken und im Öl 3 Minuten andünsten. | Tomaten und Kreuzkümmel zugeben und 5 Minuten köcheln, salzen. | Bohnen abspülen und in der Sauce erwärmen. | Mit einem Löffel Mulden formen, Eier hineinschlagen und zugedeckt 5–6 Minuten stocken lassen. | Tortillas in einer trockenen Pfanne erwärmen, Bohnen und Eier darauf anrichten und mit Koriander bestreuen.
+se: Finely chop the onion, garlic and chilli and soften them in the oil for 3 minutes. | Add the tomatoes and cumin, simmer for 5 minutes and season with salt. | Rinse the beans and warm them in the sauce. | Make hollows with a spoon, crack in the eggs and cook covered for 5–6 minutes until set. | Warm the tortillas in a dry pan, spoon the beans and eggs on top and sprinkle with coriander.
+q: huevos rancheros
+@ smoked_salmon_bread | breakfast | nordic | 5 | 1 | 7
+de: Vollkornbrot mit Räucherlachs und Frischkäse
+en: Wholemeal bread with smoked salmon and cream cheese
+fr: Pain complet au saumon fumé et fromage frais
+it: Pane integrale con salmone affumicato e formaggio spalmabile
+es: Pan integral con salmón ahumado y queso crema
+pt: Pão integral com salmão defumado e cream cheese
+ja: スモークサーモンとクリームチーズの全粒粉パン
+i: bread 70g, cream_cheese_light 30g, smoked_salmon 80g, cucumber 0.2pc, dill 2g, lemon 0.25pc, black_pepper 1pinch
+sd: Brot nach Belieben kurz toasten. | Frischkäse darauf streichen. | Gurke in dünne Scheiben schneiden und auf den Frischkäse legen. | Räucherlachs darauf verteilen, mit Dill, Pfeffer und einigen Tropfen Zitronensaft vollenden.
+se: Toast the bread lightly if you like. | Spread the cream cheese over it. | Thinly slice the cucumber and lay it on the cream cheese. | Top with the smoked salmon and finish with dill, pepper and a few drops of lemon juice.
+q: smoked salmon bread cream cheese
+@ tapioca_egg_cheese | breakfast | brazilian | 10 | 1 | 7
+de: Tapioca mit Ei und Minas-Käse
+en: Tapioca crepe with egg and Minas cheese
+fr: Tapioca à l'œuf et au fromage minas
+it: Tapioca con uovo e formaggio minas
+es: Tapioca con huevo y queso minas
+pt: Tapioca com ovo e queijo minas
+ja: 卵とミナスチーズのタピオカクレープ
+i: tapioca_starch 40g, eggs 2pc, queijo_minas 40g, tomato 0.5pc, oregano_dried 0.5tsp, salt 1g
+sd: Tapiokastärke durch ein Sieb gleichmässig in eine heisse, beschichtete Pfanne streuen, sodass ein runder Fladen entsteht. | Bei mittlerer Hitze 1–2 Minuten backen, bis die Stärke zusammenhält, dann wenden. | Gleichzeitig die Eier in einer zweiten Pfanne mit wenig Salz zu Rührei braten. | Rührei, zerbröckelten Käse und Tomatenwürfel auf eine Hälfte geben, mit Oregano bestreuen und den Fladen zusammenklappen.
+se: Sift the tapioca starch evenly into a hot non-stick pan to form a round pancake. | Cook over medium heat for 1–2 minutes until it holds together, then flip. | Meanwhile scramble the eggs with a little salt in a second pan. | Put the eggs, crumbled cheese and diced tomato on one half, sprinkle with oregano and fold the pancake over.
+q: tapioca brazilian crepe
+@ cuscuz_egg | breakfast | brazilian | 15 | 2 | 6
+de: Cuscuz nordestino mit Spiegelei
+en: Cuscuz nordestino with fried egg
+fr: Cuscuz nordestino et œuf au plat
+it: Cuscuz nordestino con uovo all'occhio di bue
+es: Cuscuz nordestino con huevo frito
+pt: Cuscuz nordestino com ovo
+ja: 目玉焼きのせクスクス・ノルデスチーノ
+i: flocao 100g, eggs 4pc, queijo_minas 60g, butter 1tsp, salt 2g, tomato 1pc
+sd: Flocão mit Salz und 100 ml Wasser vermischen und 10 Minuten quellen lassen. | In einem Cuscuz-Topf oder Dämpfeinsatz zugedeckt 8–10 Minuten dämpfen. | Eier in einer Pfanne mit wenig Butter zu Spiegeleiern braten. | Cuscuz auf Teller stürzen, mit Spiegeleiern, Käsescheiben und Tomate servieren.
+se: Mix the flocão with salt and 100 ml water and leave to hydrate for 10 minutes. | Steam it covered in a cuscuz pot or steamer basket for 8–10 minutes. | Fry the eggs in a pan with a little butter. | Turn the cuscuz out onto plates and serve with the fried eggs, sliced cheese and tomato.
+q: cuscuz egg brazilian breakfast
+@ acai_skyr_bowl | breakfast | brazilian | 10 | 1 | 8
+de: Açaí-Bowl mit Skyr und Banane
+en: Açaí bowl with skyr and banana
+fr: Bol d'açaí au skyr et banane
+it: Açaí bowl con skyr e banana
+es: Bol de açaí con skyr y plátano
+pt: Tigela de açaí com skyr e banana
+ja: スキールとバナナのアサイーボウル
+i: acai_pulp 100g, skyr 200g, banana 1pc, berries 50g, oats 20g, almonds 10g
+sd: Açaí-Püree kurz antauen lassen. | Mit Skyr und der halben Banane im Mixer zu einer dicken Creme mixen. | In eine Schale füllen. | Mit restlicher Banane in Scheiben, Beeren, Haferflocken und gehackten Mandeln belegen.
+se: Let the açaí purée thaw slightly. | Blend it with the skyr and half the banana to a thick cream. | Pour into a bowl. | Top with the rest of the banana in slices, berries, oats and chopped almonds.
+q: acai bowl
+@ japanese_salmon_breakfast | breakfast | japanese | 20 | 2 | 6
+de: Japanisches Frühstück mit Lachs, Reis und Misosuppe
+en: Japanese breakfast with salmon, rice and miso soup
+fr: Petit-déjeuner japonais : saumon, riz et soupe miso
+it: Colazione giapponese con salmone, riso e zuppa di miso
+es: Desayuno japonés con salmón, arroz y sopa de miso
+pt: Café da manhã japonês com salmão, arroz e sopa de missô
+ja: 鮭・ご飯・味噌汁の和朝食
+i: salmon 200g, sushi_rice 100g, miso_paste 2tbsp, silken_tofu 100g, spring_onion 1pc, nori 1pc, cucumber 0.25pc, rice_vinegar 1tsp, salt 1g
+sd: Reis waschen und mit 130 ml Wasser zugedeckt 12 Minuten garen, 10 Minuten ruhen lassen. | Lachs leicht salzen und unter dem Ofengrill oder in der Pfanne 4 Minuten pro Seite garen. | 500 ml Wasser erhitzen (nicht kochen), Miso einrühren, Tofuwürfel und Frühlingszwiebel zugeben. | Gurke dünn schneiden und mit Reisessig marinieren. | Reis, Lachs, Misosuppe, Gurke und Nori getrennt in kleinen Schalen servieren.
+se: Wash the rice and cook it covered with 130 ml water for 12 minutes, then rest for 10 minutes. | Lightly salt the salmon and grill or pan-fry it for 4 minutes per side. | Heat 500 ml water (do not boil), stir in the miso and add diced tofu and spring onion. | Thinly slice the cucumber and marinate it in rice vinegar. | Serve the rice, salmon, miso soup, cucumber and nori in separate small bowls.
+q: japanese breakfast grilled salmon miso soup
+@ tamagoyaki_edamame | breakfast | japanese | 15 | 2 | 6
+de: Tamagoyaki mit Edamame und Reis
+en: Tamagoyaki with edamame and rice
+fr: Tamagoyaki, edamame et riz
+it: Tamagoyaki con edamame e riso
+es: Tamagoyaki con edamame y arroz
+pt: Tamagoyaki com edamame e arroz
+ja: 卵焼きと枝豆、ご飯
+i: eggs 5pc, soy_sauce 1tsp, sugar 1tsp, rapeseed_oil 1tsp, edamame 120g, sushi_rice 80g, salt 1g
+sd: Reis waschen und mit 110 ml Wasser zugedeckt 12 Minuten garen. | Eier mit Sojasauce, Zucker und 2 EL Wasser verquirlen. | Eine Pfanne dünn einölen, eine dünne Schicht Ei hineingeben, leicht stocken lassen und aufrollen; Rolle zur Seite schieben und Schicht für Schicht wiederholen. | Edamame 4 Minuten in Salzwasser kochen. | Omelett-Rolle in Scheiben schneiden und mit Edamame und Reis servieren.
+se: Wash the rice and cook it covered with 110 ml water for 12 minutes. | Whisk the eggs with soy sauce, sugar and 2 tbsp water. | Oil a pan thinly, pour in a thin layer of egg, let it set slightly and roll it up; push the roll aside and repeat layer by layer. | Boil the edamame in salted water for 4 minutes. | Slice the omelette roll and serve with the edamame and rice.
+q: tamagoyaki
+@ chicken_congee | breakfast | chinese | 35 | 2 | 6
+de: Reisporridge (Congee) mit Poulet und Ingwer
+en: Chicken and ginger congee
+fr: Congee au poulet et gingembre
+it: Congee di riso con pollo e zenzero
+es: Congee de arroz con pollo y jengibre
+pt: Congee de arroz com frango e gengibre
+ja: 鶏肉と生姜のお粥
+i: jasmine_rice 70g, chicken_breast 220g, chicken_broth 900ml, ginger 15g, spring_onion 2pc, soy_sauce 1tbsp, sesame_oil 1tsp, eggs 2pc
+sd: Reis waschen und mit Bouillon und in Scheiben geschnittenem Ingwer aufkochen. | Bei kleiner Hitze 25–30 Minuten köcheln, dabei öfter rühren, bis der Reis cremig zerfällt. | Poulet in dünne Streifen schneiden und die letzten 6 Minuten im Porridge garen. | Eier 7 Minuten kochen, schälen und halbieren. | Congee mit Sojasauce und Sesamöl abschmecken, mit Eiern und Frühlingszwiebeln servieren.
+se: Wash the rice and bring it to the boil with the stock and sliced ginger. | Simmer over low heat for 25–30 minutes, stirring often, until creamy. | Cut the chicken into thin strips and cook it in the congee for the last 6 minutes. | Boil the eggs for 7 minutes, peel and halve them. | Season the congee with soy sauce and sesame oil and serve with the eggs and spring onions.
+q: congee chicken rice porridge
+@ menemen | breakfast | middle_eastern | 15 | 2 | 6
+de: Menemen (türkisches Rührei mit Tomaten und Peperoni)
+en: Menemen (Turkish scrambled eggs with tomatoes and peppers)
+fr: Menemen (œufs brouillés turcs aux tomates et poivrons)
+it: Menemen (uova strapazzate turche con pomodori e peperoni)
+es: Menemen (huevos revueltos turcos con tomate y pimiento)
+pt: Menemen (ovos mexidos turcos com tomate e pimentão)
+ja: メネメン（トマトとピーマンのトルコ風スクランブルエッグ）
+i: eggs 5pc, tomato 2pc, green_bell_pepper 1pc, onion 0.5pc, olive_oil 1tbsp, chili_flakes 1pinch, feta 30g, parsley 5g, pita 1pc, salt 1g
+sd: Zwiebel und Peperoni fein würfeln und im Öl 4 Minuten weich dünsten. | Tomaten würfeln, zugeben und 4 Minuten einkochen. | Eier verquirlen, in die Pfanne geben und unter gelegentlichem Rühren weich stocken lassen. | Mit Salz, Chiliflocken, Feta und Petersilie bestreuen und mit Pitabrot servieren.
+se: Finely dice the onion and pepper and soften them in the oil for 4 minutes. | Dice the tomatoes, add them and cook down for 4 minutes. | Beat the eggs, pour them into the pan and let them set softly, stirring now and then. | Sprinkle with salt, chilli flakes, feta and parsley and serve with pitta.
+q: menemen turkish eggs
+@ greek_yogurt_walnut | breakfast | greek | 5 | 1 | 7
+de: Griechischer Joghurt mit Baumnüssen, Honig und Birne
+en: Greek yoghurt with walnuts, honey and pear
+fr: Yaourt grec aux noix, miel et poire
+it: Yogurt greco con noci, miele e pera
+es: Yogur griego con nueces, miel y pera
+pt: Iogurte grego com nozes, mel e pera
+ja: クルミと蜂蜜、洋なしのギリシャヨーグルト
+i: greek_yogurt 250g, walnuts 15g, honey 1tsp, pear 0.5pc, cinnamon_ground 1pinch
+sd: Joghurt in eine Schale geben. | Birne entkernen und in feine Spalten schneiden. | Baumnüsse grob hacken. | Birne und Nüsse auf den Joghurt geben, mit Honig beträufeln und mit Zimt bestäuben.
+se: Spoon the yoghurt into a bowl. | Core the pear and cut it into thin wedges. | Roughly chop the walnuts. | Top the yoghurt with the pear and nuts, drizzle with honey and dust with cinnamon.
+q: greek yogurt walnuts honey
+@ chia_skyr_mango | breakfast | european | 5 | 1 | 7
+de: Chia-Skyr-Pudding mit Mango
+en: Chia skyr pudding with mango
+fr: Pudding de chia au skyr et mangue
+it: Budino di chia e skyr al mango
+es: Pudin de chía y skyr con mango
+pt: Pudim de chia com skyr e manga
+ja: マンゴーのチアスキールプディング
+i: chia_seeds 2tbsp, milk_skimmed 100ml, skyr 200g, mango 0.5pc, vanilla_extract 0.5tsp
+sd: Chiasamen mit Milch und Vanille verrühren, 5 Minuten stehen lassen und nochmals rühren. | Skyr unterrühren und mindestens 2 Stunden oder über Nacht kühl stellen. | Mango schälen und würfeln. | Pudding in ein Glas füllen und mit Mango belegen.
+se: Stir the chia seeds with the milk and vanilla, leave for 5 minutes and stir again. | Stir in the skyr and chill for at least 2 hours or overnight. | Peel and dice the mango. | Spoon the pudding into a glass and top with the mango.
+q: chia pudding mango

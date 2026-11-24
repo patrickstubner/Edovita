@@ -1,0 +1,277 @@
+# Mittagessen, Teil 1
+@ greek_chicken_salad | lunch | greek | 20 | 2 | 8
+de: Griechischer Salat mit grilliertem Poulet
+en: Greek salad with grilled chicken
+fr: Salade grecque au poulet grillé
+it: Insalata greca con pollo alla griglia
+es: Ensalada griega con pollo a la plancha
+pt: Salada grega com frango grelhado
+ja: グリルチキンのギリシャ風サラダ
+i: chicken_breast 280g, cucumber 0.5pc, tomato 2pc, red_onion 0.5pc, green_bell_pepper 0.5pc, olives 30g, feta 60g, olive_oil 1tbsp, lemon 0.5pc, oregano_dried 1tsp, pita 2pc, salt 2g, black_pepper 1pinch
+sd: Poulet mit Oregano, Salz und Pfeffer würzen und in einer Grillpfanne mit wenig Öl pro Seite 5–6 Minuten braten, kurz ruhen lassen. | Gurke, Tomaten und Peperoni in Stücke, Zwiebel in feine Ringe schneiden. | Gemüse mit Oliven, restlichem Öl und Zitronensaft mischen. | Poulet in Streifen schneiden, auf dem Salat anrichten, Feta darüberbröckeln und mit Pitabrot servieren.
+se: Season the chicken with oregano, salt and pepper and cook it in a griddle pan with a little oil for 5–6 minutes per side, then rest briefly. | Cut the cucumber, tomatoes and pepper into chunks and the onion into thin rings. | Toss the vegetables with the olives, remaining oil and lemon juice. | Slice the chicken, arrange it on the salad, crumble the feta over and serve with pitta.
+q: greek salad grilled chicken
+@ tuna_nicoise | lunch | french | 25 | 2 | 7
+de: Salade niçoise mit Thon und Ei
+en: Salade niçoise with tuna and egg
+fr: Salade niçoise au thon et à l'œuf
+it: Insalata nizzarda con tonno e uova
+es: Ensalada nizarda con atún y huevo
+pt: Salada niçoise com atum e ovo
+ja: ツナと卵のニース風サラダ
+i: tuna_canned 200g, eggs 2pc, potato 250g, green_beans 150g, cherry_tomatoes 150g, lettuce 0.25pc, olives 30g, olive_oil 1tbsp, dijon_mustard 1tsp, white_wine_vinegar 1tbsp, salt 2g, black_pepper 1pinch
+sd: Kartoffeln in Salzwasser 15 Minuten kochen, die Bohnen die letzten 5 Minuten mitgaren; Eier 8 Minuten kochen. | Alles kalt abschrecken, Kartoffeln in Scheiben schneiden, Eier schälen und vierteln. | Aus Öl, Senf, Essig, Salz und Pfeffer eine Sauce rühren. | Salat, Kartoffeln, Bohnen, Tomaten und Oliven auf Teller verteilen, Thon und Eier darauflegen und mit der Sauce beträufeln.
+se: Boil the potatoes in salted water for 15 minutes, adding the beans for the last 5 minutes; boil the eggs for 8 minutes. | Cool everything in cold water, slice the potatoes and peel and quarter the eggs. | Whisk the oil, mustard, vinegar, salt and pepper into a dressing. | Arrange the lettuce, potatoes, beans, tomatoes and olives on plates, top with the tuna and eggs and drizzle with the dressing.
+q: nicoise salad tuna egg
+@ quinoa_feta_salad | lunch | mediterranean | 20 | 2 | 7
+de: Quinoa-Salat mit Kichererbsen, Feta und Gurke
+en: Quinoa salad with chickpeas, feta and cucumber
+fr: Salade de quinoa aux pois chiches, feta et concombre
+it: Insalata di quinoa con ceci, feta e cetriolo
+es: Ensalada de quinoa con garbanzos, feta y pepino
+pt: Salada de quinoa com grão-de-bico, feta e pepino
+ja: ひよこ豆とフェタ、きゅうりのキヌアサラダ
+i: quinoa 100g, chickpeas 240g, feta 100g, cucumber 0.5pc, cherry_tomatoes 150g, red_onion 0.25pc, parsley 15g, mint_fresh 5g, lemon 1pc, olive_oil 1tbsp, salt 2g
+sd: Quinoa spülen und in 200 ml Salzwasser 15 Minuten garen, abkühlen lassen. | Kichererbsen abspülen, Gurke und Tomaten würfeln, Zwiebel und Kräuter fein hacken. | Zitronensaft, Öl und Salz verrühren. | Alles mischen und Feta darüberbröckeln.
+se: Rinse the quinoa, cook it in 200 ml salted water for 15 minutes and let it cool. | Rinse the chickpeas, dice the cucumber and tomatoes and finely chop the onion and herbs. | Whisk the lemon juice, oil and salt. | Toss everything together and crumble the feta over.
+q: quinoa salad chickpeas feta
+@ lentil_feta_salad | lunch | french | 25 | 2 | 6
+de: Linsensalat mit Feta, Rüebli und Petersilie
+en: Lentil salad with feta, carrot and parsley
+fr: Salade de lentilles vertes, feta, carotte et persil
+it: Insalata di lenticchie con feta, carote e prezzemolo
+es: Ensalada de lentejas con feta, zanahoria y perejil
+pt: Salada de lentilha com feta, cenoura e salsinha
+ja: フェタ、にんじん、パセリのレンズ豆サラダ
+i: green_lentils 160g, carrot 1pc, celery 1pc, shallot 1pc, feta 70g, parsley 15g, dijon_mustard 1tsp, white_wine_vinegar 1tbsp, olive_oil 1tbsp, salt 2g, black_pepper 1pinch
+sd: Linsen in ungesalzenem Wasser 20–25 Minuten bissfest kochen und abgiessen. | Rüebli und Sellerie fein würfeln und die letzten 3 Minuten mitkochen. | Schalotte hacken und mit Senf, Essig, Öl, Salz und Pfeffer verrühren. | Warme Linsen und Gemüse mit der Sauce mischen, Petersilie unterheben und Feta darüberbröckeln.
+se: Cook the lentils in unsalted water for 20–25 minutes until just tender and drain. | Finely dice the carrot and celery and add them for the last 3 minutes. | Chop the shallot and whisk with the mustard, vinegar, oil, salt and pepper. | Toss the warm lentils and vegetables with the dressing, fold in the parsley and crumble the feta over.
+q: lentil salad feta
+@ chicken_caesar_light | lunch | american | 20 | 2 | 8
+de: Leichter Caesar Salad mit Poulet und Joghurtdressing
+en: Light chicken Caesar salad with yoghurt dressing
+fr: Salade César légère au poulet et sauce yaourt
+it: Caesar salad leggera con pollo e salsa allo yogurt
+es: Ensalada César ligera con pollo y aliño de yogur
+pt: Salada Caesar leve com frango e molho de iogurte
+ja: ヨーグルトドレッシングの軽いチキンシーザーサラダ
+i: chicken_breast 300g, lettuce 0.5pc, bread 60g, parmesan 25g, greek_yogurt 100g, lemon 0.5pc, garlic 1pc, dijon_mustard 1tsp, olive_oil 2tsp, salt 2g, black_pepper 1pinch
+sd: Poulet salzen, pfeffern und in 1 TL Öl pro Seite 5–6 Minuten braten, in Streifen schneiden. | Brot würfeln und im restlichen Öl knusprig rösten. | Joghurt mit Zitronensaft, gepresstem Knoblauch, Senf, der Hälfte des Parmesans, Salz und Pfeffer verrühren. | Salat zerzupfen, mit dem Dressing mischen, Poulet und Croûtons darauf verteilen und mit restlichem Parmesan bestreuen.
+se: Season the chicken with salt and pepper, fry it in 1 tsp oil for 5–6 minutes per side and slice it. | Dice the bread and toast it in the remaining oil until crisp. | Stir the yoghurt with lemon juice, crushed garlic, mustard, half the Parmesan, salt and pepper. | Tear the lettuce, toss it with the dressing, top with the chicken and croutons and sprinkle with the rest of the Parmesan.
+q: chicken caesar salad
+@ turkey_veggie_wrap | lunch | american | 10 | 2 | 7
+de: Truten-Wrap mit Gemüse und Hüttenkäse
+en: Turkey wrap with vegetables and cottage cheese
+fr: Wrap à la dinde, légumes et cottage cheese
+it: Wrap al tacchino con verdure e fiocchi di latte
+es: Wrap de pavo con verduras y requesón
+pt: Wrap de peru com legumes e cottage
+ja: 七面鳥と野菜、カッテージチーズのラップ
+i: whole_wheat_tortilla 2pc, turkey_breast 200g, cottage_cheese 100g, carrot 1pc, cucumber 0.3pc, lettuce 0.2pc, dijon_mustard 1tsp, rapeseed_oil 1tsp, salt 1g, black_pepper 1pinch
+sd: Trutenbrust in Streifen schneiden, würzen und im Öl 5 Minuten braten. | Rüebli raffeln, Gurke in Stifte schneiden, Salat waschen. | Hüttenkäse mit Senf verrühren und auf die Tortillas streichen. | Salat, Gemüse und Truten darauflegen, seitlich einschlagen und straff aufrollen.
+se: Cut the turkey into strips, season and fry in the oil for 5 minutes. | Grate the carrot, cut the cucumber into sticks and wash the lettuce. | Stir the cottage cheese with the mustard and spread it over the tortillas. | Add lettuce, vegetables and turkey, fold in the sides and roll up tightly.
+q: turkey wrap
+@ salmon_poke | lunch | hawaiian | 20 | 2 | 9
+de: Poke-Bowl mit Lachs, Edamame und Avocado
+en: Salmon poke bowl with edamame and avocado
+fr: Poke bowl au saumon, edamame et avocat
+it: Poke bowl con salmone, edamame e avocado
+es: Poke bowl de salmón con edamame y aguacate
+pt: Poke de salmão com edamame e abacate
+ja: サーモン、枝豆、アボカドのポケボウル
+i: salmon 240g, sushi_rice 120g, edamame 100g, avocado 0.5pc, cucumber 0.5pc, carrot 1pc, soy_sauce 2tbsp, rice_vinegar 1tbsp, sesame_oil 1tsp, sesame_seeds 1tsp, spring_onion 1pc
+sd: Reis waschen und mit 160 ml Wasser zugedeckt 12 Minuten garen, mit Reisessig mischen und abkühlen lassen. | Sehr frischen Lachs (Sushiqualität) in Würfel schneiden und mit Sojasauce und Sesamöl 10 Minuten marinieren. | Edamame 4 Minuten kochen, Gurke und Avocado in Scheiben, Rüebli in feine Streifen schneiden. | Reis in Schalen geben, Lachs und Gemüse darauf anrichten, mit Sesam und Frühlingszwiebel bestreuen.
+se: Wash the rice and cook it covered with 160 ml water for 12 minutes, mix with the rice vinegar and let it cool. | Dice very fresh (sushi-grade) salmon and marinate it with the soy sauce and sesame oil for 10 minutes. | Boil the edamame for 4 minutes, slice the cucumber and avocado and cut the carrot into fine strips. | Put the rice in bowls, arrange the salmon and vegetables on top and sprinkle with sesame and spring onion.
+q: salmon poke bowl
+@ tofu_poke | lunch | hawaiian | 25 | 2 | 7
+de: Vegane Poke-Bowl mit Sesam-Tofu
+en: Vegan poke bowl with sesame tofu
+fr: Poke bowl vegan au tofu sésame
+it: Poke bowl vegana con tofu al sesamo
+es: Poke bowl vegano con tofu al sésamo
+pt: Poke vegano com tofu de gergelim
+ja: ごま豆腐のヴィーガンポケボウル
+i: tofu_firm 300g, brown_rice 120g, edamame 100g, mango 0.5pc, red_cabbage 100g, cucumber 0.5pc, soy_sauce 2tbsp, maple_syrup 1tsp, rice_vinegar 1tbsp, sesame_oil 1tsp, sesame_seeds 2tsp
+sd: Vollkornreis nach Packungsangabe etwa 25 Minuten kochen. | Tofu trocken tupfen, würfeln und in einer beschichteten Pfanne im Sesamöl 6–8 Minuten knusprig braten. | Sojasauce, Ahornsirup und Reisessig verrühren, die Hälfte über den Tofu geben und kurz glasieren. | Edamame kochen, Mango würfeln, Rotkabis fein hobeln, Gurke in Scheiben schneiden. | Reis, Tofu und Gemüse in Schalen anrichten, restliche Sauce darüberträufeln und mit Sesam bestreuen.
+se: Cook the brown rice according to the packet for about 25 minutes. | Pat the tofu dry, dice it and fry in the sesame oil in a non-stick pan for 6–8 minutes until crisp. | Mix the soy sauce, maple syrup and rice vinegar, pour half over the tofu and glaze briefly. | Boil the edamame, dice the mango, finely shred the red cabbage and slice the cucumber. | Arrange the rice, tofu and vegetables in bowls, drizzle with the remaining sauce and sprinkle with sesame.
+q: tofu poke bowl
+@ bibimbap | lunch | korean | 30 | 2 | 8
+de: Bibimbap mit Rindfleisch, Gemüse und Ei
+en: Bibimbap with beef, vegetables and egg
+fr: Bibimbap au bœuf, légumes et œuf
+it: Bibimbap con manzo, verdure e uovo
+es: Bibimbap con ternera, verduras y huevo
+pt: Bibimbap com carne, legumes e ovo
+ja: 牛肉と野菜、卵のビビンバ
+i: beef_steak 200g, sushi_rice 130g, eggs 2pc, spinach 150g, carrot 1pc, bean_sprouts 100g, shiitake 80g, gochujang 1tbsp, soy_sauce 1tbsp, sesame_oil 2tsp, garlic 1pc, sesame_seeds 1tsp
+sd: Reis waschen und mit 170 ml Wasser zugedeckt 12 Minuten garen. | Rindfleisch in dünne Streifen schneiden und mit Sojasauce, Knoblauch und 1 TL Sesamöl marinieren. | Spinat und Sprossen je 1 Minute blanchieren, Rüebli in Streifen und Pilze in Scheiben schneiden und nacheinander kurz anbraten. | Fleisch 2–3 Minuten scharf braten, danach Spiegeleier braten. | Reis in Schalen geben, Gemüse, Fleisch und Ei darauf anrichten, Gochujang und Sesam dazugeben und vor dem Essen mischen.
+se: Wash the rice and cook it covered with 170 ml water for 12 minutes. | Cut the beef into thin strips and marinate with soy sauce, garlic and 1 tsp sesame oil. | Blanch the spinach and sprouts for 1 minute each, cut the carrot into strips and slice the mushrooms, then stir-fry each briefly. | Sear the beef for 2–3 minutes, then fry the eggs. | Put the rice in bowls, arrange the vegetables, beef and egg on top, add gochujang and sesame and mix before eating.
+q: bibimbap
+@ chicken_shawarma_bowl | lunch | middle_eastern | 30 | 2 | 8
+de: Poulet-Shawarma-Bowl mit Bulgur und Joghurt
+en: Chicken shawarma bowl with bulgur and yoghurt
+fr: Bowl shawarma au poulet, boulgour et yaourt
+it: Bowl shawarma di pollo con bulgur e yogurt
+es: Bowl de shawarma de pollo con bulgur y yogur
+pt: Bowl de shawarma de frango com bulgur e iogurte
+ja: ブルグルとヨーグルトのチキンシャワルマボウル
+i: chicken_thigh 300g, bulgur 100g, greek_yogurt 120g, cucumber 0.5pc, tomato 1pc, red_onion 0.25pc, lemon 1pc, garlic 2pc, cumin 1tsp, paprika 1tsp, cinnamon_ground 1pinch, olive_oil 1tbsp, parsley 10g, salt 3g
+sd: Poulet mit Kreuzkümmel, Paprika, Zimt, 1 gepressten Knoblauchzehe, Zitronensaft, Öl und Salz mindestens 15 Minuten marinieren. | Bulgur mit 200 ml heissem Salzwasser übergiessen und zugedeckt 10 Minuten quellen lassen. | Poulet in einer heissen Pfanne pro Seite 5–6 Minuten braten und in Streifen schneiden. | Joghurt mit restlichem Knoblauch und Salz verrühren, Gurke, Tomate und Zwiebel würfeln. | Bulgur, Poulet, Gemüse und Joghurtsauce in Schalen anrichten und mit Petersilie bestreuen.
+se: Marinate the chicken with cumin, paprika, cinnamon, 1 crushed garlic clove, lemon juice, oil and salt for at least 15 minutes. | Pour 200 ml hot salted water over the bulgur and leave covered for 10 minutes. | Fry the chicken in a hot pan for 5–6 minutes per side and slice it. | Stir the yoghurt with the remaining garlic and salt and dice the cucumber, tomato and onion. | Arrange the bulgur, chicken, vegetables and yoghurt sauce in bowls and sprinkle with parsley.
+q: chicken shawarma bowl
+@ baked_falafel_bowl | lunch | middle_eastern | 35 | 2 | 7
+de: Gebackene Falafel-Bowl mit Tahini-Sauce
+en: Baked falafel bowl with tahini sauce
+fr: Bowl de falafels au four et sauce tahini
+it: Bowl di falafel al forno con salsa tahina
+es: Bowl de falafel al horno con salsa de tahini
+pt: Bowl de falafel assado com molho tahine
+ja: タヒニソースの焼きファラフェルボウル
+i: chickpeas 400g, chickpea_flour 40g, onion 0.5pc, garlic 2pc, parsley 20g, cumin 1tsp, coriander_fresh 10g, olive_oil 1tbsp, tahini 2tbsp, soy_yogurt 150g, lemon 1pc, tomato 2pc, cucumber 0.5pc, lettuce 0.25pc, salt 3g
+sd: Backofen auf 200 °C vorheizen. Kichererbsen gut abtropfen lassen. | Mit Zwiebel, Knoblauch, Kräutern, Kreuzkümmel, Salz und Kichererbsenmehl im Cutter grob pürieren und zu 12 kleinen Bällchen formen. | Auf ein Blech mit Backpapier legen, mit Öl bepinseln und 20–25 Minuten backen, nach der Hälfte wenden. | Tahini mit Sojajoghurt, Zitronensaft, Salz und 2–3 EL Wasser glatt rühren. | Salat, Tomaten und Gurke in Schalen verteilen, Falafel daraufgeben und mit der Sauce beträufeln.
+se: Preheat the oven to 200 °C. Drain the chickpeas well. | Pulse them in a food processor with the onion, garlic, herbs, cumin, salt and chickpea flour until coarse and shape into 12 small balls. | Place on a lined tray, brush with oil and bake for 20–25 minutes, turning halfway. | Stir the tahini with the soya yoghurt, lemon juice, salt and 2–3 tbsp water until smooth. | Divide the lettuce, tomatoes and cucumber between bowls, add the falafel and drizzle with the sauce.
+q: falafel bowl tahini
+@ chickpea_tuna_salad | lunch | mediterranean | 10 | 2 | 7
+de: Kichererbsen-Thon-Salat mit roter Zwiebel
+en: Chickpea and tuna salad with red onion
+fr: Salade de pois chiches au thon et oignon rouge
+it: Insalata di ceci e tonno con cipolla rossa
+es: Ensalada de garbanzos y atún con cebolla morada
+pt: Salada de grão-de-bico e atum com cebola roxa
+ja: ひよこ豆とツナ、赤玉ねぎのサラダ
+i: chickpeas 240g, tuna_canned 200g, red_onion 0.5pc, cherry_tomatoes 150g, rocket 40g, parsley 10g, lemon 1pc, olive_oil 1tbsp, salt 1g, black_pepper 1pinch
+sd: Kichererbsen abspülen und abtropfen lassen, Thon abgiessen. | Zwiebel in feine Ringe schneiden, Tomaten halbieren, Petersilie hacken. | Zitronensaft, Öl, Salz und Pfeffer verrühren. | Alles mit dem Rucola mischen und sofort servieren.
+se: Rinse and drain the chickpeas and drain the tuna. | Slice the onion into thin rings, halve the tomatoes and chop the parsley. | Whisk the lemon juice, oil, salt and pepper. | Toss everything with the rocket and serve straight away.
+q: chickpea tuna salad
+@ chicken_caprese_salad | lunch | italian | 20 | 2 | 7
+de: Caprese-Salat mit Poulet und Rucola
+en: Caprese salad with chicken and rocket
+fr: Salade caprese au poulet et roquette
+it: Insalata caprese con pollo e rucola
+es: Ensalada caprese con pollo y rúcula
+pt: Salada caprese com frango e rúcula
+ja: 鶏肉とルッコラのカプレーゼサラダ
+i: chicken_breast 250g, mozzarella 100g, tomato 3pc, rocket 50g, basil_fresh 10g, balsamic 1tbsp, olive_oil 1tbsp, bread 60g, salt 2g, black_pepper 1pinch
+sd: Poulet würzen und in 1 TL Öl pro Seite 5–6 Minuten braten, in Scheiben schneiden. | Tomaten und Mozzarella in Scheiben schneiden. | Rucola auf Teller verteilen, Tomaten, Mozzarella und Poulet abwechselnd darauflegen. | Mit Basilikum belegen, mit restlichem Öl und Balsamico beträufeln und mit Brot servieren.
+se: Season the chicken and fry it in 1 tsp oil for 5–6 minutes per side, then slice. | Slice the tomatoes and mozzarella. | Spread the rocket on plates and layer the tomatoes, mozzarella and chicken on top. | Add basil, drizzle with the remaining oil and balsamic and serve with bread.
+q: caprese salad chicken
+@ minestrone_beans | lunch | italian | 35 | 3 | 6
+de: Minestrone mit weissen Bohnen und Parmesan
+en: Minestrone with white beans and Parmesan
+fr: Minestrone aux haricots blancs et parmesan
+it: Minestrone con cannellini e parmigiano
+es: Minestrone con alubias blancas y parmesano
+pt: Minestrone com feijão-branco e parmesão
+ja: 白いんげん豆とパルメザンのミネストローネ
+i: white_beans 400g, carrot 2pc, celery 2pc, zucchini 1pc, onion 1pc, garlic 2pc, canned_tomatoes 400g, vegetable_broth 1000ml, pasta 90g, olive_oil 1tbsp, parmesan 60g, basil_fresh 10g, salt 2g
+sd: Zwiebel, Knoblauch, Rüebli, Sellerie und Zucchetti klein würfeln. | Im Öl 5 Minuten andünsten, Tomaten und Bouillon zugeben und 15 Minuten köcheln. | Teigwaren und abgespülte Bohnen zugeben und weitere 10 Minuten kochen, bis die Teigwaren gar sind. | Mit Salz abschmecken und mit Parmesan und Basilikum servieren.
+se: Finely dice the onion, garlic, carrots, celery and courgette. | Sweat in the oil for 5 minutes, add the tomatoes and stock and simmer for 15 minutes. | Add the pasta and rinsed beans and cook for 10 more minutes until the pasta is done. | Season with salt and serve with Parmesan and basil.
+q: minestrone soup beans
+@ bundner_barley_soup | lunch | swiss | 50 | 3 | 7
+de: Bündner Gerstensuppe mit Bündnerfleisch
+en: Grisons barley soup with air-dried beef
+fr: Soupe d'orge des Grisons à la viande séchée
+it: Minestra d'orzo grigionese con carne secca
+es: Sopa de cebada de los Grisones con cecina
+pt: Sopa de cevada dos Grisões com carne seca
+ja: 干し牛肉入りグラウビュンデン風大麦スープ
+i: pearl_barley 100g, bundnerfleisch 100g, ham_cooked 80g, white_beans 240g, carrot 2pc, celery 1pc, leek 1pc, white_cabbage 150g, vegetable_broth 1200ml, cooking_cream 50ml, rapeseed_oil 1tsp, chives 5g, salt 2g
+sd: Gerste in einem Sieb spülen. Rüebli, Sellerie, Lauch und Kabis klein schneiden, Bündnerfleisch und Schinken in feine Streifen schneiden. | Gemüse im Öl 5 Minuten andünsten, Gerste und Bouillon zugeben und zugedeckt 40 Minuten köcheln. | Bohnen, Bündnerfleisch und Schinken zugeben und 5 Minuten mitziehen lassen. | Rahm einrühren, abschmecken und mit Schnittlauch servieren.
+se: Rinse the barley in a sieve. Chop the carrots, celery, leek and cabbage and cut the dried beef and ham into thin strips. | Sweat the vegetables in the oil for 5 minutes, add the barley and stock and simmer covered for 40 minutes. | Add the beans, dried beef and ham and let them heat through for 5 minutes. | Stir in the cream, season and serve with chives.
+q: barley soup
+@ egg_salad_sandwich | lunch | european | 15 | 2 | 6
+de: Eiersalat-Sandwich mit Joghurt und Rucola
+en: Egg salad sandwich with yoghurt and rocket
+fr: Sandwich à la salade d'œufs, yaourt et roquette
+it: Sandwich con insalata di uova, yogurt e rucola
+es: Sándwich de ensalada de huevo con yogur y rúcula
+pt: Sanduíche de salada de ovo com iogurte e rúcula
+ja: ヨーグルトとルッコラのエッグサラダサンド
+i: eggs 5pc, greek_yogurt 100g, dijon_mustard 1tsp, chives 5g, bread 160g, rocket 30g, tomato 1pc, salt 1g, black_pepper 1pinch
+sd: Eier 9 Minuten hart kochen, kalt abschrecken und schälen. | Eier grob hacken und mit Joghurt, Senf, Schnittlauch, Salz und Pfeffer mischen. | Brotscheiben nach Belieben toasten. | Eiersalat, Tomatenscheiben und Rucola zwischen die Brotscheiben geben und halbieren.
+se: Hard-boil the eggs for 9 minutes, cool in cold water and peel. | Roughly chop the eggs and mix with the yoghurt, mustard, chives, salt and pepper. | Toast the bread slices if you like. | Fill the bread with the egg salad, tomato slices and rocket and cut in half.
+q: egg salad sandwich
+@ black_bean_soup | lunch | mexican | 30 | 2 | 6
+de: Schwarze-Bohnen-Suppe mit Sojajoghurt und Avocado
+en: Black bean soup with soya yoghurt and avocado
+fr: Soupe de haricots noirs, yaourt de soja et avocat
+it: Zuppa di fagioli neri con yogurt di soia e avocado
+es: Sopa de frijoles negros con yogur de soja y aguacate
+pt: Sopa de feijão-preto com iogurte de soja e abacate
+ja: 豆乳ヨーグルトとアボカドの黒豆スープ
+i: black_beans 480g, onion 1pc, garlic 2pc, red_bell_pepper 1pc, cumin 1tsp, paprika 1tsp, vegetable_broth 600ml, canned_tomatoes 200g, lime 1pc, soy_yogurt 100g, avocado 0.5pc, coriander_fresh 10g, olive_oil 1tsp, salt 2g
+sd: Zwiebel, Knoblauch und Peperoni würfeln und im Öl 5 Minuten andünsten, Gewürze kurz mitrösten. | Abgespülte Bohnen, Tomaten und Bouillon zugeben und 15 Minuten köcheln. | Etwa die Hälfte der Suppe pürieren und zurückgeben, mit Limettensaft und Salz abschmecken. | Mit Sojajoghurt, Avocadowürfeln und Koriander servieren.
+se: Dice the onion, garlic and pepper, sweat them in the oil for 5 minutes and briefly toast the spices. | Add the rinsed beans, tomatoes and stock and simmer for 15 minutes. | Blend about half of the soup and return it, then season with lime juice and salt. | Serve with soya yoghurt, diced avocado and coriander.
+q: black bean soup
+@ chicken_tortilla_soup | lunch | mexican | 30 | 2 | 7
+de: Mexikanische Poulet-Tortilla-Suppe
+en: Mexican chicken tortilla soup
+fr: Soupe mexicaine au poulet et tortillas
+it: Zuppa messicana di pollo e tortillas
+es: Sopa de tortilla con pollo
+pt: Sopa mexicana de frango com tortilla
+ja: メキシコ風チキントルティーヤスープ
+i: chicken_breast 280g, chicken_broth 800ml, canned_tomatoes 400g, black_beans 150g, sweetcorn 100g, onion 1pc, garlic 2pc, chili_fresh 1pc, cumin 1tsp, corn_tortilla 2pc, lime 1pc, avocado 0.5pc, coriander_fresh 10g, rapeseed_oil 1tsp, salt 2g
+sd: Zwiebel, Knoblauch und Chili hacken und im Öl 4 Minuten andünsten, Kreuzkümmel zugeben. | Tomaten und Bouillon zugeben, Poulet ganz hineinlegen und 15 Minuten leise köcheln, herausnehmen und zerzupfen. | Bohnen, Mais und Poulet in die Suppe geben, mit Limettensaft und Salz abschmecken. | Tortillas in Streifen schneiden und im Ofen bei 200 °C 6–8 Minuten knusprig backen. | Suppe mit Tortillastreifen, Avocado und Koriander servieren.
+se: Chop the onion, garlic and chilli, sweat them in the oil for 4 minutes and add the cumin. | Add the tomatoes and stock, put in the whole chicken breast and simmer gently for 15 minutes, then remove and shred it. | Add the beans, sweetcorn and chicken to the soup and season with lime juice and salt. | Cut the tortillas into strips and bake at 200 °C for 6–8 minutes until crisp. | Serve the soup with tortilla strips, avocado and coriander.
+q: chicken tortilla soup
+@ beef_fajita_bowl | lunch | mexican | 25 | 2 | 7
+de: Rindfleisch-Fajita-Bowl mit Peperoni und Reis
+en: Beef fajita bowl with peppers and rice
+fr: Bowl fajitas au bœuf, poivrons et riz
+it: Bowl fajita di manzo con peperoni e riso
+es: Bowl de fajitas de ternera con pimientos y arroz
+pt: Bowl de fajita de carne com pimentões e arroz
+ja: 牛肉とパプリカ、ライスのファヒータボウル
+i: beef_steak 280g, brown_rice 110g, red_bell_pepper 1pc, green_bell_pepper 1pc, red_onion 1pc, paprika 1tsp, cumin 1tsp, garlic 1pc, lime 1pc, greek_yogurt 80g, rapeseed_oil 2tsp, coriander_fresh 5g, salt 2g
+sd: Vollkornreis nach Packungsangabe kochen. | Rindfleisch in dünne Streifen schneiden und mit Paprika, Kreuzkümmel, Knoblauch, Salz und dem halben Limettensaft mischen. | Peperoni und Zwiebel in Streifen schneiden und im Öl 5 Minuten scharf braten, herausnehmen. | Fleisch in der heissen Pfanne 2–3 Minuten braten und das Gemüse wieder zugeben. | Reis, Fleisch und Gemüse in Schalen anrichten, mit Joghurt, Koriander und Limettenschnitzen servieren.
+se: Cook the brown rice according to the packet. | Cut the beef into thin strips and mix with paprika, cumin, garlic, salt and half the lime juice. | Cut the peppers and onion into strips, stir-fry in the oil for 5 minutes over high heat and set aside. | Fry the beef in the hot pan for 2–3 minutes and return the vegetables. | Arrange the rice, beef and vegetables in bowls and serve with yoghurt, coriander and lime wedges.
+q: beef fajita bowl
+@ shrimp_tacos | lunch | mexican | 20 | 2 | 8
+de: Crevetten-Tacos mit Kabis-Limetten-Salat
+en: Prawn tacos with lime slaw
+fr: Tacos aux crevettes et salade de chou au citron vert
+it: Tacos di gamberi con insalata di cavolo al lime
+es: Tacos de gambas con ensalada de col y lima
+pt: Tacos de camarão com salada de repolho e limão
+ja: エビタコス ライム風味のコールスロー添え
+i: shrimp 300g, corn_tortilla 6pc, red_cabbage 150g, lime 2pc, greek_yogurt 80g, avocado 0.5pc, chili_flakes 1pinch, paprika 1tsp, garlic 1pc, coriander_fresh 10g, rapeseed_oil 2tsp, salt 2g
+sd: Rotkabis fein hobeln und mit dem Saft einer Limette und einer Prise Salz mischen. | Crevetten mit Paprika, Chiliflocken, Knoblauch und Salz würzen und im Öl 2–3 Minuten braten, bis sie rosa sind. | Joghurt mit etwas Limettensaft verrühren, Avocado in Scheiben schneiden. | Tortillas in einer trockenen Pfanne erwärmen, mit Kabis, Crevetten, Avocado und Joghurt füllen und mit Koriander bestreuen.
+se: Finely shred the red cabbage and mix with the juice of one lime and a pinch of salt. | Season the prawns with paprika, chilli flakes, garlic and salt and fry in the oil for 2–3 minutes until pink. | Stir the yoghurt with a little lime juice and slice the avocado. | Warm the tortillas in a dry pan, fill with cabbage, prawns, avocado and yoghurt and sprinkle with coriander.
+q: shrimp tacos
+@ prato_feito | lunch | brazilian | 40 | 2 | 8
+de: Prato feito: Reis, Bohnen und grilliertes Poulet
+en: Prato feito: rice, beans and grilled chicken
+fr: Prato feito : riz, haricots et poulet grillé
+it: Prato feito: riso, fagioli e pollo alla griglia
+es: Prato feito: arroz, frijoles y pollo a la plancha
+pt: Prato feito: arroz, feijão e frango grelhado
+ja: プラット・フェイト（ご飯、豆、グリルチキン）
+i: chicken_breast 280g, brown_rice 100g, black_beans 240g, onion 1pc, garlic 3pc, tomato 2pc, lettuce 0.2pc, lime 1pc, rapeseed_oil 2tsp, salt 3g, black_pepper 1pinch
+sd: Reis nach Packungsangabe kochen. | Halbe Zwiebel und 2 Knoblauchzehen hacken, in 1 TL Öl andünsten, abgespülte Bohnen und 150 ml Wasser zugeben und 15 Minuten köcheln, einige Bohnen zerdrücken. | Poulet mit restlichem Knoblauch, Limettensaft, Salz und Pfeffer marinieren und in der Grillpfanne pro Seite 5–6 Minuten braten. | Tomaten und restliche Zwiebel zu einem Salat schneiden und mit Salat und Salz anmachen. | Reis, Bohnen, Poulet und Salat zusammen auf einem Teller servieren.
+se: Cook the rice according to the packet. | Chop half the onion and 2 garlic cloves, sweat them in 1 tsp oil, add the rinsed beans and 150 ml water and simmer for 15 minutes, mashing a few beans. | Marinate the chicken with the remaining garlic, lime juice, salt and pepper and cook in a griddle pan for 5–6 minutes per side. | Cut the tomatoes and remaining onion into a salad and dress with lettuce and salt. | Serve the rice, beans, chicken and salad together on one plate.
+q: rice beans chicken plate
+@ salpicao_frango | lunch | brazilian | 25 | 2 | 6
+de: Salpicão (brasilianischer Poulet-Salat) mit Joghurt
+en: Salpicão (Brazilian chicken salad) with yoghurt
+fr: Salpicão (salade de poulet brésilienne) au yaourt
+it: Salpicão (insalata di pollo brasiliana) allo yogurt
+es: Salpicão (ensalada de pollo brasileña) con yogur
+pt: Salpicão de frango com iogurte
+ja: サウピカォン（ブラジル風チキンサラダ）ヨーグルト仕立て
+i: chicken_breast 300g, carrot 1pc, sweetcorn 100g, peas 80g, apple 1pc, greek_yogurt 150g, lime 0.5pc, parsley 10g, lettuce 0.2pc, salt 2g, black_pepper 1pinch
+sd: Poulet in leicht gesalzenem Wasser 15 Minuten gar ziehen lassen, abkühlen und fein zerzupfen. | Rüebli raffeln, Erbsen 2 Minuten blanchieren, Apfel fein würfeln. | Joghurt mit Limettensaft, Salz und Pfeffer verrühren. | Poulet, Rüebli, Mais, Erbsen, Apfel und Petersilie mit der Sauce mischen und auf Salatblättern servieren.
+se: Poach the chicken in lightly salted water for 15 minutes, let it cool and shred finely. | Grate the carrot, blanch the peas for 2 minutes and finely dice the apple. | Stir the yoghurt with lime juice, salt and pepper. | Mix the chicken, carrot, sweetcorn, peas, apple and parsley with the sauce and serve on lettuce leaves.
+q: chicken salad carrot corn
+@ caldo_verde_beans | lunch | portuguese | 35 | 3 | 6
+de: Caldo verde mit Federkohl, weissen Bohnen und Chouriço
+en: Caldo verde with kale, white beans and chouriço
+fr: Caldo verde au chou kale, haricots blancs et chouriço
+it: Caldo verde con cavolo riccio, fagioli e chouriço
+es: Caldo verde con col rizada, alubias y chorizo
+pt: Caldo verde com feijão-branco e chouriço
+ja: ケール、白いんげん豆、チョリソーのカルド・ヴェルデ
+i: potato 400g, kale 200g, white_beans 400g, chorizo 60g, chicken_breast 200g, onion 1pc, garlic 2pc, chicken_broth 1200ml, olive_oil 1tbsp, salt 2g
+sd: Zwiebel und Knoblauch hacken, Kartoffeln schälen und würfeln. | Im Öl 3 Minuten andünsten, Bouillon zugeben und 15 Minuten köcheln, dann fein pürieren. | Poulet in kleine Würfel und Chouriço in dünne Scheiben schneiden, Federkohl in sehr feine Streifen. | Poulet, Chouriço, Bohnen und Kohl in die Suppe geben und 8 Minuten köcheln, mit Salz abschmecken.
+se: Chop the onion and garlic and peel and dice the potatoes. | Sweat them in the oil for 3 minutes, add the stock, simmer for 15 minutes and blend until smooth. | Dice the chicken, slice the chouriço thinly and cut the kale into very fine strips. | Add the chicken, chouriço, beans and kale to the soup, simmer for 8 minutes and season with salt.
+q: caldo verde soup

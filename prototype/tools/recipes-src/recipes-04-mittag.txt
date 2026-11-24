@@ -1,0 +1,313 @@
+# Mittagessen, Teil 2
+@ cold_soba_tofu | lunch | japanese | 20 | 2 | 6
+de: Kalte Soba-Nudeln mit Tofu und Edamame
+en: Cold soba noodles with tofu and edamame
+fr: Nouilles soba froides au tofu et edamame
+it: Soba fredda con tofu ed edamame
+es: Fideos soba fríos con tofu y edamame
+pt: Soba fria com tofu e edamame
+ja: 豆腐と枝豆の冷やしそば
+i: soba_noodles 140g, tofu_firm 250g, edamame 120g, cucumber 0.5pc, spring_onion 2pc, soy_sauce 3tbsp, rice_vinegar 1tbsp, sesame_oil 1tsp, ginger 10g, sesame_seeds 1tsp
+sd: Soba nach Packungsangabe 4–5 Minuten kochen, eiskalt abspülen und abtropfen lassen. | Edamame 4 Minuten kochen, Tofu würfeln und in einer beschichteten Pfanne 5 Minuten goldbraun braten. | Sojasauce, Reisessig, Sesamöl, geriebenen Ingwer und 3 EL Wasser zu einer Sauce verrühren. | Nudeln mit Gurkenstreifen, Edamame und Tofu anrichten, Sauce darübergiessen und mit Frühlingszwiebeln und Sesam bestreuen.
+se: Cook the soba for 4–5 minutes according to the packet, rinse in ice-cold water and drain. | Boil the edamame for 4 minutes, dice the tofu and fry it in a non-stick pan for 5 minutes until golden. | Mix the soy sauce, rice vinegar, sesame oil, grated ginger and 3 tbsp water into a sauce. | Arrange the noodles with cucumber strips, edamame and tofu, pour over the sauce and sprinkle with spring onions and sesame.
+q: cold soba noodles
+@ oyakodon | lunch | japanese | 25 | 2 | 7
+de: Oyakodon (Poulet-Ei-Reisschale)
+en: Oyakodon (chicken and egg rice bowl)
+fr: Oyakodon (bol de riz au poulet et à l'œuf)
+it: Oyakodon (ciotola di riso con pollo e uovo)
+es: Oyakodon (bol de arroz con pollo y huevo)
+pt: Oyakodon (tigela de arroz com frango e ovo)
+ja: 親子丼
+i: chicken_thigh 250g, eggs 3pc, sushi_rice 130g, onion 1pc, chicken_broth 150ml, soy_sauce 2tbsp, sugar 1tsp, spring_onion 1pc
+sd: Reis waschen und mit 170 ml Wasser zugedeckt 12 Minuten garen. | Zwiebel in Streifen, Poulet in mundgerechte Stücke schneiden. | Bouillon mit Sojasauce und Zucker aufkochen, Zwiebel 3 Minuten darin garen, Poulet zugeben und 6 Minuten köcheln. | Eier leicht verquirlen, darübergiessen und zugedeckt 1–2 Minuten stocken lassen, sodass sie noch weich sind. | Über den Reis geben und mit Frühlingszwiebel bestreuen.
+se: Wash the rice and cook it covered with 170 ml water for 12 minutes. | Slice the onion and cut the chicken into bite-sized pieces. | Bring the stock to the boil with the soy sauce and sugar, cook the onion in it for 3 minutes, add the chicken and simmer for 6 minutes. | Lightly beat the eggs, pour them over and cook covered for 1–2 minutes so they stay soft. | Spoon over the rice and sprinkle with spring onion.
+q: oyakodon
+@ gyudon_light | lunch | japanese | 20 | 2 | 6
+de: Gyudon (Rindfleisch-Reisschale) mit Zwiebeln
+en: Gyudon (beef rice bowl) with onions
+fr: Gyudon (bol de riz au bœuf et oignons)
+it: Gyudon (ciotola di riso con manzo e cipolle)
+es: Gyudon (bol de arroz con ternera y cebolla)
+pt: Gyudon (tigela de arroz com carne e cebola)
+ja: 牛丼
+i: beef_steak 260g, sushi_rice 130g, onion 1pc, beef_broth 150ml, soy_sauce 2tbsp, sugar 1tsp, ginger 10g, spring_onion 1pc, pak_choi 1pc
+sd: Reis waschen und mit 170 ml Wasser zugedeckt 12 Minuten garen. | Rindfleisch sehr dünn aufschneiden, Zwiebel in Streifen schneiden. | Bouillon mit Sojasauce, Zucker und geriebenem Ingwer aufkochen und die Zwiebel 4 Minuten darin weich köcheln. | Fleisch zugeben und 1–2 Minuten ziehen lassen, Pak Choi kurz mitgaren. | Über den Reis geben und mit Frühlingszwiebel bestreuen.
+se: Wash the rice and cook it covered with 170 ml water for 12 minutes. | Slice the beef very thinly and cut the onion into strips. | Bring the stock to the boil with the soy sauce, sugar and grated ginger and simmer the onion in it for 4 minutes until soft. | Add the beef and cook for 1–2 minutes, briefly cooking the pak choi too. | Spoon over the rice and sprinkle with spring onion.
+q: gyudon beef bowl
+@ goi_ga | lunch | vietnamese | 25 | 2 | 7
+de: Gỏi gà (vietnamesischer Poulet-Kabis-Salat)
+en: Gỏi gà (Vietnamese chicken and cabbage salad)
+fr: Gỏi gà (salade vietnamienne de poulet et chou)
+it: Gỏi gà (insalata vietnamita di pollo e cavolo)
+es: Gỏi gà (ensalada vietnamita de pollo y col)
+pt: Gỏi gà (salada vietnamita de frango e repolho)
+ja: ゴイ・ガー（ベトナム風チキンとキャベツのサラダ）
+i: chicken_breast 300g, white_cabbage 250g, carrot 1pc, red_onion 0.5pc, mint_fresh 10g, coriander_fresh 10g, peanuts 20g, lime 2pc, fish_sauce 1tbsp, sugar 1tsp, chili_fresh 0.5pc
+sd: Poulet in leicht gesalzenem Wasser 15 Minuten gar ziehen lassen, abkühlen und zerzupfen. | Kabis und Rüebli sehr fein hobeln, Zwiebel in dünne Ringe schneiden. | Limettensaft, Fischsauce, Zucker und gehackte Chili verrühren. | Poulet, Gemüse und Kräuter mit der Sauce mischen und mit gehackten Erdnüssen bestreuen.
+se: Poach the chicken in lightly salted water for 15 minutes, let it cool and shred it. | Finely shred the cabbage and carrot and slice the onion into thin rings. | Stir the lime juice, fish sauce, sugar and chopped chilli together. | Toss the chicken, vegetables and herbs with the dressing and sprinkle with chopped peanuts.
+q: vietnamese chicken cabbage salad
+@ banh_mi_bowl | lunch | vietnamese | 25 | 2 | 7
+de: Banh-mì-Bowl mit Zitronengras-Schweinsfilet
+en: Banh mi bowl with lemongrass pork
+fr: Bowl banh mi au porc à la citronnelle
+it: Bowl banh mi con maiale alla citronella
+es: Bowl banh mi con cerdo a la hierba limón
+pt: Bowl banh mi com porco ao capim-limão
+ja: レモングラスポークのバインミーボウル
+i: pork_tenderloin 280g, jasmine_rice 120g, lemongrass 1pc, garlic 1pc, fish_sauce 1tbsp, sugar 1tsp, carrot 1pc, cucumber 0.5pc, rice_vinegar 2tbsp, coriander_fresh 10g, chili_fresh 0.5pc, rapeseed_oil 1tsp
+sd: Reis nach Packungsangabe kochen. | Rüebli und Gurke in feine Streifen schneiden und mit Reisessig und einer Prise Zucker 10 Minuten marinieren. | Zitronengras und Knoblauch fein hacken, mit Fischsauce und restlichem Zucker verrühren und das in Scheiben geschnittene Schweinsfilet darin marinieren. | Fleisch im Öl 2–3 Minuten pro Seite braten. | Reis, Fleisch und eingelegtes Gemüse in Schalen anrichten und mit Koriander und Chili bestreuen.
+se: Cook the rice according to the packet. | Cut the carrot and cucumber into fine strips and marinate them with the rice vinegar and a pinch of sugar for 10 minutes. | Finely chop the lemongrass and garlic, mix with the fish sauce and remaining sugar and marinate the sliced pork in it. | Fry the pork in the oil for 2–3 minutes per side. | Arrange the rice, pork and pickled vegetables in bowls and sprinkle with coriander and chilli.
+q: banh mi bowl pork
+@ bun_chay_tofu | lunch | vietnamese | 25 | 2 | 6
+de: Bún chay (Reisnudel-Bowl mit Zitronengras-Tofu)
+en: Bún chay (rice noodle bowl with lemongrass tofu)
+fr: Bún chay (bol de vermicelles au tofu citronnelle)
+it: Bún chay (bowl di vermicelli con tofu alla citronella)
+es: Bún chay (bol de fideos de arroz con tofu a la hierba limón)
+pt: Bún chay (bowl de aletria de arroz com tofu ao capim-limão)
+ja: ブン・チャイ（レモングラス豆腐のビーフンボウル）
+i: tofu_firm 350g, rice_noodles 120g, lemongrass 1pc, garlic 1pc, soy_sauce 2tbsp, lime 1pc, maple_syrup 1tsp, lettuce 0.25pc, cucumber 0.5pc, carrot 1pc, mint_fresh 10g, peanuts 20g, rapeseed_oil 2tsp
+sd: Reisnudeln nach Packungsangabe garen, kalt abspülen. | Zitronengras und Knoblauch fein hacken, Tofu würfeln und mit Zitronengras, Knoblauch und 1 EL Sojasauce mischen. | Tofu im Öl 8 Minuten goldbraun braten. | Restliche Sojasauce mit Limettensaft, Ahornsirup und 3 EL Wasser verrühren. | Salat, Nudeln, Gemüsestreifen und Tofu in Schalen anrichten, Sauce darübergiessen, mit Minze und Erdnüssen bestreuen.
+se: Cook the rice noodles according to the packet and rinse in cold water. | Finely chop the lemongrass and garlic, dice the tofu and mix it with the lemongrass, garlic and 1 tbsp soy sauce. | Fry the tofu in the oil for 8 minutes until golden. | Stir the remaining soy sauce with the lime juice, maple syrup and 3 tbsp water. | Arrange the lettuce, noodles, vegetable strips and tofu in bowls, pour over the sauce and sprinkle with mint and peanuts.
+q: vermicelli bowl tofu
+@ yum_nua | lunch | thai | 20 | 2 | 7
+de: Yam nuea (thailändischer Rindfleischsalat)
+en: Yam nuea (Thai beef salad)
+fr: Yam nuea (salade de bœuf thaïe)
+it: Yam nuea (insalata thai di manzo)
+es: Yam nuea (ensalada tailandesa de ternera)
+pt: Yam nuea (salada tailandesa de carne)
+ja: ヤム・ヌア（タイ風牛肉サラダ）
+i: beef_steak 300g, cherry_tomatoes 150g, cucumber 0.5pc, red_onion 0.5pc, lettuce 0.25pc, mint_fresh 10g, coriander_fresh 10g, lime 2pc, fish_sauce 1tbsp, sugar 1tsp, chili_fresh 1pc, jasmine_rice 80g
+sd: Reis nach Packungsangabe kochen. | Steak in einer sehr heissen Pfanne pro Seite 2–3 Minuten braten, 5 Minuten ruhen lassen und dünn aufschneiden. | Limettensaft, Fischsauce, Zucker und fein gehackte Chili verrühren. | Tomaten halbieren, Gurke und Zwiebel in Scheiben schneiden und mit Salat, Kräutern, Fleisch und Sauce mischen; mit Reis servieren.
+se: Cook the rice according to the packet. | Sear the steak in a very hot pan for 2–3 minutes per side, rest it for 5 minutes and slice thinly. | Stir the lime juice, fish sauce, sugar and finely chopped chilli together. | Halve the tomatoes, slice the cucumber and onion and toss with lettuce, herbs, beef and dressing; serve with rice.
+q: thai beef salad
+@ larb_gai | lunch | thai | 20 | 2 | 7
+de: Larb gai (thailändischer Hack-Salat mit Poulet)
+en: Larb gai (Thai minced chicken salad)
+fr: Larb gai (salade thaïe de poulet haché)
+it: Larb gai (insalata thai di pollo tritato)
+es: Larb gai (ensalada tailandesa de pollo picado)
+pt: Larb gai (salada tailandesa de frango moído)
+ja: ラープ・ガイ（タイ風鶏ひき肉サラダ）
+i: chicken_breast 320g, shallot 2pc, spring_onion 2pc, mint_fresh 15g, coriander_fresh 10g, lime 2pc, fish_sauce 1tbsp, chili_flakes 1pinch, jasmine_rice 100g, lettuce 0.5pc, cucumber 0.5pc
+sd: Reis nach Packungsangabe kochen; 1 EL rohen Reis in einer trockenen Pfanne goldbraun rösten und im Mörser grob zerstossen. | Poulet fein hacken und mit 3 EL Wasser in einer Pfanne 5–6 Minuten krümelig garen. | Vom Herd nehmen, Limettensaft, Fischsauce, Chiliflocken, Schalotten, Frühlingszwiebeln und Kräuter untermischen. | Mit geröstetem Reispulver bestreuen und in Salatblättern mit Gurke und Reis servieren.
+se: Cook the rice according to the packet; toast 1 tbsp raw rice in a dry pan until golden and coarsely crush it in a mortar. | Finely chop the chicken and cook it with 3 tbsp water in a pan for 5–6 minutes until crumbly. | Remove from the heat and mix in the lime juice, fish sauce, chilli flakes, shallots, spring onions and herbs. | Sprinkle with the toasted rice powder and serve in lettuce leaves with cucumber and rice.
+q: larb chicken lettuce
+@ palak_dal | lunch | indian | 35 | 2 | 6
+de: Palak Dal (Linsen mit Spinat) und Basmatireis
+en: Palak dal (lentils with spinach) and basmati rice
+fr: Palak dal (lentilles aux épinards) et riz basmati
+it: Palak dal (lenticchie con spinaci) e riso basmati
+es: Palak dal (lentejas con espinacas) y arroz basmati
+pt: Palak dal (lentilha com espinafre) e arroz basmati
+ja: パラック・ダール（ほうれん草の豆カレー）とバスマティライス
+i: mung_dal 80g, red_lentils 80g, spinach 250g, onion 1pc, garlic 2pc, ginger 10g, tomato 1pc, cumin 1tsp, turmeric 0.5tsp, garam_masala 1tsp, rapeseed_oil 2tsp, basmati_rice 80g, lemon 0.5pc, salt 3g
+sd: Linsen spülen und mit 700 ml Wasser und Kurkuma 20–25 Minuten weich köcheln. | Reis nach Packungsangabe kochen. | Zwiebel, Knoblauch, Ingwer und Tomate hacken, Kreuzkümmel im Öl kurz rösten, Gemüse zugeben und 5 Minuten braten. | Gemüse, Spinat und Garam Masala unter die Linsen rühren und 3 Minuten köcheln, mit Salz und Zitronensaft abschmecken. | Mit Reis servieren.
+se: Rinse the lentils and simmer with 700 ml water and turmeric for 20–25 minutes until soft. | Cook the rice according to the packet. | Chop the onion, garlic, ginger and tomato, briefly toast the cumin in the oil, add the vegetables and fry for 5 minutes. | Stir the vegetables, spinach and garam masala into the lentils, simmer for 3 minutes and season with salt and lemon juice. | Serve with the rice.
+q: dal spinach rice
+@ chana_masala | lunch | indian | 30 | 2 | 7
+de: Chana Masala (Kichererbsen-Curry) mit Reis
+en: Chana masala (chickpea curry) with rice
+fr: Chana masala (curry de pois chiches) et riz
+it: Chana masala (curry di ceci) con riso
+es: Chana masala (curry de garbanzos) con arroz
+pt: Chana masala (curry de grão-de-bico) com arroz
+ja: チャナ・マサラ（ひよこ豆カレー）とライス
+i: chickpeas 480g, canned_tomatoes 400g, onion 1pc, garlic 2pc, ginger 15g, chili_fresh 0.5pc, cumin 1tsp, garam_masala 2tsp, turmeric 0.5tsp, rapeseed_oil 2tsp, soy_yogurt 100g, basmati_rice 80g, coriander_fresh 10g, salt 3g
+sd: Reis nach Packungsangabe kochen. | Zwiebel, Knoblauch, Ingwer und Chili fein hacken, Kreuzkümmel im Öl kurz rösten und das Gemüse 6 Minuten goldbraun braten. | Kurkuma und Garam Masala zugeben, Tomaten und abgespülte Kichererbsen zufügen und 15 Minuten köcheln. | Mit Salz abschmecken, mit Sojajoghurt und Koriander servieren, dazu Reis.
+se: Cook the rice according to the packet. | Finely chop the onion, garlic, ginger and chilli, briefly toast the cumin in the oil and fry the vegetables for 6 minutes until golden. | Add the turmeric and garam masala, then the tomatoes and rinsed chickpeas and simmer for 15 minutes. | Season with salt and serve with soya yoghurt, coriander and rice.
+q: chana masala
+@ tandoori_chicken_salad | lunch | indian | 30 | 2 | 7
+de: Tandoori-Poulet-Salat mit Minz-Joghurt
+en: Tandoori chicken salad with mint yoghurt
+fr: Salade de poulet tandoori et yaourt à la menthe
+it: Insalata di pollo tandoori con yogurt alla menta
+es: Ensalada de pollo tandoori con yogur a la menta
+pt: Salada de frango tandoori com iogurte de hortelã
+ja: ミントヨーグルトのタンドリーチキンサラダ
+i: chicken_breast 300g, greek_yogurt 200g, paprika 2tsp, garam_masala 1tsp, cumin 1tsp, turmeric 0.5tsp, garlic 1pc, lemon 1pc, lettuce 0.5pc, cucumber 0.5pc, tomato 2pc, red_onion 0.5pc, mint_fresh 10g, pita 1pc, salt 2g
+sd: 100 g Joghurt mit Gewürzen, Knoblauch, halbem Zitronensaft und Salz verrühren, Poulet darin mindestens 20 Minuten marinieren. | Backofen auf 230 °C vorheizen und das Poulet auf einem Gitter 18–20 Minuten backen, bis es leicht gebräunt ist. | Restlichen Joghurt mit gehackter Minze und Zitronensaft verrühren. | Salat, Gurke, Tomaten und Zwiebel anrichten, Poulet in Scheiben darauflegen, mit Minz-Joghurt beträufeln und mit Pita servieren.
+se: Stir 100 g yoghurt with the spices, garlic, half the lemon juice and salt and marinate the chicken in it for at least 20 minutes. | Preheat the oven to 230 °C and bake the chicken on a rack for 18–20 minutes until lightly charred. | Stir the remaining yoghurt with chopped mint and lemon juice. | Arrange the lettuce, cucumber, tomatoes and onion, top with the sliced chicken, drizzle with mint yoghurt and serve with pitta.
+q: tandoori chicken salad
+@ paneer_tikka_wrap | lunch | indian | 25 | 2 | 6
+de: Paneer-Tikka-Wrap mit Peperoni und Joghurt
+en: Paneer tikka wrap with peppers and yoghurt
+fr: Wrap paneer tikka aux poivrons et yaourt
+it: Wrap di paneer tikka con peperoni e yogurt
+es: Wrap de paneer tikka con pimientos y yogur
+pt: Wrap de paneer tikka com pimentões e iogurte
+ja: パプリカとヨーグルトのパニールティッカラップ
+i: paneer 180g, greek_yogurt 150g, red_bell_pepper 1pc, red_onion 0.5pc, garam_masala 1tsp, paprika 1tsp, lemon 0.5pc, whole_wheat_tortilla 2pc, lettuce 0.2pc, mint_fresh 5g, rapeseed_oil 1tsp, salt 1g
+sd: Paneer würfeln und mit 50 g Joghurt, Garam Masala, Paprika, Zitronensaft und Salz mischen. | Peperoni und Zwiebel in Streifen schneiden. | Paneer und Gemüse im Öl in einer heissen Pfanne 6–8 Minuten braten, bis der Paneer Farbe hat. | Restlichen Joghurt mit Minze verrühren, Tortillas erwärmen, mit Salat, Paneer, Gemüse und Minz-Joghurt füllen und aufrollen.
+se: Dice the paneer and mix it with 50 g yoghurt, garam masala, paprika, lemon juice and salt. | Cut the pepper and onion into strips. | Fry the paneer and vegetables in the oil in a hot pan for 6–8 minutes until the paneer is coloured. | Stir the remaining yoghurt with mint, warm the tortillas, fill with lettuce, paneer, vegetables and mint yoghurt and roll up.
+q: paneer tikka wrap
+@ hot_sour_tofu_soup | lunch | chinese | 25 | 2 | 5
+de: Sauer-scharfe Suppe mit Tofu, Shiitake und Ei
+en: Hot and sour soup with tofu, shiitake and egg
+fr: Soupe aigre-piquante au tofu, shiitaké et œuf
+it: Zuppa agropiccante con tofu, shiitake e uovo
+es: Sopa agripicante con tofu, shiitake y huevo
+pt: Sopa agridoce picante com tofu, shiitake e ovo
+ja: 豆腐と椎茸、卵の酸辣湯
+i: tofu_firm 300g, shiitake 120g, eggs 2pc, chicken_broth 900ml, carrot 1pc, soy_sauce 2tbsp, rice_vinegar 3tbsp, chili_flakes 1pinch, black_pepper 1pinch, ginger 10g, cornstarch 1tbsp, spring_onion 2pc, sesame_oil 1tsp
+sd: Tofu in Streifen, Pilze in Scheiben und Rüebli in feine Stifte schneiden, Ingwer reiben. | Bouillon aufkochen, Pilze, Rüebli und Ingwer 5 Minuten köcheln, dann Tofu zugeben. | Sojasauce, Essig, Chili und Pfeffer zugeben, Maisstärke mit 3 EL kaltem Wasser anrühren und einrühren, bis die Suppe leicht bindet. | Verquirlte Eier in dünnem Strahl unter Rühren einlaufen lassen, mit Sesamöl und Frühlingszwiebeln servieren.
+se: Cut the tofu into strips, slice the mushrooms, cut the carrot into fine sticks and grate the ginger. | Bring the stock to the boil, simmer the mushrooms, carrot and ginger for 5 minutes, then add the tofu. | Add the soy sauce, vinegar, chilli and pepper, mix the cornflour with 3 tbsp cold water and stir it in until the soup thickens slightly. | Pour in the beaten eggs in a thin stream while stirring and serve with sesame oil and spring onions.
+q: hot and sour soup
+@ chicken_vegetable_soup | lunch | european | 40 | 3 | 7
+de: Hühnersuppe mit Gemüse und Gerste
+en: Chicken and vegetable soup with barley
+fr: Soupe de poulet aux légumes et orge
+it: Zuppa di pollo con verdure e orzo
+es: Sopa de pollo con verduras y cebada
+pt: Sopa de frango com legumes e cevada
+ja: 大麦入りチキン野菜スープ
+i: chicken_breast 400g, pearl_barley 80g, carrot 2pc, celery 2pc, leek 1pc, chicken_broth 1500ml, parsley 15g, rapeseed_oil 1tsp, salt 2g, black_pepper 1pinch
+sd: Rüebli, Sellerie und Lauch klein schneiden und im Öl 4 Minuten andünsten. | Bouillon und gespülte Gerste zugeben, Poulet ganz hineinlegen und 20 Minuten leise köcheln. | Poulet herausnehmen, in Würfel schneiden und zurückgeben, weitere 10 Minuten köcheln, bis die Gerste weich ist. | Mit Salz und Pfeffer abschmecken und mit Petersilie servieren.
+se: Chop the carrots, celery and leek and sweat them in the oil for 4 minutes. | Add the stock and rinsed barley, put in the whole chicken breasts and simmer gently for 20 minutes. | Remove the chicken, dice it and return it, then simmer for 10 more minutes until the barley is soft. | Season with salt and pepper and serve with parsley.
+q: chicken vegetable soup
+@ tuna_pasta_salad | lunch | italian | 20 | 2 | 6
+de: Teigwarensalat mit Thon, Rucola und Tomaten
+en: Pasta salad with tuna, rocket and tomatoes
+fr: Salade de pâtes au thon, roquette et tomates
+it: Insalata di pasta con tonno, rucola e pomodorini
+es: Ensalada de pasta con atún, rúcula y tomates
+pt: Salada de macarrão com atum, rúcula e tomate
+ja: ツナとルッコラ、トマトのパスタサラダ
+i: pasta 140g, tuna_canned 200g, cherry_tomatoes 200g, rocket 40g, red_onion 0.25pc, olives 20g, lemon 1pc, olive_oil 1tbsp, basil_fresh 5g, salt 2g, black_pepper 1pinch
+sd: Teigwaren in Salzwasser al dente kochen, kalt abspülen und abtropfen lassen. | Tomaten halbieren, Zwiebel fein hacken, Thon abgiessen. | Zitronensaft, Öl, Salz und Pfeffer verrühren. | Teigwaren mit Thon, Tomaten, Zwiebel, Oliven, Rucola, Basilikum und Sauce mischen.
+se: Cook the pasta in salted water until al dente, rinse in cold water and drain. | Halve the tomatoes, finely chop the onion and drain the tuna. | Whisk the lemon juice, oil, salt and pepper. | Toss the pasta with the tuna, tomatoes, onion, olives, rocket, basil and dressing.
+q: tuna pasta salad
+@ tonno_fagioli | lunch | italian | 10 | 2 | 6
+de: Insalata tonno e fagioli (Thon mit weissen Bohnen)
+en: Tonno e fagioli (tuna and white bean salad)
+fr: Tonno e fagioli (salade de thon et haricots blancs)
+it: Insalata di tonno e fagioli
+es: Tonno e fagioli (ensalada de atún y alubias)
+pt: Tonno e fagioli (salada de atum e feijão-branco)
+ja: トンノ・エ・ファジョーリ（ツナと白いんげん豆のサラダ）
+i: white_beans 400g, tuna_canned 200g, red_onion 0.5pc, celery 1pc, parsley 15g, lemon 1pc, olive_oil 1tbsp, bread 60g, salt 1g, black_pepper 1pinch
+sd: Bohnen abspülen und abtropfen lassen, Thon abgiessen. | Zwiebel in feine Ringe, Sellerie in dünne Scheiben schneiden, Petersilie hacken. | Mit Zitronensaft, Öl, Salz und Pfeffer mischen und 5 Minuten ziehen lassen. | Mit geröstetem Brot servieren.
+se: Rinse and drain the beans and drain the tuna. | Slice the onion into thin rings and the celery thinly and chop the parsley. | Mix with the lemon juice, oil, salt and pepper and leave for 5 minutes. | Serve with toasted bread.
+q: tuna white bean salad
+@ halloumi_lentil_salad | lunch | mediterranean | 25 | 2 | 6
+de: Linsensalat mit grilliertem Halloumi und Ofengemüse
+en: Lentil salad with grilled halloumi and roast vegetables
+fr: Salade de lentilles, halloumi grillé et légumes rôtis
+it: Insalata di lenticchie con halloumi grigliato e verdure arrosto
+es: Ensalada de lentejas con halloumi a la plancha y verduras asadas
+pt: Salada de lentilha com halloumi grelhado e legumes assados
+ja: グリルハルミと焼き野菜のレンズ豆サラダ
+i: green_lentils 120g, halloumi 120g, zucchini 1pc, red_bell_pepper 1pc, red_onion 0.5pc, rocket 40g, lemon 1pc, olive_oil 1tbsp, mint_fresh 5g, salt 1g
+sd: Linsen 20–25 Minuten in Wasser bissfest kochen und abgiessen. | Backofen auf 220 °C vorheizen, Zucchetti, Peperoni und Zwiebel in Stücke schneiden, mit 2 TL Öl mischen und 20 Minuten rösten. | Halloumi in Scheiben schneiden und in einer trockenen Pfanne pro Seite 2 Minuten goldbraun braten. | Linsen, Gemüse und Rucola mit Zitronensaft, restlichem Öl, Salz und Minze mischen und mit Halloumi belegen.
+se: Cook the lentils in water for 20–25 minutes until just tender and drain. | Preheat the oven to 220 °C, cut the courgette, pepper and onion into chunks, toss with 2 tsp oil and roast for 20 minutes. | Slice the halloumi and fry in a dry pan for 2 minutes per side until golden. | Toss the lentils, vegetables and rocket with lemon juice, the remaining oil, salt and mint and top with the halloumi.
+q: halloumi salad lentils
+@ gazpacho_shrimp | lunch | spanish | 20 | 2 | 6
+de: Gazpacho mit Crevetten und Ei
+en: Gazpacho with prawns and egg
+fr: Gaspacho aux crevettes et œuf
+it: Gazpacho con gamberi e uovo
+es: Gazpacho con gambas y huevo
+pt: Gaspacho com camarão e ovo
+ja: エビと卵のガスパチョ
+i: tomato 6pc, cucumber 0.5pc, red_bell_pepper 1pc, garlic 1pc, bread 60g, olive_oil 1tbsp, white_wine_vinegar 1tbsp, shrimp 200g, eggs 2pc, salt 3g
+sd: Tomaten, Gurke, Peperoni und Knoblauch grob schneiden, mit Brot, Öl, Essig und Salz im Mixer sehr fein pürieren. | Mindestens 1 Stunde kalt stellen. | Eier 9 Minuten kochen, schälen und hacken; Crevetten 2–3 Minuten in siedendem Wasser garen. | Gazpacho in Schalen giessen und mit Crevetten und Ei servieren.
+se: Roughly chop the tomatoes, cucumber, pepper and garlic and blend very smoothly with the bread, oil, vinegar and salt. | Chill for at least 1 hour. | Boil the eggs for 9 minutes, peel and chop them; cook the prawns in simmering water for 2–3 minutes. | Pour the gazpacho into bowls and serve with the prawns and egg.
+q: gazpacho
+@ espinacas_garbanzos | lunch | spanish | 25 | 2 | 6
+de: Espinacas con garbanzos (Spinat mit Kichererbsen)
+en: Espinacas con garbanzos (spinach with chickpeas)
+fr: Espinacas con garbanzos (épinards aux pois chiches)
+it: Espinacas con garbanzos (spinaci con ceci)
+es: Espinacas con garbanzos
+pt: Espinacas con garbanzos (espinafre com grão-de-bico)
+ja: エスピナカス・コン・ガルバンソス（ほうれん草とひよこ豆の煮込み）
+i: chickpeas 480g, spinach 300g, garlic 3pc, bread 50g, paprika 2tsp, cumin 1tsp, white_wine_vinegar 1tbsp, olive_oil 1tbsp, vegetable_broth 200ml, tofu_firm 150g, salt 2g
+sd: Brot und Knoblauch im Öl goldbraun braten, herausnehmen und mit Paprika, Kreuzkümmel und Essig im Mörser zu einer Paste zerstossen. | Spinat in der gleichen Pfanne zusammenfallen lassen. | Kichererbsen, Tofuwürfel, Bouillon und die Paste zugeben und 10 Minuten köcheln. | Mit Salz abschmecken und warm servieren.
+se: Fry the bread and garlic in the oil until golden, remove and pound in a mortar with the paprika, cumin and vinegar to a paste. | Wilt the spinach in the same pan. | Add the chickpeas, diced tofu, stock and paste and simmer for 10 minutes. | Season with salt and serve warm.
+q: spinach chickpeas stew
+@ gado_gado | lunch | indonesian | 30 | 2 | 7
+de: Gado-Gado mit Tofu, Ei und Erdnusssauce
+en: Gado-gado with tofu, egg and peanut sauce
+fr: Gado-gado au tofu, œuf et sauce cacahuète
+it: Gado-gado con tofu, uovo e salsa di arachidi
+es: Gado-gado con tofu, huevo y salsa de cacahuete
+pt: Gado-gado com tofu, ovo e molho de amendoim
+ja: 豆腐と卵、ピーナッツソースのガドガド
+i: tofu_firm 250g, eggs 2pc, potato 200g, green_beans 150g, bean_sprouts 100g, cucumber 0.5pc, white_cabbage 100g, peanut_butter 2tbsp, soy_sauce 1tbsp, lime 1pc, sambal_oelek 1tsp, maple_syrup 1tsp, rapeseed_oil 1tsp
+sd: Kartoffeln in Würfeln 12 Minuten kochen, Bohnen und Kabis die letzten 4 Minuten mitkochen, Sprossen kurz blanchieren; Eier 8 Minuten kochen. | Tofu würfeln und im Öl 6–8 Minuten knusprig braten. | Erdnussbutter mit Sojasauce, Limettensaft, Sambal, Ahornsirup und 4–5 EL heissem Wasser zu einer Sauce verrühren. | Gemüse, Gurke, Tofu und halbierte Eier anrichten und mit der Sauce übergiessen.
+se: Boil the diced potatoes for 12 minutes, adding the beans and cabbage for the last 4 minutes, and blanch the sprouts briefly; boil the eggs for 8 minutes. | Dice the tofu and fry it in the oil for 6–8 minutes until crisp. | Stir the peanut butter with soy sauce, lime juice, sambal, maple syrup and 4–5 tbsp hot water into a sauce. | Arrange the vegetables, cucumber, tofu and halved eggs and pour over the sauce.
+q: gado gado
+@ ceviche_sweet_potato | lunch | peruvian | 30 | 2 | 7
+de: Ceviche mit Süsskartoffel und Mais
+en: Ceviche with sweet potato and corn
+fr: Ceviche à la patate douce et au maïs
+it: Ceviche con patata dolce e mais
+es: Ceviche con boniato y maíz
+pt: Ceviche com batata-doce e milho
+ja: さつまいもとコーンのセビーチェ
+i: sea_bass 320g, lime 4pc, red_onion 0.5pc, chili_fresh 1pc, coriander_fresh 10g, sweet_potato 1pc, sweetcorn 100g, lettuce 0.2pc, salt 3g
+sd: Süsskartoffel schälen, in Scheiben schneiden und 12 Minuten kochen, abkühlen lassen. | Sehr frischen Fisch (Sushiqualität) in 1,5 cm grosse Würfel schneiden und salzen. | Zwiebel in feine Streifen schneiden, Chili hacken, beides mit Fisch und Limettensaft mischen und 10–15 Minuten im Kühlschrank ziehen lassen, bis der Fisch weiss wird. | Mit Koriander bestreuen und mit Süsskartoffel, Mais und Salat servieren.
+se: Peel and slice the sweet potato, boil it for 12 minutes and let it cool. | Cut very fresh (sushi-grade) fish into 1.5 cm cubes and salt them. | Slice the onion thinly, chop the chilli, mix both with the fish and lime juice and leave in the fridge for 10–15 minutes until the fish turns opaque. | Sprinkle with coriander and serve with the sweet potato, corn and lettuce.
+q: ceviche
+@ trout_potato_salad | lunch | nordic | 25 | 2 | 6
+de: Kartoffelsalat mit geräucherter Forelle und Dill
+en: Potato salad with smoked trout and dill
+fr: Salade de pommes de terre à la truite fumée et aneth
+it: Insalata di patate con trota affumicata e aneto
+es: Ensalada de patatas con trucha ahumada y eneldo
+pt: Salada de batata com truta defumada e endro
+ja: スモークトラウトとディルのポテトサラダ
+i: potato 400g, trout_smoked 200g, greek_yogurt 120g, dijon_mustard 1tsp, cucumber 0.3pc, red_onion 0.25pc, dill 10g, lemon 0.5pc, rocket 30g, salt 2g, black_pepper 1pinch
+sd: Kartoffeln in der Schale 18–20 Minuten kochen, schälen und lauwarm in Scheiben schneiden. | Joghurt mit Senf, Zitronensaft, Salz, Pfeffer und gehacktem Dill verrühren. | Gurke würfeln, Zwiebel fein hacken und mit Kartoffeln und Sauce mischen. | Forelle in Stücke zupfen und mit Rucola auf dem Salat anrichten.
+se: Boil the potatoes in their skins for 18–20 minutes, peel and slice them while warm. | Stir the yoghurt with mustard, lemon juice, salt, pepper and chopped dill. | Dice the cucumber, finely chop the onion and mix with the potatoes and dressing. | Flake the trout and arrange it with rocket on the salad.
+q: smoked trout potato salad
+@ skagen_toast | lunch | nordic | 15 | 2 | 6
+de: Skagen-Toast mit Crevetten und Dill
+en: Toast Skagen with prawns and dill
+fr: Toast Skagen aux crevettes et aneth
+it: Toast Skagen con gamberi e aneto
+es: Tostada Skagen con gambas y eneldo
+pt: Torrada Skagen com camarão e endro
+ja: エビとディルのスカーゲントースト
+i: shrimp 300g, greek_yogurt 100g, dijon_mustard 1tsp, red_onion 0.25pc, dill 10g, lemon 0.5pc, bread 120g, lettuce 0.2pc, butter 1tsp, salt 1g
+sd: Crevetten in siedendem Salzwasser 2–3 Minuten garen, kalt abschrecken und grob hacken. | Joghurt mit Senf, sehr fein gehackter Zwiebel, Dill, Zitronensaft und Salz verrühren und die Crevetten untermischen. | Brot in wenig Butter von beiden Seiten goldbraun rösten. | Salatblatt auf das Brot legen, Crevettenmasse daraufgeben und mit Dill und Zitronenschnitz servieren.
+se: Cook the prawns in simmering salted water for 2–3 minutes, cool in cold water and chop roughly. | Stir the yoghurt with mustard, very finely chopped onion, dill, lemon juice and salt and fold in the prawns. | Toast the bread in a little butter on both sides until golden. | Put a lettuce leaf on the bread, top with the prawn mixture and serve with dill and a lemon wedge.
+q: shrimp toast skagen
+@ edamame_quinoa_bowl | lunch | japanese | 20 | 2 | 6
+de: Edamame-Quinoa-Bowl mit Miso-Dressing
+en: Edamame quinoa bowl with miso dressing
+fr: Bowl quinoa-edamame, sauce miso
+it: Bowl di quinoa ed edamame con dressing al miso
+es: Bowl de quinoa y edamame con aliño de miso
+pt: Bowl de quinoa e edamame com molho de missô
+ja: 味噌ドレッシングの枝豆キヌアボウル
+i: quinoa 120g, edamame 200g, tofu_firm 150g, carrot 1pc, red_cabbage 100g, avocado 0.5pc, miso_paste 1tbsp, rice_vinegar 1tbsp, maple_syrup 1tsp, sesame_oil 1tsp, ginger 5g, sesame_seeds 1tsp
+sd: Quinoa spülen und in 240 ml Wasser 15 Minuten garen. | Edamame 4 Minuten kochen, Tofu würfeln und kurz anbraten. | Miso mit Reisessig, Ahornsirup, Sesamöl, geriebenem Ingwer und 2 EL Wasser verrühren. | Quinoa, Edamame, Tofu, geraffeltes Rüebli, Rotkabis und Avocado in Schalen anrichten, Dressing darüberträufeln und mit Sesam bestreuen.
+se: Rinse the quinoa and cook it in 240 ml water for 15 minutes. | Boil the edamame for 4 minutes, dice the tofu and fry briefly. | Stir the miso with rice vinegar, maple syrup, sesame oil, grated ginger and 2 tbsp water. | Arrange the quinoa, edamame, tofu, grated carrot, red cabbage and avocado in bowls, drizzle with the dressing and sprinkle with sesame.
+q: edamame quinoa bowl
+@ harira | lunch | moroccan | 45 | 3 | 6
+de: Harira (marokkanische Linsen-Kichererbsen-Suppe) mit Poulet
+en: Harira (Moroccan lentil and chickpea soup) with chicken
+fr: Harira (soupe marocaine aux lentilles et pois chiches) au poulet
+it: Harira (zuppa marocchina di lenticchie e ceci) con pollo
+es: Harira (sopa marroquí de lentejas y garbanzos) con pollo
+pt: Harira (sopa marroquina de lentilha e grão-de-bico) com frango
+ja: ハリラ（鶏肉入りモロッコ風レンズ豆とひよこ豆のスープ）
+i: chicken_breast 250g, red_lentils 100g, chickpeas 240g, canned_tomatoes 400g, onion 1pc, celery 1pc, garlic 2pc, ginger 10g, cinnamon_ground 0.5tsp, turmeric 0.5tsp, cumin 1tsp, chicken_broth 1200ml, coriander_fresh 10g, parsley 10g, lemon 1pc, olive_oil 1tbsp, salt 2g
+sd: Zwiebel, Sellerie, Knoblauch und Ingwer hacken, Poulet in kleine Würfel schneiden. | Im Öl 5 Minuten anbraten, Gewürze kurz mitrösten. | Tomaten, Bouillon und gespülte Linsen zugeben und 25 Minuten köcheln. | Kichererbsen zugeben und 10 Minuten weiterköcheln, mit Salz und Zitronensaft abschmecken. | Mit Koriander und Petersilie servieren.
+se: Chop the onion, celery, garlic and ginger and dice the chicken. | Fry in the oil for 5 minutes and briefly toast the spices. | Add the tomatoes, stock and rinsed lentils and simmer for 25 minutes. | Add the chickpeas and simmer for 10 more minutes, then season with salt and lemon juice. | Serve with coriander and parsley.
+q: harira soup
+@ couscous_chicken_salad | lunch | moroccan | 25 | 2 | 6
+de: Couscous-Salat mit Poulet, Orange und Minze
+en: Couscous salad with chicken, orange and mint
+fr: Salade de couscous au poulet, orange et menthe
+it: Insalata di cuscus con pollo, arancia e menta
+es: Ensalada de cuscús con pollo, naranja y menta
+pt: Salada de cuscuz marroquino com frango, laranja e hortelã
+ja: 鶏肉、オレンジ、ミントのクスクスサラダ
+i: couscous 100g, chicken_breast 280g, orange 1pc, cucumber 0.5pc, red_onion 0.25pc, mint_fresh 10g, parsley 10g, lemon 1pc, olive_oil 1tbsp, cumin 1tsp, almonds 15g, salt 2g
+sd: Couscous mit 150 ml heissem Salzwasser übergiessen und zugedeckt 5 Minuten quellen lassen, auflockern. | Poulet mit Kreuzkümmel und Salz würzen und in 1 TL Öl pro Seite 5–6 Minuten braten, würfeln. | Orange schälen und filetieren, Gurke und Zwiebel fein würfeln, Kräuter hacken. | Alles mit Zitronensaft und restlichem Öl mischen und mit gehackten Mandeln bestreuen.
+se: Pour 150 ml hot salted water over the couscous, leave covered for 5 minutes and fluff up. | Season the chicken with cumin and salt, fry it in 1 tsp oil for 5–6 minutes per side and dice it. | Peel and segment the orange, finely dice the cucumber and onion and chop the herbs. | Mix everything with lemon juice and the remaining oil and sprinkle with chopped almonds.
+q: couscous salad chicken mint

@@ -296,7 +296,7 @@
 296|HELP
 297|Help with eating problems
 298|Free counselling in Switzerland
-299|Edovita · click prototype v5.10.1, no real data
+299|Edovita · click prototype v5.11, no real data
 300|Gentle reminders, no pressure. You decide which ones you get.
 301|Meals
 302|Weigh-in

@@ -1,0 +1,204 @@
+# Lebensmittelkatalog fuer Rezepte. Naehrwerte je 100 g (essbarer Anteil, roh bzw. trocken wie eingekauft).
+# Werte gerundet nach USDA FoodData Central / Schweizer Naehrwertdatenbank (Richtwerte).
+# Format: id|gruppe|kcal,eiweiss,kohlenhydrate,fett|tags|einheiten|de|en|fr|it|es|pt|ja
+# Einheiten: pc=g pro Stueck, tbsp=g pro EL, tsp=g pro TL, ml=Dichte g/ml. "-" = Name aus data/glossary.js uebernehmen.
+salmon|meat|208,20,0,13|fish||-|-|saumon|salmone|salmón|-|-
+broccoli|veg|34,2.8,7,0.4|||-|-|brocoli|broccoli|brócoli|-|-
+potato|veg|77,2,17,0.1||pc=150|-|-|pommes de terre|patate|patatas|-|-
+olive_oil|pantry|884,0,0,100||tbsp=13.5,tsp=4.5,ml=0.92|-|-|huile d'olive|olio d'oliva|aceite de oliva|-|-
+lemon|veg|29,1.1,9,0.3||pc=40|-|-|citron|limone|limón|-|-
+garlic|veg|149,6.4,33,0.5||pc=3|-|-|ail|aglio|ajo|-|-
+salt|pantry|0,0,0,0||tsp=5,pinch=0.5|-|-|sel|sale|sal|-|-
+black_pepper|pantry|251,10,64,3||tsp=2.3,pinch=0.5|-|-|poivre noir|pepe nero|pimienta negra|-|-
+chicken_breast|meat|120,22.5,0,2.6|meat||-|-|blanc de poulet|petto di pollo|pechuga de pollo|-|-
+coconut_milk|pantry|197,2,2.8,21||ml=1.02,tbsp=15|-|-|lait de coco|latte di cocco|leche de coco|-|-
+red_curry_paste|pantry|120,2,15,5||tbsp=15,tsp=5|-|-|pâte de curry rouge|pasta di curry rossa|pasta de curry rojo|-|-
+red_bell_pepper|veg|31,1,6,0.3||pc=150|-|-|poivron rouge|peperone rosso|pimiento rojo|-|-
+aubergine|veg|25,1,6,0.2||pc=250|-|-|aubergine|melanzana|berenjena|-|-
+rapeseed_oil|pantry|884,0,0,100||tbsp=13.5,tsp=4.5,ml=0.92|-|-|huile de colza|olio di colza|aceite de colza|-|-
+fish_sauce|pantry|35,5,3.6,0|fish|tbsp=15,tsp=5,ml=1.2|-|-|sauce de poisson|salsa di pesce|salsa de pescado|-|-
+sugar|pantry|400,0,100,0||tbsp=12,tsp=4|-|-|sucre|zucchero|azúcar|-|-
+thai_basil|pantry|23,3,3,0.6|||-|-|basilic thaï|basilico thai|albahaca tailandesa|-|-
+kaffir_lime_leaves|pantry|30,1,5,0||pc=0.33|-|-|feuilles de combava|foglie di lime kaffir|hojas de lima kaffir|-|-
+jasmine_rice|pantry|356,7,79,0.6|||-|-|riz jasmin|riso jasmine|arroz jazmín|-|-
+beef_broth|pantry|7,1,0.3,0.2|meat|ml=1.01|-|-|bouillon de bœuf|brodo di manzo|caldo de carne|-|-
+onion|veg|40,1.1,9,0.1|onion|pc=100|-|-|oignon|cipolla|cebolla|-|-
+ginger|veg|80,1.8,18,0.8||pc=15,tsp=3|-|-|gingembre|zenzero|jengibre|-|-
+star_anise|pantry|337,18,50,16||pc=0.5|-|-|anis étoilé|anice stellato|anís estrellado|-|-
+cinnamon_stick|pantry|247,4,81,1.2||pc=3|-|-|bâton de cannelle|stecca di cannella|rama de canela|-|-
+cloves|pantry|274,6,66,13||pc=0.1|-|-|clous de girofle|chiodi di garofano|clavos de olor|-|-
+rice_noodles|pantry|360,6,80,0.6|||-|-|nouilles de riz plates|tagliatelle di riso|fideos de arroz planos|-|-
+beef_sirloin|meat|180,21,0,10|meat||-|-|entrecôte de bœuf|controfiletto di manzo|entrecot de ternera|-|-
+bean_sprouts|veg|30,3,6,0.2|||-|-|pousses de soja|germogli di soia|brotes de soja|-|-
+spring_onion|veg|32,1.8,7,0.2|onion|pc=15|-|-|oignons nouveaux|cipollotti|cebolletas|-|-
+coriander_fresh|pantry|23,2,4,0.5|cilantro||-|-|coriandre fraîche|coriandolo fresco|cilantro fresco|-|-
+lime|veg|30,0.7,10,0.2||pc=30|-|-|citron vert|lime|lima|-|-
+oats|pantry|372,13.5,59,7|gluten|tbsp=8|-|-|flocons d'avoine|fiocchi d'avena|copos de avena|-|-
+milk|dairy|64,3.3,4.8,3.5|dairy|ml=1.03|-|-|lait entier|latte intero|leche entera|-|-
+yogurt|dairy|66,3.8,4.7,3.5|dairy|tbsp=15|-|-|yaourt nature|yogurt bianco|yogur natural|-|-
+apple|veg|52,0.3,14,0.2||pc=150|-|-|pommes|mele|manzanas|-|-
+hazelnuts|pantry|628,15,17,61|nuts|tbsp=8|-|-|noisettes|nocciole|avellanas|-|-
+honey|pantry|304,0.3,82,0||tbsp=21,tsp=7|-|-|miel|miele|miel|-|-
+red_lentils|pantry|340,24,52,1.5|||-|-|lentilles corail|lenticchie rosse|lentejas rojas|-|-
+canned_tomatoes|pantry|21,1,4,0.2|||-|-|tomates pelées (boîte)|pelati (pomodori in scatola)|tomates pelados (lata)|-|-
+vegetable_broth|pantry|5,0.3,0.8,0.1||ml=1.01|-|-|bouillon de légumes|brodo vegetale|caldo de verduras|-|-
+spinach|veg|23,2.9,3.6,0.4|||-|-|épinards|spinaci|espinacas|-|-
+curry_powder|pantry|325,14,56,14||tsp=3,tbsp=9|-|-|curry en poudre|curry in polvere|curry en polvo|-|-
+cumin|pantry|375,18,44,22||tsp=2,pinch=0.5|-|-|cumin moulu|cumino macinato|comino molido|-|-
+eggs|dairy|143,12.6,0.7,9.5|egg|pc=50|-|-|œufs|uova|huevos|-|-
+bread|pantry|230,8.5,41,2.5|gluten||-|-|pain complet|pane integrale|pan integral|-|-
+butter|dairy|717,0.9,0.1,81|dairy|tbsp=14,tsp=5|-|-|beurre|burro|mantequilla|-|-
+gruyere|dairy|413,29.8,0.4,32|dairy||-|-|gruyère|groviera|queso gruyère|-|-
+tomato|veg|18,0.9,3.9,0.2||pc=120|-|-|tomates|pomodori|tomates|-|-
+cucumber|veg|15,0.7,3.6,0.1||pc=300|-|-|concombre|cetriolo|pepino|-|-
+banana|veg|89,1.1,23,0.3||pc=120|-|-|bananes|banane|plátanos|-|-
+chickpeas|pantry|139,7,22,2.6|||-|-|pois chiches (boîte)|ceci (in scatola)|garbanzos (lata)|-|-
+quinoa|pantry|368,14,64,6|||-|-|quinoa|quinoa|quinoa|-|-
+berries|veg|50,0.8,11,0.4|||-|-|baies|frutti di bosco|frutos rojos|-|-
+pasta|pantry|355,13,70,2.5|gluten||-|-|pâtes complètes|pasta integrale|pasta integral|-|-
+lettuce|veg|15,1.4,2.9,0.2||pc=300|-|-|laitue|lattuga|lechuga|-|-
+nuts|pantry|607,20,21,54|nuts|tbsp=8|-|-|noix mélangées|frutta secca mista|frutos secos|-|-
+turkey_breast|meat|111,24,0,1.2|meat||Trutenbrust|turkey breast|blanc de dinde|petto di tacchino|pechuga de pavo|peito de peru|七面鳥むね肉
+turkey_mince|meat|130,21,0,5|meat||Truten-Hackfleisch|turkey mince|dinde hachée|macinato di tacchino|carne picada de pavo|carne moída de peru|七面鳥ひき肉
+chicken_thigh|meat|121,19.7,0,4.1|meat||Pouletschenkel ohne Haut|chicken thigh, skinless|haut de cuisse de poulet sans peau|sovracoscia di pollo senza pelle|contramuslo de pollo sin piel|sobrecoxa de frango sem pele|鶏もも肉（皮なし）
+beef_mince_lean|meat|137,21,0,5|meat||Rindshackfleisch, mager|lean beef mince|bœuf haché maigre|macinato di manzo magro|carne picada de ternera magra|carne moída magra|牛赤身ひき肉
+beef_steak|meat|140,22,0,5.5|meat||Rindshuft|beef rump steak|rumsteck de bœuf|scamone di manzo|cadera de ternera|alcatra|牛ランプ肉
+beef_stew|meat|150,21,0,7|meat||Rindsragout|beef stewing steak|bœuf à braiser|spezzatino di manzo|carne de ternera para guisar|carne bovina para ensopado|牛煮込み用肉
+pork_tenderloin|meat|120,21,0,3.5|meat||Schweinsfilet|pork tenderloin|filet mignon de porc|filetto di maiale|solomillo de cerdo|filé-mignon suíno|豚ヒレ肉
+pork_mince_lean|meat|160,20,0,9|meat||Schweinshackfleisch, mager|lean pork mince|porc haché maigre|macinato di maiale magro|carne picada de cerdo magra|carne suína moída magra|豚赤身ひき肉
+ham_cooked|meat|110,19,1,3.5|meat||Hinterschinken|cooked ham|jambon cuit|prosciutto cotto|jamón cocido|presunto cozido|ロースハム
+bresaola|meat|151,32,0.5,2|meat||Bresaola|bresaola|bresaola|bresaola|bresaola|bresaola|ブレザオラ
+bundnerfleisch|meat|160,35,1,2|meat||Bündnerfleisch|Grisons air-dried beef|viande séchée des Grisons|carne secca dei Grigioni|cecina de los Grisones|carne seca dos Grisões|グラウビュンデン干し牛肉
+chorizo|meat|455,24,2,38|meat||Chorizo|chorizo|chorizo|chorizo|chorizo|chouriço|チョリソー
+chicken_broth|pantry|5,0.6,0.4,0.2|meat|ml=1.01|Hühnerbouillon|chicken stock|bouillon de volaille|brodo di pollo|caldo de pollo|caldo de galinha|チキンスープ
+smoked_salmon|meat|117,18,0,4.3|fish||Räucherlachs|smoked salmon|saumon fumé|salmone affumicato|salmón ahumado|salmão defumado|スモークサーモン
+cod|meat|82,18,0,0.7|fish||Kabeljaufilet|cod fillet|filet de cabillaud|filetto di merluzzo|filete de bacalao fresco|filé de bacalhau fresco|タラの切り身
+salt_cod|meat|110,24,0,0.8|fish||Stockfisch, entsalzt|salt cod, desalted|morue dessalée|baccalà dissalato|bacalao desalado|bacalhau dessalgado|塩抜きした干しダラ
+tuna_canned|meat|116,26,0,1|fish||Thon in Wasser (Dose)|tuna in water (tinned)|thon au naturel (boîte)|tonno al naturale (scatola)|atún al natural (lata)|atum em água (lata)|ツナ水煮缶
+shrimp|meat|85,20,0,0.5|fish||Crevetten, roh geschält|raw peeled prawns|crevettes crues décortiquées|gamberi crudi sgusciati|gambas crudas peladas|camarão cru descascado|むきエビ
+mussels|meat|86,12,3.7,2.2|fish|pc=10|Miesmuscheln|mussels|moules|cozze|mejillones|mexilhões|ムール貝
+trout_smoked|meat|140,22,0,6|fish||Forelle, heiss geräuchert|hot-smoked trout|truite fumée à chaud|trota affumicata|trucha ahumada|truta defumada|スモークトラウト
+whitefish|meat|134,19,0,5.9|fish||Felchenfilet|whitefish fillet (Felchen)|filet de féra|filetto di coregone|filete de corégono|filé de corégono|白身魚（フェルヒェン）の切り身
+mackerel|meat|205,19,0,14|fish||Makrelenfilet|mackerel fillet|filet de maquereau|filetto di sgombro|filete de caballa|filé de cavala|サバの切り身
+sea_bass|meat|97,18,0,2|fish||Wolfsbarschfilet|sea bass fillet|filet de bar|filetto di branzino|filete de lubina|filé de robalo|スズキの切り身
+skyr|dairy|63,11,4,0.2|dairy|tbsp=15|Skyr nature|plain skyr|skyr nature|skyr bianco|skyr natural|skyr natural|スキール（プレーン）
+quark_lowfat|dairy|67,12,4,0.3|dairy|tbsp=15|Magerquark|low-fat quark|fromage blanc maigre|quark magro|queso quark desnatado|quark desnatado|低脂肪クワルク
+cottage_cheese|dairy|98,12,2.7,4.3|dairy|tbsp=15|Hüttenkäse|cottage cheese|cottage cheese|fiocchi di latte|requesón|queijo cottage|カッテージチーズ
+greek_yogurt|dairy|73,10,4,2|dairy|tbsp=15|Griechischer Joghurt 2 %|Greek yoghurt 2%|yaourt grec 2 %|yogurt greco 2%|yogur griego 2 %|iogurte grego 2%|ギリシャヨーグルト（2%）
+feta|dairy|264,14,4,21|dairy||Feta|feta|feta|feta|queso feta|queijo feta|フェタチーズ
+mozzarella|dairy|254,18,2,19|dairy||Mozzarella|mozzarella|mozzarella|mozzarella|mozzarella|muçarela|モッツァレラ
+parmesan|dairy|392,36,3,26|dairy|tbsp=6|Parmesan|Parmesan|parmesan|parmigiano|parmesano|parmesão|パルメザンチーズ
+ricotta|dairy|150,9,3,11|dairy|tbsp=15|Ricotta|ricotta|ricotta|ricotta|ricota|ricota|リコッタ
+cream_cheese_light|dairy|155,7.6,4.5,11|dairy|tbsp=15|Frischkäse light|light cream cheese|fromage frais léger|formaggio spalmabile light|queso crema light|cream cheese light|ライトクリームチーズ
+halloumi|dairy|321,21,2.6,25|dairy||Halloumi|halloumi|halloumi|halloumi|halloumi|halloumi|ハルミチーズ
+paneer|dairy|290,20,3,22|dairy||Paneer|paneer|paneer|paneer|paneer|paneer|パニール
+queijo_minas|dairy|264,17,3,20|dairy||Frischkäse Minas (oder Mozzarella)|Minas fresh cheese (or mozzarella)|fromage frais minas (ou mozzarella)|formaggio fresco minas (o mozzarella)|queso fresco minas (o mozzarella)|queijo minas frescal|ミナスチーズ（またはモッツァレラ）
+cooking_cream|dairy|165,3,4,15|dairy|ml=1.0,tbsp=15|Saucenhalbrahm 15 %|single cream 15%|crème légère 15 %|panna da cucina 15%|nata para cocinar 15 %|creme de leite 15%|料理用クリーム（15%）
+milk_skimmed|dairy|35,3.5,5,0.1|dairy|ml=1.03|Magermilch|skimmed milk|lait écrémé|latte scremato|leche desnatada|leite desnatado|無脂肪乳
+whey_protein|pantry|380,80,6,5|dairy|tbsp=10|Molkenprotein-Pulver, neutral|whey protein powder, unflavoured|protéine de lactosérum nature|proteine del siero neutre|proteína de suero neutra|whey protein sem sabor|ホエイプロテイン（無香料）
+tofu_firm|pantry|144,15,3,8.7|||Tofu nature, fest|firm tofu|tofu ferme|tofu compatto|tofu firme|tofu firme|木綿豆腐
+silken_tofu|pantry|55,5,2,2.7|||Seidentofu|silken tofu|tofu soyeux|tofu morbido (silken)|tofu sedoso|tofu macio (silken)|絹ごし豆腐
+tempeh|pantry|192,20,8,11|||Tempeh|tempeh|tempeh|tempeh|tempeh|tempeh|テンペ
+edamame|veg|121,12,9,5|||Edamame, geschält (TK)|shelled edamame (frozen)|edamame écossés (surgelés)|edamame sgusciati (surgelati)|edamame pelados (congelados)|edamame sem casca (congelado)|むき枝豆（冷凍）
+black_beans|pantry|120,8,20,0.5|||Schwarze Bohnen (Dose)|black beans (tinned)|haricots noirs (boîte)|fagioli neri (in scatola)|frijoles negros (lata)|feijão-preto (lata)|黒豆（缶詰）
+kidney_beans|pantry|115,8,19,0.5|||Kidneybohnen (Dose)|kidney beans (tinned)|haricots rouges (boîte)|fagioli rossi (in scatola)|alubias rojas (lata)|feijão-vermelho (lata)|レッドキドニー（缶詰）
+white_beans|pantry|110,7.5,18,0.4|||Weisse Bohnen (Dose)|white beans (tinned)|haricots blancs (boîte)|fagioli cannellini (in scatola)|alubias blancas (lata)|feijão-branco (lata)|白いんげん豆（缶詰）
+green_lentils|pantry|340,25,50,1.5|||Grüne Linsen (Puy)|green lentils (Puy)|lentilles vertes du Puy|lenticchie verdi|lentejas verdes (Puy)|lentilhas verdes|緑レンズ豆
+mung_dal|pantry|347,24,60,1.2|||Gelbe Mungbohnen (Moong Dal)|split mung beans (moong dal)|haricots mungo cassés (moong dal)|fagioli mungo decorticati (moong dal)|judías mungo partidas (moong dal)|feijão-mungo partido (moong dal)|ムング豆（ひき割り）
+chickpea_flour|pantry|387,22,58,6.7|||Kichererbsenmehl|chickpea flour (gram flour)|farine de pois chiches|farina di ceci|harina de garbanzo|farinha de grão-de-bico|ひよこ豆粉
+peanut_butter|pantry|600,25,16,50|nuts|tbsp=16,tsp=5|Erdnussbutter, ungesüsst|peanut butter, unsweetened|beurre de cacahuète sans sucre|burro di arachidi senza zucchero|crema de cacahuete sin azúcar|pasta de amendoim sem açúcar|無糖ピーナッツバター
+tahini|pantry|595,17,21,54|sesame|tbsp=15,tsp=5|Tahini (Sesampaste)|tahini|tahini (purée de sésame)|tahina|tahini|tahine|タヒニ（練りごま）
+almonds|pantry|579,21,22,50|nuts|tbsp=9|Mandeln|almonds|amandes|mandorle|almendras|amêndoas|アーモンド
+walnuts|pantry|654,15,14,65|nuts|tbsp=7|Baumnüsse|walnuts|noix|noci|nueces|nozes|クルミ
+peanuts|pantry|567,26,16,49|nuts|tbsp=9|Erdnüsse, ungesalzen|unsalted peanuts|cacahuètes non salées|arachidi non salate|cacahuetes sin sal|amendoim sem sal|無塩ピーナッツ
+chia_seeds|pantry|486,17,42,31||tbsp=12,tsp=4|Chiasamen|chia seeds|graines de chia|semi di chia|semillas de chía|sementes de chia|チアシード
+sesame_seeds|pantry|573,18,23,50|sesame|tbsp=9,tsp=3|Sesam|sesame seeds|graines de sésame|semi di sesamo|semillas de sésamo|gergelim|ごま
+pumpkin_seeds|pantry|559,30,11,49||tbsp=9|Kürbiskerne|pumpkin seeds|graines de courge|semi di zucca|pipas de calabaza|sementes de abóbora|かぼちゃの種
+soy_milk|pantry|39,3.3,2,1.8||ml=1.03|Sojadrink, ungesüsst|soya drink, unsweetened|boisson au soja sans sucre|bevanda di soia senza zucchero|bebida de soja sin azúcar|bebida de soja sem açúcar|無調整豆乳
+soy_yogurt|pantry|50,4,2.5,2.5||tbsp=15|Soja-Joghurt nature|plain soya yoghurt|yaourt au soja nature|yogurt di soia bianco|yogur de soja natural|iogurte de soja natural|豆乳ヨーグルト（プレーン）
+brown_rice|pantry|357,7.5,76,2.7|||Vollkornreis|brown rice|riz complet|riso integrale|arroz integral|arroz integral|玄米
+basmati_rice|pantry|350,8,78,0.6|||Basmatireis|basmati rice|riz basmati|riso basmati|arroz basmati|arroz basmati|バスマティライス
+sushi_rice|pantry|355,6.5,79,0.6|||Rundkornreis (Sushireis)|short-grain rice (sushi rice)|riz rond (riz à sushi)|riso a chicco tondo (riso per sushi)|arroz redondo (arroz para sushi)|arroz japonês (para sushi)|米（短粒米）
+risotto_rice|pantry|350,7,79,0.6|||Risottoreis|risotto rice|riz pour risotto|riso per risotto|arroz para risotto|arroz arbóreo|リゾット米
+couscous|pantry|376,12.8,77,0.6|gluten||Couscous|couscous|semoule de couscous|cuscus|cuscús|cuscuz marroquino|クスクス
+bulgur|pantry|342,12,76,1.3|gluten||Bulgur|bulgur wheat|boulgour|bulgur|bulgur|trigo para quibe (bulgur)|ブルグル
+pearl_barley|pantry|352,10,78,1.2|gluten||Rollgerste|pearl barley|orge perlé|orzo perlato|cebada perlada|cevadinha|丸麦
+polenta|pantry|362,8,77,1.5|||Polenta (Maisgriess)|polenta (cornmeal)|polenta (semoule de maïs)|polenta (farina di mais)|polenta (sémola de maíz)|polenta (fubá)|ポレンタ（コーンミール）
+flocao|pantry|365,7.2,79,1.9|||Maisflocken für Cuscuz (Flocão)|flaked corn flour for cuscuz (flocão)|flocons de maïs pour cuscuz (flocão)|fiocchi di mais per cuscuz (flocão)|copos de maíz para cuscuz (flocão)|flocão de milho|クスクス用コーンフレーク（フロカォン）
+tapioca_starch|pantry|358,0.2,89,0|||Tapiokastärke (Goma)|tapioca starch (goma)|fécule de tapioca (goma)|fecola di tapioca (goma)|almidón de tapioca (goma)|goma de tapioca|タピオカ粉（ゴマ）
+sweet_potato|veg|86,1.6,20,0.1||pc=250|Süsskartoffel|sweet potato|patate douce|patata dolce|boniato|batata-doce|さつまいも
+cassava|veg|160,1.4,38,0.3|||Maniok (TK)|cassava (frozen)|manioc (surgelé)|manioca (surgelata)|yuca (congelada)|mandioca (congelada)|キャッサバ（冷凍）
+whole_wheat_tortilla|pantry|300,9,50,7|gluten|pc=40|Vollkorn-Tortilla|wholemeal tortilla|tortilla complète|tortilla integrale|tortilla integral|tortilha integral|全粒粉トルティーヤ
+corn_tortilla|pantry|218,5.7,45,2.9||pc=25|Maistortilla|corn tortilla|tortilla de maïs|tortilla di mais|tortilla de maíz|tortilha de milho|コーントルティーヤ
+pita|pantry|266,10,55,1.7|gluten|pc=60|Vollkorn-Pitabrot|wholemeal pitta|pain pita complet|pita integrale|pan de pita integral|pão pita integral|全粒粉ピタパン
+crispbread|pantry|340,9,66,1.7|gluten|pc=10|Knäckebrot (Roggen)|rye crispbread|pain croustillant de seigle|crackers di segale|pan crujiente de centeno|torrada sueca de centeio|ライ麦クネッケ
+rice_cakes|pantry|390,8,82,3||pc=8|Reiswaffeln|rice cakes|galettes de riz|gallette di riso|tortitas de arroz|bolachas de arroz|ライスケーキ
+buckwheat_flour|pantry|335,13,70,3|||Buchweizenmehl|buckwheat flour|farine de sarrasin|farina di grano saraceno|harina de trigo sarraceno|farinha de trigo-sarraceno|そば粉
+wholewheat_flour|pantry|340,13,72,2.5|gluten|tbsp=8|Vollkornmehl|wholemeal flour|farine complète|farina integrale|harina integral|farinha de trigo integral|全粒粉
+soba_noodles|pantry|336,14,75,0.7|gluten||Soba-Nudeln|soba noodles|nouilles soba|spaghetti soba|fideos soba|macarrão soba|そば（乾麺）
+sweetcorn|veg|80,2.9,14,1.2|||Maiskörner (Dose)|sweetcorn (tinned)|maïs en grains (boîte)|mais in chicchi (scatola)|maíz dulce (lata)|milho em lata|コーン（缶詰）
+carrot|veg|41,0.9,10,0.2||pc=80|Rüebli|carrots|carottes|carote|zanahorias|cenouras|にんじん
+zucchini|veg|17,1.2,3.1,0.3||pc=200|Zucchetti|courgette|courgettes|zucchine|calabacín|abobrinha|ズッキーニ
+mushrooms|veg|22,3.1,3.3,0.3|mushrooms||Champignons|mushrooms|champignons de Paris|funghi champignon|champiñones|cogumelos-de-paris|マッシュルーム
+shiitake|veg|34,2.2,7,0.5|mushrooms||Shiitake-Pilze|shiitake mushrooms|champignons shiitaké|funghi shiitake|setas shiitake|cogumelos shiitake|しいたけ
+cherry_tomatoes|veg|18,0.9,3.9,0.2|||Cherrytomaten|cherry tomatoes|tomates cerises|pomodorini|tomates cherry|tomates-cereja|ミニトマト
+red_onion|veg|40,1.1,9,0.1|onion|pc=100|Rote Zwiebel|red onion|oignon rouge|cipolla rossa|cebolla morada|cebola roxa|赤玉ねぎ
+shallot|veg|72,2.5,17,0.1|onion|pc=30|Schalotte|shallot|échalote|scalogno|chalota|chalota|エシャロット
+leek|veg|61,1.5,14,0.3|onion|pc=200|Lauch|leek|poireau|porro|puerro|alho-poró|ポロねぎ
+celery|veg|16,0.7,3,0.2||pc=40|Stangensellerie|celery|céleri branche|sedano|apio|salsão|セロリ
+green_beans|veg|31,1.8,7,0.1|||Grüne Bohnen|green beans|haricots verts|fagiolini|judías verdes|vagem|さやいんげん
+peas|veg|81,5.4,14,0.4|||Erbsen (TK)|peas (frozen)|petits pois (surgelés)|piselli (surgelati)|guisantes (congelados)|ervilhas (congeladas)|グリーンピース（冷凍）
+pak_choi|veg|13,1.5,2.2,0.2||pc=150|Pak Choi|pak choi|pak-choï|pak choi|pak choi|acelga chinesa (pak choi)|チンゲン菜
+kale|veg|49,4.3,9,0.9|||Federkohl|kale|chou kale|cavolo riccio|col rizada (kale)|couve|ケール
+white_cabbage|veg|25,1.3,6,0.1|||Weisskabis|white cabbage|chou blanc|cavolo cappuccio|repollo|repolho|キャベツ
+red_cabbage|veg|31,1.4,7,0.2|||Rotkabis|red cabbage|chou rouge|cavolo rosso|lombarda|repolho roxo|紫キャベツ
+avocado|veg|160,2,9,15||pc=140|Avocado|avocado|avocat|avocado|aguacate|abacate|アボカド
+rocket|veg|25,2.6,3.7,0.7|||Rucola|rocket|roquette|rucola|rúcula|rúcula|ルッコラ
+green_bell_pepper|veg|20,0.9,4.6,0.2||pc=150|Peperoni, grün (Paprika)|green bell pepper|poivron vert|peperone verde|pimiento verde|pimentão verde|ピーマン
+yellow_bell_pepper|veg|27,1,6,0.2||pc=150|Peperoni, gelb (Paprika)|yellow bell pepper|poivron jaune|peperone giallo|pimiento amarillo|pimentão amarelo|黄パプリカ
+chili_fresh|veg|40,1.9,9,0.4||pc=10|Chili, frisch|fresh chilli|piment frais|peperoncino fresco|guindilla fresca|pimenta fresca|生唐辛子
+radish|veg|16,0.7,3.4,0.1|||Radiesli|radishes|radis|ravanelli|rábanos|rabanetes|ラディッシュ
+pumpkin|veg|26,1,6.5,0.1|||Kürbis|pumpkin|potiron|zucca|calabaza|abóbora|かぼちゃ
+lemongrass|veg|99,1.8,25,0.5||pc=20|Zitronengras|lemongrass|citronnelle|citronella|hierba limón|capim-limão|レモングラス
+mint_fresh|veg|70,3.8,15,0.9|||Minze, frisch|fresh mint|menthe fraîche|menta fresca|hierbabuena fresca|hortelã fresca|ミント
+parsley|veg|36,3,6,0.8|||Petersilie|parsley|persil|prezzemolo|perejil|salsinha|パセリ
+dill|veg|43,3.5,7,1.1|||Dill|dill|aneth|aneto|eneldo|endro|ディル
+basil_fresh|veg|23,3.2,2.7,0.6|||Basilikum|basil|basilic|basilico|albahaca|manjericão|バジル
+chives|veg|30,3.3,4.4,0.7|||Schnittlauch|chives|ciboulette|erba cipollina|cebollino|cebolinha-francesa|チャイブ
+mango|veg|60,0.8,15,0.4||pc=200|Mango|mango|mangue|mango|mango|manga|マンゴー
+pineapple|veg|50,0.5,13,0.1|||Ananas|pineapple|ananas|ananas|piña|abacaxi|パイナップル
+orange|veg|47,0.9,12,0.1||pc=150|Orangen|oranges|oranges|arance|naranjas|laranjas|オレンジ
+pear|veg|57,0.4,15,0.1||pc=170|Birnen|pears|poires|pere|peras|peras|洋なし
+kiwi|veg|61,1.1,15,0.5||pc=75|Kiwi|kiwi|kiwi|kiwi|kiwi|kiwi|キウイ
+acai_pulp|pantry|58,0.8,6,3.9|||Açaí-Püree, ungesüsst (TK)|açaí purée, unsweetened (frozen)|purée d'açaí sans sucre (surgelée)|polpa di açaí senza zucchero (surgelata)|pulpa de açaí sin azúcar (congelada)|polpa de açaí sem açúcar (congelada)|無糖アサイーピューレ（冷凍）
+dates|pantry|282,2.5,75,0.4||pc=8|Datteln|dates|dattes|datteri|dátiles|tâmaras|デーツ
+olives|pantry|115,0.8,6,11|||Schwarze Oliven|black olives|olives noires|olive nere|aceitunas negras|azeitonas pretas|ブラックオリーブ
+soy_sauce|pantry|53,8,4.9,0.6|gluten|tbsp=16,tsp=5,ml=1.1|Sojasauce|soy sauce|sauce soja|salsa di soia|salsa de soja|molho de soja|醤油
+miso_paste|pantry|199,12,26,6||tbsp=17,tsp=6|Misopaste|miso paste|pâte miso|pasta di miso|pasta de miso|pasta de missô|味噌
+rice_vinegar|pantry|18,0,0,0||tbsp=15,tsp=5|Reisessig|rice vinegar|vinaigre de riz|aceto di riso|vinagre de arroz|vinagre de arroz|米酢
+sesame_oil|pantry|884,0,0,100|sesame|tbsp=13.5,tsp=4.5|Sesamöl|sesame oil|huile de sésame|olio di sesamo|aceite de sésamo|óleo de gergelim|ごま油
+oyster_sauce|pantry|51,1.4,11,0.3|fish,gluten|tbsp=18,tsp=6|Austernsauce|oyster sauce|sauce d'huître|salsa d'ostrica|salsa de ostras|molho de ostra|オイスターソース
+gochujang|pantry|220,4,45,2|gluten|tbsp=20,tsp=7|Gochujang (koreanische Chilipaste)|gochujang (Korean chilli paste)|gochujang (pâte de piment coréenne)|gochujang (pasta di peperoncino coreana)|gochujang (pasta de chile coreana)|gochujang (pasta de pimenta coreana)|コチュジャン
+kimchi|veg|15,1.1,2.4,0.5|fish||Kimchi|kimchi|kimchi|kimchi|kimchi|kimchi|キムチ
+tomato_paste|pantry|82,4.3,19,0.5||tbsp=16,tsp=5|Tomatenpüree|tomato purée (paste)|concentré de tomates|concentrato di pomodoro|concentrado de tomate|extrato de tomate|トマトペースト
+passata|pantry|35,1.5,6,0.2||ml=1.03|Passata (Tomatensauce)|passata|coulis de tomates|passata di pomodoro|tomate triturado|passata de tomate|トマトピューレ（パッサータ）
+dijon_mustard|pantry|66,4.4,5.8,4||tbsp=15,tsp=5|Senf (Dijon)|Dijon mustard|moutarde de Dijon|senape di Digione|mostaza de Dijon|mostarda Dijon|ディジョンマスタード
+balsamic|pantry|88,0.5,17,0||tbsp=16,tsp=5|Aceto balsamico|balsamic vinegar|vinaigre balsamique|aceto balsamico|vinagre balsámico|vinagre balsâmico|バルサミコ酢
+white_wine_vinegar|pantry|18,0,0,0||tbsp=15,tsp=5|Weissweinessig|white wine vinegar|vinaigre de vin blanc|aceto di vino bianco|vinagre de vino blanco|vinagre de vinho branco|白ワインビネガー
+maple_syrup|pantry|260,0,67,0||tbsp=20,tsp=7|Ahornsirup|maple syrup|sirop d'érable|sciroppo d'acero|sirope de arce|xarope de bordo|メープルシロップ
+cocoa_powder|pantry|228,19.6,58,13.7||tbsp=7,tsp=2.5|Kakaopulver, ungesüsst|unsweetened cocoa powder|cacao en poudre non sucré|cacao amaro in polvere|cacao puro en polvo|cacau em pó sem açúcar|無糖ココアパウダー
+cornstarch|pantry|381,0.3,91,0.1||tbsp=9,tsp=3|Maisstärke|cornflour (cornstarch)|fécule de maïs|amido di mais|maicena|amido de milho|コーンスターチ
+baking_powder|pantry|53,0,28,0||tsp=4|Backpulver|baking powder|levure chimique|lievito in polvere|levadura química|fermento em pó|ベーキングパウダー
+paprika|pantry|282,14,54,13||tsp=2.5,pinch=0.5|Paprikapulver|paprika|paprika|paprika|pimentón|páprica|パプリカパウダー
+chili_flakes|pantry|318,12,57,17||tsp=2,pinch=0.3|Chiliflocken|chilli flakes|flocons de piment|peperoncino in fiocchi|copos de chile|pimenta calabresa|唐辛子フレーク
+turmeric|pantry|312,10,67,3||tsp=3|Kurkuma|turmeric|curcuma|curcuma|cúrcuma|cúrcuma|ターメリック
+garam_masala|pantry|379,15,45,15||tsp=2.5|Garam Masala|garam masala|garam masala|garam masala|garam masala|garam masala|ガラムマサラ
+cinnamon_ground|pantry|247,4,81,1.2||tsp=2.6,pinch=0.5|Zimt, gemahlen|ground cinnamon|cannelle moulue|cannella in polvere|canela molida|canela em pó|シナモンパウダー
+oregano_dried|pantry|265,9,69,4||tsp=1|Oregano, getrocknet|dried oregano|origan séché|origano secco|orégano seco|orégano seco|オレガノ（乾燥）
+thyme_dried|pantry|276,9,64,7||tsp=1|Thymian, getrocknet|dried thyme|thym séché|timo secco|tomillo seco|tomilho seco|タイム（乾燥）
+sambal_oelek|pantry|40,1,7,1||tsp=5|Sambal Oelek|sambal oelek|sambal oelek|sambal oelek|sambal oelek|sambal oelek|サンバルオレック
+dende_oil|pantry|884,0,0,100||tbsp=13.5,tsp=4.5|Palmöl (Dendê)|red palm oil (dendê)|huile de palme rouge (dendê)|olio di palma rosso (dendê)|aceite de palma rojo (dendê)|azeite de dendê|デンデ油（レッドパーム油）
+nori|pantry|300,40,40,3||pc=3|Nori-Algenblätter|nori sheets|feuilles de nori|alghe nori|hojas de nori|folhas de nori|焼き海苔
+saffron|pantry|310,11,65,6||pinch=0.1|Safran|saffron|safran|zafferano|azafrán|açafrão|サフラン
+vanilla_extract|pantry|288,0,13,0||tsp=4|Vanilleextrakt|vanilla extract|extrait de vanille|estratto di vaniglia|extracto de vainilla|extrato de baunilha|バニラエッセンス
+aji_amarillo|pantry|60,1.5,10,1.5||tbsp=15,tsp=5|Ají-amarillo-Paste|ají amarillo paste|pâte d'ají amarillo|pasta di ají amarillo|pasta de ají amarillo|pasta de ají amarillo|アヒアマリージョペースト
