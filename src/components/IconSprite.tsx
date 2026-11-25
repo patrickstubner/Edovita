@@ -243,6 +243,12 @@ export function IconSprite() {
           <rect x="6" y="4" width="4" height="16" rx="1" />
           <rect x="14" y="4" width="4" height="16" rx="1" />
         </symbol>
+        <symbol id="i-cal" viewBox="0 0 24 24">
+          <rect width="18" height="18" x="3" y="4" rx="2" />
+          <path d="M16 2v4" />
+          <path d="M8 2v4" />
+          <path d="M3 10h18" />
+        </symbol>
       </defs>
     </svg>
   );

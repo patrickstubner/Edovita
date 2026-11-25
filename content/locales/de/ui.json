@@ -231,5 +231,9 @@
   "second.hint": "Zusätzlicher Name für Zutaten und Einkaufsartikel. Schritte und Menüs bleiben in der App-Sprache.",
   "second.same": "Die Zweitsprache darf nicht der App-Sprache entsprechen.",
   "second.auto.current": "Automatisch (Ort) · {code}",
-  "second.auto.none": "Automatisch (Ort) · keine"
+  "second.auto.none": "Automatisch (Ort) · keine",
+  "nav.hauptnavigation": "Hauptnavigation",
+  "profil.profil": "Profil",
+  "profil.sprache": "Sprache",
+  "plan.title": "Plan"
 }

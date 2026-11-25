@@ -63,4 +63,9 @@ export {
 } from './ShopSourceSheet.tsx';
 export { Stars, type StarsProps } from './Stars.tsx';
 export { StepList, type StepListProps } from './StepList.tsx';
+export {
+  TabBar,
+  type TabBarItem,
+  type TabBarProps,
+} from './TabBar.tsx';
 export { Toast, type ToastProps } from './Toast.tsx';

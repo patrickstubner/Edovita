@@ -47,9 +47,11 @@
 }
 
 .edo-app-shell.has-tab .edo-screen > .edo-actions {
-  padding-block-end: calc(
-    12px + var(--edo-tabbar-h) + env(safe-area-inset-bottom, 0px)
-  );
+  padding-block-end: 12px;
+}
+
+.edo-app-shell.has-tab .edo-screen:not(:has(> .edo-actions)) > .edo-screen-body {
+  padding-block-end: 24px;
 }
 
 .edo-ic {
@@ -974,5 +976,72 @@ html[data-eff='dark'] .edo-lang-menu {
     transform: none;
   }
 }
+
+/* Untere Hauptnavigation (Tab-Leiste, Prototyp v5.10 / E9), rein logische Eigenschaften */
+.edo-tabbar {
+  flex: none;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  background: var(--edo-surface);
+  border-block-start: 1px solid var(--edo-border);
+  padding-block: 6px calc(10px + env(safe-area-inset-bottom, 0px));
+  padding-inline: 8px;
+  min-block-size: var(--edo-tabbar-h);
+  z-index: 10;
+}
+
+html[data-eff='dark'] .edo-tabbar {
+  background: #0a0f0e;
+  border-block-start-color: #1b2523;
+}
+
+.edo-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-inline-size: 44px;
+  min-block-size: 56px;
+  padding-block: 2px;
+  padding-inline: 4px;
+  border-radius: 14px;
+  font-size: 13px;
+  line-height: 1.15;
+  font-weight: 600;
+  color: var(--edo-text-muted);
+  text-decoration: none;
+  text-align: center;
+}
+
+.edo-tab .edo-ic {
+  inline-size: 28px;
+  block-size: 28px;
+}
+
+.edo-tab-on {
+  color: var(--edo-primary);
+  font-weight: 800;
+}
+
+.edo-app-shell.has-tab .edo-toast {
+  inset-block-end: calc(
+    var(--edo-tabbar-h) + 28px + env(safe-area-inset-bottom, 0px)
+  );
+}
+
+.edo-set-chev {
+  display: inline-grid;
+  place-items: center;
+  color: var(--edo-text-muted);
+  flex: none;
+}
+
+html[dir='rtl'] .edo-set-chev,
+html[dir='rtl'] .edo-back-btn .edo-ic {
+  transform: scaleX(-1);
+}
+
 
 

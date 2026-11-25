@@ -1,6 +1,7 @@
 import { createHashRouter, Navigate } from 'react-router';
 import { HomePage } from '../pages/HomePage.tsx';
 import { LanguageSettingsPage } from '../pages/LanguageSettingsPage.tsx';
+import { ProfilePage } from '../pages/ProfilePage.tsx';
 import { RecipeDetailPage } from '../pages/RecipeDetailPage.tsx';
 import { RecipesPage } from '../pages/RecipesPage.tsx';
 import { ShoppingListPage } from '../pages/ShoppingListPage.tsx';
@@ -13,6 +14,7 @@ export const appRoutes = [
     element: <Shell />,
     children: [
       { index: true, element: <HomePage /> },
+      { path: 'profil', element: <ProfilePage /> },
       { path: 'profil/sprache', element: <LanguageSettingsPage /> },
       { path: 'rezepte', element: <RecipesPage /> },
       { path: 'rezept/:id', element: <RecipeDetailPage /> },

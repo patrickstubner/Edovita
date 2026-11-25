@@ -83,7 +83,7 @@ export function LanguageSettingsPage() {
             type="button"
             className="edo-back-btn"
             aria-label={t('status.back')}
-            onClick={() => navigate('/')}
+            onClick={() => navigate('/profil')}
           >
             <Icon name="left" />
           </button>
