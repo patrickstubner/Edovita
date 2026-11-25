@@ -87,7 +87,7 @@ Nach jeder Code-Erstellung oder -Änderung, **bevor weitergebaut wird**, kurz pr
 Schwachstellen mit **Schweregrad** (kritisch / hoch / mittel / niedrig) und Fix-Vorschlag melden, bevor weitergebaut wird. Nichts als «sicher» bezeichnen, was nicht geprüft wurde.
 
 ### Übergabe: STATUS.md
-- Am Ende **jeder Aufgabe** `STATUS.md` nachführen: was getan wurde, was offen ist, **Commit-Hash**, auf dem der Stand beruht, und welche lokalen Tools genutzt wurden. So kann der nächste Agent einsteigen, ohne alles neu zu lesen.
+- Am Ende **jeder Aufgabe** `STATUS.md` nachführen: was getan wurde, was offen ist, den **Ausgangs-Commit** (Stand, auf dem die Arbeit begann) und welche lokalen Tools genutzt wurden. So kann der nächste Agent einsteigen, ohne alles neu zu lesen. Doku (`STATUS.md`, `SECURITY.md` und vergleichbare Notizen) nennt nur diesen Ausgangsstand, nie den eigenen Head-SHA der gerade erzeugten Änderung; Stabschef prüft den Endstand. Im PR bleibt die Nennung des Head-SHA unverändert.
 - `ARCHITECTURE.md` nachführen, wenn sich Struktur oder Entscheide ändern. Keine Werte erfinden: Unbelegtes steht als «offen» da.
 - Ergebnisse lokaler Analysen (Hotspots, Aufrufer, Abhängigkeiten) kurz in `STATUS.md`; rohe Index-Ordner (`.codegraph/`, `graphify-out/`, `.serena/`, `.codebase-memory/`) bleiben lokal und stehen in `.gitignore`.
 

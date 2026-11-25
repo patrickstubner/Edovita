@@ -1,3 +1,28 @@
+# Sicherheitsprüfung Nachtrag Bilder-Cache (25. November 2026, Europe/Zurich)
+
+**Stand:** Nachtrag zu v5.11, Ausgangsstand `93630aaea8adcc31e08aacf227164af28f1277c3`, Branch `prototype/lang-switcher` (nicht auf `main`). Der Worker nutzt vor dem KV-Lesen der Rezeptbilder `caches.default` (Cache-Key ohne Query-String, Methode fest GET). CSP und die übrigen Sicherheits-Header sind unverändert. Zusätzlich: `prototype/tools/i18n-src/__pycache__/content.cpython-313.pyc` entfernt, `__pycache__/` und `*.py[cod]` in `.gitignore`. Keine neuen Ressourcen oder Pakete, Free Plan unverändert.
+
+**Quelle der Prüfung:** Code-Review von `worker.tpl.mjs` und dem erzeugten `worker.mjs`, Vergleich der CSP- und SEC-Header mit v5.11, lokale Node-Tests (Cache-Miss/Hit, Query-String, HEAD, ungültige Pfade, POST, KV-Fehler, Cache-Fehler), `gitleaks` auf dem Template, `pnpm audit --audit-level=moderate` im Repo-Stamm (keine neuen Abhängigkeiten).
+
+**Ergebnis:** keine kritischen, hohen oder mittleren Befunde. Der niedrige offene Punkt B2 (KV-Lesekontingent) aus v5.11 ist durch den Edge-Cache deutlich abgeschwächt; ein Rest bleibt bei kaltem Cache, nach 24 h oder wenn die Cache-API ausfällt (dann Fallback auf KV wie bisher, inkl. 404 bei KV-Fehler).
+
+| # | Prüfpunkt | Ergebnis | Schweregrad |
+|---|-----------|----------|-------------|
+| 1 | Eingabevalidierung / Pfade | Unverändert nur GET/HEAD und `IMG_RE`. Cache-Lookup und `cache.put` erst nach dieser Prüfung. Der Cache-Key ist Origin plus Pfad ohne Query, Methode fest GET. Ungültige Pfade (`../`, `manifest.json`, falsche Grossschreibung) treffen weder Cache noch KV. | kein Befund |
+| 2 | Cache-Verhalten | Treffer liefern die zuvor selbst erzeugte Antwort (feste Header, `Content-Type: image/webp`, `Cache-Control: public, max-age=86400`). 404 und KV-Fehler werden nicht gespeichert. Fehler in `cache.match`/`put` führen nicht zu einer 500-Antwort (Fallback bzw. `.catch` an `waitUntil`). HEAD teilt den GET-Eintrag und hat keinen Body. | kein Befund |
+| 3 | Sicherheits-Header / CSP | CSP unverändert (`script-src 'self'`, `connect-src 'none'`, `img-src 'self' data:`, `frame-ancestors 'none'`), ebenso `nosniff`, `X-Frame-Options: DENY`, `Referrer-Policy`, `Permissions-Policy`, COOP, HSTS, `X-Robots-Tag`. | kein Befund |
+| 4 | Geheimnisse | Keine neuen Schlüssel oder Tokens. | kein Befund |
+| 5 | Abhängigkeiten | Keine neuen Pakete. `pnpm audit --audit-level=moderate`: keine bekannten Schwachstellen. `gitleaks`: keine Funde. | kein Befund |
+| B2 | Kontingent-Erschöpfung | Edge-Cache 24 h reduziert wiederholte KV-Lesungen derselben Datei. Rest: erster Abruf, Ablauf, Cache-API-Fehler. Weiterhin keine Kosten (Free Plan, hartes Limit), keine Datenpreisgabe. | niedrig, abgeschwächt (Restrisiko akzeptiert) |
+
+**SHA-256 (geänderte Kern-Dateien):**
+```
+c2fdbde8b3aa46a053be030ede99b061f7e971d9cfe80942aa7afa55ce08b343  prototype/worker.tpl.mjs
+e9514fe226d8f8ccfa5d40546f357545f21166f200aa255596d790f94626e69f  .gitignore
+```
+
+---
+
 # Sicherheitsprüfung v5.11 (24. November 2026, Europe/Zurich)
 
 **Stand:** Rezepterweiterung auf 200 Rezepte, aufbauend auf v5.10.1 (`5ef149a`), Branch `prototype/lang-switcher` (nicht auf `main`). Neue Ressource: kostenloser Workers-KV-Namespace `edovita-prototyp-img` (Binding `IMG`, nur Lesen im Worker); alle Rezeptbilder (356 Dateien) kommen daraus, keine mehr im Worker eingebettet. CSP unverändert (`script-src 'self'`, `connect-src 'none'`, `img-src 'self' data:`).
