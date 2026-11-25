@@ -517,4 +517,207 @@ describe('Paket E10: Essensplan-Domäne, Tagessummen & JSON-Transfer (Issue #35)
       ),
     ).toEqual({ ok: false, error: 'plan-slot' });
   });
+
+  it('F1b-Härtung: parsePlanExportBundle lehnt falsche Version, falsches kind, unbekannte Felder, ungültige grp und doppelte plan-IDs ab', () => {
+    const parseOpts = {
+      knownRecipeIds: KNOWN_RECIPES,
+      knownFoodIds: KNOWN_FOODS,
+      now: FIXED_NOW,
+    };
+
+    // Falsche Version (v: 2) -> schema
+    expect(
+      parsePlanExportBundle(
+        JSON.stringify({
+          v: 2,
+          kind: PLAN_EXPORT_KIND,
+          plan: { days: 5, items: [] },
+        }),
+        parseOpts,
+      ),
+    ).toEqual({ ok: false, error: 'schema' });
+
+    // Falsches kind -> schema
+    expect(
+      parsePlanExportBundle(
+        JSON.stringify({
+          v: 1,
+          kind: 'edovita-other-export',
+          plan: { days: 5, items: [] },
+        }),
+        parseOpts,
+      ),
+    ).toEqual({ ok: false, error: 'schema' });
+
+    // Unbekanntes Top-Level-Feld -> schema
+    expect(
+      parsePlanExportBundle(
+        JSON.stringify({
+          v: 1,
+          kind: PLAN_EXPORT_KIND,
+          plan: { days: 5, items: [] },
+          extraField: true,
+        }),
+        parseOpts,
+      ),
+    ).toEqual({ ok: false, error: 'schema' });
+
+    // Unbekanntes Feld in plan -> schema
+    expect(
+      parsePlanExportBundle(
+        JSON.stringify({
+          v: 1,
+          kind: PLAN_EXPORT_KIND,
+          plan: { days: 5, items: [], extraPlanField: 'x' },
+        }),
+        parseOpts,
+      ),
+    ).toEqual({ ok: false, error: 'schema' });
+
+    // Unbekanntes Feld in plan.items[i] -> schema
+    expect(
+      parsePlanExportBundle(
+        JSON.stringify({
+          v: 1,
+          kind: PLAN_EXPORT_KIND,
+          plan: {
+            days: 5,
+            items: [
+              {
+                id: 'pitem001',
+                date: TODAY,
+                slot: 'lunch',
+                recipeId: 'pho',
+                portions: 2,
+                extraItemField: 'x',
+              },
+            ],
+          },
+        }),
+        parseOpts,
+      ),
+    ).toEqual({ ok: false, error: 'schema' });
+
+    // Unbekanntes Feld in shopItems[i] -> schema
+    expect(
+      parsePlanExportBundle(
+        JSON.stringify({
+          v: 1,
+          kind: PLAN_EXPORT_KIND,
+          shopItems: [
+            {
+              id: 'broccoli',
+              unit: 'g',
+              qtyPlan: 200,
+              qtyExtra: 0,
+              qtyHave: 0,
+              recipesPlan: [],
+              recipesExtra: [],
+              extraShopField: 123,
+            },
+          ],
+        }),
+        parseOpts,
+      ),
+    ).toEqual({ ok: false, error: 'schema' });
+
+    // shopItems[i].grp gegen FOOD_GROUPS: ungültig -> schema, gültig -> ok
+    expect(
+      parsePlanExportBundle(
+        JSON.stringify({
+          v: 1,
+          kind: PLAN_EXPORT_KIND,
+          shopItems: [
+            {
+              id: 'broccoli',
+              unit: 'g',
+              qtyPlan: 200,
+              qtyExtra: 0,
+              qtyHave: 0,
+              recipesPlan: [],
+              recipesExtra: [],
+              grp: 'unknown_group',
+            },
+          ],
+        }),
+        parseOpts,
+      ),
+    ).toEqual({ ok: false, error: 'schema' });
+
+    expect(
+      parsePlanExportBundle(
+        JSON.stringify({
+          v: 1,
+          kind: PLAN_EXPORT_KIND,
+          shopItems: [
+            {
+              id: 'broccoli',
+              unit: 'g',
+              qtyPlan: 200,
+              qtyExtra: 0,
+              qtyHave: 0,
+              recipesPlan: [],
+              recipesExtra: [],
+              grp: 42,
+            },
+          ],
+        }),
+        parseOpts,
+      ),
+    ).toEqual({ ok: false, error: 'schema' });
+
+    const validGrp = parsePlanExportBundle(
+      JSON.stringify({
+        v: 1,
+        kind: PLAN_EXPORT_KIND,
+        shopItems: [
+          {
+            id: 'broccoli',
+            unit: 'g',
+            qtyPlan: 200,
+            qtyExtra: 0,
+            qtyHave: 0,
+            recipesPlan: [],
+            recipesExtra: [],
+            grp: 'veg',
+          },
+        ],
+      }),
+      parseOpts,
+    );
+    expect(validGrp.ok).toBe(true);
+    if (validGrp.ok) {
+      expect(validGrp.value.shopItems?.[0]?.grp).toBe('veg');
+    }
+
+    // Doppelte plan-IDs -> plan-id
+    expect(
+      parsePlanExportBundle(
+        JSON.stringify({
+          v: 1,
+          kind: PLAN_EXPORT_KIND,
+          plan: {
+            days: 5,
+            items: [
+              {
+                id: 'pdup001',
+                date: TODAY,
+                slot: 'breakfast',
+                recipeId: 'birchermuesli',
+                portions: 2,
+              },
+              {
+                id: 'pdup001',
+                date: TOMORROW,
+                slot: 'dinner',
+                recipeId: 'oven_salmon',
+                portions: 2,
+              },
+            ],
+          },
+        }),
+        parseOpts,
+      ),
+    ).toEqual({ ok: false, error: 'plan-id' });
+  });
 });

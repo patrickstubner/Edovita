@@ -1,8 +1,10 @@
 import { isSafeRecordKey } from './schemas.ts';
 import {
+  FOOD_GROUPS,
   MEALS,
   SHOP_STATES,
   asRecipeId,
+  type FoodGroup,
   type Meal,
   type RecipeId,
   type Result,
@@ -33,6 +35,7 @@ export const PLAN_EXPORT_MAX_BYTES = 100_000;
 
 const PLAN_SLOT_SET: ReadonlySet<string> = new Set<PlanSlot>(PLAN_SLOTS);
 const SHOP_STATE_SET: ReadonlySet<string> = new Set<ShopState>(SHOP_STATES);
+const FOOD_GROUP_SET: ReadonlySet<string> = new Set<FoodGroup>(FOOD_GROUPS);
 const EXPORT_SHOP_UNIT_SET: ReadonlySet<string> = new Set([
   '',
   'g',
@@ -42,6 +45,32 @@ const EXPORT_SHOP_UNIT_SET: ReadonlySet<string> = new Set([
   'tsp',
   'pinch',
   'bottle',
+]);
+
+const ALLOWED_BUNDLE_KEYS: ReadonlySet<string> = new Set([
+  'v',
+  'kind',
+  'plan',
+  'shopItems',
+  'shopStatus',
+]);
+const ALLOWED_PLAN_KEYS: ReadonlySet<string> = new Set(['days', 'items']);
+const ALLOWED_PLAN_ITEM_KEYS: ReadonlySet<string> = new Set([
+  'id',
+  'date',
+  'slot',
+  'recipeId',
+  'portions',
+]);
+const ALLOWED_SHOP_ITEM_KEYS: ReadonlySet<string> = new Set([
+  'id',
+  'unit',
+  'qtyPlan',
+  'qtyExtra',
+  'qtyHave',
+  'recipesPlan',
+  'recipesExtra',
+  'grp',
 ]);
 
 export interface PlanItem {
@@ -70,7 +99,7 @@ export interface PlanExportShopItem {
   readonly qtyHave: number;
   readonly recipesPlan: readonly string[];
   readonly recipesExtra: readonly string[];
-  readonly grp?: string;
+  readonly grp?: FoodGroup;
 }
 
 export interface PlanExportBundle {
@@ -393,10 +422,22 @@ export interface ParsePlanExportOptions extends CoercePlanOptions {
   readonly knownFoodIds: ReadonlySet<string>;
 }
 
+function hasUnknownOwnKey(
+  record: Record<string, unknown>,
+  allowed: ReadonlySet<string>,
+): boolean {
+  for (const key of Object.getOwnPropertyNames(record)) {
+    if (!allowed.has(key)) {
+      return true;
+    }
+  }
+  return false;
+}
+
 /**
  * Prüft eine `edovita-plan-einkauf.json`-Datei vollständig vor jeder Bestätigung oder Speicherung.
- * Alte Bündel ohne `plan` bleiben gültig, sofern `shopItems` gültig ist; Bündel ohne `plan` und
- * ohne `shopItems` werden abgelehnt.
+ * Unbekannte Felder werden streng mit `schema` abgelehnt; alte Bündel ohne `plan` bleiben gültig,
+ * sofern `shopItems` gültig ist; Bündel ohne `plan` und ohne `shopItems` werden abgelehnt.
  */
 export function parsePlanExportBundle(
   rawText: string,
@@ -422,7 +463,11 @@ export function parsePlanExportBundle(
   }
 
   const data = parsed as Record<string, unknown>;
-  if (data.v !== 1 || data.kind !== PLAN_EXPORT_KIND) {
+  if (
+    hasUnknownOwnKey(data, ALLOWED_BUNDLE_KEYS) ||
+    data.v !== 1 ||
+    data.kind !== PLAN_EXPORT_KIND
+  ) {
     return { ok: false, error: 'schema' };
   }
 
@@ -435,6 +480,9 @@ export function parsePlanExportBundle(
       return { ok: false, error: 'plan' };
     }
     const rawPlan = data.plan as Record<string, unknown>;
+    if (hasUnknownOwnKey(rawPlan, ALLOWED_PLAN_KEYS)) {
+      return { ok: false, error: 'schema' };
+    }
     if (rawPlan.days !== undefined && rawPlan.days !== null) {
       if (
         typeof rawPlan.days !== 'number' ||
@@ -463,6 +511,9 @@ export function parsePlanExportBundle(
           return { ok: false, error: 'plan' };
         }
         const it = entry as Record<string, unknown>;
+        if (hasUnknownOwnKey(it, ALLOWED_PLAN_ITEM_KEYS)) {
+          return { ok: false, error: 'schema' };
+        }
         if (!isValidPlanItemId(it.id) || seenIds.has(it.id)) {
           return { ok: false, error: 'plan-id' };
         }
@@ -511,6 +562,9 @@ export function parsePlanExportBundle(
         return { ok: false, error: 'shop' };
       }
       const it = entry as Record<string, unknown>;
+      if (hasUnknownOwnKey(it, ALLOWED_SHOP_ITEM_KEYS)) {
+        return { ok: false, error: 'schema' };
+      }
       if (typeof it.id !== 'string' || !options.knownFoodIds.has(it.id)) {
         return { ok: false, error: 'shop-id' };
       }
@@ -568,6 +622,14 @@ export function parsePlanExportBundle(
         }
       }
 
+      let grp: FoodGroup | undefined;
+      if (it.grp !== undefined && it.grp !== null) {
+        if (typeof it.grp !== 'string' || !FOOD_GROUP_SET.has(it.grp)) {
+          return { ok: false, error: 'schema' };
+        }
+        grp = it.grp as FoodGroup;
+      }
+
       cleanShop.push({
         id: it.id,
         unit,
@@ -576,7 +638,7 @@ export function parsePlanExportBundle(
         qtyHave: typeof it.qtyHave === 'number' ? it.qtyHave : 0,
         recipesPlan,
         recipesExtra,
-        grp: typeof it.grp === 'string' ? it.grp : undefined,
+        grp,
       });
     }
     shopItems = cleanShop;

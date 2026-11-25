@@ -160,7 +160,7 @@ describe('Paket E10: Essensplan-Screen, PlanSheet & Datenschutz-Export/Import (I
     ).toBeInTheDocument();
   });
 
-  it('Datenschutz-Seite: Export ohne Körperdaten, Import-Vorschau mit Abbrechen, Ungültig-Ablehnung, Übernahme & F1b-Fehlerbehandlung', async () => {
+  it('Datenschutz-Seite: Export ohne Körperdaten, Ungültig-Ablehnung, Import-Vorschau mit Abbrechen und Übernahme', async () => {
     const storage = createMemoryStorage();
     const today = todayIso();
     await storage.plan.set({
