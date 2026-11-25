@@ -30,7 +30,7 @@ export const NAV_TABS: readonly NavTabSpec[] = [
     path: '/plan',
     icon: 'cal',
     labelKey: 'plan.title',
-    enabled: false,
+    enabled: true,
   },
   {
     id: 'profil',

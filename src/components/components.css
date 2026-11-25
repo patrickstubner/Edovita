@@ -1043,5 +1043,202 @@ html[dir='rtl'] .edo-back-btn .edo-ic {
   transform: scaleX(-1);
 }
 
+/* Zweispaltige Sekundär-Reihe in BottomActions & enger Stapel */
+.edo-actions-row {
+  display: flex;
+  gap: 8px;
+}
+
+.edo-actions-row > .edo-btn {
+  flex: 1 1 0;
+  min-inline-size: 0;
+  font-size: 15px;
+  padding-inline: 12px;
+}
+
+.edo-stack-sm {
+  gap: 8px;
+}
+
+/* Essensplan (Prototyp v5.10 / E10), rein logische CSS-Eigenschaften */
+.edo-plan-seg {
+  flex-wrap: wrap;
+}
+
+.edo-plan-seg > .edo-seg-btn {
+  flex: 1 1 30%;
+  min-inline-size: 84px;
+}
+
+.edo-plan-day {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.edo-plan-day-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.edo-plan-day-head b {
+  font-size: 17px;
+}
+
+.edo-plan-slot {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.edo-plan-slot-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--edo-text-muted);
+  letter-spacing: 0.2px;
+}
+
+.edo-plan-empty,
+.edo-plan-item {
+  min-block-size: 44px;
+  inline-size: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-block: 10px;
+  padding-inline: 12px;
+  border-radius: 16px;
+  text-align: start;
+}
+
+.edo-plan-empty {
+  border: 1.5px dashed var(--edo-border);
+  background: transparent;
+  color: var(--edo-primary-dark);
+  font-weight: 700;
+}
+
+.edo-plan-item {
+  background: var(--edo-surface);
+  box-shadow: var(--edo-shadow);
+  color: var(--edo-text);
+}
+
+.edo-plan-item-main {
+  text-align: start;
+  min-block-size: 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.edo-plan-item-main b {
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.edo-plan-item-meta {
+  display: block;
+  font-size: 13px;
+}
+
+.edo-plan-thumb {
+  position: relative;
+  overflow: hidden;
+  inline-size: 56px;
+  block-size: 56px;
+  border-radius: 14px;
+  flex: none;
+  aspect-ratio: 1;
+  background: var(--edo-primary-soft);
+}
+
+.edo-plan-thumb-img {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.edo-plan-actions {
+  display: flex;
+  flex: none;
+  gap: 4px;
+}
+
+.edo-plan-iconbtn {
+  inline-size: 44px;
+  block-size: 44px;
+  border-radius: 22px;
+  display: grid;
+  place-items: center;
+  color: var(--edo-text-muted);
+}
+
+.edo-plan-pick-row {
+  inline-size: 100%;
+  min-block-size: 52px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-block: 10px;
+  padding-inline: 14px;
+  border-radius: 14px;
+  background: var(--edo-bg);
+  text-align: start;
+}
+
+.edo-plan-form-title {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.edo-plan-stepper {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.edo-plan-portions-out {
+  min-inline-size: 44px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.edo-sheet-actions {
+  display: flex;
+  gap: 10px;
+  margin-block-start: 12px;
+}
+
+.edo-sheet-actions > .edo-btn {
+  flex: 1 1 0;
+}
+
+.edo-import-preview {
+  list-style: none;
+}
+
+.edo-import-preview li {
+  padding-block: 10px;
+  border-block-start: 1px solid var(--edo-border);
+  font-weight: 600;
+  min-block-size: 44px;
+}
+
+.edo-import-preview li:first-child {
+  border-block-start: 0;
+}
+
+html[data-eff='dark'] .edo-plan-empty {
+  border-color: #2a3533;
+}
+
+
 
 

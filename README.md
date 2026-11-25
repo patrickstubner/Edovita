@@ -2,7 +2,7 @@
 
 Ernährungs-App mit Rezepten, Einkaufsliste und Zweitsprache für Lebensmittel. Web-App (PWA) zuerst, danach Handy-App mit Capacitor. Local-first: Gesundheitsdaten bleiben auf dem Gerät. App-ID `ch.edovita.app`.
 
-**Stand:** Version `0.1.0` – Pakete **E0** + **E0b** + **E1** + **E2** + **E3** + **E4** + **kompakter UI-Sprachumschalter** + **E5** + **E5b** + **E6** + **E6b** + **E8** + **E9** (Domäne mit `zod`, Lebensmittel-Katalog, Rezept-Schema, Nährwerte, Inhaltsprüfung, Mehrsprachigkeit mit `i18next` + `i18next-icu`, beide kompakten Kopfzeilen-Umschalter für UI-Sprache & Zweitsprache für Lebensmittel mit Orts-Standard ohne Geolocation-API, untere Tab-Leiste und Profil-Einstieg `#/profil` → `#/profil/sprache`, lokale Speicherung mit Dexie/IndexedDB v2, Rezeptliste `#/rezepte` & Rezept-Detailseite `#/rezept/:id` mit lokal gebündelten WebP-Rezeptfotos samt Platzhalter-Rückfall und zweisprachigen Zutaten sowie Einkaufsliste `#/einkauf` im Prototyp-v5.10.1-Stand mit zweizeiliger Zweitsprache für Artikel, relevante UI-Texte & beide Sheets, drei Zuständen, ⓘ-Herkunfts-Sheet, «Hab ich»-Sheet mit Teilmengen, bewusster Katalog-Suche, Hausmarken, Teilen & gehärtetem QR-Import). Vorschau nach Merge auf `main`: https://patrickstubner.github.io/Edovita/ (Deploy nur über den Pages-Workflow). Aktueller Stand und nächste Schritte: [`STATUS.md`](STATUS.md). Bildlizenz- und Budgetregeln: [`content/README.md`](content/README.md).
+**Stand:** Version `0.1.0` – Pakete **E0** + **E0b** + **E1** + **E2** + **E3** + **E4** + **kompakter UI-Sprachumschalter** + **E5** + **E5b** + **E6** + **E6b** + **E8** + **E9** + **E10** (Domäne mit `zod`, Lebensmittel-Katalog, Rezept-Schema, Nährwerte, Inhaltsprüfung, Mehrsprachigkeit mit `i18next` + `i18next-icu`, beide kompakten Kopfzeilen-Umschalter für UI-Sprache & Zweitsprache für Lebensmittel mit Orts-Standard ohne Geolocation-API, untere Tab-Leiste für Rezepte/Plan/Profil, Essensplan `#/plan` für 3–7 Tage mit Tagessummen & Tauschen/Entfernen, Profil `#/profil` → `#/profil/sprache` & `#/profil/datenschutz` mit Export/Import von `edovita-plan-einkauf.json` samt transaktionalem Dexie-v3-Import, Rezeptliste `#/rezepte` & Rezept-Detailseite `#/rezept/:id` mit «Zum Plan hinzufügen», lokal gebündelten WebP-Rezeptfotos samt Platzhalter-Rückfall und zweisprachigen Zutaten sowie Einkaufsliste `#/einkauf` im Prototyp-v5.10.1-Stand mit zweizeiliger Zweitsprache für Artikel, relevante UI-Texte & beide Sheets, drei Zuständen, ⓘ-Herkunfts-Sheet, «Hab ich»-Sheet mit Teilmengen, bewusster Katalog-Suche, Hausmarken, Teilen & gehärtetem QR-Import). Vorschau nach Merge auf `main`: https://patrickstubner.github.io/Edovita/ (Deploy nur über den Pages-Workflow). Aktueller Stand und nächste Schritte: [`STATUS.md`](STATUS.md). Bildlizenz- und Budgetregeln: [`content/README.md`](content/README.md).
 
 ## Inhalt
 
@@ -36,7 +36,7 @@ pnpm run content:check   # Prüft Indizes, Schemas, Nährwerte, Glossare, Allerg
 pnpm run build           # Produktions-Build mit Rsbuild nach dist/
 pnpm run security:check  # DOM-Senken, CSP, Build-HTML, Supply-Chain-Config
 pnpm audit --audit-level=high
-pnpm run test:e2e        # Playwright 390×844 & 360×844 (Hell & Dunkel, i18n, Rezeptbilder, Einkauf, HTTP-CSP-Header)
+pnpm run test:e2e        # Playwright 390×844 & 360×844 (Hell & Dunkel, i18n, Rezeptbilder, Essensplan, Einkauf, Datenschutz-Export/Import, HTTP-CSP-Header)
 
 # Pages-Build lokal prüfen (Assets unter /Edovita/, dann http://127.0.0.1:4173/Edovita/)
 GITHUB_PAGES=true PAGES_DIST=dist-pages pnpm run build

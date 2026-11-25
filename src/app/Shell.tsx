@@ -26,6 +26,7 @@ import {
   resolveNavTabPath,
   type NavTabId,
 } from './navigation.ts';
+import { PlanContext } from './PlanProvider.tsx';
 import { RatingsContext } from './RatingsProvider.tsx';
 import { SettingsContext } from './SettingsProvider.tsx';
 import { ShoppingContext } from './ShoppingProvider.tsx';
@@ -59,6 +60,7 @@ export function Shell() {
   const settingsCtx = useContext(SettingsContext);
   const shoppingCtx = useContext(ShoppingContext);
   const ratingsCtx = useContext(RatingsContext);
+  const planCtx = useContext(PlanContext);
 
   const [activeMenu, setActiveMenu] = useState<OpenHeaderMenu>(null);
   const [sameToast, setSameToast] = useState<string | null>(null);
@@ -74,12 +76,17 @@ export function Shell() {
   );
 
   const activeError: StorageErrorCode | null =
-    settingsCtx?.error ?? shoppingCtx?.error ?? ratingsCtx?.error ?? null;
+    settingsCtx?.error ??
+    shoppingCtx?.error ??
+    ratingsCtx?.error ??
+    planCtx?.error ??
+    null;
 
   const dismissAllErrors = () => {
     settingsCtx?.clearError();
     shoppingCtx?.clearError();
     ratingsCtx?.clearError();
+    planCtx?.clearError();
   };
 
   const activeNavTab = resolveActiveNavTab(location.pathname);

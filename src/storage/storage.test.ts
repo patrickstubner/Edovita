@@ -14,7 +14,9 @@ import {
   coerceSettings,
   createDexieStorage,
   exportAll,
+  exportPlanTransferBundle,
   importAll,
+  importPlanTransferBundle,
   settingsSchema,
   wipeAll,
   type DexieStorageBundle,
@@ -552,5 +554,145 @@ describe('Speicher: Neuladen, Coercion, Export/Import/Wipe und Migrationen (E3)'
     expect(await storage.shopping.list()).toEqual([existingItem]);
     expect(await storage.ratings.listRatings()).toEqual({ oven_salmon: 5 });
     expect(await storage.ratings.listSaved()).toEqual(['oven_salmon']);
+  });
+
+  it('migriert Bestandsdaten von Schema-Version 2 sauber auf Version 3 (plan-Tabelle leer, Altbestand erhalten)', async () => {
+    const dbName = nextDbName('mig_v2_v3');
+
+    // Altdatenbank in Version 2 anlegen
+    const oldDb = new EdovitaDb(
+      dbName,
+      EDOVITA_MIGRATIONS.filter((m) => m.version <= 2),
+    );
+    await oldDb.settings.put({
+      key: 'current',
+      value: {
+        uiLang: 'de',
+        secondLang: 'pt',
+        theme: 'dark',
+        sound: true,
+        hymn: 'H1',
+      },
+    });
+    await oldDb.ratings.put({ recipeId: 'pho', stars: 5 });
+    oldDb.close();
+
+    // Mit aktuellem v3-Schema öffnen
+    const upgraded = createDexieStorage(dbName);
+    createdDbs.push(upgraded.db);
+
+    expect(upgraded.db.verno).toBe(3);
+    expect((await upgraded.settings.get()).uiLang).toBe('de');
+    expect(await upgraded.ratings.getRating('pho')).toBe(5);
+    expect(await upgraded.plan.get()).toEqual({ days: 5, items: [] });
+  });
+
+  it('F1b: importPlanTransferBundle läuft echt transaktional über Dexie und lässt Altbestand bei Fehler unverändert', async () => {
+    const dbName = nextDbName('f1b_plan_tx');
+    const storage = createDexieStorage(dbName);
+    createdDbs.push(storage.db);
+
+    const fixedNow = new Date();
+    const today = `${fixedNow.getFullYear()}-${String(fixedNow.getMonth() + 1).padStart(2, '0')}-${String(fixedNow.getDate()).padStart(2, '0')}`;
+
+    const initialPlan = {
+      days: 4,
+      items: [
+        {
+          id: 'pinit01',
+          date: today,
+          slot: 'breakfast' as const,
+          recipeId: asRecipeId('birchermuesli'),
+          portions: 2,
+        },
+      ],
+    };
+    await storage.plan.set(initialPlan, fixedNow);
+
+    // Rundreise: Export erzeugt edovita-prototype-export mit Plan ohne Körperdaten
+    const exported = await exportPlanTransferBundle(storage, { now: fixedNow });
+    expect(exported.v).toBe(1);
+    expect(exported.kind).toBe('edovita-prototype-export');
+    expect(exported.plan).toEqual(initialPlan);
+    expect('settings' in exported).toBe(false);
+    expect('profile' in exported).toBe(false);
+
+    // Altes Bündel ohne `plan`, aber mit gültigen `shopItems` bleibt gültig und lässt bestehenden Plan unberührt
+    const legacyShopOnly = JSON.stringify({
+      v: 1,
+      kind: 'edovita-prototype-export',
+      shopItems: [
+        {
+          id: 'broccoli',
+          unit: 'g',
+          qtyPlan: 200,
+          qtyExtra: 0,
+          qtyHave: 0,
+          recipesPlan: ['oven_salmon'],
+          recipesExtra: [],
+        },
+      ],
+    });
+    const legacyRes = await importPlanTransferBundle(storage, legacyShopOnly, {
+      now: fixedNow,
+    });
+    expect(legacyRes.ok).toBe(true);
+    expect(await storage.plan.get(fixedNow)).toEqual(initialPlan);
+
+    // Simulierter Fehler mitten in der Dexie-Transaktion -> Rollback, vorheriger Plan bleibt vollständig erhalten
+    const nextBundle = JSON.stringify({
+      v: 1,
+      kind: 'edovita-prototype-export',
+      plan: {
+        days: 7,
+        items: [
+          {
+            id: 'pnext01',
+            date: today,
+            slot: 'dinner',
+            recipeId: 'oven_salmon',
+            portions: 4,
+          },
+        ],
+      },
+      shopItems: [],
+      shopStatus: {},
+    });
+
+    const origPut = storage.db.plan.put.bind(storage.db.plan);
+    storage.db.plan.put = (() => {
+      const err = new Error('Simulated Dexie write error');
+      err.name = 'QuotaExceededError';
+      throw err;
+    }) as typeof storage.db.plan.put;
+
+    try {
+      const failed = await importPlanTransferBundle(storage, nextBundle, {
+        now: fixedNow,
+      });
+      expect(failed).toEqual({ ok: false, error: 'write' });
+    } finally {
+      storage.db.plan.put = origPut;
+    }
+
+    expect(await storage.plan.get(fixedNow)).toEqual(initialPlan);
+
+    // Ohne Fehler übernimmt der Import den neuen Plan sauber
+    const applied = await importPlanTransferBundle(storage, nextBundle, {
+      now: fixedNow,
+    });
+    expect(applied.ok).toBe(true);
+    expect(await storage.plan.get(fixedNow)).toEqual({
+      days: 7,
+      items: [
+        {
+          id: 'pnext01',
+          date: today,
+          slot: 'dinner',
+          recipeId: asRecipeId('oven_salmon'),
+          portions: 4,
+        },
+      ],
+    });
   });
 });

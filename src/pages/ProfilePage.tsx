@@ -32,6 +32,24 @@ export function ProfilePage() {
               <Icon name="chev" />
             </span>
           </button>
+
+          <button
+            type="button"
+            className="edo-set edo-langrow"
+            data-testid="profil-datenschutz-btn"
+            onClick={() => navigate('/profil/datenschutz')}
+          >
+            <span className="edo-circ" aria-hidden="true">
+              <Icon name="shield" />
+            </span>
+            <span className="edo-set-tx edo-grow">
+              <b>{t('profil.datenschutz_und_backup')}</b>
+              <small>{t('datenschutz.datenschutz')}</small>
+            </span>
+            <span className="edo-set-chev" aria-hidden="true">
+              <Icon name="chev" />
+            </span>
+          </button>
         </section>
       </div>
     </Screen>

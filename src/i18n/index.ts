@@ -54,6 +54,7 @@ export {
   CUISINE_LABEL_KEYS,
   FOOD_GROUP_LABEL_KEYS,
   MEAL_LABEL_KEYS,
+  MEAL_SHORT_LABEL_KEYS,
   REGION_LABEL_KEYS,
   getCuisineLabelKey,
 } from './labels.ts';

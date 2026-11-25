@@ -11,6 +11,10 @@ export {
   type CatalogAddPanelProps,
   type CatalogFoodOption,
 } from './CatalogAddPanel.tsx';
+export {
+  DataImportSheet,
+  type DataImportSheetProps,
+} from './DataImportSheet.tsx';
 export { Icon, type IconProps } from './Icon.tsx';
 export { IconSprite } from './IconSprite.tsx';
 export {
@@ -29,6 +33,13 @@ export {
   type NutritionPanelProps,
   type NutritionRowData,
 } from './NutritionPanel.tsx';
+export {
+  PlanSheet,
+  type PlanDayOption,
+  type PlanPickOption,
+  type PlanSheetProps,
+  type PlanSlotOption,
+} from './PlanSheet.tsx';
 export { QrCodeSvg, type QrCodeSvgProps } from './QrCodeSvg.tsx';
 export {
   QrImportDialog,

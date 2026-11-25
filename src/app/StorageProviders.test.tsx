@@ -18,6 +18,7 @@ import {
   EdovitaDb,
   createDexieStorage,
   createMemoryStorage,
+  type PlanRepository,
   type RatingsRepository,
   type SettingsRepository,
   type ShoppingRepository,
@@ -251,10 +252,17 @@ describe('Getrennte Speicher-Provider mit Repository-Injektion (ADR-001 Regel 6,
 
     // UI-Banner in der vollständigen App zeigt nur die generische Meldung – keine Rohdaten/Stacks
     cleanup();
+    const failingPlan: PlanRepository = {
+      get: () => Promise.reject(readError),
+      set: () => Promise.reject(quotaError),
+      clear: () => Promise.reject(quotaError),
+    };
+
     const failingBundle: StorageBundle = {
       settings: failingSettings,
       shopping: failingShopping,
       ratings: failingRatings,
+      plan: failingPlan,
     };
     render(<App navigatorLanguages={['de-CH']} storage={failingBundle} />);
 
