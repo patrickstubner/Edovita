@@ -1,23 +1,31 @@
+import { RECIPES } from '../../content/generated/catalog-index.ts';
 import { LANGUAGES_REGISTRY } from '../../content/generated/locales-index.ts';
 import {
   RECIPE_ID_RE,
   asRecipeId,
+  coercePlan,
   coerceRating,
   coerceSettings,
   coerceShoppingItem,
   isSafeRecordKey,
   type LanguagesRegistry,
+  type MealPlan,
   type RecipeId,
   type Settings,
   type ShoppingItem,
 } from '../domain/index.ts';
 import type {
+  PlanRepository,
   RatingsRepository,
   SettingsRepository,
   ShoppingRepository,
   StorageBundle,
   StorageSnapshotPatch,
 } from './repositories.ts';
+
+const DEFAULT_KNOWN_RECIPE_IDS: ReadonlySet<string> = new Set(
+  RECIPES.map((r) => r.id),
+);
 
 function clone<T>(value: T): T {
   return structuredClone(value);
@@ -203,23 +211,62 @@ export class MemoryRatingsRepository implements RatingsRepository {
   }
 }
 
+export class MemoryPlanRepository implements PlanRepository {
+  private raw: unknown = undefined;
+  private readonly knownRecipeIds: ReadonlySet<string>;
+
+  constructor(
+    initial?: unknown,
+    knownRecipeIds: ReadonlySet<string> = DEFAULT_KNOWN_RECIPE_IDS,
+  ) {
+    this.knownRecipeIds = knownRecipeIds;
+    if (initial !== undefined) {
+      this.raw = clone(initial);
+    }
+  }
+
+  async get(now?: Date): Promise<MealPlan> {
+    return coercePlan(this.raw, {
+      knownRecipeIds: this.knownRecipeIds,
+      now,
+    });
+  }
+
+  async set(plan: MealPlan, now?: Date): Promise<MealPlan> {
+    const safe = coercePlan(plan, {
+      knownRecipeIds: this.knownRecipeIds,
+      now,
+    });
+    this.raw = clone(safe);
+    return clone(safe);
+  }
+
+  async clear(): Promise<void> {
+    this.raw = undefined;
+  }
+}
+
 export function createMemoryStorage(
   registry: LanguagesRegistry = LANGUAGES_REGISTRY,
+  knownRecipeIds: ReadonlySet<string> = DEFAULT_KNOWN_RECIPE_IDS,
 ): StorageBundle {
   const settings = new MemorySettingsRepository(undefined, registry);
   const shopping = new MemoryShoppingRepository();
   const ratings = new MemoryRatingsRepository();
+  const plan = new MemoryPlanRepository(undefined, knownRecipeIds);
 
   return {
     settings,
     shopping,
     ratings,
+    plan,
     applyImport: async (patch: StorageSnapshotPatch): Promise<void> => {
-      // Snapshot vor Änderungen sichern, damit ein Fehler den Altbestand unverändert lässt (G2)
+      // Snapshot vor Änderungen sichern, damit ein Fehler den Altbestand unverändert lässt (G2 / F1b)
       const prevSettings = await settings.getStored();
       const prevShopping = await shopping.list();
       const prevRatings = await ratings.listRatings();
       const prevSaved = await ratings.listSaved();
+      const prevPlan = await plan.get();
 
       try {
         if (patch.settings !== undefined) {
@@ -245,6 +292,9 @@ export function createMemoryStorage(
             }
           }
         }
+        if (patch.plan !== undefined) {
+          await plan.set(patch.plan);
+        }
       } catch (err) {
         if (prevSettings === null) {
           await settings.clear();
@@ -259,6 +309,7 @@ export function createMemoryStorage(
         for (const recipeId of prevSaved) {
           await ratings.setSaved(recipeId, true);
         }
+        await plan.set(prevPlan);
         throw err;
       }
     },

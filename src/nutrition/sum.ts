@@ -66,3 +66,40 @@ export function nutrientsForServings(
     salt: roundTo(per.salt * servings, 1),
   };
 }
+
+export interface DayPlanNutritionTotal {
+  readonly kcal: number;
+  readonly protein: number;
+  readonly hasValues: boolean;
+}
+
+/**
+ * Berechnet das Tagestotal (`kcal` und `protein`) eines Essensplans exakt über
+ * `nutrientsForServings` für jeden eingeplanten Eintrag (E10 / ADR-005).
+ */
+export function dayPlanNutrition(
+  items: ReadonlyArray<{ readonly recipeId: string; readonly portions: number }>,
+  getRecipeById: (id: string) => Recipe | undefined,
+  foods?: ReadonlyMap<FoodId, Food> | readonly Food[],
+): DayPlanNutritionTotal {
+  let kcal = 0;
+  let protein = 0;
+  let count = 0;
+
+  for (const item of items) {
+    const recipe = getRecipeById(item.recipeId);
+    if (!recipe) {
+      continue;
+    }
+    const totals = nutrientsForServings(recipe, item.portions, foods);
+    kcal += totals.kcal;
+    protein += totals.protein;
+    count += 1;
+  }
+
+  return {
+    kcal: Math.round(kcal),
+    protein: Math.round(protein),
+    hasValues: count > 0,
+  };
+}

@@ -302,6 +302,16 @@ export interface ExportBundleV1 {
     shopping?: ShoppingItem[];
     ratings?: Record<string, number>;
     saved?: string[];
+    plan?: {
+      days: number;
+      items: Array<{
+        id: string;
+        date: string;
+        slot: Meal;
+        recipeId: RecipeId;
+        portions: number;
+      }>;
+    };
   };
 }
 

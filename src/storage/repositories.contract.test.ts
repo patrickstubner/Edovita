@@ -168,6 +168,45 @@ function runRepositoryContractSuite(
       expect(await ratings.listRatings()).toEqual({});
       expect(await ratings.listSaved()).toEqual([]);
     });
+
+    it('PlanRepository: leerer Startzustand, Speichern/Lesen, Bereinigung ungültiger Daten und clear', async () => {
+      const { plan } = setup();
+      const fixedNow = new Date(2026, 10, 25, 10, 0, 0);
+
+      expect(await plan.get(fixedNow)).toEqual({ days: 5, items: [] });
+
+      const saved = await plan.set(
+        {
+          days: 7,
+          items: [
+            {
+              id: 'pitem01',
+              date: '2026-11-25',
+              slot: 'dinner',
+              recipeId: asRecipeId('oven_salmon'),
+              portions: 3,
+            },
+            {
+              // Ungültiges Rezept & XSS-Payload wird beim Speichern verworfen
+              id: 'pitem02',
+              date: '2026-11-25',
+              slot: 'lunch',
+              recipeId: asRecipeId('<script>alert(1)</script>'),
+              portions: 2,
+            },
+          ],
+        },
+        fixedNow,
+      );
+
+      expect(saved.days).toBe(7);
+      expect(saved.items).toHaveLength(1);
+      expect(saved.items[0]?.recipeId).toBe('oven_salmon');
+      expect(await plan.get(fixedNow)).toEqual(saved);
+
+      await plan.clear();
+      expect(await plan.get(fixedNow)).toEqual({ days: 5, items: [] });
+    });
   });
 }
 
@@ -179,6 +218,7 @@ runRepositoryContractSuite('Memory*Repository', () => {
       await bundle.settings.clear();
       await bundle.shopping.clear();
       await bundle.ratings.clear();
+      await bundle.plan.clear();
     },
   };
 });

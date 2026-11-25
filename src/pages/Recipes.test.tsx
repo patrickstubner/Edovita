@@ -10,6 +10,7 @@ import { I18nextProvider } from 'react-i18next';
 import { MemoryRouter, Route, Routes } from 'react-router';
 import { App } from '../app/App.tsx';
 import { I18nContext } from '../app/I18nProvider.tsx';
+import { PlanProvider } from '../app/PlanProvider.tsx';
 import { RatingsProvider } from '../app/RatingsProvider.tsx';
 import { SecondLangProvider } from '../app/SecondLangProvider.tsx';
 import { ShoppingProvider } from '../app/ShoppingProvider.tsx';
@@ -66,8 +67,8 @@ describe('Paket E4: Rezeptliste, Rezept-Detailseite & F3b (Issue #10)', () => {
       screen.getByTestId('recipe-card-birchermuesli'),
     ).toBeInTheDocument();
 
-    // Mahlzeit-Filter: Zwischenmahlzeit -> leerer Zustand
-    fireEvent.click(screen.getByRole('button', { name: 'Zwischenmahlzeit' }));
+    // Mahlzeit-Filter: Snacks -> leerer Zustand
+    fireEvent.click(screen.getByRole('button', { name: 'Snacks' }));
     expect(screen.getByTestId('recipes-empty')).toBeInTheDocument();
 
     // Zurück auf Alle + Eigenschaftsfilter «Schnell, bis 15 Min.» -> Birchermüesli
@@ -307,13 +308,18 @@ describe('Paket E4: Rezeptliste, Rezept-Detailseite & F3b (Issue #10)', () => {
         >
           <SecondLangProvider>
             <ShoppingProvider repository={storage.shopping}>
-              <RatingsProvider repository={storage.ratings}>
-                <MemoryRouter initialEntries={['/rezept/oven_salmon']}>
-                  <Routes>
-                    <Route path="/rezept/:id" element={<RecipeDetailPage />} />
-                  </Routes>
-                </MemoryRouter>
-              </RatingsProvider>
+              <PlanProvider repository={storage.plan}>
+                <RatingsProvider repository={storage.ratings}>
+                  <MemoryRouter initialEntries={['/rezept/oven_salmon']}>
+                    <Routes>
+                      <Route
+                        path="/rezept/:id"
+                        element={<RecipeDetailPage />}
+                      />
+                    </Routes>
+                  </MemoryRouter>
+                </RatingsProvider>
+              </PlanProvider>
             </ShoppingProvider>
           </SecondLangProvider>
         </I18nContext.Provider>

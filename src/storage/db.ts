@@ -1,16 +1,22 @@
 import Dexie, { type EntityTable, type Transaction } from 'dexie';
 import {
   coerceQtyHave,
+  type MealPlan,
   type Settings,
   type ShoppingItem,
 } from '../domain/index.ts';
 
 export const DEFAULT_DB_NAME = 'edovita';
-export const CURRENT_DB_VERSION = 2;
+export const CURRENT_DB_VERSION = 3;
 
 export interface StoredSettingsRow {
   key: 'current';
   value: Settings;
+}
+
+export interface StoredPlanRow {
+  key: 'current';
+  value: MealPlan;
 }
 
 export interface StoredRatingRow {
@@ -41,6 +47,11 @@ export const EDOVITA_SCHEMA_V1: Readonly<Record<string, string>> = {
   saved: 'recipeId',
 };
 
+export const EDOVITA_SCHEMA_V3: Readonly<Record<string, string>> = {
+  ...EDOVITA_SCHEMA_V1,
+  plan: 'key',
+};
+
 export const EDOVITA_MIGRATIONS: readonly SchemaMigration[] = [
   {
     version: 1,
@@ -64,6 +75,10 @@ export const EDOVITA_MIGRATIONS: readonly SchemaMigration[] = [
         });
     },
   },
+  {
+    version: 3,
+    stores: { ...EDOVITA_SCHEMA_V3 },
+  },
 ];
 
 export function applyMigrations(
@@ -83,6 +98,7 @@ export class EdovitaDb extends Dexie {
   shopping!: EntityTable<ShoppingItem, 'id'>;
   ratings!: EntityTable<StoredRatingRow, 'recipeId'>;
   saved!: EntityTable<StoredSavedRow, 'recipeId'>;
+  plan!: EntityTable<StoredPlanRow, 'key'>;
 
   constructor(
     name: string = DEFAULT_DB_NAME,

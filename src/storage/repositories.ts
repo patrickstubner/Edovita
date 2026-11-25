@@ -1,4 +1,9 @@
-import type { RecipeId, Settings, ShoppingItem } from '../domain/index.ts';
+import type {
+  MealPlan,
+  RecipeId,
+  Settings,
+  ShoppingItem,
+} from '../domain/index.ts';
 
 /**
  * Austauschbare Repository-Schnittstellen pro Fachbereich (ADR-002).
@@ -33,18 +38,26 @@ export interface RatingsRepository {
   clear(): Promise<void>;
 }
 
+export interface PlanRepository {
+  get(now?: Date): Promise<MealPlan>;
+  set(plan: MealPlan, now?: Date): Promise<MealPlan>;
+  clear(): Promise<void>;
+}
+
 export interface StorageSnapshotPatch {
   readonly settings?: Settings;
   readonly shopping?: readonly ShoppingItem[];
   readonly ratings?: Readonly<Record<string, number>>;
   readonly saved?: readonly RecipeId[];
+  readonly plan?: MealPlan;
 }
 
 export interface StorageBundle {
   readonly settings: SettingsRepository;
   readonly shopping: ShoppingRepository;
   readonly ratings: RatingsRepository;
-  /** Ersetzt importierte Bereiche atomar in einer Transaktion (G2). */
+  readonly plan: PlanRepository;
+  /** Ersetzt importierte Bereiche atomar in einer Transaktion (G2 / F1b). */
   applyImport?: (patch: StorageSnapshotPatch) => Promise<void>;
   close?: () => void;
 }

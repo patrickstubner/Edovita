@@ -25,14 +25,18 @@ afterEach(() => {
   document.documentElement.removeAttribute('dir');
 });
 
-describe('E9 Navigation: Whitelist & Tab-Zuordnung (navigation.ts)', () => {
-  it('erlaubt ausschliesslich aktive Whitelist-Tabs und lehnt Plan (bis E10) sowie freie Eingaben ab', () => {
+describe('E9 + E10 Navigation: Whitelist & Tab-Zuordnung (navigation.ts)', () => {
+  it('erlaubt ausschliesslich aktive Whitelist-Tabs (Rezepte, Plan, Profil) und lehnt freie Eingaben ab', () => {
     expect(NAV_TABS.map((t) => t.id)).toEqual(['rezepte', 'plan', 'profil']);
-    expect(VISIBLE_NAV_TABS.map((t) => t.id)).toEqual(['rezepte', 'profil']);
+    expect(VISIBLE_NAV_TABS.map((t) => t.id)).toEqual([
+      'rezepte',
+      'plan',
+      'profil',
+    ]);
 
     expect(resolveNavTabPath('rezepte')).toBe('/rezepte');
+    expect(resolveNavTabPath('plan')).toBe('/plan');
     expect(resolveNavTabPath('profil')).toBe('/profil');
-    expect(resolveNavTabPath('plan')).toBeNull();
     expect(resolveNavTabPath('__proto__')).toBeNull();
     expect(resolveNavTabPath(`${'java'}script:alert(1)`)).toBeNull();
     expect(resolveNavTabPath('../etc/passwd')).toBeNull();
@@ -45,14 +49,15 @@ describe('E9 Navigation: Whitelist & Tab-Zuordnung (navigation.ts)', () => {
     expect(resolveActiveNavTab('/plan')).toBe('plan');
     expect(resolveActiveNavTab('/profil')).toBe('profil');
     expect(resolveActiveNavTab('/profil/sprache')).toBe('profil');
+    expect(resolveActiveNavTab('/profil/datenschutz')).toBe('profil');
     expect(resolveActiveNavTab('/')).toBeNull();
     expect(resolveActiveNavTab('/status')).toBeNull();
     expect(resolveActiveNavTab('/unbekannt')).toBeNull();
   });
 });
 
-describe('E9 Navigation: Tab-Leiste, #/profil, #/profil/sprache & Fallback-Route', () => {
-  it('navigiert Start -> Tab Profil -> Sprache -> zurück -> Tab Rezepte und zeigt keinen Plan-/Demo-Abschnitt', async () => {
+describe('E9 + E10 Navigation: Tab-Leiste, #/plan, #/profil, #/profil/sprache & Fallback-Route', () => {
+  it('navigiert Start -> Tab Profil -> Sprache -> zurück -> Tab Rezepte und zeigt keinen Demo-Abschnitt', async () => {
     render(
       <App navigatorLanguages={['de-CH']} storage={createMemoryStorage()} />,
     );
@@ -61,13 +66,13 @@ describe('E9 Navigation: Tab-Leiste, #/profil, #/profil/sprache & Fallback-Route
     const links = within(nav).getAllByRole('link');
     expect(links.map((el) => el.getAttribute('data-tabid'))).toEqual([
       'rezepte',
+      'plan',
       'profil',
     ]);
     // Auf der Startseite ist kein Tab aktiv markiert
     for (const link of links) {
       expect(link).not.toHaveAttribute('aria-current');
     }
-    expect(within(nav).queryByText('Plan')).toBeNull();
 
     // Start -> Tab Profil
     fireEvent.click(within(nav).getByRole('link', { name: 'Profil' }));

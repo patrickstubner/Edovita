@@ -357,6 +357,19 @@ export const uiLocaleSchema = z
     'Reservierter Schlüssel in UI-Locale nicht zulässig.',
   );
 
+export const planItemSchema = z.strictObject({
+  id: z.string().regex(/^p[a-z0-9]{4,20}$/, 'Ungültige Plan-Eintrags-ID.'),
+  date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Ungültiges Datum im Plan.'),
+  slot: mealSchema,
+  recipeId: recipeIdSchema,
+  portions: z.number().int().min(1).max(8),
+});
+
+export const mealPlanSchema = z.strictObject({
+  days: z.number().int().min(3).max(7),
+  items: z.array(planItemSchema).max(80),
+});
+
 /**
  * Erzeugt das strenge Export-Bundle-Schema (Format 1) gebunden an die Sprach-Registry (ADR-002, F1, F3a).
  */
@@ -378,6 +391,7 @@ export function createExportBundleV1Schema(registry: LanguagesRegistry) {
         )
         .optional(),
       saved: z.array(recipeIdSchema).max(500).optional(),
+      plan: mealPlanSchema.optional(),
     }),
   });
 }

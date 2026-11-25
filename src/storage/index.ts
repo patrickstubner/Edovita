@@ -27,15 +27,18 @@ export {
   DEFAULT_DB_NAME,
   EDOVITA_MIGRATIONS,
   EDOVITA_SCHEMA_V1,
+  EDOVITA_SCHEMA_V3,
   EdovitaDb,
   applyMigrations,
   type SchemaMigration,
+  type StoredPlanRow,
   type StoredRatingRow,
   type StoredSavedRow,
   type StoredSettingsRow,
 } from './db.ts';
 
 export type {
+  PlanRepository,
   RatingsRepository,
   SettingsRepository,
   ShoppingRepository,
@@ -44,6 +47,7 @@ export type {
 } from './repositories.ts';
 
 export {
+  DexiePlanRepository,
   DexieRatingsRepository,
   DexieSettingsRepository,
   DexieShoppingRepository,
@@ -52,6 +56,7 @@ export {
 } from './dexieRepositories.ts';
 
 export {
+  MemoryPlanRepository,
   MemoryRatingsRepository,
   MemorySettingsRepository,
   MemoryShoppingRepository,
@@ -62,8 +67,11 @@ export {
   clearEdovitaLocalStorage,
   exportAll,
   exportBundleV1Schema,
+  exportPlanTransferBundle,
   importAll,
+  importPlanTransferBundle,
   settingsSchema,
   wipeAll,
   type ImportErrorCode,
+  type PlanTransferImportErrorCode,
 } from './exportImport.ts';

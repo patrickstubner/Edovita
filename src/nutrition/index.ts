@@ -11,4 +11,9 @@ export {
   scaleIngredients,
 } from './scale.ts';
 
-export { nutrientsForServings, nutrientsPerServing } from './sum.ts';
+export {
+  dayPlanNutrition,
+  nutrientsForServings,
+  nutrientsPerServing,
+  type DayPlanNutritionTotal,
+} from './sum.ts';

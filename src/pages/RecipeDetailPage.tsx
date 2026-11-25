@@ -5,6 +5,7 @@ import {
   Icon,
   IngredientList,
   NutritionPanel,
+  PlanSheet,
   RecipeHeader,
   Screen,
   ServingsStepper,
@@ -12,15 +13,26 @@ import {
   Toast,
   type IngredientRowItem,
   type NutritionRowData,
+  type PlanDayOption,
+  type PlanSlotOption,
   type RecipePaletteTone,
 } from '../components/index.ts';
 import {
+  PLAN_SLOTS,
+  addDaysIso,
+  coercePlanPortions,
   mergeRecipeIntoShoppingList,
+  newPlanItemId,
+  parseIsoDateLocal,
+  planWindowDates,
+  todayIso,
+  type PlanSlot,
   type RecipeId,
   type ShoppingItem,
 } from '../domain/index.ts';
 import {
   useI18n,
+  usePlan,
   useRatings,
   useRecipe,
   useSecondLang,
@@ -30,6 +42,7 @@ import {
 import {
   ALLERGEN_LABEL_KEYS,
   MEAL_LABEL_KEYS,
+  MEAL_SHORT_LABEL_KEYS,
   getCuisineLabelKey,
 } from '../i18n/index.ts';
 
@@ -53,23 +66,32 @@ interface ToastState {
   readonly canUndo: boolean;
 }
 
+interface DetailPlanDraft {
+  readonly date: string;
+  readonly slot: PlanSlot;
+  readonly portions: number;
+}
+
 /**
- * Rezept-Detailseite (#/rezept/:id) gemäss Issues #10/#12, ADR-003 und ADR-005:
+ * Rezept-Detailseite (#/rezept/:id) gemäss Issues #10/#12/#35, ADR-003 und ADR-005:
  * - RecipeHeader (Sterne & Merken persistent über RatingsRepository)
  * - ServingsStepper (1–12, Tastatur-bedienbar, aria-live)
  * - IngredientList (skalierte Mengen, Zweitsprache via `BilingualName` mit `<bdi>`, Allergene inkl. «Kann enthalten»)
  * - StepList (nur App-Sprache, darunter Hinweis `second.hint`)
  * - NutritionPanel (berechnete Werte, CH-NWD-Quelle, «mindestens»-Hinweis, sichere review.sources F3b)
- * - Fixe BottomActions «Zur Einkaufsliste hinzufügen» mit Toast & «Rückgängig» (bleibt auf der Seite)
+ * - Fixe BottomActions: Hauptknopf «Zum Plan hinzufügen» (PlanSheet -> #/plan),
+ *   zweiter Knopf «Zur Einkaufsliste hinzufügen» (Stil `line`) & «Einkaufsliste öffnen»
  * - Unbekannte ID zeigt «Rezept nicht gefunden» mit Zurück-Navigation.
  */
 export function RecipeDetailPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const { lang, t, fmtNumber, fmtAmount } = useI18n();
+  const { lang, t, fmtDate, fmtNumber, fmtAmount } = useI18n();
+  const { plan, upsertItem: upsertPlanItem } = usePlan();
   const { effectiveMeta: secondMeta, secondFoodName } = useSecondLang();
   const { recipe, text, missingText, nutrition, catalogSource, notFound } =
     useRecipe(id);
+  const [planDraft, setPlanDraft] = useState<DetailPlanDraft | null>(null);
   const {
     servings,
     min,
@@ -254,6 +276,57 @@ export function RecipeDetailPage() {
     });
   }, [replaceShoppingItems, showToast, t]);
 
+  const planDayOptions = useMemo<readonly PlanDayOption[]>(() => {
+    const today = todayIso();
+    const tomorrow = addDaysIso(today, 1);
+    return planWindowDates(plan.days).map((iso) => ({
+      iso,
+      label:
+        iso === today
+          ? t('plan.today')
+          : iso === tomorrow
+            ? t('plan.tomorrow')
+            : fmtDate(parseIsoDateLocal(iso), {
+                weekday: 'short',
+                day: 'numeric',
+                month: 'short',
+              }),
+    }));
+  }, [fmtDate, plan.days, t]);
+
+  const planSlotOptions = useMemo<readonly PlanSlotOption[]>(
+    () =>
+      PLAN_SLOTS.map((slot) => ({
+        slot,
+        label: t(MEAL_SHORT_LABEL_KEYS[slot]),
+      })),
+    [t],
+  );
+
+  const handleOpenPlanSheet = useCallback(() => {
+    if (!recipe) return;
+    setPlanDraft({
+      date: todayIso(),
+      slot: recipe.meal,
+      portions: coercePlanPortions(servings),
+    });
+  }, [recipe, servings]);
+
+  const handleConfirmPlanSheet = useCallback(() => {
+    if (!recipe || !planDraft) return;
+    const item = {
+      id: newPlanItemId(),
+      date: planDraft.date,
+      slot: planDraft.slot,
+      recipeId: recipe.id,
+      portions: coercePlanPortions(planDraft.portions),
+    };
+    setPlanDraft(null);
+    void upsertPlanItem(item).then(() => {
+      void navigate('/plan', { state: { planAdded: true } });
+    });
+  }, [navigate, planDraft, recipe, upsertPlanItem]);
+
   if (notFound || !recipe || !nutrition) {
     return (
       <Screen
@@ -323,21 +396,32 @@ export function RecipeDetailPage() {
           <button
             type="button"
             className="edo-btn"
-            onClick={handleAddToShoppingList}
-            data-testid="add-to-shopping-btn"
+            onClick={handleOpenPlanSheet}
+            data-testid="add-to-plan-btn"
           >
-            <Icon name="cart" size="sm" />
-            <span>{t('detail.add_to_list')}</span>
+            <Icon name="cal" size="sm" />
+            <span>{t('plan.add')}</span>
           </button>
-          <button
-            type="button"
-            className="edo-btn edo-btn-secondary"
-            onClick={() => navigate('/einkauf')}
-            data-testid="detail-open-shopping-btn"
-          >
-            <Icon name="cart" size="sm" />
-            <span>{t('rezepte.einkaufsliste_offnen')}</span>
-          </button>
+          <div className="edo-actions-row">
+            <button
+              type="button"
+              className="edo-btn edo-btn-secondary"
+              onClick={handleAddToShoppingList}
+              data-testid="add-to-shopping-btn"
+            >
+              <Icon name="cart" size="sm" />
+              <span>{t('detail.add_to_list')}</span>
+            </button>
+            <button
+              type="button"
+              className="edo-btn edo-btn-secondary"
+              onClick={() => navigate('/einkauf')}
+              data-testid="detail-open-shopping-btn"
+            >
+              <Icon name="cart" size="sm" />
+              <span>{t('rezepte.einkaufsliste_offnen')}</span>
+            </button>
+          </div>
         </>
       }
       actionsLabel={t('detail.actions_label')}
@@ -466,6 +550,37 @@ export function RecipeDetailPage() {
           reviewSources={recipe.review.sources}
         />
       </div>
+
+      <PlanSheet
+        open={planDraft !== null}
+        mode="form"
+        title={t('plan.add.title')}
+        closeLabel={t('dialog.close')}
+        recipeTitle={text ? text.title : recipe.id}
+        dayOptions={planDayOptions}
+        selectedDate={planDraft?.date}
+        slotOptions={planSlotOptions}
+        selectedSlot={planDraft?.slot}
+        portions={planDraft?.portions ?? 2}
+        dayHeading={t('plan.day')}
+        mealHeading={t('plan.meal')}
+        portionsHeading={t('plan.portions')}
+        portionsDecLabel={`${t('plan.portions')} −`}
+        portionsIncLabel={`${t('plan.portions')} +`}
+        confirmLabel={t('plan.confirm')}
+        cancelLabel={t('plan.cancel')}
+        onSelectDate={(iso) =>
+          setPlanDraft((prev) => (prev ? { ...prev, date: iso } : null))
+        }
+        onSelectSlot={(slot) =>
+          setPlanDraft((prev) => (prev ? { ...prev, slot } : null))
+        }
+        onChangePortions={(portions) =>
+          setPlanDraft((prev) => (prev ? { ...prev, portions } : null))
+        }
+        onConfirm={handleConfirmPlanSheet}
+        onClose={() => setPlanDraft(null)}
+      />
 
       <Toast
         message={toast?.message ?? null}

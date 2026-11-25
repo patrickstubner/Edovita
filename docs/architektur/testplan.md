@@ -15,20 +15,22 @@ Unit- und Komponententests: Rstest mit `@rstest/adapter-rsbuild` (aktuell 0.12.6
 | J7 | QR-Fragment mit 41 Items / `<script>` im Namen / falschem `st` öffnen | abgelehnt mit Hinweis, nichts übernommen; gültiges Fragment → Bestätigungsdialog |
 | J8 | Offline: App einmal laden, Netz aus, Rezepte und Liste bedienen | Service Worker liefert Shell und Inhalte |
 | J9 | Einkauf Teilmenge: «Hab ich»-Sheet → Teilmenge per Stepper/Schieber → «Übernehmen» → Neuladen; Katalog-Artikel ohne ⓘ mit Teilmenge | Kaufmenge normal + Bedarf durchgestrichen, oranger «Teilweise»-Knopf (≥ 48×48), Screenreader «kaufen … von …», `qtyHave` persistent & nie in Share/QR |
+| J10 | Rezept-Detail → «Zum Plan hinzufügen» → Tag/Mahlzeit/Portionen → `#/plan` (Zeitraum 3–7, `+ Rezept`, Tauschen, Entfernen, Neuladen) sowie `#/profil` → `#/profil/datenschutz` Export & Import (`edovita-plan-einkauf.json`: ungültig, Abbrechen, Übernehmen) | Essensplan mit Tagestotalen aus `dayPlanNutrition`, lokale 56×56-WebP-Vorschaubilder, Persistenz über Dexie v3, Export ohne Körper-/Gesundheitsdaten, transaktionaler Import F1b, Hell/Dunkel/Desktop/RTL ohne Überlauf & 0 CSP-Fehler |
 
 ## Unit- und Vertragstests
 
 - `nutrition/scale`: Rundungsregeln je Einheit, 1–12 Portionen, `pc` mit halben Stücken, keine negativen Mengen.
-- `nutrition/sum`: bekannte Rezepte gegen von Hand nachgerechnete Werte (Toleranz ±2 %).
+- `nutrition/sum`: bekannte Rezepte gegen von Hand nachgerechnete Werte (Toleranz ±2 %), sowie `dayPlanNutrition` (exakte Tagessumme aus `nutrientsForServings`).
 - `shopping/merge` & `shopping/have` (v5.9): zusammenführen, entfernen (inkl. Deckelung von `qtyHave`), Zustand `home` bleibt, gleiche Zutat mit anderer Einheit getrennt, Teilmenge (`isPartialHave`/`isHaveAll`), Schrittweiten (`haveStepOf`/`snapHaveQty` für `g`/`ml`/`pc`/`tbsp`/`tsp`/`pinch`/`bottle`), Herkunfts-Summe, `qtyHave` nie in Share/QR.
 - `i18n/secondLang` (E6 + E6b): Orts-Standard (`America/Sao_Paulo`, `Asia/Tokyo`, `Europe/Zurich`, UI `en` ohne Treffer), dreiwertiges `secondLang` (`null`/`'none'`/Code), Automatik nie gespeichert, kein `navigator.geolocation`, neue Zweitsprache `xx` rein über Glossar + Registry ohne Codeänderung, fehlender Glossareintrag liefert `null`, `tIn`/`tSecond` (ICU-Platzhalter & Plural, gleich Haupttext → leer, fehlender Schlüssel / Prototype-Key → leer ohne EN-Ersatz), `BilingualText` mit `<bdi lang dir>`, Pseudo-RTL `ar-XB` nur im Testmodus.
 - `catalog/recipes rankRecipes`: Vielfalt, Bewertung, Merkliste (Fälle aus Prototyp `rlist`).
 - `catalog/images` & `domain/recipeImages` (E8): statische Bild-Whitelist (`RECIPE_IMAGES`), `Object.hasOwn`, Ablehnung freier Pfade/URLs/Prototype-Keys, Platzhalter-Rückfall bei fehlendem Foto, `manifest.json` nicht in `catalog-index.ts`.
-- `app/navigation` & `TabBar` (E9): Routen-Whitelist (`resolveNavTabPath` lehnt deaktiviertes `plan` und freie Eingaben ab), `resolveActiveNavTab`, Router (`/profil`, `/profil/sprache`, unbekannt → `/`), `aria-current="page"`, E2E `navigation.spec.ts` (Start → Tab Profil → Sprache → zurück → Tab Rezepte, Tastatur, ≥ 44 px, kein Überlappen mit `BottomActions` auf 390×844 & Desktop, RTL-Spiegelung).
+- `app/navigation` & `TabBar` (E9 + E10): Routen-Whitelist (`resolveNavTabPath` für aktive Tabs `rezepte`/`plan`/`profil` und Ablehnung freier Eingaben), `resolveActiveNavTab`, Router (`/profil`, `/profil/sprache`, `/profil/datenschutz`, `/plan`, unbekannt → `/`), `aria-current="page"`, E2E `navigation.spec.ts` (Start → Tab Profil → Sprache → zurück → Tab Rezepte, Tastatur, ≥ 44 px, kein Überlappen mit `BottomActions` auf 390×844 & Desktop, RTL-Spiegelung).
+- `domain/plan` & `pages/Plan` (E10 + F1b): `coercePlan` (3–7 Tage, 1–8 Portionen, Datumsfenster heute−1 bis heute+14, max. 80 Einträge, Slot-/Rezept-/ID-Whitelist, XSS-Bereinigung), `upsertPlanItem` (Hauptmahlzeiten ersetzen, mehrere Snacks erlaubt), `buildPlanExportBundle` (ohne Körper-/Einstellungsdaten) & `parsePlanExportBundle` (Grösse > 100 KB, Prototype Pollution, 81 Einträge, XSS-ID, altes Bündel ohne `plan` gültig, leeres Bündel abgelehnt), UI-Integration für `PlanPage`/`PlanSheet`/`PrivacyPage`/`DataImportSheet`.
 - `health/*`: alle Grenzwerte aus Handoff §3 als Tabellentest, 100 % Zweigabdeckung.
 - `domain/parseShopImport` & `coerceQtyHave`: alle Ablehnungsgründe (`format`, `size`, `count`, `id`, `name`, `schema`, `parse`), ungültige `qtyHave` (negativ, `NaN`, String, `1e9`) bereinigt und auf Bedarf gedeckelt.
-- **Repository-Vertragstest:** dieselbe Testsuite läuft gegen `Memory*` und `Dexie*` (später `Sqlite*`).
-- **Migrationstest:** pro Dexie-Version ein alter Datensatz → aktuelles Schema (inkl. v1 → v2 `qtyHave`).
+- **Repository-Vertragstest:** dieselbe Testsuite läuft gegen `Memory*` und `Dexie*` (inkl. `PlanRepository`; später `Sqlite*`).
+- **Migrationstest & Transaktions-Rollback:** pro Dexie-Version ein alter Datensatz → aktuelles Schema (v1 → v2 `qtyHave`, v2 → v3 `plan`), sowie atomarer Dexie-Rollback bei Schreibfehler in `importAll` (G2) und `importPlanTransferBundle` (F1b).
 - `coerceSettings`: unbekannte/ungültige Werte fallen auf Standard (Muster Travel Talk).
 
 ## Inhaltsprüfungen (`content:check`, auch in CI)

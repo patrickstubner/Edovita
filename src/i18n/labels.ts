@@ -8,6 +8,13 @@ export const MEAL_LABEL_KEYS: Readonly<Record<Meal, UiKey>> = {
   snack: 'meal.snack',
 };
 
+export const MEAL_SHORT_LABEL_KEYS: Readonly<Record<Meal, UiKey>> = {
+  breakfast: 'meal.short.breakfast',
+  lunch: 'meal.short.lunch',
+  dinner: 'meal.short.dinner',
+  snack: 'meal.short.snack',
+};
+
 export const CUISINE_LABEL_KEYS: Readonly<Record<string, UiKey>> = {
   european: 'cuisine.european',
   thai: 'cuisine.thai',

@@ -3,6 +3,7 @@ import { RouterProvider } from 'react-router';
 import type { LangCode, LanguagesRegistry } from '../domain/index.ts';
 import { createDexieStorage, type StorageBundle } from '../storage/index.ts';
 import { I18nProvider } from './I18nProvider.tsx';
+import { PlanProvider } from './PlanProvider.tsx';
 import { RatingsProvider } from './RatingsProvider.tsx';
 import { createAppRouter } from './router.tsx';
 import { SecondLangProvider } from './SecondLangProvider.tsx';
@@ -65,7 +66,12 @@ export function App({
           <ThemeProvider>
             <ShoppingProvider repository={activeStorage.shopping}>
               <RatingsProvider repository={activeStorage.ratings}>
-                <RouterProvider router={router} />
+                <PlanProvider
+                  repository={activeStorage.plan}
+                  applyImport={activeStorage.applyImport}
+                >
+                  <RouterProvider router={router} />
+                </PlanProvider>
               </RatingsProvider>
             </ShoppingProvider>
           </ThemeProvider>

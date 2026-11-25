@@ -1,24 +1,32 @@
+import { RECIPES } from '../../content/generated/catalog-index.ts';
 import { LANGUAGES_REGISTRY } from '../../content/generated/locales-index.ts';
 import {
   RECIPE_ID_RE,
   asRecipeId,
+  coercePlan,
   coerceRating,
   coerceSettings,
   coerceShoppingItem,
   isSafeRecordKey,
   type LanguagesRegistry,
+  type MealPlan,
   type RecipeId,
   type Settings,
   type ShoppingItem,
 } from '../domain/index.ts';
 import { DEFAULT_DB_NAME, EdovitaDb } from './db.ts';
 import type {
+  PlanRepository,
   RatingsRepository,
   SettingsRepository,
   ShoppingRepository,
   StorageBundle,
   StorageSnapshotPatch,
 } from './repositories.ts';
+
+const DEFAULT_KNOWN_RECIPE_IDS: ReadonlySet<string> = new Set(
+  RECIPES.map((r) => r.id),
+);
 
 function isValidRecipeKey(id: string): boolean {
   return RECIPE_ID_RE.test(id) && isSafeRecordKey(id);
@@ -217,6 +225,40 @@ export class DexieRatingsRepository implements RatingsRepository {
   }
 }
 
+export class DexiePlanRepository implements PlanRepository {
+  private readonly db: EdovitaDb;
+  private readonly knownRecipeIds: ReadonlySet<string>;
+
+  constructor(
+    db: EdovitaDb,
+    knownRecipeIds: ReadonlySet<string> = DEFAULT_KNOWN_RECIPE_IDS,
+  ) {
+    this.db = db;
+    this.knownRecipeIds = knownRecipeIds;
+  }
+
+  async get(now?: Date): Promise<MealPlan> {
+    const row = await this.db.plan.get('current');
+    return coercePlan(row?.value, {
+      knownRecipeIds: this.knownRecipeIds,
+      now,
+    });
+  }
+
+  async set(plan: MealPlan, now?: Date): Promise<MealPlan> {
+    const safe = coercePlan(plan, {
+      knownRecipeIds: this.knownRecipeIds,
+      now,
+    });
+    await this.db.plan.put({ key: 'current', value: safe });
+    return structuredClone(safe);
+  }
+
+  async clear(): Promise<void> {
+    await this.db.plan.clear();
+  }
+}
+
 export interface DexieStorageBundle extends StorageBundle {
   readonly db: EdovitaDb;
 }
@@ -224,6 +266,7 @@ export interface DexieStorageBundle extends StorageBundle {
 export function createDexieStorage(
   dbName: string = DEFAULT_DB_NAME,
   registry: LanguagesRegistry = LANGUAGES_REGISTRY,
+  knownRecipeIds: ReadonlySet<string> = DEFAULT_KNOWN_RECIPE_IDS,
 ): DexieStorageBundle {
   const db = new EdovitaDb(dbName);
   return {
@@ -231,10 +274,11 @@ export function createDexieStorage(
     settings: new DexieSettingsRepository(db, registry),
     shopping: new DexieShoppingRepository(db),
     ratings: new DexieRatingsRepository(db),
+    plan: new DexiePlanRepository(db, knownRecipeIds),
     applyImport: async (patch: StorageSnapshotPatch): Promise<void> => {
       await db.transaction(
         'rw',
-        [db.settings, db.shopping, db.ratings, db.saved],
+        [db.settings, db.shopping, db.ratings, db.saved, db.plan],
         async () => {
           if (patch.settings !== undefined) {
             const safeSettings = coerceSettings(patch.settings, registry);
@@ -281,6 +325,11 @@ export function createDexieStorage(
                 await db.saved.bulkPut(savedRows);
               }
             }
+          }
+
+          if (patch.plan !== undefined) {
+            const safePlan = coercePlan(patch.plan, { knownRecipeIds });
+            await db.plan.put({ key: 'current', value: safePlan });
           }
         },
       );

@@ -25,13 +25,13 @@ test.describe('E9 Navigation: Tab-Leiste, Profil -> Sprache, BottomActions & RTL
       page.getByRole('heading', { name: 'Willkommen bei Edovita' }),
     ).toBeVisible();
 
-    // Tab-Leiste sichtbar: nur Rezepte & Profil (Plan ausgeblendet bis E10)
+    // Tab-Leiste sichtbar: Rezepte, Plan & Profil (E9 + E10)
     const nav = page.getByRole('navigation', { name: 'Hauptnavigation' });
     await expect(nav).toBeVisible();
     const tabIds = await nav
       .locator('[data-tabid]')
       .evaluateAll((els) => els.map((el) => el.getAttribute('data-tabid')));
-    expect(tabIds).toEqual(['rezepte', 'profil']);
+    expect(tabIds).toEqual(['rezepte', 'plan', 'profil']);
 
     // Touch-Ziele >= 44x44 px und kein Überlappen mit BottomActions auf Startseite
     const tabRezepte = page.getByTestId('tab-rezepte');
