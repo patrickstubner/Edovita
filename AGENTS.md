@@ -45,6 +45,23 @@
 - Pro grösserem Paket in STATUS.md festhalten: welche lokalen Tools genutzt wurden, wie viel Cloud-Agent-Nutzung das vermieden hat, Rückmeldung zu den Tools.
 - Keine Werte erfinden. Was nicht belegt ist, steht als «offen» da.
 
+### Definition of Ready (DoR) vor Agent-Start
+Ein Arbeitspaket-Issue wird erst an einen Agenten (Cursor, Grok Bot, Antigravity oder Cloud Agent) übergeben, wenn alle Punkte erfüllt sind und keine offenen Produktentscheide mehr im Text stehen:
+1. **Ziel, Umfang & Nicht-Ziele:** Klar abgegrenzter Umfang plus explizite Liste, was bewusst nicht vorgezogen wird.
+2. **Abhängigkeiten & Reihenfolge:** Voraussetzungen, Nachfolger und Einordnung in die festgelegte Paket-Reihenfolge.
+3. **Exakte Referenzen:** Prototyp-Branch + Commit-Hash (z. B. `5ef149a` oder `93630aa`) mit konkreten Dateien/Symbolen/Selektoren sowie relevante ADRs (`ADR-001`–`006`) und Ziel-Schichten auf `main`.
+4. **UI-Texte in 7 Locales:** Konkrete neue/geänderte `ui.json`-Schlüssel (oder klare Regel bei Abweichung vom Prototyp), Hinweis auf `content:check` (0 ungenutzte Schlüssel) und Verhalten bei fehlender Übersetzung (kein stiller EN-Fallback).
+5. **Datenmodell & Dexie-Migration:** Betroffene Domänentypen, `zod`-Schemas (`jitless: true`, `hasForbiddenOwnKey`), `coerce*`-Normalisierung, Dexie-Schema-Version + `upgrade()`-Test + `Memory*`-Parität.
+6. **Randfälle & Fehlerzustände:** Leere/ungültige Eingaben, generische Speicherfehler (G1), atomare Dexie-Transaktionen bei Mehrtabellen-Writes (G2/F1b), Abweichungen zwischen Prototyp und `main`.
+7. **Barrierefreiheit (A11y):** Tastaturbedienung, `role="dialog"`/Escape/Fokus-Rückkehr, `aria-live`, Touch-Ziele (≥ 44 px bzw. Spezialmasse), logische CSS-Eigenschaften und RTL (`ar-XB`).
+8. **Sicherheit & Datenschutz:** Whitelists/Validierung, `UNSAFE_TEXT_RE`, kein `innerHTML`, URL-Prüfung (`isSafeHttpsUrl`), CSP-Sync (`public/_headers` + `<meta http-equiv>`), keine G-Daten im Export/Share/QR/SW-Cache, kein externes Netz.
+9. **Testbare Akzeptanzkriterien:** Konkrete, prüfbare Bedingungen inkl. `390×844` / `360×844` / `1280×800` (Hell/Dunkel), RTL und 0 CSP-Verstösse.
+10. **Tests & lokale Prüfbefehle:** Benötigte Unit-/Vertrags-/Migrations-/Negativtests (Rstest `0.12.6`) und Playwright-Journeys (`--workers=1`) inkl. `pnpm run content:build`, `lint`, `test:arch`, `content:check`, `test`, `build` + `GITHUB_PAGES=true`, `security:check` (beide Builds), `pnpm audit --audit-level=moderate`, `pnpm peers check`, `test:e2e`, `gitleaks`, `actionlint`.
+11. **Doku-Regel & exakte Testzahlen:** Doku-Dateien (`AGENTS.md`, `ARCHITECTURE.md`, `STATUS.md`, `SECURITY.md`) nennen ausschliesslich den **Basis-Commit**, niemals den eigenen PR-Head-SHA oder eigene CI-Run-IDs (Entscheid 25.11.2026). Der PR-Text nennt Basis-Commit, Head-SHA und die exakten tatsächlich gelaufenen Test-/Dateizahlen.
+12. **PR-Format & Definition of Done:** Eigener Branch ab `main`, Draft-PR, kein Selbst-Merge (erst Stabschef-Ok + Ja des Projektinhabers), `STATUS.md`-Tool-Rückmeldung.
+13. **Schutzliste:** `.github/workflows/`, `.npmrc`, `pnpm-workspace.yaml`, `tsconfig.json`, `eslint.config.mjs`, `.dependency-cruiser.mjs`, `playwright.config.ts`, `rsbuild.config.ts` (sofern nicht explizit ausgenommen), `package.json`/`pnpm-lock.yaml`, Rstest `0.12.6` und `prototype/` bleiben unverändert; keine `.codegraph/`/`graphify-out/`/`.serena/`/`.codebase-memory/`/`__pycache__/`.
+14. **Keine offenen Produktentscheide & Hygiene:** Keine ungeklärten Fragen, keine `ß`-Schreibweise in Doku/Issues, keine personenbezogenen Daten, keine Vornamen, keine lokalen Pfade und keine Geheimnisse.
+
 ### Lokale Tools (gemeinsamer Rechner, Anleitung `dev-tools/README.md`)
 - codebase-memory-mcp, Standard für «wer ruft X»: `cbm index <pfad>`, dann `cbm callers <projekt> <Symbol> 2`, `cbm get_architecture '{"project":"<projekt>"}'`
 - codegraph, wenn Code und Aufrufpfade gebraucht werden: `codegraph explore "<Frage>"`
