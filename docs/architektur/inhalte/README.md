@@ -46,3 +46,16 @@ Salzwerte sind bei Thai-Curry und Linsen-Curry **zu tief**, weil Fischsauce, Cur
 5. **Unsichere Übersetzungen:** JA `kaffir_lime_leaves` (こぶみかんの葉), `rice_noodles` (ライスヌードル（平麺）), `beef_sirloin` (牛ロース); PT `kaffir_lime_leaves` (folhas de limão-kaffir), `rice_noodles` (macarrão de arroz (talharim)), `beef_sirloin` (bife ancho (entrecôte)). Rest gängige Begriffe; alle JA/PT-Namen von Muttersprachlern gegenlesen lassen.
 6. **Probekochen** aller 5 Rezepte durch einen Menschen (`review.status = zu_pruefen`).
 7. **DE-Begriffe:** Schweizer Schreibweise (Broccoli, Peperoni, Poulet, Pelati). Für DE/AT später eigene Varianten (`de-DE`: Brokkoli, Paprika, Hähnchen)?
+
+## Erweiterungspaket E12a (Issue #46, Basis `main` `10c3b7bb67b14e9cae0c03c2574c11768297fbb6`)
+
+Vorbereitete Nährwert- und Quellenbelege für den späteren Rezeptimport in **E12 (`#39`)**, abgelegt unter `docs/architektur/inhalte/e12a/` ohne Änderung an den 55 bestehenden Lebensmitteln und 5 bestehenden Rezepten unter `content/`:
+
+| Pfad | Inhalt |
+|---|---|
+| `e12a/foods-ext.json` | 144 neue Lebensmittel im `foodCatalogFileSchema`-Format (disjunkt zu den 55 auf `main`; 98 CH-NWD V7.1, 40 USDA SR Legacy 2018-04, 6 ohne generische Quelle mit `per100g: null` & `status: "zu_pruefen"`; gesamt 116 `ok`, 28 `zu_pruefen`, 0 geschätzte Werte) |
+| `e12a/recipes-ext.json` | 195 neue Rezepte im `recipeSchema`-Format (disjunkt zu den 5 auf `main`; je 2 geprüfte HTTPS-Quellen-URLs ohne Betty Bossi, `nutritionPerServing` vollständig aus `grams × per100g` berechnet, 141–746 kcal/Portion, 0 Ausreisser) |
+| `e12a/BELEGE.md` | Vollständige Belegtabelle aller 144 Lebensmittel und 195 Rezepte inkl. Quellen, Status, Näherungen und offener Prüfpunkte |
+
+Automatische Prüfung über `tests/unit/e12a.evidence.test.ts` (`pnpm test`): prüft die unveränderte 55+5-Basis, alle 98 CH-NWD-Einträge zellenweise gegen `quelle/Schweizer_Nahrwertdatenbank_V7.1.xlsx` (inkl. SHA-256), alle 199 Lebensmittel + 200 Rezepte gegen das unveränderte `validateContentBundle`, alle 390 Quellen-URLs gegen `isSafeHttpsUrl`, die Vollständigkeit von `e12a/BELEGE.md` sowie Negativtests.
+
