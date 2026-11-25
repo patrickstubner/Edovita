@@ -1,6 +1,7 @@
 {
  "format": 1,
  "id": "lentil_curry",
+ "image": "lentil_curry",
  "cuisine": "indian",
  "meal": "dinner",
  "minutes": 35,
@@ -107,8 +108,8 @@
    "carbs": 43.8,
    "sugars": 9.6,
    "fiber": 17.3,
-   "protein": 27.0,
-   "salt": 3.0
+   "protein": 27,
+   "salt": 3
   },
   "isMinimum": true,
   "notIncluded": [

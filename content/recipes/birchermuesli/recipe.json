@@ -1,6 +1,7 @@
 {
  "format": 1,
  "id": "birchermuesli",
+ "image": "birchermuesli",
  "cuisine": "swiss",
  "meal": "breakfast",
  "minutes": 10,
@@ -67,9 +68,9 @@
   "values": {
    "kcal": 443,
    "fat": 18.8,
-   "satFat": 5.0,
+   "satFat": 5,
    "carbs": 50.6,
-   "sugars": 26.0,
+   "sugars": 26,
    "fiber": 7.9,
    "protein": 14.4,
    "salt": 0.2

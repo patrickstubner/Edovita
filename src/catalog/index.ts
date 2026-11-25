@@ -22,3 +22,5 @@ export {
   rankRecipes,
   type RecipeFilter,
 } from './recipes.ts';
+
+export { getRecipePhoto, hasRecipePhoto } from './images.ts';

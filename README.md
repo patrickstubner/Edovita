@@ -2,20 +2,20 @@
 
 Ernährungs-App mit Rezepten, Einkaufsliste und Zweitsprache für Lebensmittel. Web-App (PWA) zuerst, danach Handy-App mit Capacitor. Local-first: Gesundheitsdaten bleiben auf dem Gerät. App-ID `ch.edovita.app`.
 
-**Stand:** Version `0.1.0` – Pakete **E0** + **E0b** + **E1** + **E2** + **E3** + **E4** + **kompakter UI-Sprachumschalter** + **E5** + **E5b** + **E6** + **E6b** (Domäne mit `zod`, Lebensmittel-Katalog, Rezept-Schema, Nährwerte, Inhaltsprüfung, Mehrsprachigkeit mit `i18next` + `i18next-icu`, beide kompakten Kopfzeilen-Umschalter für UI-Sprache & Zweitsprache für Lebensmittel mit Orts-Standard ohne Geolocation-API, `#/profil/sprache`, lokale Speicherung mit Dexie/IndexedDB v2, Rezeptliste `#/rezepte` & Rezept-Detailseite `#/rezept/:id` mit zweisprachigen Zutaten sowie Einkaufsliste `#/einkauf` im Prototyp-v5.10.1-Stand mit zweizeiliger Zweitsprache für Artikel, relevante UI-Texte & beide Sheets, drei Zuständen, ⓘ-Herkunfts-Sheet, «Hab ich»-Sheet mit Teilmengen, bewusster Katalog-Suche, Hausmarken, Teilen & gehärtetem QR-Import). Vorschau nach Merge auf `main`: https://patrickstubner.github.io/Edovita/ (Deploy nur über den Pages-Workflow). Aktueller Stand und nächste Schritte: [`STATUS.md`](STATUS.md).
+**Stand:** Version `0.1.0` – Pakete **E0** + **E0b** + **E1** + **E2** + **E3** + **E4** + **kompakter UI-Sprachumschalter** + **E5** + **E5b** + **E6** + **E6b** + **E8** (Domäne mit `zod`, Lebensmittel-Katalog, Rezept-Schema, Nährwerte, Inhaltsprüfung, Mehrsprachigkeit mit `i18next` + `i18next-icu`, beide kompakten Kopfzeilen-Umschalter für UI-Sprache & Zweitsprache für Lebensmittel mit Orts-Standard ohne Geolocation-API, `#/profil/sprache`, lokale Speicherung mit Dexie/IndexedDB v2, Rezeptliste `#/rezepte` & Rezept-Detailseite `#/rezept/:id` mit lokal gebündelten WebP-Rezeptfotos samt Platzhalter-Rückfall und zweisprachigen Zutaten sowie Einkaufsliste `#/einkauf` im Prototyp-v5.10.1-Stand mit zweizeiliger Zweitsprache für Artikel, relevante UI-Texte & beide Sheets, drei Zuständen, ⓘ-Herkunfts-Sheet, «Hab ich»-Sheet mit Teilmengen, bewusster Katalog-Suche, Hausmarken, Teilen & gehärtetem QR-Import). Vorschau nach Merge auf `main`: https://patrickstubner.github.io/Edovita/ (Deploy nur über den Pages-Workflow). Aktueller Stand und nächste Schritte: [`STATUS.md`](STATUS.md). Bildlizenz- und Budgetregeln: [`content/README.md`](content/README.md).
 
 ## Inhalt
 
 | Ordner | Zweck |
 |---|---|
 | `src/` | Echte App (ADR-001-Schichten: `pages`, `components`, `hooks`, `app`, `storage`, `catalog`, `i18n`, `nutrition`, `shopping`, `health`, `pwa`, `domain`) |
-| `content/` | Geprüfte App-Inhalte (55 Lebensmittel, Glossare DE/EN/PT/JA, 5 Rezepte, Sprach-Registry `locales/languages.json`, 7 UI-Locales `{de,en,fr,it,es,ja,pt}/ui.json`, generierte Indizes unter `generated/`) |
+| `content/` | Geprüfte App-Inhalte (55 Lebensmittel, Glossare DE/EN/PT/JA, 5 Rezepte, 10 lokal gebündelte WebP-Rezeptfotos unter `images/recipes/` samt internem `manifest.json` & Lizenzregeln in `content/README.md`, Sprach-Registry `locales/languages.json`, 7 UI-Locales `{de,en,fr,it,es,ja,pt}/ui.json`, generierte Indizes unter `generated/`) |
 | `public/` | Statische Dateien (`_headers` mit strikter CSP, `theme-init.js`, finale Logos) |
-| `tests/` | Test-Setup (Rstest + Testing Library + `fake-indexeddb`), Inhalts- und Sprachprüfungen (`content.check.test.ts`, `languages.complete.test.ts`) und Playwright-E2E (`390×844`) |
+| `tests/` | Test-Setup (Rstest + Testing Library + `fake-indexeddb`), Inhalts- und Sprachprüfungen (`content.check.test.ts`, `languages.complete.test.ts`) und Playwright-E2E (`390×844` & `360×844`) |
 | `scripts/` | Leitplanken-, Inhalts- und Sicherheitsprüfungen (`build-content-index.mjs`, `content-check.mjs`, `test-arch-guard.mjs`, `security-check.mjs`) |
 | `prototype/` | Klick-Prototyp v5.4.1 (Vanilla-JS, eingefroren, nur Design-Referenz) |
 | `design/` | Logos, Icon-Exporte, Logo-Animation, Schrift Quicksand (OFL), Briefing, Handoff, Decision-Log, Rechtsentwürfe, Store-Texte, 7 Sound-Favoriten |
-| `docs/architektur/` | Architektur-Entscheide (ADR-001 bis ADR-006), Pakete E0–E7, Testplan, Startinhalte (`inhalte/`), historische Sicherheitsprüfung |
+| `docs/architektur/` | Architektur-Entscheide (ADR-001 bis ADR-006), Pakete E0–E12, Testplan, Startinhalte (`inhalte/`), historische Sicherheitsprüfung |
 
 ## Lokal starten (nur pnpm, Node >= 22)
 
@@ -31,12 +31,12 @@ pnpm run dev
 pnpm run lint            # TypeScript (strict), ESLint, Stylelint (RTL), dependency-cruiser
 pnpm run test:arch       # Negativtests für ADR-001-Schichtregeln (src + content)
 pnpm test                # Unit- & Komponententests (Rstest 0.12.6, ADR-006)
-pnpm run content:build   # Erzeugt catalog-index.ts und locales-index.ts neu
-pnpm run content:check   # Prüft Indizes, Schemas, Nährwerte, Glossare, Allergene, xlsx-SHA-256 & Sprachen-Vollständigkeit
+pnpm run content:build   # Erzeugt catalog-index.ts (inkl. Rezeptbilder) und locales-index.ts neu
+pnpm run content:check   # Prüft Indizes, Schemas, Nährwerte, Glossare, Allergene, Rezeptbilder (EXIF/GPS, Lizenz, Budget), xlsx-SHA-256 & Sprachen-Vollständigkeit
 pnpm run build           # Produktions-Build mit Rsbuild nach dist/
 pnpm run security:check  # DOM-Senken, CSP, Build-HTML, Supply-Chain-Config
 pnpm audit --audit-level=high
-pnpm run test:e2e        # Playwright 390×844 (Hell & Dunkel, i18n, HTTP-CSP-Header)
+pnpm run test:e2e        # Playwright 390×844 & 360×844 (Hell & Dunkel, i18n, Rezeptbilder, Einkauf, HTTP-CSP-Header)
 
 # Pages-Build lokal prüfen (Assets unter /Edovita/, dann http://127.0.0.1:4173/Edovita/)
 GITHUB_PAGES=true PAGES_DIST=dist-pages pnpm run build

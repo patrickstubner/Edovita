@@ -68,8 +68,11 @@ export {
   type Profile,
   type Recipe,
   type RecipeId,
+  type RecipeImageAssets,
+  type RecipeImageKind,
   type RecipeIngredient,
   type RecipeLocaleText,
+  type RecipePhoto,
   type RecipeReview,
   type RecipeTag,
   type Result,
@@ -141,3 +144,21 @@ export {
   type RawRecipeBundle,
   type ValidatedContentBundle,
 } from './validateContent.ts';
+
+export {
+  RECIPE_IMAGE_BUDGET_BYTES,
+  RECIPE_IMAGE_FILENAME_RE,
+  RECIPE_IMAGE_LICENSES,
+  RECIPE_IMAGE_SOURCES,
+  inspectWebpMetadata,
+  recipeImageManifestEntrySchema,
+  recipeImageManifestSchema,
+  validateRecipeImages,
+  type RawRecipeImagesBundle,
+  type RecipeImageLicense,
+  type RecipeImageManifest,
+  type RecipeImageManifestEntry,
+  type RecipeImageSource,
+  type RecipeImagesValidationReport,
+  type WebpInspectionResult,
+} from './recipeImages.ts';

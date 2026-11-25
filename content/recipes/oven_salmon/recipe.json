@@ -1,6 +1,7 @@
 {
  "format": 1,
  "id": "oven_salmon",
+ "image": "oven_salmon",
  "cuisine": "european",
  "meal": "dinner",
  "minutes": 40,
@@ -76,7 +77,7 @@
    "satFat": 5.4,
    "carbs": 46.2,
    "sugars": 5.8,
-   "fiber": 12.0,
+   "fiber": 12,
    "protein": 42.3,
    "salt": 2.1
   },

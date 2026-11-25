@@ -380,12 +380,31 @@ html[data-eff='dark'] .edo-btn-secondary {
   color: #5b2e8c;
 }
 
-html[data-eff='dark'] .edo-rimg {
+.edo-rimg img {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.edo-rimg-placeholder {
+  display: grid;
+  place-items: center;
+}
+
+html[data-eff='dark'] .edo-rimg-ph {
   filter: brightness(0.55) saturate(1.2);
+}
+
+html[data-eff='dark'] .edo-rimg-has-photo img {
+  filter: brightness(0.92);
 }
 
 .edo-cui {
   position: absolute;
+  z-index: 1;
   inset-inline-start: 10px;
   inset-block-end: 10px;
   background: rgb(255 255 255 / 92%);
@@ -399,12 +418,15 @@ html[data-eff='dark'] .edo-rimg {
 
 .edo-recipe-hero-btn {
   inline-size: 100%;
-  block-size: 150px;
+  aspect-ratio: 16 / 9;
+  block-size: auto;
+  max-block-size: 180px;
 }
 
 .edo-recipe-detail-hero {
   inline-size: 100%;
-  block-size: 160px;
+  aspect-ratio: 4 / 3;
+  block-size: auto;
 }
 
 .edo-recipe-sm {

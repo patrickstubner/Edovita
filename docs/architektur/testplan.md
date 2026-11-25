@@ -6,7 +6,7 @@ Unit- und Komponententests: Rstest mit `@rstest/adapter-rsbuild` (aktuell 0.12.6
 
 | # | Ablauf | Prüft |
 |---|---|---|
-| J1 | Rezepte → Kachel antippen → Detail → Portionen 2 → 4 → «Zur Einkaufsliste» → Einkauf | Mengen verdoppelt, Toast, Artikel in Gruppen, Hauptbutton immer sichtbar |
+| J1 | Rezepte → Kachel antippen → Detail → Portionen 2 → 4 → «Zur Einkaufsliste» → Einkauf | lokale WebP-Rezeptfotos (0 Fremdanfragen, Top-Karte ≤ 180 px, Detail-Hero 4:3, 0 CSP-Verstösse), Mengen verdoppelt, Toast, Artikel in Gruppen, Hauptbutton immer sichtbar |
 | J2 | Zwei Rezepte mit gleicher Zutat hinzufügen → eins entfernen | Mengen zusammengezählt und korrekt abgezogen |
 | J3 | Einkauf: Artikel antippen (Korb) → «Hab ich»-Sheet («Alles vorhanden» / Verwerfen) → Neuladen → «Doch kaufen»-Sheet («Zurücksetzen») | drei Zustände, ⓘ-Herkunfts-Sheet (28/56/16 px, Tastatur/Escape, Fokus-Rückkehr, kein Abhaken), Zustand bleibt nach Neuladen |
 | J4 | Zweitsprache PT über Umschalter in der Kopfzeile wählen → Rezept-Detail zeigt «Broccoli · brócolis» + Schritte nur Deutsch mit Hinweis, Einkaufsliste zweizeilig inkl. zweisprachigem Titel, Gruppen, Abschnitten & beiden Sheets (Zeilen-Knopf einsprachig, fehlender PT-Rezepttitel ohne EN-Ersatz) → Profil › Sprache / «Keine» → UI-Sprache = Zweitsprache → kein Zweittext | Zweitsprache-Regeln (Kopfzeilen-Umschalter, zweisprachige Einkaufsliste & Sheets, kein Rechts-Gate, kein Überlauf bei 360/390 px) |
@@ -23,6 +23,7 @@ Unit- und Komponententests: Rstest mit `@rstest/adapter-rsbuild` (aktuell 0.12.6
 - `shopping/merge` & `shopping/have` (v5.9): zusammenführen, entfernen (inkl. Deckelung von `qtyHave`), Zustand `home` bleibt, gleiche Zutat mit anderer Einheit getrennt, Teilmenge (`isPartialHave`/`isHaveAll`), Schrittweiten (`haveStepOf`/`snapHaveQty` für `g`/`ml`/`pc`/`tbsp`/`tsp`/`pinch`/`bottle`), Herkunfts-Summe, `qtyHave` nie in Share/QR.
 - `i18n/secondLang` (E6 + E6b): Orts-Standard (`America/Sao_Paulo`, `Asia/Tokyo`, `Europe/Zurich`, UI `en` ohne Treffer), dreiwertiges `secondLang` (`null`/`'none'`/Code), Automatik nie gespeichert, kein `navigator.geolocation`, neue Zweitsprache `xx` rein über Glossar + Registry ohne Codeänderung, fehlender Glossareintrag liefert `null`, `tIn`/`tSecond` (ICU-Platzhalter & Plural, gleich Haupttext → leer, fehlender Schlüssel / Prototype-Key → leer ohne EN-Ersatz), `BilingualText` mit `<bdi lang dir>`, Pseudo-RTL `ar-XB` nur im Testmodus.
 - `catalog/recipes rankRecipes`: Vielfalt, Bewertung, Merkliste (Fälle aus Prototyp `rlist`).
+- `catalog/images` & `domain/recipeImages` (E8): statische Bild-Whitelist (`RECIPE_IMAGES`), `Object.hasOwn`, Ablehnung freier Pfade/URLs/Prototype-Keys, Platzhalter-Rückfall bei fehlendem Foto, `manifest.json` nicht in `catalog-index.ts`.
 - `health/*`: alle Grenzwerte aus Handoff §3 als Tabellentest, 100 % Zweigabdeckung.
 - `domain/parseShopImport` & `coerceQtyHave`: alle Ablehnungsgründe (`format`, `size`, `count`, `id`, `name`, `schema`, `parse`), ungültige `qtyHave` (negativ, `NaN`, String, `1e9`) bereinigt und auf Bedarf gedeckelt.
 - **Repository-Vertragstest:** dieselbe Testsuite läuft gegen `Memory*` und `Dexie*` (später `Sqlite*`).
@@ -32,7 +33,8 @@ Unit- und Komponententests: Rstest mit `@rstest/adapter-rsbuild` (aktuell 0.12.6
 ## Inhaltsprüfungen (`content:check`, auch in CI)
 
 - `languages.complete.test.ts`: jede UI-Sprache hat alle Schlüssel und dieselben Platzhalter wie `en`, kein HTML; jede Zweitsprache hat alle `FoodId`.
-- Jedes Rezept: Schema gültig, alle `FoodId` existieren, Texte in allen UI-Sprachen, `review.sources` ≥ 2, kcal/Portion 100–1'200, Allergene abgeleitet.
+- Jedes Rezept: Schema gültig (inkl. optionaler Whitelist-Bild-ID `image`), alle `FoodId` existieren, Texte in allen UI-Sprachen, `review.sources` ≥ 2, kcal/Portion 100–1'200, Allergene abgeleitet.
+- Rezeptbilder (`content/images/recipes/`): `manifest.json` gültig, nur freigegebene Quellen/Lizenzen (Pexels/Unsplash, kein CC-BY), jede Datei registriert, jede `recipeId` gültig, alle WebPs frei von EXIF-/XMP-/GPS-Metadaten (`inspectWebpMetadata`), Gesamtgrösse im 7,4-MB-Budget (inkl. Negativtests).
 - Jedes Lebensmittel: `per100g` vollständig, Quelle (`CH-NWD` oder `USDA`) mit Referenz.
 - Keine ungenutzten UI-Schlüssel (Warnung).
 

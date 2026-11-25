@@ -14,8 +14,13 @@ import { RatingsProvider } from '../app/RatingsProvider.tsx';
 import { SecondLangProvider } from '../app/SecondLangProvider.tsx';
 import { ShoppingProvider } from '../app/ShoppingProvider.tsx';
 import { getRecipe } from '../catalog/index.ts';
-import { NutritionPanel } from '../components/index.ts';
 import {
+  NutritionPanel,
+  RecipeCard,
+  RecipeHeader,
+} from '../components/index.ts';
+import {
+  asRecipeId,
   isSafeHttpsUrl,
   sanitizeExternalHttpsUrl,
   type LanguagesRegistry,
@@ -327,5 +332,105 @@ describe('Paket E4: Rezeptliste, Rezept-Detailseite & F3b (Issue #10)', () => {
     expect(missingPotato).toHaveTextContent('potato');
     expect(missingPotato).toHaveTextContent('Nom manquant');
     expect(document.body.textContent).not.toContain('Potatoes');
+  });
+
+  it('E8: zeigt lokale Rezeptbilder in Liste (lazy) und Detail (eager, 4:3) ohne Manifest-/Fotografenangaben in der UI', async () => {
+    const storage = createMemoryStorage();
+    window.location.hash = '#/rezepte';
+
+    render(<App navigatorLanguages={['de-CH']} storage={storage} />);
+
+    const list = await screen.findByTestId('recipe-list');
+    const listImgs = list.querySelectorAll('img');
+    expect(listImgs).toHaveLength(5);
+    // Top-Karte: Vollbild 800x600, loading="lazy"
+    expect(listImgs[0]).toHaveAttribute('loading', 'lazy');
+    expect(listImgs[0]).toHaveAttribute('width', '800');
+    expect(listImgs[0]).toHaveAttribute('height', '600');
+    expect(listImgs[0]!.getAttribute('alt')!.length).toBeGreaterThan(3);
+    // Kompakte Karten: Miniatur 400x300, loading="lazy"
+    expect(listImgs[1]).toHaveAttribute('loading', 'lazy');
+    expect(listImgs[1]).toHaveAttribute('width', '400');
+    expect(listImgs[1]).toHaveAttribute('height', '300');
+    // Kein Fotografenname und keine Pexels-URL in der UI
+    expect(document.body.textContent).not.toContain('Pexels');
+    expect(document.body.textContent).not.toContain('pexels.com');
+
+    // Detailseite: Titelbild 800x600, loading="eager", alt = Rezepttitel
+    const salmonCard = screen.getByTestId('recipe-card-oven_salmon');
+    fireEvent.click(
+      within(salmonCard).getAllByRole('button', { name: /Ofenlachs/i })[0]!,
+    );
+    const hero = await screen.findByTestId('recipe-detail-hero');
+    const heroImg = hero.querySelector('img');
+    expect(heroImg).not.toBeNull();
+    expect(heroImg).toHaveAttribute('loading', 'eager');
+    expect(heroImg).toHaveAttribute(
+      'alt',
+      'Ofenlachs mit Broccoli und Kartoffeln',
+    );
+    expect(heroImg).toHaveAttribute('width', '800');
+    expect(heroImg).toHaveAttribute('height', '600');
+    expect(document.body.textContent).not.toContain('Pexels');
+  });
+
+  it('E8: zeigt ohne Foto den neutralen Platzhalter (role="img", aria-label, Blatt-Icon) in Liste und Detail', () => {
+    render(
+      <div>
+        <RecipeCard
+          id={asRecipeId('platzhalter_rezept')}
+          title="Ohne Foto"
+          mealLabel="Mittagessen"
+          cuisineLabel="Schweizerisch"
+          kcalLabel="420 kcal"
+          minutesLabel="15 Min."
+          proteinLabel="30 g Protein"
+          imageLabel="Rezeptbild"
+          photo={null}
+          openLabel="Rezept öffnen: Ohne Foto"
+          featured
+          tone="c2"
+          rating={null}
+          saved={false}
+          ratingGroupLabel="Bewerten"
+          starLabel={(n) => `${n} Sterne`}
+          saveLabel="Merken"
+          unsaveLabel="Entfernen"
+          onOpen={() => {}}
+          onRate={() => {}}
+          onToggleSave={() => {}}
+        />
+        <RecipeHeader
+          title="Ohne Foto"
+          mealLabel="Mittagessen"
+          cuisineLabel="Schweizerisch"
+          kcalLabel="420 kcal"
+          minutesLabel="15 Min."
+          proteinLabel="30 g Protein"
+          imageLabel="Rezeptbild"
+          photo={null}
+          tone="c3"
+          rating={null}
+          saved={false}
+          ratingGroupLabel="Bewerten"
+          starLabel={(n) => `${n} Sterne`}
+          saveLabel="Merken"
+          unsaveLabel="Entfernen"
+          onRate={() => {}}
+          onToggleSave={() => {}}
+        />
+      </div>,
+    );
+
+    const card = screen.getByTestId('recipe-card-platzhalter_rezept');
+    expect(card.querySelector('img')).toBeNull();
+    expect(within(card).getByRole('img', { name: 'Rezeptbild' })).toBeInTheDocument();
+    expect(card.querySelector('.edo-rimg-ph')).not.toBeNull();
+
+    const hero = screen.getByTestId('recipe-detail-hero');
+    expect(hero.querySelector('img')).toBeNull();
+    expect(hero).toHaveAttribute('role', 'img');
+    expect(hero).toHaveAttribute('aria-label', 'Rezeptbild');
+    expect(hero.className).toContain('edo-rimg-ph');
   });
 });

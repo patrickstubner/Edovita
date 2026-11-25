@@ -1,3 +1,4 @@
+import type { RecipePhoto } from '../domain/index.ts';
 import { Icon } from './Icon.tsx';
 import type { RecipePaletteTone } from './RecipeCard.tsx';
 import { SaveButton } from './SaveButton.tsx';
@@ -11,6 +12,7 @@ export interface RecipeHeaderProps {
   minutesLabel: string;
   proteinLabel: string;
   imageLabel: string;
+  photo?: RecipePhoto | null;
   tone: RecipePaletteTone;
   rating: number | null;
   saved: boolean;
@@ -23,8 +25,8 @@ export interface RecipeHeaderProps {
 }
 
 /**
- * Kopfbereich der Rezept-Detailseite: Farbfläche/Platzhalter, Küche, Titel,
- * Mahlzeit, Dauer, Nährwert-Kurzinfo, Sterne und Merken.
+ * Kopfbereich der Rezept-Detailseite: 4:3-Titelbild (`loading="eager"`, feste Masse gegen Layout Shift)
+ * oder neutraler Platzhalter, Küche, Titel, Mahlzeit, Dauer, Nährwert-Kurzinfo, Sterne und Merken.
  */
 export function RecipeHeader({
   title,
@@ -34,6 +36,7 @@ export function RecipeHeader({
   minutesLabel,
   proteinLabel,
   imageLabel,
+  photo,
   tone,
   rating,
   saved,
@@ -44,16 +47,36 @@ export function RecipeHeader({
   onRate,
   onToggleSave,
 }: RecipeHeaderProps) {
+  const hasPhoto = photo !== null && photo !== undefined;
+
   return (
     <header className="edo-card edo-hcard edo-recipe-detail-header">
-      <div
-        className={`edo-rimg edo-rimg-${tone} edo-recipe-detail-hero`}
-        role="img"
-        aria-label={imageLabel}
-      >
-        <Icon name="leaf" size="lg" />
-        <span className="edo-cui">{cuisineLabel}</span>
-      </div>
+      {hasPhoto ? (
+        <div
+          className="edo-rimg edo-rimg-has-photo edo-recipe-detail-hero"
+          data-testid="recipe-detail-hero"
+        >
+          <img
+            src={photo.src}
+            alt={title}
+            width={photo.width}
+            height={photo.height}
+            loading="eager"
+            decoding="async"
+          />
+          <span className="edo-cui">{cuisineLabel}</span>
+        </div>
+      ) : (
+        <div
+          className={`edo-rimg edo-rimg-ph edo-rimg-${tone} edo-recipe-detail-hero`}
+          role="img"
+          aria-label={imageLabel}
+          data-testid="recipe-detail-hero"
+        >
+          <Icon name="leaf" size="lg" />
+          <span className="edo-cui">{cuisineLabel}</span>
+        </div>
+      )}
 
       <div className="edo-hcard-body edo-stack">
         <div className="edo-row edo-row-top edo-row-between">

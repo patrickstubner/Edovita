@@ -1,4 +1,4 @@
-import type { RecipeId } from '../domain/index.ts';
+import type { RecipeId, RecipePhoto } from '../domain/index.ts';
 import { Icon } from './Icon.tsx';
 import { SaveButton } from './SaveButton.tsx';
 import { Stars } from './Stars.tsx';
@@ -14,6 +14,7 @@ export interface RecipeCardProps {
   minutesLabel: string;
   proteinLabel: string;
   imageLabel: string;
+  photo?: RecipePhoto | null;
   openLabel: string;
   topLabel?: string;
   featured?: boolean;
@@ -30,7 +31,8 @@ export interface RecipeCardProps {
 }
 
 /**
- * Rezept-Kachel im Prototyp-Stil (`featured` als grosse Top-Karte, sonst kompakt `.recipe.sm`).
+ * Rezept-Kachel im Prototyp-Stil (`featured` als grosse Top-Karte 16:9 max. 180 px, sonst kompakt `.recipe.sm`).
+ * Zeigt lokal gebündeltes WebP-Foto (`loading="lazy"`, feste Masse gegen Layout Shift) oder den neutralen Platzhalter.
  * Keine verschachtelten `<button>`-Elemente: Öffnen, Merken und Sterne bleiben getrennte Kontrollen.
  */
 export function RecipeCard({
@@ -42,6 +44,7 @@ export function RecipeCard({
   minutesLabel,
   proteinLabel,
   imageLabel,
+  photo,
   openLabel,
   topLabel,
   featured = false,
@@ -56,6 +59,8 @@ export function RecipeCard({
   onRate,
   onToggleSave,
 }: RecipeCardProps) {
+  const hasPhoto = photo !== null && photo !== undefined;
+
   if (featured) {
     return (
       <article
@@ -64,12 +69,32 @@ export function RecipeCard({
       >
         <button
           type="button"
-          className={`edo-rimg edo-rimg-${tone} edo-recipe-hero-btn`}
+          className={
+            hasPhoto
+              ? 'edo-rimg edo-rimg-has-photo edo-recipe-hero-btn'
+              : `edo-rimg edo-rimg-ph edo-rimg-${tone} edo-recipe-hero-btn`
+          }
           aria-label={openLabel}
           onClick={() => onOpen(id)}
         >
-          <span className="edo-sr">{imageLabel}</span>
-          <Icon name="leaf" size="lg" />
+          {hasPhoto ? (
+            <img
+              src={photo.src}
+              alt={title}
+              width={photo.width}
+              height={photo.height}
+              loading="lazy"
+              decoding="async"
+            />
+          ) : (
+            <span
+              className="edo-rimg-placeholder"
+              role="img"
+              aria-label={imageLabel}
+            >
+              <Icon name="leaf" size="lg" />
+            </span>
+          )}
           <span className="edo-cui">{cuisineLabel}</span>
         </button>
 
@@ -123,12 +148,32 @@ export function RecipeCard({
     >
       <button
         type="button"
-        className={`edo-rimg edo-rimg-${tone} edo-recipe-thumb-btn`}
+        className={
+          hasPhoto
+            ? 'edo-rimg edo-rimg-has-photo edo-recipe-thumb-btn'
+            : `edo-rimg edo-rimg-ph edo-rimg-${tone} edo-recipe-thumb-btn`
+        }
         aria-label={openLabel}
         onClick={() => onOpen(id)}
       >
-        <span className="edo-sr">{imageLabel}</span>
-        <Icon name="leaf" />
+        {hasPhoto ? (
+          <img
+            src={photo.src}
+            alt={title}
+            width={photo.width}
+            height={photo.height}
+            loading="lazy"
+            decoding="async"
+          />
+        ) : (
+          <span
+            className="edo-rimg-placeholder"
+            role="img"
+            aria-label={imageLabel}
+          >
+            <Icon name="leaf" />
+          </span>
+        )}
       </button>
 
       <div className="edo-grow edo-recipe-sm-body">

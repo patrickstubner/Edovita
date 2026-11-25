@@ -1,14 +1,25 @@
 import { expect, test } from '@playwright/test';
 
-test.describe('E4 Journey J1: Rezeptliste -> Detail -> Portionen 2->4 -> Einkaufsliste -> Toast (390x844)', () => {
-  test('öffnet Rezept-Detail, skaliert Portionen 2 -> 4, fügt zur Einkaufsliste hinzu (Toast + Rückgängig) und prüft unbekannte ID', async ({
+test.describe('E4 + E8 Journey J1: Rezeptliste & lokale Bilder -> Detail -> Portionen 2->4 -> Einkaufsliste -> Toast (390x844)', () => {
+  test('öffnet Rezept-Detail mit lokalem WebP-Bild ohne Fremd-Requests, skaliert Portionen 2 -> 4, fügt zur Einkaufsliste hinzu und prüft unbekannte ID', async ({
     page,
   }) => {
     const consoleErrors: string[] = [];
+    const foreignRequests: string[] = [];
     page.on('console', (msg) => {
       if (msg.type() === 'error') consoleErrors.push(msg.text());
     });
     page.on('pageerror', (err) => consoleErrors.push(String(err)));
+    page.on('request', (req) => {
+      const url = req.url();
+      if (
+        !url.startsWith('http://127.0.0.1:') &&
+        !url.startsWith('http://localhost:') &&
+        !url.startsWith('data:')
+      ) {
+        foreignRequests.push(url);
+      }
+    });
 
     await page.addInitScript(() => {
       document.addEventListener('securitypolicyviolation', (event) => {
@@ -28,6 +39,23 @@ test.describe('E4 Journey J1: Rezeptliste -> Detail -> Portionen 2->4 -> Einkauf
     ).toBeVisible();
     expect(page.url()).toContain('#/rezepte');
 
+    // E8: Rezeptliste zeigt lokale WebP-Bilder (Top-Karte max. 180 px, loading="lazy", geladen)
+    const listImgs = page.locator('[data-testid="recipe-list"] img');
+    await expect(listImgs).toHaveCount(5);
+    const firstImg = listImgs.first();
+    await expect(firstImg).toHaveAttribute('loading', 'lazy');
+    await expect(firstImg).toHaveJSProperty('complete', true);
+    const firstNaturalWidth = await firstImg.evaluate(
+      (el) => (el as HTMLImageElement).naturalWidth,
+    );
+    expect(firstNaturalWidth).toBe(800);
+    const firstHeroBox = await page
+      .locator('[data-testid="recipe-list"] .edo-recipe-hero-btn')
+      .first()
+      .boundingBox();
+    expect(firstHeroBox).not.toBeNull();
+    expect(firstHeroBox!.height).toBeLessThanOrEqual(181);
+
     // Kachel «Ofenlachs mit Broccoli und Kartoffeln» antippen -> Detailseite
     const salmonCard = page.getByTestId('recipe-card-oven_salmon');
     await expect(salmonCard).toBeVisible();
@@ -42,6 +70,29 @@ test.describe('E4 Journey J1: Rezeptliste -> Detail -> Portionen 2->4 -> Einkauf
         name: 'Ofenlachs mit Broccoli und Kartoffeln',
       }),
     ).toBeVisible();
+
+    // E8: Detailseite zeigt lokales 4:3-Titelbild (loading="eager", geladen, 800x600)
+    const detailHeroImg = page.locator('[data-testid="recipe-detail-hero"] img');
+    await expect(detailHeroImg).toBeVisible();
+    await expect(detailHeroImg).toHaveAttribute('loading', 'eager');
+    await expect(detailHeroImg).toHaveAttribute(
+      'alt',
+      'Ofenlachs mit Broccoli und Kartoffeln',
+    );
+    await expect(detailHeroImg).toHaveJSProperty('complete', true);
+    const heroMetrics = await detailHeroImg.evaluate((el) => {
+      const img = el as HTMLImageElement;
+      const rect = img.getBoundingClientRect();
+      return {
+        naturalWidth: img.naturalWidth,
+        naturalHeight: img.naturalHeight,
+        ratio: rect.width / rect.height,
+      };
+    });
+    expect(heroMetrics.naturalWidth).toBe(800);
+    expect(heroMetrics.naturalHeight).toBe(600);
+    expect(heroMetrics.ratio).toBeGreaterThan(1.25);
+    expect(heroMetrics.ratio).toBeLessThan(1.42);
 
     // Fixe BottomActions im Viewport sichtbar
     const actions = page.getByTestId('bottom-actions');
@@ -119,6 +170,7 @@ test.describe('E4 Journey J1: Rezeptliste -> Detail -> Portionen 2->4 -> Einkauf
       const target = window as unknown as { __cspViolations?: string[] };
       return target.__cspViolations ?? [];
     });
+    expect(foreignRequests).toEqual([]);
     expect(cspViolations).toEqual([]);
     expect(consoleErrors).toEqual([]);
   });
