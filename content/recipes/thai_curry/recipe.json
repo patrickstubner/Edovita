@@ -1,6 +1,7 @@
 {
  "format": 1,
  "id": "thai_curry",
+ "image": "thai_curry",
  "cuisine": "thai",
  "meal": "dinner",
  "minutes": 30,
@@ -96,7 +97,7 @@
   "values": {
    "kcal": 800,
    "fat": 34.5,
-   "satFat": 25.0,
+   "satFat": 25,
    "carbs": 72.9,
    "sugars": 12.3,
    "fiber": 4.3,

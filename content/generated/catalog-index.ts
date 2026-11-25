@@ -4,6 +4,7 @@ import type {
   FoodCatalogSourceMeta,
   FoodGlossary,
   Recipe,
+  RecipeImageAssets,
   RecipeLocaleText,
 } from '../../src/domain/index.ts';
 import foodsFile from '../foods/foods.json';
@@ -26,6 +27,16 @@ import recipePhoEn from '../recipes/pho/en.json';
 import recipeThaiCurry from '../recipes/thai_curry/recipe.json';
 import recipeThaiCurryDe from '../recipes/thai_curry/de.json';
 import recipeThaiCurryEn from '../recipes/thai_curry/en.json';
+import imgBirchermuesliFull from '../images/recipes/birchermuesli.webp';
+import imgBirchermuesliThumb from '../images/recipes/birchermuesli-thumb.webp';
+import imgLentilCurryFull from '../images/recipes/lentil_curry.webp';
+import imgLentilCurryThumb from '../images/recipes/lentil_curry-thumb.webp';
+import imgOvenSalmonFull from '../images/recipes/oven_salmon.webp';
+import imgOvenSalmonThumb from '../images/recipes/oven_salmon-thumb.webp';
+import imgPhoFull from '../images/recipes/pho.webp';
+import imgPhoThumb from '../images/recipes/pho-thumb.webp';
+import imgThaiCurryFull from '../images/recipes/thai_curry.webp';
+import imgThaiCurryThumb from '../images/recipes/thai_curry-thumb.webp';
 
 export const CATALOG_SOURCE: FoodCatalogSourceMeta = foodsFile.source;
 export const FOODS: readonly Food[] = foodsFile.foods as unknown as readonly Food[];
@@ -66,5 +77,48 @@ export const RECIPE_LOCALES: Readonly<Record<string, Readonly<Record<string, Rec
   thai_curry: {
     de: recipeThaiCurryDe,
     en: recipeThaiCurryEn,
+  },
+};
+
+export const RECIPE_IMAGES: Readonly<Record<string, RecipeImageAssets>> = {
+  birchermuesli: {
+    full: imgBirchermuesliFull,
+    thumb: imgBirchermuesliThumb,
+    width: 800,
+    height: 600,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  lentil_curry: {
+    full: imgLentilCurryFull,
+    thumb: imgLentilCurryThumb,
+    width: 800,
+    height: 600,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  oven_salmon: {
+    full: imgOvenSalmonFull,
+    thumb: imgOvenSalmonThumb,
+    width: 800,
+    height: 600,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  pho: {
+    full: imgPhoFull,
+    thumb: imgPhoThumb,
+    width: 800,
+    height: 600,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  thai_curry: {
+    full: imgThaiCurryFull,
+    thumb: imgThaiCurryThumb,
+    width: 800,
+    height: 600,
+    thumbWidth: 400,
+    thumbHeight: 300,
   },
 };

@@ -214,9 +214,27 @@ export interface RecipeReview {
   open?: string[];
 }
 
+export type RecipeImageKind = 'full' | 'thumb';
+
+export interface RecipeImageAssets {
+  readonly full: string;
+  readonly thumb: string;
+  readonly width: number;
+  readonly height: number;
+  readonly thumbWidth: number;
+  readonly thumbHeight: number;
+}
+
+export interface RecipePhoto {
+  readonly src: string;
+  readonly width: number;
+  readonly height: number;
+}
+
 export interface Recipe {
   format: 1;
   id: RecipeId;
+  image?: RecipeId;
   cuisine: CuisineId;
   meal: Meal;
   minutes: number;

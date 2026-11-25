@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
-import { foodName, getFood } from '../catalog/index.ts';
+import { foodName, getFood, getRecipePhoto } from '../catalog/index.ts';
 import {
   Icon,
   IngredientList,
@@ -355,6 +355,7 @@ export function RecipeDetailPage() {
             n: fmtNumber(Math.round(nutrition.values.protein)),
           })}
           imageLabel={t('recipe.img')}
+          photo={getRecipePhoto(recipe, 'full')}
           tone={toneForRecipe(recipe.id)}
           rating={rating}
           saved={saved}

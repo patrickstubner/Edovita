@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router';
+import { getRecipePhoto } from '../catalog/index.ts';
 import {
   Icon,
   RecipeCard,
@@ -248,6 +249,10 @@ export function RecipesPage() {
                     n: fmtNumber(proteinVal),
                   })}
                   imageLabel={t('recipe.img')}
+                  photo={getRecipePhoto(
+                    recipe,
+                    index === 0 ? 'full' : 'thumb',
+                  )}
                   openLabel={t('rezepte.open_recipe', { title })}
                   topLabel={index === 0 ? t('recipe.top') : undefined}
                   featured={index === 0}

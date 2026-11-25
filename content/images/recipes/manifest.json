@@ -1,0 +1,148 @@
+{
+  "format": 1,
+  "asOf": "2026-11-24",
+  "timezone": "Europe/Zurich",
+  "license": "Pexels License / Unsplash License (keine Namensnennungspflicht; Offline-Bündelung zulässig)",
+  "internalOnly": true,
+  "note": "Internes Herkunfts- und Lizenz-Manifest. Wird nicht in der Benutzeroberfläche angezeigt und nicht ins App-Bundle übernommen.",
+  "budgetBytes": 7400000,
+  "placeholders": [],
+  "images": [
+    {
+      "recipeId": "birchermuesli",
+      "source": "Pexels",
+      "photoId": 6133456,
+      "originalUrl": "https://www.pexels.com/photo/oatmeal-served-for-breakfast-6133456/",
+      "photographer": "Regina Ferraz",
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "birchermuesli.webp",
+        "thumb": "birchermuesli-thumb.webp"
+      },
+      "bytes": {
+        "full": 51732,
+        "thumb": 17834
+      },
+      "dimensions": {
+        "full": {
+          "width": 800,
+          "height": 600
+        },
+        "thumb": {
+          "width": 400,
+          "height": 300
+        }
+      }
+    },
+    {
+      "recipeId": "lentil_curry",
+      "source": "Pexels",
+      "photoId": 28286241,
+      "originalUrl": "https://www.pexels.com/photo/vegan-lentil-dhal-28286241/",
+      "photographer": "Nic Wood",
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "lentil_curry.webp",
+        "thumb": "lentil_curry-thumb.webp"
+      },
+      "bytes": {
+        "full": 101706,
+        "thumb": 26418
+      },
+      "dimensions": {
+        "full": {
+          "width": 800,
+          "height": 600
+        },
+        "thumb": {
+          "width": 400,
+          "height": 300
+        }
+      }
+    },
+    {
+      "recipeId": "oven_salmon",
+      "source": "Pexels",
+      "photoId": 20182302,
+      "originalUrl": "https://www.pexels.com/photo/potatoes-and-fish-in-a-meal-20182302/",
+      "photographer": "Valeria Boltneva",
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "oven_salmon.webp",
+        "thumb": "oven_salmon-thumb.webp"
+      },
+      "bytes": {
+        "full": 31054,
+        "thumb": 11222
+      },
+      "dimensions": {
+        "full": {
+          "width": 800,
+          "height": 600
+        },
+        "thumb": {
+          "width": 400,
+          "height": 300
+        }
+      }
+    },
+    {
+      "recipeId": "pho",
+      "source": "Pexels",
+      "photoId": 6646022,
+      "originalUrl": "https://www.pexels.com/photo/cooked-food-in-the-bowl-6646022/",
+      "photographer": "Ana Karotkaya Photography",
+      "photographerSource": "EXIF Artist (Pexels-HTML wegen Bot-Schutz nicht zuverlässig auslesbar)",
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "pho.webp",
+        "thumb": "pho-thumb.webp"
+      },
+      "bytes": {
+        "full": 65054,
+        "thumb": 18762
+      },
+      "dimensions": {
+        "full": {
+          "width": 800,
+          "height": 600
+        },
+        "thumb": {
+          "width": 400,
+          "height": 300
+        }
+      }
+    },
+    {
+      "recipeId": "thai_curry",
+      "source": "Pexels",
+      "photoId": 10527603,
+      "originalUrl": "https://www.pexels.com/photo/cooked-food-on-white-ceramic-bowl-10527603/",
+      "photographer": "Nourishment DECODED",
+      "license": "Pexels License",
+      "retrieved": "2026-11-24",
+      "files": {
+        "full": "thai_curry.webp",
+        "thumb": "thai_curry-thumb.webp"
+      },
+      "bytes": {
+        "full": 62808,
+        "thumb": 20212
+      },
+      "dimensions": {
+        "full": {
+          "width": 800,
+          "height": 600
+        },
+        "thumb": {
+          "width": 400,
+          "height": 300
+        }
+      }
+    }
+  ]
+}

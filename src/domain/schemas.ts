@@ -217,6 +217,7 @@ export const recipeReviewSchema = z.strictObject({
 export const recipeSchema = z.strictObject({
   format: z.literal(1),
   id: recipeIdSchema,
+  image: recipeIdSchema.optional(),
   cuisine: cuisineIdSchema,
   meal: mealSchema,
   minutes: z.number().int().positive().max(600),

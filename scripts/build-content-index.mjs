@@ -41,6 +41,35 @@ export function generateCatalogIndexSource(contentDir = CONTENT_DIR) {
     assertSafeIdent(rid, 'recipes');
   }
 
+  const imagesDir = resolve(contentDir, 'images/recipes');
+  const imageManifestPath = resolve(imagesDir, 'manifest.json');
+  const imageMeta = [];
+  if (existsSync(imageManifestPath)) {
+    const manifest = JSON.parse(readFileSync(imageManifestPath, 'utf8'));
+    const entries = Array.isArray(manifest.images) ? manifest.images : [];
+    const sorted = [...entries].sort((a, b) =>
+      String(a.recipeId).localeCompare(String(b.recipeId)),
+    );
+    for (const entry of sorted) {
+      const rid = String(entry.recipeId ?? '');
+      assertSafeIdent(rid, 'images/recipes/manifest.json');
+      const fullFile = `${rid}.webp`;
+      const thumbFile = `${rid}-thumb.webp`;
+      if (
+        !existsSync(resolve(imagesDir, fullFile)) ||
+        !existsSync(resolve(imagesDir, thumbFile))
+      ) {
+        continue;
+      }
+      const ident = toPascal(rid);
+      const width = Number(entry.dimensions?.full?.width) || 800;
+      const height = Number(entry.dimensions?.full?.height) || 600;
+      const thumbWidth = Number(entry.dimensions?.thumb?.width) || 400;
+      const thumbHeight = Number(entry.dimensions?.thumb?.height) || 300;
+      imageMeta.push({ rid, ident, fullFile, thumbFile, width, height, thumbWidth, thumbHeight });
+    }
+  }
+
   const lines = [
     '/* Auto-generiert von scripts/build-content-index.mjs – nicht von Hand bearbeiten. */',
     'import type {',
@@ -48,6 +77,7 @@ export function generateCatalogIndexSource(contentDir = CONTENT_DIR) {
     '  FoodCatalogSourceMeta,',
     '  FoodGlossary,',
     '  Recipe,',
+    '  RecipeImageAssets,',
     '  RecipeLocaleText,',
     "} from '../../src/domain/index.ts';",
     "import foodsFile from '../foods/foods.json';",
@@ -77,6 +107,15 @@ export function generateCatalogIndexSource(contentDir = CONTENT_DIR) {
       );
     }
     recipeMeta.push({ rid, ident, langs });
+  }
+
+  for (const img of imageMeta) {
+    lines.push(
+      `import img${img.ident}Full from '../images/recipes/${img.fullFile}';`,
+    );
+    lines.push(
+      `import img${img.ident}Thumb from '../images/recipes/${img.thumbFile}';`,
+    );
   }
 
   lines.push('');
@@ -114,6 +153,21 @@ export function generateCatalogIndexSource(contentDir = CONTENT_DIR) {
     for (const lang of langs) {
       lines.push(`    ${lang}: recipe${ident}${toPascal(lang)},`);
     }
+    lines.push('  },');
+  }
+  lines.push('};');
+  lines.push('');
+  lines.push(
+    'export const RECIPE_IMAGES: Readonly<Record<string, RecipeImageAssets>> = {',
+  );
+  for (const img of imageMeta) {
+    lines.push(`  ${img.rid}: {`);
+    lines.push(`    full: img${img.ident}Full,`);
+    lines.push(`    thumb: img${img.ident}Thumb,`);
+    lines.push(`    width: ${img.width},`);
+    lines.push(`    height: ${img.height},`);
+    lines.push(`    thumbWidth: ${img.thumbWidth},`);
+    lines.push(`    thumbHeight: ${img.thumbHeight},`);
     lines.push('  },');
   }
   lines.push('};');

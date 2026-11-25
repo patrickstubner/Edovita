@@ -5,12 +5,17 @@ import { describe, expect, it } from '@rstest/core';
 import {
   EXPECTED_GLOSSARY_LANGS,
   EXPECTED_RECIPE_UI_LANGS,
+  RECIPE_IMAGE_BUDGET_BYTES,
+  recipeSchema,
   validateContentBundle,
+  validateRecipeImages,
   type RawContentBundle,
+  type RawRecipeImagesBundle,
 } from '../../src/domain/index.ts';
 
 const ROOT = resolve(import.meta.dirname, '../..');
 const CONTENT_DIR = resolve(ROOT, 'content');
+const IMAGES_DIR = resolve(CONTENT_DIR, 'images/recipes');
 const SOURCE_XLSX = resolve(
   ROOT,
   'docs/architektur/inhalte/quelle/Schweizer_Nahrwertdatenbank_V7.1.xlsx',
@@ -177,6 +182,148 @@ describe('Inhaltsprüfung content/ (Port von validate.py, ADR-005 & ADR-006)', (
       expect(
         report.errors.some((e) => e.includes('review.sources')),
       ).toBe(true);
+    }
+  });
+
+  function loadRawRecipeImagesBundle(): RawRecipeImagesBundle {
+    const contentReport = validateContentBundle(loadRawContentBundle());
+    const recipes = contentReport.validated!.recipes;
+    const knownRecipeIds = recipes.map((r) => r.recipe.id);
+    const recipeImageFields: Record<string, string | undefined> = {};
+    for (const r of recipes) {
+      recipeImageFields[r.recipe.id] = r.recipe.image;
+    }
+    const manifest = readJson(resolve(IMAGES_DIR, 'manifest.json'));
+    const files: Record<string, Uint8Array> = {};
+    for (const name of readdirSync(IMAGES_DIR)) {
+      if (name === 'manifest.json') continue;
+      files[name] = new Uint8Array(readFileSync(resolve(IMAGES_DIR, name)));
+    }
+    return { manifest, files, knownRecipeIds, recipeImageFields };
+  }
+
+  function appendSyntheticExifChunk(webpBytes: Uint8Array): Uint8Array {
+    const exifPayload = new TextEncoder().encode('Exif\0\0GPSInfo');
+    const pad = exifPayload.length % 2;
+    const chunkTotal = 8 + exifPayload.length + pad;
+    const out = new Uint8Array(webpBytes.length + chunkTotal);
+    out.set(webpBytes, 0);
+    // RIFF-Gesamtgrösse (Bytes 4..7, little-endian) erhöhen
+    const dv = new DataView(out.buffer);
+    dv.setUint32(4, out.length - 8, true);
+    const offset = webpBytes.length;
+    out[offset] = 0x45; // E
+    out[offset + 1] = 0x58; // X
+    out[offset + 2] = 0x49; // I
+    out[offset + 3] = 0x46; // F
+    dv.setUint32(offset + 4, exifPayload.length, true);
+    out.set(exifPayload, offset + 8);
+    return out;
+  }
+
+  it('E8: prüft alle 10 WebP-Rezeptbilder gegen Manifest, Lizenz (Pexels/Unsplash), Budget und 0 EXIF/GPS', () => {
+    const bundle = loadRawRecipeImagesBundle();
+    const report = validateRecipeImages(bundle);
+
+    expect(report.errors).toEqual([]);
+    expect(report.ok).toBe(true);
+    expect(report.validated).not.toBeNull();
+    expect(report.validated!.images).toHaveLength(5);
+    expect(report.totalBytes).toBe(406_802);
+    expect(report.totalBytes).toBeLessThanOrEqual(RECIPE_IMAGE_BUDGET_BYTES);
+  });
+
+  it('E8 Negativtests: Bild ohne Manifest, falsche Lizenz, unbekannte Rezept-ID, EXIF/GPS und freie Bildpfade brechen content:check', () => {
+    // 1) Bild ohne Manifest-Eintrag
+    const extraFileBundle = loadRawRecipeImagesBundle();
+    const withExtraFile: RawRecipeImagesBundle = {
+      ...extraFileBundle,
+      files: {
+        ...extraFileBundle.files,
+        'unregistriert.webp': extraFileBundle.files['oven_salmon.webp']!,
+      },
+    };
+    const extraReport = validateRecipeImages(withExtraFile);
+    expect(extraReport.ok).toBe(false);
+    expect(
+      extraReport.errors.some((e) => e.includes('ohne Eintrag in manifest.json')),
+    ).toBe(true);
+
+    // 2) Falsche Lizenz (CC-BY / Wikimedia abgelehnt)
+    const badLicenseBundle = loadRawRecipeImagesBundle();
+    const badLicenseManifest = structuredClone(badLicenseBundle.manifest) as {
+      images: Array<{ license: string }>;
+    };
+    badLicenseManifest.images[0]!.license = 'CC-BY 4.0';
+    const licenseReport = validateRecipeImages({
+      ...badLicenseBundle,
+      manifest: badLicenseManifest,
+    });
+    expect(licenseReport.ok).toBe(false);
+    expect(
+      licenseReport.errors.some((e) => e.includes('license')),
+    ).toBe(true);
+
+    // 3) Unbekannte Rezept-ID im Manifest
+    const unknownIdBundle = loadRawRecipeImagesBundle();
+    const unknownIdManifest = structuredClone(unknownIdBundle.manifest) as {
+      images: Array<{
+        recipeId: string;
+        files: { full: string; thumb: string };
+      }>;
+    };
+    unknownIdManifest.images[0]!.recipeId = 'nicht_im_katalog';
+    unknownIdManifest.images[0]!.files = {
+      full: 'nicht_im_katalog.webp',
+      thumb: 'nicht_im_katalog-thumb.webp',
+    };
+    const unknownReport = validateRecipeImages({
+      ...unknownIdBundle,
+      manifest: unknownIdManifest,
+    });
+    expect(unknownReport.ok).toBe(false);
+    expect(
+      unknownReport.errors.some((e) => e.includes('unbekannte Rezept-ID')),
+    ).toBe(true);
+
+    // 4) EXIF/GPS-Chunk im WebP
+    const exifBundle = loadRawRecipeImagesBundle();
+    const withExifBytes = appendSyntheticExifChunk(
+      exifBundle.files['oven_salmon.webp']!,
+    );
+    const exifManifest = structuredClone(exifBundle.manifest) as {
+      images: Array<{ recipeId: string; bytes: { full: number } }>;
+    };
+    const salmonEntry = exifManifest.images.find(
+      (i) => i.recipeId === 'oven_salmon',
+    )!;
+    salmonEntry.bytes.full = withExifBytes.length;
+    const exifReport = validateRecipeImages({
+      ...exifBundle,
+      manifest: exifManifest,
+      files: {
+        ...exifBundle.files,
+        'oven_salmon.webp': withExifBytes,
+      },
+    });
+    expect(exifReport.ok).toBe(false);
+    expect(
+      exifReport.errors.some((e) => e.includes('EXIF/XMP/GPS')),
+    ).toBe(true);
+
+    // 5) Rezept-Schema lehnt freie Bildpfade und URLs strikt ab
+    const validRecipe = loadRawContentBundle().recipes[0]!.recipe as Record<
+      string,
+      unknown
+    >;
+    for (const badPath of [
+      '../oven_salmon.webp',
+      '/images/oven_salmon.webp',
+      'https://images.pexels.com/photos/1/a.webp',
+      'oven_salmon.webp',
+    ]) {
+      const parsed = recipeSchema.safeParse({ ...validRecipe, image: badPath });
+      expect(parsed.success).toBe(false);
     }
   });
 });
