@@ -76,11 +76,16 @@ test.describe('E6 Journeys J4 & J5: Zweitsprache in Kopfzeile, zweizeilige Einka
 
     // Zur Einkaufsliste -> Liste zweizeilig (Zeile 1 Name, Zeile 2 Zweitname + Menge), kein Chip
     await page.getByTestId('add-to-shopping-btn').click();
-    await page.getByTestId('detail-open-shopping-btn').click();
     await expect(
       page.getByRole('heading', { name: 'Einkaufsliste' }),
     ).toBeVisible();
     await expect(page.getByTestId('second-lang-chip')).toHaveCount(0);
+    await expect(page.getByTestId('shop-sub')).toContainText(
+      'Aus dem Plan für 5 Tage erstellt',
+    );
+    await expect(page.getByTestId('shop-sub').locator('bdi')).toHaveText(
+      'Criada a partir do plano de 5 dias',
+    );
 
     const brocRow = page.getByTestId('shop-row-broccoli__g');
     await expect(brocRow.locator('[data-bilingual="two-line"]')).toBeVisible();
@@ -245,9 +250,15 @@ test.describe('E6 Journeys J4 & J5: Zweitsprache in Kopfzeile, zweizeilige Einka
     );
     expect(recipeOverflow).toBeLessThanOrEqual(1);
 
-    // Einkaufsliste mit ar-XB: Titel, Gruppen, Zeilen und beide Sheets mit <bdi lang="ar-XB" dir="rtl">
+    // Einkaufsliste mit ar-XB: Titel, Plan-Untertitel #shopSub, Gruppen, Zeilen und beide Sheets mit <bdi lang="ar-XB" dir="rtl">
     await page.getByTestId('add-to-shopping-btn').click();
-    await page.getByTestId('detail-open-shopping-btn').click();
+    await expect(
+      page.getByRole('heading', { name: 'Einkaufsliste' }),
+    ).toBeVisible();
+
+    const subBdi = page.getByTestId('shop-sub').locator('bdi');
+    await expect(subBdi).toHaveAttribute('lang', 'ar-XB');
+    await expect(subBdi).toHaveAttribute('dir', 'rtl');
 
     const titleBdi = page.getByTestId('shop-title-sec').locator('bdi');
     await expect(titleBdi).toHaveText('قائمة التسوق');

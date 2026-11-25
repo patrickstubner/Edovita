@@ -105,7 +105,6 @@
   "detail.nutrition.source": "Fonte: {source}",
   "detail.sources.heading": "Fonti della ricetta",
   "detail.add_to_list": "Aggiungi alla lista della spesa",
-  "detail.added_toast": "{n, plural, one {# ingrediente aggiunto} other {# ingredienti aggiunti}} alla lista.",
   "detail.undo": "Annulla",
   "detail.undone_toast": "Aggiunta annullata.",
   "allergen.gluten": "Glutine",
@@ -274,5 +273,12 @@
   "datenschutz.import.ok": "Dati applicati",
   "datenschutz.import.bad": "File non valido, nulla è cambiato",
   "datenschutz.import.apply": "Applica",
-  "datenschutz.import.cancel": "Annulla"
+  "datenschutz.import.cancel": "Annulla",
+  "plan.shop": "Crea lista della spesa",
+  "plan.shop.done": "Lista della spesa aggiornata",
+  "shop.from.plan": "Creata dal piano di {n} giorni",
+  "toast.addlist.planned": "Aggiunto alla lista e pianificato per {when}",
+  "toast.addlist.noslot": "Aggiunto alla lista. Nessuno spazio adatto rimasto nel piano.",
+  "toast.addlist.already": "Aggiunto alla lista. Era già nel piano.",
+  "shop.src.whenqty": "{when} · {qty}"
 }

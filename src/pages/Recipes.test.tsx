@@ -172,24 +172,57 @@ describe('Paket E4: Rezeptliste, Rezept-Detailseite & F3b (Issue #10)', () => {
       'mindestens',
     );
 
-    // Zur Einkaufsliste hinzufügen -> Toast mit «Rückgängig», bleibt auf Seite
+    // Zur Einkaufsliste hinzufügen -> plant automatisch in nächsten freien Slot + Toast mit «Rückgängig»
     fireEvent.click(screen.getByTestId('add-to-shopping-btn'));
 
     const toast = await screen.findByTestId('toast');
-    expect(toast).toHaveTextContent('8 Zutaten zur Einkaufsliste hinzugefügt.');
-    expect(window.location.hash).toContain('#/rezept/oven_salmon');
+    expect(toast).toHaveTextContent(/Auf Liste und für .* eingeplant/);
 
     const storedItems = await storage.shopping.list();
     expect(storedItems).toHaveLength(8);
     const storedPotato = storedItems.find((i) => i.food === 'potato');
     expect(storedPotato?.amount).toBe(1000);
     expect(storedPotato?.unit).toBe('g');
+    expect((await storage.plan.get()).items).toHaveLength(1);
 
-    // Rückgängig stellt vorherige leere Liste wieder her
+    // Rückgängig stellt vorherige leere Liste UND leeren Plan wieder her (und bricht Weiterleitung ab)
     fireEvent.click(screen.getByTestId('toast-undo'));
     expect(await screen.findByTestId('toast')).toHaveTextContent(
       'Hinzufügen rückgängig gemacht.',
     );
+    expect(await storage.shopping.list()).toHaveLength(0);
+    expect((await storage.plan.get()).items).toHaveLength(0);
+  });
+
+  it('E11 Entscheid 25.11.: Top-Karte auf #/rezepte zeigt «Zur Einkaufsliste hinzufügen» (nur auf Top-Karte), plant ein und bietet Rückgängig', async () => {
+    const storage = createMemoryStorage();
+    window.location.hash = '#/rezepte';
+
+    render(<App navigatorLanguages={['de-CH']} storage={storage} />);
+
+    expect(
+      await screen.findByRole('heading', { name: 'Rezepte für dich' }),
+    ).toBeInTheDocument();
+
+    // Genau ein Knopf auf der Top-Karte (nicht auf kompakten Karten)
+    const addButtons = screen.getAllByTestId('top-card-add-to-list-btn');
+    expect(addButtons).toHaveLength(1);
+    expect(addButtons[0]).toHaveTextContent('Zur Einkaufsliste hinzufügen');
+
+    // Klick löst Einplanung + Einkaufsliste aus (öffnet nicht Detail und setzt keine Sterne)
+    fireEvent.click(addButtons[0]!);
+    const toast = await screen.findByTestId('toast');
+    expect(toast).toHaveTextContent(/Auf Liste und für .* eingeplant/);
+    expect((await storage.plan.get()).items).toHaveLength(1);
+    expect((await storage.shopping.list()).length).toBeGreaterThan(0);
+    expect(await storage.ratings.listRatings()).toEqual({});
+
+    // Rückgängig stellt Plan und Liste wieder leer her
+    fireEvent.click(screen.getByTestId('toast-undo'));
+    expect(await screen.findByTestId('toast')).toHaveTextContent(
+      'Hinzufügen rückgängig gemacht.',
+    );
+    expect((await storage.plan.get()).items).toHaveLength(0);
     expect(await storage.shopping.list()).toHaveLength(0);
   });
 

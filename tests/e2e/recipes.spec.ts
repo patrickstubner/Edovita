@@ -126,15 +126,16 @@ test.describe('E4 + E8 Journey J1: Rezeptliste & lokale Bilder -> Detail -> Port
     expect(boxAfterScroll).not.toBeNull();
     expect(boxAfterScroll!.y + boxAfterScroll!.height).toBeLessThanOrEqual(844);
 
-    // «Zur Einkaufsliste hinzufügen» -> Toast mit «Rückgängig», bleibt auf der Seite
+    // «Zur Einkaufsliste hinzufügen» -> plant ein + Toast mit «Rückgängig»; Rückgängig hebt Einplanung & Weiterleitung auf
     await page.getByTestId('add-to-shopping-btn').click();
     const toast = page.getByTestId('toast');
     await expect(toast).toBeVisible();
-    await expect(toast).toContainText('8 Zutaten');
+    await expect(toast).toContainText(/Auf Liste und für .* eingeplant/);
     expect(page.url()).toContain('#/rezept/oven_salmon');
 
     await page.getByTestId('toast-undo').click();
     await expect(toast).toContainText('rückgängig');
+    expect(page.url()).toContain('#/rezept/oven_salmon');
 
     // Unbekannte Rezept-ID -> «Rezept nicht gefunden» (kurzer Inhalt) mit sichtbarer BottomActions & Zurück-Navigation
     await page.goto('/#/rezept/unbekanntes_rezept');

@@ -19,6 +19,7 @@ export {
   shopNeedOf,
   snapHaveQty,
   type ApplyHaveOptions,
+  type BuildSourceSummaryOptions,
   type ShopSourceEntry,
   type ShopSourceSummary,
 } from './have.ts';
@@ -35,6 +36,27 @@ export {
   type GroupedShoppingList,
   type ShoppingGroup,
 } from './merge.ts';
+export {
+  addIngredientBundle,
+  addRecipeToListAndMaybePlan,
+  ensurePlanRecipeOnList,
+  findNextFreeSlot,
+  ingsForPlanEntry,
+  planWhenLabel,
+  refreshPlanQuantities,
+  resolveQrImportItems,
+  restoreShopAndPlan,
+  slotTargetsFor,
+  snapshotShopAndPlan,
+  weekdayShort,
+  type AddRecipeToListOptions,
+  type AddRecipeToListOutcome,
+  type AddRecipeToListResult,
+  type FreePlanSlot,
+  type PlanIngredientEntry,
+  type RefreshPlanShopOptions,
+  type ShopAndPlanSnapshot,
+} from './planShop.ts';
 export {
   buildQrMatrix,
   encodeShoppingListFragment,

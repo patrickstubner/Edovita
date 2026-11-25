@@ -30,7 +30,7 @@ import {
   type PlanSlot,
   type RecipeId,
 } from '../domain/index.ts';
-import { useI18n, usePlan } from '../hooks/index.ts';
+import { useI18n, usePlan, usePlanShopping } from '../hooks/index.ts';
 import { MEAL_LABEL_KEYS, MEAL_SHORT_LABEL_KEYS } from '../i18n/index.ts';
 import { dayPlanNutrition, nutrientsForServings } from '../nutrition/index.ts';
 
@@ -62,14 +62,20 @@ interface PlanSheetState {
 }
 
 /**
- * Essensplan-Screen (`#/plan`, E10 / Issue #35, Prototyp v5.10.1):
+ * Essensplan-Screen (`#/plan`, E10/E11 / Issues #35 & #36, Prototyp v5.10.1):
  * Zeitraum 3–7 Tage, vier Slots (Frühstück, Mittagessen, Abendessen, Snacks),
- * Tagestotale aus `nutrientsForServings`, Tauschen/Entfernen und modales Plan-Sheet.
- * Knopf «Einkaufsliste erstellen» folgt separat in E11 (#36).
+ * Tagestotale aus `nutrientsForServings`, Tauschen/Entfernen, modales Plan-Sheet
+ * sowie fixer Hauptknopf «Einkaufsliste erstellen» (`#planMakeShop`).
  */
 export function PlanPage() {
   const { lang, fmtDate, fmtNumber, t } = useI18n();
-  const { plan, setDays, upsertItem, removeItem } = usePlan();
+  const { plan } = usePlan();
+  const {
+    makeShopFromPlan,
+    syncPlanDays,
+    syncUpsertPlanItem,
+    syncRemovePlanItem,
+  } = usePlanShopping();
   const navigate = useNavigate();
   const location = useLocation();
   const initialPlanAdded = Boolean(
@@ -221,10 +227,24 @@ export function PlanPage() {
       portions: coercePlanPortions(sheet.portions),
     };
     setSheet(null);
-    void upsertItem(nextItem).then(() => {
+    void syncUpsertPlanItem(nextItem).then(() => {
       showToast(t('recipe.addplan.toast'));
     });
-  }, [sheet, showToast, t, upsertItem]);
+  }, [sheet, showToast, syncUpsertPlanItem, t]);
+
+  const handleMakeShop = useCallback(() => {
+    void makeShopFromPlan().then((res) => {
+      void navigate('/einkauf', {
+        state: {
+          shopToast: {
+            message: res.message,
+            canUndo: false,
+            isPlanUndo: false,
+          },
+        },
+      });
+    });
+  }, [makeShopFromPlan, navigate]);
 
   return (
     <Screen
@@ -234,6 +254,19 @@ export function PlanPage() {
           <p className="edo-cap">{t('plan.sub')}</p>
         </div>
       }
+      actions={
+        <button
+          id="planMakeShop"
+          type="button"
+          className="edo-btn"
+          data-testid="plan-make-shop-btn"
+          onClick={handleMakeShop}
+        >
+          <Icon name="cart" size="sm" />
+          <span>{t('plan.shop')}</span>
+        </button>
+      }
+      actionsLabel={t('plan.title')}
     >
       <div className="edo-stack">
         <div className="edo-stack edo-stack-sm">
@@ -252,7 +285,7 @@ export function PlanPage() {
                 className="edo-seg-btn"
                 aria-pressed={plan.days === d}
                 data-testid={`plan-days-${d}`}
-                onClick={() => void setDays(d)}
+                onClick={() => void syncPlanDays(d)}
               >
                 {t('plan.days.n', { n: d })}
               </button>
@@ -384,7 +417,7 @@ export function PlanPage() {
                                   name: title,
                                 })}
                                 data-testid={`plan-remove-${it.id}`}
-                                onClick={() => void removeItem(it.id)}
+                                onClick={() => void syncRemovePlanItem(it.id)}
                               >
                                 <Icon name="trash" size="sm" />
                               </button>

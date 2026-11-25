@@ -1,6 +1,12 @@
+import { getRecipe } from '../catalog/index.ts';
 import {
   coerceQtyHave,
+  computeEffectiveNeed,
+  planWindowDates,
   type FoodGroup,
+  type MealPlan,
+  type PlanSlot,
+  type Recipe,
   type RecipeId,
   type ShopState,
   type ShoppingItem,
@@ -12,24 +18,33 @@ function roundTenth(value: number): number {
 }
 
 /**
- * Liefert den aktuellen Bedarf (`amount`) eines Artikels, sofern positiv und mit Einheit, sonst `null`.
+ * Liefert den aktuellen effektiven Bedarf eines Artikels (Prototyp `shopQtyOf` v5.7–v5.10.1),
+ * sofern positiv und mit Einheit, sonst `null`. Dieselbe Rezeptquelle wird nicht doppelt gezählt.
  */
-export function shopNeedOf(item: Pick<ShoppingItem, 'amount' | 'unit'>): number | null {
-  if (
-    typeof item.amount === 'number' &&
-    Number.isFinite(item.amount) &&
-    item.amount > 0 &&
-    item.unit !== undefined
-  ) {
-    return item.amount;
-  }
-  return null;
+export function shopNeedOf(
+  item: Pick<
+    ShoppingItem,
+    'amount' | 'unit' | 'qtyPlan' | 'qtyExtra' | 'recipesPlan' | 'recipesExtra'
+  >,
+): number | null {
+  return computeEffectiveNeed(item);
 }
 
 /**
  * Liefert die sicher normalisierte und auf den Bedarf gedeckelte Vorratsmenge (`qtyHave`, ≥ 0).
  */
-export function shopHaveOf(item: Pick<ShoppingItem, 'amount' | 'unit' | 'qtyHave'>): number {
+export function shopHaveOf(
+  item: Pick<
+    ShoppingItem,
+    | 'amount'
+    | 'unit'
+    | 'qtyHave'
+    | 'qtyPlan'
+    | 'qtyExtra'
+    | 'recipesPlan'
+    | 'recipesExtra'
+  >,
+): number {
   const need = shopNeedOf(item);
   return coerceQtyHave(item.qtyHave, need ?? undefined);
 }
@@ -52,7 +67,18 @@ export function capHaveToNeed(item: ShoppingItem): ShoppingItem {
 /**
  * Berechnet die verbleibende Kaufmenge (`max(0, need - have)`).
  */
-export function shopBuyQty(item: Pick<ShoppingItem, 'amount' | 'unit' | 'qtyHave'>): number | null {
+export function shopBuyQty(
+  item: Pick<
+    ShoppingItem,
+    | 'amount'
+    | 'unit'
+    | 'qtyHave'
+    | 'qtyPlan'
+    | 'qtyExtra'
+    | 'recipesPlan'
+    | 'recipesExtra'
+  >,
+): number | null {
   const need = shopNeedOf(item);
   if (need === null) {
     return null;
@@ -63,7 +89,18 @@ export function shopBuyQty(item: Pick<ShoppingItem, 'amount' | 'unit' | 'qtyHave
 /**
  * Wahr, wenn eine echte Teilmenge bereits zu Hause vorhanden ist (`0 < qtyHave < need`).
  */
-export function isPartialHave(item: Pick<ShoppingItem, 'amount' | 'unit' | 'qtyHave'>): boolean {
+export function isPartialHave(
+  item: Pick<
+    ShoppingItem,
+    | 'amount'
+    | 'unit'
+    | 'qtyHave'
+    | 'qtyPlan'
+    | 'qtyExtra'
+    | 'recipesPlan'
+    | 'recipesExtra'
+  >,
+): boolean {
   const need = shopNeedOf(item);
   const have = shopHaveOf(item);
   return need !== null && need > 0 && have > 0 && have < need;
@@ -72,7 +109,18 @@ export function isPartialHave(item: Pick<ShoppingItem, 'amount' | 'unit' | 'qtyH
 /**
  * Wahr, wenn die vorhandene Menge den gesamten Bedarf deckt (oder bei Artikeln ohne Menge `qtyHave > 0`).
  */
-export function isHaveAll(item: Pick<ShoppingItem, 'amount' | 'unit' | 'qtyHave'>): boolean {
+export function isHaveAll(
+  item: Pick<
+    ShoppingItem,
+    | 'amount'
+    | 'unit'
+    | 'qtyHave'
+    | 'qtyPlan'
+    | 'qtyExtra'
+    | 'recipesPlan'
+    | 'recipesExtra'
+  >,
+): boolean {
   const need = shopNeedOf(item);
   const have = shopHaveOf(item);
   if (need !== null && need > 0) {
@@ -85,7 +133,19 @@ export function isHaveAll(item: Pick<ShoppingItem, 'amount' | 'unit' | 'qtyHave'
  * Wirksamer Anzeige- und Speicherzustand eines Artikels gemäss Prototyp `stOfItem` (v5.9):
  * Deckt `qtyHave` den Bedarf, gilt der Artikel als `home`; Teilmengen bleiben `open` (oder `cart`).
  */
-export function effectiveShopState(item: Pick<ShoppingItem, 'amount' | 'unit' | 'qtyHave' | 'state'>): ShopState {
+export function effectiveShopState(
+  item: Pick<
+    ShoppingItem,
+    | 'amount'
+    | 'unit'
+    | 'qtyHave'
+    | 'qtyPlan'
+    | 'qtyExtra'
+    | 'recipesPlan'
+    | 'recipesExtra'
+    | 'state'
+  >,
+): ShopState {
   if (isHaveAll(item)) {
     return 'home';
   }
@@ -164,6 +224,8 @@ export function applyHave(
     const item: ShoppingItem = {
       ...raw,
       fromRecipes: [...raw.fromRecipes],
+      ...(raw.recipesPlan ? { recipesPlan: [...raw.recipesPlan] } : {}),
+      ...(raw.recipesExtra ? { recipesExtra: [...raw.recipesExtra] } : {}),
       ...(raw.recipeAmounts ? { recipeAmounts: { ...raw.recipeAmounts } } : {}),
     };
     const need = shopNeedOf(item);
@@ -201,6 +263,8 @@ export function resetHave(
     return {
       ...raw,
       fromRecipes: [...raw.fromRecipes],
+      ...(raw.recipesPlan ? { recipesPlan: [...raw.recipesPlan] } : {}),
+      ...(raw.recipesExtra ? { recipesExtra: [...raw.recipesExtra] } : {}),
       ...(raw.recipeAmounts ? { recipeAmounts: { ...raw.recipeAmounts } } : {}),
       qtyHave: 0,
       state: 'open',
@@ -212,6 +276,7 @@ export interface ShopSourceEntry {
   readonly recipeId: RecipeId;
   readonly amount: number | null;
   readonly unit: Unit | null;
+  readonly when?: string;
 }
 
 export interface ShopSourceSummary {
@@ -220,22 +285,90 @@ export interface ShopSourceSummary {
   readonly unit: Unit | null;
 }
 
+export interface BuildSourceSummaryOptions {
+  readonly plan?: MealPlan;
+  readonly now?: Date;
+  readonly formatWhen?: (dateIso: string, slot: PlanSlot) => string;
+  readonly lookupRecipe?: (id: string) => Recipe | undefined;
+}
+
 /**
- * Erzeugt die Rezept-Herkunftszeilen und die berechnete Summe für das ⓘ-Sheet (Prototyp v5.9).
+ * Erzeugt die Rezept-Herkunftszeilen und die berechnete Summe für das ⓘ-Sheet (Prototyp v5.9 + E11 `shopSourceLines`).
+ * Ist ein Essensplan übergeben, werden zuerst alle konkreten Plan-Slots im aktuellen Zeitraum (inkl. Mehrfach-Einplanungen)
+ * mit `when` aufgeführt, danach allfällige übrige Extra-Rezepte ohne Slot.
  */
-export function buildSourceSummary(item: ShoppingItem): ShopSourceSummary {
+export function buildSourceSummary(
+  item: ShoppingItem,
+  options: BuildSourceSummaryOptions = {},
+): ShopSourceSummary {
   const unit = item.unit ?? null;
-  const lines: ShopSourceEntry[] = item.fromRecipes.map((recipeId) => {
+  const lines: ShopSourceEntry[] = [];
+  const seenInPlan = new Set<RecipeId>();
+  const lookup = options.lookupRecipe ?? getRecipe;
+
+  if (options.plan) {
+    const dates = new Set(planWindowDates(options.plan.days, options.now));
+    for (const pitem of options.plan.items) {
+      if (!dates.has(pitem.date)) {
+        continue;
+      }
+      const recipe = lookup(pitem.recipeId);
+      if (!recipe || !Number.isFinite(recipe.servings) || recipe.servings <= 0) {
+        continue;
+      }
+      const factor = pitem.portions / recipe.servings;
+      for (const ing of recipe.ingredients) {
+        if (ing.food !== item.food || ing.unit !== unit) {
+          continue;
+        }
+        const amount = roundTenth(ing.amount * factor);
+        lines.push({
+          recipeId: pitem.recipeId,
+          amount: Number.isFinite(amount) && amount > 0 ? amount : null,
+          unit,
+          when: options.formatWhen
+            ? options.formatWhen(pitem.date, pitem.slot)
+            : undefined,
+        });
+        seenInPlan.add(pitem.recipeId);
+      }
+    }
+  }
+
+  const allRecipeIds: RecipeId[] = [];
+  for (const rid of [
+    ...(item.recipesPlan ?? []),
+    ...(item.recipesExtra ?? []),
+    ...item.fromRecipes,
+  ]) {
+    if (!allRecipeIds.includes(rid)) {
+      allRecipeIds.push(rid);
+    }
+  }
+
+  for (const recipeId of allRecipeIds) {
+    if (seenInPlan.has(recipeId)) {
+      continue;
+    }
     const rawAmt =
       item.recipeAmounts && Object.hasOwn(item.recipeAmounts, recipeId)
         ? item.recipeAmounts[recipeId]
         : undefined;
-    const amount =
+    let amount: number | null =
       typeof rawAmt === 'number' && Number.isFinite(rawAmt) && rawAmt > 0
         ? rawAmt
         : null;
-    return { recipeId, amount, unit };
-  });
+    if (amount === null) {
+      const recipe = lookup(recipeId);
+      const ing = recipe?.ingredients.find(
+        (entry) => entry.food === item.food && entry.unit === unit,
+      );
+      if (ing && Number.isFinite(ing.amount) && ing.amount > 0) {
+        amount = roundTenth(ing.amount);
+      }
+    }
+    lines.push({ recipeId, amount, unit });
+  }
 
   if (lines.length === 0) {
     return { lines: [], sumAmount: null, unit };

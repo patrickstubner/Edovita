@@ -105,7 +105,6 @@
   "detail.nutrition.source": "Source: {source}",
   "detail.sources.heading": "Recipe sources",
   "detail.add_to_list": "Add to shopping list",
-  "detail.added_toast": "{n, plural, one {# ingredient} other {# ingredients}} added to shopping list.",
   "detail.undo": "Undo",
   "detail.undone_toast": "Addition undone.",
   "allergen.gluten": "Gluten",
@@ -274,5 +273,12 @@
   "datenschutz.import.ok": "Data applied",
   "datenschutz.import.bad": "Invalid file, nothing changed",
   "datenschutz.import.apply": "Apply",
-  "datenschutz.import.cancel": "Cancel"
+  "datenschutz.import.cancel": "Cancel",
+  "plan.shop": "Create shopping list",
+  "plan.shop.done": "Shopping list updated",
+  "shop.from.plan": "Created from the plan for {n} days",
+  "toast.addlist.planned": "Added to the list and planned for {when}",
+  "toast.addlist.noslot": "Added to the list. No matching plan slot left.",
+  "toast.addlist.already": "Added to the list. Already in the plan.",
+  "shop.src.whenqty": "{when} · {qty}"
 }

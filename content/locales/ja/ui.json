@@ -105,7 +105,6 @@
   "detail.nutrition.source": "出典：{source}",
   "detail.sources.heading": "レシピ出典",
   "detail.add_to_list": "買い物リストに追加",
-  "detail.added_toast": "{n, plural, one {#品} other {#品}}を買い物リストに追加しました。",
   "detail.undo": "元に戻す",
   "detail.undone_toast": "追加を取り消しました。",
   "allergen.gluten": "グルテン",
@@ -274,5 +273,12 @@
   "datenschutz.import.ok": "データを適用しました",
   "datenschutz.import.bad": "ファイルが無効なため、何も変更していません",
   "datenschutz.import.apply": "適用",
-  "datenschutz.import.cancel": "キャンセル"
+  "datenschutz.import.cancel": "キャンセル",
+  "plan.shop": "買い物リストを作る",
+  "plan.shop.done": "買い物リストを更新しました",
+  "shop.from.plan": "{n}日分のプランから作成",
+  "toast.addlist.planned": "リストに追加し、{when}に予定しました",
+  "toast.addlist.noslot": "リストに追加しました。プランに合う空きがありません。",
+  "toast.addlist.already": "リストに追加しました。すでにプランにあります。",
+  "shop.src.whenqty": "{when} · {qty}"
 }

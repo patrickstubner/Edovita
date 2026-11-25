@@ -170,6 +170,7 @@ export {
   setPlanDays,
   todayIso,
   upsertPlanItem,
+  type BuildPlanExportOptions,
   type CoercePlanOptions,
   type MealPlan,
   type ParsePlanExportOptions,
@@ -180,6 +181,17 @@ export {
   type PlanItem,
   type PlanSlot,
 } from './plan.ts';
+
+export {
+  computeEffectiveNeed,
+  recomputeShoppingItem,
+  refreshPlanQuantitiesInDomain,
+  shoppingItemsToTransferExport,
+  transferBundleToShoppingItems,
+  type RefreshPlanQuantitiesOptions,
+  type ShoppingTransferExportOptions,
+  type TransferBundleToShoppingOptions,
+} from './planShop.ts';
 
 export {
   EXPECTED_GLOSSARY_LANGS,

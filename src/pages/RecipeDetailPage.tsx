@@ -21,23 +21,21 @@ import {
   PLAN_SLOTS,
   addDaysIso,
   coercePlanPortions,
-  mergeRecipeIntoShoppingList,
   newPlanItemId,
   parseIsoDateLocal,
   planWindowDates,
   todayIso,
   type PlanSlot,
   type RecipeId,
-  type ShoppingItem,
 } from '../domain/index.ts';
 import {
   useI18n,
   usePlan,
+  usePlanShopping,
   useRatings,
   useRecipe,
   useSecondLang,
   useServings,
-  useShopping,
 } from '../hooks/index.ts';
 import {
   ALLERGEN_LABEL_KEYS,
@@ -73,21 +71,23 @@ interface DetailPlanDraft {
 }
 
 /**
- * Rezept-Detailseite (#/rezept/:id) gemäss Issues #10/#12/#35, ADR-003 und ADR-005:
+ * Rezept-Detailseite (#/rezept/:id) gemäss Issues #10/#12/#35/#36, ADR-003 und ADR-005:
  * - RecipeHeader (Sterne & Merken persistent über RatingsRepository)
  * - ServingsStepper (1–12, Tastatur-bedienbar, aria-live)
  * - IngredientList (skalierte Mengen, Zweitsprache via `BilingualName` mit `<bdi>`, Allergene inkl. «Kann enthalten»)
  * - StepList (nur App-Sprache, darunter Hinweis `second.hint`)
  * - NutritionPanel (berechnete Werte, CH-NWD-Quelle, «mindestens»-Hinweis, sichere review.sources F3b)
  * - Fixe BottomActions: Hauptknopf «Zum Plan hinzufügen» (PlanSheet -> #/plan),
- *   zweiter Knopf «Zur Einkaufsliste hinzufügen» (Stil `line`) & «Einkaufsliste öffnen»
+ *   zweiter Knopf «Zur Einkaufsliste hinzufügen» (automatische Einplanung + Rückgängig, E11) & «Einkaufsliste öffnen»
  * - Unbekannte ID zeigt «Rezept nicht gefunden» mit Zurück-Navigation.
  */
 export function RecipeDetailPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { lang, t, fmtDate, fmtNumber, fmtAmount } = useI18n();
-  const { plan, upsertItem: upsertPlanItem } = usePlan();
+  const { plan } = usePlan();
+  const { addRecipeToList, syncUpsertPlanItem, undoPlanAndShopping } =
+    usePlanShopping();
   const { effectiveMeta: secondMeta, secondFoodName } = useSecondLang();
   const { recipe, text, missingText, nutrition, catalogSource, notFound } =
     useRecipe(id);
@@ -101,12 +101,10 @@ export function RecipeDetailPage() {
     totalNutrients,
   } = useServings(recipe);
   const { getRating, setRating, isSaved, toggleSaved } = useRatings();
-  const { items: shoppingItems, replaceAll: replaceShoppingItems } =
-    useShopping();
 
   const [toast, setToast] = useState<ToastState | null>(null);
-  const undoSnapshotRef = useRef<readonly ShoppingItem[] | null>(null);
   const toastTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const navTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const showToast = useCallback((next: ToastState, durationMs = 4500) => {
     if (toastTimerRef.current !== null) {
@@ -115,7 +113,6 @@ export function RecipeDetailPage() {
     setToast(next);
     toastTimerRef.current = setTimeout(() => {
       setToast(null);
-      undoSnapshotRef.current = null;
       toastTimerRef.current = null;
     }, durationMs);
   }, []);
@@ -124,6 +121,9 @@ export function RecipeDetailPage() {
     () => () => {
       if (toastTimerRef.current !== null) {
         clearTimeout(toastTimerRef.current);
+      }
+      if (navTimerRef.current !== null) {
+        clearTimeout(navTimerRef.current);
       }
     },
     [],
@@ -243,38 +243,52 @@ export function RecipeDetailPage() {
 
   const handleAddToShoppingList = useCallback(() => {
     if (!recipe) return;
-    const snapshot = shoppingItems.map((item) => ({
-      ...item,
-      fromRecipes: [...item.fromRecipes],
-    }));
-    undoSnapshotRef.current = snapshot;
-    const merged = mergeRecipeIntoShoppingList(
-      shoppingItems,
-      recipe,
-      scaledIngredients,
+    if (navTimerRef.current !== null) {
+      clearTimeout(navTimerRef.current);
+      navTimerRef.current = null;
+    }
+    void addRecipeToList(recipe, coercePlanPortions(servings)).then(
+      (feedback) => {
+        showToast(
+          {
+            message: feedback.message,
+            canUndo: feedback.canUndo,
+          },
+          feedback.canUndo ? 4500 : 3200,
+        );
+        navTimerRef.current = setTimeout(() => {
+          navTimerRef.current = null;
+          void navigate('/einkauf', {
+            state: {
+              shopToast: {
+                message: feedback.message,
+                canUndo: feedback.canUndo,
+                isPlanUndo: feedback.canUndo,
+              },
+            },
+          });
+        }, 700);
+      },
     );
-    void replaceShoppingItems(merged).then(() => {
-      showToast({
-        message: t('detail.added_toast', { n: scaledIngredients.length }),
-        canUndo: true,
-      });
-    });
-  }, [recipe, replaceShoppingItems, scaledIngredients, shoppingItems, showToast, t]);
+  }, [addRecipeToList, navigate, recipe, servings, showToast]);
 
   const handleUndo = useCallback(() => {
-    const previous = undoSnapshotRef.current;
-    if (!previous) return;
-    undoSnapshotRef.current = null;
-    void replaceShoppingItems(previous).then(() => {
-      showToast(
-        {
-          message: t('detail.undone_toast'),
-          canUndo: false,
-        },
-        2400,
-      );
+    if (navTimerRef.current !== null) {
+      clearTimeout(navTimerRef.current);
+      navTimerRef.current = null;
+    }
+    void undoPlanAndShopping().then((didUndo) => {
+      if (didUndo) {
+        showToast(
+          {
+            message: t('detail.undone_toast'),
+            canUndo: false,
+          },
+          2400,
+        );
+      }
     });
-  }, [replaceShoppingItems, showToast, t]);
+  }, [showToast, t, undoPlanAndShopping]);
 
   const planDayOptions = useMemo<readonly PlanDayOption[]>(() => {
     const today = todayIso();
@@ -322,10 +336,10 @@ export function RecipeDetailPage() {
       portions: coercePlanPortions(planDraft.portions),
     };
     setPlanDraft(null);
-    void upsertPlanItem(item).then(() => {
+    void syncUpsertPlanItem(item).then(() => {
       void navigate('/plan', { state: { planAdded: true } });
     });
-  }, [navigate, planDraft, recipe, upsertPlanItem]);
+  }, [navigate, planDraft, recipe, syncUpsertPlanItem]);
 
   if (notFound || !recipe || !nutrition) {
     return (

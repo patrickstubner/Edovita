@@ -400,21 +400,26 @@ function hasForbiddenOwnKey(value: unknown): boolean {
   return false;
 }
 
+export interface BuildPlanExportOptions extends CoercePlanOptions {
+  readonly shopItems?: readonly PlanExportShopItem[];
+  readonly shopStatus?: Readonly<Record<string, ShopState>>;
+}
+
 /**
- * Erzeugt das Austausch-Bündel für `edovita-plan-einkauf.json` (Prototyp v5.10/v5.10.1).
- * Enthält ausschliesslich Plan (und ab E11 Einkaufsliste/Listenstatus) – niemals Körper-,
+ * Erzeugt das Austausch-Bündel für `edovita-plan-einkauf.json` (Prototyp v5.10/v5.10.1, E10 + E11).
+ * Enthält ausschliesslich Plan, Einkaufsliste und Listenstatus – niemals Körper-,
  * Gesundheits-, Profil- oder Einstellungsdaten (ADR-004).
  */
 export function buildPlanExportBundle(
   plan: MealPlan,
-  options: CoercePlanOptions,
+  options: BuildPlanExportOptions,
 ): PlanExportBundle {
   return {
     v: 1,
     kind: PLAN_EXPORT_KIND,
     plan: coercePlan(plan, options),
-    shopItems: [],
-    shopStatus: {},
+    shopItems: options.shopItems ? [...options.shopItems] : [],
+    shopStatus: options.shopStatus ? { ...options.shopStatus } : {},
   };
 }
 
@@ -649,19 +654,33 @@ export function parsePlanExportBundle(
       return { ok: false, error: 'status' };
     }
     const rawStatus = data.shopStatus as Record<string, unknown>;
+    const statusKeys = Object.getOwnPropertyNames(rawStatus);
+    if (statusKeys.length > 200) {
+      return { ok: false, error: 'status' };
+    }
     const cleanStatus: Record<string, ShopState> = {};
-    for (const key of Object.keys(rawStatus)) {
-      if (!isSafeRecordKey(key)) {
+    for (const key of statusKeys) {
+      if (key.length === 0 || key.length > 80 || !isSafeRecordKey(key)) {
         return { ok: false, error: 'status' };
       }
-      const foodId = key.split('|')[0] ?? '';
+      const sep = key.includes('\0') ? '\0' : '|';
+      const parts = key.split(sep);
+      if (parts.length > 2) {
+        return { ok: false, error: 'status' };
+      }
+      const foodId = parts[0] ?? '';
+      const unitPart = parts[1] ?? '';
       if (!options.knownFoodIds.has(foodId)) {
-        continue;
+        return { ok: false, error: 'status' };
+      }
+      if (unitPart && !EXPORT_SHOP_UNIT_SET.has(unitPart)) {
+        return { ok: false, error: 'status' };
       }
       const val = rawStatus[key];
-      if (typeof val === 'string' && SHOP_STATE_SET.has(val)) {
-        cleanStatus[key] = val as ShopState;
+      if (typeof val !== 'string' || !SHOP_STATE_SET.has(val)) {
+        return { ok: false, error: 'status' };
       }
+      cleanStatus[key] = val as ShopState;
     }
     shopStatus = cleanStatus;
   }

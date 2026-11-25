@@ -4,6 +4,7 @@ import {
   asFoodId,
   isSafeRecordKey,
   mergeRecipeIntoShoppingList,
+  recomputeShoppingItem,
   type Food,
   type FoodGroup,
   type FoodId,
@@ -61,6 +62,8 @@ function cloneItem(item: ShoppingItem): ShoppingItem {
   return {
     ...item,
     fromRecipes: [...item.fromRecipes],
+    ...(item.recipesPlan ? { recipesPlan: [...item.recipesPlan] } : {}),
+    ...(item.recipesExtra ? { recipesExtra: [...item.recipesExtra] } : {}),
     ...(item.recipeAmounts ? { recipeAmounts: { ...item.recipeAmounts } } : {}),
   };
 }
@@ -106,6 +109,13 @@ export function removeRecipe(
       ? (item.recipeAmounts?.[recipeId] ?? 0)
       : undefined;
 
+    if (item.recipesExtra) {
+      item.recipesExtra = item.recipesExtra.filter((id) => id !== recipeId);
+    }
+    if (item.recipesPlan) {
+      item.recipesPlan = item.recipesPlan.filter((id) => id !== recipeId);
+    }
+
     if (item.recipeAmounts) {
       const updatedMap: Record<string, number> = {};
       for (const key of Object.getOwnPropertyNames(item.recipeAmounts)) {
@@ -132,6 +142,9 @@ export function removeRecipe(
         continue;
       }
       item.amount = remainingAmount;
+      if (typeof item.qtyExtra === 'number') {
+        item.qtyExtra = Math.max(0, roundAmount(item.qtyExtra - contribution));
+      }
       const capped = capHaveToNeed(item);
       if (isHaveAll(capped)) {
         capped.state = 'home';
@@ -186,6 +199,9 @@ export function addCatalogItem(
           ? existing.amount
           : 0;
       existing.amount = roundAmount(prev + amount);
+      if (existing.qtyPlan !== undefined || existing.qtyExtra !== undefined) {
+        existing.qtyExtra = roundAmount((existing.qtyExtra ?? 0) + amount);
+      }
     }
     if (existing.state !== 'open') {
       existing.state = 'open';
@@ -199,6 +215,10 @@ export function addCatalogItem(
     food,
     state: 'open',
     fromRecipes: [],
+    qtyPlan: 0,
+    qtyExtra: amount ?? 0,
+    recipesPlan: [],
+    recipesExtra: [],
     addedAt: nowIso,
   };
   if (amount !== undefined) {
@@ -298,12 +318,34 @@ export function applyShopImport(
         Number.isFinite(entry.amount) &&
         entry.amount > 0
       ) {
-        const prev =
-          typeof existing.amount === 'number' && Number.isFinite(existing.amount)
-            ? existing.amount
-            : 0;
-        existing.amount =
-          mode === 'merge' ? roundAmount(prev + entry.amount) : entry.amount;
+        const hasSplit =
+          existing.qtyPlan !== undefined || existing.qtyExtra !== undefined;
+        if (hasSplit) {
+          const prevExtra =
+            typeof existing.qtyExtra === 'number' &&
+            Number.isFinite(existing.qtyExtra)
+              ? existing.qtyExtra
+              : 0;
+          existing.qtyExtra =
+            mode === 'merge'
+              ? roundAmount(prevExtra + entry.amount)
+              : roundAmount(entry.amount);
+        } else {
+          const prev =
+            typeof existing.amount === 'number' &&
+            Number.isFinite(existing.amount)
+              ? existing.amount
+              : 0;
+          const nextAmount =
+            mode === 'merge'
+              ? roundAmount(prev + entry.amount)
+              : roundAmount(entry.amount);
+          existing.amount = nextAmount;
+          existing.qtyPlan = 0;
+          existing.qtyExtra = nextAmount;
+          existing.recipesPlan = [];
+          existing.recipesExtra = [...existing.fromRecipes];
+        }
       }
       // Bestehenden `home`-Zustand beim Zusammenführen erhalten (ADR-002)
       if (existing.state !== 'home') {
@@ -312,12 +354,18 @@ export function applyShopImport(
       if (!catalogFood && entry.name) {
         existing.customLabel = entry.name;
       }
+      const existingIdx = base.indexOf(existing);
+      if (existingIdx >= 0) {
+        base[existingIdx] = recomputeShoppingItem(existing);
+      }
     } else {
       const nextItem: ShoppingItem = {
         id: itemId,
         food: foodId,
         state: entry.st,
         fromRecipes: [],
+        recipesPlan: [],
+        recipesExtra: [],
         addedAt: nowIso,
       };
       if (
@@ -325,7 +373,10 @@ export function applyShopImport(
         Number.isFinite(entry.amount) &&
         entry.amount > 0
       ) {
-        nextItem.amount = roundAmount(entry.amount);
+        const amt = roundAmount(entry.amount);
+        nextItem.amount = amt;
+        nextItem.qtyPlan = 0;
+        nextItem.qtyExtra = amt;
       }
       if (entry.unit !== undefined) {
         nextItem.unit = entry.unit;

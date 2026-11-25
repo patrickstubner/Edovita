@@ -105,7 +105,6 @@
   "detail.nutrition.source": "Quelle: {source}",
   "detail.sources.heading": "Rezept-Quellen",
   "detail.add_to_list": "Zur Einkaufsliste hinzufügen",
-  "detail.added_toast": "{n, plural, one {# Zutat} other {# Zutaten}} zur Einkaufsliste hinzugefügt.",
   "detail.undo": "Rückgängig",
   "detail.undone_toast": "Hinzufügen rückgängig gemacht.",
   "allergen.gluten": "Gluten",
@@ -274,5 +273,12 @@
   "datenschutz.import.ok": "Daten übernommen",
   "datenschutz.import.bad": "Datei ungültig, nichts geändert",
   "datenschutz.import.apply": "Übernehmen",
-  "datenschutz.import.cancel": "Abbrechen"
+  "datenschutz.import.cancel": "Abbrechen",
+  "plan.shop": "Einkaufsliste erstellen",
+  "plan.shop.done": "Einkaufsliste aktualisiert",
+  "shop.from.plan": "Aus dem Plan für {n} Tage erstellt",
+  "toast.addlist.planned": "Auf Liste und für {when} eingeplant",
+  "toast.addlist.noslot": "Auf die Liste gesetzt. Kein passender Plan-Slot mehr frei.",
+  "toast.addlist.already": "Auf die Liste gesetzt. War bereits im Plan.",
+  "shop.src.whenqty": "{when} · {qty}"
 }

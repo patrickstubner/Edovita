@@ -400,6 +400,7 @@ export function pseudoRtlRecipeTitle(
 
 const PSEUDO_RTL_UI_TEXTS: Readonly<Record<string, string>> = {
   'einkauf.einkaufsliste': 'قائمة التسوق',
+  'shop.from.plan': 'أنشئت من الخطة لـ {n} أيام',
   'shop.grp.veg': 'خضار',
   'shop.grp.fruit': 'فواكه',
   'shop.grp.dairy': 'ألبان وبيض',

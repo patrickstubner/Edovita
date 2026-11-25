@@ -25,15 +25,17 @@ export interface RecipeCardProps {
   starLabel: (stars: number) => string;
   saveLabel: string;
   unsaveLabel: string;
+  addToListLabel?: string;
   onOpen: (id: RecipeId) => void;
   onRate: (id: RecipeId, stars: number | null) => void;
   onToggleSave: (id: RecipeId) => void;
+  onAddToList?: (id: RecipeId) => void;
 }
 
 /**
  * Rezept-Kachel im Prototyp-Stil (`featured` als grosse Top-Karte 16:9 max. 180 px, sonst kompakt `.recipe.sm`).
  * Zeigt lokal gebündeltes WebP-Foto (`loading="lazy"`, feste Masse gegen Layout Shift) oder den neutralen Platzhalter.
- * Keine verschachtelten `<button>`-Elemente: Öffnen, Merken und Sterne bleiben getrennte Kontrollen.
+ * Keine verschachtelten `<button>`-Elemente: Öffnen, Merken, Sterne und der E11-Top-Karten-Knopf bleiben getrennte Kontrollen.
  */
 export function RecipeCard({
   id,
@@ -55,9 +57,11 @@ export function RecipeCard({
   starLabel,
   saveLabel,
   unsaveLabel,
+  addToListLabel,
   onOpen,
   onRate,
   onToggleSave,
+  onAddToList,
 }: RecipeCardProps) {
   const hasPhoto = photo !== null && photo !== undefined;
 
@@ -136,6 +140,19 @@ export function RecipeCard({
             </span>
             <span>{proteinLabel}</span>
           </div>
+
+          {addToListLabel && onAddToList ? (
+            <button
+              type="button"
+              className="edo-btn edo-btn-secondary"
+              data-addlist={id}
+              data-testid="top-card-add-to-list-btn"
+              onClick={() => onAddToList(id)}
+            >
+              <Icon name="cart" size="sm" />
+              <span>{addToListLabel}</span>
+            </button>
+          ) : null}
         </div>
       </article>
     );
