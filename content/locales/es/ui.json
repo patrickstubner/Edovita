@@ -209,7 +209,6 @@
   "qrshop.confirm.cancel": "Cancelar",
   "dialog.close": "Cerrar",
   "shop.usedin": "Usado en {recipes}",
-  "shop.src.line.extra": "{recipe}, {qty}",
   "shop.src.sum": "Total: {qty}",
   "shop.have.title": "¿Ya en casa?",
   "shop.have.all": "Todo en casa",

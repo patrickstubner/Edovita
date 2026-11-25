@@ -71,8 +71,13 @@ export {
   inferCountry,
   isPseudoRtlEnabled,
   pseudoRtlFoodName,
+  pseudoRtlRecipeTitle,
   readStoredSecondLang,
+  tIn,
+  tSecond,
   withPseudoRtlRegistry,
   writeStoredSecondLang,
   type SecondLangEnv,
+  type TInOptions,
+  type TSecondOptions,
 } from './secondLang.ts';

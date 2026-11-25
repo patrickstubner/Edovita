@@ -7,14 +7,16 @@ import {
   useState,
   type ReactNode,
 } from 'react';
-import { foodName } from '../catalog/index.ts';
+import { foodName, getRecipeText } from '../catalog/index.ts';
 import {
   isSupportedSecondaryLang,
   type FoodId,
   type LangCode,
   type LangMeta,
   type LanguagesRegistry,
+  type RecipeId,
   type SecondLangSetting,
+  type UiLocaleDict,
 } from '../domain/index.ts';
 import {
   LANGUAGES_REGISTRY,
@@ -24,7 +26,10 @@ import {
   getLangMeta,
   isPseudoRtlEnabled,
   pseudoRtlFoodName,
+  pseudoRtlRecipeTitle,
   readStoredSecondLang,
+  tIn,
+  tSecond as translateSecond,
   withPseudoRtlRegistry,
   writeStoredSecondLang,
   type SecondLangEnv,
@@ -54,6 +59,16 @@ export interface SecondLangContextValue {
     foodId: FoodId | string,
     fallbackBaseName?: string,
   ) => string | null;
+  /** Liefert den Rezepttitel in der wirksamen Zweitsprache, wenn er vorliegt und vom Haupttitel abweicht (kein EN-Ersatz). */
+  readonly secondRecipeTitle: (
+    recipeId: RecipeId | string,
+    mainTitle: string,
+  ) => string | null;
+  /** Liefert einen UI-Text in der wirksamen Zweitsprache (leer, wenn keine Zweitsprache, Schlüssel fehlt oder gleich Haupttext). */
+  readonly tSecond: (
+    key: string,
+    vars?: Readonly<Record<string, string | number>>,
+  ) => string;
   /** Ändert die Zweitsprachen-Wahl (`'auto'`, `'none'` oder Sprachcode). */
   readonly setSecondLang: (
     next: 'auto' | 'none' | LangCode,
@@ -70,6 +85,7 @@ export interface SecondLangProviderProps {
   readonly navigatorLanguages?: readonly string[] | null;
   readonly registry?: LanguagesRegistry;
   readonly glossaries?: Readonly<Record<string, Readonly<Record<string, string>>>>;
+  readonly locales?: Readonly<Record<string, UiLocaleDict>>;
   readonly enablePseudoRtl?: boolean;
 }
 
@@ -79,7 +95,7 @@ interface LocalSecondState {
 }
 
 /**
- * Eigener Bereichs-Provider für die Zweitsprache von Lebensmitteln (ADR-001 Regel 6, ADR-003, Issue #12).
+ * Eigener Bereichs-Provider für die Zweitsprache von Lebensmitteln (ADR-001 Regel 6, ADR-003, Issues #12 & #32).
  * - Standard ist `null` (automatisch nach Ort über feste Tabellen, keine Geolocation-API, nicht gespeichert).
  * - Manuelle Wahl (`'none'` oder Sprachcode) wird lokal in `localStorage` und `Settings.secondLang` gespeichert.
  * - Bei Wechsel der UI-Sprache auf die gewählte Zweitsprache wird diese automatisch ausgeblendet.
@@ -90,6 +106,7 @@ export function SecondLangProvider({
   navigatorLanguages,
   registry,
   glossaries,
+  locales,
   enablePseudoRtl,
 }: SecondLangProviderProps) {
   const settingsCtx = useContext(SettingsContext);
@@ -222,6 +239,43 @@ export function SecondLangProvider({
     [effective, glossaries],
   );
 
+  const secondRecipeTitle = useCallback(
+    (recipeId: RecipeId | string, mainTitle: string): string | null => {
+      if (!effective) {
+        return null;
+      }
+      if (effective === PSEUDO_RTL_LANG) {
+        const rtlTitle = pseudoRtlRecipeTitle(recipeId, mainTitle);
+        return rtlTitle && rtlTitle !== mainTitle ? rtlTitle : null;
+      }
+      const localized = getRecipeText(recipeId, effective)?.title;
+      return localized && localized !== mainTitle ? localized : null;
+    },
+    [effective],
+  );
+
+  const tSecond = useCallback(
+    (
+      key: string,
+      vars?: Readonly<Record<string, string | number>>,
+    ): string => {
+      if (!effective) {
+        return '';
+      }
+      const mainText = tIn(uiLang, key, vars, {
+        registry: activeRegistry,
+        locales:
+          locales && Object.hasOwn(locales, uiLang) ? locales : undefined,
+      });
+      return translateSecond(effective, uiLang, key, vars, {
+        registry: activeRegistry,
+        locales,
+        mainText,
+      });
+    },
+    [activeRegistry, effective, locales, uiLang],
+  );
+
   const value = useMemo<SecondLangContextValue>(
     () => ({
       setting,
@@ -232,6 +286,8 @@ export function SecondLangProvider({
       secondaryLanguages: activeRegistry.secondary,
       metaFor,
       secondFoodName,
+      secondRecipeTitle,
+      tSecond,
       setSecondLang,
     }),
     [
@@ -241,8 +297,10 @@ export function SecondLangProvider({
       effectiveMeta,
       metaFor,
       secondFoodName,
+      secondRecipeTitle,
       setSecondLang,
       setting,
+      tSecond,
     ],
   );
 

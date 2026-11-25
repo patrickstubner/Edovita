@@ -69,9 +69,13 @@ describe('Paket E5 + E5b: Einkaufsliste v5.9 (ⓘ-Sheet, «Hab ich»-Sheet, Teil
     const srcSheet = await screen.findByTestId('shop-src-sheet');
     expect(srcSheet).toHaveAttribute('role', 'dialog');
     expect(srcSheet).toHaveAttribute('aria-modal', 'true');
-    expect(within(srcSheet).getByRole('heading', { name: 'Knoblauch' })).toBeInTheDocument();
-    expect(srcSheet).toHaveTextContent('Ofenlachs mit Broccoli und Kartoffeln, 2 Stk.');
-    expect(srcSheet).toHaveTextContent('Linsen-Curry mit Kokosmilch und Spinat, 2 Stk.');
+    expect(within(srcSheet).getByRole('heading', { name: /Knoblauch/ })).toBeInTheDocument();
+    const srcItems = srcSheet.querySelectorAll('.edo-shop-src-item');
+    expect(srcItems).toHaveLength(2);
+    expect(srcItems[0]).toHaveTextContent('Ofenlachs mit Broccoli und Kartoffeln');
+    expect(srcItems[0]).toHaveTextContent('2 Stk.');
+    expect(srcItems[1]).toHaveTextContent('Linsen-Curry mit Kokosmilch und Spinat');
+    expect(srcItems[1]).toHaveTextContent('2 Stk.');
     expect(screen.getByTestId('shop-src-sum')).toHaveTextContent('Summe: 4 Stk.');
 
     // Escape schliesst Sheet und gibt Fokus ans ⓘ zurück

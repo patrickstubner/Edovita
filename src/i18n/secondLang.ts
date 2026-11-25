@@ -1,4 +1,8 @@
-import { LANGUAGES_REGISTRY } from '../../content/generated/locales-index.ts';
+import { IntlMessageFormat } from 'intl-messageformat';
+import {
+  LANGUAGES_REGISTRY,
+  UI_LOCALES,
+} from '../../content/generated/locales-index.ts';
 import {
   coerceSecondLang,
   isSupportedSecondaryLang,
@@ -6,8 +10,11 @@ import {
   type LangCode,
   type LangMeta,
   type LanguagesRegistry,
+  type RecipeId,
   type SecondLangSetting,
+  type UiLocaleDict,
 } from '../domain/index.ts';
+import { getLangMeta } from './registry.ts';
 
 /** localStorage-Schlüssel für die manuelle Zweitsprache (Prototyp v5.10). Automatik wird nie gespeichert. */
 export const SECOND_LANG_STORAGE_KEY = 'edovita.secondLang';
@@ -368,4 +375,136 @@ export function pseudoRtlFoodName(
     return PSEUDO_RTL_FOOD_NAMES[id]!;
   }
   return `مكوّن ${fallbackBase || id}`;
+}
+
+const PSEUDO_RTL_RECIPE_TITLES: Readonly<Record<string, string>> = {
+  oven_salmon: 'سلمون في الفرن مع بروكلي وبطاطس',
+  lentil_curry: 'كاري العدس بحليب جوز الهند والسبانخ',
+  birchermuesli: 'بيرشر موسلي بالشوفان والتفاح',
+  pho: 'شوربة فو مع أعشاب طازجة',
+  thai_curry: 'كاري تايلندي أخضر مع خضار',
+};
+
+/**
+ * Liefert arabische RTL-Testtitel für Rezepte unter `ar-XB` (nur für Bidi-Tests, nicht im Produktiv-Katalog).
+ */
+export function pseudoRtlRecipeTitle(
+  id: RecipeId | string,
+  fallbackTitle?: string,
+): string {
+  if (typeof id === 'string' && Object.hasOwn(PSEUDO_RTL_RECIPE_TITLES, id)) {
+    return PSEUDO_RTL_RECIPE_TITLES[id]!;
+  }
+  return fallbackTitle ? `وصفة ${fallbackTitle}` : `وصفة ${id}`;
+}
+
+const PSEUDO_RTL_UI_TEXTS: Readonly<Record<string, string>> = {
+  'einkauf.einkaufsliste': 'قائمة التسوق',
+  'shop.grp.veg': 'خضار',
+  'shop.grp.fruit': 'فواكه',
+  'shop.grp.dairy': 'ألبان وبيض',
+  'shop.grp.meat': 'لحوم ودواجن',
+  'shop.grp.fish': 'أسماك',
+  'shop.grp.bakery': 'خبز ومخبوزات',
+  'shop.grp.pantry': 'مؤونة',
+  'shop.grp.spice': 'توابل وزيوت',
+  'shop.grp.drinks': 'مشروبات',
+  'shop.sec.cart': 'في السلة',
+  'shop.sec.home': 'موجود في المنزل',
+  'shop.src.sum': 'المجموع: {qty}',
+  'shop.have.title': 'كم لديك بالفعل في المنزل؟',
+  'shop.have.all': 'كل شيء موجود',
+  'shop.have.athome': 'موجود في المنزل: {qty}',
+  'shop.have.reset': 'إعادة تعيين',
+  'shop.have.apply': 'تطبيق',
+};
+
+export interface TInOptions {
+  readonly registry?: LanguagesRegistry;
+  readonly locales?: Readonly<Record<string, UiLocaleDict>>;
+}
+
+export interface TSecondOptions extends TInOptions {
+  readonly mainText?: string;
+}
+
+function formatIcuMessage(
+  template: string,
+  locale: string,
+  vars?: Readonly<Record<string, string | number>>,
+): string {
+  if (!vars || !template.includes('{')) {
+    return template;
+  }
+  try {
+    const formatted = new IntlMessageFormat(template, locale).format(vars);
+    if (typeof formatted === 'string') {
+      return formatted;
+    }
+    if (Array.isArray(formatted)) {
+      return formatted.map((part) => String(part)).join('');
+    }
+    return String(formatted);
+  } catch {
+    return template;
+  }
+}
+
+/**
+ * Liest einen UI-Text aus der angegebenen Sprache (über eigene Schlüssel, **ohne** englischen Ersatz)
+ * und formatiert allfällige ICU-Platzhalter. Fehlt Sprache oder Schlüssel, wird `''` zurückgegeben.
+ */
+export function tIn(
+  code: LangCode | null | undefined,
+  key: string,
+  vars?: Readonly<Record<string, string | number>>,
+  options?: TInOptions,
+): string {
+  if (!code || typeof code !== 'string' || typeof key !== 'string' || !key) {
+    return '';
+  }
+  if (code === PSEUDO_RTL_LANG) {
+    if (!Object.hasOwn(PSEUDO_RTL_UI_TEXTS, key)) {
+      return '';
+    }
+    return formatIcuMessage(PSEUDO_RTL_UI_TEXTS[key]!, PSEUDO_RTL_META.locale, vars);
+  }
+  const locales = options?.locales ?? UI_LOCALES;
+  if (!Object.hasOwn(locales, code)) {
+    return '';
+  }
+  const dict = locales[code];
+  if (!dict || !Object.hasOwn(dict, key)) {
+    return '';
+  }
+  const template = dict[key];
+  if (typeof template !== 'string' || template.length === 0) {
+    return '';
+  }
+  const registry = options?.registry ?? LANGUAGES_REGISTRY;
+  const locale = getLangMeta(code, registry)?.locale ?? code;
+  return formatIcuMessage(template, locale, vars);
+}
+
+/**
+ * Liefert den UI-Text in der wirksamen Zweitsprache gemäss Issue #32 / Prototyp v5.10.1:
+ * leer (`''`), wenn keine Zweitsprache aktiv ist, Zweit- und Hauptsprache identisch sind,
+ * der Schlüssel in der Zweitsprache fehlt (kein EN-Ersatz) oder der Text dem Haupttext gleicht.
+ */
+export function tSecond(
+  secondLang: LangCode | null | undefined,
+  uiLang: LangCode,
+  key: string,
+  vars?: Readonly<Record<string, string | number>>,
+  options?: TSecondOptions,
+): string {
+  if (!secondLang || secondLang === uiLang) {
+    return '';
+  }
+  const secondaryText = tIn(secondLang, key, vars, options);
+  if (!secondaryText) {
+    return '';
+  }
+  const mainText = options?.mainText ?? tIn(uiLang, key, vars, options);
+  return secondaryText !== mainText ? secondaryText : '';
 }

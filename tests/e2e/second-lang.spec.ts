@@ -87,14 +87,72 @@ test.describe('E6 Journeys J4 & J5: Zweitsprache in Kopfzeile, zweizeilige Einka
     await expect(brocRow.locator('bdi')).toHaveText('brócolis');
     await expect(brocRow).toContainText('400 g');
 
-    // Reload -> manuelle Wahl PT bleibt persistent
+    // E6b: Seitentitel, Gruppen, Abschnitte und beide Sheets zweisprachig in PT; Zeilen-Knopf bleibt einsprachig
+    const titleSec = page.getByTestId('shop-title-sec').locator('bdi');
+    await expect(titleSec).toHaveText('Lista de compras');
+    await expect(titleSec).toHaveAttribute('lang', 'pt-BR');
+    await expect(titleSec).toHaveAttribute('dir', 'ltr');
+
+    const vegHead = page.getByTestId('shop-group-veg').locator('.edo-grph');
+    await expect(vegHead.locator('bdi')).toHaveText('Frutas e verduras');
+    await expect(page.getByTestId('shop-have-broccoli__g').locator('bdi')).toHaveCount(0);
+
+    // Herkunfts-Sheet zweisprachig in PT (ohne EN-Ersatz beim fehlenden PT-Rezepttitel)
+    await page.getByTestId('shop-src-broccoli__g').click();
+    const srcSheet = page.getByTestId('shop-src-sheet');
+    await expect(srcSheet.locator('#edo-shop-src-title bdi')).toHaveText('brócolis');
+    await expect(srcSheet.locator('.edo-shop-src-name')).toContainText(
+      'Ofenlachs mit Broccoli und Kartoffeln',
+    );
+    await expect(srcSheet.locator('.edo-shop-src-name bdi')).toHaveCount(0);
+    await expect(page.getByTestId('shop-src-sum').locator('bdi')).toHaveText(
+      'Total: 400 g',
+    );
+    await page.getByTestId('shop-src-close').click();
+
+    // «Hab ich»-Sheet zweisprachig in PT + Abschnitt «Schon zu Hause» + «Im Korb»
+    await page.getByTestId('shop-have-broccoli__g').click();
+    const haveSheet = page.getByTestId('shop-have-sheet');
+    await expect(haveSheet.locator('#edo-shop-have-title bdi')).toHaveText('brócolis');
+    await expect(page.getByTestId('shop-have-hint').locator('bdi')).toHaveText('Já em casa?');
+    await expect(page.getByTestId('shop-have-all').locator('bdi')).toHaveText('Tudo em casa');
+    await expect(page.getByTestId('shop-have-amt').locator('bdi')).toHaveText(
+      'Já em casa: 400 g',
+    );
+    await expect(page.getByTestId('shop-have-reset').locator('bdi')).toHaveText('Redefinir');
+    await expect(page.getByTestId('shop-have-apply').locator('bdi')).toHaveText('Aplicar');
+    await page.getByTestId('shop-have-apply').click();
+
+    await expect(
+      page.getByTestId('shop-section-home').locator('.edo-grph bdi'),
+    ).toHaveText('Já tenho em casa');
+
+    await page.getByTestId('shop-toggle-potato__g').click();
+    await expect(
+      page.getByTestId('shop-section-cart').locator('.edo-grph bdi'),
+    ).toHaveText('No carrinho');
+
+    // Keine horizontale Scrollleiste bei 390 px und 360 px
+    for (const width of [390, 360]) {
+      await page.setViewportSize({ width, height: 844 });
+      const overflow = await page.evaluate(
+        () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+      );
+      expect(overflow).toBeLessThanOrEqual(1);
+    }
+    await page.setViewportSize({ width: 390, height: 844 });
+
+    // Reload -> manuelle Wahl PT bleibt persistent (Liste + Titel)
     await page.reload();
     await expect(page.getByTestId('second-switch-code')).toHaveText('PT');
+    await expect(page.getByTestId('shop-title-sec').locator('bdi')).toHaveText(
+      'Lista de compras',
+    );
     await expect(
       page.getByTestId('shop-row-broccoli__g').locator('bdi'),
     ).toHaveText('brócolis');
 
-    // Profil > Sprache -> Abschnitt Zweitsprache -> «Keine» wählen -> einzeilige Liste
+    // Profil > Sprache -> Abschnitt Zweitsprache -> «Keine» wählen -> einzeilige Liste & Sheets
     await page.goto('/#/profil/sprache');
     const secList = page.getByTestId('second-lang-list');
     await expect(secList).toBeVisible();
@@ -106,11 +164,15 @@ test.describe('E6 Journeys J4 & J5: Zweitsprache in Kopfzeile, zweizeilige Einka
     await expect(page.getByTestId('second-switch-code')).toHaveText('—');
 
     await page.goto('/#/einkauf');
+    await expect(page.getByTestId('shop-title-sec')).toHaveCount(0);
     await expect(
       page.getByTestId('shop-row-broccoli__g').locator('[data-bilingual="one-line"]'),
     ).toBeVisible();
     await expect(
       page.getByTestId('shop-row-broccoli__g').locator('bdi'),
+    ).toHaveCount(0);
+    await expect(
+      page.getByTestId('shop-section-home').locator('.edo-grph bdi'),
     ).toHaveCount(0);
 
     // EN als Zweitsprache wählen -> UI auf EN umstellen -> Zweitsprache automatisch ausgeblendet
@@ -122,6 +184,7 @@ test.describe('E6 Journeys J4 & J5: Zweitsprache in Kopfzeile, zweizeilige Einka
     await page.getByTestId('lang-switch-menu').locator('[data-lang="en"]').click();
     await expect(page.getByTestId('lang-switch-code')).toHaveText('EN');
     await expect(page.getByTestId('second-switch-code')).toHaveText('—');
+    await expect(page.getByTestId('shop-title-sec')).toHaveCount(0);
     await expect(
       page.getByTestId('shop-row-broccoli__g').locator('bdi'),
     ).toHaveCount(0);
@@ -134,7 +197,7 @@ test.describe('E6 Journeys J4 & J5: Zweitsprache in Kopfzeile, zweizeilige Einka
     expect(consoleErrors).toEqual([]);
   });
 
-  test('J5: Pseudo-RTL ar-XB isoliert Zweitnamen mit <bdi dir="rtl"> ohne Layout-Verschiebung in Rezept & Einkaufsliste', async ({
+  test('J5: Pseudo-RTL ar-XB isoliert Zweitnamen & Einkaufslisten-UI/Sheets mit <bdi dir="rtl"> ohne Layout-Verschiebung bei 390 und 360 px', async ({
     page,
   }) => {
     const consoleErrors: string[] = [];
@@ -182,9 +245,18 @@ test.describe('E6 Journeys J4 & J5: Zweitsprache in Kopfzeile, zweizeilige Einka
     );
     expect(recipeOverflow).toBeLessThanOrEqual(1);
 
-    // Einkaufsliste mit ar-XB: zweizeilig, ⓘ 56x56 & «Hab ich» >= 48x48 im Viewport, kein Überlauf
+    // Einkaufsliste mit ar-XB: Titel, Gruppen, Zeilen und beide Sheets mit <bdi lang="ar-XB" dir="rtl">
     await page.getByTestId('add-to-shopping-btn').click();
     await page.getByTestId('detail-open-shopping-btn').click();
+
+    const titleBdi = page.getByTestId('shop-title-sec').locator('bdi');
+    await expect(titleBdi).toHaveText('قائمة التسوق');
+    await expect(titleBdi).toHaveAttribute('lang', 'ar-XB');
+    await expect(titleBdi).toHaveAttribute('dir', 'rtl');
+
+    const grpBdi = page.getByTestId('shop-group-veg').locator('.edo-grph bdi');
+    await expect(grpBdi).toHaveText('خضار');
+    await expect(grpBdi).toHaveAttribute('dir', 'rtl');
 
     const brocRow = page.getByTestId('shop-row-broccoli__g');
     const shopBdi = brocRow.locator('bdi');
@@ -192,10 +264,31 @@ test.describe('E6 Journeys J4 & J5: Zweitsprache in Kopfzeile, zweizeilige Einka
     await expect(shopBdi).toHaveAttribute('lang', 'ar-XB');
     await expect(shopBdi).toHaveAttribute('dir', 'rtl');
 
-    const shopOverflow = await page.evaluate(
-      () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
-    );
-    expect(shopOverflow).toBeLessThanOrEqual(1);
+    // Herkunfts-Sheet mit ar-XB
+    await page.getByTestId('shop-src-broccoli__g').click();
+    const srcSheet = page.getByTestId('shop-src-sheet');
+    await expect(srcSheet.locator('#edo-shop-src-title bdi')).toHaveAttribute('dir', 'rtl');
+    await expect(srcSheet.locator('.edo-shop-src-name bdi')).toHaveAttribute('dir', 'rtl');
+    await expect(page.getByTestId('shop-src-sum').locator('bdi')).toHaveAttribute('dir', 'rtl');
+    await page.getByTestId('shop-src-close').click();
+
+    // «Hab ich»-Sheet mit ar-XB
+    await page.getByTestId('shop-have-broccoli__g').click();
+    const haveSheet = page.getByTestId('shop-have-sheet');
+    await expect(haveSheet.locator('#edo-shop-have-title bdi')).toHaveAttribute('dir', 'rtl');
+    await expect(page.getByTestId('shop-have-all').locator('bdi')).toHaveAttribute('dir', 'rtl');
+    await expect(page.getByTestId('shop-have-apply').locator('bdi')).toHaveAttribute('dir', 'rtl');
+    await page.getByTestId('shop-have-close').click();
+
+    // Kein horizontaler Überlauf bei 390 px und 360 px
+    for (const width of [390, 360]) {
+      await page.setViewportSize({ width, height: 844 });
+      const overflow = await page.evaluate(
+        () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+      );
+      expect(overflow).toBeLessThanOrEqual(1);
+    }
+    await page.setViewportSize({ width: 390, height: 844 });
 
     const srcBox = await page.getByTestId('shop-src-broccoli__g').boundingBox();
     const haveBox = await page.getByTestId('shop-have-broccoli__g').boundingBox();

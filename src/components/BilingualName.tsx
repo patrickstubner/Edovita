@@ -6,17 +6,21 @@ export interface BilingualNameProps {
   readonly secondary?: string | null;
   readonly secondaryLang?: string;
   readonly secondaryDir?: TextDir;
-  /** `inline`: Rezept-Detail (`Name · Zweitname`), `stacked`: Einkaufsliste (zweizeilig mit Zweitname + Menge, sonst einzeilig). */
-  readonly layout?: 'inline' | 'stacked';
+  /**
+   * `inline`: Rezept-Detail (`Name · Zweitname`),
+   * `stacked`: Einkaufszeile (zweizeilig mit Zweitname + Menge, sonst einzeilig),
+   * `stack`: gestapelt ohne Abschneiden (Sheet-Titel, Rezepttitel im Herkunfts-Sheet gemäss `.biname-stack`).
+   */
+  readonly layout?: 'inline' | 'stacked' | 'stack';
   /** Nachgestelltes Element im `stacked`-Layout (z. B. Mengenblock in `ShopRow`). */
   readonly trailing?: ReactNode;
 }
 
 /**
- * Zweisprachiger Lebensmittelname mit Bidi-Isolation (`<bdi lang dir>`) gemäss ADR-003 & Prototyp v5.10:
+ * Zweisprachiger Name mit Bidi-Isolation (`<bdi lang dir>`) gemäss ADR-003 & Prototyp v5.10.1:
  * - Im Rezept-Detail einzeilig: `Name · <bdi lang dir>Zweitname</bdi>`
- * - In der Einkaufsliste zweizeilig (Zeile 1 Name, Zeile 2 Zweitname gedämpft + Menge),
- *   ohne Zweitsprache einzeilig.
+ * - In der Einkaufszeile (`stacked`): Zeile 1 Name, Zeile 2 Zweitname gedämpft + Menge; ohne Zweitsprache einzeilig
+ * - In Sheets (`stack`): gestapelt mit sauberem Umbruch (`overflow-wrap: anywhere`)
  */
 export function BilingualName({
   main,
@@ -27,6 +31,26 @@ export function BilingualName({
   trailing,
 }: BilingualNameProps) {
   const hasSecondary = typeof secondary === 'string' && secondary.length > 0;
+
+  if (layout === 'stack') {
+    return (
+      <span
+        className="edo-biname edo-biname-stack"
+        data-bilingual={hasSecondary ? 'two-line' : 'one-line'}
+      >
+        <span className="edo-biname-main">{main}</span>
+        {hasSecondary ? (
+          <bdi
+            className="edo-biname-sec"
+            lang={secondaryLang}
+            dir={secondaryDir}
+          >
+            {secondary}
+          </bdi>
+        ) : null}
+      </span>
+    );
+  }
 
   if (layout === 'stacked') {
     if (hasSecondary) {

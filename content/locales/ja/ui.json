@@ -209,7 +209,6 @@
   "qrshop.confirm.cancel": "キャンセル",
   "dialog.close": "閉じる",
   "shop.usedin": "{recipes}で使用",
-  "shop.src.line.extra": "{recipe}、{qty}",
   "shop.src.sum": "合計: {qty}",
   "shop.have.title": "家にありますか？",
   "shop.have.all": "全部ある",

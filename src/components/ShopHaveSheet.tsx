@@ -1,14 +1,25 @@
 import { useEffect, useRef } from 'react';
+import type { TextDir } from '../domain/index.ts';
+import { BilingualName } from './BilingualName.tsx';
+import { BilingualText } from './BilingualText.tsx';
 import { Icon } from './Icon.tsx';
 
 export interface ShopHaveSheetProps {
   readonly open: boolean;
   readonly title: string;
+  readonly titleSecondary?: string | null;
+  readonly secondaryLocale?: string;
+  readonly secondaryDir?: TextDir;
   readonly hint: string;
+  readonly hintSecondary?: string;
   readonly allLabel: string;
+  readonly allSecondary?: string;
   readonly atHomeLabel: string;
+  readonly atHomeSecondary?: string;
   readonly resetLabel: string;
+  readonly resetSecondary?: string;
   readonly applyLabel: string;
+  readonly applySecondary?: string;
   readonly sliderLabel: string;
   readonly minusLabel: string;
   readonly plusLabel: string;
@@ -28,19 +39,27 @@ export interface ShopHaveSheetProps {
 }
 
 /**
- * «Hab ich»-Sheet gemäss Prototyp v5.9 (`#shopHaveSheet`):
- * Option «Alles vorhanden» (`role="checkbox"`), darunter «Davon schon zu Hause: {qty}»
- * mit Stepper (−/+) und Schieber (`input type="range"`), dazu «Zurücksetzen» und «Übernehmen».
+ * «Hab ich»-Sheet gemäss Prototyp v5.10.1 (`#shopHaveSheet`) & Issue #32:
+ * Titel, Hinweis, Option «Alles vorhanden» (`role="checkbox"`), «Davon schon zu Hause: {qty}»
+ * sowie «Zurücksetzen» und «Übernehmen» erscheinen bei aktiver Zweitsprache zweisprachig.
  * Verwerfen (Escape / Hintergrund / Schliessen) übernimmt nichts.
  */
 export function ShopHaveSheet({
   open,
   title,
+  titleSecondary,
+  secondaryLocale,
+  secondaryDir,
   hint,
+  hintSecondary,
   allLabel,
+  allSecondary,
   atHomeLabel,
+  atHomeSecondary,
   resetLabel,
+  resetSecondary,
   applyLabel,
+  applySecondary,
   sliderLabel,
   minusLabel,
   plusLabel,
@@ -99,7 +118,15 @@ export function ShopHaveSheet({
         data-testid="shop-have-sheet"
       >
         <div className="edo-row edo-row-sp">
-          <h2 id="edo-shop-have-title">{title}</h2>
+          <h2 id="edo-shop-have-title" className="edo-shop-sheet-title">
+            <BilingualName
+              layout="stack"
+              main={title}
+              secondary={titleSecondary}
+              secondaryLang={secondaryLocale}
+              secondaryDir={secondaryDir}
+            />
+          </h2>
           <button
             ref={closeBtnRef}
             type="button"
@@ -112,7 +139,14 @@ export function ShopHaveSheet({
           </button>
         </div>
 
-        <p className="edo-shop-have-hint">{hint}</p>
+        <p className="edo-shop-have-hint" data-testid="shop-have-hint">
+          <BilingualText
+            main={hint}
+            secondary={hintSecondary}
+            secondaryLang={secondaryLocale}
+            secondaryDir={secondaryDir}
+          />
+        </p>
 
         <button
           type="button"
@@ -127,11 +161,23 @@ export function ShopHaveSheet({
           <span className="edo-cb" aria-hidden="true">
             <Icon name="check" size="sm" />
           </span>
-          <span className="edo-grow edo-shop-have-all-lab">{allLabel}</span>
+          <span className="edo-grow edo-shop-have-all-lab">
+            <BilingualText
+              main={allLabel}
+              secondary={allSecondary}
+              secondaryLang={secondaryLocale}
+              secondaryDir={secondaryDir}
+            />
+          </span>
         </button>
 
         <p className="edo-shop-have-amt" data-testid="shop-have-amt">
-          {atHomeLabel}
+          <BilingualText
+            main={atHomeLabel}
+            secondary={atHomeSecondary}
+            secondaryLang={secondaryLocale}
+            secondaryDir={secondaryDir}
+          />
         </p>
 
         {hasNumericNeed ? (
@@ -181,7 +227,12 @@ export function ShopHaveSheet({
             data-testid="shop-have-reset"
             onClick={onReset}
           >
-            {resetLabel}
+            <BilingualText
+              main={resetLabel}
+              secondary={resetSecondary}
+              secondaryLang={secondaryLocale}
+              secondaryDir={secondaryDir}
+            />
           </button>
           <button
             type="button"
@@ -189,7 +240,12 @@ export function ShopHaveSheet({
             data-testid="shop-have-apply"
             onClick={onApply}
           >
-            {applyLabel}
+            <BilingualText
+              main={applyLabel}
+              secondary={applySecondary}
+              secondaryLang={secondaryLocale}
+              secondaryDir={secondaryDir}
+            />
           </button>
         </div>
       </div>
