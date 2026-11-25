@@ -231,5 +231,9 @@
   "second.hint": "An extra name for ingredients and shopping items. Steps and menus stay in the app language.",
   "second.same": "The second language cannot be the same as the app language.",
   "second.auto.current": "Automatic (location) · {code}",
-  "second.auto.none": "Automatic (location) · none"
+  "second.auto.none": "Automatic (location) · none",
+  "nav.hauptnavigation": "Main navigation",
+  "profil.profil": "Profile",
+  "profil.sprache": "Language",
+  "plan.title": "Plan"
 }

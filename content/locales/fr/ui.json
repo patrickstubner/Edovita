@@ -231,5 +231,9 @@
   "second.hint": "Nom supplémentaire pour les ingrédients et les articles de la liste. Les étapes et les menus restent dans la langue de l’app.",
   "second.same": "La langue secondaire ne peut pas être la même que celle de l’app.",
   "second.auto.current": "Automatique (lieu) · {code}",
-  "second.auto.none": "Automatique (lieu) · aucune"
+  "second.auto.none": "Automatique (lieu) · aucune",
+  "nav.hauptnavigation": "Navigation principale",
+  "profil.profil": "Profil",
+  "profil.sprache": "Langue",
+  "plan.title": "Planning"
 }

@@ -77,6 +77,7 @@ export const ICON_NAMES = [
   'link',
   'x',
   'pause',
+  'cal',
 ] as const;
 
 export type IconName = (typeof ICON_NAMES)[number];

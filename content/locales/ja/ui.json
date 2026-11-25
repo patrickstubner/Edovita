@@ -231,5 +231,9 @@
   "second.hint": "材料と買い物リストの名前だけに併記します。手順とメニューはアプリの言語のままです。",
   "second.same": "第二言語はアプリの言語と同じにはできません。",
   "second.auto.current": "自動（場所） · {code}",
-  "second.auto.none": "自動（場所）· なし"
+  "second.auto.none": "自動（場所）· なし",
+  "nav.hauptnavigation": "メインナビゲーション",
+  "profil.profil": "プロフィール",
+  "profil.sprache": "言語",
+  "plan.title": "プラン"
 }

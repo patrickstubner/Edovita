@@ -6,18 +6,26 @@ import {
   useRef,
   useState,
 } from 'react';
-import { Outlet } from 'react-router';
+import { Outlet, useLocation, useNavigate } from 'react-router';
 import {
   Icon,
   IconSprite,
   LangSwitcher,
   SecondLangSwitcher,
+  TabBar,
   Toast,
   type LangSwitcherOption,
   type SecondLangOptionValue,
   type SecondLangSwitcherOption,
+  type TabBarItem,
 } from '../components/index.ts';
 import { useI18n, useSecondLang } from '../hooks/index.ts';
+import {
+  VISIBLE_NAV_TABS,
+  resolveActiveNavTab,
+  resolveNavTabPath,
+  type NavTabId,
+} from './navigation.ts';
 import { RatingsContext } from './RatingsProvider.tsx';
 import { SettingsContext } from './SettingsProvider.tsx';
 import { ShoppingContext } from './ShoppingProvider.tsx';
@@ -31,7 +39,8 @@ type OpenHeaderMenu = 'ui' | 'second' | null;
  * sichtbar bleibt (Muster aus Prototyp v5.4).
  * Zeigt oben rechts (in RTL oben links) die beiden kompakten Sprachumschalter
  * (`SecondLangSwitcher` links neben `LangSwitcher`, nur ein Menü gleichzeitig offen;
- * Prototyp v5.5–v5.10) und bei Speicherfehlern nur eine generische Meldung (G1).
+ * Prototyp v5.5–v5.10), unten die Hauptnavigation (`TabBar`, Prototyp v5.10 / E9)
+ * und bei Speicherfehlern nur eine generische Meldung (G1).
  */
 export function Shell() {
   const { lang, meta, uiLanguages, isApproved, metaFor, setLang, t } =
@@ -45,6 +54,8 @@ export function Shell() {
     metaFor: secondMetaFor,
     setSecondLang,
   } = useSecondLang();
+  const location = useLocation();
+  const navigate = useNavigate();
   const settingsCtx = useContext(SettingsContext);
   const shoppingCtx = useContext(ShoppingContext);
   const ratingsCtx = useContext(RatingsContext);
@@ -70,6 +81,29 @@ export function Shell() {
     shoppingCtx?.clearError();
     ratingsCtx?.clearError();
   };
+
+  const activeNavTab = resolveActiveNavTab(location.pathname);
+
+  const tabItems = useMemo<readonly TabBarItem<NavTabId>[]>(
+    () =>
+      VISIBLE_NAV_TABS.map((tab) => ({
+        id: tab.id,
+        path: tab.path,
+        icon: tab.icon,
+        label: t(tab.labelKey),
+      })),
+    [t],
+  );
+
+  const handleSelectTab = useCallback(
+    (tabId: NavTabId) => {
+      const target = resolveNavTabPath(tabId);
+      if (!target) return;
+      setActiveMenu(null);
+      void navigate(target);
+    },
+    [navigate],
+  );
 
   const langOptions = useMemo<readonly LangSwitcherOption[]>(() => {
     return uiLanguages
@@ -186,7 +220,7 @@ export function Shell() {
   }, []);
 
   return (
-    <main id="app" className="edo-app-shell has-lang-switch">
+    <main id="app" className="edo-app-shell has-lang-switch has-tab">
       <IconSprite />
       {activeError ? (
         <div
@@ -207,6 +241,12 @@ export function Shell() {
         </div>
       ) : null}
       <Outlet />
+      <TabBar
+        items={tabItems}
+        activeId={activeNavTab}
+        ariaLabel={t('nav.hauptnavigation')}
+        onSelect={handleSelectTab}
+      />
       <div
         id="langBackdrop"
         className="edo-lang-backdrop"
