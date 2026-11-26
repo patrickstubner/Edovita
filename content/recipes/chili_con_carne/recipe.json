@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "chili_con_carne",
+  "image": "chili_con_carne",
   "cuisine": "mexican",
   "meal": "dinner",
   "minutes": 45,

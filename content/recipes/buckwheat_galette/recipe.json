@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "buckwheat_galette",
+  "image": "buckwheat_galette",
   "cuisine": "french",
   "meal": "breakfast",
   "minutes": 20,

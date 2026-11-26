@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "shrimp_tacos",
+  "image": "shrimp_tacos",
   "cuisine": "mexican",
   "meal": "lunch",
   "minutes": 20,

@@ -442,7 +442,7 @@ describe('Paket E4: Rezeptliste, Rezept-Detailseite & F3b (Issue #10)', () => {
     expect(document.body.textContent).not.toContain('Potatoes');
   });
 
-  it('E8: zeigt lokale Rezeptbilder in Liste (lazy) und Detail (eager, 4:3) ohne Manifest-/Fotografenangaben in der UI', async () => {
+  it('E8 + Nachtrag v5.11: zeigt 177 lokale Rezeptbilder in Liste (lazy) und Detail (eager, 4:3) sowie 23 Platzhalter ohne Manifest-/Fotografenangaben', async () => {
     const storage = createMemoryStorage();
     // Ofenlachs auf 5 Sterne setzen, damit er als Top-Karte (featured 800x600) erscheint
     await storage.ratings.setRating(asRecipeId('oven_salmon'), 5);
@@ -452,7 +452,7 @@ describe('Paket E4: Rezeptliste, Rezept-Detailseite & F3b (Issue #10)', () => {
 
     const list = await screen.findByTestId('recipe-list');
     const listImgs = list.querySelectorAll('img');
-    expect(listImgs).toHaveLength(5);
+    expect(listImgs).toHaveLength(177);
     // Top-Karte: Vollbild 800x600, loading="lazy"
     expect(listImgs[0]).toHaveAttribute('loading', 'lazy');
     expect(listImgs[0]).toHaveAttribute('width', '800');
@@ -462,6 +462,17 @@ describe('Paket E4: Rezeptliste, Rezept-Detailseite & F3b (Issue #10)', () => {
     expect(listImgs[1]).toHaveAttribute('loading', 'lazy');
     expect(listImgs[1]).toHaveAttribute('width', '400');
     expect(listImgs[1]).toHaveAttribute('height', '300');
+    // Neues v5.11-Foto-Rezept hat lokales Thumb-Bild
+    const skyrCard = screen.getByTestId('recipe-card-skyr_berry_bowl');
+    const skyrImg = skyrCard.querySelector('img');
+    expect(skyrImg).not.toBeNull();
+    expect(skyrImg).toHaveAttribute('loading', 'lazy');
+    expect(skyrImg).toHaveAttribute('width', '400');
+    expect(skyrImg).toHaveAttribute('height', '300');
+    // Dokumentiertes Platzhalter-Rezept (E14 #41) zeigt neutralen Platzhalter ohne <img>
+    const placeholderCard = screen.getByTestId('recipe-card-mushroom_polenta');
+    expect(placeholderCard.querySelector('img')).toBeNull();
+    expect(placeholderCard.querySelector('.edo-rimg-ph')).not.toBeNull();
     // Kein Fotografenname und keine Pexels-URL in der UI
     expect(document.body.textContent).not.toContain('Pexels');
     expect(document.body.textContent).not.toContain('pexels.com');

@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "moqueca",
+  "image": "moqueca",
   "cuisine": "brazilian",
   "meal": "dinner",
   "minutes": 35,

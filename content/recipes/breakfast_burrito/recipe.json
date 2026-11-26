@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "breakfast_burrito",
+  "image": "breakfast_burrito",
   "cuisine": "mexican",
   "meal": "breakfast",
   "minutes": 15,

@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "tikka_masala_light",
+  "image": "tikka_masala_light",
   "cuisine": "indian",
   "meal": "dinner",
   "minutes": 40,

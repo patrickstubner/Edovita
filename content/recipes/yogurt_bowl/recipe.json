@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "yogurt_bowl",
+  "image": "yogurt_bowl",
   "cuisine": "european",
   "meal": "snack",
   "minutes": 5,

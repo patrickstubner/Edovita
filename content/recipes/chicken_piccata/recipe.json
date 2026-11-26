@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "chicken_piccata",
+  "image": "chicken_piccata",
   "cuisine": "italian",
   "meal": "dinner",
   "minutes": 25,

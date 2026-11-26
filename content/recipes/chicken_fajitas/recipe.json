@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "chicken_fajitas",
+  "image": "chicken_fajitas",
   "cuisine": "mexican",
   "meal": "dinner",
   "minutes": 25,

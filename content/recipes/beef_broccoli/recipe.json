@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "beef_broccoli",
+  "image": "beef_broccoli",
   "cuisine": "chinese",
   "meal": "dinner",
   "minutes": 25,

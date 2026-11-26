@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "masala_omelette",
+  "image": "masala_omelette",
   "cuisine": "indian",
   "meal": "breakfast",
   "minutes": 10,

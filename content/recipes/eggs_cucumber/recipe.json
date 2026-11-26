@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "eggs_cucumber",
+  "image": "eggs_cucumber",
   "cuisine": "european",
   "meal": "snack",
   "minutes": 12,

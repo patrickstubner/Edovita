@@ -39,11 +39,11 @@ test.describe('E4 + E8 Journey J1: Rezeptliste & lokale Bilder -> Detail -> Port
     ).toBeVisible();
     expect(page.url()).toContain('#/rezepte');
 
-    // E8 + E12: 200 Rezepte geladen, 5 lokale WebP-Bilder vorhanden (loading="lazy")
+    // E8 + Nachtrag v5.11 + E12: 200 Rezepte geladen, 177 lokale WebP-Bilder vorhanden (loading="lazy")
     const recipeArticles = page.locator('[data-testid="recipe-list"] article');
     await expect(recipeArticles).toHaveCount(200);
     const listImgs = page.locator('[data-testid="recipe-list"] img');
-    await expect(listImgs).toHaveCount(5);
+    await expect(listImgs).toHaveCount(177);
     const firstHeroBox = await page
       .locator('[data-testid="recipe-list"] .edo-recipe-hero-btn')
       .first()
@@ -175,14 +175,25 @@ test.describe('E4 + E8 Journey J1: Rezeptliste & lokale Bilder -> Detail -> Port
     expect(consoleErrors).toEqual([]);
   });
 
-  test('E12: 200 Rezepte, neue Küchen, Vorlieben-Chips, neues Rezept DE/EN + Zweitsprache FR, PlanSheet-Suche, 360x844 & ar-XB ohne Überlauf', async ({
+  test('E12 + E8 Nachtrag v5.11: 200 Rezepte, 177 lokale Fotos & 23 Platzhalter, neue Küchen, Vorlieben-Chips, DE/EN + Zweitsprache FR, PlanSheet-Suche, 360x844 & ar-XB ohne Überlauf', async ({
     page,
   }) => {
     const consoleErrors: string[] = [];
+    const foreignRequests: string[] = [];
     page.on('console', (msg) => {
       if (msg.type() === 'error') consoleErrors.push(msg.text());
     });
     page.on('pageerror', (err) => consoleErrors.push(String(err)));
+    page.on('request', (req) => {
+      const url = req.url();
+      if (
+        !url.startsWith('http://127.0.0.1:') &&
+        !url.startsWith('http://localhost:') &&
+        !url.startsWith('data:')
+      ) {
+        foreignRequests.push(url);
+      }
+    });
 
     await page.addInitScript(() => {
       document.addEventListener('securitypolicyviolation', (event) => {
@@ -222,12 +233,22 @@ test.describe('E4 + E8 Journey J1: Rezeptliste & lokale Bilder -> Detail -> Port
     );
     expect(overflowList).toBe(false);
 
-    // Neues E12-Rezept öffnen -> Detail zeigt Zutaten, Schritte (DE) und Zweitsprache FR
+    // Neues E12-Rezept öffnen -> Detail zeigt lokales v5.11-WebP-Foto (640x480), Zutaten, Schritte (DE) und Zweitsprache FR
     await skyrCard.scrollIntoViewIfNeeded();
     await skyrCard.getByRole('button', { name: /Skyr-Bowl/i }).first().click();
     await expect(
       page.getByRole('heading', { name: 'Skyr-Bowl mit Beeren und Haferflocken' }),
     ).toBeVisible();
+    const skyrHeroImg = page.locator('[data-testid="recipe-detail-hero"] img');
+    await expect(skyrHeroImg).toBeVisible();
+    await expect(skyrHeroImg).toHaveAttribute('loading', 'eager');
+    await expect(skyrHeroImg).toHaveJSProperty('complete', true);
+    const skyrDims = await skyrHeroImg.evaluate((el) => {
+      const img = el as HTMLImageElement;
+      return { w: img.naturalWidth, h: img.naturalHeight };
+    });
+    expect(skyrDims.w).toBe(640);
+    expect(skyrDims.h).toBe(480);
     await expect(page.getByTestId('step-list').locator('li')).toHaveCount(4);
 
     // Manuelle Zweitsprache FR zeigt französische Zutatennamen
@@ -260,8 +281,15 @@ test.describe('E4 + E8 Journey J1: Rezeptliste & lokale Bilder -> Detail -> Port
     ).toBeVisible();
     await expect(page.getByTestId('step-list')).toContainText('Stir the skyr');
 
+    // Dokumentiertes Platzhalter-Rezept (E14 #41) zeigt neutralen Platzhalter ohne <img>
+    await page.goto('/?pseudoRtl=1#/rezept/mushroom_polenta');
+    const placeholderHero = page.getByTestId('recipe-detail-hero');
+    await expect(placeholderHero).toBeVisible();
+    await expect(placeholderHero.locator('img')).toHaveCount(0);
+    await expect(placeholderHero).toHaveClass(/edo-rimg-ph/);
+
     // PlanSheet-Suche auf #/plan bei 200 Rezepten (Treffer, kein Treffer, Tastatur, kein Überlauf)
-    await page.goto('/#/plan');
+    await page.goto('/?pseudoRtl=1#/plan');
     await expect(page.getByRole('heading', { name: 'Plan' })).toBeVisible();
     await page.locator('[data-testid^="plan-add-"][data-testid$="-snack"]').first().click();
     const search = page.getByTestId('plan-pick-search');
@@ -281,6 +309,7 @@ test.describe('E4 + E8 Journey J1: Rezeptliste & lokale Bilder -> Detail -> Port
       const target = window as unknown as { __cspViolations?: string[] };
       return target.__cspViolations ?? [];
     });
+    expect(foreignRequests).toEqual([]);
     expect(cspViolations).toEqual([]);
     expect(consoleErrors).toEqual([]);
   });

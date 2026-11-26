@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "seafood_paella",
+  "image": "seafood_paella",
   "cuisine": "spanish",
   "meal": "dinner",
   "minutes": 45,

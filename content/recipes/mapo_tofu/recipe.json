@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "mapo_tofu",
+  "image": "mapo_tofu",
   "cuisine": "chinese",
   "meal": "dinner",
   "minutes": 25,

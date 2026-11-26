@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "tempeh_stirfry",
+  "image": "tempeh_stirfry",
   "cuisine": "indonesian",
   "meal": "dinner",
   "minutes": 25,

@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "cocoa_protein_milk",
+  "image": "cocoa_protein_milk",
   "cuisine": "swiss",
   "meal": "snack",
   "minutes": 5,

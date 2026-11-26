@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "beef_steak_vegetables",
+  "image": "beef_steak_vegetables",
   "cuisine": "european",
   "meal": "dinner",
   "minutes": 30,

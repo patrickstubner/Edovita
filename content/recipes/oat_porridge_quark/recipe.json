@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "oat_porridge_quark",
+  "image": "oat_porridge_quark",
   "cuisine": "swiss",
   "meal": "breakfast",
   "minutes": 10,

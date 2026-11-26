@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "tuna_nicoise",
+  "image": "tuna_nicoise",
   "cuisine": "french",
   "meal": "lunch",
   "minutes": 25,

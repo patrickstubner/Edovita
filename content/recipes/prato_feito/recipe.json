@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "prato_feito",
+  "image": "prato_feito",
   "cuisine": "brazilian",
   "meal": "lunch",
   "minutes": 40,

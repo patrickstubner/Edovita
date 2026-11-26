@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "chicken_caesar_light",
+  "image": "chicken_caesar_light",
   "cuisine": "american",
   "meal": "lunch",
   "minutes": 20,

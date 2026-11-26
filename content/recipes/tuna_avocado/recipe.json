@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "tuna_avocado",
+  "image": "tuna_avocado",
   "cuisine": "american",
   "meal": "snack",
   "minutes": 5,

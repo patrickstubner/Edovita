@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "chicken_tagine",
+  "image": "chicken_tagine",
   "cuisine": "moroccan",
   "meal": "dinner",
   "minutes": 45,

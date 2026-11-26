@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "chicken_shawarma_bowl",
+  "image": "chicken_shawarma_bowl",
   "cuisine": "middle_eastern",
   "meal": "lunch",
   "minutes": 30,

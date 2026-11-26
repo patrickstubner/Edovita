@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "veggie_omelette",
+  "image": "veggie_omelette",
   "cuisine": "french",
   "meal": "breakfast",
   "minutes": 15,

@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "protein_energy_balls",
+  "image": "protein_energy_balls",
   "cuisine": "american",
   "meal": "snack",
   "minutes": 15,

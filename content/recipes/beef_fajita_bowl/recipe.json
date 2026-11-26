@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "beef_fajita_bowl",
+  "image": "beef_fajita_bowl",
   "cuisine": "mexican",
   "meal": "lunch",
   "minutes": 25,

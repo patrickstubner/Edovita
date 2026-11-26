@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "skagen_toast",
+  "image": "skagen_toast",
   "cuisine": "nordic",
   "meal": "lunch",
   "minutes": 15,

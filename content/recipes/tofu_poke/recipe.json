@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "tofu_poke",
+  "image": "tofu_poke",
   "cuisine": "hawaiian",
   "meal": "lunch",
   "minutes": 25,

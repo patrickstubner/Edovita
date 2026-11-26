@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "quark_bircher",
+  "image": "quark_bircher",
   "cuisine": "swiss",
   "meal": "breakfast",
   "minutes": 10,
