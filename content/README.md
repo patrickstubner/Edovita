@@ -21,3 +21,8 @@ Dieser Ordner enthält alle geprüften, lokal gebündelten Inhalte der App (ADR-
    - Aktueller Stand auf `main` (5 Rezepte, 10 WebP-Dateien): **406'802 Bytes (~397 KiB / 0,39 MiB)**.
    - Zielbudget für den vollständigen v5.11-Katalog (nach E12 `#39`: 177 Pexels-Fotos + 23 Platzhalter): **7,4 MB (`7'400'000` Bytes)** gemäss Prototyp v5.11; Überschreitung nur nach ausdrücklicher Entscheidung.
    - Für E7 (`#13`, Service-Worker-Precache): Miniaturen (`*-thumb.webp`) und benötigte Vollbilder klar ausweisen, damit Journey J8 offline mit Bildern funktioniert, ohne das Budget unbemerkt zu sprengen.
+
+## Vorbereitete Nährwert- und Quellenbelege für E12 (`#39`)
+
+Die Belege für die 144 zusätzlichen Lebensmittel und 195 weiteren Rezepte aus **E12a (`#46`)** liegen als Staging-Paket unter `docs/architektur/inhalte/e12a/` (`foods-ext.json`, `recipes-ext.json`, `BELEGE.md`) und werden über `tests/unit/e12a.evidence.test.ts` gegen die Original-CH-NWD-V7.1-xlsx und das unveränderte `validateContentBundle` geprüft. Die bestehenden 55 Lebensmittel und 5 Rezepte unter `content/` bleiben bis zur Übernahme in **E12 (`#39`)** unverändert.
+
