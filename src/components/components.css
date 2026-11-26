@@ -638,6 +638,10 @@ html[data-eff='dark'] .edo-rimg-has-photo img {
   gap: 12px;
 }
 
+.edo-step-item > p {
+  overflow-wrap: break-word;
+}
+
 .edo-step-num {
   inline-size: 32px;
   block-size: 32px;

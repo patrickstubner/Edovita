@@ -1,0 +1,14 @@
+{
+  "title": "Birchermüesli",
+  "steps": [
+    "Mélanger les flocons d'avoine avec le lait entier, couvrir et laisser gonfler au réfrigérateur au moins 30 minutes, idéalement toute la nuit.",
+    "Hacher grossièrement les noisettes.",
+    "Laver les pommes et les râper avec la peau directement dans les flocons d'avoine. Incorporer aussitôt le jus de citron pour éviter qu'elles ne brunissent.",
+    "Incorporer le yaourt nature, sucrer avec du miel selon les goûts et parsemer de noisettes."
+  ],
+  "notes": {
+    "birchermuesli.ing.apple": "2 pièces, env. 300 g, avec la peau",
+    "birchermuesli.ing.lemon": "jus (estimation 15 g)",
+    "birchermuesli.ing.honey": "selon les goûts"
+  }
+}

@@ -29,7 +29,15 @@ export const EXPECTED_GLOSSARY_LANGS = [
   'pt',
   'ja',
 ] as const;
-export const EXPECTED_RECIPE_UI_LANGS = ['de', 'en'] as const;
+export const EXPECTED_RECIPE_UI_LANGS = [
+  'de',
+  'en',
+  'fr',
+  'it',
+  'es',
+  'ja',
+  'pt',
+] as const;
 export const EXPECTED_RECIPE_TITLE_LANGS = [
   'de',
   'en',

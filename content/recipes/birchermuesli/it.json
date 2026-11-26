@@ -1,0 +1,14 @@
+{
+  "title": "Birchermüesli",
+  "steps": [
+    "Mescolare i fiocchi d'avena con il latte intero, coprire e lasciare in ammollo in frigorifero per almeno 30 minuti, meglio per tutta la notte.",
+    "Tritare grossolanamente le nocciole.",
+    "Lavare le mele e grattugiarle con la buccia direttamente nei fiocchi. Incorporare subito il succo di limone affinché non anneriscano.",
+    "Mescolare lo yogurt bianco, dolcificare a piacere con il miele e cospargere con le nocciole."
+  ],
+  "notes": {
+    "birchermuesli.ing.apple": "2 pezzi, circa 300 g, con la buccia",
+    "birchermuesli.ing.lemon": "succo (stima 15 g)",
+    "birchermuesli.ing.honey": "a piacere"
+  }
+}

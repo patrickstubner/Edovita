@@ -1,0 +1,18 @@
+{
+  "title": "Salmone al forno con broccoli",
+  "steps": [
+    "Preriscaldare il forno a 200 °C (ventilato 180 °C). Lavare le patate, tagliarle a spicchi con la buccia e condirle su una teglia con carta da forno insieme a metà dell'olio d'oliva e un po' di sale. Cuocere in forno per 20 minuti.",
+    "Dividere i broccoli in cimette, tritare finemente l'aglio e condire entrambi con l'olio restante.",
+    "Tamponare il salmone e condirlo con sale e pepe nero. Girare le patate e aggiungere broccoli e salmone sulla teglia.",
+    "Proseguire la cottura per altri 12–15 minuti finché il salmone si sfalda facilmente ed è appena cotto al cuore (temperatura interna circa 60 °C).",
+    "Irrorare con succo di limone e servire subito."
+  ],
+  "notes": {
+    "oven_salmon.ing.potato": "con la buccia",
+    "oven_salmon.ing.broccoli": "cimette",
+    "oven_salmon.ing.salmon": "2 filetti da 150 g",
+    "oven_salmon.ing.olive_oil": "circa 2 cucchiai",
+    "oven_salmon.ing.garlic": "2 spicchi (stima 3 g ciascuno)",
+    "oven_salmon.ing.lemon": "succo (stima 20 g)"
+  }
+}

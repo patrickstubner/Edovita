@@ -83,8 +83,8 @@ function cloneBundle(bundle: RawContentBundle): RawContentBundle {
   return structuredClone(bundle);
 }
 
-describe('Inhaltsprüfung content/ (Port von validate.py, ADR-005, ADR-006 & E12)', () => {
-  it('prüft alle 199 Lebensmittel, 7 Glossare, 200 Rezepte (DE/EN Schritte + 7 Titel-Sprachen) fehlerfrei inklusive xlsx-SHA-256', () => {
+describe('Inhaltsprüfung content/ (Port von validate.py, ADR-005, ADR-006, E12 & E13)', () => {
+  it('prüft alle 199 Lebensmittel, 7 Glossare, 200 Rezepte (Schritte & Hinweise in allen 7 UI-Sprachen + 7 Titel-Sprachen) fehlerfrei inklusive xlsx-SHA-256', () => {
     const bundle = loadRawContentBundle();
     const report = validateContentBundle(bundle);
 
@@ -93,6 +93,15 @@ describe('Inhaltsprüfung content/ (Port von validate.py, ADR-005, ADR-006 & E12
     expect(report.validated).not.toBeNull();
     expect(report.validated!.catalog.foods.length).toBe(199);
     expect(report.validated!.recipes.length).toBe(200);
+    expect([...EXPECTED_RECIPE_UI_LANGS].sort()).toEqual([
+      'de',
+      'en',
+      'es',
+      'fr',
+      'it',
+      'ja',
+      'pt',
+    ]);
     expect(Object.keys(report.validated!.glossaries).sort()).toEqual([
       'de',
       'en',
@@ -112,7 +121,8 @@ describe('Inhaltsprüfung content/ (Port von validate.py, ADR-005, ADR-006 & E12
       'pt',
     ]);
 
-    // Alle 200 Rezepte tragen gültige preferenceTags aus der 4er-Whitelist; 195 neue Rezepte haben >= 3 Schritte
+    // Alle 200 Rezepte tragen gültige preferenceTags aus der 4er-Whitelist,
+    // haben in allen 7 UI-Sprachen Schritte == recipe.steps und stimmen im Titel mit locales/<lang>/recipes.json überein
     const originalSet = new Set<string>(ORIGINAL_5_RECIPES);
     const prefSet = new Set<string>(PREFERENCE_TAGS);
     for (const entry of report.validated!.recipes) {
@@ -122,6 +132,14 @@ describe('Inhaltsprüfung content/ (Port von validate.py, ADR-005, ADR-006 & E12
       }
       if (!originalSet.has(entry.recipe.id)) {
         expect(entry.recipe.steps).toBeGreaterThanOrEqual(3);
+      }
+      for (const lang of EXPECTED_RECIPE_UI_LANGS) {
+        const loc = entry.locales[lang];
+        expect(loc).toBeDefined();
+        expect(loc!.steps).toHaveLength(entry.recipe.steps);
+        expect(loc!.title).toBe(
+          report.validated!.recipeTitles?.[lang]?.[entry.recipe.id],
+        );
       }
     }
 
@@ -340,6 +358,68 @@ describe('Inhaltsprüfung content/ (Port von validate.py, ADR-005, ADR-006 & E12
         e.includes('reservierter Prototype-Schlüssel'),
       ),
     ).toBe(true);
+  });
+
+  it('E13 Negativtests: fehlende fr/ja-Rezeptdatei, abweichende Schrittzahl, fehlender noteKey und unsichere Zeichen in fr/ja brechen content:check', () => {
+    const base = loadRawContentBundle();
+
+    // 1) Fehlende fr- und ja-Sprachdatei
+    for (const lang of ['fr', 'ja'] as const) {
+      const missing = cloneBundle(base);
+      delete missing.recipes[0]!.locales[lang];
+      const report = validateContentBundle(missing);
+      expect(report.ok).toBe(false);
+      expect(
+        report.errors.some(
+          (e) => e.includes(`/${lang}`) && e.includes('Übersetzungsdatei fehlt'),
+        ),
+      ).toBe(true);
+    }
+
+    // 2) Abweichende Schrittzahl in fr und ja
+    for (const lang of ['fr', 'ja'] as const) {
+      const badSteps = cloneBundle(base);
+      (badSteps.recipes[0]!.locales[lang] as { steps: string[] }).steps.pop();
+      const report = validateContentBundle(badSteps);
+      expect(report.ok).toBe(false);
+      expect(
+        report.errors.some(
+          (e) => e.includes(`/${lang}:`) && e.includes('Schrittzahl'),
+        ),
+      ).toBe(true);
+    }
+
+    // 3) Fehlender noteKey in fr und ja (auf oven_salmon)
+    for (const lang of ['fr', 'ja'] as const) {
+      const badNote = cloneBundle(base);
+      const salmon = badNote.recipes.find((r) => r.folderName === 'oven_salmon')!;
+      delete (salmon.locales[lang] as { notes: Record<string, string> }).notes[
+        'oven_salmon.ing.salmon'
+      ];
+      const report = validateContentBundle(badNote);
+      expect(report.ok).toBe(false);
+      expect(
+        report.errors.some(
+          (e) =>
+            e.includes(`oven_salmon/${lang}:`) &&
+            e.includes('Hinweis-Schlüssel stimmen nicht überein'),
+        ),
+      ).toBe(true);
+    }
+
+    // 4) Unzulässige Zeichen (UNSAFE_TEXT_RE: <, >, &, ") in fr und ja
+    for (const [lang, badText] of [
+      ['fr', 'Préchauffer le "four" à 200 °C.'],
+      ['ja', 'オーブンを200 °Cに予熱<script>する。'],
+    ] as const) {
+      const unsafe = cloneBundle(base);
+      (unsafe.recipes[0]!.locales[lang] as { steps: string[] }).steps[0] = badText;
+      const report = validateContentBundle(unsafe);
+      expect(report.ok).toBe(false);
+      expect(
+        report.errors.some((e) => e.includes(`/${lang}`)),
+      ).toBe(true);
+    }
   });
 
   function loadRawRecipeImagesBundle(): RawRecipeImagesBundle {

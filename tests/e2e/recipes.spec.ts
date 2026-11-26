@@ -258,6 +258,20 @@ test.describe('E4 + E8 Journey J1: Rezeptliste & lokale Bilder -> Detail -> Port
       "flocons d'avoine",
     );
 
+    // E13: Manuelle Zweitsprache JA auf 360x844 -> japanische Zutatennamen + StepList ohne Überlauf
+    await page.getByTestId('second-switch-btn').click();
+    await page.locator('[data-testid="second-switch-menu"] [data-second="ja"]').click();
+    await expect(page.getByTestId('ingredient-oats-2')).toContainText(
+      'オートミール',
+    );
+    await expect(page.getByTestId('second-lang-steps-hint')).toBeVisible();
+    const overflowJa = await page.evaluate(
+      () =>
+        document.documentElement.scrollWidth >
+        document.documentElement.clientWidth,
+    );
+    expect(overflowJa).toBe(false);
+
     // Zweitsprache auf Pseudo-RTL ar-XB umschalten -> kein horizontaler Überlauf
     await page.getByTestId('second-switch-btn').click();
     await page
