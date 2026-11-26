@@ -423,6 +423,7 @@ describe('Paket E11: Plan -> Einkaufsliste, automatische Einplanung & Rückgäng
       knownRecipeIds: KNOWN_RECIPES,
       shopItems: shopExport.shopItems,
       shopStatus: shopExport.shopStatus,
+      now: FIXED_NOW,
     });
 
     const parsed = parsePlanExportBundle(JSON.stringify(bundle), {
