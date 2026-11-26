@@ -261,10 +261,18 @@ export interface ShoppingItem {
   food: FoodId;
   amount?: number;
   unit?: Unit;
+  /** Plan-Anteil der Menge aus dem Essensplan (0 … 1e6; E11 / Prototyp v5.7–v5.10.1). */
+  qtyPlan?: number;
+  /** Übriger Anteil (manuell / direkt hinzugefügt ohne Plan-Slot; 0 … 1e6; E11). */
+  qtyExtra?: number;
   /** Bereits zu Hause vorhandene Menge (0 … Bedarf, gedeckelt auf Bedarf; Prototyp v5.9). */
   qtyHave?: number;
   state: ShopState;
   fromRecipes: RecipeId[];
+  /** Rezept-IDs aus dem Essensplan (E11). */
+  recipesPlan?: RecipeId[];
+  /** Rezept-IDs aus manuellem/direktem Hinzufügen ausserhalb des Plans (E11). */
+  recipesExtra?: RecipeId[];
   /** Pro Rezept-ID beigesteuerte Menge, damit `removeRecipe` exakt abzieht (ADR-002). */
   recipeAmounts?: Record<string, number>;
   /** Sicher geprüfte Anzeige-Bezeichnung für importierte Nicht-Katalog-Artikel. */

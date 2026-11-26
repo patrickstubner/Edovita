@@ -1,19 +1,22 @@
 import {
   createContext,
   useCallback,
+  useContext,
   useEffect,
   useMemo,
   useRef,
   useState,
   type ReactNode,
 } from 'react';
-import { listFoods, listRecipes } from '../catalog/index.ts';
+import { getFood, getRecipe, listFoods, listRecipes } from '../catalog/index.ts';
 import {
   EMPTY_PLAN,
   buildPlanExportBundle,
   parsePlanExportBundle,
   removePlanItem as removePlanItemDomain,
   setPlanDays as setPlanDaysDomain,
+  shoppingItemsToTransferExport,
+  transferBundleToShoppingItems,
   upsertPlanItem as upsertPlanItemDomain,
   type MealPlan,
   type ParsedPlanExportBundle,
@@ -21,8 +24,14 @@ import {
   type PlanExportErrorCode,
   type PlanItem,
   type Result,
+  type ShoppingItem,
 } from '../domain/index.ts';
+import {
+  restoreShopAndPlan,
+  type ShopAndPlanSnapshot,
+} from '../shopping/index.ts';
 import type { PlanRepository, StorageSnapshotPatch } from '../storage/index.ts';
+import { ShoppingContext } from './ShoppingProvider.tsx';
 import {
   classifyStorageError,
   type StorageErrorCode,
@@ -36,6 +45,12 @@ export interface PlanContextValue {
   setDays: (days: number) => Promise<MealPlan>;
   upsertItem: (item: PlanItem) => Promise<MealPlan>;
   removeItem: (id: string) => Promise<MealPlan>;
+  commitPlanAndShopping: (
+    nextPlan: MealPlan,
+    nextShopping: readonly ShoppingItem[],
+  ) => Promise<{ ok: boolean; plan: MealPlan }>;
+  recordPlanShopUndo: (snapshot: ShopAndPlanSnapshot | null) => void;
+  undoPlanAndShopping: () => Promise<boolean>;
   exportTransferBundle: () => PlanExportBundle;
   parseTransferFile: (
     rawText: string,
@@ -55,15 +70,17 @@ export interface PlanProviderProps {
 }
 
 /**
- * Eigener Bereichs-Provider nur für den Essensplan (ADR-001 Regel 6, ADR-002, E10).
+ * Eigener Bereichs-Provider nur für den Essensplan (ADR-001 Regel 6, ADR-002, E10/E11).
  * IndexedDB-/Quota-Fehler werden gefangen, `loading` zurückgesetzt und nur generisch gemeldet (G1).
- * Datei-Importe laufen echt transaktional über `applyImport` (Dexie-Transaktion F1b / G2).
+ * Gemeinsame Plan-+Einkaufslisten-Änderungen und Datei-Importe laufen echt transaktional über
+ * `applyImport` (Dexie-Transaktion F1b / G2).
  */
 export function PlanProvider({
   repository,
   applyImport,
   children,
 }: PlanProviderProps) {
+  const shoppingCtx = useContext(ShoppingContext);
   const [plan, setPlan] = useState<MealPlan>(EMPTY_PLAN);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<StorageErrorCode | null>(null);
@@ -72,6 +89,16 @@ export function PlanProvider({
   useEffect(() => {
     planRef.current = plan;
   }, [plan]);
+
+  const shoppingItemsRef = useRef<readonly ShoppingItem[]>(
+    shoppingCtx?.items ?? [],
+  );
+  useEffect(() => {
+    shoppingItemsRef.current = shoppingCtx?.items ?? [];
+  }, [shoppingCtx?.items]);
+
+  // Lokaler In-Memory-Snapshot für «Rückgängig» (überlebt Navigation zu #/einkauf, nie persistiert)
+  const undoSnapshotRef = useRef<ShopAndPlanSnapshot | null>(null);
 
   const knownRecipeIds = useMemo(
     () => new Set<string>(listRecipes().map((r) => r.id)),
@@ -166,11 +193,72 @@ export function PlanProvider({
     [persist],
   );
 
-  const exportTransferBundle = useCallback(
-    (): PlanExportBundle =>
-      buildPlanExportBundle(planRef.current, { knownRecipeIds }),
-    [knownRecipeIds],
+  const commitPlanAndShopping = useCallback(
+    async (
+      nextPlan: MealPlan,
+      nextShopping: readonly ShoppingItem[],
+    ): Promise<{ ok: boolean; plan: MealPlan }> => {
+      try {
+        if (applyImport) {
+          await applyImport({
+            plan: nextPlan,
+            shopping: [...nextShopping],
+          });
+          const reloadedPlan = await repository.get();
+          planRef.current = reloadedPlan;
+          setPlan(reloadedPlan);
+          if (shoppingCtx) {
+            await shoppingCtx.reload();
+          }
+          setError(null);
+          return { ok: true, plan: reloadedPlan };
+        }
+        const savedPlan = await repository.set(nextPlan);
+        planRef.current = savedPlan;
+        setPlan(savedPlan);
+        if (shoppingCtx) {
+          await shoppingCtx.replaceAll(nextShopping);
+        }
+        setError(null);
+        return { ok: true, plan: savedPlan };
+      } catch (err) {
+        setError(classifyStorageError(err, 'write'));
+        return { ok: false, plan: planRef.current };
+      }
+    },
+    [applyImport, repository, shoppingCtx],
   );
+
+  const recordPlanShopUndo = useCallback(
+    (snapshot: ShopAndPlanSnapshot | null) => {
+      undoSnapshotRef.current = snapshot;
+    },
+    [],
+  );
+
+  const undoPlanAndShopping = useCallback(async (): Promise<boolean> => {
+    const snap = undoSnapshotRef.current;
+    if (!snap) {
+      return false;
+    }
+    undoSnapshotRef.current = null;
+    const restored = restoreShopAndPlan(snap);
+    const result = await commitPlanAndShopping(restored.plan, restored.items);
+    return result.ok;
+  }, [commitPlanAndShopping]);
+
+  const exportTransferBundle = useCallback((): PlanExportBundle => {
+    const shopExport = shoppingItemsToTransferExport(shoppingItemsRef.current, {
+      knownFoodIds,
+      knownRecipeIds,
+      lookupFoodGroup: (foodId) => getFood(foodId)?.group,
+    });
+    return buildPlanExportBundle(planRef.current, {
+      knownRecipeIds,
+      shopItems: shopExport.shopItems,
+      shopStatus: shopExport.shopStatus,
+    });
+  }, [knownFoodIds, knownRecipeIds]);
 
   const parseTransferFile = useCallback(
     (rawText: string) =>
@@ -183,20 +271,43 @@ export function PlanProvider({
 
   const applyTransferBundle = useCallback(
     async (bundle: ParsedPlanExportBundle): Promise<{ ok: boolean }> => {
-      if (bundle.plan === null) {
-        // Altes Bündel ohne `plan` mit gültigen Listenfeldern: in E10 gültig (shopItems/shopStatus folgen in E11 #36)
+      const hasPlan = bundle.plan !== null;
+      const hasShop =
+        bundle.shopItems !== null || bundle.shopStatus !== null;
+      if (!hasPlan && !hasShop) {
         return { ok: true };
       }
 
+      const nextShopping = hasShop
+        ? transferBundleToShoppingItems(bundle, shoppingItemsRef.current, {
+            lookupRecipe: getRecipe,
+          })
+        : null;
+
       try {
+        const patch: StorageSnapshotPatch = {
+          ...(hasPlan && bundle.plan ? { plan: bundle.plan } : {}),
+          ...(nextShopping !== null ? { shopping: nextShopping } : {}),
+        };
         if (applyImport) {
-          await applyImport({ plan: bundle.plan });
+          await applyImport(patch);
         } else {
-          await repository.set(bundle.plan);
+          if (patch.plan) {
+            await repository.set(patch.plan);
+          }
+          if (patch.shopping && shoppingCtx) {
+            await shoppingCtx.replaceAll(patch.shopping);
+          }
         }
-        const reloaded = await repository.get();
-        planRef.current = reloaded;
-        setPlan(reloaded);
+        if (patch.plan) {
+          const reloadedPlan = await repository.get();
+          planRef.current = reloadedPlan;
+          setPlan(reloadedPlan);
+        }
+        if (patch.shopping && shoppingCtx) {
+          await shoppingCtx.reload();
+        }
+        undoSnapshotRef.current = null;
         setError(null);
         return { ok: true };
       } catch (err) {
@@ -204,7 +315,7 @@ export function PlanProvider({
         return { ok: false };
       }
     },
-    [applyImport, repository],
+    [applyImport, repository, shoppingCtx],
   );
 
   const value = useMemo<PlanContextValue>(
@@ -216,6 +327,9 @@ export function PlanProvider({
       setDays,
       upsertItem,
       removeItem,
+      commitPlanAndShopping,
+      recordPlanShopUndo,
+      undoPlanAndShopping,
       exportTransferBundle,
       parseTransferFile,
       applyTransferBundle,
@@ -229,6 +343,9 @@ export function PlanProvider({
       setDays,
       upsertItem,
       removeItem,
+      commitPlanAndShopping,
+      recordPlanShopUndo,
+      undoPlanAndShopping,
       exportTransferBundle,
       parseTransferFile,
       applyTransferBundle,

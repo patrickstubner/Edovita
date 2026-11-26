@@ -556,8 +556,8 @@ describe('Speicher: Neuladen, Coercion, Export/Import/Wipe und Migrationen (E3)'
     expect(await storage.ratings.listSaved()).toEqual(['oven_salmon']);
   });
 
-  it('migriert Bestandsdaten von Schema-Version 2 sauber auf Version 3 (plan-Tabelle leer, Altbestand erhalten)', async () => {
-    const dbName = nextDbName('mig_v2_v3');
+  it('migriert Bestandsdaten von Schema-Version 2 sauber auf Version 4 (plan-Tabelle leer, Altbestand erhalten)', async () => {
+    const dbName = nextDbName('mig_v2_v4');
 
     // Altdatenbank in Version 2 anlegen
     const oldDb = new EdovitaDb(
@@ -577,17 +577,51 @@ describe('Speicher: Neuladen, Coercion, Export/Import/Wipe und Migrationen (E3)'
     await oldDb.ratings.put({ recipeId: 'pho', stars: 5 });
     oldDb.close();
 
-    // Mit aktuellem v3-Schema öffnen
+    // Mit aktuellem v4-Schema öffnen
     const upgraded = createDexieStorage(dbName);
     createdDbs.push(upgraded.db);
 
-    expect(upgraded.db.verno).toBe(3);
+    expect(upgraded.db.verno).toBe(4);
     expect((await upgraded.settings.get()).uiLang).toBe('de');
     expect(await upgraded.ratings.getRating('pho')).toBe(5);
     expect(await upgraded.plan.get()).toEqual({ days: 5, items: [] });
   });
 
-  it('F1b: importPlanTransferBundle läuft echt transaktional über Dexie und lässt Altbestand bei Fehler unverändert', async () => {
+  it('migriert Bestandsdaten von Schema-Version 3 auf Version 4 (qtyExtra/recipesExtra & qtyHave-Deckelung)', async () => {
+    const dbName = nextDbName('mig_v3_v4');
+
+    const oldDb = new EdovitaDb(
+      dbName,
+      EDOVITA_MIGRATIONS.filter((m) => m.version <= 3),
+    );
+    await oldDb.shopping.put({
+      id: 'potato__g',
+      food: asFoodId('potato'),
+      amount: 300,
+      unit: 'g',
+      qtyHave: 500, // grösser als Bedarf -> wird in v4 auf 300 gedeckelt
+      state: 'open',
+      fromRecipes: [asRecipeId('oven_salmon')],
+      addedAt: '2026-11-24T12:00:00.000Z',
+    });
+    oldDb.close();
+
+    const upgraded = createDexieStorage(dbName);
+    createdDbs.push(upgraded.db);
+
+    expect(upgraded.db.verno).toBe(4);
+    const list = await upgraded.shopping.list();
+    expect(list).toHaveLength(1);
+    const potato = list[0]!;
+    expect(potato.qtyPlan).toBe(0);
+    expect(potato.qtyExtra).toBe(300);
+    expect(potato.recipesPlan).toEqual([]);
+    expect(potato.recipesExtra).toEqual([asRecipeId('oven_salmon')]);
+    expect(potato.qtyHave).toBe(300);
+    expect(potato.state).toBe('home');
+  });
+
+  it('F1b: importPlanTransferBundle läuft echt transaktional über Dexie für Plan + Liste + Status und lässt Altbestand bei Fehler unverändert', async () => {
     const dbName = nextDbName('f1b_plan_tx');
     const storage = createDexieStorage(dbName);
     createdDbs.push(storage.db);
@@ -607,17 +641,38 @@ describe('Speicher: Neuladen, Coercion, Export/Import/Wipe und Migrationen (E3)'
         },
       ],
     };
+    const initialShopping = [
+      {
+        id: 'oats__g',
+        food: asFoodId('oats'),
+        amount: 100,
+        unit: 'g' as const,
+        qtyPlan: 100,
+        qtyExtra: 0,
+        qtyHave: 40,
+        state: 'open' as const,
+        fromRecipes: [asRecipeId('birchermuesli')],
+        recipesPlan: [asRecipeId('birchermuesli')],
+        recipesExtra: [],
+        addedAt: fixedNow.toISOString(),
+      },
+    ];
     await storage.plan.set(initialPlan, fixedNow);
+    await storage.shopping.replaceAll(initialShopping);
 
-    // Rundreise: Export erzeugt edovita-prototype-export mit Plan ohne Körperdaten
+    // Rundreise: Export erzeugt edovita-prototype-export mit Plan + shopItems + shopStatus ohne Körperdaten
     const exported = await exportPlanTransferBundle(storage, { now: fixedNow });
     expect(exported.v).toBe(1);
     expect(exported.kind).toBe('edovita-prototype-export');
     expect(exported.plan).toEqual(initialPlan);
+    expect(exported.shopItems).toHaveLength(1);
+    expect(exported.shopItems?.[0]?.id).toBe('oats');
+    expect(exported.shopItems?.[0]?.qtyHave).toBe(40);
+    expect(exported.shopStatus?.['oats\0g']).toBe('open');
     expect('settings' in exported).toBe(false);
     expect('profile' in exported).toBe(false);
 
-    // Altes Bündel ohne `plan`, aber mit gültigen `shopItems` bleibt gültig und lässt bestehenden Plan unberührt
+    // Altes Bündel ohne `plan`, aber mit gültigen `shopItems` aktualisiert die Liste und lässt Plan unberührt
     const legacyShopOnly = JSON.stringify({
       v: 1,
       kind: 'edovita-prototype-export',
@@ -625,21 +680,29 @@ describe('Speicher: Neuladen, Coercion, Export/Import/Wipe und Migrationen (E3)'
         {
           id: 'broccoli',
           unit: 'g',
-          qtyPlan: 200,
-          qtyExtra: 0,
+          qtyPlan: 0,
+          qtyExtra: 200,
           qtyHave: 0,
-          recipesPlan: ['oven_salmon'],
-          recipesExtra: [],
+          recipesPlan: [],
+          recipesExtra: ['oven_salmon'],
         },
       ],
+      shopStatus: { 'broccoli\0g': 'cart' },
     });
     const legacyRes = await importPlanTransferBundle(storage, legacyShopOnly, {
       now: fixedNow,
     });
     expect(legacyRes.ok).toBe(true);
     expect(await storage.plan.get(fixedNow)).toEqual(initialPlan);
+    const afterLegacyShop = await storage.shopping.list();
+    expect(afterLegacyShop.find((it) => it.food === 'broccoli')?.state).toBe(
+      'cart',
+    );
 
-    // Simulierter Fehler mitten in der Dexie-Transaktion -> Rollback, vorheriger Plan bleibt vollständig erhalten
+    // Altbestand vor Rollback-Test wieder herstellen
+    await storage.shopping.replaceAll(initialShopping);
+
+    // Simulierter Fehler mitten in der Dexie-Transaktion -> Rollback lässt Plan UND Einkaufsliste unverändert
     const nextBundle = JSON.stringify({
       v: 1,
       kind: 'edovita-prototype-export',
@@ -655,8 +718,18 @@ describe('Speicher: Neuladen, Coercion, Export/Import/Wipe und Migrationen (E3)'
           },
         ],
       },
-      shopItems: [],
-      shopStatus: {},
+      shopItems: [
+        {
+          id: 'potato',
+          unit: 'g',
+          qtyPlan: 1000,
+          qtyExtra: 0,
+          qtyHave: 250,
+          recipesPlan: ['oven_salmon'],
+          recipesExtra: [],
+        },
+      ],
+      shopStatus: { 'potato\0g': 'open' },
     });
 
     const origPut = storage.db.plan.put.bind(storage.db.plan);
@@ -676,8 +749,9 @@ describe('Speicher: Neuladen, Coercion, Export/Import/Wipe und Migrationen (E3)'
     }
 
     expect(await storage.plan.get(fixedNow)).toEqual(initialPlan);
+    expect(await storage.shopping.list()).toEqual(initialShopping);
 
-    // Ohne Fehler übernimmt der Import den neuen Plan sauber
+    // Ohne Fehler übernimmt der Import Plan + Einkaufsliste + Teilmenge atomar
     const applied = await importPlanTransferBundle(storage, nextBundle, {
       now: fixedNow,
     });
@@ -694,5 +768,9 @@ describe('Speicher: Neuladen, Coercion, Export/Import/Wipe und Migrationen (E3)'
         },
       ],
     });
+    const importedShop = await storage.shopping.list();
+    const importedPotato = importedShop.find((it) => it.food === 'potato');
+    expect(importedPotato?.qtyPlan).toBe(1000);
+    expect(importedPotato?.qtyHave).toBe(250);
   });
 });

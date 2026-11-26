@@ -9,12 +9,22 @@ import {
   type RecipePaletteTone,
 } from '../components/index.ts';
 import type { Meal, RecipeId } from '../domain/index.ts';
-import { useI18n, useRatings, useRecipes } from '../hooks/index.ts';
+import {
+  useI18n,
+  usePlanShopping,
+  useRatings,
+  useRecipes,
+} from '../hooks/index.ts';
 import {
   MEAL_LABEL_KEYS,
   getCuisineLabelKey,
   type UiKey,
 } from '../i18n/index.ts';
+
+interface RecipesToastState {
+  readonly message: string;
+  readonly canUndo: boolean;
+}
 
 const MEAL_FILTERS: ReadonlyArray<{
   value: Meal | 'all';
@@ -54,37 +64,46 @@ function toneForRecipe(id: RecipeId, index: number): RecipePaletteTone {
 /**
  * Rezeptliste (#/rezepte) im Prototyp-Stil:
  * Mahlzeit-Filter (einer), Eigenschaften-Filter (mehrere), Vielfalt-Ranking (`rankRecipes`),
+ * Top-Karten-Knopf «Zur Einkaufsliste hinzufügen» (E11 / Entscheid 25.11.),
  * Sterne und Merken persistent über `RatingsRepository`.
  */
 export function RecipesPage() {
   const navigate = useNavigate();
   const { t, fmtNumber } = useI18n();
   const { setRating, toggleSaved } = useRatings();
+  const { addRecipeToList, undoPlanAndShopping } = usePlanShopping();
 
   const [meal, setMeal] = useState<Meal | 'all'>('all');
   const [fast, setFast] = useState<boolean>(false);
   const [protein, setProtein] = useState<boolean>(false);
   const [savedOnly, setSavedOnly] = useState<boolean>(false);
-  const [toastMsg, setToastMsg] = useState<string | null>(null);
+  const [toast, setToast] = useState<RecipesToastState | null>(null);
   const toastTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const navTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const items = useRecipes({ meal, fast, protein, savedOnly });
 
-  const showToast = useCallback((message: string) => {
-    if (toastTimerRef.current !== null) {
-      clearTimeout(toastTimerRef.current);
-    }
-    setToastMsg(message);
-    toastTimerRef.current = setTimeout(() => {
-      setToastMsg(null);
-      toastTimerRef.current = null;
-    }, 2600);
-  }, []);
+  const showToast = useCallback(
+    (next: RecipesToastState, durationMs = 2600) => {
+      if (toastTimerRef.current !== null) {
+        clearTimeout(toastTimerRef.current);
+      }
+      setToast(next);
+      toastTimerRef.current = setTimeout(() => {
+        setToast(null);
+        toastTimerRef.current = null;
+      }, durationMs);
+    },
+    [],
+  );
 
   useEffect(
     () => () => {
       if (toastTimerRef.current !== null) {
         clearTimeout(toastTimerRef.current);
+      }
+      if (navTimerRef.current !== null) {
+        clearTimeout(navTimerRef.current);
       }
     },
     [],
@@ -101,7 +120,7 @@ export function RecipesPage() {
     (id: RecipeId, stars: number | null) => {
       void setRating(id, stars).then(() => {
         if (stars !== null) {
-          showToast(t('recipe.rated.toast'));
+          showToast({ message: t('recipe.rated.toast'), canUndo: false });
         }
       });
     },
@@ -112,12 +131,54 @@ export function RecipesPage() {
     (id: RecipeId) => {
       void toggleSaved(id).then((isNowSaved) => {
         if (isNowSaved) {
-          showToast(t('recipe.saved.toast'));
+          showToast({ message: t('recipe.saved.toast'), canUndo: false });
         }
       });
     },
     [showToast, t, toggleSaved],
   );
+
+  const handleTopCardAddToList = useCallback(
+    (id: RecipeId) => {
+      const target = items.find((entry) => entry.recipe.id === id);
+      if (!target) return;
+      if (navTimerRef.current !== null) {
+        clearTimeout(navTimerRef.current);
+        navTimerRef.current = null;
+      }
+      void addRecipeToList(target.recipe).then((feedback) => {
+        showToast(
+          { message: feedback.message, canUndo: feedback.canUndo },
+          feedback.canUndo ? 4500 : 3200,
+        );
+        navTimerRef.current = setTimeout(() => {
+          navTimerRef.current = null;
+          void navigate('/einkauf', {
+            state: {
+              shopToast: {
+                message: feedback.message,
+                canUndo: feedback.canUndo,
+                isPlanUndo: feedback.canUndo,
+              },
+            },
+          });
+        }, 700);
+      });
+    },
+    [addRecipeToList, items, navigate, showToast],
+  );
+
+  const handleUndo = useCallback(() => {
+    if (navTimerRef.current !== null) {
+      clearTimeout(navTimerRef.current);
+      navTimerRef.current = null;
+    }
+    void undoPlanAndShopping().then((didUndo) => {
+      if (didUndo) {
+        showToast({ message: t('detail.undone_toast'), canUndo: false }, 2400);
+      }
+    });
+  }, [showToast, t, undoPlanAndShopping]);
 
   return (
     <Screen
@@ -267,9 +328,15 @@ export function RecipesPage() {
                   starLabel={(n) => t('recipe.rate', { n })}
                   saveLabel={t('recipe.save')}
                   unsaveLabel={t('recipe.unsave')}
+                  addToListLabel={
+                    index === 0 ? t('detail.add_to_list') : undefined
+                  }
                   onOpen={handleOpen}
                   onRate={handleRate}
                   onToggleSave={handleToggleSave}
+                  onAddToList={
+                    index === 0 ? handleTopCardAddToList : undefined
+                  }
                 />
               );
             })
@@ -295,7 +362,11 @@ export function RecipesPage() {
         </section>
       </div>
 
-      <Toast message={toastMsg} />
+      <Toast
+        message={toast?.message ?? null}
+        undoLabel={toast?.canUndo ? t('detail.undo') : undefined}
+        onUndo={toast?.canUndo ? handleUndo : undefined}
+      />
     </Screen>
   );
 }

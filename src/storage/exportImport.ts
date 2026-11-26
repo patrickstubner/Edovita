@@ -9,11 +9,15 @@ import {
   createSettingsSchema,
   isSafeRecordKey,
   parsePlanExportBundle,
+  shoppingItemsToTransferExport,
+  transferBundleToShoppingItems,
   type ExportBundleV1,
+  type FoodGroup,
   type LanguagesRegistry,
   type ParsedPlanExportBundle,
   type PlanExportBundle,
   type PlanExportErrorCode,
+  type Recipe,
   type Result,
 } from '../domain/index.ts';
 import type { EdovitaDb } from './db.ts';
@@ -21,6 +25,12 @@ import type { StorageBundle } from './repositories.ts';
 
 const KNOWN_RECIPE_IDS: ReadonlySet<string> = new Set(RECIPES.map((r) => r.id));
 const KNOWN_FOOD_IDS: ReadonlySet<string> = new Set(FOODS.map((f) => f.id));
+const RECIPES_BY_ID: ReadonlyMap<string, Recipe> = new Map(
+  RECIPES.map((r) => [r.id, r]),
+);
+const FOOD_GROUP_BY_ID: ReadonlyMap<string, FoodGroup> = new Map(
+  FOODS.map((f) => [f.id, f.group]),
+);
 
 /** Registry-gebundenes Settings-Schema (F1/F3a: nur freigegebene UI-Sprachen & registry.secondary). */
 export const settingsSchema = createSettingsSchema(LANGUAGES_REGISTRY);
@@ -223,23 +233,36 @@ export async function importAll(
 }
 
 /**
- * Erzeugt das Austausch-Bündel für `edovita-plan-einkauf.json` (Prototyp v5.10/v5.10.1, E10).
- * Enthält in E10 ausschliesslich den Plan (keine Körper-, Gesundheits- oder Einstellungsdaten).
+ * Erzeugt das Austausch-Bündel für `edovita-plan-einkauf.json` (Prototyp v5.10/v5.10.1, E10 + E11).
+ * Enthält Plan, Einkaufsliste und Listenstatus (inkl. `qtyHave`) – niemals Körper-,
+ * Gesundheits- oder Einstellungsdaten (ADR-004).
  */
 export async function exportPlanTransferBundle(
   storage: StorageBundle,
   options?: { now?: Date },
 ): Promise<PlanExportBundle> {
-  const plan = await storage.plan.get(options?.now);
+  const [plan, shopping] = await Promise.all([
+    storage.plan.get(options?.now),
+    storage.shopping.list(),
+  ]);
+  const { shopItems, shopStatus } = shoppingItemsToTransferExport(shopping, {
+    knownFoodIds: KNOWN_FOOD_IDS,
+    knownRecipeIds: KNOWN_RECIPE_IDS,
+    lookupFoodGroup: (id) => FOOD_GROUP_BY_ID.get(id),
+  });
   return buildPlanExportBundle(plan, {
     knownRecipeIds: KNOWN_RECIPE_IDS,
     now: options?.now,
+    shopItems,
+    shopStatus,
   });
 }
 
 /**
- * Prüft und übernimmt eine `edovita-plan-einkauf.json`-Datei echt transaktional über Dexie (F1b / G2).
- * Bei Validierungs- oder Schreibfehlern bleiben bestehende Daten vollständig unverändert (alles oder nichts).
+ * Prüft und übernimmt eine `edovita-plan-einkauf.json`-Datei echt transaktional über Dexie (F1b / G2 / E11).
+ * Übernimmt `plan`, `shopItems` und `shopStatus` gemeinsam (inkl. `refreshPlanQuantities` + `capHaveToNeed`)
+ * in einer einzigen Dexie-`rw`-Transaktion; bei Validierungs- oder Schreibfehlern bleiben bestehende Daten
+ * vollständig unverändert (alles oder nichts).
  */
 export async function importPlanTransferBundle(
   storage: StorageBundle,
@@ -256,27 +279,36 @@ export async function importPlanTransferBundle(
   }
 
   const bundle = parsed.value;
-  if (bundle.plan === null) {
-    // Altes Bündel ohne `plan` mit gültigen Listenfeldern: in E10 gültig (shopItems/shopStatus folgen in E11 #36)
-    return { ok: true, value: bundle };
-  }
+  const now = options?.now ?? new Date();
+  const existingShopping = await storage.shopping.list();
+  const nextShopping = transferBundleToShoppingItems(bundle, existingShopping, {
+    lookupRecipe: (id) => RECIPES_BY_ID.get(id),
+    now,
+  });
 
   if (storage.applyImport) {
     try {
-      await storage.applyImport({ plan: bundle.plan });
+      await storage.applyImport({
+        ...(bundle.plan !== null ? { plan: bundle.plan } : {}),
+        shopping: nextShopping,
+      });
       return { ok: true, value: bundle };
     } catch {
       return { ok: false, error: 'write' };
     }
   }
 
-  const prevPlan = await storage.plan.get(options?.now);
+  const prevPlan = await storage.plan.get(now);
   try {
-    await storage.plan.set(bundle.plan, options?.now);
+    if (bundle.plan !== null) {
+      await storage.plan.set(bundle.plan, now);
+    }
+    await storage.shopping.replaceAll(nextShopping);
     return { ok: true, value: bundle };
   } catch {
     try {
-      await storage.plan.set(prevPlan, options?.now);
+      await storage.plan.set(prevPlan, now);
+      await storage.shopping.replaceAll(existingShopping);
     } catch {
       // Rollback-Fehler nicht nach aussen lecken
     }

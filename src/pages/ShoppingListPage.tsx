@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import { foodName, getRecipeText, listFoods } from '../catalog/index.ts';
 import {
+  BilingualText,
   BrandsSheet,
   CatalogAddPanel,
   Icon,
@@ -26,6 +27,8 @@ import {
 } from '../domain/index.ts';
 import {
   useI18n,
+  usePlan,
+  usePlanShopping,
   useSecondLang,
   useShareList,
   useShoppingList,
@@ -33,6 +36,7 @@ import {
 import {
   BRAND_LABEL_KEYS,
   FOOD_GROUP_LABEL_KEYS,
+  MEAL_SHORT_LABEL_KEYS,
   REGION_LABEL_KEYS,
 } from '../i18n/index.ts';
 import {
@@ -41,6 +45,8 @@ import {
   haveStepOf,
   isHaveAll,
   isPartialHave,
+  planWhenLabel,
+  resolveQrImportItems,
   shopBuyQty,
   shopHaveOf,
   shopNeedOf,
@@ -50,6 +56,11 @@ import {
 interface ToastState {
   readonly message: string;
   readonly canUndo: boolean;
+  readonly isPlanUndo?: boolean;
+}
+
+interface ShopNavigationState {
+  readonly shopToast?: ToastState;
 }
 
 interface HaveDraftState {
@@ -65,20 +76,23 @@ function normalizeSearch(value: string): string {
 }
 
 /**
- * Einkaufsliste (`#/einkauf`) gemäss Prototyp v5.9 & Issues #11 / #31:
+ * Einkaufsliste (`#/einkauf`) gemäss Prototyp v5.10.1 & Issues #11 / #31 / #36:
  * - Drei Zustände (offen / im Korb / schon zu Hause) + Teilmenge (`qtyHave`) persistent über `ShoppingRepository`
+ * - Plan-Untertitel `#shopSub` (zweisprachig mit `<bdi>`), sobald Plan-Zutaten auf der Liste stehen
  * - Gruppen nach Lebensmittelbereich, Abschnitte «Im Korb» & «Schon zu Hause»
- * - Rezept-Herkunft über ⓘ-Knopf pro Rezept-Zutat mit Herkunfts-Sheet (Gericht, Menge, Summe)
+ * - Rezept-Herkunft über ⓘ-Knopf pro Rezept-Zutat mit Herkunfts-Sheet (Gericht, Plan-Slot `{when} · {qty}`, Summe)
  * - «Hab ich» / «Teilweise» / «Doch kaufen» öffnen einheitlich das Vorrats-Sheet (Alles vorhanden oder Teilmenge)
  * - Manuelle Katalog-Suche (`foods.json`, bewusste Ergänzung), Hausmarken-Info oben
  * - Fixe `BottomActions`: «QR-Einkaufsliste» (lokales `qrcode-generator`, reines React-SVG)
  *   und «Liste teilen» (Web Share API / Zwischenablage; nie G-Daten, nie `qtyHave`)
- * - Gehärteter QR-Import (`#/einkauf#import=...`) mit Validierung + Bestätigungsdialog
+ * - Gehärteter QR-Import (`#/einkauf#import=...`) mit `resolveQrImportItems` + Bestätigungsdialog
  */
 export function ShoppingListPage() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { lang, t, fmtAmount } = useI18n();
+  const { lang, t, fmtDate, fmtAmount } = useI18n();
+  const { plan } = usePlan();
+  const { undoPlanAndShopping } = usePlanShopping();
   const {
     effectiveMeta: secondMeta,
     secondFoodName,
@@ -99,6 +113,9 @@ export function ShoppingListPage() {
     applyImport,
   } = useShoppingList();
 
+  const initialShopToast =
+    (location.state as ShopNavigationState | null)?.shopToast ?? null;
+
   const [query, setQuery] = useState<string>('');
   const [qrOpen, setQrOpen] = useState<boolean>(false);
   const [brandsOpen, setBrandsOpen] = useState<boolean>(false);
@@ -106,7 +123,7 @@ export function ShoppingListPage() {
   const [haveItemId, setHaveItemId] = useState<string | null>(null);
   const [haveDraft, setHaveDraft] = useState<HaveDraftState | null>(null);
   const [dismissedHash, setDismissedHash] = useState<string | null>(null);
-  const [toast, setToast] = useState<ToastState | null>(null);
+  const [toast, setToast] = useState<ToastState | null>(() => initialShopToast);
   const toastTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const sourceTriggerRef = useRef<HTMLButtonElement | null>(null);
   const haveTriggerRef = useRef<HTMLButtonElement | null>(null);
@@ -131,26 +148,46 @@ export function ShoppingListPage() {
     [],
   );
 
+  // Router-State nach Weiterleitung aus Plan/Rezept zurücksetzen und Toast nach Dauer ausblenden
+  useEffect(() => {
+    if (!initialShopToast) {
+      return;
+    }
+    toastTimerRef.current = setTimeout(
+      () => {
+        setToast(null);
+        toastTimerRef.current = null;
+      },
+      initialShopToast.canUndo ? 4500 : 3200,
+    );
+    const target = location.hash ? `/einkauf${location.hash}` : '/einkauf';
+    void navigate(target, { replace: true, state: null });
+  }, [initialShopToast, location.hash, navigate]);
+
   // Eingehendes QR-Import-Fragment (`#/einkauf#import=...`) direkt aus location.hash ableiten
+  // und über `resolveQrImportItems` gegen Live-Liste (inkl. Plan-Zeilen) & Katalog filtern (E11)
   const incomingImport = useMemo(() => {
     const hash = location.hash;
     if (!hash || !hash.startsWith('#import=') || hash === dismissedHash) {
       return null;
     }
-    return {
-      hash,
-      result: parseShopImport(`#/einkauf${hash}`),
-    };
-  }, [dismissedHash, location.hash]);
+    const parsed = parseShopImport(`#/einkauf${hash}`);
+    if (!parsed.ok) {
+      return { hash, items: null as ImportShopItem[] | null, error: parsed.error };
+    }
+    const resolved = resolveQrImportItems(parsed.value, items);
+    if (resolved.length === 0) {
+      return {
+        hash,
+        items: null as ImportShopItem[] | null,
+        error: 'schema' as const,
+      };
+    }
+    return { hash, items: resolved, error: null };
+  }, [dismissedHash, items, location.hash]);
 
-  const pendingImportItems =
-    incomingImport && incomingImport.result.ok
-      ? incomingImport.result.value
-      : null;
-  const importError =
-    incomingImport && !incomingImport.result.ok
-      ? incomingImport.result.error
-      : null;
+  const pendingImportItems = incomingImport?.items ?? null;
+  const importError = incomingImport?.error ?? null;
 
   const clearImportFragment = useCallback(() => {
     if (incomingImport) {
@@ -355,6 +392,20 @@ export function ShoppingListPage() {
   }, [activeHaveItem, resetHave]);
 
   const handleUndo = useCallback(() => {
+    if (toast?.isPlanUndo) {
+      void undoPlanAndShopping().then((didUndo) => {
+        if (didUndo) {
+          showToast(
+            {
+              message: t('detail.undone_toast'),
+              canUndo: false,
+            },
+            2400,
+          );
+        }
+      });
+      return;
+    }
     void undo().then((didUndo) => {
       if (didUndo) {
         showToast(
@@ -366,7 +417,7 @@ export function ShoppingListPage() {
         );
       }
     });
-  }, [showToast, t, undo]);
+  }, [showToast, t, toast?.isPlanUndo, undo, undoPlanAndShopping]);
 
   const handleCatalogAdd = useCallback(
     (foodId: FoodId, name: string) => {
@@ -533,22 +584,30 @@ export function ShoppingListPage() {
     readonly sumSecondary: string;
   } | null>(() => {
     if (!activeSourceItem) return null;
-    const summary = buildSourceSummary(activeSourceItem);
+    const summary = buildSourceSummary(activeSourceItem, {
+      plan,
+      formatWhen: (iso, slot) =>
+        planWhenLabel(iso, slot, fmtDate, (s) => t(MEAL_SHORT_LABEL_KEYS[s])),
+    });
     const missingLabel = t('shop.amount.missing');
     const title = resolveItemName(activeSourceItem);
     const titleSecondary = activeSourceItem.customLabel
       ? null
       : secondFoodName(activeSourceItem.food, title);
-    const lines: ShopSourceLineItem[] = summary.lines.map((line) => {
-      const recipeTitle = getRecipeText(line.recipeId, lang)?.title ?? line.recipeId;
+    const lines: ShopSourceLineItem[] = summary.lines.map((line, idx) => {
+      const recipeTitle =
+        getRecipeText(line.recipeId, lang)?.title ?? line.recipeId;
+      const qty =
+        line.amount !== null && line.unit
+          ? fmtAmount(line.amount, line.unit)
+          : missingLabel;
       return {
-        key: line.recipeId,
+        key: `${line.recipeId}-${idx}`,
         recipeTitle,
         recipeTitleSecondary: secondRecipeTitle(line.recipeId, recipeTitle),
-        qtyText:
-          line.amount !== null && line.unit
-            ? fmtAmount(line.amount, line.unit)
-            : missingLabel,
+        qtyText: line.when
+          ? t('shop.src.whenqty', { when: line.when, qty })
+          : qty,
       };
     });
     const sumQty =
@@ -565,7 +624,9 @@ export function ShoppingListPage() {
   }, [
     activeSourceItem,
     fmtAmount,
+    fmtDate,
     lang,
+    plan,
     resolveItemName,
     secondFoodName,
     secondRecipeTitle,
@@ -619,6 +680,7 @@ export function ShoppingListPage() {
   ]);
 
   const titleSecondary = tSecond('einkauf.einkaufsliste');
+  const hasPlanItems = items.some((it) => (it.recipesPlan?.length ?? 0) > 0);
 
   const subtitle =
     grouped.recipeIds.length > 0
@@ -646,9 +708,24 @@ export function ShoppingListPage() {
                 </bdi>
               </p>
             ) : null}
-            <p className="edo-cap" data-testid="shop-subtitle">
-              {subtitle}
-            </p>
+            {hasPlanItems ? (
+              <p
+                id="shopSub"
+                className="edo-cap edo-shop-sub"
+                data-testid="shop-sub"
+              >
+                <BilingualText
+                  main={t('shop.from.plan', { n: plan.days })}
+                  secondary={tSecond('shop.from.plan', { n: plan.days })}
+                  secondaryLang={secondMeta?.locale}
+                  secondaryDir={secondMeta?.dir}
+                />
+              </p>
+            ) : (
+              <p className="edo-cap" data-testid="shop-subtitle">
+                {subtitle}
+              </p>
+            )}
           </div>
           <button
             type="button"

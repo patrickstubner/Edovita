@@ -72,7 +72,7 @@ test.describe('Paket E10 (J10): Essensplan, Datenschutz-Export/Import, Dunkelmod
       'page',
     );
     await expect(page.getByTestId('toast')).toContainText('Zum Plan hinzugefügt');
-    await expect(page.getByText('Einkaufsliste erstellen')).toHaveCount(0);
+    await expect(page.getByTestId('plan-make-shop-btn')).toBeVisible();
 
     const tomorrowCard = page.getByTestId(`plan-day-${tomorrow}`);
     await expect(tomorrowCard).toContainText('Ofenlachs');

@@ -7,7 +7,7 @@ import {
 } from '../domain/index.ts';
 
 export const DEFAULT_DB_NAME = 'edovita';
-export const CURRENT_DB_VERSION = 3;
+export const CURRENT_DB_VERSION = 4;
 
 export interface StoredSettingsRow {
   key: 'current';
@@ -37,7 +37,7 @@ export interface SchemaMigration {
 
 /**
  * Zentrale Dexie-Schema-Definitionen ab v1 (ADR-002).
- * Künftige Schema-Änderungen werden als neue Versionen (2, 3, …) mit eigenem
+ * Künftige Schema-Änderungen werden als neue Versionen (2, 3, 4, …) mit eigenem
  * `upgrade`-Schritt und zugehörigem Migrationstest ergänzt.
  */
 export const EDOVITA_SCHEMA_V1: Readonly<Record<string, string>> = {
@@ -78,6 +78,43 @@ export const EDOVITA_MIGRATIONS: readonly SchemaMigration[] = [
   {
     version: 3,
     stores: { ...EDOVITA_SCHEMA_V3 },
+  },
+  {
+    version: 4,
+    stores: { ...EDOVITA_SCHEMA_V3 },
+    upgrade: async (tx) => {
+      await tx
+        .table('shopping')
+        .toCollection()
+        .modify((row: Record<string, unknown>) => {
+          const amount =
+            typeof row.amount === 'number' &&
+            Number.isFinite(row.amount) &&
+            row.amount > 0
+              ? row.amount
+              : 0;
+          if (row.qtyExtra === undefined) {
+            row.qtyExtra = amount;
+          }
+          if (row.qtyPlan === undefined) {
+            row.qtyPlan = 0;
+          }
+          if (!Array.isArray(row.recipesExtra)) {
+            row.recipesExtra = Array.isArray(row.fromRecipes)
+              ? [...row.fromRecipes]
+              : [];
+          }
+          if (!Array.isArray(row.recipesPlan)) {
+            row.recipesPlan = [];
+          }
+          const need = amount > 0 ? amount : undefined;
+          const nextHave = coerceQtyHave(row.qtyHave, need);
+          row.qtyHave = nextHave;
+          if (need !== undefined && nextHave >= need) {
+            row.state = 'home';
+          }
+        });
+    },
   },
 ];
 

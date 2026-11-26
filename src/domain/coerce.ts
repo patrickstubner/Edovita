@@ -15,6 +15,7 @@ import {
   asRecipeId,
   type HymnId,
   type LanguagesRegistry,
+  type RecipeId,
   type Settings,
   type ShopState,
   type ShoppingItem,
@@ -146,6 +147,40 @@ export function coerceShoppingItem(raw: unknown): ShoppingItem | null {
       : undefined;
 
   const unit = coerceUnit(ownField(raw, 'unit'));
+
+  const coerceNonNegQty = (v: unknown): number | undefined => {
+    if (v === undefined) return undefined;
+    if (typeof v !== 'number' || !Number.isFinite(v) || v < 0 || v > MAX_QTY_HAVE) {
+      return 0;
+    }
+    return Math.round((v + Number.EPSILON) * 10) / 10;
+  };
+
+  const qtyPlan = coerceNonNegQty(ownField(raw, 'qtyPlan'));
+  const qtyExtra = coerceNonNegQty(ownField(raw, 'qtyExtra'));
+
+  const coerceRecipeList = (rawList: unknown): RecipeId[] | undefined => {
+    if (rawList === undefined) return undefined;
+    if (!Array.isArray(rawList)) return [];
+    const out: RecipeId[] = [];
+    for (const entry of rawList) {
+      if (
+        typeof entry === 'string' &&
+        RECIPE_ID_RE.test(entry) &&
+        isSafeRecordKey(entry)
+      ) {
+        const rid = asRecipeId(entry);
+        if (!out.includes(rid)) {
+          out.push(rid);
+        }
+      }
+    }
+    return out;
+  };
+
+  const recipesPlan = coerceRecipeList(ownField(raw, 'recipesPlan'));
+  const recipesExtra = coerceRecipeList(ownField(raw, 'recipesExtra'));
+
   const rawQtyHave = ownField(raw, 'qtyHave');
   const qtyHave =
     rawQtyHave !== undefined ? coerceQtyHave(rawQtyHave, amount) : undefined;
@@ -212,8 +247,20 @@ export function coerceShoppingItem(raw: unknown): ShoppingItem | null {
   if (unit !== undefined) {
     item.unit = unit;
   }
+  if (qtyPlan !== undefined) {
+    item.qtyPlan = qtyPlan;
+  }
+  if (qtyExtra !== undefined) {
+    item.qtyExtra = qtyExtra;
+  }
   if (qtyHave !== undefined) {
     item.qtyHave = qtyHave;
+  }
+  if (recipesPlan !== undefined) {
+    item.recipesPlan = recipesPlan;
+  }
+  if (recipesExtra !== undefined) {
+    item.recipesExtra = recipesExtra;
   }
   if (recipeAmounts !== undefined) {
     item.recipeAmounts = recipeAmounts;

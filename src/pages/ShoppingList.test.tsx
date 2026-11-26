@@ -290,4 +290,64 @@ describe('Paket E5 + E5b: Einkaufsliste v5.9 (ⓘ-Sheet, «Hab ich»-Sheet, Teil
       });
     }
   });
+
+  it('E11: zeigt zweisprachigen Plan-Untertitel #shopSub, Plan-Slot im ⓘ-Sheet und verwirft unbekannte QR-Import-IDs', async () => {
+    const storage = createMemoryStorage();
+    const today = new Date();
+    const iso = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+    const salmon = getRecipe('oven_salmon')!;
+    await storage.plan.set({
+      days: 5,
+      items: [
+        {
+          id: 'p1',
+          date: iso,
+          slot: 'dinner',
+          recipeId: salmon.id,
+          portions: 2,
+        },
+      ],
+    });
+    const planItems = addRecipe([], salmon, 2).map((it) => ({
+      ...it,
+      qtyPlan: it.amount ?? 0,
+      qtyExtra: 0,
+      recipesPlan: [salmon.id],
+      recipesExtra: [],
+    }));
+    await storage.shopping.replaceAll(planItems);
+    await storage.settings.set({
+      uiLang: 'de',
+      secondLang: 'pt',
+      theme: 'light',
+      sound: true,
+      hymn: 'H1',
+    });
+
+    // 1) Zweisprachiger Plan-Untertitel #shopSub (DE + PT) und ⓘ-Sheet mit Plan-Slot
+    window.location.hash = '#/einkauf';
+    render(<App navigatorLanguages={['de-CH']} storage={storage} />);
+
+    const shopSub = await screen.findByTestId('shop-sub');
+    expect(shopSub).toHaveTextContent('Aus dem Plan für 5 Tage erstellt');
+    expect(shopSub).toHaveTextContent('Criada a partir do plano de 5 dias');
+
+    fireEvent.click(screen.getByTestId('shop-src-potato__g'));
+    const sheet = await screen.findByTestId('shop-src-sheet');
+    expect(sheet).toHaveTextContent('Abend · 500 g');
+    expect(sheet).toHaveTextContent('Summe: 500 g');
+    expect(sheet).toHaveTextContent('Total: 500 g');
+
+    cleanup();
+
+    // 2) Unbekannte QR-IDs werden über resolveQrImportItems verworfen und nicht im Dialog gezeigt
+    const unknownOnlyFrag = encodeShopImport([
+      { id: 'unbekannt_123', name: 'Geisterartikel', st: 'open' },
+    ]);
+    window.location.hash = unknownOnlyFrag;
+    render(<App navigatorLanguages={['de-CH']} storage={storage} />);
+
+    expect(await screen.findByTestId('qr-import-error')).toBeInTheDocument();
+    expect(screen.queryByTestId('qr-import-dialog')).toBeNull();
+  });
 });

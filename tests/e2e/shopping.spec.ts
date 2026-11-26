@@ -47,13 +47,15 @@ test.describe('E5 + E5b Journeys J1, J3, J7 & J9: Einkaufsliste v5.9, ⓘ-Sheet,
 
     await page.getByTestId('add-to-shopping-btn').click();
     await expect(page.getByTestId('toast')).toContainText(
-      'zur Einkaufsliste hinzugefügt',
+      /Auf Liste und für .* eingeplant/,
     );
+    await expect(
+      page.getByRole('heading', { name: 'Einkaufsliste' }),
+    ).toBeVisible();
 
     // Zweites Rezept mit gemeinsamer Zutat (Linsencurry: Knoblauch +2 Stk. -> 6 Stk.)
     await page.goto('/#/rezept/lentil_curry');
     await page.getByTestId('add-to-shopping-btn').click();
-    await page.getByTestId('detail-open-shopping-btn').click();
     await expect(
       page.getByRole('heading', { name: 'Einkaufsliste' }),
     ).toBeVisible();
@@ -184,7 +186,9 @@ test.describe('E5 + E5b Journeys J1, J3, J7 & J9: Einkaufsliste v5.9, ⓘ-Sheet,
     // Rezept hinzufügen (Ofenlachs 2 Portionen: Kartoffeln 500 g, Broccoli 400 g)
     await page.goto('/#/rezept/oven_salmon');
     await page.getByTestId('add-to-shopping-btn').click();
-    await page.getByTestId('detail-open-shopping-btn').click();
+    await expect(
+      page.getByRole('heading', { name: 'Einkaufsliste' }),
+    ).toBeVisible();
 
     // Teilmenge auf Kartoffeln (500 g): «Hab ich» -> 4× Stepper Minus (Schritt 50 g -> 300 g zu Hause) -> «Übernehmen»
     await page.getByTestId('shop-have-potato__g').click();

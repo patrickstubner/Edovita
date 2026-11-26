@@ -1,4 +1,22 @@
-/* Einkaufsliste, Herkunfts-/Vorrats-Sheets & QR-Dialoge gemäss Prototyp v5.9 (`prototype/styles.css`), strikt logische CSS-Eigenschaften (ADR-003 RTL) */
+/* Einkaufsliste, Herkunfts-/Vorrats-Sheets & QR-Dialoge gemäss Prototyp v5.10.1 (`prototype/styles.css`), strikt logische CSS-Eigenschaften (ADR-003 RTL) */
+
+.edo-shop-sub {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-inline-size: 0;
+}
+
+.edo-shop-sub .edo-i18n-main,
+.edo-shop-sub .edo-i18n-sec {
+  display: block;
+  overflow-wrap: anywhere;
+}
+
+.edo-shop-sub .edo-i18n-sec {
+  font-size: 13px;
+  color: var(--edo-muted);
+}
 
 .edo-shopgroup {
   display: flex;

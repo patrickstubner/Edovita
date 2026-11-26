@@ -38,10 +38,12 @@ describe('Paket E10: Essensplan-Screen, PlanSheet & Datenschutz-Export/Import (I
       await screen.findByRole('heading', { name: 'Plan' }),
     ).toBeInTheDocument();
 
-    // Standard: 5 Tage, keine Demo-Einträge, noch kein E11-Button «Einkaufsliste erstellen»
+    // Standard: 5 Tage, keine Demo-Einträge, E11-Hauptknopf «Einkaufsliste erstellen» vorhanden
     const list = screen.getByTestId('plan-list');
     expect(within(list).getAllByTestId(/^plan-day-\d{4}-\d{2}-\d{2}$/)).toHaveLength(5);
-    expect(screen.queryByText('Einkaufsliste erstellen')).toBeNull();
+    expect(screen.getByTestId('plan-make-shop-btn')).toHaveTextContent(
+      'Einkaufsliste erstellen',
+    );
     expect(screen.getByTestId('plan-days-5')).toHaveAttribute('aria-pressed', 'true');
 
     // Zeitraum auf 3 Tage und 7 Tage umschalten
@@ -107,11 +109,33 @@ describe('Paket E10: Essensplan-Screen, PlanSheet & Datenschutz-Export/Import (I
       expect(updated?.recipeId).toBe(asRecipeId('lentil_curry'));
     });
 
-    // Entfernen des Abendessens -> «+ Rezept» erscheint wieder
+    // Einkaufsliste erstellen -> füllt Liste, wechselt auf #/einkauf und zeigt #shopSub + Toast
+    fireEvent.click(screen.getByTestId('plan-make-shop-btn'));
+    expect(
+      await screen.findByRole('heading', { name: 'Einkaufsliste' }),
+    ).toBeInTheDocument();
+    expect(screen.getByTestId('shop-sub')).toHaveTextContent(
+      'Aus dem Plan für 7 Tage erstellt',
+    );
+    expect(await screen.findByTestId('toast')).toHaveTextContent(
+      'Einkaufsliste aktualisiert',
+    );
+    const createdShop = await storage.shopping.list();
+    expect(createdShop.some((it) => it.food === 'red_lentils')).toBe(true);
+
+    // Zurück auf #/plan -> Entfernen des Abendessens aktualisiert auch die Einkaufsliste sofort
+    fireEvent.click(screen.getByTestId('tab-plan'));
+    expect(
+      await screen.findByRole('heading', { name: 'Plan' }),
+    ).toBeInTheDocument();
     fireEvent.click(screen.getByTestId(`plan-remove-${savedItem.id}`));
     await waitFor(() => {
       expect(screen.queryByTestId(`plan-item-${savedItem.id}`)).toBeNull();
       expect(screen.getByTestId(`plan-add-${today}-dinner`)).toBeInTheDocument();
+    });
+    await waitFor(async () => {
+      const afterRemove = await storage.shopping.list();
+      expect(afterRemove.some((it) => it.food === 'red_lentils')).toBe(false);
     });
   });
 

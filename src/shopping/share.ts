@@ -6,7 +6,12 @@ import {
   type ImportShopItem,
   type ShoppingItem,
 } from '../domain/index.ts';
-import { effectiveShopState } from './have.ts';
+import {
+  effectiveShopState,
+  isPartialHave,
+  shopBuyQty,
+  shopNeedOf,
+} from './have.ts';
 import type { GroupedShoppingList } from './merge.ts';
 
 export interface QrMatrix {
@@ -30,25 +35,23 @@ function sanitizeQrName(raw: string, fallback: string): string {
 /**
  * Wandelt Einkaufsartikel in das minimale QR-Import-Payload um (max. 40 Artikel).
  * Enthält ausschliesslich Artikel-IDs, Namen, optionale Mengen/Einheiten und Zustände –
- * niemals Gesundheitsdaten und niemals `qtyHave` (ADR-004, Issue #31).
- * Teilmengen werden als Zustand `open` geteilt.
+ * niemals Gesundheitsdaten und niemals `qtyHave` (ADR-004, Issue #31, Issue #36).
+ * Teilmengen werden als Zustand `open` mit der verbleibenden Kaufmenge geteilt.
  */
 export function shoppingItemsToImportPayload(
   items: readonly ShoppingItem[],
   resolveName: (item: ShoppingItem) => string,
 ): ImportShopItem[] {
   return items.slice(0, MAX_QR_ITEMS).map((item) => {
+    const partial = isPartialHave(item);
     const entry: ImportShopItem = {
       id: item.food,
       name: sanitizeQrName(resolveName(item), item.food),
-      st: effectiveShopState(item),
+      st: partial ? 'open' : effectiveShopState(item),
     };
-    if (
-      typeof item.amount === 'number' &&
-      Number.isFinite(item.amount) &&
-      item.amount > 0
-    ) {
-      entry.amount = item.amount;
+    const exportAmt = partial ? shopBuyQty(item) : shopNeedOf(item);
+    if (exportAmt !== null && Number.isFinite(exportAmt) && exportAmt > 0) {
+      entry.amount = exportAmt;
     }
     if (item.unit !== undefined) {
       entry.unit = item.unit;
