@@ -36,12 +36,14 @@ test.describe('E9 Navigation: Tab-Leiste, Profil -> Sprache, BottomActions & RTL
     // Touch-Ziele >= 44x44 px und kein Überlappen mit BottomActions auf Startseite
     const tabRezepte = page.getByTestId('tab-rezepte');
     const tabProfil = page.getByTestId('tab-profil');
+    const homeActions = page.getByTestId('bottom-actions');
+    await expect(tabRezepte).toBeVisible();
+    await expect(tabProfil).toBeVisible();
+    await expect(homeActions).toBeVisible();
     const rezepteLtrBox = await tabRezepte.boundingBox();
     const profilLtrBox = await tabProfil.boundingBox();
     const navBox = await nav.boundingBox();
-    const homeActionsBox = await page
-      .getByTestId('bottom-actions')
-      .boundingBox();
+    const homeActionsBox = await homeActions.boundingBox();
 
     expect(rezepteLtrBox).not.toBeNull();
     expect(profilLtrBox).not.toBeNull();
@@ -98,9 +100,10 @@ test.describe('E9 Navigation: Tab-Leiste, Profil -> Sprache, BottomActions & RTL
     expect(page.url()).toContain('#/rezepte');
     await expect(tabRezepte).toHaveAttribute('aria-current', 'page');
 
-    const listActionsBox = await page
-      .getByTestId('bottom-actions')
-      .boundingBox();
+    const listActions = page.getByTestId('bottom-actions');
+    await expect(listActions).toBeVisible();
+    await expect(nav).toBeVisible();
+    const listActionsBox = await listActions.boundingBox();
     const listNavBox = await nav.boundingBox();
     expect(listActionsBox).not.toBeNull();
     expect(listNavBox).not.toBeNull();
@@ -120,10 +123,13 @@ test.describe('E9 Navigation: Tab-Leiste, Profil -> Sprache, BottomActions & RTL
     ).toBeVisible();
     await expect(tabRezepte).toHaveAttribute('aria-current', 'page');
 
-    const detailActionsBox = await page
-      .getByTestId('bottom-actions')
-      .boundingBox();
+    const detailActions = page.getByTestId('bottom-actions');
+    await expect(detailActions).toBeVisible();
+    await expect(nav).toBeVisible();
+    const detailActionsBox = await detailActions.boundingBox();
     const detailNavBox = await nav.boundingBox();
+    expect(detailActionsBox).not.toBeNull();
+    expect(detailNavBox).not.toBeNull();
     expect(detailActionsBox!.y + detailActionsBox!.height).toBeLessThanOrEqual(
       detailNavBox!.y + 1,
     );
@@ -138,15 +144,23 @@ test.describe('E9 Navigation: Tab-Leiste, Profil -> Sprache, BottomActions & RTL
     // RTL-Prüfung (logische Eigenschaften + ar-XB-Modus): Tab-Leiste spiegelt horizontal ohne Überlauf
     await page.goto('/?pseudoRtl=1#/profil');
     await expect(page.getByRole('heading', { name: 'Profil' })).toBeVisible();
+    await expect(tabRezepte).toBeVisible();
+    await expect(tabProfil).toBeVisible();
     const ltrRezepte = await tabRezepte.boundingBox();
     const ltrProfil = await tabProfil.boundingBox();
+    expect(ltrRezepte).not.toBeNull();
+    expect(ltrProfil).not.toBeNull();
     expect(ltrRezepte!.x).toBeLessThan(ltrProfil!.x);
 
     await page.evaluate(() => {
       document.documentElement.setAttribute('dir', 'rtl');
     });
+    await expect(tabRezepte).toBeVisible();
+    await expect(tabProfil).toBeVisible();
     const rtlRezepte = await tabRezepte.boundingBox();
     const rtlProfil = await tabProfil.boundingBox();
+    expect(rtlRezepte).not.toBeNull();
+    expect(rtlProfil).not.toBeNull();
     expect(rtlRezepte!.x).toBeGreaterThan(rtlProfil!.x);
 
     const overflow = await page.evaluate(
@@ -173,7 +187,10 @@ test.describe('E9 Navigation: Tab-Leiste, Profil -> Sprache, BottomActions & RTL
       }),
     ).toBeVisible();
 
-    const deskActions = await page.getByTestId('bottom-actions').boundingBox();
+    const deskActionsLocator = page.getByTestId('bottom-actions');
+    await expect(deskActionsLocator).toBeVisible();
+    await expect(nav).toBeVisible();
+    const deskActions = await deskActionsLocator.boundingBox();
     const deskNav = await nav.boundingBox();
     expect(deskActions).not.toBeNull();
     expect(deskNav).not.toBeNull();

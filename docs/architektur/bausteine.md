@@ -37,7 +37,7 @@ Skizzen für die Agents. Namen und Signaturen sind Vorschläge; Schichten gemäs
 | Komponente | Verhalten | Prototyp |
 |---|---|---|
 | `Screen` + `BottomActions` | Kopf, scrollender Körper, fixe Leiste unten mit 1–3 Buttons, Safe-Area, Tastatur über `visualViewport` | `layoutScreens`, `.actions`, `syncAppHeight` (v5.4) |
-| `RecipeCard` | Kachel mit Küche, Titel, kcal/min/Protein, Sterne, Merken; Tippen öffnet Detail | `renderRecipes` |
+| `RecipeCard` | Kachel mit Küche, Titel, kcal/min/Protein, Sterne, Merken; Tippen öffnet Detail; Top-Karte zusätzlich mit Knopf «Zur Einkaufsliste hinzufügen» (E11: automatische Einplanung im Plan, Einkaufsliste aktualisieren, Toast mit «Rückgängig» und Wechsel zu `#/einkauf`) | `renderRecipes` |
 | `RecipeHeader` | Bild/Farbfläche, Titel, Küche, Zeit, Sterne, Merken | neu |
 | `ServingsStepper` | − / Zahl / +, 44 px Tap-Fläche, `aria-live` | Stepper aus `stepperCard` |
 | `IngredientList` | Zeilen mit Menge + `BilingualName`, Allergene markiert | neu |
@@ -51,5 +51,6 @@ Skizzen für die Agents. Namen und Signaturen sind Vorschläge; Schichten gemäs
 
 ## 5. Seiten für den Start
 
-- **`RecipeDetailPage`** (`#/rezept/:id`): `Screen` > `RecipeHeader`, `ServingsStepper`, `IngredientList`, `StepList`, `NutritionPanel`; `BottomActions`: «Zur Einkaufsliste hinzufügen» (fügt skalierte Zutaten hinzu, Toast mit «Rückgängig», bleibt auf der Seite).
+- **`RecipesPage`** (`#/rezepte`): Filter-Chips, nach Vielfalt gereihte `RecipeCard`-Liste; die Top-Karte bietet zusätzlich den Knopf «Zur Einkaufsliste hinzufügen» (E11: automatische Einplanung in den nächsten freien passenden Slot im Plan, Neuberechnung der Einkaufsliste, Toast mit «Rückgängig» und Weiterleitung zu `#/einkauf`).
+- **`RecipeDetailPage`** (`#/rezept/:id`): `Screen` > `RecipeHeader`, `ServingsStepper`, `IngredientList`, `StepList`, `NutritionPanel`; `BottomActions`: «Zum Plan hinzufügen» (`PlanSheet` → `#/plan`), «Zur Einkaufsliste hinzufügen» (ab E11: automatische Einplanung mit gewählter Portionszahl in den nächsten freien passenden Slot im Plan, Neuberechnung der Einkaufsliste, Toast mit «Rückgängig» und Wechsel zu `#/einkauf`) sowie «Einkaufsliste öffnen».
 - **`ShoppingListPage`** (`#/einkauf`): `LangChip` oben rechts neben Info-Icon «Hausmarken», Gruppen mit `ShopRow`, Abschnitt «Schon zu Hause», leerer Zustand mit Link zu Rezepten; `BottomActions`: «QR-Einkaufsliste», «Liste teilen».
