@@ -1,0 +1,124 @@
+{
+  "format": 1,
+  "id": "salmon_poke",
+  "cuisine": "hawaiian",
+  "meal": "lunch",
+  "minutes": 20,
+  "servings": 2,
+  "tags": [
+    "protein"
+  ],
+  "preferenceTags": [
+    "onion"
+  ],
+  "ingredients": [
+    {
+      "food": "salmon",
+      "amount": 240,
+      "unit": "g",
+      "grams": 240
+    },
+    {
+      "food": "sushi_rice",
+      "amount": 120,
+      "unit": "g",
+      "grams": 120
+    },
+    {
+      "food": "edamame",
+      "amount": 100,
+      "unit": "g",
+      "grams": 100
+    },
+    {
+      "food": "avocado",
+      "amount": 0.5,
+      "unit": "pc",
+      "grams": 70
+    },
+    {
+      "food": "cucumber",
+      "amount": 0.5,
+      "unit": "pc",
+      "grams": 150
+    },
+    {
+      "food": "carrot",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 80
+    },
+    {
+      "food": "soy_sauce",
+      "amount": 2,
+      "unit": "tbsp",
+      "grams": 32
+    },
+    {
+      "food": "rice_vinegar",
+      "amount": 1,
+      "unit": "tbsp",
+      "grams": 15
+    },
+    {
+      "food": "sesame_oil",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 4.5
+    },
+    {
+      "food": "sesame_seeds",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 3
+    },
+    {
+      "food": "spring_onion",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 15
+    }
+  ],
+  "steps": 4,
+  "allergens": [
+    "fish",
+    "sesame",
+    "soy"
+  ],
+  "allergensToCheck": [
+    "gluten"
+  ],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 671,
+      "fat": 31.9,
+      "satFat": 4.8,
+      "carbs": 54.9,
+      "sugars": 5.1,
+      "fiber": 7.3,
+      "protein": 37.0,
+      "salt": 2.4
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "spring_onion"
+    ],
+    "proxies": [
+      "rice_vinegar"
+    ],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://jeccachantilly.com/hawaiian-salmon-poke/",
+      "https://www.chewoutloud.com/salmon-poke-bowl/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

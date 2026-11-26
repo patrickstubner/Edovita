@@ -1,0 +1,137 @@
+{
+  "format": 1,
+  "id": "japanese_chicken_curry",
+  "cuisine": "japanese",
+  "meal": "dinner",
+  "minutes": 40,
+  "servings": 2,
+  "tags": [
+    "protein"
+  ],
+  "preferenceTags": [
+    "meat",
+    "onion"
+  ],
+  "ingredients": [
+    {
+      "food": "chicken_breast",
+      "amount": 320,
+      "unit": "g",
+      "grams": 320
+    },
+    {
+      "food": "potato",
+      "amount": 200,
+      "unit": "g",
+      "grams": 200
+    },
+    {
+      "food": "carrot",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 160
+    },
+    {
+      "food": "onion",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 100
+    },
+    {
+      "food": "apple",
+      "amount": 0.5,
+      "unit": "pc",
+      "grams": 75
+    },
+    {
+      "food": "curry_powder",
+      "amount": 1,
+      "unit": "tbsp",
+      "grams": 9
+    },
+    {
+      "food": "wholewheat_flour",
+      "amount": 1,
+      "unit": "tbsp",
+      "grams": 8
+    },
+    {
+      "food": "chicken_broth",
+      "amount": 500,
+      "unit": "ml",
+      "grams": 505
+    },
+    {
+      "food": "soy_sauce",
+      "amount": 1,
+      "unit": "tbsp",
+      "grams": 16
+    },
+    {
+      "food": "honey",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 7
+    },
+    {
+      "food": "rapeseed_oil",
+      "amount": 2,
+      "unit": "tsp",
+      "grams": 9
+    },
+    {
+      "food": "sushi_rice",
+      "amount": 120,
+      "unit": "g",
+      "grams": 120
+    },
+    {
+      "food": "salt",
+      "amount": 2,
+      "unit": "g",
+      "grams": 2
+    }
+  ],
+  "steps": 5,
+  "allergens": [
+    "gluten",
+    "soy"
+  ],
+  "allergensToCheck": [
+    "celery",
+    "gluten",
+    "mustard"
+  ],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 613,
+      "fat": 8.4,
+      "satFat": 1.4,
+      "carbs": 82.2,
+      "sugars": 15.3,
+      "fiber": 6.8,
+      "protein": 48.9,
+      "salt": 4.9
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "chicken_broth:fiber",
+      "curry_powder"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://www.justonecookbook.com/simple-chicken-curry/",
+      "https://glebekitchen.com/japanese-chicken-curry-curry-rice/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

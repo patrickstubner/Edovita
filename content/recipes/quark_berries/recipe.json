@@ -1,0 +1,78 @@
+{
+  "format": 1,
+  "id": "quark_berries",
+  "cuisine": "swiss",
+  "meal": "snack",
+  "minutes": 5,
+  "servings": 1,
+  "tags": [
+    "vegetarian"
+  ],
+  "preferenceTags": [],
+  "ingredients": [
+    {
+      "food": "quark_lowfat",
+      "amount": 200,
+      "unit": "g",
+      "grams": 200
+    },
+    {
+      "food": "berries",
+      "amount": 100,
+      "unit": "g",
+      "grams": 100
+    },
+    {
+      "food": "vanilla_extract",
+      "amount": 0.5,
+      "unit": "tsp",
+      "grams": 2
+    },
+    {
+      "food": "honey",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 7
+    },
+    {
+      "food": "milk_skimmed",
+      "amount": 20,
+      "unit": "ml",
+      "grams": 20.8
+    }
+  ],
+  "steps": 3,
+  "allergens": [
+    "milk"
+  ],
+  "allergensToCheck": [],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 199,
+      "fat": 0.9,
+      "satFat": 0.3,
+      "carbs": 21.9,
+      "sugars": 20.1,
+      "fiber": 3.7,
+      "protein": 22.8,
+      "salt": 0.2
+    },
+    "isMinimum": false,
+    "notIncluded": [],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://www.happyveggiekitchen.com/quark-breakfast-bowls/",
+      "https://www.internationaldessertsblog.com/german-blackberry-dessert-quark/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

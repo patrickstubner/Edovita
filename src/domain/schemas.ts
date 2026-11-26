@@ -1,11 +1,14 @@
 import { z } from 'zod';
 import {
   ALLERGENS,
+  CUISINES,
   FOOD_GROUPS,
   GOALS,
   HYMN_IDS,
   MEALS,
   PACES,
+  PREFERENCE_TAGS,
+  RECIPE_TAGS,
   SEX_FOR_CALC,
   SHOP_STATES,
   TEXT_DIRS,
@@ -39,6 +42,29 @@ export function isSafeRecordKey(key: string): boolean {
   return !FORBIDDEN_PROTO_KEYS.has(key);
 }
 
+/**
+ * Prüft rekursiv alle eigenen Eigenschaften (`Object.getOwnPropertyNames`)
+ * gegen Prototype-Pollution-Schlüssel (`__proto__`, `constructor`, `prototype`).
+ */
+export function hasForbiddenOwnKey(value: unknown): boolean {
+  if (value === null || typeof value !== 'object') {
+    return false;
+  }
+  if (Array.isArray(value)) {
+    return value.some(hasForbiddenOwnKey);
+  }
+  const obj = value as Record<string, unknown>;
+  for (const key of Object.getOwnPropertyNames(obj)) {
+    if (!isSafeRecordKey(key)) {
+      return true;
+    }
+    if (hasForbiddenOwnKey(obj[key])) {
+      return true;
+    }
+  }
+  return false;
+}
+
 export const safeContentStringSchema = z
   .string()
   .trim()
@@ -60,14 +86,15 @@ export const recipeIdSchema = z
   .transform(asRecipeId);
 
 export const cuisineIdSchema = z
-  .string()
-  .regex(CUISINE_ID_RE, 'Ungültiges CuisineId-Format.')
+  .enum(CUISINES)
   .transform(asCuisineId);
 
 export const unitSchema = z.enum(UNITS);
 export const foodGroupSchema = z.enum(FOOD_GROUPS);
 export const allergenSchema = z.enum(ALLERGENS);
 export const mealSchema = z.enum(MEALS);
+export const recipeTagSchema = z.enum(RECIPE_TAGS);
+export const preferenceTagSchema = z.enum(PREFERENCE_TAGS);
 export const shopStateSchema = z.enum(SHOP_STATES);
 
 const nonNegativeNumber = z.number().finite().min(0);
@@ -222,7 +249,8 @@ export const recipeSchema = z.strictObject({
   meal: mealSchema,
   minutes: z.number().int().positive().max(600),
   servings: z.number().int().min(1).max(12),
-  tags: z.array(z.string().min(1)),
+  tags: z.array(recipeTagSchema),
+  preferenceTags: z.array(preferenceTagSchema).optional(),
   ingredients: z.array(recipeIngredientSchema).min(1),
   steps: z.number().int().min(1).max(50),
   allergens: z.array(allergenSchema),
@@ -236,6 +264,16 @@ export const recipeLocaleTextSchema = z.strictObject({
   steps: z.array(safeContentStringSchema).min(1),
   notes: z.record(z.string(), safeContentStringSchema),
 });
+
+export const recipeTitlesSchema = z
+  .record(z.string(), safeContentStringSchema)
+  .refine(
+    (obj) =>
+      Object.keys(obj).every(
+        (key) => isSafeRecordKey(key) && RECIPE_ID_RE.test(key),
+      ),
+    'Ungültige oder reservierte Rezept-ID in Rezepttiteln nicht zulässig.',
+  );
 
 export const shoppingItemSchema = z.strictObject({
   id: z.string().min(1).max(80),

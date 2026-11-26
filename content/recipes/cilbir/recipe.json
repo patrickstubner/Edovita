@@ -1,0 +1,107 @@
+{
+  "format": 1,
+  "id": "cilbir",
+  "cuisine": "middle_eastern",
+  "meal": "breakfast",
+  "minutes": 15,
+  "servings": 2,
+  "tags": [
+    "vegetarian",
+    "protein"
+  ],
+  "preferenceTags": [],
+  "ingredients": [
+    {
+      "food": "eggs",
+      "amount": 4,
+      "unit": "pc",
+      "grams": 200
+    },
+    {
+      "food": "greek_yogurt",
+      "amount": 250,
+      "unit": "g",
+      "grams": 250
+    },
+    {
+      "food": "garlic",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 3
+    },
+    {
+      "food": "butter",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 5
+    },
+    {
+      "food": "paprika",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 2.5
+    },
+    {
+      "food": "chili_flakes",
+      "amount": 1,
+      "unit": "pinch",
+      "grams": 0.3
+    },
+    {
+      "food": "dill",
+      "amount": 3,
+      "unit": "g",
+      "grams": 3
+    },
+    {
+      "food": "bread",
+      "amount": 80,
+      "unit": "g",
+      "grams": 80
+    },
+    {
+      "food": "salt",
+      "amount": 1,
+      "unit": "g",
+      "grams": 1
+    }
+  ],
+  "steps": 4,
+  "allergens": [
+    "eggs",
+    "gluten",
+    "milk"
+  ],
+  "allergensToCheck": [],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 351,
+      "fat": 14.9,
+      "satFat": 5.4,
+      "carbs": 23.8,
+      "sugars": 5.5,
+      "fiber": 2.1,
+      "protein": 29.1,
+      "salt": 1.6
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "dill:sugars"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://www.nigella.com/recipes/turkish-eggs",
+      "https://chatelaine.com/recipe/dinner/cilbir-turkish-eggs-and-yogurt/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

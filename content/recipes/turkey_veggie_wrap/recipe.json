@@ -1,0 +1,116 @@
+{
+  "format": 1,
+  "id": "turkey_veggie_wrap",
+  "cuisine": "american",
+  "meal": "lunch",
+  "minutes": 10,
+  "servings": 2,
+  "tags": [
+    "protein"
+  ],
+  "preferenceTags": [
+    "meat"
+  ],
+  "ingredients": [
+    {
+      "food": "whole_wheat_tortilla",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 80
+    },
+    {
+      "food": "turkey_breast",
+      "amount": 200,
+      "unit": "g",
+      "grams": 200
+    },
+    {
+      "food": "cottage_cheese",
+      "amount": 100,
+      "unit": "g",
+      "grams": 100
+    },
+    {
+      "food": "carrot",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 80
+    },
+    {
+      "food": "cucumber",
+      "amount": 0.3,
+      "unit": "pc",
+      "grams": 90
+    },
+    {
+      "food": "lettuce",
+      "amount": 0.2,
+      "unit": "pc",
+      "grams": 60
+    },
+    {
+      "food": "dijon_mustard",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 5
+    },
+    {
+      "food": "rapeseed_oil",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 4.5
+    },
+    {
+      "food": "salt",
+      "amount": 1,
+      "unit": "g",
+      "grams": 1
+    },
+    {
+      "food": "black_pepper",
+      "amount": 1,
+      "unit": "pinch",
+      "grams": 0.5
+    }
+  ],
+  "steps": 4,
+  "allergens": [
+    "gluten",
+    "milk",
+    "mustard"
+  ],
+  "allergensToCheck": [
+    "sulphites"
+  ],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 333,
+      "fat": 10.4,
+      "satFat": 3.8,
+      "carbs": 23.8,
+      "sugars": 5.5,
+      "fiber": 5.9,
+      "protein": 35.2,
+      "salt": 1.8
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "black_pepper"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://www.melskitchencafe.com/turkey-avocado-veggie-wraps/",
+      "https://diet.mayoclinic.org/us/motivational-tips/recipe-collections/family-friendly/turkey-avocado-wrap/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

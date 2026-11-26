@@ -120,7 +120,10 @@ describe('i18n/secondLang (E6, Issue #12, Prototyp v5.10)', () => {
     expect(coerceSecondLang('none', LANGUAGES_REGISTRY)).toBe('none');
     expect(coerceSecondLang('pt', LANGUAGES_REGISTRY)).toBe('pt');
     expect(coerceSecondLang('pt-BR', LANGUAGES_REGISTRY)).toBe('pt');
-    expect(coerceSecondLang('fr', LANGUAGES_REGISTRY)).toBeNull();
+    expect(coerceSecondLang('fr', LANGUAGES_REGISTRY)).toBe('fr');
+    expect(coerceSecondLang('it', LANGUAGES_REGISTRY)).toBe('it');
+    expect(coerceSecondLang('es', LANGUAGES_REGISTRY)).toBe('es');
+    expect(coerceSecondLang('vi', LANGUAGES_REGISTRY)).toBeNull();
     expect(coerceSecondLang('__proto__', LANGUAGES_REGISTRY)).toBeNull();
     expect(coerceSecondLang('constructor', LANGUAGES_REGISTRY)).toBeNull();
 

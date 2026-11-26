@@ -1,0 +1,114 @@
+{
+  "format": 1,
+  "id": "menemen",
+  "cuisine": "middle_eastern",
+  "meal": "breakfast",
+  "minutes": 15,
+  "servings": 2,
+  "tags": [
+    "vegetarian"
+  ],
+  "preferenceTags": [
+    "onion"
+  ],
+  "ingredients": [
+    {
+      "food": "eggs",
+      "amount": 5,
+      "unit": "pc",
+      "grams": 250
+    },
+    {
+      "food": "tomato",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 240
+    },
+    {
+      "food": "green_bell_pepper",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 150
+    },
+    {
+      "food": "onion",
+      "amount": 0.5,
+      "unit": "pc",
+      "grams": 50
+    },
+    {
+      "food": "olive_oil",
+      "amount": 1,
+      "unit": "tbsp",
+      "grams": 13.5
+    },
+    {
+      "food": "chili_flakes",
+      "amount": 1,
+      "unit": "pinch",
+      "grams": 0.3
+    },
+    {
+      "food": "feta",
+      "amount": 30,
+      "unit": "g",
+      "grams": 30
+    },
+    {
+      "food": "parsley",
+      "amount": 5,
+      "unit": "g",
+      "grams": 5
+    },
+    {
+      "food": "pita",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 60
+    },
+    {
+      "food": "salt",
+      "amount": 1,
+      "unit": "g",
+      "grams": 1
+    }
+  ],
+  "steps": 4,
+  "allergens": [
+    "eggs",
+    "gluten",
+    "milk"
+  ],
+  "allergensToCheck": [],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 410,
+      "fat": 23.9,
+      "satFat": 6.9,
+      "carbs": 25.3,
+      "sugars": 8.4,
+      "fiber": 5.2,
+      "protein": 23.1,
+      "salt": 1.7
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "feta:sugars"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://downshiftology.com/recipes/menemen/",
+      "https://www.theguardian.com/food/2023/may/24/how-to-cook-the-perfect-menemen-recipe-turkish-eggs-breakfast-peppers-felicity-cloake"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

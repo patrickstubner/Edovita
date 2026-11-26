@@ -1,0 +1,123 @@
+{
+  "format": 1,
+  "id": "trout_potato_salad",
+  "cuisine": "nordic",
+  "meal": "lunch",
+  "minutes": 25,
+  "servings": 2,
+  "tags": [
+    "protein"
+  ],
+  "preferenceTags": [
+    "onion"
+  ],
+  "ingredients": [
+    {
+      "food": "potato",
+      "amount": 400,
+      "unit": "g",
+      "grams": 400
+    },
+    {
+      "food": "trout_smoked",
+      "amount": 200,
+      "unit": "g",
+      "grams": 200
+    },
+    {
+      "food": "greek_yogurt",
+      "amount": 120,
+      "unit": "g",
+      "grams": 120
+    },
+    {
+      "food": "dijon_mustard",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 5
+    },
+    {
+      "food": "cucumber",
+      "amount": 0.3,
+      "unit": "pc",
+      "grams": 90
+    },
+    {
+      "food": "red_onion",
+      "amount": 0.25,
+      "unit": "pc",
+      "grams": 25
+    },
+    {
+      "food": "dill",
+      "amount": 10,
+      "unit": "g",
+      "grams": 10
+    },
+    {
+      "food": "lemon",
+      "amount": 0.5,
+      "unit": "pc",
+      "grams": 20
+    },
+    {
+      "food": "rocket",
+      "amount": 30,
+      "unit": "g",
+      "grams": 30
+    },
+    {
+      "food": "salt",
+      "amount": 2,
+      "unit": "g",
+      "grams": 2
+    },
+    {
+      "food": "black_pepper",
+      "amount": 1,
+      "unit": "pinch",
+      "grams": 0.5
+    }
+  ],
+  "steps": 4,
+  "allergens": [
+    "fish",
+    "milk",
+    "mustard"
+  ],
+  "allergensToCheck": [
+    "sulphites"
+  ],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 394,
+      "fat": 11.1,
+      "satFat": 2.5,
+      "carbs": 35.9,
+      "sugars": 5.3,
+      "fiber": 5.5,
+      "protein": 34.8,
+      "salt": 4.4
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "black_pepper",
+      "dill:sugars"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://www.feastingathome.com/nordic-nicoise-salad/",
+      "https://savorylotus.com/smoked-trout-salad/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

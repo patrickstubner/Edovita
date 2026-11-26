@@ -1,0 +1,131 @@
+{
+  "format": 1,
+  "id": "paneer_tikka_wrap",
+  "cuisine": "indian",
+  "meal": "lunch",
+  "minutes": 25,
+  "servings": 2,
+  "tags": [
+    "vegetarian",
+    "protein"
+  ],
+  "preferenceTags": [
+    "onion"
+  ],
+  "ingredients": [
+    {
+      "food": "paneer",
+      "amount": 180,
+      "unit": "g",
+      "grams": 180
+    },
+    {
+      "food": "greek_yogurt",
+      "amount": 150,
+      "unit": "g",
+      "grams": 150
+    },
+    {
+      "food": "red_bell_pepper",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 150
+    },
+    {
+      "food": "red_onion",
+      "amount": 0.5,
+      "unit": "pc",
+      "grams": 50
+    },
+    {
+      "food": "garam_masala",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 2.5
+    },
+    {
+      "food": "paprika",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 2.5
+    },
+    {
+      "food": "lemon",
+      "amount": 0.5,
+      "unit": "pc",
+      "grams": 20
+    },
+    {
+      "food": "whole_wheat_tortilla",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 80
+    },
+    {
+      "food": "lettuce",
+      "amount": 0.2,
+      "unit": "pc",
+      "grams": 60
+    },
+    {
+      "food": "mint_fresh",
+      "amount": 5,
+      "unit": "g",
+      "grams": 5
+    },
+    {
+      "food": "rapeseed_oil",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 4.5
+    },
+    {
+      "food": "salt",
+      "amount": 1,
+      "unit": "g",
+      "grams": 1
+    }
+  ],
+  "steps": 4,
+  "allergens": [
+    "gluten",
+    "milk"
+  ],
+  "allergensToCheck": [
+    "celery",
+    "mustard"
+  ],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 515,
+      "fat": 29.6,
+      "satFat": 14.7,
+      "carbs": 31.2,
+      "sugars": 11.8,
+      "fiber": 6.6,
+      "protein": 29.3,
+      "salt": 2.9
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "garam_masala"
+    ],
+    "proxies": [
+      "paneer"
+    ],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://www.indianhealthyrecipes.com/paneer-kathi-roll/",
+      "https://www.bbcgoodfood.com/recipes/tandoori-paneer-wraps-green-chutney"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

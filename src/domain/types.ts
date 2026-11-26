@@ -78,6 +78,43 @@ export const RECIPE_TAGS = [
 ] as const;
 export type RecipeTag = (typeof RECIPE_TAGS)[number];
 
+/** Vorlieben-Tags am Rezept getrennt von EU-14-Allergenen und RECIPE_TAGS (E12, Entscheid 25.11.2026). */
+export const PREFERENCE_TAGS = [
+  'cilantro',
+  'mushrooms',
+  'onion',
+  'meat',
+] as const;
+export type PreferenceTag = (typeof PREFERENCE_TAGS)[number];
+
+/** Whitelist aller 23 Küchen des 200-Rezepte-Katalogs (E12). */
+export const CUISINES = [
+  'american',
+  'brazilian',
+  'chinese',
+  'european',
+  'french',
+  'greek',
+  'hawaiian',
+  'indian',
+  'indonesian',
+  'italian',
+  'japanese',
+  'korean',
+  'mediterranean',
+  'mexican',
+  'middle_eastern',
+  'moroccan',
+  'nordic',
+  'peruvian',
+  'portuguese',
+  'spanish',
+  'swiss',
+  'thai',
+  'vietnamese',
+] as const;
+export type Cuisine = (typeof CUISINES)[number];
+
 export const SHOP_STATES = ['open', 'cart', 'home'] as const;
 export type ShopState = (typeof SHOP_STATES)[number];
 
@@ -240,6 +277,8 @@ export interface Recipe {
   minutes: number;
   servings: number;
   tags: string[];
+  /** Ausblendbare Vorlieben-Merkmale (getrennt von EU-14-Allergenen; E12). */
+  preferenceTags?: PreferenceTag[];
   ingredients: RecipeIngredient[];
   steps: number;
   allergens: Allergen[];
@@ -255,6 +294,7 @@ export interface RecipeLocaleText {
 }
 
 export type FoodGlossary = Record<string, string>;
+export type RecipeTitles = Record<string, string>;
 
 export interface ShoppingItem {
   id: string;

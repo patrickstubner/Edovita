@@ -7,7 +7,7 @@ import {
   useState,
   type ReactNode,
 } from 'react';
-import { foodName, getRecipeText } from '../catalog/index.ts';
+import { foodName, getRecipeTitle } from '../catalog/index.ts';
 import {
   isSupportedSecondaryLang,
   type FoodId,
@@ -248,7 +248,7 @@ export function SecondLangProvider({
         const rtlTitle = pseudoRtlRecipeTitle(recipeId, mainTitle);
         return rtlTitle && rtlTitle !== mainTitle ? rtlTitle : null;
       }
-      const localized = getRecipeText(recipeId, effective)?.title;
+      const localized = getRecipeTitle(recipeId, effective);
       return localized && localized !== mainTitle ? localized : null;
     },
     [effective],

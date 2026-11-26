@@ -1,0 +1,102 @@
+{
+  "format": 1,
+  "id": "veggie_omelette",
+  "cuisine": "french",
+  "meal": "breakfast",
+  "minutes": 15,
+  "servings": 1,
+  "tags": [
+    "vegetarian"
+  ],
+  "preferenceTags": [
+    "onion"
+  ],
+  "ingredients": [
+    {
+      "food": "eggs",
+      "amount": 3,
+      "unit": "pc",
+      "grams": 150
+    },
+    {
+      "food": "red_bell_pepper",
+      "amount": 0.5,
+      "unit": "pc",
+      "grams": 75
+    },
+    {
+      "food": "spinach",
+      "amount": 50,
+      "unit": "g",
+      "grams": 50
+    },
+    {
+      "food": "spring_onion",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 15
+    },
+    {
+      "food": "gruyere",
+      "amount": 15,
+      "unit": "g",
+      "grams": 15
+    },
+    {
+      "food": "rapeseed_oil",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 4.5
+    },
+    {
+      "food": "salt",
+      "amount": 1,
+      "unit": "g",
+      "grams": 1
+    },
+    {
+      "food": "black_pepper",
+      "amount": 1,
+      "unit": "pinch",
+      "grams": 0.5
+    }
+  ],
+  "steps": 4,
+  "allergens": [
+    "eggs",
+    "milk"
+  ],
+  "allergensToCheck": [],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 346,
+      "fat": 24.4,
+      "satFat": 7.1,
+      "carbs": 5.5,
+      "sugars": 4.4,
+      "fiber": 2.2,
+      "protein": 24.8,
+      "salt": 1.9
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "black_pepper",
+      "spring_onion"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://bakedbree.com/veggie-omelette-recipe",
+      "https://www.sweetashoney.co/spinach-omelette/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

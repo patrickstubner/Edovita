@@ -1,0 +1,110 @@
+{
+  "format": 1,
+  "id": "hummus_veggie_sticks",
+  "cuisine": "middle_eastern",
+  "meal": "snack",
+  "minutes": 10,
+  "servings": 2,
+  "tags": [
+    "vegan"
+  ],
+  "preferenceTags": [],
+  "ingredients": [
+    {
+      "food": "chickpeas",
+      "amount": 240,
+      "unit": "g",
+      "grams": 240
+    },
+    {
+      "food": "tahini",
+      "amount": 2,
+      "unit": "tbsp",
+      "grams": 30
+    },
+    {
+      "food": "lemon",
+      "amount": 0.5,
+      "unit": "pc",
+      "grams": 20
+    },
+    {
+      "food": "garlic",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 3
+    },
+    {
+      "food": "cumin",
+      "amount": 1,
+      "unit": "pinch",
+      "grams": 0.5
+    },
+    {
+      "food": "olive_oil",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 4.5
+    },
+    {
+      "food": "paprika",
+      "amount": 1,
+      "unit": "pinch",
+      "grams": 0.5
+    },
+    {
+      "food": "carrot",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 160
+    },
+    {
+      "food": "cucumber",
+      "amount": 0.5,
+      "unit": "pc",
+      "grams": 150
+    },
+    {
+      "food": "salt",
+      "amount": 2,
+      "unit": "g",
+      "grams": 2
+    }
+  ],
+  "steps": 3,
+  "allergens": [
+    "sesame"
+  ],
+  "allergensToCheck": [],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 314,
+      "fat": 13.1,
+      "satFat": 1.8,
+      "carbs": 31.4,
+      "sugars": 7.7,
+      "fiber": 14.6,
+      "protein": 12.5,
+      "salt": 1.1
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "cumin"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://www.bbcgoodfood.com/recipes/hummus-veg-sticks",
+      "https://www.veganeasy.org/recipes/homemade-hummus-with-veggie-sticks/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

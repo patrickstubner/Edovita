@@ -1,0 +1,95 @@
+{
+  "format": 1,
+  "id": "tuna_onigiri",
+  "cuisine": "japanese",
+  "meal": "snack",
+  "minutes": 25,
+  "servings": 2,
+  "tags": [
+    "protein"
+  ],
+  "preferenceTags": [],
+  "ingredients": [
+    {
+      "food": "sushi_rice",
+      "amount": 120,
+      "unit": "g",
+      "grams": 120
+    },
+    {
+      "food": "tuna_canned",
+      "amount": 150,
+      "unit": "g",
+      "grams": 150
+    },
+    {
+      "food": "greek_yogurt",
+      "amount": 30,
+      "unit": "g",
+      "grams": 30
+    },
+    {
+      "food": "soy_sauce",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 5
+    },
+    {
+      "food": "nori",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 6
+    },
+    {
+      "food": "sesame_seeds",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 3
+    },
+    {
+      "food": "salt",
+      "amount": 1,
+      "unit": "g",
+      "grams": 1
+    }
+  ],
+  "steps": 4,
+  "allergens": [
+    "fish",
+    "milk",
+    "sesame",
+    "soy"
+  ],
+  "allergensToCheck": [
+    "gluten"
+  ],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 322,
+      "fat": 2.4,
+      "satFat": 0.7,
+      "carbs": 47.9,
+      "sugars": 0.7,
+      "fiber": 1.9,
+      "protein": 26.1,
+      "salt": 1.5
+    },
+    "isMinimum": false,
+    "notIncluded": [],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://sudachirecipes.com/tuna-mayo-onigiri/",
+      "https://www.kikkoman.com/en/cookbook/washoku/onigiri.html"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

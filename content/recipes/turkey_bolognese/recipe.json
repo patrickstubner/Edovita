@@ -1,0 +1,141 @@
+{
+  "format": 1,
+  "id": "turkey_bolognese",
+  "cuisine": "italian",
+  "meal": "dinner",
+  "minutes": 35,
+  "servings": 2,
+  "tags": [
+    "protein"
+  ],
+  "preferenceTags": [
+    "meat",
+    "onion"
+  ],
+  "ingredients": [
+    {
+      "food": "turkey_mince",
+      "amount": 300,
+      "unit": "g",
+      "grams": 300
+    },
+    {
+      "food": "pasta",
+      "amount": 140,
+      "unit": "g",
+      "grams": 140
+    },
+    {
+      "food": "passata",
+      "amount": 400,
+      "unit": "ml",
+      "grams": 424
+    },
+    {
+      "food": "onion",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 100
+    },
+    {
+      "food": "carrot",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 80
+    },
+    {
+      "food": "celery",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 40
+    },
+    {
+      "food": "garlic",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 6
+    },
+    {
+      "food": "tomato_paste",
+      "amount": 1,
+      "unit": "tbsp",
+      "grams": 16
+    },
+    {
+      "food": "olive_oil",
+      "amount": 2,
+      "unit": "tsp",
+      "grams": 9
+    },
+    {
+      "food": "oregano_dried",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 1
+    },
+    {
+      "food": "parmesan",
+      "amount": 20,
+      "unit": "g",
+      "grams": 20
+    },
+    {
+      "food": "basil_fresh",
+      "amount": 5,
+      "unit": "g",
+      "grams": 5
+    },
+    {
+      "food": "salt",
+      "amount": 3,
+      "unit": "g",
+      "grams": 3
+    },
+    {
+      "food": "black_pepper",
+      "amount": 1,
+      "unit": "pinch",
+      "grams": 0.5
+    }
+  ],
+  "steps": 5,
+  "allergens": [
+    "celery",
+    "gluten",
+    "milk"
+  ],
+  "allergensToCheck": [],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 685,
+      "fat": 21.9,
+      "satFat": 6.2,
+      "carbs": 77.1,
+      "sugars": 16.7,
+      "fiber": 10.8,
+      "protein": 44.9,
+      "salt": 2.2
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "black_pepper",
+      "parmesan:carbs",
+      "parmesan:sugars"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://www.bbcgoodfood.com/recipes/low-fat-turkey-bolognese",
+      "https://lexiscleankitchen.com/healthy-turkey-bolognese/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

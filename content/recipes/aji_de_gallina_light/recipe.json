@@ -1,0 +1,142 @@
+{
+  "format": 1,
+  "id": "aji_de_gallina_light",
+  "cuisine": "peruvian",
+  "meal": "dinner",
+  "minutes": 40,
+  "servings": 2,
+  "tags": [
+    "protein"
+  ],
+  "preferenceTags": [
+    "meat",
+    "onion"
+  ],
+  "ingredients": [
+    {
+      "food": "chicken_breast",
+      "amount": 320,
+      "unit": "g",
+      "grams": 320
+    },
+    {
+      "food": "aji_amarillo",
+      "amount": 2,
+      "unit": "tbsp",
+      "grams": 30
+    },
+    {
+      "food": "milk_skimmed",
+      "amount": 200,
+      "unit": "ml",
+      "grams": 208
+    },
+    {
+      "food": "bread",
+      "amount": 30,
+      "unit": "g",
+      "grams": 30
+    },
+    {
+      "food": "walnuts",
+      "amount": 15,
+      "unit": "g",
+      "grams": 15
+    },
+    {
+      "food": "parmesan",
+      "amount": 15,
+      "unit": "g",
+      "grams": 15
+    },
+    {
+      "food": "onion",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 100
+    },
+    {
+      "food": "garlic",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 6
+    },
+    {
+      "food": "turmeric",
+      "amount": 0.25,
+      "unit": "tsp",
+      "grams": 0.8
+    },
+    {
+      "food": "eggs",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 100
+    },
+    {
+      "food": "olives",
+      "amount": 20,
+      "unit": "g",
+      "grams": 20
+    },
+    {
+      "food": "basmati_rice",
+      "amount": 100,
+      "unit": "g",
+      "grams": 100
+    },
+    {
+      "food": "rapeseed_oil",
+      "amount": 2,
+      "unit": "tsp",
+      "grams": 9
+    },
+    {
+      "food": "salt",
+      "amount": 3,
+      "unit": "g",
+      "grams": 3
+    }
+  ],
+  "steps": 5,
+  "allergens": [
+    "eggs",
+    "gluten",
+    "milk",
+    "nuts"
+  ],
+  "allergensToCheck": [],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 652,
+      "fat": 21.2,
+      "satFat": 4.7,
+      "carbs": 55.2,
+      "sugars": 8.0,
+      "fiber": 3.5,
+      "protein": 58.6,
+      "salt": 2.5
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "aji_amarillo",
+      "parmesan:carbs",
+      "parmesan:sugars"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://www.eatperu.com/aji-de-gallina/",
+      "https://www.ourmodernkitchen.com/aji-de-gallina/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

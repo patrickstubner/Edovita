@@ -1,0 +1,104 @@
+{
+  "format": 1,
+  "id": "bresaola_rocket_toast",
+  "cuisine": "italian",
+  "meal": "breakfast",
+  "minutes": 5,
+  "servings": 1,
+  "tags": [
+    "protein"
+  ],
+  "preferenceTags": [
+    "meat"
+  ],
+  "ingredients": [
+    {
+      "food": "bread",
+      "amount": 70,
+      "unit": "g",
+      "grams": 70
+    },
+    {
+      "food": "cream_cheese_light",
+      "amount": 30,
+      "unit": "g",
+      "grams": 30
+    },
+    {
+      "food": "bresaola",
+      "amount": 60,
+      "unit": "g",
+      "grams": 60
+    },
+    {
+      "food": "rocket",
+      "amount": 20,
+      "unit": "g",
+      "grams": 20
+    },
+    {
+      "food": "parmesan",
+      "amount": 10,
+      "unit": "g",
+      "grams": 10
+    },
+    {
+      "food": "lemon",
+      "amount": 0.25,
+      "unit": "pc",
+      "grams": 10
+    },
+    {
+      "food": "olive_oil",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 4.5
+    },
+    {
+      "food": "black_pepper",
+      "amount": 1,
+      "unit": "pinch",
+      "grams": 0.5
+    }
+  ],
+  "steps": 4,
+  "allergens": [
+    "gluten",
+    "milk"
+  ],
+  "allergensToCheck": [],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 407,
+      "fat": 15.2,
+      "satFat": 6.2,
+      "carbs": 33.6,
+      "sugars": 1.6,
+      "fiber": 3.4,
+      "protein": 32.3,
+      "salt": 5.6
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "black_pepper",
+      "bresaola:sugars",
+      "parmesan:carbs",
+      "parmesan:sugars"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://filippoberio.co.uk/blogs/recipes/bresaola-with-rocket-and-parmesan",
+      "https://primoli.it/en/bresaola-rocket-leaves-and-shaved-parmesan-cheese/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

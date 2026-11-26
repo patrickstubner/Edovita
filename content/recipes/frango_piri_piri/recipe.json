@@ -1,0 +1,123 @@
+{
+  "format": 1,
+  "id": "frango_piri_piri",
+  "cuisine": "portuguese",
+  "meal": "dinner",
+  "minutes": 40,
+  "servings": 2,
+  "tags": [
+    "protein"
+  ],
+  "preferenceTags": [
+    "meat",
+    "onion"
+  ],
+  "ingredients": [
+    {
+      "food": "chicken_thigh",
+      "amount": 340,
+      "unit": "g",
+      "grams": 340
+    },
+    {
+      "food": "chili_fresh",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 20
+    },
+    {
+      "food": "garlic",
+      "amount": 3,
+      "unit": "pc",
+      "grams": 9
+    },
+    {
+      "food": "paprika",
+      "amount": 2,
+      "unit": "tsp",
+      "grams": 5
+    },
+    {
+      "food": "lemon",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 40
+    },
+    {
+      "food": "olive_oil",
+      "amount": 1,
+      "unit": "tbsp",
+      "grams": 13.5
+    },
+    {
+      "food": "white_wine_vinegar",
+      "amount": 1,
+      "unit": "tbsp",
+      "grams": 15
+    },
+    {
+      "food": "sweet_potato",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 250
+    },
+    {
+      "food": "red_bell_pepper",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 150
+    },
+    {
+      "food": "red_onion",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 100
+    },
+    {
+      "food": "rocket",
+      "amount": 30,
+      "unit": "g",
+      "grams": 30
+    },
+    {
+      "food": "salt",
+      "amount": 3,
+      "unit": "g",
+      "grams": 3
+    }
+  ],
+  "steps": 4,
+  "allergens": [],
+  "allergensToCheck": [
+    "sulphites"
+  ],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 462,
+      "fat": 18.4,
+      "satFat": 4.2,
+      "carbs": 32.1,
+      "sugars": 13.5,
+      "fiber": 7.6,
+      "protein": 38.3,
+      "salt": 2.0
+    },
+    "isMinimum": false,
+    "notIncluded": [],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://www.nelsonoliveoil.ca/blogs/grilling-and-baking/portuguese-frango-piri-piri",
+      "https://nelsoncarvalheiro.com/portuguese-piri-piri-chicken-recipe/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

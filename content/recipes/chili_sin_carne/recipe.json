@@ -1,0 +1,147 @@
+{
+  "format": 1,
+  "id": "chili_sin_carne",
+  "cuisine": "mexican",
+  "meal": "dinner",
+  "minutes": 40,
+  "servings": 3,
+  "tags": [
+    "vegan",
+    "protein"
+  ],
+  "preferenceTags": [
+    "cilantro",
+    "onion"
+  ],
+  "ingredients": [
+    {
+      "food": "kidney_beans",
+      "amount": 400,
+      "unit": "g",
+      "grams": 400
+    },
+    {
+      "food": "black_beans",
+      "amount": 400,
+      "unit": "g",
+      "grams": 400
+    },
+    {
+      "food": "tofu_firm",
+      "amount": 200,
+      "unit": "g",
+      "grams": 200
+    },
+    {
+      "food": "sweet_potato",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 250
+    },
+    {
+      "food": "canned_tomatoes",
+      "amount": 800,
+      "unit": "g",
+      "grams": 800
+    },
+    {
+      "food": "onion",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 100
+    },
+    {
+      "food": "garlic",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 6
+    },
+    {
+      "food": "red_bell_pepper",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 150
+    },
+    {
+      "food": "cumin",
+      "amount": 2,
+      "unit": "tsp",
+      "grams": 4
+    },
+    {
+      "food": "paprika",
+      "amount": 2,
+      "unit": "tsp",
+      "grams": 5
+    },
+    {
+      "food": "cocoa_powder",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 2.5
+    },
+    {
+      "food": "rapeseed_oil",
+      "amount": 2,
+      "unit": "tsp",
+      "grams": 9
+    },
+    {
+      "food": "lime",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 30
+    },
+    {
+      "food": "coriander_fresh",
+      "amount": 10,
+      "unit": "g",
+      "grams": 10
+    },
+    {
+      "food": "salt",
+      "amount": 4,
+      "unit": "g",
+      "grams": 4
+    }
+  ],
+  "steps": 4,
+  "allergens": [
+    "soy"
+  ],
+  "allergensToCheck": [],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 633,
+      "fat": 11.7,
+      "satFat": 1.7,
+      "carbs": 92.7,
+      "sugars": 24.3,
+      "fiber": 25.8,
+      "protein": 38.0,
+      "salt": 2.2
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "coriander_fresh",
+      "cumin",
+      "lime",
+      "tofu_firm:fiber"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://www.zuckerjagdwurst.com/en/recipes/vegan-chili-sin-carne",
+      "https://biancazapatka.com/en/chili-sin-carne-with-rice-vegan/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

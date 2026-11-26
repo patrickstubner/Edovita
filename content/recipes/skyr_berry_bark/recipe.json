@@ -1,0 +1,81 @@
+{
+  "format": 1,
+  "id": "skyr_berry_bark",
+  "cuisine": "european",
+  "meal": "snack",
+  "minutes": 10,
+  "servings": 3,
+  "tags": [
+    "vegetarian"
+  ],
+  "preferenceTags": [],
+  "ingredients": [
+    {
+      "food": "skyr",
+      "amount": 450,
+      "unit": "g",
+      "grams": 450
+    },
+    {
+      "food": "berries",
+      "amount": 150,
+      "unit": "g",
+      "grams": 150
+    },
+    {
+      "food": "honey",
+      "amount": 1,
+      "unit": "tbsp",
+      "grams": 21
+    },
+    {
+      "food": "almonds",
+      "amount": 20,
+      "unit": "g",
+      "grams": 20
+    },
+    {
+      "food": "vanilla_extract",
+      "amount": 0.5,
+      "unit": "tsp",
+      "grams": 2
+    }
+  ],
+  "steps": 3,
+  "allergens": [
+    "milk",
+    "nuts"
+  ],
+  "allergensToCheck": [],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 178,
+      "fat": 4.0,
+      "satFat": 0.5,
+      "carbs": 15.7,
+      "sugars": 14.4,
+      "fiber": 2.6,
+      "protein": 18.1,
+      "salt": 0.2
+    },
+    "isMinimum": false,
+    "notIncluded": [],
+    "proxies": [
+      "skyr"
+    ],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://www.canada.ca/en/health-canada/services/food-guide/eating-support/kitchen/recipes/yogurt-bark-berries.html",
+      "https://www.tesco.com/recipes/en-GB/recipe/frozen-blueberry-yogurt-bark"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

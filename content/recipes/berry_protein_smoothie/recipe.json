@@ -1,0 +1,82 @@
+{
+  "format": 1,
+  "id": "berry_protein_smoothie",
+  "cuisine": "european",
+  "meal": "breakfast",
+  "minutes": 5,
+  "servings": 1,
+  "tags": [
+    "vegetarian",
+    "protein"
+  ],
+  "preferenceTags": [],
+  "ingredients": [
+    {
+      "food": "berries",
+      "amount": 150,
+      "unit": "g",
+      "grams": 150
+    },
+    {
+      "food": "skyr",
+      "amount": 150,
+      "unit": "g",
+      "grams": 150
+    },
+    {
+      "food": "milk_skimmed",
+      "amount": 150,
+      "unit": "ml",
+      "grams": 156
+    },
+    {
+      "food": "oats",
+      "amount": 20,
+      "unit": "g",
+      "grams": 20
+    },
+    {
+      "food": "banana",
+      "amount": 0.5,
+      "unit": "pc",
+      "grams": 60
+    }
+  ],
+  "steps": 4,
+  "allergens": [
+    "gluten",
+    "milk"
+  ],
+  "allergensToCheck": [],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 338,
+      "fat": 2.8,
+      "satFat": 0.7,
+      "carbs": 47.9,
+      "sugars": 32.0,
+      "fiber": 9.3,
+      "protein": 25.8,
+      "salt": 0.3
+    },
+    "isMinimum": false,
+    "notIncluded": [],
+    "proxies": [
+      "skyr"
+    ],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://realfoodwholelife.com/recipes/berry-protein-smoothie/",
+      "https://www.usdairy.com/recipes/protein-berry-smoothie"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

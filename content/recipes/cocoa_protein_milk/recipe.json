@@ -1,0 +1,75 @@
+{
+  "format": 1,
+  "id": "cocoa_protein_milk",
+  "cuisine": "swiss",
+  "meal": "snack",
+  "minutes": 5,
+  "servings": 1,
+  "tags": [
+    "vegetarian",
+    "protein"
+  ],
+  "preferenceTags": [],
+  "ingredients": [
+    {
+      "food": "milk_skimmed",
+      "amount": 300,
+      "unit": "ml",
+      "grams": 312
+    },
+    {
+      "food": "whey_protein",
+      "amount": 20,
+      "unit": "g",
+      "grams": 20
+    },
+    {
+      "food": "cocoa_powder",
+      "amount": 1,
+      "unit": "tbsp",
+      "grams": 7
+    },
+    {
+      "food": "honey",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 7
+    }
+  ],
+  "steps": 3,
+  "allergens": [
+    "milk"
+  ],
+  "allergensToCheck": [
+    "soy"
+  ],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 219,
+      "fat": 1.5,
+      "satFat": 1.0,
+      "carbs": 22.6,
+      "sugars": 20.0,
+      "fiber": 2.6,
+      "protein": 27.7,
+      "salt": 0.4
+    },
+    "isMinimum": false,
+    "notIncluded": [],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://www.puristnutrition.com/blogs/recipes/chocolate-protein-shake",
+      "https://www.hersheyland.com/recipes/chocolate-protein-shake.html"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

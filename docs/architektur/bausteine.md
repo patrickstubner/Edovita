@@ -4,8 +4,8 @@ Skizzen für die Agents. Namen und Signaturen sind Vorschläge; Schichten gemäs
 
 ## 1. domain
 
-- Typen aus ADR-002 (`Food`, `Recipe`, `RecipeIngredient`, `ShoppingItem`, `ShopState`, `Profile`, `Settings`, `LangCode`, `LangMeta { dir, locale, legalApproved, reviewed }`).
-- zod-Schemas für alles, was von aussen kommt: Inhalte (Build), Export-Bundle, QR-Import.
+- Typen aus ADR-002 (`Food`, `Recipe` inkl. `preferenceTags` aus der 4er-Whitelist `cilantro`/`mushrooms`/`onion`/`meat`, `CUISINES` mit 23 Küchen, `RecipeTitles`, `RecipeIngredient`, `ShoppingItem`, `ShopState`, `Profile`, `Settings`, `LangCode`, `LangMeta { dir, locale, legalApproved, reviewed }`).
+- zod-Schemas (`jitless: true`, `hasForbiddenOwnKey`) für alles, was von aussen kommt: Inhalte (Build, 199 Lebensmittel, 7 Glossare, 200 Rezepte inkl. 7 Titel-Sprachen), Export-Bundle, QR-Import.
 - `parseShopImport(fragment): Result<ImportItem[]>`. Prototyp: `vendor/edo-qr.js parseImport` (Längen 4000/3000, max. 40 Items, ID `^[\w.-]+$`, Name ohne `<>&"'`, `st` nur open/cart/home).
 
 ## 2. Dienste
@@ -14,8 +14,8 @@ Skizzen für die Agents. Namen und Signaturen sind Vorschläge; Schichten gemäs
 |---|---|---|
 | `nutrition/scale.ts` | `scaleIngredients(recipe, servings): ScaledIngredient[]` (Rundung je Einheit: g auf 5, ml auf 10, pc auf 0,5, tbsp/tsp auf 0,5) | neu |
 | `nutrition/sum.ts` | `nutrientsPerServing(recipe, foods): Nutrients` | `RECIPES.kcal/p` (geschätzt) → berechnet |
-| `catalog/recipes.ts` | `listRecipes(filter)`, `getRecipe(id)`, `rankRecipes(list, ratings, saved)` inkl. Vielfalt | `rscore`, `rlist` (nie zweimal dieselbe Küche hintereinander) |
-| `catalog/foods.ts` | `getFood(id)`, `foodName(id, lang)`, `isAllowed(food, prefs)` | `rget`, `allowed`, `excluded` |
+| `catalog/recipes.ts` | `listRecipes(filter)` (inkl. `excludePreferences` für `preferenceTags`), `getRecipe(id)`, `getRecipeText(id, lang)`, `getRecipeTitle(id, lang)` (alle 7 Sprachen ohne EN-Fallback), `rankRecipes(list, ratings, saved)` inkl. Vielfalt | `rscore`, `rlist` (nie zweimal dieselbe Küche hintereinander) |
+| `catalog/foods.ts` | `getFood(id)`, `foodName(id, lang)` (7 Glossare), `isAllowed(food, prefs)` | `rget`, `allowed`, `excluded` |
 | `shopping/merge.ts` | `addRecipe(list, recipe, servings)`, `removeRecipe(list, recipeId)`, `setState(list, id, state)`, `groupItems(list)` | `SHOP`, `shopRow`, `renderShop`, `applyShopImport` |
 | `i18n/` | `initI18n(registry)`, `detectUiLang(navigator.languages)`, `approved(code)`, `fmtNumber/fmtAmount` | `i18n.js detect/approved/num` |
 | `health/` | `kcalFloor`, `minWeight(goal)`, `loseBlocked`, `minTargetWeight`, `sustainableRate`, `goalKcal`, `kcalSafe(bmr)`, `checkBirthDate` | gleichnamige Funktionen in `app.js` (Z. 103–126, 432, 541–547) |

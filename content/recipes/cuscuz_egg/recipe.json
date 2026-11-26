@@ -1,0 +1,88 @@
+{
+  "format": 1,
+  "id": "cuscuz_egg",
+  "cuisine": "brazilian",
+  "meal": "breakfast",
+  "minutes": 15,
+  "servings": 2,
+  "tags": [
+    "vegetarian"
+  ],
+  "preferenceTags": [],
+  "ingredients": [
+    {
+      "food": "flocao",
+      "amount": 100,
+      "unit": "g",
+      "grams": 100
+    },
+    {
+      "food": "eggs",
+      "amount": 4,
+      "unit": "pc",
+      "grams": 200
+    },
+    {
+      "food": "queijo_minas",
+      "amount": 60,
+      "unit": "g",
+      "grams": 60
+    },
+    {
+      "food": "butter",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 5
+    },
+    {
+      "food": "salt",
+      "amount": 2,
+      "unit": "g",
+      "grams": 2
+    },
+    {
+      "food": "tomato",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 120
+    }
+  ],
+  "steps": 4,
+  "allergens": [
+    "eggs",
+    "milk"
+  ],
+  "allergensToCheck": [],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 436,
+      "fat": 19.7,
+      "satFat": 7.8,
+      "carbs": 40.1,
+      "sugars": 3.7,
+      "fiber": 3.2,
+      "protein": 23.0,
+      "salt": 1.9
+    },
+    "isMinimum": false,
+    "notIncluded": [],
+    "proxies": [
+      "flocao",
+      "queijo_minas"
+    ],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://www.saborbrasil.it/en/cuscuz-nordestino-brazilian-couscous-from-the-northeast-region/",
+      "https://mybrazil.co.uk/recipes/cuscuz-nordestino"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

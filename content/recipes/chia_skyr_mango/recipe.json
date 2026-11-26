@@ -1,0 +1,81 @@
+{
+  "format": 1,
+  "id": "chia_skyr_mango",
+  "cuisine": "european",
+  "meal": "breakfast",
+  "minutes": 5,
+  "servings": 1,
+  "tags": [
+    "vegetarian",
+    "protein"
+  ],
+  "preferenceTags": [],
+  "ingredients": [
+    {
+      "food": "chia_seeds",
+      "amount": 2,
+      "unit": "tbsp",
+      "grams": 24
+    },
+    {
+      "food": "milk_skimmed",
+      "amount": 100,
+      "unit": "ml",
+      "grams": 104
+    },
+    {
+      "food": "skyr",
+      "amount": 200,
+      "unit": "g",
+      "grams": 200
+    },
+    {
+      "food": "mango",
+      "amount": 0.5,
+      "unit": "pc",
+      "grams": 100
+    },
+    {
+      "food": "vanilla_extract",
+      "amount": 0.5,
+      "unit": "tsp",
+      "grams": 2
+    }
+  ],
+  "steps": 4,
+  "allergens": [
+    "milk"
+  ],
+  "allergensToCheck": [],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 346,
+      "fat": 9.3,
+      "satFat": 1.1,
+      "carbs": 28.3,
+      "sugars": 25.5,
+      "fiber": 11.4,
+      "protein": 30.4,
+      "salt": 0.3
+    },
+    "isMinimum": false,
+    "notIncluded": [],
+    "proxies": [
+      "skyr"
+    ],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://www.threelittlechickpeas.com/mango-chia-pudding-with-yogurt/",
+      "https://www.jmbliving.com/blogs/blog/mango-yogurt-chia-seed-pudding"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

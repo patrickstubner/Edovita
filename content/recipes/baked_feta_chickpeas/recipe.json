@@ -1,0 +1,120 @@
+{
+  "format": 1,
+  "id": "baked_feta_chickpeas",
+  "cuisine": "greek",
+  "meal": "dinner",
+  "minutes": 30,
+  "servings": 2,
+  "tags": [
+    "vegetarian",
+    "protein"
+  ],
+  "preferenceTags": [
+    "onion"
+  ],
+  "ingredients": [
+    {
+      "food": "feta",
+      "amount": 150,
+      "unit": "g",
+      "grams": 150
+    },
+    {
+      "food": "chickpeas",
+      "amount": 400,
+      "unit": "g",
+      "grams": 400
+    },
+    {
+      "food": "cherry_tomatoes",
+      "amount": 300,
+      "unit": "g",
+      "grams": 300
+    },
+    {
+      "food": "red_onion",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 100
+    },
+    {
+      "food": "garlic",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 6
+    },
+    {
+      "food": "olive_oil",
+      "amount": 1,
+      "unit": "tbsp",
+      "grams": 13.5
+    },
+    {
+      "food": "oregano_dried",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 1
+    },
+    {
+      "food": "chili_flakes",
+      "amount": 1,
+      "unit": "pinch",
+      "grams": 0.3
+    },
+    {
+      "food": "spinach",
+      "amount": 100,
+      "unit": "g",
+      "grams": 100
+    },
+    {
+      "food": "pita",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 60
+    },
+    {
+      "food": "salt",
+      "amount": 1,
+      "unit": "g",
+      "grams": 1
+    }
+  ],
+  "steps": 4,
+  "allergens": [
+    "gluten",
+    "milk"
+  ],
+  "allergensToCheck": [],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 681,
+      "fat": 30.6,
+      "satFat": 14.4,
+      "carbs": 60.6,
+      "sugars": 10.0,
+      "fiber": 22.8,
+      "protein": 32.1,
+      "salt": 2.6
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "feta:sugars"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://smittenkitchen.com/2021/02/baked-feta-with-tomatoes-and-chickpeas/",
+      "https://www.feastingathome.com/baked-feta-with-chickpeas/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

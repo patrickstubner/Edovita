@@ -9,17 +9,21 @@ import {
 } from './foods.ts';
 
 describe('catalog/foods', () => {
-  it('lädt alle 55 Lebensmittel und Quellen-Metadaten (CH-NWD 7.1)', () => {
-    expect(listFoods().length).toBe(55);
+  it('lädt alle 199 Lebensmittel, 7 Glossare und Quellen-Metadaten (CH-NWD 7.1 + USDA)', () => {
+    expect(listFoods().length).toBe(199);
     expect(getCatalogSource().name).toContain('Schweizer Nährwertdatenbank');
-    expect(getGlossaryLangs()).toEqual(['de', 'en', 'ja', 'pt']);
+    expect(getGlossaryLangs()).toEqual(['de', 'en', 'es', 'fr', 'it', 'ja', 'pt']);
   });
 
-  it('liefert Lebensmittelnamen in DE, EN, PT und JA ohne englischen Ersatz bei unbekannter Sprache', () => {
+  it('liefert Lebensmittelnamen in allen 7 Sprachen ohne englischen Ersatz bei unbekannter Sprache', () => {
     expect(foodName('broccoli', 'de')).toBe('Broccoli');
     expect(foodName('broccoli', 'en')).toBe('broccoli');
+    expect(foodName('broccoli', 'fr')).toBe('brocoli');
+    expect(foodName('broccoli', 'it')).toBe('broccoli');
+    expect(foodName('broccoli', 'es')).toBe('brócoli');
     expect(foodName('broccoli', 'pt')).toBe('brócolis');
     expect(foodName('broccoli', 'ja')).toBe('ブロッコリー');
+    expect(foodName('skyr', 'fr')).toBe('skyr nature');
     // ADR-003: fehlende Sprache oder fehlende ID -> null, kein EN-Fallback
     expect(foodName('broccoli', 'ar')).toBeNull();
     expect(foodName('unbekannt', 'de')).toBeNull();

@@ -1,0 +1,144 @@
+{
+  "format": 1,
+  "id": "turkey_meatballs",
+  "cuisine": "italian",
+  "meal": "dinner",
+  "minutes": 40,
+  "servings": 2,
+  "tags": [
+    "protein"
+  ],
+  "preferenceTags": [
+    "meat",
+    "onion"
+  ],
+  "ingredients": [
+    {
+      "food": "turkey_mince",
+      "amount": 320,
+      "unit": "g",
+      "grams": 320
+    },
+    {
+      "food": "eggs",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 50
+    },
+    {
+      "food": "parmesan",
+      "amount": 20,
+      "unit": "g",
+      "grams": 20
+    },
+    {
+      "food": "oats",
+      "amount": 20,
+      "unit": "g",
+      "grams": 20
+    },
+    {
+      "food": "garlic",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 6
+    },
+    {
+      "food": "parsley",
+      "amount": 10,
+      "unit": "g",
+      "grams": 10
+    },
+    {
+      "food": "passata",
+      "amount": 500,
+      "unit": "ml",
+      "grams": 530
+    },
+    {
+      "food": "onion",
+      "amount": 0.5,
+      "unit": "pc",
+      "grams": 50
+    },
+    {
+      "food": "basil_fresh",
+      "amount": 5,
+      "unit": "g",
+      "grams": 5
+    },
+    {
+      "food": "olive_oil",
+      "amount": 2,
+      "unit": "tsp",
+      "grams": 9
+    },
+    {
+      "food": "polenta",
+      "amount": 90,
+      "unit": "g",
+      "grams": 90
+    },
+    {
+      "food": "vegetable_broth",
+      "amount": 400,
+      "unit": "ml",
+      "grams": 404
+    },
+    {
+      "food": "salt",
+      "amount": 3,
+      "unit": "g",
+      "grams": 3
+    },
+    {
+      "food": "black_pepper",
+      "amount": 1,
+      "unit": "pinch",
+      "grams": 0.5
+    }
+  ],
+  "steps": 5,
+  "allergens": [
+    "eggs",
+    "gluten",
+    "milk"
+  ],
+  "allergensToCheck": [
+    "celery"
+  ],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 681,
+      "fat": 26.1,
+      "satFat": 7.2,
+      "carbs": 66.5,
+      "sugars": 15.4,
+      "fiber": 9.3,
+      "protein": 47.0,
+      "salt": 4.0
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "black_pepper",
+      "parmesan:carbs",
+      "parmesan:sugars",
+      "vegetable_broth:fiber"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://www.cookincanuck.com/italian-turkey-meatballs-in-tomato-sauce-recipe/",
+      "https://www.wellplated.com/baked-turkey-meatballs/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

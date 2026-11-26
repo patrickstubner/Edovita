@@ -17,6 +17,7 @@ export {
 export {
   getRecipe,
   getRecipeText,
+  getRecipeTitle,
   isRecipeAllowed,
   listRecipes,
   rankRecipes,

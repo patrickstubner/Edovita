@@ -1,0 +1,87 @@
+{
+  "format": 1,
+  "id": "pb_banana_soy_oats",
+  "cuisine": "american",
+  "meal": "breakfast",
+  "minutes": 5,
+  "servings": 1,
+  "tags": [
+    "vegan",
+    "protein"
+  ],
+  "preferenceTags": [],
+  "ingredients": [
+    {
+      "food": "oats",
+      "amount": 50,
+      "unit": "g",
+      "grams": 50
+    },
+    {
+      "food": "soy_milk",
+      "amount": 200,
+      "unit": "ml",
+      "grams": 206
+    },
+    {
+      "food": "soy_yogurt",
+      "amount": 150,
+      "unit": "g",
+      "grams": 150
+    },
+    {
+      "food": "peanut_butter",
+      "amount": 1,
+      "unit": "tbsp",
+      "grams": 16
+    },
+    {
+      "food": "banana",
+      "amount": 0.5,
+      "unit": "pc",
+      "grams": 60
+    },
+    {
+      "food": "chia_seeds",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 4
+    }
+  ],
+  "steps": 4,
+  "allergens": [
+    "gluten",
+    "peanuts",
+    "soy"
+  ],
+  "allergensToCheck": [],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 512,
+      "fat": 20.7,
+      "satFat": 3.6,
+      "carbs": 49.9,
+      "sugars": 14.9,
+      "fiber": 12.2,
+      "protein": 26.0,
+      "salt": 0.5
+    },
+    "isMinimum": false,
+    "notIncluded": [],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://ohsheglows.com/early-morning-peanut-butter-banana-oatmeal/",
+      "https://cadryskitchen.com/peanut-butter-banana-oatmeal/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

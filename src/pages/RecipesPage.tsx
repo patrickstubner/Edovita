@@ -8,7 +8,12 @@ import {
   Toast,
   type RecipePaletteTone,
 } from '../components/index.ts';
-import type { Meal, RecipeId } from '../domain/index.ts';
+import {
+  PREFERENCE_TAGS,
+  type Meal,
+  type PreferenceTag,
+  type RecipeId,
+} from '../domain/index.ts';
 import {
   useI18n,
   usePlanShopping,
@@ -17,6 +22,7 @@ import {
 } from '../hooks/index.ts';
 import {
   MEAL_LABEL_KEYS,
+  PREFERENCE_TAG_LABEL_KEYS,
   getCuisineLabelKey,
   type UiKey,
 } from '../i18n/index.ts';
@@ -63,8 +69,8 @@ function toneForRecipe(id: RecipeId, index: number): RecipePaletteTone {
 
 /**
  * Rezeptliste (#/rezepte) im Prototyp-Stil:
- * Mahlzeit-Filter (einer), Eigenschaften-Filter (mehrere), Vielfalt-Ranking (`rankRecipes`),
- * Top-Karten-Knopf «Zur Einkaufsliste hinzufügen» (E11 / Entscheid 25.11.),
+ * Mahlzeit-Filter (einer), Eigenschaften-Filter (mehrere), Vorlieben-Ausschluss (E12),
+ * Vielfalt-Ranking (`rankRecipes`), Top-Karten-Knopf «Zur Einkaufsliste hinzufügen» (E11 / Entscheid 25.11.),
  * Sterne und Merken persistent über `RatingsRepository`.
  */
 export function RecipesPage() {
@@ -77,11 +83,26 @@ export function RecipesPage() {
   const [fast, setFast] = useState<boolean>(false);
   const [protein, setProtein] = useState<boolean>(false);
   const [savedOnly, setSavedOnly] = useState<boolean>(false);
+  const [excludedPrefs, setExcludedPrefs] = useState<readonly PreferenceTag[]>(
+    [],
+  );
   const [toast, setToast] = useState<RecipesToastState | null>(null);
   const toastTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const navTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const items = useRecipes({ meal, fast, protein, savedOnly });
+  const toggleExcludedPref = useCallback((pref: PreferenceTag) => {
+    setExcludedPrefs((prev) =>
+      prev.includes(pref) ? prev.filter((item) => item !== pref) : [...prev, pref],
+    );
+  }, []);
+
+  const items = useRecipes({
+    meal,
+    fast,
+    protein,
+    savedOnly,
+    excludePreferences: excludedPrefs,
+  });
 
   const showToast = useCallback(
     (next: RecipesToastState, durationMs = 2600) => {
@@ -282,6 +303,31 @@ export function RecipesPage() {
             >
               {t('rezepte.gemerkt')}
             </button>
+          </div>
+        </div>
+
+        <div>
+          <p className="edo-grph">{t('pref.g.dislike')}</p>
+          <div
+            className="edo-filters"
+            role="group"
+            aria-label={t('pref.g.dislike')}
+          >
+            {PREFERENCE_TAGS.map((pref) => {
+              const active = excludedPrefs.includes(pref);
+              return (
+                <button
+                  key={pref}
+                  type="button"
+                  className={active ? 'edo-fchip edo-fchip-on' : 'edo-fchip'}
+                  aria-pressed={active}
+                  data-rpref={pref}
+                  onClick={() => toggleExcludedPref(pref)}
+                >
+                  {t(PREFERENCE_TAG_LABEL_KEYS[pref])}
+                </button>
+              );
+            })}
           </div>
         </div>
 

@@ -93,7 +93,7 @@ describe('Speicher: Neuladen, Coercion, Export/Import/Wipe und Migrationen (E3)'
       key: 'current',
       value: {
         uiLang: 'fr', // nicht legalApproved -> Fallback en
-        secondLang: 'fr', // nicht in registry.secondary -> null
+        secondLang: 'vi', // nicht in registry.secondary -> null
         theme: 'invalid-theme',
         sound: 'nein',
         hymn: 'H99',
@@ -138,7 +138,7 @@ describe('Speicher: Neuladen, Coercion, Export/Import/Wipe und Migrationen (E3)'
     expect(
       settingsSchema.safeParse({
         uiLang: 'de',
-        secondLang: 'fr',
+        secondLang: 'vi',
         theme: 'system',
         sound: true,
         hymn: 'H1',
@@ -268,7 +268,7 @@ describe('Speicher: Neuladen, Coercion, Export/Import/Wipe und Migrationen (E3)'
         data: {
           settings: {
             uiLang: 'de',
-            secondLang: 'fr',
+            secondLang: 'vi',
             theme: 'dark',
             sound: false,
             hymn: 'H1',

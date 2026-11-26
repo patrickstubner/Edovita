@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { getRecipeText, listRecipes, rankRecipes } from '../catalog/index.ts';
-import type { Meal, Recipe } from '../domain/index.ts';
+import type { Meal, PreferenceTag, Recipe } from '../domain/index.ts';
 import { useI18n } from './useI18n.ts';
 import { useRatings } from './useRatings.ts';
 
@@ -9,6 +9,7 @@ export interface RecipesFilterState {
   readonly fast: boolean;
   readonly protein: boolean;
   readonly savedOnly: boolean;
+  readonly excludePreferences?: readonly PreferenceTag[];
 }
 
 export interface RankedRecipeItem {
@@ -21,7 +22,7 @@ export interface RankedRecipeItem {
 
 /**
  * Filtert und sortiert die Rezeptliste mit Vielfalt-Ranking (`rankRecipes`)
- * anhand von Mahlzeit, Eigenschaften, Bewertungen und Merkliste.
+ * anhand von Mahlzeit, Eigenschaften, Vorlieben-Ausschluss, Bewertungen und Merkliste.
  * Kein stiller Fallback auf Englisch (F2): bei fehlender Übersetzung wird
  * `missingText: true` markiert und die Rezept-ID statt englischem Text gezeigt.
  */
@@ -37,6 +38,7 @@ export function useRecipes(filter: RecipesFilterState): readonly RankedRecipeIte
       protein: filter.protein,
       savedOnly: filter.savedOnly,
       savedIds: savedSet,
+      excludePreferences: filter.excludePreferences,
     });
     const ranked = rankRecipes(filtered, ratings, savedSet);
 
@@ -51,6 +53,7 @@ export function useRecipes(filter: RecipesFilterState): readonly RankedRecipeIte
       };
     });
   }, [
+    filter.excludePreferences,
     filter.fast,
     filter.meal,
     filter.protein,

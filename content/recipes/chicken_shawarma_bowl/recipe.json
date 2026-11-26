@@ -1,0 +1,138 @@
+{
+  "format": 1,
+  "id": "chicken_shawarma_bowl",
+  "cuisine": "middle_eastern",
+  "meal": "lunch",
+  "minutes": 30,
+  "servings": 2,
+  "tags": [
+    "protein"
+  ],
+  "preferenceTags": [
+    "meat",
+    "onion"
+  ],
+  "ingredients": [
+    {
+      "food": "chicken_thigh",
+      "amount": 300,
+      "unit": "g",
+      "grams": 300
+    },
+    {
+      "food": "bulgur",
+      "amount": 100,
+      "unit": "g",
+      "grams": 100
+    },
+    {
+      "food": "greek_yogurt",
+      "amount": 120,
+      "unit": "g",
+      "grams": 120
+    },
+    {
+      "food": "cucumber",
+      "amount": 0.5,
+      "unit": "pc",
+      "grams": 150
+    },
+    {
+      "food": "tomato",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 120
+    },
+    {
+      "food": "red_onion",
+      "amount": 0.25,
+      "unit": "pc",
+      "grams": 25
+    },
+    {
+      "food": "lemon",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 40
+    },
+    {
+      "food": "garlic",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 6
+    },
+    {
+      "food": "cumin",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 2
+    },
+    {
+      "food": "paprika",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 2.5
+    },
+    {
+      "food": "cinnamon_ground",
+      "amount": 1,
+      "unit": "pinch",
+      "grams": 0.5
+    },
+    {
+      "food": "olive_oil",
+      "amount": 1,
+      "unit": "tbsp",
+      "grams": 13.5
+    },
+    {
+      "food": "parsley",
+      "amount": 10,
+      "unit": "g",
+      "grams": 10
+    },
+    {
+      "food": "salt",
+      "amount": 3,
+      "unit": "g",
+      "grams": 3
+    }
+  ],
+  "steps": 5,
+  "allergens": [
+    "gluten",
+    "milk"
+  ],
+  "allergensToCheck": [],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 521,
+      "fat": 18.4,
+      "satFat": 4.6,
+      "carbs": 46.4,
+      "sugars": 7.6,
+      "fiber": 8.9,
+      "protein": 43.6,
+      "salt": 1.9
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "cumin"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://simplehomeedit.com/recipe/chicken-shawarma-with-garlic-yoghurt-sauce/",
+      "https://cookingwithcurls.com/2025/04/10/chicken-shawarma-bowls/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

@@ -1,138 +1,141 @@
 {
- "format": 1,
- "id": "lentil_curry",
- "image": "lentil_curry",
- "cuisine": "indian",
- "meal": "dinner",
- "minutes": 35,
- "servings": 2,
- "tags": [
-  "vegan"
- ],
- "ingredients": [
-  {
-   "food": "red_lentils",
-   "amount": 150,
-   "unit": "g",
-   "grams": 150
+  "format": 1,
+  "id": "lentil_curry",
+  "image": "lentil_curry",
+  "cuisine": "indian",
+  "meal": "dinner",
+  "minutes": 35,
+  "servings": 2,
+  "tags": [
+    "vegan"
+  ],
+  "preferenceTags": [
+    "onion"
+  ],
+  "ingredients": [
+    {
+      "food": "red_lentils",
+      "amount": 150,
+      "unit": "g",
+      "grams": 150
+    },
+    {
+      "food": "onion",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 100,
+      "noteKey": "lentil_curry.ing.onion"
+    },
+    {
+      "food": "garlic",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 6,
+      "noteKey": "lentil_curry.ing.garlic"
+    },
+    {
+      "food": "ginger",
+      "amount": 15,
+      "unit": "g",
+      "grams": 15
+    },
+    {
+      "food": "rapeseed_oil",
+      "amount": 10,
+      "unit": "g",
+      "grams": 10,
+      "noteKey": "lentil_curry.ing.rapeseed_oil"
+    },
+    {
+      "food": "curry_powder",
+      "amount": 2,
+      "unit": "tsp",
+      "grams": 6,
+      "noteKey": "lentil_curry.ing.curry_powder"
+    },
+    {
+      "food": "cumin",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 2
+    },
+    {
+      "food": "canned_tomatoes",
+      "amount": 200,
+      "unit": "g",
+      "grams": 200
+    },
+    {
+      "food": "coconut_milk",
+      "amount": 200,
+      "unit": "ml",
+      "grams": 204
+    },
+    {
+      "food": "vegetable_broth",
+      "amount": 300,
+      "unit": "ml",
+      "grams": 303
+    },
+    {
+      "food": "spinach",
+      "amount": 150,
+      "unit": "g",
+      "grams": 150
+    },
+    {
+      "food": "salt",
+      "amount": 3,
+      "unit": "g",
+      "grams": 3
+    },
+    {
+      "food": "lime",
+      "amount": 0.5,
+      "unit": "pc",
+      "grams": 15,
+      "noteKey": "lentil_curry.ing.lime"
+    }
+  ],
+  "steps": 4,
+  "allergens": [],
+  "allergensToCheck": [
+    "celery",
+    "mustard"
+  ],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 582,
+      "fat": 29.4,
+      "satFat": 20.2,
+      "carbs": 43.8,
+      "sugars": 9.6,
+      "fiber": 17.3,
+      "protein": 27,
+      "salt": 3
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "cumin",
+      "curry_powder",
+      "lime",
+      "vegetable_broth:fiber"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1, pro 100 g essbarer Anteil, roh; Garverluste nicht berücksichtigt"
   },
-  {
-   "food": "onion",
-   "amount": 1,
-   "unit": "pc",
-   "grams": 100,
-   "noteKey": "lentil_curry.ing.onion"
-  },
-  {
-   "food": "garlic",
-   "amount": 2,
-   "unit": "pc",
-   "grams": 6,
-   "noteKey": "lentil_curry.ing.garlic"
-  },
-  {
-   "food": "ginger",
-   "amount": 15,
-   "unit": "g",
-   "grams": 15
-  },
-  {
-   "food": "rapeseed_oil",
-   "amount": 10,
-   "unit": "g",
-   "grams": 10,
-   "noteKey": "lentil_curry.ing.rapeseed_oil"
-  },
-  {
-   "food": "curry_powder",
-   "amount": 2,
-   "unit": "tsp",
-   "grams": 6,
-   "noteKey": "lentil_curry.ing.curry_powder"
-  },
-  {
-   "food": "cumin",
-   "amount": 1,
-   "unit": "tsp",
-   "grams": 2
-  },
-  {
-   "food": "canned_tomatoes",
-   "amount": 200,
-   "unit": "g",
-   "grams": 200
-  },
-  {
-   "food": "coconut_milk",
-   "amount": 200,
-   "unit": "ml",
-   "grams": 204
-  },
-  {
-   "food": "vegetable_broth",
-   "amount": 300,
-   "unit": "ml",
-   "grams": 303
-  },
-  {
-   "food": "spinach",
-   "amount": 150,
-   "unit": "g",
-   "grams": 150
-  },
-  {
-   "food": "salt",
-   "amount": 3,
-   "unit": "g",
-   "grams": 3
-  },
-  {
-   "food": "lime",
-   "amount": 0.5,
-   "unit": "pc",
-   "grams": 15,
-   "noteKey": "lentil_curry.ing.lime"
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-15",
+    "by": "Master Bot (Abgleich von Zutaten und Mengenverhältnissen, keine Texte übernommen)",
+    "sources": [
+      "https://www.abelandcole.co.uk/recipes/red-lentil-spinach--coconut-dal",
+      "https://hellodollop.com/recipes/red-lentil-curry",
+      "https://www.emmaslittlekitchen.com/lentil-spinach-coconut-curry/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
   }
- ],
- "steps": 4,
- "allergens": [],
- "allergensToCheck": [
-  "celery",
-  "mustard"
- ],
- "nutritionPerServing": {
-  "values": {
-   "kcal": 582,
-   "fat": 29.4,
-   "satFat": 20.2,
-   "carbs": 43.8,
-   "sugars": 9.6,
-   "fiber": 17.3,
-   "protein": 27,
-   "salt": 3
-  },
-  "isMinimum": true,
-  "notIncluded": [
-   "cumin",
-   "curry_powder",
-   "lime",
-   "vegetable_broth:fiber"
-  ],
-  "proxies": [],
-  "basis": "CH-NWD 7.1, pro 100 g essbarer Anteil, roh; Garverluste nicht berücksichtigt"
- },
- "review": {
-  "status": "zu_pruefen",
-  "checkedAt": "2026-11-15",
-  "by": "Master Bot (Abgleich von Zutaten und Mengenverhältnissen, keine Texte übernommen)",
-  "sources": [
-   "https://www.abelandcole.co.uk/recipes/red-lentil-spinach--coconut-dal",
-   "https://hellodollop.com/recipes/red-lentil-curry",
-   "https://www.emmaslittlekitchen.com/lentil-spinach-coconut-curry/"
-  ],
-  "open": [
-   "Probekochen durch einen Menschen",
-   "Nährwerte gegenlesen"
-  ]
- }
 }

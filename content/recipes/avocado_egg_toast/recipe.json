@@ -1,0 +1,93 @@
+{
+  "format": 1,
+  "id": "avocado_egg_toast",
+  "cuisine": "american",
+  "meal": "breakfast",
+  "minutes": 10,
+  "servings": 1,
+  "tags": [
+    "vegetarian",
+    "protein"
+  ],
+  "preferenceTags": [],
+  "ingredients": [
+    {
+      "food": "bread",
+      "amount": 70,
+      "unit": "g",
+      "grams": 70
+    },
+    {
+      "food": "avocado",
+      "amount": 0.5,
+      "unit": "pc",
+      "grams": 70
+    },
+    {
+      "food": "eggs",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 100
+    },
+    {
+      "food": "cottage_cheese",
+      "amount": 60,
+      "unit": "g",
+      "grams": 60
+    },
+    {
+      "food": "lemon",
+      "amount": 0.25,
+      "unit": "pc",
+      "grams": 10
+    },
+    {
+      "food": "chili_flakes",
+      "amount": 1,
+      "unit": "pinch",
+      "grams": 0.3
+    },
+    {
+      "food": "salt",
+      "amount": 1,
+      "unit": "g",
+      "grams": 1
+    }
+  ],
+  "steps": 4,
+  "allergens": [
+    "eggs",
+    "gluten",
+    "milk"
+  ],
+  "allergensToCheck": [],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 478,
+      "fat": 24.0,
+      "satFat": 6.3,
+      "carbs": 34.0,
+      "sugars": 3.0,
+      "fiber": 7.0,
+      "protein": 27.9,
+      "salt": 3.0
+    },
+    "isMinimum": false,
+    "notIncluded": [],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://www.bbcgoodfood.com/recipes/poached-eggs-smashed-avocado-tomatoes",
+      "https://www.gordonramsayrestaurants.com/recipes/smashed-avocado-and-poached-eggs-on-toast/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

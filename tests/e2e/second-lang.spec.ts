@@ -102,14 +102,17 @@ test.describe('E6 Journeys J4 & J5: Zweitsprache in Kopfzeile, zweizeilige Einka
     await expect(vegHead.locator('bdi')).toHaveText('Frutas e verduras');
     await expect(page.getByTestId('shop-have-broccoli__g').locator('bdi')).toHaveCount(0);
 
-    // Herkunfts-Sheet zweisprachig in PT (ohne EN-Ersatz beim fehlenden PT-Rezepttitel)
+    // Herkunfts-Sheet zweisprachig in PT (E12: Rezepttitel in allen 7 Sprachen -> PT statt EN-Ersatz)
     await page.getByTestId('shop-src-broccoli__g').click();
     const srcSheet = page.getByTestId('shop-src-sheet');
     await expect(srcSheet.locator('#edo-shop-src-title bdi')).toHaveText('brócolis');
     await expect(srcSheet.locator('.edo-shop-src-name')).toContainText(
       'Ofenlachs mit Broccoli und Kartoffeln',
     );
-    await expect(srcSheet.locator('.edo-shop-src-name bdi')).toHaveCount(0);
+    const srcRecipeBdi = srcSheet.locator('.edo-shop-src-name bdi');
+    await expect(srcRecipeBdi).toHaveCount(1);
+    await expect(srcRecipeBdi).toHaveAttribute('lang', 'pt-BR');
+    await expect(srcSheet).not.toContainText('Oven-baked salmon');
     await expect(page.getByTestId('shop-src-sum').locator('bdi')).toHaveText(
       'Total: 400 g',
     );

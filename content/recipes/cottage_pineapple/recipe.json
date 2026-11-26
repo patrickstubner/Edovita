@@ -1,0 +1,67 @@
+{
+  "format": 1,
+  "id": "cottage_pineapple",
+  "cuisine": "european",
+  "meal": "snack",
+  "minutes": 5,
+  "servings": 1,
+  "tags": [
+    "vegetarian",
+    "protein"
+  ],
+  "preferenceTags": [],
+  "ingredients": [
+    {
+      "food": "cottage_cheese",
+      "amount": 200,
+      "unit": "g",
+      "grams": 200
+    },
+    {
+      "food": "pineapple",
+      "amount": 80,
+      "unit": "g",
+      "grams": 80
+    },
+    {
+      "food": "pumpkin_seeds",
+      "amount": 10,
+      "unit": "g",
+      "grams": 10
+    }
+  ],
+  "steps": 3,
+  "allergens": [
+    "milk"
+  ],
+  "allergensToCheck": [],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 303,
+      "fat": 14.0,
+      "satFat": 6.3,
+      "carbs": 14.6,
+      "sugars": 12.9,
+      "fiber": 1.6,
+      "protein": 28.8,
+      "salt": 1.6
+    },
+    "isMinimum": false,
+    "notIncluded": [],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://www.tastyaz.com/cottage-cheese-with-pineapple/",
+      "https://www.trainaiapp.com/recipes/pineapple-cottage-cheese-bowl/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

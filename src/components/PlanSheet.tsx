@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   PLAN_PORTIONS_MAX,
   PLAN_PORTIONS_MIN,
@@ -30,6 +30,8 @@ export interface PlanSheetProps {
   readonly closeLabel: string;
   readonly recipeTitle?: string;
   readonly pickOptions?: readonly PlanPickOption[];
+  readonly searchPlaceholder?: string;
+  readonly emptyPickLabel?: string;
   readonly dayOptions?: readonly PlanDayOption[];
   readonly selectedDate?: string;
   readonly slotOptions?: readonly PlanSlotOption[];
@@ -51,8 +53,8 @@ export interface PlanSheetProps {
 }
 
 /**
- * Modales Plan-Sheet (Prototyp `#planSheet`, E10 / Issue #35):
- * - Modus `pick`: Rezeptwahl gefiltert nach Slot.
+ * Modales Plan-Sheet (Prototyp `#planSheet`, E10 / Issue #35, Suche E12 / Issue #39):
+ * - Modus `pick`: Rezeptwahl gefiltert nach Slot plus einfache lokale Titelsuche.
  * - Modus `form`: Tag, Mahlzeit, Portionen-Stepper 1–8 (`aria-live`), Hinzufügen / Abbrechen.
  * Schliesst per Escape, Hintergrundklick oder Schliessen-Knopf und gibt Fokus zurück.
  */
@@ -63,6 +65,8 @@ export function PlanSheet({
   closeLabel,
   recipeTitle,
   pickOptions = [],
+  searchPlaceholder,
+  emptyPickLabel,
   dayOptions = [],
   selectedDate,
   slotOptions = [],
@@ -84,6 +88,30 @@ export function PlanSheet({
 }: PlanSheetProps) {
   const titleRef = useRef<HTMLHeadingElement | null>(null);
   const prevFocusRef = useRef<HTMLElement | null>(null);
+  const [query, setQuery] = useState('');
+
+  const handleClose = useCallback(() => {
+    setQuery('');
+    onClose();
+  }, [onClose]);
+
+  const handlePick = useCallback(
+    (recipeId: RecipeId) => {
+      setQuery('');
+      onPickRecipe?.(recipeId);
+    },
+    [onPickRecipe],
+  );
+
+  const filteredPickOptions = useMemo(() => {
+    const needle = query.trim().toLocaleLowerCase();
+    if (!needle) {
+      return pickOptions;
+    }
+    return pickOptions.filter((opt) =>
+      opt.title.toLocaleLowerCase().includes(needle),
+    );
+  }, [pickOptions, query]);
 
   useEffect(() => {
     if (!open) {
@@ -98,7 +126,7 @@ export function PlanSheet({
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         event.preventDefault();
-        onClose();
+        handleClose();
       }
     };
     window.addEventListener('keydown', onKeyDown);
@@ -106,7 +134,7 @@ export function PlanSheet({
       window.removeEventListener('keydown', onKeyDown);
       prevFocusRef.current?.focus();
     };
-  }, [open, onClose]);
+  }, [open, handleClose]);
 
   if (!open) {
     return null;
@@ -119,7 +147,7 @@ export function PlanSheet({
       data-testid="plan-sheet-backdrop"
       onClick={(event) => {
         if (event.target === event.currentTarget) {
-          onClose();
+          handleClose();
         }
       }}
     >
@@ -140,30 +168,56 @@ export function PlanSheet({
             className="edo-back-btn"
             aria-label={closeLabel}
             data-testid="plan-sheet-close"
-            onClick={onClose}
+            onClick={handleClose}
           >
             <Icon name="x" />
           </button>
         </div>
 
         {mode === 'pick' ? (
-          <div className="edo-stack" data-testid="plan-pick-list">
-            {pickOptions.map((opt) => (
-              <button
-                key={opt.id}
-                type="button"
-                className="edo-plan-pick-row"
-                data-plan-pick={opt.id}
-                data-testid={`plan-pick-${opt.id}`}
-                onClick={() => onPickRecipe?.(opt.id)}
-              >
-                <b className="edo-grow">{opt.title}</b>
-                <span className="edo-cap">{opt.mealLabel}</span>
-              </button>
-            ))}
+          <div className="edo-plan-pick-wrap">
+            {searchPlaceholder ? (
+              <input
+                type="search"
+                className="edo-plan-search"
+                value={query}
+                placeholder={searchPlaceholder}
+                aria-label={searchPlaceholder}
+                data-testid="plan-pick-search"
+                onChange={(event) => setQuery(event.target.value)}
+              />
+            ) : null}
+            <div
+              className="edo-stack edo-plan-pick-list"
+              data-testid="plan-pick-list"
+            >
+              {filteredPickOptions.length > 0 ? (
+                filteredPickOptions.map((opt) => (
+                  <button
+                    key={opt.id}
+                    type="button"
+                    className="edo-plan-pick-row"
+                    data-plan-pick={opt.id}
+                    data-testid={`plan-pick-${opt.id}`}
+                    onClick={() => handlePick(opt.id)}
+                  >
+                    <b className="edo-grow">{opt.title}</b>
+                    <span className="edo-cap">{opt.mealLabel}</span>
+                  </button>
+                ))
+              ) : (
+                <p
+                  className="edo-plan-pick-empty"
+                  role="status"
+                  data-testid="plan-pick-empty"
+                >
+                  {emptyPickLabel}
+                </p>
+              )}
+            </div>
           </div>
         ) : (
-          <div className="edo-stack" data-testid="plan-form">
+          <div className="edo-stack edo-sheet-scroll" data-testid="plan-form">
             {recipeTitle ? <p className="edo-plan-form-title">{recipeTitle}</p> : null}
 
             {dayHeading ? (

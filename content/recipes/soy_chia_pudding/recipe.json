@@ -1,0 +1,84 @@
+{
+  "format": 1,
+  "id": "soy_chia_pudding",
+  "cuisine": "european",
+  "meal": "snack",
+  "minutes": 5,
+  "servings": 1,
+  "tags": [
+    "vegan"
+  ],
+  "preferenceTags": [],
+  "ingredients": [
+    {
+      "food": "chia_seeds",
+      "amount": 2,
+      "unit": "tbsp",
+      "grams": 24
+    },
+    {
+      "food": "soy_milk",
+      "amount": 150,
+      "unit": "ml",
+      "grams": 154.5
+    },
+    {
+      "food": "soy_yogurt",
+      "amount": 150,
+      "unit": "g",
+      "grams": 150
+    },
+    {
+      "food": "berries",
+      "amount": 80,
+      "unit": "g",
+      "grams": 80
+    },
+    {
+      "food": "maple_syrup",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 7
+    },
+    {
+      "food": "pumpkin_seeds",
+      "amount": 10,
+      "unit": "g",
+      "grams": 10
+    }
+  ],
+  "steps": 3,
+  "allergens": [
+    "soy"
+  ],
+  "allergensToCheck": [],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 357,
+      "fat": 19.6,
+      "satFat": 2.5,
+      "carbs": 16.7,
+      "sugars": 13.2,
+      "fiber": 15.5,
+      "protein": 21.1,
+      "salt": 0.3
+    },
+    "isMinimum": false,
+    "notIncluded": [],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://glow-diaries.com/vanilla-chia-pudding/",
+      "https://www.sweeterthanoats.com/how-to-make-one-step-healthy-chia-pudding/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

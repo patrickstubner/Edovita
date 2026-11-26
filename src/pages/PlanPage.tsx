@@ -452,6 +452,8 @@ export function PlanPage() {
         closeLabel={t('dialog.close')}
         recipeTitle={sheet?.recipeId ? recipeTitle(sheet.recipeId) : undefined}
         pickOptions={pickOptions}
+        searchPlaceholder={t('plan.pick.search')}
+        emptyPickLabel={t('plan.pick.empty')}
         dayOptions={dayOptions}
         selectedDate={sheet?.date}
         slotOptions={slotOptions}

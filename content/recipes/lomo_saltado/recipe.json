@@ -1,0 +1,131 @@
+{
+  "format": 1,
+  "id": "lomo_saltado",
+  "cuisine": "peruvian",
+  "meal": "dinner",
+  "minutes": 35,
+  "servings": 2,
+  "tags": [
+    "protein"
+  ],
+  "preferenceTags": [
+    "cilantro",
+    "meat",
+    "onion"
+  ],
+  "ingredients": [
+    {
+      "food": "beef_steak",
+      "amount": 300,
+      "unit": "g",
+      "grams": 300
+    },
+    {
+      "food": "potato",
+      "amount": 350,
+      "unit": "g",
+      "grams": 350
+    },
+    {
+      "food": "red_onion",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 100
+    },
+    {
+      "food": "tomato",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 240
+    },
+    {
+      "food": "aji_amarillo",
+      "amount": 1,
+      "unit": "tbsp",
+      "grams": 15
+    },
+    {
+      "food": "garlic",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 6
+    },
+    {
+      "food": "soy_sauce",
+      "amount": 2,
+      "unit": "tbsp",
+      "grams": 32
+    },
+    {
+      "food": "white_wine_vinegar",
+      "amount": 1,
+      "unit": "tbsp",
+      "grams": 15
+    },
+    {
+      "food": "cumin",
+      "amount": 0.5,
+      "unit": "tsp",
+      "grams": 1
+    },
+    {
+      "food": "rapeseed_oil",
+      "amount": 1,
+      "unit": "tbsp",
+      "grams": 13.5
+    },
+    {
+      "food": "coriander_fresh",
+      "amount": 10,
+      "unit": "g",
+      "grams": 10
+    },
+    {
+      "food": "salt",
+      "amount": 3,
+      "unit": "g",
+      "grams": 3
+    }
+  ],
+  "steps": 5,
+  "allergens": [
+    "soy"
+  ],
+  "allergensToCheck": [
+    "gluten",
+    "sulphites"
+  ],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 458,
+      "fat": 16.2,
+      "satFat": 4.5,
+      "carbs": 35.6,
+      "sugars": 7.6,
+      "fiber": 6.4,
+      "protein": 38.7,
+      "salt": 3.9
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "aji_amarillo",
+      "coriander_fresh",
+      "cumin"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://www.eatperu.com/lomo-saltado-recipe/",
+      "https://www.oliveandmango.com/lomo-saltado-peruvian-beef-stir-fry/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

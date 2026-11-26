@@ -1,0 +1,82 @@
+{
+  "format": 1,
+  "id": "cottage_crispbread",
+  "cuisine": "nordic",
+  "meal": "snack",
+  "minutes": 5,
+  "servings": 1,
+  "tags": [
+    "vegetarian"
+  ],
+  "preferenceTags": [],
+  "ingredients": [
+    {
+      "food": "crispbread",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 20
+    },
+    {
+      "food": "cottage_cheese",
+      "amount": 150,
+      "unit": "g",
+      "grams": 150
+    },
+    {
+      "food": "cucumber",
+      "amount": 0.2,
+      "unit": "pc",
+      "grams": 60
+    },
+    {
+      "food": "dill",
+      "amount": 2,
+      "unit": "g",
+      "grams": 2
+    },
+    {
+      "food": "black_pepper",
+      "amount": 1,
+      "unit": "pinch",
+      "grams": 0.5
+    }
+  ],
+  "steps": 3,
+  "allergens": [
+    "gluten",
+    "milk"
+  ],
+  "allergensToCheck": [],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 223,
+      "fat": 7.1,
+      "satFat": 4.1,
+      "carbs": 16.4,
+      "sugars": 4.6,
+      "fiber": 3.5,
+      "protein": 21.5,
+      "salt": 1.5
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "black_pepper",
+      "dill:sugars"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://www.wasa.com/en-us/recipes/wasa-savory-cottage-cheese-toasts/",
+      "https://breakstones.com/recipe/green-goddess-cottage-cheese-crispbreads/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

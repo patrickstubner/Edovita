@@ -1,0 +1,99 @@
+{
+  "format": 1,
+  "id": "buckwheat_galette",
+  "cuisine": "french",
+  "meal": "breakfast",
+  "minutes": 20,
+  "servings": 2,
+  "tags": [
+    "protein"
+  ],
+  "preferenceTags": [
+    "meat"
+  ],
+  "ingredients": [
+    {
+      "food": "buckwheat_flour",
+      "amount": 70,
+      "unit": "g",
+      "grams": 70
+    },
+    {
+      "food": "milk_skimmed",
+      "amount": 100,
+      "unit": "ml",
+      "grams": 104
+    },
+    {
+      "food": "eggs",
+      "amount": 3,
+      "unit": "pc",
+      "grams": 150
+    },
+    {
+      "food": "ham_cooked",
+      "amount": 60,
+      "unit": "g",
+      "grams": 60
+    },
+    {
+      "food": "gruyere",
+      "amount": 30,
+      "unit": "g",
+      "grams": 30
+    },
+    {
+      "food": "butter",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 5
+    },
+    {
+      "food": "rocket",
+      "amount": 20,
+      "unit": "g",
+      "grams": 20
+    },
+    {
+      "food": "salt",
+      "amount": 1,
+      "unit": "g",
+      "grams": 1
+    }
+  ],
+  "steps": 4,
+  "allergens": [
+    "eggs",
+    "milk"
+  ],
+  "allergensToCheck": [],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 353,
+      "fat": 16.0,
+      "satFat": 6.5,
+      "carbs": 25.8,
+      "sugars": 3.4,
+      "fiber": 1.8,
+      "protein": 25.8,
+      "salt": 1.8
+    },
+    "isMinimum": false,
+    "notIncluded": [],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://www.bbcgoodfood.com/recipes/buckwheat-crepe-madames",
+      "https://www.tastefrance.com/recipes/everyday-recipes/original-french-galette-complete"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

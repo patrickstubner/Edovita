@@ -70,6 +70,21 @@ export function generateCatalogIndexSource(contentDir = CONTENT_DIR) {
     }
   }
 
+  const localesDir = resolve(contentDir, 'locales');
+  const recipeTitleLangs = existsSync(localesDir)
+    ? readdirSync(localesDir, { withFileTypes: true })
+        .filter(
+          (entry) =>
+            entry.isDirectory() &&
+            existsSync(resolve(localesDir, entry.name, 'recipes.json')),
+        )
+        .map((entry) => entry.name)
+        .sort()
+    : [];
+  for (const lang of recipeTitleLangs) {
+    assertSafeIdent(lang, 'locales/recipes');
+  }
+
   const lines = [
     '/* Auto-generiert von scripts/build-content-index.mjs – nicht von Hand bearbeiten. */',
     'import type {',
@@ -79,6 +94,7 @@ export function generateCatalogIndexSource(contentDir = CONTENT_DIR) {
     '  Recipe,',
     '  RecipeImageAssets,',
     '  RecipeLocaleText,',
+    '  RecipeTitles,',
     "} from '../../src/domain/index.ts';",
     "import foodsFile from '../foods/foods.json';",
   ];
@@ -86,6 +102,12 @@ export function generateCatalogIndexSource(contentDir = CONTENT_DIR) {
   for (const lang of glossaryLangs) {
     lines.push(
       `import glossary${toPascal(lang)} from '../foods/glossary/${lang}.json';`,
+    );
+  }
+
+  for (const lang of recipeTitleLangs) {
+    lines.push(
+      `import recipeTitles${toPascal(lang)} from '../locales/${lang}/recipes.json';`,
     );
   }
 
@@ -136,6 +158,19 @@ export function generateCatalogIndexSource(contentDir = CONTENT_DIR) {
   );
   for (const lang of glossaryLangs) {
     lines.push(`  ${lang}: glossary${toPascal(lang)},`);
+  }
+  lines.push('};');
+  lines.push('');
+  lines.push(
+    'export const RECIPE_TITLE_LANGS = [' +
+      recipeTitleLangs.map((l) => `'${l}'`).join(', ') +
+      '] as const;',
+  );
+  lines.push(
+    'export const RECIPE_TITLES: Readonly<Record<string, RecipeTitles>> = {',
+  );
+  for (const lang of recipeTitleLangs) {
+    lines.push(`  ${lang}: recipeTitles${toPascal(lang)},`);
   }
   lines.push('};');
   lines.push('');

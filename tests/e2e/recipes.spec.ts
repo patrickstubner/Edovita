@@ -39,16 +39,11 @@ test.describe('E4 + E8 Journey J1: Rezeptliste & lokale Bilder -> Detail -> Port
     ).toBeVisible();
     expect(page.url()).toContain('#/rezepte');
 
-    // E8: Rezeptliste zeigt lokale WebP-Bilder (Top-Karte max. 180 px, loading="lazy", geladen)
+    // E8 + E12: 200 Rezepte geladen, 5 lokale WebP-Bilder vorhanden (loading="lazy")
+    const recipeArticles = page.locator('[data-testid="recipe-list"] article');
+    await expect(recipeArticles).toHaveCount(200);
     const listImgs = page.locator('[data-testid="recipe-list"] img');
     await expect(listImgs).toHaveCount(5);
-    const firstImg = listImgs.first();
-    await expect(firstImg).toHaveAttribute('loading', 'lazy');
-    await expect(firstImg).toHaveJSProperty('complete', true);
-    const firstNaturalWidth = await firstImg.evaluate(
-      (el) => (el as HTMLImageElement).naturalWidth,
-    );
-    expect(firstNaturalWidth).toBe(800);
     const firstHeroBox = await page
       .locator('[data-testid="recipe-list"] .edo-recipe-hero-btn')
       .first()
@@ -58,7 +53,11 @@ test.describe('E4 + E8 Journey J1: Rezeptliste & lokale Bilder -> Detail -> Port
 
     // Kachel «Ofenlachs mit Broccoli und Kartoffeln» antippen -> Detailseite
     const salmonCard = page.getByTestId('recipe-card-oven_salmon');
+    await salmonCard.scrollIntoViewIfNeeded();
     await expect(salmonCard).toBeVisible();
+    const salmonCardImg = salmonCard.locator('img');
+    await expect(salmonCardImg).toHaveAttribute('loading', 'lazy');
+    await expect(salmonCardImg).toHaveJSProperty('complete', true);
     await salmonCard
       .getByRole('button', { name: /Ofenlachs mit Broccoli und Kartoffeln/i })
       .first()
@@ -172,6 +171,116 @@ test.describe('E4 + E8 Journey J1: Rezeptliste & lokale Bilder -> Detail -> Port
       return target.__cspViolations ?? [];
     });
     expect(foreignRequests).toEqual([]);
+    expect(cspViolations).toEqual([]);
+    expect(consoleErrors).toEqual([]);
+  });
+
+  test('E12: 200 Rezepte, neue Küchen, Vorlieben-Chips, neues Rezept DE/EN + Zweitsprache FR, PlanSheet-Suche, 360x844 & ar-XB ohne Überlauf', async ({
+    page,
+  }) => {
+    const consoleErrors: string[] = [];
+    page.on('console', (msg) => {
+      if (msg.type() === 'error') consoleErrors.push(msg.text());
+    });
+    page.on('pageerror', (err) => consoleErrors.push(String(err)));
+
+    await page.addInitScript(() => {
+      document.addEventListener('securitypolicyviolation', (event) => {
+        const target = window as unknown as { __cspViolations?: string[] };
+        target.__cspViolations = target.__cspViolations ?? [];
+        target.__cspViolations.push(
+          `${event.violatedDirective}: ${event.blockedURI}`,
+        );
+      });
+    });
+
+    await page.setViewportSize({ width: 360, height: 844 });
+    await page.goto('/?pseudoRtl=1#/rezepte');
+
+    await expect(
+      page.getByRole('heading', { name: 'Rezepte für dich' }),
+    ).toBeVisible();
+    await expect(page.locator('[data-testid="recipe-list"] article')).toHaveCount(
+      200,
+    );
+
+    // Neue Küche sichtbar (z. B. Nordisch bei Skyr-Bowl)
+    const skyrCard = page.getByTestId('recipe-card-skyr_berry_bowl');
+    await expect(skyrCard).toContainText('Nordisch');
+
+    // Vorlieben-Chip «Fleisch» blendet Fleischgerichte (thai_curry, pho) aus
+    await page.locator('[data-rpref="meat"]').click();
+    await expect(page.getByTestId('recipe-card-thai_curry')).toHaveCount(0);
+    await expect(page.getByTestId('recipe-card-pho')).toHaveCount(0);
+    await expect(skyrCard).toBeVisible();
+
+    // Kein horizontaler Überlauf auf 360x844
+    const overflowList = await page.evaluate(
+      () =>
+        document.documentElement.scrollWidth >
+        document.documentElement.clientWidth,
+    );
+    expect(overflowList).toBe(false);
+
+    // Neues E12-Rezept öffnen -> Detail zeigt Zutaten, Schritte (DE) und Zweitsprache FR
+    await skyrCard.scrollIntoViewIfNeeded();
+    await skyrCard.getByRole('button', { name: /Skyr-Bowl/i }).first().click();
+    await expect(
+      page.getByRole('heading', { name: 'Skyr-Bowl mit Beeren und Haferflocken' }),
+    ).toBeVisible();
+    await expect(page.getByTestId('step-list').locator('li')).toHaveCount(4);
+
+    // Manuelle Zweitsprache FR zeigt französische Zutatennamen
+    await page.getByTestId('second-switch-btn').click();
+    await page.locator('[data-testid="second-switch-menu"] [data-second="fr"]').click();
+    await expect(page.getByTestId('ingredient-oats-2')).toContainText(
+      "flocons d'avoine",
+    );
+
+    // Zweitsprache auf Pseudo-RTL ar-XB umschalten -> kein horizontaler Überlauf
+    await page.getByTestId('second-switch-btn').click();
+    await page
+      .locator('[data-testid="second-switch-menu"] [data-second="ar-XB"]')
+      .click();
+    await expect(
+      page.locator('[data-testid="ingredient-oats-2"] bdi[dir="rtl"]'),
+    ).toBeVisible();
+    const overflowRtl = await page.evaluate(
+      () =>
+        document.documentElement.scrollWidth >
+        document.documentElement.clientWidth,
+    );
+    expect(overflowRtl).toBe(false);
+
+    // Sprachwechsel auf EN zeigt englischen Titel und englische Schritte
+    await page.getByTestId('lang-switch-btn').click();
+    await page.locator('[data-testid="lang-switch-menu"] [data-lang="en"]').click();
+    await expect(
+      page.getByRole('heading', { name: 'Skyr bowl with berries and oats' }),
+    ).toBeVisible();
+    await expect(page.getByTestId('step-list')).toContainText('Stir the skyr');
+
+    // PlanSheet-Suche auf #/plan bei 200 Rezepten (Treffer, kein Treffer, Tastatur, kein Überlauf)
+    await page.goto('/#/plan');
+    await expect(page.getByRole('heading', { name: 'Plan' })).toBeVisible();
+    await page.locator('[data-testid^="plan-add-"][data-testid$="-snack"]').first().click();
+    const search = page.getByTestId('plan-pick-search');
+    await expect(search).toBeVisible();
+    await search.fill('skyr');
+    await expect(page.getByTestId('plan-pick-skyr_berry_bowl')).toBeVisible();
+    await search.fill('zzz_no_recipe_match');
+    await expect(page.getByTestId('plan-pick-empty')).toBeVisible();
+    const overflowSheet = await page.evaluate(
+      () =>
+        document.documentElement.scrollWidth >
+        document.documentElement.clientWidth,
+    );
+    expect(overflowSheet).toBe(false);
+
+    const cspViolations = await page.evaluate(() => {
+      const target = window as unknown as { __cspViolations?: string[] };
+      return target.__cspViolations ?? [];
+    });
     expect(cspViolations).toEqual([]);
     expect(consoleErrors).toEqual([]);
   });

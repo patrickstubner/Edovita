@@ -1,0 +1,122 @@
+{
+  "format": 1,
+  "id": "tofu_poke",
+  "cuisine": "hawaiian",
+  "meal": "lunch",
+  "minutes": 25,
+  "servings": 2,
+  "tags": [
+    "vegan",
+    "protein"
+  ],
+  "preferenceTags": [],
+  "ingredients": [
+    {
+      "food": "tofu_firm",
+      "amount": 300,
+      "unit": "g",
+      "grams": 300
+    },
+    {
+      "food": "brown_rice",
+      "amount": 120,
+      "unit": "g",
+      "grams": 120
+    },
+    {
+      "food": "edamame",
+      "amount": 100,
+      "unit": "g",
+      "grams": 100
+    },
+    {
+      "food": "mango",
+      "amount": 0.5,
+      "unit": "pc",
+      "grams": 100
+    },
+    {
+      "food": "red_cabbage",
+      "amount": 100,
+      "unit": "g",
+      "grams": 100
+    },
+    {
+      "food": "cucumber",
+      "amount": 0.5,
+      "unit": "pc",
+      "grams": 150
+    },
+    {
+      "food": "soy_sauce",
+      "amount": 2,
+      "unit": "tbsp",
+      "grams": 32
+    },
+    {
+      "food": "maple_syrup",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 7
+    },
+    {
+      "food": "rice_vinegar",
+      "amount": 1,
+      "unit": "tbsp",
+      "grams": 15
+    },
+    {
+      "food": "sesame_oil",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 4.5
+    },
+    {
+      "food": "sesame_seeds",
+      "amount": 2,
+      "unit": "tsp",
+      "grams": 6
+    }
+  ],
+  "steps": 5,
+  "allergens": [
+    "sesame",
+    "soy"
+  ],
+  "allergensToCheck": [
+    "gluten"
+  ],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 620,
+      "fat": 22.5,
+      "satFat": 3.5,
+      "carbs": 63.6,
+      "sugars": 13.9,
+      "fiber": 9.0,
+      "protein": 35.6,
+      "salt": 2.4
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "tofu_firm:fiber"
+    ],
+    "proxies": [
+      "rice_vinegar"
+    ],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://simple-veganista.com/tofu-poke-bowl-recipe/",
+      "https://www.hawaiianelectric.com/recipes/find-a-recipe/tofu-poke"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

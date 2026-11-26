@@ -1,0 +1,137 @@
+{
+  "format": 1,
+  "id": "bun_chay_tofu",
+  "cuisine": "vietnamese",
+  "meal": "lunch",
+  "minutes": 25,
+  "servings": 2,
+  "tags": [
+    "vegan",
+    "protein"
+  ],
+  "preferenceTags": [],
+  "ingredients": [
+    {
+      "food": "tofu_firm",
+      "amount": 350,
+      "unit": "g",
+      "grams": 350
+    },
+    {
+      "food": "rice_noodles",
+      "amount": 120,
+      "unit": "g",
+      "grams": 120
+    },
+    {
+      "food": "lemongrass",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 20
+    },
+    {
+      "food": "garlic",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 3
+    },
+    {
+      "food": "soy_sauce",
+      "amount": 2,
+      "unit": "tbsp",
+      "grams": 32
+    },
+    {
+      "food": "lime",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 30
+    },
+    {
+      "food": "maple_syrup",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 7
+    },
+    {
+      "food": "lettuce",
+      "amount": 0.25,
+      "unit": "pc",
+      "grams": 75
+    },
+    {
+      "food": "cucumber",
+      "amount": 0.5,
+      "unit": "pc",
+      "grams": 150
+    },
+    {
+      "food": "carrot",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 80
+    },
+    {
+      "food": "mint_fresh",
+      "amount": 10,
+      "unit": "g",
+      "grams": 10
+    },
+    {
+      "food": "peanuts",
+      "amount": 20,
+      "unit": "g",
+      "grams": 20
+    },
+    {
+      "food": "rapeseed_oil",
+      "amount": 2,
+      "unit": "tsp",
+      "grams": 9
+    }
+  ],
+  "steps": 5,
+  "allergens": [
+    "peanuts",
+    "soy"
+  ],
+  "allergensToCheck": [
+    "gluten"
+  ],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 639,
+      "fat": 25.6,
+      "satFat": 3.8,
+      "carbs": 63.9,
+      "sugars": 7.8,
+      "fiber": 4.0,
+      "protein": 35.9,
+      "salt": 2.5
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "lemongrass:fiber",
+      "lemongrass:sugars",
+      "lime",
+      "tofu_firm:fiber"
+    ],
+    "proxies": [
+      "rice_noodles"
+    ],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://www.okonomikitchen.com/vietnamese-vermicelli-noodle-salad-with-tofu/",
+      "https://schoolnightvegan.com/home/bun-chay-vegan-vietnamese-noodle-salad/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

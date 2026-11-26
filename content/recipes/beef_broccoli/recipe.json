@@ -1,0 +1,119 @@
+{
+  "format": 1,
+  "id": "beef_broccoli",
+  "cuisine": "chinese",
+  "meal": "dinner",
+  "minutes": 25,
+  "servings": 2,
+  "tags": [
+    "protein"
+  ],
+  "preferenceTags": [
+    "meat"
+  ],
+  "ingredients": [
+    {
+      "food": "beef_steak",
+      "amount": 300,
+      "unit": "g",
+      "grams": 300
+    },
+    {
+      "food": "broccoli",
+      "amount": 350,
+      "unit": "g",
+      "grams": 350
+    },
+    {
+      "food": "garlic",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 6
+    },
+    {
+      "food": "ginger",
+      "amount": 10,
+      "unit": "g",
+      "grams": 10
+    },
+    {
+      "food": "oyster_sauce",
+      "amount": 2,
+      "unit": "tbsp",
+      "grams": 36
+    },
+    {
+      "food": "soy_sauce",
+      "amount": 1,
+      "unit": "tbsp",
+      "grams": 16
+    },
+    {
+      "food": "cornstarch",
+      "amount": 2,
+      "unit": "tsp",
+      "grams": 6
+    },
+    {
+      "food": "rapeseed_oil",
+      "amount": 2,
+      "unit": "tsp",
+      "grams": 9
+    },
+    {
+      "food": "sesame_seeds",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 3
+    },
+    {
+      "food": "jasmine_rice",
+      "amount": 120,
+      "unit": "g",
+      "grams": 120
+    }
+  ],
+  "steps": 5,
+  "allergens": [
+    "molluscs",
+    "sesame",
+    "soy"
+  ],
+  "allergensToCheck": [
+    "gluten",
+    "soy"
+  ],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 564,
+      "fat": 15.6,
+      "satFat": 4.7,
+      "carbs": 58.0,
+      "sugars": 3.6,
+      "fiber": 6.8,
+      "protein": 44.3,
+      "salt": 2.5
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "cornstarch:fat",
+      "cornstarch:satFat",
+      "cornstarch:sugars"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://www.recipetineats.com/chinese-beef-and-broccoli-extra-saucy-take-out-style/",
+      "https://www.madewithlau.com/recipes/beef-broccoli"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

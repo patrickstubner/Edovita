@@ -1,0 +1,86 @@
+{
+  "format": 1,
+  "id": "salmon_cucumber_bites",
+  "cuisine": "nordic",
+  "meal": "snack",
+  "minutes": 10,
+  "servings": 2,
+  "tags": [],
+  "preferenceTags": [],
+  "ingredients": [
+    {
+      "food": "cucumber",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 300
+    },
+    {
+      "food": "smoked_salmon",
+      "amount": 150,
+      "unit": "g",
+      "grams": 150
+    },
+    {
+      "food": "cream_cheese_light",
+      "amount": 60,
+      "unit": "g",
+      "grams": 60
+    },
+    {
+      "food": "dill",
+      "amount": 3,
+      "unit": "g",
+      "grams": 3
+    },
+    {
+      "food": "lemon",
+      "amount": 0.25,
+      "unit": "pc",
+      "grams": 10
+    },
+    {
+      "food": "black_pepper",
+      "amount": 1,
+      "unit": "pinch",
+      "grams": 0.5
+    }
+  ],
+  "steps": 3,
+  "allergens": [
+    "fish",
+    "milk"
+  ],
+  "allergensToCheck": [],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 212,
+      "fat": 11.7,
+      "satFat": 3.8,
+      "carbs": 5.0,
+      "sugars": 3.8,
+      "fiber": 1.3,
+      "protein": 20.9,
+      "salt": 3.3
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "black_pepper",
+      "dill:sugars"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://bakerbynature.com/smoked-salmon-cream-cheese-cucumber-bites/",
+      "https://www.wholesomeyum.com/recipes/smoked-salmon-cucumber-bites/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}
