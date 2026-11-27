@@ -1,0 +1,18 @@
+{
+  "title": "Salmão assado com brócolis",
+  "steps": [
+    "Preaqueça o forno a 200 °C (180 °C com ventilação). Lave as batatas, corte-as em gomos com casca e misture em uma assadeira forrada com papel-manteiga com metade do azeite de oliva e um pouco de sal. Asse por 20 minutos.",
+    "Separe o brócolis em floretes, pique bem o alho e misture ambos com o restante do azeite de oliva.",
+    "Seque o salmão com papel-toalha e tempere com sal e pimenta-do-reino. Vire as batatas e acomode o brócolis e o salmão na assadeira.",
+    "Asse por mais 12–15 minutos, até o salmão lascar facilmente e ficar cozido por dentro (temperatura interna de cerca de 60 °C).",
+    "Regue com suco de limão-siciliano e sirva imediatamente."
+  ],
+  "notes": {
+    "oven_salmon.ing.potato": "com casca",
+    "oven_salmon.ing.broccoli": "floretes",
+    "oven_salmon.ing.salmon": "2 filés de 150 g",
+    "oven_salmon.ing.olive_oil": "cerca de 2 colheres de sopa",
+    "oven_salmon.ing.garlic": "2 dentes (estimativa de 3 g cada)",
+    "oven_salmon.ing.lemon": "suco (estimativa de 20 g)"
+  }
+}

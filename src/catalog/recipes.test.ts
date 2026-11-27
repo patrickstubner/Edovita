@@ -15,12 +15,14 @@ import {
 } from './recipes.ts';
 
 describe('catalog/recipes', () => {
-  it('lädt alle 200 Rezepte, alle 23 Küchen sowie Titel in allen 7 Sprachen und DE/EN-Schritte (E12)', () => {
+  it('lädt alle 200 Rezepte, alle 23 Küchen sowie Titel und Schritte in allen 7 Sprachen (E12 + E13)', () => {
     const all = listRecipes();
     expect(all.length).toBe(200);
     expect(getRecipe('oven_salmon')?.servings).toBe(2);
     expect(getRecipeText('oven_salmon', 'de')?.title).toContain('Ofenlachs');
     expect(getRecipeText('oven_salmon', 'en')?.title).toContain('salmon');
+    expect(getRecipeText('oven_salmon', 'fr')?.title).toContain('Saumon');
+    expect(getRecipeText('oven_salmon', 'ja')?.title).toContain('サーモン');
     expect(getRecipeText('skyr_berry_bowl', 'de')?.steps.length).toBeGreaterThanOrEqual(3);
     expect(getRecipeText('skyr_berry_bowl', 'en')?.steps.length).toBeGreaterThanOrEqual(3);
     expect(getRecipeText('unbekannt', 'de')).toBeUndefined();
@@ -31,11 +33,17 @@ describe('catalog/recipes', () => {
       expect(seenCuisines.has(c)).toBe(true);
     }
 
-    // Titel in allen 7 Sprachen abrufbar, kein EN-Fallback bei fehlender Sprache
-    for (const lang of ['de', 'en', 'fr', 'it', 'es', 'pt', 'ja']) {
-      expect(getRecipeTitle('oven_salmon', lang)).toBeTruthy();
-      expect(getRecipeTitle('skyr_berry_bowl', lang)).toBeTruthy();
+    // Titel und Schritte in allen 7 Sprachen abrufbar, kein EN-Fallback bei fehlender Sprache
+    const ALL_7 = ['de', 'en', 'fr', 'it', 'es', 'pt', 'ja'] as const;
+    for (const recipe of all) {
+      for (const lang of ALL_7) {
+        expect(getRecipeTitle(recipe.id, lang)).toBeTruthy();
+        const text = getRecipeText(recipe.id, lang);
+        expect(text).toBeDefined();
+        expect(text!.steps).toHaveLength(recipe.steps);
+      }
     }
+    expect(getRecipeText('oven_salmon', 'ar')).toBeUndefined();
     expect(getRecipeTitle('oven_salmon', 'ar')).toBeUndefined();
     expect(getRecipeTitle('unbekannt', 'de')).toBeUndefined();
   });

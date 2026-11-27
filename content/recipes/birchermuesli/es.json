@@ -1,0 +1,14 @@
+{
+  "title": "Muesli Bircher",
+  "steps": [
+    "Mezclar los copos de avena con la leche, tapar y dejar en remojo en la nevera al menos 30 minutos, o mejor toda la noche.",
+    "Picar las avellanas en trozos gruesos.",
+    "Lavar las manzanas y rallarlas con piel directamente sobre los copos de avena. Mezclar de inmediato el zumo de limón para que no se oxiden.",
+    "Incorporar el yogur, endulzar con miel al gusto y espolvorear con las avellanas."
+  ],
+  "notes": {
+    "birchermuesli.ing.apple": "2 piezas, aprox. 300 g, con piel",
+    "birchermuesli.ing.lemon": "zumo (estimado 15 g)",
+    "birchermuesli.ing.honey": "al gusto"
+  }
+}

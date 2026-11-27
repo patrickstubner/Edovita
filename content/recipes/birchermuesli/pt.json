@@ -1,0 +1,14 @@
+{
+  "title": "Bircher muesli",
+  "steps": [
+    "Misture a aveia em flocos com o leite integral, tampe e deixe hidratar na geladeira por pelo menos 30 minutos, ou de preferência durante a noite.",
+    "Pique grosseiramente as avelãs.",
+    "Lave as maçãs e rale-as com casca diretamente sobre a aveia. Misture logo o suco de limão-siciliano para que não escureçam.",
+    "Incorpore o iogurte natural, adoce com mel a gosto e polvilhe as avelãs."
+  ],
+  "notes": {
+    "birchermuesli.ing.apple": "2 maçãs, cerca de 300 g, com casca",
+    "birchermuesli.ing.lemon": "suco (estimativa de 15 g)",
+    "birchermuesli.ing.honey": "a gosto"
+  }
+}

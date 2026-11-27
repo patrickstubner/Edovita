@@ -1,0 +1,20 @@
+{
+  "title": "Pho de ternera",
+  "steps": [
+    "Cortar la cebolla y el jengibre por la mitad y tostar con la cara cortada hacia abajo en una sartén seca durante 6–8 minutos hasta que aparezcan zonas oscuras.",
+    "Tostar el anís estrellado, la rama de canela y los clavos de olor en una olla seca durante 1–2 minutos hasta que desprendan aroma. Añadir el caldo de carne, la cebolla, el jengibre, la salsa de pescado y el azúcar y cocer a fuego muy suave, semitapado, durante 25 minutos.",
+    "Remojar o cocer los fideos de arroz según las indicaciones del envase, escurrir y repartir en dos boles.",
+    "Cortar el entrecot de ternera en láminas muy finas a contrafibra. Resulta más fácil si se mete antes 15 minutos en el congelador.",
+    "Colar el caldo y llevar de nuevo a ebullición. Cocer las láminas de carne en el caldo a punto de hervir durante 30–60 segundos y colocarlas sobre los fideos.",
+    "Verter el caldo caliente por encima. Servir con brotes de soja, cebolletas, cilantro, albahaca tailandesa y gajos de lima."
+  ],
+  "notes": {
+    "pho.ing.onion": "por la mitad, se cuela",
+    "pho.ing.ginger": "se cuela",
+    "pho.ing.sugar": "aprox. 1 cucharadita",
+    "pho.ing.rice_noodles": "secos",
+    "pho.ing.beef_sirloin": "cortado muy fino",
+    "pho.ing.spring_onion": "2 unidades",
+    "pho.ing.lime": "en gajos, zumo (estimado 30 g)"
+  }
+}

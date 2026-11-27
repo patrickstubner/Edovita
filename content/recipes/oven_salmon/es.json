@@ -1,0 +1,18 @@
+{
+  "title": "Salmón al horno con brócoli",
+  "steps": [
+    "Precalentar el horno a 200 °C (180 °C con ventilador). Lavar las patatas, cortarlas en gajos sin pelar y mezclarlas en una bandeja con papel de horno con la mitad del aceite de oliva y un poco de sal. Hornear durante 20 minutos.",
+    "Separar el brócoli en ramilletes, picar finamente el ajo y mezclar ambos con el aceite restante.",
+    "Secar el salmón con papel de cocina y salpimentar. Dar la vuelta a las patatas y añadir el brócoli y el salmón a la bandeja.",
+    "Hornear durante 12–15 minutos más hasta que el salmón se separe fácilmente en lascas y esté justo hecho en el interior (temperatura interna aprox. 60 °C).",
+    "Rociar con zumo de limón y servir de inmediato."
+  ],
+  "notes": {
+    "oven_salmon.ing.potato": "sin pelar",
+    "oven_salmon.ing.broccoli": "ramilletes",
+    "oven_salmon.ing.salmon": "2 filetes de 150 g",
+    "oven_salmon.ing.olive_oil": "aprox. 2 cucharadas",
+    "oven_salmon.ing.garlic": "2 dientes (estimado 3 g por diente)",
+    "oven_salmon.ing.lemon": "zumo (estimado 20 g)"
+  }
+}

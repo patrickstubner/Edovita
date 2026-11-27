@@ -1,0 +1,20 @@
+{
+  "title": "Pho de carne",
+  "steps": [
+    "Corte a cebola e o gengibre ao meio e toste-os com o lado cortado para baixo em uma frigideira seca por 6–8 minutos, até ficarem bem dourados em alguns pontos.",
+    "Toste o anis-estrelado, a canela em pau e o cravo-da-índia em uma panela seca por 1–2 minutos até liberarem aroma. Adicione o caldo de carne, a cebola, o gengibre, o molho de peixe e o açúcar e cozinhe em fogo baixo, semitampado, por 25 minutos.",
+    "Hidrate ou cozinhe o macarrão de arroz conforme a embalagem, escorra e divida em duas tigelas.",
+    "Fatie o bife ancho (entrecôte) bem fino contra as fibras. Fica mais fácil se deixá-lo 15 minutos no congelador antes.",
+    "Coe o caldo e leve novamente para ferver. Cozinhe as fatias de carne no caldo quente quase fervente por 30–60 segundos e disponha-as sobre o macarrão.",
+    "Despeje o caldo quente por cima. Sirva com broto de feijão, cebolinha, coentro, manjericão tailandês e gomos de limão-taiti."
+  ],
+  "notes": {
+    "pho.ing.onion": "cortada ao meio, coada no final",
+    "pho.ing.ginger": "coado no final",
+    "pho.ing.sugar": "cerca de 1 colher de chá",
+    "pho.ing.rice_noodles": "seco",
+    "pho.ing.beef_sirloin": "fatiado bem fino",
+    "pho.ing.spring_onion": "2 talos",
+    "pho.ing.lime": "em gomos, suco (estimativa de 30 g)"
+  }
+}

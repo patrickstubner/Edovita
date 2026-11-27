@@ -326,8 +326,138 @@ describe('Paket E4: Rezeptliste, Rezept-Detailseite & F3b (Issue #10)', () => {
     expect(sourcesBox.textContent).not.toContain('secret');
   });
 
-  it('F2: zeigt fehlenden Rezepttext und fehlende Lebensmittelnamen sichtbar statt still auf Englisch zurückzufallen', async () => {
+  it('F2 + E13: zeigt übersetzte Rezeptschritte in fr/it/es/pt/ja und meldet bei fehlender Sprache (xx) fehlenden Rezepttext und fehlende Lebensmittelnamen sichtbar ohne EN-Fallback', async () => {
     const storage = createMemoryStorage();
+    const renderDetailInLang = (
+      langCode: 'fr' | 'it' | 'es' | 'pt' | 'ja',
+      recipeId = 'oven_salmon',
+      enablePseudoRtl = false,
+    ) => {
+      const meta = {
+        ...LANGUAGES_REGISTRY.meta[langCode]!,
+        active: true,
+        legalApproved: true,
+      };
+      const reg: LanguagesRegistry = {
+        ...LANGUAGES_REGISTRY,
+        meta: {
+          ...LANGUAGES_REGISTRY.meta,
+          [langCode]: meta,
+        },
+      };
+      const instance = createI18nInstance({
+        initialLang: langCode,
+        registry: reg,
+      });
+
+      return render(
+        <I18nextProvider i18n={instance}>
+          <I18nContext.Provider
+            value={{
+              lang: langCode,
+              meta,
+              locale: meta.locale,
+              detected: { code: langCode, device: meta.locale, matched: true },
+              uiLanguages: reg.ui,
+              isApproved: (c) => c === langCode,
+              metaFor: (c) => reg.meta[c],
+              setLang: () => false,
+              fmtNumber: (v, d) => fmtNumber(v, meta.locale, d),
+              fmtAmount: (v, u) => fmtAmount(v, u, meta.locale),
+              fmtDate: (d) => d.toISOString(),
+            }}
+          >
+            <SecondLangProvider enablePseudoRtl={enablePseudoRtl}>
+              <ShoppingProvider repository={storage.shopping}>
+                <PlanProvider repository={storage.plan}>
+                  <RatingsProvider repository={storage.ratings}>
+                    <MemoryRouter initialEntries={[`/rezept/${recipeId}`]}>
+                      <Routes>
+                        <Route
+                          path="/rezept/:id"
+                          element={<RecipeDetailPage />}
+                        />
+                      </Routes>
+                    </MemoryRouter>
+                  </RatingsProvider>
+                </PlanProvider>
+              </ShoppingProvider>
+            </SecondLangProvider>
+          </I18nContext.Provider>
+        </I18nextProvider>,
+      );
+    };
+
+    // E13: Stichprobe über alle 5 neuen Rezept-Sprachen (fr, it, es, pt, ja) inkl. langer romanischer & japanischer Schritte
+    const samples: ReadonlyArray<{
+      lang: 'fr' | 'it' | 'es' | 'pt' | 'ja';
+      titleFragment: string;
+      stepFragment: string;
+      foodFragment: string;
+    }> = [
+      {
+        lang: 'fr',
+        titleFragment: 'Saumon au four',
+        stepFragment: 'Préchauffer le four à 200 °C',
+        foodFragment: 'pommes de terre',
+      },
+      {
+        lang: 'it',
+        titleFragment: 'Salmone al forno',
+        stepFragment: 'Preriscaldare il forno a 200 °C',
+        foodFragment: 'patate',
+      },
+      {
+        lang: 'es',
+        titleFragment: 'Salmón al horno',
+        stepFragment: 'Precalentar el horno a 200 °C',
+        foodFragment: 'patatas',
+      },
+      {
+        lang: 'pt',
+        titleFragment: 'Salmão assado',
+        stepFragment: 'Preaqueça o forno a 200 °C',
+        foodFragment: 'batatas',
+      },
+      {
+        lang: 'ja',
+        titleFragment: 'サーモン',
+        stepFragment: '200 °C',
+        foodFragment: 'じゃがいも',
+      },
+    ];
+
+    for (const sample of samples) {
+      cleanup();
+      renderDetailInLang(sample.lang);
+      expect(await screen.findByTestId('step-list')).toHaveTextContent(
+        sample.stepFragment,
+      );
+      expect(screen.getByTestId('step-list').querySelectorAll('li')).toHaveLength(
+        5,
+      );
+      expect(screen.queryByTestId('missing-recipe-text')).toBeNull();
+      expect(document.body.textContent).toContain(sample.titleFragment);
+      expect(document.body.textContent).toContain(sample.foodFragment);
+      expect(document.body.textContent).not.toContain('Preheat the oven');
+      expect(document.body.textContent).not.toContain('Potatoes');
+    }
+
+    // E13 + ar-XB-Kontext: Zweitsprache ar-XB isoliert Zutaten per <bdi dir="rtl">, während StepList in ja ungestört bleibt
+    cleanup();
+    window.localStorage.setItem('edovita.secondLang', 'ar-XB');
+    renderDetailInLang('ja', 'oven_salmon', true);
+    const jaSteps = await screen.findByTestId('step-list');
+    expect(jaSteps.querySelectorAll('li')).toHaveLength(5);
+    expect(screen.getByTestId('second-lang-steps-hint')).toBeInTheDocument();
+    expect(
+      screen.getByTestId('ingredient-potato-0').querySelector('bdi[dir="rtl"]'),
+    ).not.toBeNull();
+
+    // F2-Gegenprobe für eine Sprache ohne Rezepttext und ohne Glossar (`xx`):
+    // beide Lücken werden sichtbar ausgewiesen (kein stiller EN-Fallback)
+    cleanup();
+    window.localStorage.clear();
     const frMeta = {
       ...LANGUAGES_REGISTRY.meta.fr!,
       active: true,
@@ -344,57 +474,6 @@ describe('Paket E4: Rezeptliste, Rezept-Detailseite & F3b (Issue #10)', () => {
       initialLang: 'fr',
       registry: frRegistry,
     });
-
-    render(
-      <I18nextProvider i18n={frInstance}>
-        <I18nContext.Provider
-          value={{
-            lang: 'fr',
-            meta: frMeta,
-            locale: frMeta.locale,
-            detected: { code: 'fr', device: 'fr-CH', matched: true },
-            uiLanguages: frRegistry.ui,
-            isApproved: (c) => c === 'fr',
-            metaFor: (c) => frRegistry.meta[c],
-            setLang: () => false,
-            fmtNumber: (v, d) => fmtNumber(v, 'fr-CH', d),
-            fmtAmount: (v, u) => fmtAmount(v, u, 'fr-CH'),
-            fmtDate: (d) => d.toISOString(),
-          }}
-        >
-          <SecondLangProvider>
-            <ShoppingProvider repository={storage.shopping}>
-              <PlanProvider repository={storage.plan}>
-                <RatingsProvider repository={storage.ratings}>
-                  <MemoryRouter initialEntries={['/rezept/oven_salmon']}>
-                    <Routes>
-                      <Route
-                        path="/rezept/:id"
-                        element={<RecipeDetailPage />}
-                      />
-                    </Routes>
-                  </MemoryRouter>
-                </RatingsProvider>
-              </PlanProvider>
-            </ShoppingProvider>
-          </SecondLangProvider>
-        </I18nContext.Provider>
-      </I18nextProvider>,
-    );
-
-    // Lücke für fehlenden Rezepttext wird sichtbar ausgewiesen (kein stiller EN-Fallback)
-    const missingBanner = await screen.findByTestId('missing-recipe-text');
-    expect(missingBanner).toHaveTextContent('fr');
-    expect(screen.queryByTestId('step-list')).toBeNull();
-    expect(document.body.textContent).not.toContain('Baked salmon');
-    expect(document.body.textContent).not.toContain('Preheat the oven');
-
-    // E12: Französisches Lebensmittel-Glossar existiert -> zeigt «pommes de terre» statt englischem Fallback
-    expect(document.body.textContent).toContain('pommes de terre');
-    expect(document.body.textContent).not.toContain('Potatoes');
-
-    // Gegenprobe für eine Sprache ohne Glossar (`xx`): fehlende Lebensmittelnamen werden sichtbar markiert (F2)
-    cleanup();
     const xxMeta = {
       ...frMeta,
       code: 'xx',
@@ -436,6 +515,10 @@ describe('Paket E4: Rezeptliste, Rezept-Detailseite & F3b (Issue #10)', () => {
         </I18nContext.Provider>
       </I18nextProvider>,
     );
+    const missingBanner = await screen.findByTestId('missing-recipe-text');
+    expect(missingBanner).toHaveTextContent('xx');
+    expect(screen.queryByTestId('step-list')).toBeNull();
+    expect(document.body.textContent).not.toContain('Preheat the oven');
     const missingPotato = await screen.findByTestId('missing-food-potato-0');
     expect(missingPotato).toHaveTextContent('potato');
     expect(missingPotato).toHaveTextContent('Nom manquant');

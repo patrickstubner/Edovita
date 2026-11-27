@@ -1,0 +1,21 @@
+{
+  "title": "Curry tailandés de pollo",
+  "steps": [
+    "Cocer el arroz según las indicaciones del envase.",
+    "Cortar la pechuga de pollo en tiras de bocado, el pimiento rojo en tiras y la berenjena en dados.",
+    "Calentar el aceite en un wok o sartén amplia. Tostar la pasta de curry rojo durante aproximadamente 1 minuto hasta que desprenda aroma. Añadir 3 cucharadas de la parte espesa de la leche de coco y sofreír brevemente.",
+    "Añadir el pollo y dorar por todos lados. Incorporar el resto de la leche de coco, la berenjena y las hojas de lima kaffir y cocer a fuego lento durante 8–10 minutos hasta que el pollo esté bien hecho.",
+    "Añadir el pimiento rojo y cocer 2 minutos más. Sazonar con salsa de pescado y azúcar.",
+    "Retirar del fuego, incorporar la albahaca tailandesa y servir con el arroz."
+  ],
+  "notes": {
+    "thai_curry.ing.jasmine_rice": "crudo",
+    "thai_curry.ing.red_curry_paste": "1–3 cucharadas según el picante (estimado 15 g/cucharada)",
+    "thai_curry.ing.coconut_milk": "entera",
+    "thai_curry.ing.red_bell_pepper": "1 unidad",
+    "thai_curry.ing.rapeseed_oil": "aprox. 1 cucharada",
+    "thai_curry.ing.fish_sauce": "al gusto",
+    "thai_curry.ing.sugar": "aprox. 2 cucharaditas, tradicionalmente azúcar de palma",
+    "thai_curry.ing.thai_basil": "1 puñado de hojas"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "title": "Saumon au four et brocoli",
+  "steps": [
+    "Préchauffer le four à 200 °C (180 °C chaleur tournante). Laver les pommes de terre, les couper en quartiers sans les éplucher et les mélanger sur une plaque recouverte de papier cuisson avec la moitié de l'huile d'olive et un peu de sel. Enfourner 20 minutes.",
+    "Détailler le brocoli en fleurettes, hacher finement l'ail et mélanger le tout avec le reste d'huile.",
+    "Éponger le saumon et l'assaisonner de sel et de poivre noir. Retourner les pommes de terre et disposer le brocoli et le saumon sur la plaque.",
+    "Poursuivre la cuisson 12–15 minutes jusqu'à ce que le saumon s'effeuille facilement et soit juste cuit à cœur (température à cœur env. 60 °C).",
+    "Arroser de jus de citron et servir immédiatement."
+  ],
+  "notes": {
+    "oven_salmon.ing.potato": "non épluchées",
+    "oven_salmon.ing.broccoli": "fleurettes",
+    "oven_salmon.ing.salmon": "2 filets de 150 g",
+    "oven_salmon.ing.olive_oil": "env. 2 c. à soupe",
+    "oven_salmon.ing.garlic": "2 gousses (estimation 3 g/gousse)",
+    "oven_salmon.ing.lemon": "jus (estimation 20 g)"
+  }
+}

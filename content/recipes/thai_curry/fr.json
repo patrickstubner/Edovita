@@ -1,0 +1,21 @@
+{
+  "title": "Curry thaï au poulet",
+  "steps": [
+    "Cuire le riz jasmin selon les indications du paquet.",
+    "Couper le blanc de poulet en lanières de taille bouchée, le poivron rouge en lanières et l'aubergine en dés.",
+    "Chauffer l'huile de colza dans un wok ou une large poêle. Y faire revenir la pâte de curry rouge environ 1 minute jusqu'à ce qu'elle exhale son parfum. Ajouter 3 c. à soupe de la partie épaisse du lait de coco et faire revenir brièvement.",
+    "Ajouter le poulet et le faire dorer de tous les côtés. Ajouter le reste du lait de coco, l'aubergine et les feuilles de combava, puis laisser mijoter 8–10 minutes jusqu'à ce que le poulet soit bien cuit.",
+    "Ajouter le poivron rouge et poursuivre la cuisson 2 minutes. Assaisonner de sauce de poisson et de sucre.",
+    "Retirer du feu, incorporer le basilic thaï et servir avec le riz."
+  ],
+  "notes": {
+    "thai_curry.ing.jasmine_rice": "cru",
+    "thai_curry.ing.red_curry_paste": "1–3 c. à soupe selon le piquant (estimation 15 g/c. à soupe)",
+    "thai_curry.ing.coconut_milk": "entier",
+    "thai_curry.ing.red_bell_pepper": "1 pièce",
+    "thai_curry.ing.rapeseed_oil": "env. 1 c. à soupe",
+    "thai_curry.ing.fish_sauce": "selon les goûts",
+    "thai_curry.ing.sugar": "env. 2 c. à café, traditionnellement du sucre de palme",
+    "thai_curry.ing.thai_basil": "1 poignée de feuilles"
+  }
+}

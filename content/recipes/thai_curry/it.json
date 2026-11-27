@@ -1,0 +1,21 @@
+{
+  "title": "Curry thai di pollo",
+  "steps": [
+    "Cuocere il riso jasmine secondo le istruzioni sulla confezione.",
+    "Tagliare il petto di pollo a striscioline a bocconcini, il peperone rosso a striscioline e la melanzana a cubetti.",
+    "Scaldare l'olio di colza nel wok o in una padella ampia. Tostare la pasta di curry rossa per circa 1 minuto finché sprigiona aroma. Aggiungere 3 cucchiai della parte densa del latte di cocco e rosolare brevemente.",
+    "Aggiungere il pollo e rosolarlo su tutti i lati. Unire il latte di cocco restante, la melanzana e le foglie di lime kaffir e cuocere a fuoco dolce per 8–10 minuti finché il pollo è ben cotto.",
+    "Aggiungere il peperone e cuocere per altri 2 minuti. Regolare con salsa di pesce e zucchero.",
+    "Togliere dal fuoco, incorporare il basilico thai e servire con il riso."
+  ],
+  "notes": {
+    "thai_curry.ing.jasmine_rice": "crudo",
+    "thai_curry.ing.red_curry_paste": "1–3 cucchiai a seconda della piccantezza (stima 15 g/cucchiaio)",
+    "thai_curry.ing.coconut_milk": "intero",
+    "thai_curry.ing.red_bell_pepper": "1 pezzo",
+    "thai_curry.ing.rapeseed_oil": "circa 1 cucchiaio",
+    "thai_curry.ing.fish_sauce": "a piacere",
+    "thai_curry.ing.sugar": "circa 2 cucchiaini, tradizionalmente zucchero di palma",
+    "thai_curry.ing.thai_basil": "1 manciata di foglie"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "title": "Pho au bœuf",
+  "steps": [
+    "Couper l'oignon et le gingembre en deux et les faire griller face coupée vers le bas dans une poêle sèche pendant 6–8 minutes jusqu'à ce qu'ils noircissent par endroits.",
+    "Torréfier à sec l'anis étoilé, le bâton de cannelle et les clous de girofle 1–2 minutes dans une casserole jusqu'à ce qu'ils exhalent leur parfum. Ajouter le bouillon de bœuf, l'oignon, le gingembre, la sauce de poisson et le sucre, puis laisser mijoter doucement à demi-couvert pendant 25 minutes.",
+    "Faire tremper ou cuire les nouilles de riz selon les indications du paquet, égoutter et répartir dans deux bols.",
+    "Trancher très finement l'entrecôte de bœuf à contre-fil. C'est plus facile après 15 minutes au congélateur.",
+    "Filtrer le bouillon et le reporter à ébullition. Pocher les tranches de bœuf 30–60 secondes dans le bouillon frémissant et les déposer sur les nouilles.",
+    "Verser le bouillon très chaud par-dessus. Servir avec les pousses de soja, les oignons nouveaux, la coriandre fraîche, le basilic thaï et des quartiers de citron vert."
+  ],
+  "notes": {
+    "pho.ing.onion": "coupé en deux, filtré ensuite",
+    "pho.ing.ginger": "filtré ensuite",
+    "pho.ing.sugar": "env. 1 c. à café",
+    "pho.ing.rice_noodles": "sèches",
+    "pho.ing.beef_sirloin": "tranchée très finement",
+    "pho.ing.spring_onion": "2 pièces",
+    "pho.ing.lime": "en quartiers, jus (estimation 30 g)"
+  }
+}
