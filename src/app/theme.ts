@@ -7,7 +7,7 @@ import {
 export const THEME_STORAGE_KEY = 'edovita.theme';
 
 const THEME_BAR_COLOR: Record<EffectiveTheme, string> = {
-  light: '#0F9D84',
+  light: '#0B7F6B',
   dark: '#000000',
 };
 

@@ -20,6 +20,8 @@ describe('cspForMeta', () => {
     expect(meta).not.toMatch(/frame-ancestors/i);
     expect(meta).toContain("default-src 'none'");
     expect(meta).toContain("script-src 'self'");
+    expect(meta).toContain("worker-src 'self'");
+    expect(meta).toContain("manifest-src 'self'");
     expect(meta).not.toContain('unsafe-inline');
   });
 });

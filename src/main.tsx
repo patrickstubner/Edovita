@@ -4,6 +4,8 @@ import './app/tokens.css';
 import './components/components.css';
 import './components/shopping.css';
 import { App } from './app/App.tsx';
+import { getPublicBase } from './app/publicBase.ts';
+import { scheduleServiceWorkerRegistration } from './pwa/index.ts';
 
 const container = document.getElementById('root');
 if (!container) {
@@ -15,3 +17,8 @@ createRoot(container).render(
     <App />
   </StrictMode>,
 );
+
+scheduleServiceWorkerRegistration({
+  basePath: getPublicBase(),
+  isProduction: import.meta.env.PROD,
+});

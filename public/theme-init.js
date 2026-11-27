@@ -4,7 +4,7 @@
 (function () {
   'use strict';
   var STORAGE_KEY = 'edovita.theme';
-  var THEME_COLOR = { light: '#0F9D84', dark: '#000000' };
+  var THEME_COLOR = { light: '#0B7F6B', dark: '#000000' };
   var root = document.documentElement;
   var mq =
     typeof window.matchMedia === 'function'
