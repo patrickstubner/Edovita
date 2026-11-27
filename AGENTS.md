@@ -28,7 +28,7 @@
 - **Dark Mode** (System/Hell/Dunkel). Primärgrün für Text und Buttons im Hellmodus `#0B7F6B` (Kontrast 4,9:1; der Prototyp nutzt noch `#0F9D84`). Logo für dunkel: dunkler Hintergrund, Symbol gleich, Schriftzug weiss.
 - **Animationen:** Lottie für Belohnungen bei Zwischenzielen (Konfetti, Abzeichen, Logo-Feier, mit Erfolg-Sound), **SVG** (CSS-Keyframes) für Loader und die Logo-Animation (Zusammenbau, Herz Lub-Dub, EKG; `prefers-reduced-motion` beachten). Native Startanimation: das Hauptlogo setzt sich zusammen.
 - **Logo final** (Konzept D: Blatt und Gabel als V, darüber Herz mit Pulslinie; Schriftzug Quicksand): `design/logos/final/`, Export für Web/Android/Apple/Capacitor in `design/logos/export/`. Im App-Icon nur wenig Rand.
-- **Sprachen UI v1:** EN, DE, FR, IT, ES, JA, PT (pt-BR), Fallback EN; wählbar nur bei `legalApproved=true` (zuerst DE/EN). i18next + react-i18next + i18next-icu, Ordner `content/locales/<code>/{meta,ui,legal,recipes,store}.json` (ADR-001/ADR-003). Zweitsprache nur für Zutaten und Einkaufsartikel, Kochschritte nur in der App-Sprache. **Repository language rule (from 27.11.2026):** Everything written into GitHub — including code, comments, identifiers, docs, PRs, and commit messages — must be written in English. Write new or changed sections in English, and do not translate other existing German text.
+- **Sprachen UI v1:** EN, DE, FR, IT, ES, JA, PT (pt-BR), Fallback EN; wählbar nur bei `legalApproved=true` (zuerst DE/EN). i18next + react-i18next + i18next-icu, Ordner `content/locales/<code>/{meta,ui,legal,recipes,store}.json` (ADR-001/ADR-003). Zweitsprache nur für Zutaten und Einkaufsartikel, Kochschritte nur in der App-Sprache. German UI copy uses Swiss spelling (ss, not ß). Source code, identifiers, comments and other committed text follow the Language on GitHub rule.
 - **Schutzregeln (Gesundheit):** kein Abnehmen bei BMI < 18,5; Gewicht min. 25 kg bei Zunehmen/Halten, 40 kg bei Abnehmen; Tempo ≤ 1 kg pro Woche; Mindest-kcal 1'500 (m) / 1'200 (w); Texte zielabhängig, nie «abnehmen»-Wortlaut bei Ziel Zunehmen. Keine Finanz- oder Medizinberatung, Allergenfilter nur als Hinweis. Rechtliches zu Gesundheitsdaten immer mehrfach prüfen.
 - **Eingaben im Prototyp-Stil:** Grösse als Slider plus Minus/Plus 1 cm, Geburtsdatum statt Alter, Gewicht als Slider plus Minus/Plus 0,1 kg.
 - **Einkaufsliste:** Zustände «habe ich zu Hause» / «bereits im Einkaufskorb» bleiben; unten QR-Einkaufsliste und Liste teilen; Hausmarken als Info-Icon oben; Rezept-Detail mit Portionszahl, Schritten, Nährwerten und Button «zur Einkaufsliste».
@@ -95,13 +95,15 @@ Gilt für alle Agents und Menschen, die an diesem Repo arbeiten. Google Antigrav
 ### Branch hygiene (27 November 2026)
 Merged or unused branches are deleted. Only `main`, heads of open pull requests, and branches that are actively being worked on remain. Delete pull-request branches immediately after merge (`delete_branch_on_merge` is enabled). Unmerged work that may still have value is first preserved as a tag `archive/<name>`.
 
+`main` is protected. Changes reach `main` only through a pull request with green CI, reviewed by Stabschef and merged via squash on the exact reviewed head. No direct commits, no direct push, no force-push, and never delete `main`. This is the working rule for every agent; do not assume GitHub already enforces it in every repository.
+
 New working rules from the project owner are always added to `AGENTS.md` in every repository and in the `agent-skills` repository.
 
 ### GitHub issues (27 November 2026)
 New GitHub issues are always written in English, even when communication with the project owner is in German. Existing issues are left unchanged.
 
 ### Language on GitHub (27 November 2026)
-Everything committed to GitHub is in English: new issues, all docs (README, STATUS, ARCHITECTURE, AGENTS, CHANGELOG, NOTICE, SECURITY, ...), code comments and identifiers, even when the project owner communicates in German. Existing German docs and code are not translated or renamed ad hoc; that is coordinated separately per repo.
+Everything committed to this repository is in English: code, identifiers and variable names, code comments, commit messages, PR titles and descriptions, issues, templates and all docs (README, AGENTS, ARCHITECTURE, STATUS, CHANGELOG, NOTICE, SECURITY, and others). This applies even when the owner speaks German. Chat with the owner stays German. Existing German docs and code are not translated or renamed ad hoc; that is coordinated separately per repo.
 
 ### Sicherheitsprüfung nach jeder Codeänderung
 Nach jeder Code-Erstellung oder -Änderung, **bevor weitergebaut wird**, kurz prüfen und im PR (Abschnitt «Sicherheit») bzw. in der `SECURITY`-Notiz des Repos festhalten:
