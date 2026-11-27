@@ -1625,12 +1625,18 @@ import recipeZurichGeschnetzeltesJa from '../recipes/zurich_geschnetzeltes/ja.js
 import recipeZurichGeschnetzeltesPt from '../recipes/zurich_geschnetzeltes/pt.json';
 import imgAcaiSkyrBowlFull from '../images/recipes/acai_skyr_bowl.webp';
 import imgAcaiSkyrBowlThumb from '../images/recipes/acai_skyr_bowl-thumb.webp';
+import imgAjiDeGallinaLightFull from '../images/recipes/aji_de_gallina_light.webp';
+import imgAjiDeGallinaLightThumb from '../images/recipes/aji_de_gallina_light-thumb.webp';
 import imgAlplerMagronenLightFull from '../images/recipes/alpler_magronen_light.webp';
 import imgAlplerMagronenLightThumb from '../images/recipes/alpler_magronen_light-thumb.webp';
 import imgAppleSkyrPbDipFull from '../images/recipes/apple_skyr_pb_dip.webp';
 import imgAppleSkyrPbDipThumb from '../images/recipes/apple_skyr_pb_dip-thumb.webp';
 import imgAvocadoEggToastFull from '../images/recipes/avocado_egg_toast.webp';
 import imgAvocadoEggToastThumb from '../images/recipes/avocado_egg_toast-thumb.webp';
+import imgBacalhauGraoFull from '../images/recipes/bacalhau_grao.webp';
+import imgBacalhauGraoThumb from '../images/recipes/bacalhau_grao-thumb.webp';
+import imgBakedCodTomatoesFull from '../images/recipes/baked_cod_tomatoes.webp';
+import imgBakedCodTomatoesThumb from '../images/recipes/baked_cod_tomatoes-thumb.webp';
 import imgBakedFalafelBowlFull from '../images/recipes/baked_falafel_bowl.webp';
 import imgBakedFalafelBowlThumb from '../images/recipes/baked_falafel_bowl-thumb.webp';
 import imgBakedFetaChickpeasFull from '../images/recipes/baked_feta_chickpeas.webp';
@@ -1661,6 +1667,8 @@ import imgBoboCamaraoFull from '../images/recipes/bobo_camarao.webp';
 import imgBoboCamaraoThumb from '../images/recipes/bobo_camarao-thumb.webp';
 import imgBreakfastBurritoFull from '../images/recipes/breakfast_burrito.webp';
 import imgBreakfastBurritoThumb from '../images/recipes/breakfast_burrito-thumb.webp';
+import imgBresaolaRocketToastFull from '../images/recipes/bresaola_rocket_toast.webp';
+import imgBresaolaRocketToastThumb from '../images/recipes/bresaola_rocket_toast-thumb.webp';
 import imgBresaolaRollsFull from '../images/recipes/bresaola_rolls.webp';
 import imgBresaolaRollsThumb from '../images/recipes/bresaola_rolls-thumb.webp';
 import imgBuckwheatGaletteFull from '../images/recipes/buckwheat_galette.webp';
@@ -1671,6 +1679,8 @@ import imgBunChayTofuFull from '../images/recipes/bun_chay_tofu.webp';
 import imgBunChayTofuThumb from '../images/recipes/bun_chay_tofu-thumb.webp';
 import imgBundnerBarleySoupFull from '../images/recipes/bundner_barley_soup.webp';
 import imgBundnerBarleySoupThumb from '../images/recipes/bundner_barley_soup-thumb.webp';
+import imgBundnerfleischCrispbreadFull from '../images/recipes/bundnerfleisch_crispbread.webp';
+import imgBundnerfleischCrispbreadThumb from '../images/recipes/bundnerfleisch_crispbread-thumb.webp';
 import imgBurritoBowlFull from '../images/recipes/burrito_bowl.webp';
 import imgBurritoBowlThumb from '../images/recipes/burrito_bowl-thumb.webp';
 import imgCaKhoFull from '../images/recipes/ca_kho.webp';
@@ -1715,6 +1725,8 @@ import imgChickpeaTunaSaladFull from '../images/recipes/chickpea_tuna_salad.webp
 import imgChickpeaTunaSaladThumb from '../images/recipes/chickpea_tuna_salad-thumb.webp';
 import imgChiliConCarneFull from '../images/recipes/chili_con_carne.webp';
 import imgChiliConCarneThumb from '../images/recipes/chili_con_carne-thumb.webp';
+import imgChiliSinCarneFull from '../images/recipes/chili_sin_carne.webp';
+import imgChiliSinCarneThumb from '../images/recipes/chili_sin_carne-thumb.webp';
 import imgCilbirFull from '../images/recipes/cilbir.webp';
 import imgCilbirThumb from '../images/recipes/cilbir-thumb.webp';
 import imgCocoaProteinMilkFull from '../images/recipes/cocoa_protein_milk.webp';
@@ -1733,6 +1745,10 @@ import imgCottageZucchiniFrittataFull from '../images/recipes/cottage_zucchini_f
 import imgCottageZucchiniFrittataThumb from '../images/recipes/cottage_zucchini_frittata-thumb.webp';
 import imgCouscousChickenSaladFull from '../images/recipes/couscous_chicken_salad.webp';
 import imgCouscousChickenSaladThumb from '../images/recipes/couscous_chicken_salad-thumb.webp';
+import imgCrepiocaChickenFull from '../images/recipes/crepioca_chicken.webp';
+import imgCrepiocaChickenThumb from '../images/recipes/crepioca_chicken-thumb.webp';
+import imgCuscuzEggFull from '../images/recipes/cuscuz_egg.webp';
+import imgCuscuzEggThumb from '../images/recipes/cuscuz_egg-thumb.webp';
 import imgDakgalbiFull from '../images/recipes/dakgalbi.webp';
 import imgDakgalbiThumb from '../images/recipes/dakgalbi-thumb.webp';
 import imgDeviledEggsYogurtFull from '../images/recipes/deviled_eggs_yogurt.webp';
@@ -1787,6 +1803,8 @@ import imgHuevosRancherosFull from '../images/recipes/huevos_rancheros.webp';
 import imgHuevosRancherosThumb from '../images/recipes/huevos_rancheros-thumb.webp';
 import imgHummusVeggieSticksFull from '../images/recipes/hummus_veggie_sticks.webp';
 import imgHummusVeggieSticksThumb from '../images/recipes/hummus_veggie_sticks-thumb.webp';
+import imgHummusWrapFull from '../images/recipes/hummus_wrap.webp';
+import imgHummusWrapThumb from '../images/recipes/hummus_wrap-thumb.webp';
 import imgJapaneseChickenCurryFull from '../images/recipes/japanese_chicken_curry.webp';
 import imgJapaneseChickenCurryThumb from '../images/recipes/japanese_chicken_curry-thumb.webp';
 import imgJapaneseSalmonBreakfastFull from '../images/recipes/japanese_salmon_breakfast.webp';
@@ -1819,10 +1837,14 @@ import imgMinestroneBeansFull from '../images/recipes/minestrone_beans.webp';
 import imgMinestroneBeansThumb from '../images/recipes/minestrone_beans-thumb.webp';
 import imgMisoSalmonFull from '../images/recipes/miso_salmon.webp';
 import imgMisoSalmonThumb from '../images/recipes/miso_salmon-thumb.webp';
+import imgMoongDalChillaFull from '../images/recipes/moong_dal_chilla.webp';
+import imgMoongDalChillaThumb from '../images/recipes/moong_dal_chilla-thumb.webp';
 import imgMoquecaFull from '../images/recipes/moqueca.webp';
 import imgMoquecaThumb from '../images/recipes/moqueca-thumb.webp';
 import imgMozzarellaTomatoSkewersFull from '../images/recipes/mozzarella_tomato_skewers.webp';
 import imgMozzarellaTomatoSkewersThumb from '../images/recipes/mozzarella_tomato_skewers-thumb.webp';
+import imgMushroomPolentaFull from '../images/recipes/mushroom_polenta.webp';
+import imgMushroomPolentaThumb from '../images/recipes/mushroom_polenta-thumb.webp';
 import imgNasiGorengFull from '../images/recipes/nasi_goreng.webp';
 import imgNasiGorengThumb from '../images/recipes/nasi_goreng-thumb.webp';
 import imgOatPorridgeQuarkFull from '../images/recipes/oat_porridge_quark.webp';
@@ -1847,12 +1869,16 @@ import imgPaneerTikkaWrapFull from '../images/recipes/paneer_tikka_wrap.webp';
 import imgPaneerTikkaWrapThumb from '../images/recipes/paneer_tikka_wrap-thumb.webp';
 import imgPbBananaSoyOatsFull from '../images/recipes/pb_banana_soy_oats.webp';
 import imgPbBananaSoyOatsThumb from '../images/recipes/pb_banana_soy_oats-thumb.webp';
+import imgPescadoVeracruzanaFull from '../images/recipes/pescado_veracruzana.webp';
+import imgPescadoVeracruzanaThumb from '../images/recipes/pescado_veracruzana-thumb.webp';
 import imgPhoFull from '../images/recipes/pho.webp';
 import imgPhoThumb from '../images/recipes/pho-thumb.webp';
 import imgPicadinhoFull from '../images/recipes/picadinho.webp';
 import imgPicadinhoThumb from '../images/recipes/picadinho-thumb.webp';
 import imgPolloAlAjilloFull from '../images/recipes/pollo_al_ajillo.webp';
 import imgPolloAlAjilloThumb from '../images/recipes/pollo_al_ajillo-thumb.webp';
+import imgPouletProvencalFull from '../images/recipes/poulet_provencal.webp';
+import imgPouletProvencalThumb from '../images/recipes/poulet_provencal-thumb.webp';
 import imgPratoFeitoFull from '../images/recipes/prato_feito.webp';
 import imgPratoFeitoThumb from '../images/recipes/prato_feito-thumb.webp';
 import imgProteinEnergyBallsFull from '../images/recipes/protein_energy_balls.webp';
@@ -1867,6 +1893,8 @@ import imgQuinoaBreakfastPorridgeFull from '../images/recipes/quinoa_breakfast_p
 import imgQuinoaBreakfastPorridgeThumb from '../images/recipes/quinoa_breakfast_porridge-thumb.webp';
 import imgQuinoaFetaSaladFull from '../images/recipes/quinoa_feta_salad.webp';
 import imgQuinoaFetaSaladThumb from '../images/recipes/quinoa_feta_salad-thumb.webp';
+import imgQuinoaPanFull from '../images/recipes/quinoa_pan.webp';
+import imgQuinoaPanThumb from '../images/recipes/quinoa_pan-thumb.webp';
 import imgRajmaFull from '../images/recipes/rajma.webp';
 import imgRajmaThumb from '../images/recipes/rajma-thumb.webp';
 import imgRatatouilleWhiteBeansFull from '../images/recipes/ratatouille_white_beans.webp';
@@ -1875,6 +1903,8 @@ import imgRicottaBerryToastFull from '../images/recipes/ricotta_berry_toast.webp
 import imgRicottaBerryToastThumb from '../images/recipes/ricotta_berry_toast-thumb.webp';
 import imgRoastedChickpeasFull from '../images/recipes/roasted_chickpeas.webp';
 import imgRoastedChickpeasThumb from '../images/recipes/roasted_chickpeas-thumb.webp';
+import imgRostiFriedEggFull from '../images/recipes/rosti_fried_egg.webp';
+import imgRostiFriedEggThumb from '../images/recipes/rosti_fried_egg-thumb.webp';
 import imgSabaShioyakiFull from '../images/recipes/saba_shioyaki.webp';
 import imgSabaShioyakiThumb from '../images/recipes/saba_shioyaki-thumb.webp';
 import imgSalmonCucumberBitesFull from '../images/recipes/salmon_cucumber_bites.webp';
@@ -1883,6 +1913,8 @@ import imgSalmonPokeFull from '../images/recipes/salmon_poke.webp';
 import imgSalmonPokeThumb from '../images/recipes/salmon_poke-thumb.webp';
 import imgSalmonPuyLentilsFull from '../images/recipes/salmon_puy_lentils.webp';
 import imgSalmonPuyLentilsThumb from '../images/recipes/salmon_puy_lentils-thumb.webp';
+import imgSalpicaoFrangoFull from '../images/recipes/salpicao_frango.webp';
+import imgSalpicaoFrangoThumb from '../images/recipes/salpicao_frango-thumb.webp';
 import imgScrambledEggsFull from '../images/recipes/scrambled_eggs.webp';
 import imgScrambledEggsThumb from '../images/recipes/scrambled_eggs-thumb.webp';
 import imgSeafoodPaellaFull from '../images/recipes/seafood_paella.webp';
@@ -1917,6 +1949,8 @@ import imgSmokedSalmonBreadFull from '../images/recipes/smoked_salmon_bread.webp
 import imgSmokedSalmonBreadThumb from '../images/recipes/smoked_salmon_bread-thumb.webp';
 import imgSoyChiaPuddingFull from '../images/recipes/soy_chia_pudding.webp';
 import imgSoyChiaPuddingThumb from '../images/recipes/soy_chia_pudding-thumb.webp';
+import imgSpinachEggWrapFull from '../images/recipes/spinach_egg_wrap.webp';
+import imgSpinachEggWrapThumb from '../images/recipes/spinach_egg_wrap-thumb.webp';
 import imgSpinachFetaOmeletteFull from '../images/recipes/spinach_feta_omelette.webp';
 import imgSpinachFetaOmeletteThumb from '../images/recipes/spinach_feta_omelette-thumb.webp';
 import imgSteamedFishGingerFull from '../images/recipes/steamed_fish_ginger.webp';
@@ -1929,6 +1963,8 @@ import imgSummerRollsFull from '../images/recipes/summer_rolls.webp';
 import imgSummerRollsThumb from '../images/recipes/summer_rolls-thumb.webp';
 import imgSundubuJjigaeFull from '../images/recipes/sundubu_jjigae.webp';
 import imgSundubuJjigaeThumb from '../images/recipes/sundubu_jjigae-thumb.webp';
+import imgSwissCottageRadishBreadFull from '../images/recipes/swiss_cottage_radish_bread.webp';
+import imgSwissCottageRadishBreadThumb from '../images/recipes/swiss_cottage_radish_bread-thumb.webp';
 import imgTamagoyakiEdamameFull from '../images/recipes/tamagoyaki_edamame.webp';
 import imgTamagoyakiEdamameThumb from '../images/recipes/tamagoyaki_edamame-thumb.webp';
 import imgTandooriChickenSaladFull from '../images/recipes/tandoori_chicken_salad.webp';
@@ -1937,12 +1973,16 @@ import imgTapiocaEggCheeseFull from '../images/recipes/tapioca_egg_cheese.webp';
 import imgTapiocaEggCheeseThumb from '../images/recipes/tapioca_egg_cheese-thumb.webp';
 import imgTempehStirfryFull from '../images/recipes/tempeh_stirfry.webp';
 import imgTempehStirfryThumb from '../images/recipes/tempeh_stirfry-thumb.webp';
+import imgTeriyakiTofuFull from '../images/recipes/teriyaki_tofu.webp';
+import imgTeriyakiTofuThumb from '../images/recipes/teriyaki_tofu-thumb.webp';
 import imgThaiCurryFull from '../images/recipes/thai_curry.webp';
 import imgThaiCurryThumb from '../images/recipes/thai_curry-thumb.webp';
 import imgTikkaMasalaLightFull from '../images/recipes/tikka_masala_light.webp';
 import imgTikkaMasalaLightThumb from '../images/recipes/tikka_masala_light-thumb.webp';
 import imgTofuPokeFull from '../images/recipes/tofu_poke.webp';
 import imgTofuPokeThumb from '../images/recipes/tofu_poke-thumb.webp';
+import imgTofuScrambleFull from '../images/recipes/tofu_scramble.webp';
+import imgTofuScrambleThumb from '../images/recipes/tofu_scramble-thumb.webp';
 import imgTomYumShrimpFull from '../images/recipes/tom_yum_shrimp.webp';
 import imgTomYumShrimpThumb from '../images/recipes/tom_yum_shrimp-thumb.webp';
 import imgTonnoFagioliFull from '../images/recipes/tonno_fagioli.webp';
@@ -1957,6 +1997,8 @@ import imgTunaOnigiriFull from '../images/recipes/tuna_onigiri.webp';
 import imgTunaOnigiriThumb from '../images/recipes/tuna_onigiri-thumb.webp';
 import imgTunaPastaSaladFull from '../images/recipes/tuna_pasta_salad.webp';
 import imgTunaPastaSaladThumb from '../images/recipes/tuna_pasta_salad-thumb.webp';
+import imgTunaRiceCakesFull from '../images/recipes/tuna_rice_cakes.webp';
+import imgTunaRiceCakesThumb from '../images/recipes/tuna_rice_cakes-thumb.webp';
 import imgTurkeyBologneseFull from '../images/recipes/turkey_bolognese.webp';
 import imgTurkeyBologneseThumb from '../images/recipes/turkey_bolognese-thumb.webp';
 import imgTurkeyMeatballsFull from '../images/recipes/turkey_meatballs.webp';
@@ -1967,6 +2009,8 @@ import imgTurkeyVeggieWrapFull from '../images/recipes/turkey_veggie_wrap.webp';
 import imgTurkeyVeggieWrapThumb from '../images/recipes/turkey_veggie_wrap-thumb.webp';
 import imgTzatzikiPitaFull from '../images/recipes/tzatziki_pita.webp';
 import imgTzatzikiPitaThumb from '../images/recipes/tzatziki_pita-thumb.webp';
+import imgVeggieEggMuffinsFull from '../images/recipes/veggie_egg_muffins.webp';
+import imgVeggieEggMuffinsThumb from '../images/recipes/veggie_egg_muffins-thumb.webp';
 import imgVeggieOmeletteFull from '../images/recipes/veggie_omelette.webp';
 import imgVeggieOmeletteThumb from '../images/recipes/veggie_omelette-thumb.webp';
 import imgVitaminaBananaFull from '../images/recipes/vitamina_banana.webp';
@@ -1977,6 +2021,8 @@ import imgYogurtBowlFull from '../images/recipes/yogurt_bowl.webp';
 import imgYogurtBowlThumb from '../images/recipes/yogurt_bowl-thumb.webp';
 import imgYumNuaFull from '../images/recipes/yum_nua.webp';
 import imgYumNuaThumb from '../images/recipes/yum_nua-thumb.webp';
+import imgZurichGeschnetzeltesFull from '../images/recipes/zurich_geschnetzeltes.webp';
+import imgZurichGeschnetzeltesThumb from '../images/recipes/zurich_geschnetzeltes-thumb.webp';
 
 export const CATALOG_SOURCE: FoodCatalogSourceMeta = foodsFile.source;
 export const FOODS: readonly Food[] = foodsFile.foods as unknown as readonly Food[];
@@ -4018,6 +4064,14 @@ export const RECIPE_IMAGES: Readonly<Record<string, RecipeImageAssets>> = {
     thumbWidth: 400,
     thumbHeight: 300,
   },
+  aji_de_gallina_light: {
+    full: imgAjiDeGallinaLightFull,
+    thumb: imgAjiDeGallinaLightThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
   alpler_magronen_light: {
     full: imgAlplerMagronenLightFull,
     thumb: imgAlplerMagronenLightThumb,
@@ -4037,6 +4091,22 @@ export const RECIPE_IMAGES: Readonly<Record<string, RecipeImageAssets>> = {
   avocado_egg_toast: {
     full: imgAvocadoEggToastFull,
     thumb: imgAvocadoEggToastThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  bacalhau_grao: {
+    full: imgBacalhauGraoFull,
+    thumb: imgBacalhauGraoThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  baked_cod_tomatoes: {
+    full: imgBakedCodTomatoesFull,
+    thumb: imgBakedCodTomatoesThumb,
     width: 640,
     height: 480,
     thumbWidth: 400,
@@ -4162,6 +4232,14 @@ export const RECIPE_IMAGES: Readonly<Record<string, RecipeImageAssets>> = {
     thumbWidth: 400,
     thumbHeight: 300,
   },
+  bresaola_rocket_toast: {
+    full: imgBresaolaRocketToastFull,
+    thumb: imgBresaolaRocketToastThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
   bresaola_rolls: {
     full: imgBresaolaRollsFull,
     thumb: imgBresaolaRollsThumb,
@@ -4197,6 +4275,14 @@ export const RECIPE_IMAGES: Readonly<Record<string, RecipeImageAssets>> = {
   bundner_barley_soup: {
     full: imgBundnerBarleySoupFull,
     thumb: imgBundnerBarleySoupThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  bundnerfleisch_crispbread: {
+    full: imgBundnerfleischCrispbreadFull,
+    thumb: imgBundnerfleischCrispbreadThumb,
     width: 640,
     height: 480,
     thumbWidth: 400,
@@ -4378,6 +4464,14 @@ export const RECIPE_IMAGES: Readonly<Record<string, RecipeImageAssets>> = {
     thumbWidth: 400,
     thumbHeight: 300,
   },
+  chili_sin_carne: {
+    full: imgChiliSinCarneFull,
+    thumb: imgChiliSinCarneThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
   cilbir: {
     full: imgCilbirFull,
     thumb: imgCilbirThumb,
@@ -4445,6 +4539,22 @@ export const RECIPE_IMAGES: Readonly<Record<string, RecipeImageAssets>> = {
   couscous_chicken_salad: {
     full: imgCouscousChickenSaladFull,
     thumb: imgCouscousChickenSaladThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  crepioca_chicken: {
+    full: imgCrepiocaChickenFull,
+    thumb: imgCrepiocaChickenThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  cuscuz_egg: {
+    full: imgCuscuzEggFull,
+    thumb: imgCuscuzEggThumb,
     width: 640,
     height: 480,
     thumbWidth: 400,
@@ -4666,6 +4776,14 @@ export const RECIPE_IMAGES: Readonly<Record<string, RecipeImageAssets>> = {
     thumbWidth: 400,
     thumbHeight: 300,
   },
+  hummus_wrap: {
+    full: imgHummusWrapFull,
+    thumb: imgHummusWrapThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
   japanese_chicken_curry: {
     full: imgJapaneseChickenCurryFull,
     thumb: imgJapaneseChickenCurryThumb,
@@ -4794,6 +4912,14 @@ export const RECIPE_IMAGES: Readonly<Record<string, RecipeImageAssets>> = {
     thumbWidth: 400,
     thumbHeight: 300,
   },
+  moong_dal_chilla: {
+    full: imgMoongDalChillaFull,
+    thumb: imgMoongDalChillaThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
   moqueca: {
     full: imgMoquecaFull,
     thumb: imgMoquecaThumb,
@@ -4805,6 +4931,14 @@ export const RECIPE_IMAGES: Readonly<Record<string, RecipeImageAssets>> = {
   mozzarella_tomato_skewers: {
     full: imgMozzarellaTomatoSkewersFull,
     thumb: imgMozzarellaTomatoSkewersThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  mushroom_polenta: {
+    full: imgMushroomPolentaFull,
+    thumb: imgMushroomPolentaThumb,
     width: 640,
     height: 480,
     thumbWidth: 400,
@@ -4906,6 +5040,14 @@ export const RECIPE_IMAGES: Readonly<Record<string, RecipeImageAssets>> = {
     thumbWidth: 400,
     thumbHeight: 300,
   },
+  pescado_veracruzana: {
+    full: imgPescadoVeracruzanaFull,
+    thumb: imgPescadoVeracruzanaThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
   pho: {
     full: imgPhoFull,
     thumb: imgPhoThumb,
@@ -4925,6 +5067,14 @@ export const RECIPE_IMAGES: Readonly<Record<string, RecipeImageAssets>> = {
   pollo_al_ajillo: {
     full: imgPolloAlAjilloFull,
     thumb: imgPolloAlAjilloThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  poulet_provencal: {
+    full: imgPouletProvencalFull,
+    thumb: imgPouletProvencalThumb,
     width: 640,
     height: 480,
     thumbWidth: 400,
@@ -4986,6 +5136,14 @@ export const RECIPE_IMAGES: Readonly<Record<string, RecipeImageAssets>> = {
     thumbWidth: 400,
     thumbHeight: 300,
   },
+  quinoa_pan: {
+    full: imgQuinoaPanFull,
+    thumb: imgQuinoaPanThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
   rajma: {
     full: imgRajmaFull,
     thumb: imgRajmaThumb,
@@ -5018,6 +5176,14 @@ export const RECIPE_IMAGES: Readonly<Record<string, RecipeImageAssets>> = {
     thumbWidth: 400,
     thumbHeight: 300,
   },
+  rosti_fried_egg: {
+    full: imgRostiFriedEggFull,
+    thumb: imgRostiFriedEggThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
   saba_shioyaki: {
     full: imgSabaShioyakiFull,
     thumb: imgSabaShioyakiThumb,
@@ -5045,6 +5211,14 @@ export const RECIPE_IMAGES: Readonly<Record<string, RecipeImageAssets>> = {
   salmon_puy_lentils: {
     full: imgSalmonPuyLentilsFull,
     thumb: imgSalmonPuyLentilsThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  salpicao_frango: {
+    full: imgSalpicaoFrangoFull,
+    thumb: imgSalpicaoFrangoThumb,
     width: 640,
     height: 480,
     thumbWidth: 400,
@@ -5186,6 +5360,14 @@ export const RECIPE_IMAGES: Readonly<Record<string, RecipeImageAssets>> = {
     thumbWidth: 400,
     thumbHeight: 300,
   },
+  spinach_egg_wrap: {
+    full: imgSpinachEggWrapFull,
+    thumb: imgSpinachEggWrapThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
   spinach_feta_omelette: {
     full: imgSpinachFetaOmeletteFull,
     thumb: imgSpinachFetaOmeletteThumb,
@@ -5234,6 +5416,14 @@ export const RECIPE_IMAGES: Readonly<Record<string, RecipeImageAssets>> = {
     thumbWidth: 400,
     thumbHeight: 300,
   },
+  swiss_cottage_radish_bread: {
+    full: imgSwissCottageRadishBreadFull,
+    thumb: imgSwissCottageRadishBreadThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
   tamagoyaki_edamame: {
     full: imgTamagoyakiEdamameFull,
     thumb: imgTamagoyakiEdamameThumb,
@@ -5266,6 +5456,14 @@ export const RECIPE_IMAGES: Readonly<Record<string, RecipeImageAssets>> = {
     thumbWidth: 400,
     thumbHeight: 300,
   },
+  teriyaki_tofu: {
+    full: imgTeriyakiTofuFull,
+    thumb: imgTeriyakiTofuThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
   thai_curry: {
     full: imgThaiCurryFull,
     thumb: imgThaiCurryThumb,
@@ -5285,6 +5483,14 @@ export const RECIPE_IMAGES: Readonly<Record<string, RecipeImageAssets>> = {
   tofu_poke: {
     full: imgTofuPokeFull,
     thumb: imgTofuPokeThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  tofu_scramble: {
+    full: imgTofuScrambleFull,
+    thumb: imgTofuScrambleThumb,
     width: 640,
     height: 480,
     thumbWidth: 400,
@@ -5346,6 +5552,14 @@ export const RECIPE_IMAGES: Readonly<Record<string, RecipeImageAssets>> = {
     thumbWidth: 400,
     thumbHeight: 300,
   },
+  tuna_rice_cakes: {
+    full: imgTunaRiceCakesFull,
+    thumb: imgTunaRiceCakesThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
   turkey_bolognese: {
     full: imgTurkeyBologneseFull,
     thumb: imgTurkeyBologneseThumb,
@@ -5386,6 +5600,14 @@ export const RECIPE_IMAGES: Readonly<Record<string, RecipeImageAssets>> = {
     thumbWidth: 400,
     thumbHeight: 300,
   },
+  veggie_egg_muffins: {
+    full: imgVeggieEggMuffinsFull,
+    thumb: imgVeggieEggMuffinsThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
   veggie_omelette: {
     full: imgVeggieOmeletteFull,
     thumb: imgVeggieOmeletteThumb,
@@ -5421,6 +5643,14 @@ export const RECIPE_IMAGES: Readonly<Record<string, RecipeImageAssets>> = {
   yum_nua: {
     full: imgYumNuaFull,
     thumb: imgYumNuaThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  zurich_geschnetzeltes: {
+    full: imgZurichGeschnetzeltesFull,
+    thumb: imgZurichGeschnetzeltesThumb,
     width: 640,
     height: 480,
     thumbWidth: 400,

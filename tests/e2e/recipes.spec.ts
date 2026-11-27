@@ -39,11 +39,11 @@ test.describe('E4 + E8 Journey J1: Rezeptliste & lokale Bilder -> Detail -> Port
     ).toBeVisible();
     expect(page.url()).toContain('#/rezepte');
 
-    // E8 + Nachtrag v5.11 + E12: 200 Rezepte geladen, 177 lokale WebP-Bilder vorhanden (loading="lazy")
+    // E8 + Nachtrag v5.11 + E12 + E14: 200 Rezepte geladen, alle 200 lokalen WebP-Bilder vorhanden (loading="lazy")
     const recipeArticles = page.locator('[data-testid="recipe-list"] article');
     await expect(recipeArticles).toHaveCount(200);
     const listImgs = page.locator('[data-testid="recipe-list"] img');
-    await expect(listImgs).toHaveCount(177);
+    await expect(listImgs).toHaveCount(200);
     const firstHeroBox = await page
       .locator('[data-testid="recipe-list"] .edo-recipe-hero-btn')
       .first()
@@ -175,7 +175,7 @@ test.describe('E4 + E8 Journey J1: Rezeptliste & lokale Bilder -> Detail -> Port
     expect(consoleErrors).toEqual([]);
   });
 
-  test('E12 + E8 Nachtrag v5.11: 200 Rezepte, 177 lokale Fotos & 23 Platzhalter, neue Küchen, Vorlieben-Chips, DE/EN + Zweitsprache FR, PlanSheet-Suche, 360x844 & ar-XB ohne Überlauf', async ({
+  test('E12 + E8 + E13 + E14: 200 Rezepte, alle 200 lokalen Fotos, neue Küchen, Vorlieben-Chips, DE/EN + Zweitsprache FR/JA, PlanSheet-Suche, 360x844 & ar-XB ohne Überlauf', async ({
     page,
   }) => {
     const consoleErrors: string[] = [];
@@ -295,12 +295,25 @@ test.describe('E4 + E8 Journey J1: Rezeptliste & lokale Bilder -> Detail -> Port
     ).toBeVisible();
     await expect(page.getByTestId('step-list')).toContainText('Stir the skyr');
 
-    // Dokumentiertes Platzhalter-Rezept (E14 #41) zeigt neutralen Platzhalter ohne <img>
-    await page.goto('/?pseudoRtl=1#/rezept/mushroom_polenta');
-    const placeholderHero = page.getByTestId('recipe-detail-hero');
-    await expect(placeholderHero).toBeVisible();
-    await expect(placeholderHero.locator('img')).toHaveCount(0);
-    await expect(placeholderHero).toHaveClass(/edo-rimg-ph/);
+    // E14 (#41): bisheriges Platzhalter-Rezept zeigt nun lokales 640x480-WebP-Bild ohne Fremdanfragen
+    await page.evaluate(() => {
+      window.location.hash = '#/rezept/mushroom_polenta';
+    });
+    const polentaHeroImg = page.locator(
+      '[data-testid="recipe-detail-hero"] img',
+    );
+    await expect(polentaHeroImg).toBeVisible();
+    const polentaImgInfo = await polentaHeroImg.evaluate((el) => {
+      const img = el as HTMLImageElement;
+      return {
+        complete: img.complete,
+        naturalWidth: img.naturalWidth,
+        naturalHeight: img.naturalHeight,
+      };
+    });
+    expect(polentaImgInfo.complete).toBe(true);
+    expect(polentaImgInfo.naturalWidth).toBe(640);
+    expect(polentaImgInfo.naturalHeight).toBe(480);
 
     // PlanSheet-Suche auf #/plan bei 200 Rezepten (Treffer, kein Treffer, Tastatur, kein Überlauf)
     await page.goto('/?pseudoRtl=1#/plan');

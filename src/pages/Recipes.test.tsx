@@ -525,7 +525,7 @@ describe('Paket E4: Rezeptliste, Rezept-Detailseite & F3b (Issue #10)', () => {
     expect(document.body.textContent).not.toContain('Potatoes');
   });
 
-  it('E8 + Nachtrag v5.11: zeigt 177 lokale Rezeptbilder in Liste (lazy) und Detail (eager, 4:3) sowie 23 Platzhalter ohne Manifest-/Fotografenangaben', async () => {
+  it('E8 + E14: zeigt alle 200 lokalen Rezeptbilder in Liste (lazy) und Detail (eager, 4:3) ohne Manifest-/Fotografenangaben', async () => {
     const storage = createMemoryStorage();
     // Ofenlachs auf 5 Sterne setzen, damit er als Top-Karte (featured 800x600) erscheint
     await storage.ratings.setRating(asRecipeId('oven_salmon'), 5);
@@ -535,7 +535,7 @@ describe('Paket E4: Rezeptliste, Rezept-Detailseite & F3b (Issue #10)', () => {
 
     const list = await screen.findByTestId('recipe-list');
     const listImgs = list.querySelectorAll('img');
-    expect(listImgs).toHaveLength(177);
+    expect(listImgs).toHaveLength(200);
     // Top-Karte: Vollbild 800x600, loading="lazy"
     expect(listImgs[0]).toHaveAttribute('loading', 'lazy');
     expect(listImgs[0]).toHaveAttribute('width', '800');
@@ -552,10 +552,13 @@ describe('Paket E4: Rezeptliste, Rezept-Detailseite & F3b (Issue #10)', () => {
     expect(skyrImg).toHaveAttribute('loading', 'lazy');
     expect(skyrImg).toHaveAttribute('width', '400');
     expect(skyrImg).toHaveAttribute('height', '300');
-    // Dokumentiertes Platzhalter-Rezept (E14 #41) zeigt neutralen Platzhalter ohne <img>
-    const placeholderCard = screen.getByTestId('recipe-card-mushroom_polenta');
-    expect(placeholderCard.querySelector('img')).toBeNull();
-    expect(placeholderCard.querySelector('.edo-rimg-ph')).not.toBeNull();
+    // E14 (#41): bisheriges Platzhalter-Rezept zeigt nun lokales 400x300-WebP-Bild
+    const polentaCard = screen.getByTestId('recipe-card-mushroom_polenta');
+    const polentaImg = polentaCard.querySelector('img');
+    expect(polentaImg).not.toBeNull();
+    expect(polentaImg).toHaveAttribute('loading', 'lazy');
+    expect(polentaImg).toHaveAttribute('width', '400');
+    expect(polentaImg).toHaveAttribute('height', '300');
     // Kein Fotografenname und keine Pexels-URL in der UI
     expect(document.body.textContent).not.toContain('Pexels');
     expect(document.body.textContent).not.toContain('pexels.com');
