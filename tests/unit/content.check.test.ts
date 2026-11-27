@@ -458,7 +458,7 @@ describe('Inhaltsprüfung content/ (Port von validate.py, ADR-005, ADR-006, E12 
     return out;
   }
 
-  it('E8 + Nachtrag v5.11: prüft alle 354 WebP-Rezeptbilder (177 Paare + 23 Platzhalter) gegen Manifest, Lizenz (Pexels/Unsplash), fixes 7,4-MB-Budget und 0 EXIF/GPS', () => {
+  it('E8 + E14: prüft alle 400 WebP-Rezeptbilder (alle 200 Paare, 0 Platzhalter) gegen Manifest, Lizenz (Pexels/Unsplash), fixes 7,4-MB-Budget und 0 EXIF/GPS', () => {
     const bundle = loadRawRecipeImagesBundle();
     const report = validateRecipeImages(bundle);
 
@@ -467,28 +467,17 @@ describe('Inhaltsprüfung content/ (Port von validate.py, ADR-005, ADR-006, E12 
     expect(report.ok).toBe(true);
     expect(report.validated).not.toBeNull();
     expect(report.validated!.budgetBytes).toBe(7_400_000);
-    expect(report.validated!.images).toHaveLength(177);
-    expect(report.validated!.placeholders).toHaveLength(23);
-    expect(report.totalBytes).toBe(6_539_470);
+    expect(report.validated!.images).toHaveLength(200);
+    expect(report.validated!.placeholders).toEqual([]);
+    expect(report.totalBytes).toBe(7_313_344);
     expect(report.totalBytes).toBeLessThanOrEqual(RECIPE_IMAGE_BUDGET_BYTES);
 
-    // 177 Bilder und 23 Platzhalter sind disjunkt und decken alle 200 Rezepte vollständig ab
+    // Alle 200 Rezepte haben ein geprüftes Foto und das passende image-Feld
     const imageIds = new Set(report.validated!.images.map((i) => i.recipeId));
-    const placeholderIds = new Set(report.validated!.placeholders);
-    expect(imageIds.size).toBe(177);
-    expect(placeholderIds.size).toBe(23);
-    for (const id of placeholderIds) {
-      expect(imageIds.has(id)).toBe(false);
-    }
-    expect(new Set([...imageIds, ...placeholderIds]).size).toBe(200);
+    expect(imageIds.size).toBe(200);
     for (const id of bundle.knownRecipeIds) {
-      const hasField = bundle.recipeImageFields?.[id];
-      if (imageIds.has(id)) {
-        expect(hasField).toBe(id);
-      } else {
-        expect(placeholderIds.has(id)).toBe(true);
-        expect(hasField).toBeUndefined();
-      }
+      expect(imageIds.has(id)).toBe(true);
+      expect(bundle.recipeImageFields?.[id]).toBe(id);
     }
   });
 

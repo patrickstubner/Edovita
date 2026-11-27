@@ -6,31 +6,7 @@
   "internalOnly": true,
   "note": "Internes Herkunfts- und Lizenz-Manifest. Wird nicht in der Benutzeroberfläche angezeigt und nicht ins App-Bundle übernommen.",
   "budgetBytes": 7400000,
-  "placeholders": [
-    "aji_de_gallina_light",
-    "bacalhau_grao",
-    "baked_cod_tomatoes",
-    "bresaola_rocket_toast",
-    "bundnerfleisch_crispbread",
-    "chili_sin_carne",
-    "crepioca_chicken",
-    "cuscuz_egg",
-    "hummus_wrap",
-    "moong_dal_chilla",
-    "mushroom_polenta",
-    "pescado_veracruzana",
-    "poulet_provencal",
-    "quinoa_pan",
-    "rosti_fried_egg",
-    "salpicao_frango",
-    "spinach_egg_wrap",
-    "swiss_cottage_radish_bread",
-    "teriyaki_tofu",
-    "tofu_scramble",
-    "tuna_rice_cakes",
-    "veggie_egg_muffins",
-    "zurich_geschnetzeltes"
-  ],
+  "placeholders": [],
   "images": [
     {
       "recipeId": "acai_skyr_bowl",
@@ -47,6 +23,33 @@
       "bytes": {
         "full": 18812,
         "thumb": 10244
+      },
+      "dimensions": {
+        "full": {
+          "width": 640,
+          "height": 480
+        },
+        "thumb": {
+          "width": 400,
+          "height": 300
+        }
+      }
+    },
+    {
+      "recipeId": "aji_de_gallina_light",
+      "source": "Pexels",
+      "photoId": "37283160",
+      "originalUrl": "https://www.pexels.com/photo/37283160/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-27",
+      "files": {
+        "full": "aji_de_gallina_light.webp",
+        "thumb": "aji_de_gallina_light-thumb.webp"
+      },
+      "bytes": {
+        "full": 19340,
+        "thumb": 9618
       },
       "dimensions": {
         "full": {
@@ -128,6 +131,60 @@
       "bytes": {
         "full": 19234,
         "thumb": 9468
+      },
+      "dimensions": {
+        "full": {
+          "width": 640,
+          "height": 480
+        },
+        "thumb": {
+          "width": 400,
+          "height": 300
+        }
+      }
+    },
+    {
+      "recipeId": "bacalhau_grao",
+      "source": "Pexels",
+      "photoId": "6382822",
+      "originalUrl": "https://www.pexels.com/photo/6382822/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-27",
+      "files": {
+        "full": "bacalhau_grao.webp",
+        "thumb": "bacalhau_grao-thumb.webp"
+      },
+      "bytes": {
+        "full": 12204,
+        "thumb": 6168
+      },
+      "dimensions": {
+        "full": {
+          "width": 640,
+          "height": 480
+        },
+        "thumb": {
+          "width": 400,
+          "height": 300
+        }
+      }
+    },
+    {
+      "recipeId": "baked_cod_tomatoes",
+      "source": "Pexels",
+      "photoId": "34636418",
+      "originalUrl": "https://www.pexels.com/photo/34636418/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-27",
+      "files": {
+        "full": "baked_cod_tomatoes.webp",
+        "thumb": "baked_cod_tomatoes-thumb.webp"
+      },
+      "bytes": {
+        "full": 8382,
+        "thumb": 4322
       },
       "dimensions": {
         "full": {
@@ -546,6 +603,33 @@
       }
     },
     {
+      "recipeId": "bresaola_rocket_toast",
+      "source": "Pexels",
+      "photoId": "30270633",
+      "originalUrl": "https://www.pexels.com/photo/30270633/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-27",
+      "files": {
+        "full": "bresaola_rocket_toast.webp",
+        "thumb": "bresaola_rocket_toast-thumb.webp"
+      },
+      "bytes": {
+        "full": 24230,
+        "thumb": 12382
+      },
+      "dimensions": {
+        "full": {
+          "width": 640,
+          "height": 480
+        },
+        "thumb": {
+          "width": 400,
+          "height": 300
+        }
+      }
+    },
+    {
       "recipeId": "bresaola_rolls",
       "source": "Pexels",
       "photoId": 18229213,
@@ -668,6 +752,33 @@
       "bytes": {
         "full": 52412,
         "thumb": 20912
+      },
+      "dimensions": {
+        "full": {
+          "width": 640,
+          "height": 480
+        },
+        "thumb": {
+          "width": 400,
+          "height": 300
+        }
+      }
+    },
+    {
+      "recipeId": "bundnerfleisch_crispbread",
+      "source": "Pexels",
+      "photoId": "5975471",
+      "originalUrl": "https://www.pexels.com/photo/5975471/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-27",
+      "files": {
+        "full": "bundnerfleisch_crispbread.webp",
+        "thumb": "bundnerfleisch_crispbread-thumb.webp"
+      },
+      "bytes": {
+        "full": 39392,
+        "thumb": 18370
       },
       "dimensions": {
         "full": {
@@ -1276,6 +1387,33 @@
       }
     },
     {
+      "recipeId": "chili_sin_carne",
+      "source": "Pexels",
+      "photoId": "28286253",
+      "originalUrl": "https://www.pexels.com/photo/28286253/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-27",
+      "files": {
+        "full": "chili_sin_carne.webp",
+        "thumb": "chili_sin_carne-thumb.webp"
+      },
+      "bytes": {
+        "full": 30038,
+        "thumb": 15228
+      },
+      "dimensions": {
+        "full": {
+          "width": 640,
+          "height": 480
+        },
+        "thumb": {
+          "width": 400,
+          "height": 300
+        }
+      }
+    },
+    {
       "recipeId": "cilbir",
       "source": "Pexels",
       "photoId": 38085477,
@@ -1506,6 +1644,60 @@
       "bytes": {
         "full": 44446,
         "thumb": 20888
+      },
+      "dimensions": {
+        "full": {
+          "width": 640,
+          "height": 480
+        },
+        "thumb": {
+          "width": 400,
+          "height": 300
+        }
+      }
+    },
+    {
+      "recipeId": "crepioca_chicken",
+      "source": "Pexels",
+      "photoId": "20582728",
+      "originalUrl": "https://www.pexels.com/photo/20582728/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-27",
+      "files": {
+        "full": "crepioca_chicken.webp",
+        "thumb": "crepioca_chicken-thumb.webp"
+      },
+      "bytes": {
+        "full": 9352,
+        "thumb": 4832
+      },
+      "dimensions": {
+        "full": {
+          "width": 640,
+          "height": 480
+        },
+        "thumb": {
+          "width": 400,
+          "height": 300
+        }
+      }
+    },
+    {
+      "recipeId": "cuscuz_egg",
+      "source": "Pexels",
+      "photoId": "15584737",
+      "originalUrl": "https://www.pexels.com/photo/15584737/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-27",
+      "files": {
+        "full": "cuscuz_egg.webp",
+        "thumb": "cuscuz_egg-thumb.webp"
+      },
+      "bytes": {
+        "full": 20908,
+        "thumb": 11106
       },
       "dimensions": {
         "full": {
@@ -2248,6 +2440,33 @@
       }
     },
     {
+      "recipeId": "hummus_wrap",
+      "source": "Pexels",
+      "photoId": "5112578",
+      "originalUrl": "https://www.pexels.com/photo/5112578/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-27",
+      "files": {
+        "full": "hummus_wrap.webp",
+        "thumb": "hummus_wrap-thumb.webp"
+      },
+      "bytes": {
+        "full": 18100,
+        "thumb": 9830
+      },
+      "dimensions": {
+        "full": {
+          "width": 640,
+          "height": 480
+        },
+        "thumb": {
+          "width": 400,
+          "height": 300
+        }
+      }
+    },
+    {
       "recipeId": "japanese_chicken_curry",
       "source": "Pexels",
       "photoId": 30700759,
@@ -2680,6 +2899,33 @@
       }
     },
     {
+      "recipeId": "moong_dal_chilla",
+      "source": "Pexels",
+      "photoId": "35351659",
+      "originalUrl": "https://www.pexels.com/photo/35351659/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-27",
+      "files": {
+        "full": "moong_dal_chilla.webp",
+        "thumb": "moong_dal_chilla-thumb.webp"
+      },
+      "bytes": {
+        "full": 22064,
+        "thumb": 11218
+      },
+      "dimensions": {
+        "full": {
+          "width": 640,
+          "height": 480
+        },
+        "thumb": {
+          "width": 400,
+          "height": 300
+        }
+      }
+    },
+    {
       "recipeId": "moqueca",
       "source": "Pexels",
       "photoId": 40108721,
@@ -2721,6 +2967,33 @@
       "bytes": {
         "full": 17452,
         "thumb": 9728
+      },
+      "dimensions": {
+        "full": {
+          "width": 640,
+          "height": 480
+        },
+        "thumb": {
+          "width": 400,
+          "height": 300
+        }
+      }
+    },
+    {
+      "recipeId": "mushroom_polenta",
+      "source": "Pexels",
+      "photoId": "34130136",
+      "originalUrl": "https://www.pexels.com/photo/34130136/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-27",
+      "files": {
+        "full": "mushroom_polenta.webp",
+        "thumb": "mushroom_polenta-thumb.webp"
+      },
+      "bytes": {
+        "full": 38448,
+        "thumb": 19178
       },
       "dimensions": {
         "full": {
@@ -3058,6 +3331,33 @@
       }
     },
     {
+      "recipeId": "pescado_veracruzana",
+      "source": "Pexels",
+      "photoId": "4628593",
+      "originalUrl": "https://www.pexels.com/photo/4628593/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-27",
+      "files": {
+        "full": "pescado_veracruzana.webp",
+        "thumb": "pescado_veracruzana-thumb.webp"
+      },
+      "bytes": {
+        "full": 19186,
+        "thumb": 10174
+      },
+      "dimensions": {
+        "full": {
+          "width": 640,
+          "height": 480
+        },
+        "thumb": {
+          "width": 400,
+          "height": 300
+        }
+      }
+    },
+    {
       "recipeId": "pho",
       "source": "Pexels",
       "photoId": 6646022,
@@ -3127,6 +3427,33 @@
       "bytes": {
         "full": 13758,
         "thumb": 6858
+      },
+      "dimensions": {
+        "full": {
+          "width": 640,
+          "height": 480
+        },
+        "thumb": {
+          "width": 400,
+          "height": 300
+        }
+      }
+    },
+    {
+      "recipeId": "poulet_provencal",
+      "source": "Pexels",
+      "photoId": "36430166",
+      "originalUrl": "https://www.pexels.com/photo/36430166/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-27",
+      "files": {
+        "full": "poulet_provencal.webp",
+        "thumb": "poulet_provencal-thumb.webp"
+      },
+      "bytes": {
+        "full": 14764,
+        "thumb": 7270
       },
       "dimensions": {
         "full": {
@@ -3329,6 +3656,33 @@
       }
     },
     {
+      "recipeId": "quinoa_pan",
+      "source": "Pexels",
+      "photoId": "38499046",
+      "originalUrl": "https://www.pexels.com/photo/38499046/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-27",
+      "files": {
+        "full": "quinoa_pan.webp",
+        "thumb": "quinoa_pan-thumb.webp"
+      },
+      "bytes": {
+        "full": 19152,
+        "thumb": 9066
+      },
+      "dimensions": {
+        "full": {
+          "width": 640,
+          "height": 480
+        },
+        "thumb": {
+          "width": 400,
+          "height": 300
+        }
+      }
+    },
+    {
       "recipeId": "rajma",
       "source": "Pexels",
       "photoId": 35066814,
@@ -3437,6 +3791,33 @@
       }
     },
     {
+      "recipeId": "rosti_fried_egg",
+      "source": "Pexels",
+      "photoId": "31673759",
+      "originalUrl": "https://www.pexels.com/photo/31673759/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-27",
+      "files": {
+        "full": "rosti_fried_egg.webp",
+        "thumb": "rosti_fried_egg-thumb.webp"
+      },
+      "bytes": {
+        "full": 13602,
+        "thumb": 7374
+      },
+      "dimensions": {
+        "full": {
+          "width": 640,
+          "height": 480
+        },
+        "thumb": {
+          "width": 400,
+          "height": 300
+        }
+      }
+    },
+    {
       "recipeId": "saba_shioyaki",
       "source": "Pexels",
       "photoId": 37189805,
@@ -3532,6 +3913,33 @@
       "bytes": {
         "full": 25016,
         "thumb": 12724
+      },
+      "dimensions": {
+        "full": {
+          "width": 640,
+          "height": 480
+        },
+        "thumb": {
+          "width": 400,
+          "height": 300
+        }
+      }
+    },
+    {
+      "recipeId": "salpicao_frango",
+      "source": "Pexels",
+      "photoId": "4230810",
+      "originalUrl": "https://www.pexels.com/photo/4230810/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-27",
+      "files": {
+        "full": "salpicao_frango.webp",
+        "thumb": "salpicao_frango-thumb.webp"
+      },
+      "bytes": {
+        "full": 9260,
+        "thumb": 4954
       },
       "dimensions": {
         "full": {
@@ -4004,6 +4412,33 @@
       }
     },
     {
+      "recipeId": "spinach_egg_wrap",
+      "source": "Pexels",
+      "photoId": "12245875",
+      "originalUrl": "https://www.pexels.com/photo/12245875/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-27",
+      "files": {
+        "full": "spinach_egg_wrap.webp",
+        "thumb": "spinach_egg_wrap-thumb.webp"
+      },
+      "bytes": {
+        "full": 14778,
+        "thumb": 7740
+      },
+      "dimensions": {
+        "full": {
+          "width": 640,
+          "height": 480
+        },
+        "thumb": {
+          "width": 400,
+          "height": 300
+        }
+      }
+    },
+    {
       "recipeId": "spinach_feta_omelette",
       "source": "Pexels",
       "photoId": 23996321,
@@ -4167,6 +4602,33 @@
       }
     },
     {
+      "recipeId": "swiss_cottage_radish_bread",
+      "source": "Pexels",
+      "photoId": "248460",
+      "originalUrl": "https://www.pexels.com/photo/248460/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-27",
+      "files": {
+        "full": "swiss_cottage_radish_bread.webp",
+        "thumb": "swiss_cottage_radish_bread-thumb.webp"
+      },
+      "bytes": {
+        "full": 22866,
+        "thumb": 11298
+      },
+      "dimensions": {
+        "full": {
+          "width": 640,
+          "height": 480
+        },
+        "thumb": {
+          "width": 400,
+          "height": 300
+        }
+      }
+    },
+    {
       "recipeId": "tamagoyaki_edamame",
       "source": "Pexels",
       "photoId": 32722818,
@@ -4275,6 +4737,33 @@
       }
     },
     {
+      "recipeId": "teriyaki_tofu",
+      "source": "Pexels",
+      "photoId": "32036920",
+      "originalUrl": "https://www.pexels.com/photo/32036920/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-27",
+      "files": {
+        "full": "teriyaki_tofu.webp",
+        "thumb": "teriyaki_tofu-thumb.webp"
+      },
+      "bytes": {
+        "full": 37884,
+        "thumb": 18562
+      },
+      "dimensions": {
+        "full": {
+          "width": 640,
+          "height": 480
+        },
+        "thumb": {
+          "width": 400,
+          "height": 300
+        }
+      }
+    },
+    {
       "recipeId": "thai_curry",
       "source": "Pexels",
       "photoId": 10527603,
@@ -4343,6 +4832,33 @@
       "bytes": {
         "full": 13628,
         "thumb": 8032
+      },
+      "dimensions": {
+        "full": {
+          "width": 640,
+          "height": 480
+        },
+        "thumb": {
+          "width": 400,
+          "height": 300
+        }
+      }
+    },
+    {
+      "recipeId": "tofu_scramble",
+      "source": "Pexels",
+      "photoId": "6327660",
+      "originalUrl": "https://www.pexels.com/photo/6327660/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-27",
+      "files": {
+        "full": "tofu_scramble.webp",
+        "thumb": "tofu_scramble-thumb.webp"
+      },
+      "bytes": {
+        "full": 44268,
+        "thumb": 21726
       },
       "dimensions": {
         "full": {
@@ -4545,6 +5061,33 @@
       }
     },
     {
+      "recipeId": "tuna_rice_cakes",
+      "source": "Pexels",
+      "photoId": "38275222",
+      "originalUrl": "https://www.pexels.com/photo/38275222/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-27",
+      "files": {
+        "full": "tuna_rice_cakes.webp",
+        "thumb": "tuna_rice_cakes-thumb.webp"
+      },
+      "bytes": {
+        "full": 25578,
+        "thumb": 12038
+      },
+      "dimensions": {
+        "full": {
+          "width": 640,
+          "height": 480
+        },
+        "thumb": {
+          "width": 400,
+          "height": 300
+        }
+      }
+    },
+    {
       "recipeId": "turkey_bolognese",
       "source": "Pexels",
       "photoId": 30392939,
@@ -4680,6 +5223,33 @@
       }
     },
     {
+      "recipeId": "veggie_egg_muffins",
+      "source": "Pexels",
+      "photoId": "35601501",
+      "originalUrl": "https://www.pexels.com/photo/35601501/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-27",
+      "files": {
+        "full": "veggie_egg_muffins.webp",
+        "thumb": "veggie_egg_muffins-thumb.webp"
+      },
+      "bytes": {
+        "full": 36818,
+        "thumb": 16032
+      },
+      "dimensions": {
+        "full": {
+          "width": 640,
+          "height": 480
+        },
+        "thumb": {
+          "width": 400,
+          "height": 300
+        }
+      }
+    },
+    {
       "recipeId": "veggie_omelette",
       "source": "Pexels",
       "photoId": 37287418,
@@ -4802,6 +5372,33 @@
       "bytes": {
         "full": 35344,
         "thumb": 15498
+      },
+      "dimensions": {
+        "full": {
+          "width": 640,
+          "height": 480
+        },
+        "thumb": {
+          "width": 400,
+          "height": 300
+        }
+      }
+    },
+    {
+      "recipeId": "zurich_geschnetzeltes",
+      "source": "Pexels",
+      "photoId": "31960616",
+      "originalUrl": "https://www.pexels.com/photo/31960616/",
+      "photographer": null,
+      "license": "Pexels License",
+      "retrieved": "2026-11-27",
+      "files": {
+        "full": "zurich_geschnetzeltes.webp",
+        "thumb": "zurich_geschnetzeltes-thumb.webp"
+      },
+      "bytes": {
+        "full": 16556,
+        "thumb": 8218
       },
       "dimensions": {
         "full": {
