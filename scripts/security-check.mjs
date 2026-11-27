@@ -103,11 +103,20 @@ if (!existsSync(headersPath)) {
   if (!headers.includes("connect-src 'self'")) {
     errors.push("CSP in public/_headers muss connect-src 'self' enthalten.");
   }
+  if (!headers.includes("worker-src 'self'")) {
+    errors.push("CSP in public/_headers must include worker-src 'self'.");
+  }
+  if (!headers.includes("manifest-src 'self'")) {
+    errors.push("CSP in public/_headers must include manifest-src 'self'.");
+  }
   if (!headers.includes("frame-ancestors 'none'")) {
     errors.push("CSP in public/_headers muss frame-ancestors 'none' enthalten.");
   }
   if (!headers.includes('X-Robots-Tag: noindex, nofollow, noarchive')) {
     errors.push('public/_headers muss X-Robots-Tag: noindex, nofollow, noarchive enthalten.');
+  }
+  if (!/^\s*\/sw\.js\s*$/m.test(headers) || !/Cache-Control:\s*no-cache/i.test(headers)) {
+    errors.push('public/_headers must configure Cache-Control: no-cache for /sw.js.');
   }
 }
 
@@ -155,6 +164,9 @@ if (!existsSync(templatePath)) {
   if (!template.includes('<%= publicBase %>')) {
     errors.push('index.html muss publicBase für Icon und theme-init.js verwenden.');
   }
+  if (!template.includes('rel="manifest"') || !template.includes('<%= publicBase %>manifest.webmanifest')) {
+    errors.push('index.html must link manifest.webmanifest using <%= publicBase %>.');
+  }
 }
 
 // 3. Gebautes dist/index.html prüfen (falls Build bereits gelaufen ist)
@@ -181,6 +193,9 @@ if (existsSync(distIndex)) {
     if (/unsafe-inline|unsafe-eval/i.test(metaCsp)) {
       errors.push('CSP-Meta-Tag darf kein unsafe-inline oder unsafe-eval enthalten.');
     }
+    if (!metaCsp.includes("worker-src 'self'") || !metaCsp.includes("manifest-src 'self'")) {
+      errors.push("CSP meta tag must include worker-src 'self' and manifest-src 'self'.");
+    }
     if (headersCsp) {
       const expected = normalizeCsp(cspForMeta(headersCsp));
       const actual = normalizeCsp(metaCsp);
@@ -192,11 +207,13 @@ if (existsSync(distIndex)) {
     }
   }
 
+  const expectedBase = IS_PAGES ? '/Edovita/' : '/';
+
   if (IS_PAGES) {
     const prefix = '/Edovita/';
     const srcAttrs = [
       ...(html.match(/\bsrc\s*=\s*(["'])([^"']+)\1/gi) ?? []),
-      ...(html.match(/\bhref\s*=\s*(["'])([^"']+\.(?:js|css|svg))\1/gi) ?? []),
+      ...(html.match(/\bhref\s*=\s*(["'])([^"']+\.(?:js|css|svg|png|ico|webmanifest))\1/gi) ?? []),
     ];
     for (const attr of srcAttrs) {
       const value = attr.replace(/^[^=]+=\s*["']/, '').replace(/["']$/, '');
@@ -205,8 +222,90 @@ if (existsSync(distIndex)) {
         errors.push(`Pages-Build: Asset "${value}" in ${distIndex} hat nicht den Prefix ${prefix}.`);
       }
     }
-    if (html.includes('src="/theme-init.js"') || html.includes('href="/assets/')) {
+    if (html.includes('src="/theme-init.js"') || html.includes('href="/assets/') || html.includes('href="/icons/') || html.includes('href="/manifest.webmanifest"')) {
       errors.push(`Pages-Build: ${distIndex} enthält noch unpräfixierte Root-Pfade.`);
+    }
+  }
+
+  // 3b. Validate emitted Web App Manifest (E7a)
+  const distManifest = resolve(DIST_DIR, 'manifest.webmanifest');
+  if (!existsSync(distManifest)) {
+    errors.push(`${distManifest} is missing (E7a web app manifest required).`);
+  } else {
+    try {
+      const manifest = JSON.parse(readFileSync(distManifest, 'utf8'));
+      if (manifest.name !== 'Edovita' || manifest.short_name !== 'Edovita') {
+        errors.push(`Invalid app name in ${distManifest}.`);
+      }
+      if (manifest.display !== 'standalone') {
+        errors.push(`Manifest display must be "standalone" in ${distManifest}.`);
+      }
+      if (manifest.theme_color !== '#0B7F6B') {
+        errors.push(`Manifest theme_color must be "#0B7F6B" in ${distManifest}.`);
+      }
+      if (manifest.start_url !== expectedBase || manifest.scope !== expectedBase) {
+        errors.push(`Manifest start_url/scope must be "${expectedBase}" in ${distManifest}.`);
+      }
+      if (!Array.isArray(manifest.icons) || manifest.icons.length < 4) {
+        errors.push(`Manifest must declare at least 4 PWA icons in ${distManifest}.`);
+      } else {
+        for (const icon of manifest.icons) {
+          if (typeof icon.src !== 'string' || !icon.src.startsWith(expectedBase)) {
+            errors.push(`Manifest icon "${icon.src}" must start with "${expectedBase}".`);
+            continue;
+          }
+          const relIcon = icon.src.slice(expectedBase.length);
+          if (!existsSync(resolve(DIST_DIR, relIcon))) {
+            errors.push(`Manifest icon file missing in build output: ${relIcon}`);
+          }
+        }
+      }
+    } catch (err) {
+      errors.push(`Failed to parse ${distManifest}: ${String(err)}`);
+    }
+  }
+
+  // 3c. Validate emitted app-shell-only service worker (E7a)
+  const distSw = resolve(DIST_DIR, 'sw.js');
+  if (!existsSync(distSw)) {
+    errors.push(`${distSw} is missing (E7a service worker required).`);
+  } else {
+    const swSrc = readFileSync(distSw, 'utf8');
+    for (const sink of FORBIDDEN_SINKS) {
+      if (sink.re.test(swSrc)) {
+        errors.push(`Forbidden sink "${sink.name}" found in ${distSw}.`);
+      }
+    }
+    if (/\bimportScripts\s*\(/.test(swSrc)) {
+      errors.push(`importScripts() is forbidden in ${distSw}.`);
+    }
+    if (/\bcache\.put\s*\(/.test(swSrc)) {
+      errors.push(`E7a service worker must not call cache.put() at runtime in ${distSw}.`);
+    }
+    if (!/var CACHE_NAME = "edovita-shell-v[0-9A-Za-z._-]+-[0-9a-f]{12}";/.test(swSrc)) {
+      errors.push(`${distSw} must define a versioned edovita-shell-* CACHE_NAME.`);
+    }
+    const pathsMatch = swSrc.match(/var SHELL_PATHS = (\[[\s\S]*?\]);/);
+    if (!pathsMatch) {
+      errors.push(`${distSw} must define SHELL_PATHS.`);
+    } else {
+      try {
+        const shellPaths = JSON.parse(pathsMatch[1]);
+        if (!Array.isArray(shellPaths) || shellPaths.length < 4) {
+          errors.push(`${distSw} SHELL_PATHS must contain the built HTML/JS/CSS app shell.`);
+        } else {
+          for (const entry of shellPaths) {
+            if (typeof entry !== 'string' || !entry.startsWith(expectedBase)) {
+              errors.push(`${distSw} SHELL_PATHS entry "${entry}" must start with "${expectedBase}".`);
+            }
+            if (/\.(?:webp|png|jpe?g|gif|svg|ico|avif|json|webmanifest)$/i.test(entry)) {
+              errors.push(`${distSw} SHELL_PATHS must not precache images or data files in E7a: "${entry}".`);
+            }
+          }
+        }
+      } catch (err) {
+        errors.push(`Failed to parse SHELL_PATHS in ${distSw}: ${String(err)}`);
+      }
     }
   }
 } else if (IS_PAGES) {

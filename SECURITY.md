@@ -413,6 +413,23 @@ Sicherheitskonzept, laufende Sicherheitsprüfungen und offene Risiken für die E
 | 2 | Secrets, personal data & local paths | `gitleaks git` reports 0 leaks; no tokens, personal data, or local workspace paths in diff. | no finding | Automated in CI. |
 | 3 | Branch & ruleset governance | Documents `main` ruleset protection (no deletion, no direct pushes, PR + squash merge only), branch hygiene, and English-on-GitHub rules; fixes stale stacked-branch wording in E13/E14 rows. | no finding | Enforced via GitHub ruleset and independent review. |
 
+---
+
+## Security Review – Package E7a (`feat/e7a-pwa-shell`, Refs `#13`, 27.11.2026)
+
+- **Base:** `main` `2e79eaa460052d0f11f56bae92d10498c10ebf1d` (includes E0–E11 `#48`, test fix `#54`, E11 follow-up `#52`, E12a `#49`, E12 `#50`, E8 v5.11 `#51`, E13 `#53`, E14 `#55`, and docs `#56`; app version `0.1.0`).
+- **Scope:** First slice of `#13`: Web App Manifest (`manifest.webmanifest`) + exported icons, strict CSP update (`worker-src 'self'`, `manifest-src 'self'`), `/sw.js` `Cache-Control: no-cache`, build-generated HTML/JS/CSS app-shell-only service worker (`sw.js`) with versioned cache name (`edovita-shell-v0.1.0-<hash12>`) and obsolete-cache cleanup, load-deferred production registration (`src/pwa/`), and Root (`/`) + GitHub Pages (`/Edovita/`) validation. **No new packages** (`package.json`, `pnpm-lock.yaml`, `.github/workflows/`, `.npmrc`, `pnpm-workspace.yaml`, `tsconfig.json`, `eslint.config.mjs`, `.dependency-cruiser.mjs`, `playwright.config.ts`, and `prototype/` unchanged).
+- **Checks:** `pnpm run lint` (`tsc`, ESLint, Stylelint, `dependency-cruiser`: `2185 modules, 2558 dependencies`, 0 violations), `pnpm run test:arch` (4/4), `pnpm run content:check` (2 files, 15/15), `pnpm test` (Rstest `0.12.6`, 30 files, 171/171 including `src/pwa/pwa.test.ts` and `tests/unit/csp-meta.test.ts`), `pnpm run build` (`9562.0 kB`, `7940.8 kB` gzip) + `pnpm run security:check` (OK), `GITHUB_PAGES=true PAGES_DIST=dist-pages pnpm run build` (`9562.3 kB`, `7940.9 kB` gzip) + `DIST_DIR=dist-pages GITHUB_PAGES=true pnpm run security:check` (OK), `pnpm audit --audit-level=moderate` (0 vulnerabilities), `pnpm peers check` (0 issues), Playwright `tests/e2e/pwa.spec.ts` (4/4 passed across `mobile-light` and `mobile-dark`, 0 CSP violations), `gitleaks dir` & `gitleaks git` (0 leaks), `actionlint` (0 findings).
+
+| # | Check | Finding | Severity | Action |
+|---|---|---|---|---|
+| 1 | Strict CSP & worker/manifest directives | `public/_headers` adds only `worker-src 'self'` and `manifest-src 'self'` (mirrored into `<meta http-equiv>` via `cspForMeta` without `frame-ancestors`); `default-src 'none'`, `connect-src 'self'`, no `unsafe-inline`, no `unsafe-eval`. Verified by `security:check` (Root + `dist-pages`), `csp-meta.test.ts`, and Playwright (0 `securitypolicyviolation` events). | no finding | Automated in CI. |
+| 2 | Cache hygiene & health-data isolation (ADR-004) | `sw.js` precaches strictly build-time whitelisted same-origin HTML/JS/CSS shell paths (`filterAppShellPaths`) and contains zero runtime `cache.put()` calls, zero IndexedDB/Dexie access, zero image precaching (deferred to E7b), and explicit rejection of non-GET, cross-origin, `/api/*`, query-parameterized assets, and `#import` fragments. `activate` deletes only obsolete `edovita-shell-*` caches. | no finding | Enforced by `security:check`, `src/pwa/pwa.test.ts` (VM lifecycle test), and `tests/e2e/pwa.spec.ts` Cache Storage inspection. |
+| 3 | Code execution sinks & supply chain | Zero new npm packages; `sw.js` contains no `eval`, `new Function`, `innerHTML`, or `importScripts`. `pnpm audit --audit-level=moderate` (0), `pnpm peers check` (0), `gitleaks` (0 leaks), `actionlint` (0). | no finding | Automated in CI. |
+| 4 | GitHub Pages `_headers` limitation for `sw.js` | `public/_headers` sets `Cache-Control: no-cache` for `/sw.js` and `/Edovita/sw.js`, but GitHub Pages does not serve `_headers`. Mitigated by registering with `updateViaCache: 'none'` and deriving a deterministic content-hashed cache name (`edovita-shell-v0.1.0-<hash12>`). | low (platform behavior, mitigated) | Keep `updateViaCache: 'none'`; user-confirmed `SKIP_WAITING` update flow and kill switch follow in E7b (`#13`). |
+| 5 | Scope split (E7a vs. E7b) | E7a intentionally covers manifest, installability, and HTML/JS/CSS app-shell caching only. Recipe thumbnail precaching, cache-first runtime full-size images, update banner, and kill switch remain tracked in `#13` (E7b). | low (planned scope split) | Implement in E7b (`Refs #13`); do not close `#13` on E7a merge. |
+
+
 
 
 

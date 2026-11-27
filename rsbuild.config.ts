@@ -1,7 +1,14 @@
+import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { defineConfig } from '@rsbuild/core';
+import { defineConfig, type RsbuildPlugin } from '@rsbuild/core';
 import { pluginReact } from '@rsbuild/plugin-react';
+import {
+  buildCacheName,
+  buildWebManifest,
+  filterAppShellPaths,
+  generateServiceWorkerScript,
+} from './src/pwa/index.ts';
 
 /** Asset-Prefix auf GitHub Pages (Projektseiten-URL …/Edovita/). */
 export const PAGES_BASE = '/Edovita/';
@@ -69,6 +76,84 @@ export function cspForMeta(csp: string): string {
     .join('; ');
 }
 
+function loadAppVersion(): string {
+  const pkgPath = resolve(import.meta.dirname, 'package.json');
+  const parsed = JSON.parse(readFileSync(pkgPath, 'utf8')) as {
+    version?: unknown;
+  };
+  return typeof parsed.version === 'string' && parsed.version.length > 0
+    ? parsed.version
+    : '0.1.0';
+}
+
+/**
+ * Emits `manifest.webmanifest` and the E7a app-shell-only `sw.js` with a
+ * deterministic versioned cache name derived from the emitted HTML/JS/CSS shell.
+ */
+function pluginPwaShell(basePath: string): RsbuildPlugin {
+  const appVersion = loadAppVersion();
+  const themeInitContent = readFileSync(
+    resolve(import.meta.dirname, 'public/theme-init.js'),
+    'utf8',
+  );
+
+  return {
+    name: 'edovita-pwa-shell',
+    setup(api) {
+      api.processAssets(
+        { stage: 'summarize' },
+        ({ assets, compilation, sources }) => {
+          const manifestJson = `${JSON.stringify(
+            buildWebManifest(basePath),
+            null,
+            2,
+          )}\n`;
+          compilation.emitAsset(
+            'manifest.webmanifest',
+            new sources.RawSource(manifestJson),
+          );
+
+          const candidates = [
+            basePath,
+            `${basePath}index.html`,
+            `${basePath}theme-init.js`,
+            ...Object.keys(assets).map(
+              (assetName) => `${basePath}${assetName.replace(/^\/+/, '')}`,
+            ),
+          ];
+          const shellPaths = filterAppShellPaths(candidates, basePath);
+
+          const hash = createHash('sha256');
+          hash.update(appVersion);
+          hash.update('\n');
+          hash.update(basePath);
+          hash.update('\n');
+          hash.update(themeInitContent);
+          for (const shellPath of shellPaths) {
+            hash.update('\n');
+            hash.update(shellPath);
+            const rel = shellPath.slice(basePath.length);
+            const asset = rel ? assets[rel] : undefined;
+            if (asset) {
+              hash.update(':');
+              hash.update(String(asset.source()));
+            }
+          }
+          const buildHash = hash.digest('hex').slice(0, 12);
+          const cacheName = buildCacheName(appVersion, buildHash);
+
+          const swSource = generateServiceWorkerScript({
+            cacheName,
+            basePath,
+            shellPaths,
+          });
+          compilation.emitAsset('sw.js', new sources.RawSource(swSource));
+        },
+      );
+    },
+  };
+}
+
 export const SECURITY_HEADERS = loadSecurityHeaders();
 export const CSP_META_CONTENT = cspForMeta(
   SECURITY_HEADERS['Content-Security-Policy'] ?? '',
@@ -78,7 +163,7 @@ const assetPrefix = getAssetPrefix();
 const distRoot = process.env.PAGES_DIST ?? 'dist';
 
 export default defineConfig({
-  plugins: [pluginReact()],
+  plugins: [pluginReact(), pluginPwaShell(assetPrefix)],
   source: {
     entry: {
       index: './src/main.tsx',
