@@ -1,6 +1,6 @@
 # ARCHITECTURE.md – Edovita
 
-As of 27.11.2026, base `main` `9ec3f3ddd9c93bd3854bf1a5c8547063ecf3a1e3` (includes E0–E11 `#48`, E11 follow-up `#52`, test fix `#54`, E12a `#49`, E12 `#50`, E8 v5.11 `#51`, and E13 `#53`, version `0.1.0`), extended with package **E14** (Issue `#41`, branch `feat/e14-placeholder-photos`, prototype reference v5.11 `93630aa`: 23 remaining placeholders replaced with verified local Pexels WebP photos → all **200 photo pairs / 400 WebP files**, `0` placeholders, `7'313'344 B` ≤ `7'400'000 B`, `q=52/48`, 0 EXIF/XMP/GPS). Details in `docs/architektur/`. Preview: https://patrickstubner.github.io/Edovita/.
+As of 27.11.2026, base `main` `031941024fcb9b1cebbc8faa174b4b10a18ae4ad` (includes E0–E11 `#48`, E11 follow-up `#52`, test fix `#54`, E12a `#49`, E12 `#50`, E8 v5.11 `#51`, E13 `#53`, and E14 `#55`, version `0.1.0`: 199 foods, 7 glossaries, 200 recipes with steps/notes/titles in all 7 UI languages `de/en/fr/it/es/pt/ja`, and all **200 photo pairs / 400 WebP files**, `0` placeholders, `7'313'344 B` ≤ `7'400'000 B`, `q=52/48`, 0 EXIF/XMP/GPS). Details in `docs/architektur/`. Preview: https://patrickstubner.github.io/Edovita/.
 
 ## Heute im Repo
 | Ort | Inhalt |
