@@ -378,16 +378,38 @@ describe('Inhaltsprüfung content/ (Port von validate.py, ADR-005, ADR-006 & E12
     return out;
   }
 
-  it('E8: prüft alle 10 WebP-Rezeptbilder gegen Manifest, Lizenz (Pexels/Unsplash), Budget und 0 EXIF/GPS', () => {
+  it('E8 + Nachtrag v5.11: prüft alle 354 WebP-Rezeptbilder (177 Paare + 23 Platzhalter) gegen Manifest, Lizenz (Pexels/Unsplash), fixes 7,4-MB-Budget und 0 EXIF/GPS', () => {
     const bundle = loadRawRecipeImagesBundle();
     const report = validateRecipeImages(bundle);
 
+    expect(RECIPE_IMAGE_BUDGET_BYTES).toBe(7_400_000);
     expect(report.errors).toEqual([]);
     expect(report.ok).toBe(true);
     expect(report.validated).not.toBeNull();
-    expect(report.validated!.images).toHaveLength(5);
-    expect(report.totalBytes).toBe(406_802);
+    expect(report.validated!.budgetBytes).toBe(7_400_000);
+    expect(report.validated!.images).toHaveLength(177);
+    expect(report.validated!.placeholders).toHaveLength(23);
+    expect(report.totalBytes).toBe(6_539_470);
     expect(report.totalBytes).toBeLessThanOrEqual(RECIPE_IMAGE_BUDGET_BYTES);
+
+    // 177 Bilder und 23 Platzhalter sind disjunkt und decken alle 200 Rezepte vollständig ab
+    const imageIds = new Set(report.validated!.images.map((i) => i.recipeId));
+    const placeholderIds = new Set(report.validated!.placeholders);
+    expect(imageIds.size).toBe(177);
+    expect(placeholderIds.size).toBe(23);
+    for (const id of placeholderIds) {
+      expect(imageIds.has(id)).toBe(false);
+    }
+    expect(new Set([...imageIds, ...placeholderIds]).size).toBe(200);
+    for (const id of bundle.knownRecipeIds) {
+      const hasField = bundle.recipeImageFields?.[id];
+      if (imageIds.has(id)) {
+        expect(hasField).toBe(id);
+      } else {
+        expect(placeholderIds.has(id)).toBe(true);
+        expect(hasField).toBeUndefined();
+      }
+    }
   });
 
   it('E8 Negativtests: Bild ohne Manifest, falsche Lizenz, unbekannte Rezept-ID, EXIF/GPS und freie Bildpfade brechen content:check', () => {

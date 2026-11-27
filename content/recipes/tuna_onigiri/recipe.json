@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "tuna_onigiri",
+  "image": "tuna_onigiri",
   "cuisine": "japanese",
   "meal": "snack",
   "minutes": 25,

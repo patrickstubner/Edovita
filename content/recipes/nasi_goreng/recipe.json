@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "nasi_goreng",
+  "image": "nasi_goreng",
   "cuisine": "indonesian",
   "meal": "dinner",
   "minutes": 25,

@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "tom_yum_shrimp",
+  "image": "tom_yum_shrimp",
   "cuisine": "thai",
   "meal": "dinner",
   "minutes": 25,

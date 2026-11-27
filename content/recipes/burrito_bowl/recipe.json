@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "burrito_bowl",
+  "image": "burrito_bowl",
   "cuisine": "mexican",
   "meal": "lunch",
   "minutes": 20,

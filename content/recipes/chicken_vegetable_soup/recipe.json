@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "chicken_vegetable_soup",
+  "image": "chicken_vegetable_soup",
   "cuisine": "european",
   "meal": "lunch",
   "minutes": 40,

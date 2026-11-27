@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "protein_pancakes",
+  "image": "protein_pancakes",
   "cuisine": "american",
   "meal": "breakfast",
   "minutes": 20,

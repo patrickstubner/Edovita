@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "banana_protein_shake",
+  "image": "banana_protein_shake",
   "cuisine": "european",
   "meal": "snack",
   "minutes": 5,

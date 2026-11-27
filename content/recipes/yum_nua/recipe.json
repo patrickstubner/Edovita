@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "yum_nua",
+  "image": "yum_nua",
   "cuisine": "thai",
   "meal": "lunch",
   "minutes": 20,

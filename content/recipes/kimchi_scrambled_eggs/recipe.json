@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "kimchi_scrambled_eggs",
+  "image": "kimchi_scrambled_eggs",
   "cuisine": "korean",
   "meal": "breakfast",
   "minutes": 10,

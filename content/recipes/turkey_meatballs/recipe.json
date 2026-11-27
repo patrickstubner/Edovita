@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "turkey_meatballs",
+  "image": "turkey_meatballs",
   "cuisine": "italian",
   "meal": "dinner",
   "minutes": 40,

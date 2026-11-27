@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "kung_pao_chicken",
+  "image": "kung_pao_chicken",
   "cuisine": "chinese",
   "meal": "dinner",
   "minutes": 25,

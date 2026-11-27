@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "egg_salad_sandwich",
+  "image": "egg_salad_sandwich",
   "cuisine": "european",
   "meal": "lunch",
   "minutes": 15,

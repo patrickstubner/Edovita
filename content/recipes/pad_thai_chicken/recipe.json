@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "pad_thai_chicken",
+  "image": "pad_thai_chicken",
   "cuisine": "thai",
   "meal": "dinner",
   "minutes": 30,

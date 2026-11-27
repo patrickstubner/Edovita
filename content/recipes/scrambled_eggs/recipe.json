@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "scrambled_eggs",
+  "image": "scrambled_eggs",
   "cuisine": "european",
   "meal": "breakfast",
   "minutes": 10,

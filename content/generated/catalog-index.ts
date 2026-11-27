@@ -623,16 +623,360 @@ import recipeYumNuaEn from '../recipes/yum_nua/en.json';
 import recipeZurichGeschnetzeltes from '../recipes/zurich_geschnetzeltes/recipe.json';
 import recipeZurichGeschnetzeltesDe from '../recipes/zurich_geschnetzeltes/de.json';
 import recipeZurichGeschnetzeltesEn from '../recipes/zurich_geschnetzeltes/en.json';
+import imgAcaiSkyrBowlFull from '../images/recipes/acai_skyr_bowl.webp';
+import imgAcaiSkyrBowlThumb from '../images/recipes/acai_skyr_bowl-thumb.webp';
+import imgAlplerMagronenLightFull from '../images/recipes/alpler_magronen_light.webp';
+import imgAlplerMagronenLightThumb from '../images/recipes/alpler_magronen_light-thumb.webp';
+import imgAppleSkyrPbDipFull from '../images/recipes/apple_skyr_pb_dip.webp';
+import imgAppleSkyrPbDipThumb from '../images/recipes/apple_skyr_pb_dip-thumb.webp';
+import imgAvocadoEggToastFull from '../images/recipes/avocado_egg_toast.webp';
+import imgAvocadoEggToastThumb from '../images/recipes/avocado_egg_toast-thumb.webp';
+import imgBakedFalafelBowlFull from '../images/recipes/baked_falafel_bowl.webp';
+import imgBakedFalafelBowlThumb from '../images/recipes/baked_falafel_bowl-thumb.webp';
+import imgBakedFetaChickpeasFull from '../images/recipes/baked_feta_chickpeas.webp';
+import imgBakedFetaChickpeasThumb from '../images/recipes/baked_feta_chickpeas-thumb.webp';
+import imgBananaProteinShakeFull from '../images/recipes/banana_protein_shake.webp';
+import imgBananaProteinShakeThumb from '../images/recipes/banana_protein_shake-thumb.webp';
+import imgBanhMiBowlFull from '../images/recipes/banh_mi_bowl.webp';
+import imgBanhMiBowlThumb from '../images/recipes/banh_mi_bowl-thumb.webp';
+import imgBarleyRisottoChickenFull from '../images/recipes/barley_risotto_chicken.webp';
+import imgBarleyRisottoChickenThumb from '../images/recipes/barley_risotto_chicken-thumb.webp';
+import imgBeefBroccoliFull from '../images/recipes/beef_broccoli.webp';
+import imgBeefBroccoliThumb from '../images/recipes/beef_broccoli-thumb.webp';
+import imgBeefFajitaBowlFull from '../images/recipes/beef_fajita_bowl.webp';
+import imgBeefFajitaBowlThumb from '../images/recipes/beef_fajita_bowl-thumb.webp';
+import imgBeefKoftaYogurtFull from '../images/recipes/beef_kofta_yogurt.webp';
+import imgBeefKoftaYogurtThumb from '../images/recipes/beef_kofta_yogurt-thumb.webp';
+import imgBeefSteakVegetablesFull from '../images/recipes/beef_steak_vegetables.webp';
+import imgBeefSteakVegetablesThumb from '../images/recipes/beef_steak_vegetables-thumb.webp';
+import imgBerryProteinSmoothieFull from '../images/recipes/berry_protein_smoothie.webp';
+import imgBerryProteinSmoothieThumb from '../images/recipes/berry_protein_smoothie-thumb.webp';
+import imgBibimbapFull from '../images/recipes/bibimbap.webp';
+import imgBibimbapThumb from '../images/recipes/bibimbap-thumb.webp';
 import imgBirchermuesliFull from '../images/recipes/birchermuesli.webp';
 import imgBirchermuesliThumb from '../images/recipes/birchermuesli-thumb.webp';
+import imgBlackBeanSoupFull from '../images/recipes/black_bean_soup.webp';
+import imgBlackBeanSoupThumb from '../images/recipes/black_bean_soup-thumb.webp';
+import imgBoboCamaraoFull from '../images/recipes/bobo_camarao.webp';
+import imgBoboCamaraoThumb from '../images/recipes/bobo_camarao-thumb.webp';
+import imgBreakfastBurritoFull from '../images/recipes/breakfast_burrito.webp';
+import imgBreakfastBurritoThumb from '../images/recipes/breakfast_burrito-thumb.webp';
+import imgBresaolaRollsFull from '../images/recipes/bresaola_rolls.webp';
+import imgBresaolaRollsThumb from '../images/recipes/bresaola_rolls-thumb.webp';
+import imgBuckwheatGaletteFull from '../images/recipes/buckwheat_galette.webp';
+import imgBuckwheatGaletteThumb from '../images/recipes/buckwheat_galette-thumb.webp';
+import imgBulgogiFull from '../images/recipes/bulgogi.webp';
+import imgBulgogiThumb from '../images/recipes/bulgogi-thumb.webp';
+import imgBunChayTofuFull from '../images/recipes/bun_chay_tofu.webp';
+import imgBunChayTofuThumb from '../images/recipes/bun_chay_tofu-thumb.webp';
+import imgBundnerBarleySoupFull from '../images/recipes/bundner_barley_soup.webp';
+import imgBundnerBarleySoupThumb from '../images/recipes/bundner_barley_soup-thumb.webp';
+import imgBurritoBowlFull from '../images/recipes/burrito_bowl.webp';
+import imgBurritoBowlThumb from '../images/recipes/burrito_bowl-thumb.webp';
+import imgCaKhoFull from '../images/recipes/ca_kho.webp';
+import imgCaKhoThumb from '../images/recipes/ca_kho-thumb.webp';
+import imgCaldoVerdeBeansFull from '../images/recipes/caldo_verde_beans.webp';
+import imgCaldoVerdeBeansThumb from '../images/recipes/caldo_verde_beans-thumb.webp';
+import imgCevicheSweetPotatoFull from '../images/recipes/ceviche_sweet_potato.webp';
+import imgCevicheSweetPotatoThumb from '../images/recipes/ceviche_sweet_potato-thumb.webp';
+import imgChanaMasalaFull from '../images/recipes/chana_masala.webp';
+import imgChanaMasalaThumb from '../images/recipes/chana_masala-thumb.webp';
+import imgChiaSkyrMangoFull from '../images/recipes/chia_skyr_mango.webp';
+import imgChiaSkyrMangoThumb from '../images/recipes/chia_skyr_mango-thumb.webp';
+import imgChickenBowlFull from '../images/recipes/chicken_bowl.webp';
+import imgChickenBowlThumb from '../images/recipes/chicken_bowl-thumb.webp';
+import imgChickenCaesarLightFull from '../images/recipes/chicken_caesar_light.webp';
+import imgChickenCaesarLightThumb from '../images/recipes/chicken_caesar_light-thumb.webp';
+import imgChickenCapreseSaladFull from '../images/recipes/chicken_caprese_salad.webp';
+import imgChickenCapreseSaladThumb from '../images/recipes/chicken_caprese_salad-thumb.webp';
+import imgChickenCongeeFull from '../images/recipes/chicken_congee.webp';
+import imgChickenCongeeThumb from '../images/recipes/chicken_congee-thumb.webp';
+import imgChickenFajitasFull from '../images/recipes/chicken_fajitas.webp';
+import imgChickenFajitasThumb from '../images/recipes/chicken_fajitas-thumb.webp';
+import imgChickenPiccataFull from '../images/recipes/chicken_piccata.webp';
+import imgChickenPiccataThumb from '../images/recipes/chicken_piccata-thumb.webp';
+import imgChickenSataySkewersFull from '../images/recipes/chicken_satay_skewers.webp';
+import imgChickenSataySkewersThumb from '../images/recipes/chicken_satay_skewers-thumb.webp';
+import imgChickenShawarmaBowlFull from '../images/recipes/chicken_shawarma_bowl.webp';
+import imgChickenShawarmaBowlThumb from '../images/recipes/chicken_shawarma_bowl-thumb.webp';
+import imgChickenSouvlakiFull from '../images/recipes/chicken_souvlaki.webp';
+import imgChickenSouvlakiThumb from '../images/recipes/chicken_souvlaki-thumb.webp';
+import imgChickenSweetPotatoTraybakeFull from '../images/recipes/chicken_sweet_potato_traybake.webp';
+import imgChickenSweetPotatoTraybakeThumb from '../images/recipes/chicken_sweet_potato_traybake-thumb.webp';
+import imgChickenTagineFull from '../images/recipes/chicken_tagine.webp';
+import imgChickenTagineThumb from '../images/recipes/chicken_tagine-thumb.webp';
+import imgChickenTortillaSoupFull from '../images/recipes/chicken_tortilla_soup.webp';
+import imgChickenTortillaSoupThumb from '../images/recipes/chicken_tortilla_soup-thumb.webp';
+import imgChickenVegetableSoupFull from '../images/recipes/chicken_vegetable_soup.webp';
+import imgChickenVegetableSoupThumb from '../images/recipes/chicken_vegetable_soup-thumb.webp';
+import imgChickpeaChaatFull from '../images/recipes/chickpea_chaat.webp';
+import imgChickpeaChaatThumb from '../images/recipes/chickpea_chaat-thumb.webp';
+import imgChickpeaTunaSaladFull from '../images/recipes/chickpea_tuna_salad.webp';
+import imgChickpeaTunaSaladThumb from '../images/recipes/chickpea_tuna_salad-thumb.webp';
+import imgChiliConCarneFull from '../images/recipes/chili_con_carne.webp';
+import imgChiliConCarneThumb from '../images/recipes/chili_con_carne-thumb.webp';
+import imgCilbirFull from '../images/recipes/cilbir.webp';
+import imgCilbirThumb from '../images/recipes/cilbir-thumb.webp';
+import imgCocoaProteinMilkFull from '../images/recipes/cocoa_protein_milk.webp';
+import imgCocoaProteinMilkThumb from '../images/recipes/cocoa_protein_milk-thumb.webp';
+import imgCodDillMustardFull from '../images/recipes/cod_dill_mustard.webp';
+import imgCodDillMustardThumb from '../images/recipes/cod_dill_mustard-thumb.webp';
+import imgColdSobaTofuFull from '../images/recipes/cold_soba_tofu.webp';
+import imgColdSobaTofuThumb from '../images/recipes/cold_soba_tofu-thumb.webp';
+import imgCottageCrispbreadFull from '../images/recipes/cottage_crispbread.webp';
+import imgCottageCrispbreadThumb from '../images/recipes/cottage_crispbread-thumb.webp';
+import imgCottagePineappleFull from '../images/recipes/cottage_pineapple.webp';
+import imgCottagePineappleThumb from '../images/recipes/cottage_pineapple-thumb.webp';
+import imgCottageTomatoToastFull from '../images/recipes/cottage_tomato_toast.webp';
+import imgCottageTomatoToastThumb from '../images/recipes/cottage_tomato_toast-thumb.webp';
+import imgCottageZucchiniFrittataFull from '../images/recipes/cottage_zucchini_frittata.webp';
+import imgCottageZucchiniFrittataThumb from '../images/recipes/cottage_zucchini_frittata-thumb.webp';
+import imgCouscousChickenSaladFull from '../images/recipes/couscous_chicken_salad.webp';
+import imgCouscousChickenSaladThumb from '../images/recipes/couscous_chicken_salad-thumb.webp';
+import imgDakgalbiFull from '../images/recipes/dakgalbi.webp';
+import imgDakgalbiThumb from '../images/recipes/dakgalbi-thumb.webp';
+import imgDeviledEggsYogurtFull from '../images/recipes/deviled_eggs_yogurt.webp';
+import imgDeviledEggsYogurtThumb from '../images/recipes/deviled_eggs_yogurt-thumb.webp';
+import imgEdamameHummusFull from '../images/recipes/edamame_hummus.webp';
+import imgEdamameHummusThumb from '../images/recipes/edamame_hummus-thumb.webp';
+import imgEdamameQuinoaBowlFull from '../images/recipes/edamame_quinoa_bowl.webp';
+import imgEdamameQuinoaBowlThumb from '../images/recipes/edamame_quinoa_bowl-thumb.webp';
+import imgEdamameSeaSaltFull from '../images/recipes/edamame_sea_salt.webp';
+import imgEdamameSeaSaltThumb from '../images/recipes/edamame_sea_salt-thumb.webp';
+import imgEggSaladSandwichFull from '../images/recipes/egg_salad_sandwich.webp';
+import imgEggSaladSandwichThumb from '../images/recipes/egg_salad_sandwich-thumb.webp';
+import imgEggsCucumberFull from '../images/recipes/eggs_cucumber.webp';
+import imgEggsCucumberThumb from '../images/recipes/eggs_cucumber-thumb.webp';
+import imgEspinacasGarbanzosFull from '../images/recipes/espinacas_garbanzos.webp';
+import imgEspinacasGarbanzosThumb from '../images/recipes/espinacas_garbanzos-thumb.webp';
+import imgFeijoadaLightFull from '../images/recipes/feijoada_light.webp';
+import imgFeijoadaLightThumb from '../images/recipes/feijoada_light-thumb.webp';
+import imgFrangoPiriPiriFull from '../images/recipes/frango_piri_piri.webp';
+import imgFrangoPiriPiriThumb from '../images/recipes/frango_piri_piri-thumb.webp';
+import imgGaXaoSaOtFull from '../images/recipes/ga_xao_sa_ot.webp';
+import imgGaXaoSaOtThumb from '../images/recipes/ga_xao_sa_ot-thumb.webp';
+import imgGadoGadoFull from '../images/recipes/gado_gado.webp';
+import imgGadoGadoThumb from '../images/recipes/gado_gado-thumb.webp';
+import imgGalinhadaFull from '../images/recipes/galinhada.webp';
+import imgGalinhadaThumb from '../images/recipes/galinhada-thumb.webp';
+import imgGazpachoShrimpFull from '../images/recipes/gazpacho_shrimp.webp';
+import imgGazpachoShrimpThumb from '../images/recipes/gazpacho_shrimp-thumb.webp';
+import imgGoiGaFull from '../images/recipes/goi_ga.webp';
+import imgGoiGaThumb from '../images/recipes/goi_ga-thumb.webp';
+import imgGreekChickenSaladFull from '../images/recipes/greek_chicken_salad.webp';
+import imgGreekChickenSaladThumb from '../images/recipes/greek_chicken_salad-thumb.webp';
+import imgGreekYogurtWalnutFull from '../images/recipes/greek_yogurt_walnut.webp';
+import imgGreekYogurtWalnutThumb from '../images/recipes/greek_yogurt_walnut-thumb.webp';
+import imgGreenCurryShrimpFull from '../images/recipes/green_curry_shrimp.webp';
+import imgGreenCurryShrimpThumb from '../images/recipes/green_curry_shrimp-thumb.webp';
+import imgGreenShakshukaFull from '../images/recipes/green_shakshuka.webp';
+import imgGreenShakshukaThumb from '../images/recipes/green_shakshuka-thumb.webp';
+import imgGreenSkyrSmoothieFull from '../images/recipes/green_skyr_smoothie.webp';
+import imgGreenSkyrSmoothieThumb from '../images/recipes/green_skyr_smoothie-thumb.webp';
+import imgGyeranJjimFull from '../images/recipes/gyeran_jjim.webp';
+import imgGyeranJjimThumb from '../images/recipes/gyeran_jjim-thumb.webp';
+import imgGyudonLightFull from '../images/recipes/gyudon_light.webp';
+import imgGyudonLightThumb from '../images/recipes/gyudon_light-thumb.webp';
+import imgHalloumiLentilSaladFull from '../images/recipes/halloumi_lentil_salad.webp';
+import imgHalloumiLentilSaladThumb from '../images/recipes/halloumi_lentil_salad-thumb.webp';
+import imgHariraFull from '../images/recipes/harira.webp';
+import imgHariraThumb from '../images/recipes/harira-thumb.webp';
+import imgHotSourTofuSoupFull from '../images/recipes/hot_sour_tofu_soup.webp';
+import imgHotSourTofuSoupThumb from '../images/recipes/hot_sour_tofu_soup-thumb.webp';
+import imgHuevosRancherosFull from '../images/recipes/huevos_rancheros.webp';
+import imgHuevosRancherosThumb from '../images/recipes/huevos_rancheros-thumb.webp';
+import imgHummusVeggieSticksFull from '../images/recipes/hummus_veggie_sticks.webp';
+import imgHummusVeggieSticksThumb from '../images/recipes/hummus_veggie_sticks-thumb.webp';
+import imgJapaneseChickenCurryFull from '../images/recipes/japanese_chicken_curry.webp';
+import imgJapaneseChickenCurryThumb from '../images/recipes/japanese_chicken_curry-thumb.webp';
+import imgJapaneseSalmonBreakfastFull from '../images/recipes/japanese_salmon_breakfast.webp';
+import imgJapaneseSalmonBreakfastThumb from '../images/recipes/japanese_salmon_breakfast-thumb.webp';
+import imgKeralaFishCurryFull from '../images/recipes/kerala_fish_curry.webp';
+import imgKeralaFishCurryThumb from '../images/recipes/kerala_fish_curry-thumb.webp';
+import imgKimchiScrambledEggsFull from '../images/recipes/kimchi_scrambled_eggs.webp';
+import imgKimchiScrambledEggsThumb from '../images/recipes/kimchi_scrambled_eggs-thumb.webp';
+import imgKungPaoChickenFull from '../images/recipes/kung_pao_chicken.webp';
+import imgKungPaoChickenThumb from '../images/recipes/kung_pao_chicken-thumb.webp';
+import imgLabnehZaatarFull from '../images/recipes/labneh_zaatar.webp';
+import imgLabnehZaatarThumb from '../images/recipes/labneh_zaatar-thumb.webp';
+import imgLarbGaiFull from '../images/recipes/larb_gai.webp';
+import imgLarbGaiThumb from '../images/recipes/larb_gai-thumb.webp';
+import imgLentilBologneseFull from '../images/recipes/lentil_bolognese.webp';
+import imgLentilBologneseThumb from '../images/recipes/lentil_bolognese-thumb.webp';
 import imgLentilCurryFull from '../images/recipes/lentil_curry.webp';
 import imgLentilCurryThumb from '../images/recipes/lentil_curry-thumb.webp';
+import imgLentilFetaSaladFull from '../images/recipes/lentil_feta_salad.webp';
+import imgLentilFetaSaladThumb from '../images/recipes/lentil_feta_salad-thumb.webp';
+import imgLomoSaltadoFull from '../images/recipes/lomo_saltado.webp';
+import imgLomoSaltadoThumb from '../images/recipes/lomo_saltado-thumb.webp';
+import imgMapoTofuFull from '../images/recipes/mapo_tofu.webp';
+import imgMapoTofuThumb from '../images/recipes/mapo_tofu-thumb.webp';
+import imgMasalaOmeletteFull from '../images/recipes/masala_omelette.webp';
+import imgMasalaOmeletteThumb from '../images/recipes/masala_omelette-thumb.webp';
+import imgMenemenFull from '../images/recipes/menemen.webp';
+import imgMenemenThumb from '../images/recipes/menemen-thumb.webp';
+import imgMinestroneBeansFull from '../images/recipes/minestrone_beans.webp';
+import imgMinestroneBeansThumb from '../images/recipes/minestrone_beans-thumb.webp';
+import imgMisoSalmonFull from '../images/recipes/miso_salmon.webp';
+import imgMisoSalmonThumb from '../images/recipes/miso_salmon-thumb.webp';
+import imgMoquecaFull from '../images/recipes/moqueca.webp';
+import imgMoquecaThumb from '../images/recipes/moqueca-thumb.webp';
+import imgMozzarellaTomatoSkewersFull from '../images/recipes/mozzarella_tomato_skewers.webp';
+import imgMozzarellaTomatoSkewersThumb from '../images/recipes/mozzarella_tomato_skewers-thumb.webp';
+import imgNasiGorengFull from '../images/recipes/nasi_goreng.webp';
+import imgNasiGorengThumb from '../images/recipes/nasi_goreng-thumb.webp';
+import imgOatPorridgeQuarkFull from '../images/recipes/oat_porridge_quark.webp';
+import imgOatPorridgeQuarkThumb from '../images/recipes/oat_porridge_quark-thumb.webp';
 import imgOvenSalmonFull from '../images/recipes/oven_salmon.webp';
 import imgOvenSalmonThumb from '../images/recipes/oven_salmon-thumb.webp';
+import imgOvernightOatsQuarkFull from '../images/recipes/overnight_oats_quark.webp';
+import imgOvernightOatsQuarkThumb from '../images/recipes/overnight_oats_quark-thumb.webp';
+import imgOyakodonFull from '../images/recipes/oyakodon.webp';
+import imgOyakodonThumb from '../images/recipes/oyakodon-thumb.webp';
+import imgPadKraPaoFull from '../images/recipes/pad_kra_pao.webp';
+import imgPadKraPaoThumb from '../images/recipes/pad_kra_pao-thumb.webp';
+import imgPadThaiChickenFull from '../images/recipes/pad_thai_chicken.webp';
+import imgPadThaiChickenThumb from '../images/recipes/pad_thai_chicken-thumb.webp';
+import imgPalakDalFull from '../images/recipes/palak_dal.webp';
+import imgPalakDalThumb from '../images/recipes/palak_dal-thumb.webp';
+import imgPalakPaneerLightFull from '../images/recipes/palak_paneer_light.webp';
+import imgPalakPaneerLightThumb from '../images/recipes/palak_paneer_light-thumb.webp';
+import imgPaneerTikkaBitesFull from '../images/recipes/paneer_tikka_bites.webp';
+import imgPaneerTikkaBitesThumb from '../images/recipes/paneer_tikka_bites-thumb.webp';
+import imgPaneerTikkaWrapFull from '../images/recipes/paneer_tikka_wrap.webp';
+import imgPaneerTikkaWrapThumb from '../images/recipes/paneer_tikka_wrap-thumb.webp';
+import imgPbBananaSoyOatsFull from '../images/recipes/pb_banana_soy_oats.webp';
+import imgPbBananaSoyOatsThumb from '../images/recipes/pb_banana_soy_oats-thumb.webp';
 import imgPhoFull from '../images/recipes/pho.webp';
 import imgPhoThumb from '../images/recipes/pho-thumb.webp';
+import imgPicadinhoFull from '../images/recipes/picadinho.webp';
+import imgPicadinhoThumb from '../images/recipes/picadinho-thumb.webp';
+import imgPolloAlAjilloFull from '../images/recipes/pollo_al_ajillo.webp';
+import imgPolloAlAjilloThumb from '../images/recipes/pollo_al_ajillo-thumb.webp';
+import imgPratoFeitoFull from '../images/recipes/prato_feito.webp';
+import imgPratoFeitoThumb from '../images/recipes/prato_feito-thumb.webp';
+import imgProteinEnergyBallsFull from '../images/recipes/protein_energy_balls.webp';
+import imgProteinEnergyBallsThumb from '../images/recipes/protein_energy_balls-thumb.webp';
+import imgProteinPancakesFull from '../images/recipes/protein_pancakes.webp';
+import imgProteinPancakesThumb from '../images/recipes/protein_pancakes-thumb.webp';
+import imgQuarkBerriesFull from '../images/recipes/quark_berries.webp';
+import imgQuarkBerriesThumb from '../images/recipes/quark_berries-thumb.webp';
+import imgQuarkBircherFull from '../images/recipes/quark_bircher.webp';
+import imgQuarkBircherThumb from '../images/recipes/quark_bircher-thumb.webp';
+import imgQuinoaBreakfastPorridgeFull from '../images/recipes/quinoa_breakfast_porridge.webp';
+import imgQuinoaBreakfastPorridgeThumb from '../images/recipes/quinoa_breakfast_porridge-thumb.webp';
+import imgQuinoaFetaSaladFull from '../images/recipes/quinoa_feta_salad.webp';
+import imgQuinoaFetaSaladThumb from '../images/recipes/quinoa_feta_salad-thumb.webp';
+import imgRajmaFull from '../images/recipes/rajma.webp';
+import imgRajmaThumb from '../images/recipes/rajma-thumb.webp';
+import imgRatatouilleWhiteBeansFull from '../images/recipes/ratatouille_white_beans.webp';
+import imgRatatouilleWhiteBeansThumb from '../images/recipes/ratatouille_white_beans-thumb.webp';
+import imgRicottaBerryToastFull from '../images/recipes/ricotta_berry_toast.webp';
+import imgRicottaBerryToastThumb from '../images/recipes/ricotta_berry_toast-thumb.webp';
+import imgRoastedChickpeasFull from '../images/recipes/roasted_chickpeas.webp';
+import imgRoastedChickpeasThumb from '../images/recipes/roasted_chickpeas-thumb.webp';
+import imgSabaShioyakiFull from '../images/recipes/saba_shioyaki.webp';
+import imgSabaShioyakiThumb from '../images/recipes/saba_shioyaki-thumb.webp';
+import imgSalmonCucumberBitesFull from '../images/recipes/salmon_cucumber_bites.webp';
+import imgSalmonCucumberBitesThumb from '../images/recipes/salmon_cucumber_bites-thumb.webp';
+import imgSalmonPokeFull from '../images/recipes/salmon_poke.webp';
+import imgSalmonPokeThumb from '../images/recipes/salmon_poke-thumb.webp';
+import imgSalmonPuyLentilsFull from '../images/recipes/salmon_puy_lentils.webp';
+import imgSalmonPuyLentilsThumb from '../images/recipes/salmon_puy_lentils-thumb.webp';
+import imgScrambledEggsFull from '../images/recipes/scrambled_eggs.webp';
+import imgScrambledEggsThumb from '../images/recipes/scrambled_eggs-thumb.webp';
+import imgSeafoodPaellaFull from '../images/recipes/seafood_paella.webp';
+import imgSeafoodPaellaThumb from '../images/recipes/seafood_paella-thumb.webp';
+import imgSesameTofuBitesFull from '../images/recipes/sesame_tofu_bites.webp';
+import imgSesameTofuBitesThumb from '../images/recipes/sesame_tofu_bites-thumb.webp';
+import imgShakshukaFull from '../images/recipes/shakshuka.webp';
+import imgShakshukaThumb from '../images/recipes/shakshuka-thumb.webp';
+import imgShrimpCocktailFull from '../images/recipes/shrimp_cocktail.webp';
+import imgShrimpCocktailThumb from '../images/recipes/shrimp_cocktail-thumb.webp';
+import imgShrimpGarlicPastaFull from '../images/recipes/shrimp_garlic_pasta.webp';
+import imgShrimpGarlicPastaThumb from '../images/recipes/shrimp_garlic_pasta-thumb.webp';
+import imgShrimpSaganakiFull from '../images/recipes/shrimp_saganaki.webp';
+import imgShrimpSaganakiThumb from '../images/recipes/shrimp_saganaki-thumb.webp';
+import imgShrimpTacosFull from '../images/recipes/shrimp_tacos.webp';
+import imgShrimpTacosThumb from '../images/recipes/shrimp_tacos-thumb.webp';
+import imgSilkenChocolateMousseFull from '../images/recipes/silken_chocolate_mousse.webp';
+import imgSilkenChocolateMousseThumb from '../images/recipes/silken_chocolate_mousse-thumb.webp';
+import imgSilkenTofuSmoothieFull from '../images/recipes/silken_tofu_smoothie.webp';
+import imgSilkenTofuSmoothieThumb from '../images/recipes/silken_tofu_smoothie-thumb.webp';
+import imgSkagenToastFull from '../images/recipes/skagen_toast.webp';
+import imgSkagenToastThumb from '../images/recipes/skagen_toast-thumb.webp';
+import imgSkyrAppleCompoteFull from '../images/recipes/skyr_apple_compote.webp';
+import imgSkyrAppleCompoteThumb from '../images/recipes/skyr_apple_compote-thumb.webp';
+import imgSkyrBerryBarkFull from '../images/recipes/skyr_berry_bark.webp';
+import imgSkyrBerryBarkThumb from '../images/recipes/skyr_berry_bark-thumb.webp';
+import imgSkyrBerryBowlFull from '../images/recipes/skyr_berry_bowl.webp';
+import imgSkyrBerryBowlThumb from '../images/recipes/skyr_berry_bowl-thumb.webp';
+import imgSkyrHerbDipFull from '../images/recipes/skyr_herb_dip.webp';
+import imgSkyrHerbDipThumb from '../images/recipes/skyr_herb_dip-thumb.webp';
+import imgSmokedSalmonBreadFull from '../images/recipes/smoked_salmon_bread.webp';
+import imgSmokedSalmonBreadThumb from '../images/recipes/smoked_salmon_bread-thumb.webp';
+import imgSoyChiaPuddingFull from '../images/recipes/soy_chia_pudding.webp';
+import imgSoyChiaPuddingThumb from '../images/recipes/soy_chia_pudding-thumb.webp';
+import imgSpinachFetaOmeletteFull from '../images/recipes/spinach_feta_omelette.webp';
+import imgSpinachFetaOmeletteThumb from '../images/recipes/spinach_feta_omelette-thumb.webp';
+import imgSteamedFishGingerFull from '../images/recipes/steamed_fish_ginger.webp';
+import imgSteamedFishGingerThumb from '../images/recipes/steamed_fish_ginger-thumb.webp';
+import imgStuffedPeppersTurkeyFull from '../images/recipes/stuffed_peppers_turkey.webp';
+import imgStuffedPeppersTurkeyThumb from '../images/recipes/stuffed_peppers_turkey-thumb.webp';
+import imgStuffedSweetPotatoFull from '../images/recipes/stuffed_sweet_potato.webp';
+import imgStuffedSweetPotatoThumb from '../images/recipes/stuffed_sweet_potato-thumb.webp';
+import imgSummerRollsFull from '../images/recipes/summer_rolls.webp';
+import imgSummerRollsThumb from '../images/recipes/summer_rolls-thumb.webp';
+import imgSundubuJjigaeFull from '../images/recipes/sundubu_jjigae.webp';
+import imgSundubuJjigaeThumb from '../images/recipes/sundubu_jjigae-thumb.webp';
+import imgTamagoyakiEdamameFull from '../images/recipes/tamagoyaki_edamame.webp';
+import imgTamagoyakiEdamameThumb from '../images/recipes/tamagoyaki_edamame-thumb.webp';
+import imgTandooriChickenSaladFull from '../images/recipes/tandoori_chicken_salad.webp';
+import imgTandooriChickenSaladThumb from '../images/recipes/tandoori_chicken_salad-thumb.webp';
+import imgTapiocaEggCheeseFull from '../images/recipes/tapioca_egg_cheese.webp';
+import imgTapiocaEggCheeseThumb from '../images/recipes/tapioca_egg_cheese-thumb.webp';
+import imgTempehStirfryFull from '../images/recipes/tempeh_stirfry.webp';
+import imgTempehStirfryThumb from '../images/recipes/tempeh_stirfry-thumb.webp';
 import imgThaiCurryFull from '../images/recipes/thai_curry.webp';
 import imgThaiCurryThumb from '../images/recipes/thai_curry-thumb.webp';
+import imgTikkaMasalaLightFull from '../images/recipes/tikka_masala_light.webp';
+import imgTikkaMasalaLightThumb from '../images/recipes/tikka_masala_light-thumb.webp';
+import imgTofuPokeFull from '../images/recipes/tofu_poke.webp';
+import imgTofuPokeThumb from '../images/recipes/tofu_poke-thumb.webp';
+import imgTomYumShrimpFull from '../images/recipes/tom_yum_shrimp.webp';
+import imgTomYumShrimpThumb from '../images/recipes/tom_yum_shrimp-thumb.webp';
+import imgTonnoFagioliFull from '../images/recipes/tonno_fagioli.webp';
+import imgTonnoFagioliThumb from '../images/recipes/tonno_fagioli-thumb.webp';
+import imgTroutPotatoSaladFull from '../images/recipes/trout_potato_salad.webp';
+import imgTroutPotatoSaladThumb from '../images/recipes/trout_potato_salad-thumb.webp';
+import imgTunaAvocadoFull from '../images/recipes/tuna_avocado.webp';
+import imgTunaAvocadoThumb from '../images/recipes/tuna_avocado-thumb.webp';
+import imgTunaNicoiseFull from '../images/recipes/tuna_nicoise.webp';
+import imgTunaNicoiseThumb from '../images/recipes/tuna_nicoise-thumb.webp';
+import imgTunaOnigiriFull from '../images/recipes/tuna_onigiri.webp';
+import imgTunaOnigiriThumb from '../images/recipes/tuna_onigiri-thumb.webp';
+import imgTunaPastaSaladFull from '../images/recipes/tuna_pasta_salad.webp';
+import imgTunaPastaSaladThumb from '../images/recipes/tuna_pasta_salad-thumb.webp';
+import imgTurkeyBologneseFull from '../images/recipes/turkey_bolognese.webp';
+import imgTurkeyBologneseThumb from '../images/recipes/turkey_bolognese-thumb.webp';
+import imgTurkeyMeatballsFull from '../images/recipes/turkey_meatballs.webp';
+import imgTurkeyMeatballsThumb from '../images/recipes/turkey_meatballs-thumb.webp';
+import imgTurkeyRollupsFull from '../images/recipes/turkey_rollups.webp';
+import imgTurkeyRollupsThumb from '../images/recipes/turkey_rollups-thumb.webp';
+import imgTurkeyVeggieWrapFull from '../images/recipes/turkey_veggie_wrap.webp';
+import imgTurkeyVeggieWrapThumb from '../images/recipes/turkey_veggie_wrap-thumb.webp';
+import imgTzatzikiPitaFull from '../images/recipes/tzatziki_pita.webp';
+import imgTzatzikiPitaThumb from '../images/recipes/tzatziki_pita-thumb.webp';
+import imgVeggieOmeletteFull from '../images/recipes/veggie_omelette.webp';
+import imgVeggieOmeletteThumb from '../images/recipes/veggie_omelette-thumb.webp';
+import imgVitaminaBananaFull from '../images/recipes/vitamina_banana.webp';
+import imgVitaminaBananaThumb from '../images/recipes/vitamina_banana-thumb.webp';
+import imgWhitefishPotatoesFull from '../images/recipes/whitefish_potatoes.webp';
+import imgWhitefishPotatoesThumb from '../images/recipes/whitefish_potatoes-thumb.webp';
+import imgYogurtBowlFull from '../images/recipes/yogurt_bowl.webp';
+import imgYogurtBowlThumb from '../images/recipes/yogurt_bowl-thumb.webp';
+import imgYumNuaFull from '../images/recipes/yum_nua.webp';
+import imgYumNuaThumb from '../images/recipes/yum_nua-thumb.webp';
 
 export const CATALOG_SOURCE: FoodCatalogSourceMeta = foodsFile.source;
 export const FOODS: readonly Food[] = foodsFile.foods as unknown as readonly Food[];
@@ -1666,11 +2010,723 @@ export const RECIPE_LOCALES: Readonly<Record<string, Readonly<Record<string, Rec
 };
 
 export const RECIPE_IMAGES: Readonly<Record<string, RecipeImageAssets>> = {
+  acai_skyr_bowl: {
+    full: imgAcaiSkyrBowlFull,
+    thumb: imgAcaiSkyrBowlThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  alpler_magronen_light: {
+    full: imgAlplerMagronenLightFull,
+    thumb: imgAlplerMagronenLightThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  apple_skyr_pb_dip: {
+    full: imgAppleSkyrPbDipFull,
+    thumb: imgAppleSkyrPbDipThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  avocado_egg_toast: {
+    full: imgAvocadoEggToastFull,
+    thumb: imgAvocadoEggToastThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  baked_falafel_bowl: {
+    full: imgBakedFalafelBowlFull,
+    thumb: imgBakedFalafelBowlThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  baked_feta_chickpeas: {
+    full: imgBakedFetaChickpeasFull,
+    thumb: imgBakedFetaChickpeasThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  banana_protein_shake: {
+    full: imgBananaProteinShakeFull,
+    thumb: imgBananaProteinShakeThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  banh_mi_bowl: {
+    full: imgBanhMiBowlFull,
+    thumb: imgBanhMiBowlThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  barley_risotto_chicken: {
+    full: imgBarleyRisottoChickenFull,
+    thumb: imgBarleyRisottoChickenThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  beef_broccoli: {
+    full: imgBeefBroccoliFull,
+    thumb: imgBeefBroccoliThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  beef_fajita_bowl: {
+    full: imgBeefFajitaBowlFull,
+    thumb: imgBeefFajitaBowlThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  beef_kofta_yogurt: {
+    full: imgBeefKoftaYogurtFull,
+    thumb: imgBeefKoftaYogurtThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  beef_steak_vegetables: {
+    full: imgBeefSteakVegetablesFull,
+    thumb: imgBeefSteakVegetablesThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  berry_protein_smoothie: {
+    full: imgBerryProteinSmoothieFull,
+    thumb: imgBerryProteinSmoothieThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  bibimbap: {
+    full: imgBibimbapFull,
+    thumb: imgBibimbapThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
   birchermuesli: {
     full: imgBirchermuesliFull,
     thumb: imgBirchermuesliThumb,
     width: 800,
     height: 600,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  black_bean_soup: {
+    full: imgBlackBeanSoupFull,
+    thumb: imgBlackBeanSoupThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  bobo_camarao: {
+    full: imgBoboCamaraoFull,
+    thumb: imgBoboCamaraoThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  breakfast_burrito: {
+    full: imgBreakfastBurritoFull,
+    thumb: imgBreakfastBurritoThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  bresaola_rolls: {
+    full: imgBresaolaRollsFull,
+    thumb: imgBresaolaRollsThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  buckwheat_galette: {
+    full: imgBuckwheatGaletteFull,
+    thumb: imgBuckwheatGaletteThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  bulgogi: {
+    full: imgBulgogiFull,
+    thumb: imgBulgogiThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  bun_chay_tofu: {
+    full: imgBunChayTofuFull,
+    thumb: imgBunChayTofuThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  bundner_barley_soup: {
+    full: imgBundnerBarleySoupFull,
+    thumb: imgBundnerBarleySoupThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  burrito_bowl: {
+    full: imgBurritoBowlFull,
+    thumb: imgBurritoBowlThumb,
+    width: 800,
+    height: 600,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  ca_kho: {
+    full: imgCaKhoFull,
+    thumb: imgCaKhoThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  caldo_verde_beans: {
+    full: imgCaldoVerdeBeansFull,
+    thumb: imgCaldoVerdeBeansThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  ceviche_sweet_potato: {
+    full: imgCevicheSweetPotatoFull,
+    thumb: imgCevicheSweetPotatoThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  chana_masala: {
+    full: imgChanaMasalaFull,
+    thumb: imgChanaMasalaThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  chia_skyr_mango: {
+    full: imgChiaSkyrMangoFull,
+    thumb: imgChiaSkyrMangoThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  chicken_bowl: {
+    full: imgChickenBowlFull,
+    thumb: imgChickenBowlThumb,
+    width: 800,
+    height: 600,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  chicken_caesar_light: {
+    full: imgChickenCaesarLightFull,
+    thumb: imgChickenCaesarLightThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  chicken_caprese_salad: {
+    full: imgChickenCapreseSaladFull,
+    thumb: imgChickenCapreseSaladThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  chicken_congee: {
+    full: imgChickenCongeeFull,
+    thumb: imgChickenCongeeThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  chicken_fajitas: {
+    full: imgChickenFajitasFull,
+    thumb: imgChickenFajitasThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  chicken_piccata: {
+    full: imgChickenPiccataFull,
+    thumb: imgChickenPiccataThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  chicken_satay_skewers: {
+    full: imgChickenSataySkewersFull,
+    thumb: imgChickenSataySkewersThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  chicken_shawarma_bowl: {
+    full: imgChickenShawarmaBowlFull,
+    thumb: imgChickenShawarmaBowlThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  chicken_souvlaki: {
+    full: imgChickenSouvlakiFull,
+    thumb: imgChickenSouvlakiThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  chicken_sweet_potato_traybake: {
+    full: imgChickenSweetPotatoTraybakeFull,
+    thumb: imgChickenSweetPotatoTraybakeThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  chicken_tagine: {
+    full: imgChickenTagineFull,
+    thumb: imgChickenTagineThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  chicken_tortilla_soup: {
+    full: imgChickenTortillaSoupFull,
+    thumb: imgChickenTortillaSoupThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  chicken_vegetable_soup: {
+    full: imgChickenVegetableSoupFull,
+    thumb: imgChickenVegetableSoupThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  chickpea_chaat: {
+    full: imgChickpeaChaatFull,
+    thumb: imgChickpeaChaatThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  chickpea_tuna_salad: {
+    full: imgChickpeaTunaSaladFull,
+    thumb: imgChickpeaTunaSaladThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  chili_con_carne: {
+    full: imgChiliConCarneFull,
+    thumb: imgChiliConCarneThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  cilbir: {
+    full: imgCilbirFull,
+    thumb: imgCilbirThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  cocoa_protein_milk: {
+    full: imgCocoaProteinMilkFull,
+    thumb: imgCocoaProteinMilkThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  cod_dill_mustard: {
+    full: imgCodDillMustardFull,
+    thumb: imgCodDillMustardThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  cold_soba_tofu: {
+    full: imgColdSobaTofuFull,
+    thumb: imgColdSobaTofuThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  cottage_crispbread: {
+    full: imgCottageCrispbreadFull,
+    thumb: imgCottageCrispbreadThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  cottage_pineapple: {
+    full: imgCottagePineappleFull,
+    thumb: imgCottagePineappleThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  cottage_tomato_toast: {
+    full: imgCottageTomatoToastFull,
+    thumb: imgCottageTomatoToastThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  cottage_zucchini_frittata: {
+    full: imgCottageZucchiniFrittataFull,
+    thumb: imgCottageZucchiniFrittataThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  couscous_chicken_salad: {
+    full: imgCouscousChickenSaladFull,
+    thumb: imgCouscousChickenSaladThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  dakgalbi: {
+    full: imgDakgalbiFull,
+    thumb: imgDakgalbiThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  deviled_eggs_yogurt: {
+    full: imgDeviledEggsYogurtFull,
+    thumb: imgDeviledEggsYogurtThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  edamame_hummus: {
+    full: imgEdamameHummusFull,
+    thumb: imgEdamameHummusThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  edamame_quinoa_bowl: {
+    full: imgEdamameQuinoaBowlFull,
+    thumb: imgEdamameQuinoaBowlThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  edamame_sea_salt: {
+    full: imgEdamameSeaSaltFull,
+    thumb: imgEdamameSeaSaltThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  egg_salad_sandwich: {
+    full: imgEggSaladSandwichFull,
+    thumb: imgEggSaladSandwichThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  eggs_cucumber: {
+    full: imgEggsCucumberFull,
+    thumb: imgEggsCucumberThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  espinacas_garbanzos: {
+    full: imgEspinacasGarbanzosFull,
+    thumb: imgEspinacasGarbanzosThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  feijoada_light: {
+    full: imgFeijoadaLightFull,
+    thumb: imgFeijoadaLightThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  frango_piri_piri: {
+    full: imgFrangoPiriPiriFull,
+    thumb: imgFrangoPiriPiriThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  ga_xao_sa_ot: {
+    full: imgGaXaoSaOtFull,
+    thumb: imgGaXaoSaOtThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  gado_gado: {
+    full: imgGadoGadoFull,
+    thumb: imgGadoGadoThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  galinhada: {
+    full: imgGalinhadaFull,
+    thumb: imgGalinhadaThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  gazpacho_shrimp: {
+    full: imgGazpachoShrimpFull,
+    thumb: imgGazpachoShrimpThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  goi_ga: {
+    full: imgGoiGaFull,
+    thumb: imgGoiGaThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  greek_chicken_salad: {
+    full: imgGreekChickenSaladFull,
+    thumb: imgGreekChickenSaladThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  greek_yogurt_walnut: {
+    full: imgGreekYogurtWalnutFull,
+    thumb: imgGreekYogurtWalnutThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  green_curry_shrimp: {
+    full: imgGreenCurryShrimpFull,
+    thumb: imgGreenCurryShrimpThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  green_shakshuka: {
+    full: imgGreenShakshukaFull,
+    thumb: imgGreenShakshukaThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  green_skyr_smoothie: {
+    full: imgGreenSkyrSmoothieFull,
+    thumb: imgGreenSkyrSmoothieThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  gyeran_jjim: {
+    full: imgGyeranJjimFull,
+    thumb: imgGyeranJjimThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  gyudon_light: {
+    full: imgGyudonLightFull,
+    thumb: imgGyudonLightThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  halloumi_lentil_salad: {
+    full: imgHalloumiLentilSaladFull,
+    thumb: imgHalloumiLentilSaladThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  harira: {
+    full: imgHariraFull,
+    thumb: imgHariraThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  hot_sour_tofu_soup: {
+    full: imgHotSourTofuSoupFull,
+    thumb: imgHotSourTofuSoupThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  huevos_rancheros: {
+    full: imgHuevosRancherosFull,
+    thumb: imgHuevosRancherosThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  hummus_veggie_sticks: {
+    full: imgHummusVeggieSticksFull,
+    thumb: imgHummusVeggieSticksThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  japanese_chicken_curry: {
+    full: imgJapaneseChickenCurryFull,
+    thumb: imgJapaneseChickenCurryThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  japanese_salmon_breakfast: {
+    full: imgJapaneseSalmonBreakfastFull,
+    thumb: imgJapaneseSalmonBreakfastThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  kerala_fish_curry: {
+    full: imgKeralaFishCurryFull,
+    thumb: imgKeralaFishCurryThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  kimchi_scrambled_eggs: {
+    full: imgKimchiScrambledEggsFull,
+    thumb: imgKimchiScrambledEggsThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  kung_pao_chicken: {
+    full: imgKungPaoChickenFull,
+    thumb: imgKungPaoChickenThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  labneh_zaatar: {
+    full: imgLabnehZaatarFull,
+    thumb: imgLabnehZaatarThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  larb_gai: {
+    full: imgLarbGaiFull,
+    thumb: imgLarbGaiThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  lentil_bolognese: {
+    full: imgLentilBologneseFull,
+    thumb: imgLentilBologneseThumb,
+    width: 640,
+    height: 480,
     thumbWidth: 400,
     thumbHeight: 300,
   },
@@ -1682,11 +2738,171 @@ export const RECIPE_IMAGES: Readonly<Record<string, RecipeImageAssets>> = {
     thumbWidth: 400,
     thumbHeight: 300,
   },
+  lentil_feta_salad: {
+    full: imgLentilFetaSaladFull,
+    thumb: imgLentilFetaSaladThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  lomo_saltado: {
+    full: imgLomoSaltadoFull,
+    thumb: imgLomoSaltadoThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  mapo_tofu: {
+    full: imgMapoTofuFull,
+    thumb: imgMapoTofuThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  masala_omelette: {
+    full: imgMasalaOmeletteFull,
+    thumb: imgMasalaOmeletteThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  menemen: {
+    full: imgMenemenFull,
+    thumb: imgMenemenThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  minestrone_beans: {
+    full: imgMinestroneBeansFull,
+    thumb: imgMinestroneBeansThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  miso_salmon: {
+    full: imgMisoSalmonFull,
+    thumb: imgMisoSalmonThumb,
+    width: 800,
+    height: 600,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  moqueca: {
+    full: imgMoquecaFull,
+    thumb: imgMoquecaThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  mozzarella_tomato_skewers: {
+    full: imgMozzarellaTomatoSkewersFull,
+    thumb: imgMozzarellaTomatoSkewersThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  nasi_goreng: {
+    full: imgNasiGorengFull,
+    thumb: imgNasiGorengThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  oat_porridge_quark: {
+    full: imgOatPorridgeQuarkFull,
+    thumb: imgOatPorridgeQuarkThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
   oven_salmon: {
     full: imgOvenSalmonFull,
     thumb: imgOvenSalmonThumb,
     width: 800,
     height: 600,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  overnight_oats_quark: {
+    full: imgOvernightOatsQuarkFull,
+    thumb: imgOvernightOatsQuarkThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  oyakodon: {
+    full: imgOyakodonFull,
+    thumb: imgOyakodonThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  pad_kra_pao: {
+    full: imgPadKraPaoFull,
+    thumb: imgPadKraPaoThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  pad_thai_chicken: {
+    full: imgPadThaiChickenFull,
+    thumb: imgPadThaiChickenThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  palak_dal: {
+    full: imgPalakDalFull,
+    thumb: imgPalakDalThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  palak_paneer_light: {
+    full: imgPalakPaneerLightFull,
+    thumb: imgPalakPaneerLightThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  paneer_tikka_bites: {
+    full: imgPaneerTikkaBitesFull,
+    thumb: imgPaneerTikkaBitesThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  paneer_tikka_wrap: {
+    full: imgPaneerTikkaWrapFull,
+    thumb: imgPaneerTikkaWrapThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  pb_banana_soy_oats: {
+    full: imgPbBananaSoyOatsFull,
+    thumb: imgPbBananaSoyOatsThumb,
+    width: 640,
+    height: 480,
     thumbWidth: 400,
     thumbHeight: 300,
   },
@@ -1698,11 +2914,515 @@ export const RECIPE_IMAGES: Readonly<Record<string, RecipeImageAssets>> = {
     thumbWidth: 400,
     thumbHeight: 300,
   },
+  picadinho: {
+    full: imgPicadinhoFull,
+    thumb: imgPicadinhoThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  pollo_al_ajillo: {
+    full: imgPolloAlAjilloFull,
+    thumb: imgPolloAlAjilloThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  prato_feito: {
+    full: imgPratoFeitoFull,
+    thumb: imgPratoFeitoThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  protein_energy_balls: {
+    full: imgProteinEnergyBallsFull,
+    thumb: imgProteinEnergyBallsThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  protein_pancakes: {
+    full: imgProteinPancakesFull,
+    thumb: imgProteinPancakesThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  quark_berries: {
+    full: imgQuarkBerriesFull,
+    thumb: imgQuarkBerriesThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  quark_bircher: {
+    full: imgQuarkBircherFull,
+    thumb: imgQuarkBircherThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  quinoa_breakfast_porridge: {
+    full: imgQuinoaBreakfastPorridgeFull,
+    thumb: imgQuinoaBreakfastPorridgeThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  quinoa_feta_salad: {
+    full: imgQuinoaFetaSaladFull,
+    thumb: imgQuinoaFetaSaladThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  rajma: {
+    full: imgRajmaFull,
+    thumb: imgRajmaThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  ratatouille_white_beans: {
+    full: imgRatatouilleWhiteBeansFull,
+    thumb: imgRatatouilleWhiteBeansThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  ricotta_berry_toast: {
+    full: imgRicottaBerryToastFull,
+    thumb: imgRicottaBerryToastThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  roasted_chickpeas: {
+    full: imgRoastedChickpeasFull,
+    thumb: imgRoastedChickpeasThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  saba_shioyaki: {
+    full: imgSabaShioyakiFull,
+    thumb: imgSabaShioyakiThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  salmon_cucumber_bites: {
+    full: imgSalmonCucumberBitesFull,
+    thumb: imgSalmonCucumberBitesThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  salmon_poke: {
+    full: imgSalmonPokeFull,
+    thumb: imgSalmonPokeThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  salmon_puy_lentils: {
+    full: imgSalmonPuyLentilsFull,
+    thumb: imgSalmonPuyLentilsThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  scrambled_eggs: {
+    full: imgScrambledEggsFull,
+    thumb: imgScrambledEggsThumb,
+    width: 800,
+    height: 600,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  seafood_paella: {
+    full: imgSeafoodPaellaFull,
+    thumb: imgSeafoodPaellaThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  sesame_tofu_bites: {
+    full: imgSesameTofuBitesFull,
+    thumb: imgSesameTofuBitesThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  shakshuka: {
+    full: imgShakshukaFull,
+    thumb: imgShakshukaThumb,
+    width: 800,
+    height: 600,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  shrimp_cocktail: {
+    full: imgShrimpCocktailFull,
+    thumb: imgShrimpCocktailThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  shrimp_garlic_pasta: {
+    full: imgShrimpGarlicPastaFull,
+    thumb: imgShrimpGarlicPastaThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  shrimp_saganaki: {
+    full: imgShrimpSaganakiFull,
+    thumb: imgShrimpSaganakiThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  shrimp_tacos: {
+    full: imgShrimpTacosFull,
+    thumb: imgShrimpTacosThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  silken_chocolate_mousse: {
+    full: imgSilkenChocolateMousseFull,
+    thumb: imgSilkenChocolateMousseThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  silken_tofu_smoothie: {
+    full: imgSilkenTofuSmoothieFull,
+    thumb: imgSilkenTofuSmoothieThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  skagen_toast: {
+    full: imgSkagenToastFull,
+    thumb: imgSkagenToastThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  skyr_apple_compote: {
+    full: imgSkyrAppleCompoteFull,
+    thumb: imgSkyrAppleCompoteThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  skyr_berry_bark: {
+    full: imgSkyrBerryBarkFull,
+    thumb: imgSkyrBerryBarkThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  skyr_berry_bowl: {
+    full: imgSkyrBerryBowlFull,
+    thumb: imgSkyrBerryBowlThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  skyr_herb_dip: {
+    full: imgSkyrHerbDipFull,
+    thumb: imgSkyrHerbDipThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  smoked_salmon_bread: {
+    full: imgSmokedSalmonBreadFull,
+    thumb: imgSmokedSalmonBreadThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  soy_chia_pudding: {
+    full: imgSoyChiaPuddingFull,
+    thumb: imgSoyChiaPuddingThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  spinach_feta_omelette: {
+    full: imgSpinachFetaOmeletteFull,
+    thumb: imgSpinachFetaOmeletteThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  steamed_fish_ginger: {
+    full: imgSteamedFishGingerFull,
+    thumb: imgSteamedFishGingerThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  stuffed_peppers_turkey: {
+    full: imgStuffedPeppersTurkeyFull,
+    thumb: imgStuffedPeppersTurkeyThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  stuffed_sweet_potato: {
+    full: imgStuffedSweetPotatoFull,
+    thumb: imgStuffedSweetPotatoThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  summer_rolls: {
+    full: imgSummerRollsFull,
+    thumb: imgSummerRollsThumb,
+    width: 800,
+    height: 600,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  sundubu_jjigae: {
+    full: imgSundubuJjigaeFull,
+    thumb: imgSundubuJjigaeThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  tamagoyaki_edamame: {
+    full: imgTamagoyakiEdamameFull,
+    thumb: imgTamagoyakiEdamameThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  tandoori_chicken_salad: {
+    full: imgTandooriChickenSaladFull,
+    thumb: imgTandooriChickenSaladThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  tapioca_egg_cheese: {
+    full: imgTapiocaEggCheeseFull,
+    thumb: imgTapiocaEggCheeseThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  tempeh_stirfry: {
+    full: imgTempehStirfryFull,
+    thumb: imgTempehStirfryThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
   thai_curry: {
     full: imgThaiCurryFull,
     thumb: imgThaiCurryThumb,
     width: 800,
     height: 600,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  tikka_masala_light: {
+    full: imgTikkaMasalaLightFull,
+    thumb: imgTikkaMasalaLightThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  tofu_poke: {
+    full: imgTofuPokeFull,
+    thumb: imgTofuPokeThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  tom_yum_shrimp: {
+    full: imgTomYumShrimpFull,
+    thumb: imgTomYumShrimpThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  tonno_fagioli: {
+    full: imgTonnoFagioliFull,
+    thumb: imgTonnoFagioliThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  trout_potato_salad: {
+    full: imgTroutPotatoSaladFull,
+    thumb: imgTroutPotatoSaladThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  tuna_avocado: {
+    full: imgTunaAvocadoFull,
+    thumb: imgTunaAvocadoThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  tuna_nicoise: {
+    full: imgTunaNicoiseFull,
+    thumb: imgTunaNicoiseThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  tuna_onigiri: {
+    full: imgTunaOnigiriFull,
+    thumb: imgTunaOnigiriThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  tuna_pasta_salad: {
+    full: imgTunaPastaSaladFull,
+    thumb: imgTunaPastaSaladThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  turkey_bolognese: {
+    full: imgTurkeyBologneseFull,
+    thumb: imgTurkeyBologneseThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  turkey_meatballs: {
+    full: imgTurkeyMeatballsFull,
+    thumb: imgTurkeyMeatballsThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  turkey_rollups: {
+    full: imgTurkeyRollupsFull,
+    thumb: imgTurkeyRollupsThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  turkey_veggie_wrap: {
+    full: imgTurkeyVeggieWrapFull,
+    thumb: imgTurkeyVeggieWrapThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  tzatziki_pita: {
+    full: imgTzatzikiPitaFull,
+    thumb: imgTzatzikiPitaThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  veggie_omelette: {
+    full: imgVeggieOmeletteFull,
+    thumb: imgVeggieOmeletteThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  vitamina_banana: {
+    full: imgVitaminaBananaFull,
+    thumb: imgVitaminaBananaThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  whitefish_potatoes: {
+    full: imgWhitefishPotatoesFull,
+    thumb: imgWhitefishPotatoesThumb,
+    width: 640,
+    height: 480,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  yogurt_bowl: {
+    full: imgYogurtBowlFull,
+    thumb: imgYogurtBowlThumb,
+    width: 800,
+    height: 600,
+    thumbWidth: 400,
+    thumbHeight: 300,
+  },
+  yum_nua: {
+    full: imgYumNuaFull,
+    thumb: imgYumNuaThumb,
+    width: 640,
+    height: 480,
     thumbWidth: 400,
     thumbHeight: 300,
   },

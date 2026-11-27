@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "pollo_al_ajillo",
+  "image": "pollo_al_ajillo",
   "cuisine": "spanish",
   "meal": "dinner",
   "minutes": 35,

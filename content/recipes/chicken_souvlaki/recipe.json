@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "chicken_souvlaki",
+  "image": "chicken_souvlaki",
   "cuisine": "greek",
   "meal": "dinner",
   "minutes": 30,

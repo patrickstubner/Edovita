@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "quark_berries",
+  "image": "quark_berries",
   "cuisine": "swiss",
   "meal": "snack",
   "minutes": 5,

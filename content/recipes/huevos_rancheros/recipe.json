@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "huevos_rancheros",
+  "image": "huevos_rancheros",
   "cuisine": "mexican",
   "meal": "breakfast",
   "minutes": 20,

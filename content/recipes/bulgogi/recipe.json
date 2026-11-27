@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "bulgogi",
+  "image": "bulgogi",
   "cuisine": "korean",
   "meal": "dinner",
   "minutes": 30,

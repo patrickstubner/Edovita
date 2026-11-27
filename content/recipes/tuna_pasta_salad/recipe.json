@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "tuna_pasta_salad",
+  "image": "tuna_pasta_salad",
   "cuisine": "italian",
   "meal": "lunch",
   "minutes": 20,

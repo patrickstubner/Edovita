@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "barley_risotto_chicken",
+  "image": "barley_risotto_chicken",
   "cuisine": "swiss",
   "meal": "dinner",
   "minutes": 45,

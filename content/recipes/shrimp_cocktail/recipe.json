@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "shrimp_cocktail",
+  "image": "shrimp_cocktail",
   "cuisine": "european",
   "meal": "snack",
   "minutes": 10,

@@ -1,6 +1,7 @@
 {
   "format": 1,
   "id": "chicken_tortilla_soup",
+  "image": "chicken_tortilla_soup",
   "cuisine": "mexican",
   "meal": "lunch",
   "minutes": 30,
