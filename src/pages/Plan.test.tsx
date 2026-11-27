@@ -305,4 +305,43 @@ describe('Paket E10: Essensplan-Screen, PlanSheet & Datenschutz-Export/Import (I
       URL.revokeObjectURL = origRevokeObjectURL;
     }
   });
+
+  it('E12: PlanSheet (Modus pick) filtert 200 Rezepte per Titelsuche (Treffer, leere Suche, kein Treffer)', async () => {
+    const storage = createMemoryStorage();
+    const today = todayIso();
+    window.location.hash = '#/plan';
+
+    render(<App navigatorLanguages={['de-CH']} storage={storage} />);
+
+    expect(
+      await screen.findByRole('heading', { name: 'Plan' }),
+    ).toBeInTheDocument();
+
+    // «+ Rezept» im Snack-Slot zeigt alle 200 Rezepte
+    fireEvent.click(screen.getByTestId(`plan-add-${today}-snack`));
+    const searchInput = screen.getByTestId('plan-pick-search');
+    const pickList = screen.getByTestId('plan-pick-list');
+    expect(within(pickList).getAllByRole('button')).toHaveLength(200);
+
+    // Gross-/Kleinschreibung und Leerzeichen ignorieren -> Treffer Skyr-Bowl
+    fireEvent.change(searchInput, { target: { value: '  skyr-bowl  ' } });
+    expect(screen.getByTestId('plan-pick-skyr_berry_bowl')).toBeInTheDocument();
+    expect(within(pickList).getAllByRole('button').length).toBeLessThan(10);
+
+    // Kein Treffer -> kurzer Leer-Hinweis (plan.pick.empty)
+    fireEvent.change(searchInput, { target: { value: 'xyz_nicht_vorhanden_999' } });
+    expect(screen.getByTestId('plan-pick-empty')).toHaveTextContent(
+      'Keine passenden Rezepte gefunden.',
+    );
+    expect(within(pickList).queryAllByRole('button')).toHaveLength(0);
+
+    // Leere Eingabe stellt vollständige Liste wieder her
+    fireEvent.change(searchInput, { target: { value: '' } });
+    expect(within(pickList).getAllByRole('button')).toHaveLength(200);
+
+    // Gefiltertes Rezept auswählen -> wechselt sauber in Modus form
+    fireEvent.change(searchInput, { target: { value: 'skyr-bowl' } });
+    fireEvent.click(screen.getByTestId('plan-pick-skyr_berry_bowl'));
+    expect(screen.getByTestId('plan-form')).toBeInTheDocument();
+  });
 });

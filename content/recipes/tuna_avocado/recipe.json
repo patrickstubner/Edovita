@@ -1,0 +1,91 @@
+{
+  "format": 1,
+  "id": "tuna_avocado",
+  "cuisine": "american",
+  "meal": "snack",
+  "minutes": 5,
+  "servings": 1,
+  "tags": [],
+  "preferenceTags": [],
+  "ingredients": [
+    {
+      "food": "avocado",
+      "amount": 0.5,
+      "unit": "pc",
+      "grams": 70
+    },
+    {
+      "food": "tuna_canned",
+      "amount": 80,
+      "unit": "g",
+      "grams": 80
+    },
+    {
+      "food": "sweetcorn",
+      "amount": 30,
+      "unit": "g",
+      "grams": 30
+    },
+    {
+      "food": "greek_yogurt",
+      "amount": 30,
+      "unit": "g",
+      "grams": 30
+    },
+    {
+      "food": "lime",
+      "amount": 0.25,
+      "unit": "pc",
+      "grams": 7.5
+    },
+    {
+      "food": "chili_flakes",
+      "amount": 1,
+      "unit": "pinch",
+      "grams": 0.3
+    },
+    {
+      "food": "salt",
+      "amount": 1,
+      "unit": "g",
+      "grams": 1
+    }
+  ],
+  "steps": 3,
+  "allergens": [
+    "fish",
+    "milk"
+  ],
+  "allergensToCheck": [],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 252,
+      "fat": 12.5,
+      "satFat": 2.7,
+      "carbs": 7.6,
+      "sugars": 4.0,
+      "fiber": 4.6,
+      "protein": 24.9,
+      "salt": 1.8
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "lime"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://www.daisybeet.com/high-protein-avocado-tuna-salad-no-mayo/",
+      "https://www.walderwellness.com/no-mayo-high-protein-tuna-salad/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

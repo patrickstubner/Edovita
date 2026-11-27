@@ -1,0 +1,125 @@
+{
+  "format": 1,
+  "id": "burrito_bowl",
+  "cuisine": "mexican",
+  "meal": "lunch",
+  "minutes": 20,
+  "servings": 2,
+  "tags": [
+    "vegan"
+  ],
+  "preferenceTags": [
+    "cilantro",
+    "onion"
+  ],
+  "ingredients": [
+    {
+      "food": "quinoa",
+      "amount": 120,
+      "unit": "g",
+      "grams": 120
+    },
+    {
+      "food": "black_beans",
+      "amount": 240,
+      "unit": "g",
+      "grams": 240
+    },
+    {
+      "food": "sweetcorn",
+      "amount": 140,
+      "unit": "g",
+      "grams": 140
+    },
+    {
+      "food": "tomato",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 240
+    },
+    {
+      "food": "red_onion",
+      "amount": 0.5,
+      "unit": "pc",
+      "grams": 50
+    },
+    {
+      "food": "lettuce",
+      "amount": 0.25,
+      "unit": "pc",
+      "grams": 75
+    },
+    {
+      "food": "avocado",
+      "amount": 0.5,
+      "unit": "pc",
+      "grams": 70
+    },
+    {
+      "food": "lime",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 30
+    },
+    {
+      "food": "coriander_fresh",
+      "amount": 10,
+      "unit": "g",
+      "grams": 10
+    },
+    {
+      "food": "cumin",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 2
+    },
+    {
+      "food": "paprika",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 2.5
+    },
+    {
+      "food": "salt",
+      "amount": 2,
+      "unit": "g",
+      "grams": 2
+    }
+  ],
+  "steps": 5,
+  "allergens": [],
+  "allergensToCheck": [],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 550,
+      "fat": 11.9,
+      "satFat": 1.8,
+      "carbs": 82.9,
+      "sugars": 13.2,
+      "fiber": 21.6,
+      "protein": 23.3,
+      "salt": 1.5
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "coriander_fresh",
+      "cumin",
+      "lime"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://www.urbanfoodiekitchen.com/chicken-burrito-bowl/",
+      "https://ohsweetbasil.com/mexican-chicken-burrito-bowl/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

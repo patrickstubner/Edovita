@@ -1,0 +1,146 @@
+{
+  "format": 1,
+  "id": "hot_sour_tofu_soup",
+  "cuisine": "chinese",
+  "meal": "lunch",
+  "minutes": 25,
+  "servings": 2,
+  "tags": [
+    "protein"
+  ],
+  "preferenceTags": [
+    "meat",
+    "mushrooms",
+    "onion"
+  ],
+  "ingredients": [
+    {
+      "food": "tofu_firm",
+      "amount": 300,
+      "unit": "g",
+      "grams": 300
+    },
+    {
+      "food": "shiitake",
+      "amount": 120,
+      "unit": "g",
+      "grams": 120
+    },
+    {
+      "food": "eggs",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 100
+    },
+    {
+      "food": "chicken_broth",
+      "amount": 900,
+      "unit": "ml",
+      "grams": 909
+    },
+    {
+      "food": "carrot",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 80
+    },
+    {
+      "food": "soy_sauce",
+      "amount": 2,
+      "unit": "tbsp",
+      "grams": 32
+    },
+    {
+      "food": "rice_vinegar",
+      "amount": 3,
+      "unit": "tbsp",
+      "grams": 45
+    },
+    {
+      "food": "chili_flakes",
+      "amount": 1,
+      "unit": "pinch",
+      "grams": 0.3
+    },
+    {
+      "food": "black_pepper",
+      "amount": 1,
+      "unit": "pinch",
+      "grams": 0.5
+    },
+    {
+      "food": "ginger",
+      "amount": 10,
+      "unit": "g",
+      "grams": 10
+    },
+    {
+      "food": "cornstarch",
+      "amount": 1,
+      "unit": "tbsp",
+      "grams": 9
+    },
+    {
+      "food": "spring_onion",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 30
+    },
+    {
+      "food": "sesame_oil",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 4.5
+    }
+  ],
+  "steps": 4,
+  "allergens": [
+    "eggs",
+    "sesame",
+    "soy"
+  ],
+  "allergensToCheck": [
+    "celery",
+    "gluten"
+  ],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 404,
+      "fat": 21.9,
+      "satFat": 4.3,
+      "carbs": 18.0,
+      "sugars": 5.5,
+      "fiber": 2.9,
+      "protein": 32.7,
+      "salt": 7.2
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "black_pepper",
+      "chicken_broth:fiber",
+      "cornstarch:fat",
+      "cornstarch:satFat",
+      "cornstarch:sugars",
+      "shiitake:satFat",
+      "spring_onion",
+      "tofu_firm:fiber"
+    ],
+    "proxies": [
+      "rice_vinegar"
+    ],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://woonheng.com/vegan-hot-and-sour-soup/",
+      "https://www.budgetbytes.com/hot-sour-vegetable-soup-with-tofu/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

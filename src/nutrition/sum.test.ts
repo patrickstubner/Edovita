@@ -4,9 +4,9 @@ import { NUTRIENT_KEYS } from '../domain/index.ts';
 import { nutrientsForServings, nutrientsPerServing } from './sum.ts';
 
 describe('nutrientsPerServing', () => {
-  it('stimmt für alle 5 Startrezepte mit den geprüften Rezept-Nährwerten überein (±2 %)', () => {
+  it('stimmt für alle 200 Rezepte mit den geprüften Rezept-Nährwerten überein (±2 %)', () => {
     const recipes = listRecipes();
-    expect(recipes.length).toBe(5);
+    expect(recipes.length).toBe(200);
 
     for (const recipe of recipes) {
       const computed = nutrientsPerServing(recipe);

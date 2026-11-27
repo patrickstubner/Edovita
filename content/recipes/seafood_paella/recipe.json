@@ -1,0 +1,155 @@
+{
+  "format": 1,
+  "id": "seafood_paella",
+  "cuisine": "spanish",
+  "meal": "dinner",
+  "minutes": 45,
+  "servings": 3,
+  "tags": [
+    "protein"
+  ],
+  "preferenceTags": [
+    "meat",
+    "onion"
+  ],
+  "ingredients": [
+    {
+      "food": "risotto_rice",
+      "amount": 180,
+      "unit": "g",
+      "grams": 180
+    },
+    {
+      "food": "shrimp",
+      "amount": 250,
+      "unit": "g",
+      "grams": 250
+    },
+    {
+      "food": "mussels",
+      "amount": 400,
+      "unit": "g",
+      "grams": 400
+    },
+    {
+      "food": "cod",
+      "amount": 200,
+      "unit": "g",
+      "grams": 200
+    },
+    {
+      "food": "red_bell_pepper",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 150
+    },
+    {
+      "food": "peas",
+      "amount": 100,
+      "unit": "g",
+      "grams": 100
+    },
+    {
+      "food": "onion",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 100
+    },
+    {
+      "food": "garlic",
+      "amount": 3,
+      "unit": "pc",
+      "grams": 9
+    },
+    {
+      "food": "canned_tomatoes",
+      "amount": 200,
+      "unit": "g",
+      "grams": 200
+    },
+    {
+      "food": "paprika",
+      "amount": 2,
+      "unit": "tsp",
+      "grams": 5
+    },
+    {
+      "food": "saffron",
+      "amount": 1,
+      "unit": "pinch",
+      "grams": 0.1
+    },
+    {
+      "food": "chicken_broth",
+      "amount": 700,
+      "unit": "ml",
+      "grams": 707
+    },
+    {
+      "food": "olive_oil",
+      "amount": 1,
+      "unit": "tbsp",
+      "grams": 13.5
+    },
+    {
+      "food": "lemon",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 40
+    },
+    {
+      "food": "parsley",
+      "amount": 10,
+      "unit": "g",
+      "grams": 10
+    },
+    {
+      "food": "salt",
+      "amount": 3,
+      "unit": "g",
+      "grams": 3
+    }
+  ],
+  "steps": 5,
+  "allergens": [
+    "crustaceans",
+    "fish",
+    "molluscs"
+  ],
+  "allergensToCheck": [
+    "celery"
+  ],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 576,
+      "fat": 11.3,
+      "satFat": 1.9,
+      "carbs": 64.9,
+      "sugars": 10.1,
+      "fiber": 5.3,
+      "protein": 50.6,
+      "salt": 5.0
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "chicken_broth:fiber",
+      "mussels:sugars",
+      "saffron:sugars"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://food52.com/recipes/36023-seafood-paella",
+      "https://applauseforthechef.com/spanish-seafood-paella-with-prawns-mussels/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

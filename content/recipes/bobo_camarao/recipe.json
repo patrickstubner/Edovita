@@ -1,0 +1,120 @@
+{
+  "format": 1,
+  "id": "bobo_camarao",
+  "cuisine": "brazilian",
+  "meal": "dinner",
+  "minutes": 40,
+  "servings": 2,
+  "tags": [
+    "protein"
+  ],
+  "preferenceTags": [
+    "cilantro",
+    "onion"
+  ],
+  "ingredients": [
+    {
+      "food": "shrimp",
+      "amount": 350,
+      "unit": "g",
+      "grams": 350
+    },
+    {
+      "food": "cassava",
+      "amount": 250,
+      "unit": "g",
+      "grams": 250
+    },
+    {
+      "food": "coconut_milk",
+      "amount": 100,
+      "unit": "ml",
+      "grams": 102
+    },
+    {
+      "food": "onion",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 100
+    },
+    {
+      "food": "garlic",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 6
+    },
+    {
+      "food": "tomato",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 240
+    },
+    {
+      "food": "red_bell_pepper",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 150
+    },
+    {
+      "food": "dende_oil",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 4.5
+    },
+    {
+      "food": "lime",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 30
+    },
+    {
+      "food": "coriander_fresh",
+      "amount": 10,
+      "unit": "g",
+      "grams": 10
+    },
+    {
+      "food": "salt",
+      "amount": 3,
+      "unit": "g",
+      "grams": 3
+    }
+  ],
+  "steps": 5,
+  "allergens": [
+    "crustaceans"
+  ],
+  "allergensToCheck": [],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 527,
+      "fat": 15.6,
+      "satFat": 11.4,
+      "carbs": 59.0,
+      "sugars": 13.2,
+      "fiber": 6.1,
+      "protein": 34.5,
+      "salt": 2.9
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "coriander_fresh",
+      "lime"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://brazilandco.se/blogs/recipes/bobo-de-camarao-brazilian-shrimp-stew",
+      "https://thedomesticman.com/2018/08/21/bobo-de-camarao-brazilian-shrimp-stew/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

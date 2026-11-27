@@ -1,0 +1,137 @@
+{
+  "format": 1,
+  "id": "palak_paneer_light",
+  "cuisine": "indian",
+  "meal": "dinner",
+  "minutes": 30,
+  "servings": 2,
+  "tags": [
+    "vegetarian",
+    "protein"
+  ],
+  "preferenceTags": [
+    "onion"
+  ],
+  "ingredients": [
+    {
+      "food": "paneer",
+      "amount": 150,
+      "unit": "g",
+      "grams": 150
+    },
+    {
+      "food": "chickpeas",
+      "amount": 240,
+      "unit": "g",
+      "grams": 240
+    },
+    {
+      "food": "spinach",
+      "amount": 400,
+      "unit": "g",
+      "grams": 400
+    },
+    {
+      "food": "onion",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 100
+    },
+    {
+      "food": "garlic",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 6
+    },
+    {
+      "food": "ginger",
+      "amount": 15,
+      "unit": "g",
+      "grams": 15
+    },
+    {
+      "food": "chili_fresh",
+      "amount": 0.5,
+      "unit": "pc",
+      "grams": 5
+    },
+    {
+      "food": "cumin",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 2
+    },
+    {
+      "food": "garam_masala",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 2.5
+    },
+    {
+      "food": "greek_yogurt",
+      "amount": 80,
+      "unit": "g",
+      "grams": 80
+    },
+    {
+      "food": "rapeseed_oil",
+      "amount": 2,
+      "unit": "tsp",
+      "grams": 9
+    },
+    {
+      "food": "basmati_rice",
+      "amount": 90,
+      "unit": "g",
+      "grams": 90
+    },
+    {
+      "food": "salt",
+      "amount": 3,
+      "unit": "g",
+      "grams": 3
+    }
+  ],
+  "steps": 5,
+  "allergens": [
+    "milk"
+  ],
+  "allergensToCheck": [
+    "celery",
+    "mustard"
+  ],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 686,
+      "fat": 27.5,
+      "satFat": 11.2,
+      "carbs": 65.8,
+      "sugars": 7.2,
+      "fiber": 15.7,
+      "protein": 35.7,
+      "salt": 3.3
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "cumin",
+      "garam_masala"
+    ],
+    "proxies": [
+      "paneer"
+    ],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://www.recipetineats.com/palak-paneer-indian-spinach-curry-with-cheese/",
+      "https://feastwithsafiya.com/palak-paneer-recipe-spinach-with-indian-cheese/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "format": 1,
+  "id": "minestrone_beans",
+  "cuisine": "italian",
+  "meal": "lunch",
+  "minutes": 35,
+  "servings": 3,
+  "tags": [
+    "vegetarian"
+  ],
+  "preferenceTags": [
+    "onion"
+  ],
+  "ingredients": [
+    {
+      "food": "white_beans",
+      "amount": 400,
+      "unit": "g",
+      "grams": 400
+    },
+    {
+      "food": "carrot",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 160
+    },
+    {
+      "food": "celery",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 80
+    },
+    {
+      "food": "zucchini",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 200
+    },
+    {
+      "food": "onion",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 100
+    },
+    {
+      "food": "garlic",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 6
+    },
+    {
+      "food": "canned_tomatoes",
+      "amount": 400,
+      "unit": "g",
+      "grams": 400
+    },
+    {
+      "food": "vegetable_broth",
+      "amount": 1000,
+      "unit": "ml",
+      "grams": 1010
+    },
+    {
+      "food": "pasta",
+      "amount": 90,
+      "unit": "g",
+      "grams": 90
+    },
+    {
+      "food": "olive_oil",
+      "amount": 1,
+      "unit": "tbsp",
+      "grams": 13.5
+    },
+    {
+      "food": "parmesan",
+      "amount": 60,
+      "unit": "g",
+      "grams": 60
+    },
+    {
+      "food": "basil_fresh",
+      "amount": 10,
+      "unit": "g",
+      "grams": 10
+    },
+    {
+      "food": "salt",
+      "amount": 2,
+      "unit": "g",
+      "grams": 2
+    }
+  ],
+  "steps": 4,
+  "allergens": [
+    "celery",
+    "gluten",
+    "milk"
+  ],
+  "allergensToCheck": [
+    "celery"
+  ],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 483,
+      "fat": 13.6,
+      "satFat": 5.4,
+      "carbs": 64.3,
+      "sugars": 12.5,
+      "fiber": 12.6,
+      "protein": 24.0,
+      "salt": 5.2
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "parmesan:carbs",
+      "parmesan:sugars",
+      "vegetable_broth:fiber"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://www.bbcgoodfood.com/recipes/classic-minestrone-soup",
+      "https://www.italiankitchenconfessions.com/classic-italian-minestron-soup/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

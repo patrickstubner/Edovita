@@ -1,7 +1,23 @@
 {
   "fallback": "en",
-  "ui": ["de", "en", "fr", "it", "es", "ja", "pt"],
-  "secondary": ["de", "en", "pt", "ja"],
+  "ui": [
+    "de",
+    "en",
+    "fr",
+    "it",
+    "es",
+    "ja",
+    "pt"
+  ],
+  "secondary": [
+    "de",
+    "en",
+    "fr",
+    "it",
+    "es",
+    "pt",
+    "ja"
+  ],
   "meta": {
     "de": {
       "code": "de",

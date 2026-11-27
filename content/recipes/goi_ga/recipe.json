@@ -1,0 +1,123 @@
+{
+  "format": 1,
+  "id": "goi_ga",
+  "cuisine": "vietnamese",
+  "meal": "lunch",
+  "minutes": 25,
+  "servings": 2,
+  "tags": [
+    "protein"
+  ],
+  "preferenceTags": [
+    "cilantro",
+    "meat",
+    "onion"
+  ],
+  "ingredients": [
+    {
+      "food": "chicken_breast",
+      "amount": 300,
+      "unit": "g",
+      "grams": 300
+    },
+    {
+      "food": "white_cabbage",
+      "amount": 250,
+      "unit": "g",
+      "grams": 250
+    },
+    {
+      "food": "carrot",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 80
+    },
+    {
+      "food": "red_onion",
+      "amount": 0.5,
+      "unit": "pc",
+      "grams": 50
+    },
+    {
+      "food": "mint_fresh",
+      "amount": 10,
+      "unit": "g",
+      "grams": 10
+    },
+    {
+      "food": "coriander_fresh",
+      "amount": 10,
+      "unit": "g",
+      "grams": 10
+    },
+    {
+      "food": "peanuts",
+      "amount": 20,
+      "unit": "g",
+      "grams": 20
+    },
+    {
+      "food": "lime",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 60
+    },
+    {
+      "food": "fish_sauce",
+      "amount": 1,
+      "unit": "tbsp",
+      "grams": 15
+    },
+    {
+      "food": "sugar",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 4
+    },
+    {
+      "food": "chili_fresh",
+      "amount": 0.5,
+      "unit": "pc",
+      "grams": 5
+    }
+  ],
+  "steps": 4,
+  "allergens": [
+    "fish",
+    "peanuts"
+  ],
+  "allergensToCheck": [],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 307,
+      "fat": 7.8,
+      "satFat": 1.7,
+      "carbs": 14.0,
+      "sugars": 11.5,
+      "fiber": 7.0,
+      "protein": 42.1,
+      "salt": 0.2
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "coriander_fresh",
+      "fish_sauce",
+      "lime"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://www.thekitchn.com/vietnamese-goi-ga-chicken-slaw-salad-23341327",
+      "https://delightfulplate.com/vietnamese-chicken-and-cabbage-salad/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

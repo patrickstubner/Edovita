@@ -1,0 +1,135 @@
+{
+  "format": 1,
+  "id": "bundner_barley_soup",
+  "cuisine": "swiss",
+  "meal": "lunch",
+  "minutes": 50,
+  "servings": 3,
+  "tags": [
+    "protein"
+  ],
+  "preferenceTags": [
+    "meat",
+    "onion"
+  ],
+  "ingredients": [
+    {
+      "food": "pearl_barley",
+      "amount": 100,
+      "unit": "g",
+      "grams": 100
+    },
+    {
+      "food": "bundnerfleisch",
+      "amount": 100,
+      "unit": "g",
+      "grams": 100
+    },
+    {
+      "food": "ham_cooked",
+      "amount": 80,
+      "unit": "g",
+      "grams": 80
+    },
+    {
+      "food": "white_beans",
+      "amount": 240,
+      "unit": "g",
+      "grams": 240
+    },
+    {
+      "food": "carrot",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 160
+    },
+    {
+      "food": "celery",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 40
+    },
+    {
+      "food": "leek",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 200
+    },
+    {
+      "food": "white_cabbage",
+      "amount": 150,
+      "unit": "g",
+      "grams": 150
+    },
+    {
+      "food": "vegetable_broth",
+      "amount": 1200,
+      "unit": "ml",
+      "grams": 1212
+    },
+    {
+      "food": "cooking_cream",
+      "amount": 50,
+      "unit": "ml",
+      "grams": 51
+    },
+    {
+      "food": "rapeseed_oil",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 4.5
+    },
+    {
+      "food": "chives",
+      "amount": 5,
+      "unit": "g",
+      "grams": 5
+    },
+    {
+      "food": "salt",
+      "amount": 2,
+      "unit": "g",
+      "grams": 2
+    }
+  ],
+  "steps": 4,
+  "allergens": [
+    "celery",
+    "gluten",
+    "milk"
+  ],
+  "allergensToCheck": [
+    "celery"
+  ],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 424,
+      "fat": 9.0,
+      "satFat": 3.3,
+      "carbs": 50.2,
+      "sugars": 10.0,
+      "fiber": 14.0,
+      "protein": 31.5,
+      "salt": 7.1
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "vegetable_broth:fiber"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://www.aline-made.com/vegetable-barley-soup/",
+      "https://beinspired.au/recipes/swiss-barley-soup-gerstensuppe/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

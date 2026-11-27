@@ -1,0 +1,73 @@
+{
+  "format": 1,
+  "id": "yogurt_bowl",
+  "cuisine": "european",
+  "meal": "snack",
+  "minutes": 5,
+  "servings": 2,
+  "tags": [
+    "vegetarian"
+  ],
+  "preferenceTags": [],
+  "ingredients": [
+    {
+      "food": "greek_yogurt",
+      "amount": 300,
+      "unit": "g",
+      "grams": 300
+    },
+    {
+      "food": "berries",
+      "amount": 150,
+      "unit": "g",
+      "grams": 150
+    },
+    {
+      "food": "hazelnuts",
+      "amount": 20,
+      "unit": "g",
+      "grams": 20
+    },
+    {
+      "food": "honey",
+      "amount": 2,
+      "unit": "tsp",
+      "grams": 14
+    }
+  ],
+  "steps": 4,
+  "allergens": [
+    "milk",
+    "nuts"
+  ],
+  "allergensToCheck": [],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 229,
+      "fat": 9.2,
+      "satFat": 2.3,
+      "carbs": 17.4,
+      "sugars": 16.0,
+      "fiber": 3.7,
+      "protein": 17.2,
+      "salt": 0.1
+    },
+    "isMinimum": false,
+    "notIncluded": [],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://www.daisybeet.com/fruit-granola-greek-yogurt-breakfast-bowls/",
+      "https://usa.fage/recipes/greek-yogurt-recipes/mixed-berry-yogurt-bowl"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

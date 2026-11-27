@@ -1,0 +1,127 @@
+{
+  "format": 1,
+  "id": "couscous_chicken_salad",
+  "cuisine": "moroccan",
+  "meal": "lunch",
+  "minutes": 25,
+  "servings": 2,
+  "tags": [
+    "protein"
+  ],
+  "preferenceTags": [
+    "meat",
+    "onion"
+  ],
+  "ingredients": [
+    {
+      "food": "couscous",
+      "amount": 100,
+      "unit": "g",
+      "grams": 100
+    },
+    {
+      "food": "chicken_breast",
+      "amount": 280,
+      "unit": "g",
+      "grams": 280
+    },
+    {
+      "food": "orange",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 150
+    },
+    {
+      "food": "cucumber",
+      "amount": 0.5,
+      "unit": "pc",
+      "grams": 150
+    },
+    {
+      "food": "red_onion",
+      "amount": 0.25,
+      "unit": "pc",
+      "grams": 25
+    },
+    {
+      "food": "mint_fresh",
+      "amount": 10,
+      "unit": "g",
+      "grams": 10
+    },
+    {
+      "food": "parsley",
+      "amount": 10,
+      "unit": "g",
+      "grams": 10
+    },
+    {
+      "food": "lemon",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 40
+    },
+    {
+      "food": "olive_oil",
+      "amount": 1,
+      "unit": "tbsp",
+      "grams": 13.5
+    },
+    {
+      "food": "cumin",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 2
+    },
+    {
+      "food": "almonds",
+      "amount": 15,
+      "unit": "g",
+      "grams": 15
+    },
+    {
+      "food": "salt",
+      "amount": 2,
+      "unit": "g",
+      "grams": 2
+    }
+  ],
+  "steps": 4,
+  "allergens": [
+    "gluten",
+    "nuts"
+  ],
+  "allergensToCheck": [],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 503,
+      "fat": 12.8,
+      "satFat": 1.7,
+      "carbs": 48.6,
+      "sugars": 9.1,
+      "fiber": 6.9,
+      "protein": 44.6,
+      "salt": 1.1
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "couscous:sugars",
+      "cumin"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://www.waitrose.com/ecom/recipe/moroccan-spiced-chicken-couscous-salad",
+      "https://www.sprinklesandsprouts.com/moroccan-chicken-couscous-buddha-bowl/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

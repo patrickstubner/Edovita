@@ -78,14 +78,17 @@ describe('i18n/registry & Rechts-Gate (ADR-003)', () => {
     expect(resolveApprovedUiLang(null)).toBe('en');
   });
 
-  it('prüft secondLang gegen registry.secondary mit Fallback null (F3a)', () => {
+  it('prüft secondLang gegen registry.secondary mit Fallback null (F3a, E12 inkl. fr/it/es)', () => {
     expect(resolveSecondLang('pt')).toBe('pt');
     expect(resolveSecondLang('pt-BR')).toBe('pt');
     expect(resolveSecondLang('ja-JP')).toBe('ja');
+    expect(resolveSecondLang('fr-CH')).toBe('fr');
+    expect(resolveSecondLang('it-CH')).toBe('it');
+    expect(resolveSecondLang('es-ES')).toBe('es');
     expect(resolveSecondLang('de')).toBe('de');
     expect(resolveSecondLang('en')).toBe('en');
     expect(resolveSecondLang(null)).toBeNull();
-    expect(resolveSecondLang('fr')).toBeNull();
+    expect(resolveSecondLang('vi')).toBeNull();
     expect(resolveSecondLang('xx')).toBeNull();
     expect(resolveSecondLang('constructor')).toBeNull();
     expect(resolveSecondLang('__proto__')).toBeNull();

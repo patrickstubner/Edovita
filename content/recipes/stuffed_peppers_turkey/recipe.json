@@ -1,0 +1,131 @@
+{
+  "format": 1,
+  "id": "stuffed_peppers_turkey",
+  "cuisine": "european",
+  "meal": "dinner",
+  "minutes": 50,
+  "servings": 2,
+  "tags": [
+    "protein"
+  ],
+  "preferenceTags": [
+    "meat",
+    "onion"
+  ],
+  "ingredients": [
+    {
+      "food": "red_bell_pepper",
+      "amount": 4,
+      "unit": "pc",
+      "grams": 600
+    },
+    {
+      "food": "turkey_mince",
+      "amount": 280,
+      "unit": "g",
+      "grams": 280
+    },
+    {
+      "food": "brown_rice",
+      "amount": 70,
+      "unit": "g",
+      "grams": 70
+    },
+    {
+      "food": "onion",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 100
+    },
+    {
+      "food": "garlic",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 3
+    },
+    {
+      "food": "passata",
+      "amount": 300,
+      "unit": "ml",
+      "grams": 318
+    },
+    {
+      "food": "paprika",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 2.5
+    },
+    {
+      "food": "oregano_dried",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 1
+    },
+    {
+      "food": "mozzarella",
+      "amount": 50,
+      "unit": "g",
+      "grams": 50
+    },
+    {
+      "food": "parsley",
+      "amount": 10,
+      "unit": "g",
+      "grams": 10
+    },
+    {
+      "food": "olive_oil",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 4.5
+    },
+    {
+      "food": "salt",
+      "amount": 3,
+      "unit": "g",
+      "grams": 3
+    },
+    {
+      "food": "black_pepper",
+      "amount": 1,
+      "unit": "pinch",
+      "grams": 0.5
+    }
+  ],
+  "steps": 5,
+  "allergens": [
+    "milk"
+  ],
+  "allergensToCheck": [],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 603,
+      "fat": 20.9,
+      "satFat": 6.5,
+      "carbs": 61.7,
+      "sugars": 26.7,
+      "fiber": 11.6,
+      "protein": 40.0,
+      "salt": 1.9
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "black_pepper"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://momsdish.com/ground-turkey-stuffed-bell-peppers",
+      "https://cookingformysoul.com/ground-turkey-stuffed-peppers/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

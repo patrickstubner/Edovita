@@ -1,0 +1,129 @@
+{
+  "format": 1,
+  "id": "dakgalbi",
+  "cuisine": "korean",
+  "meal": "dinner",
+  "minutes": 30,
+  "servings": 2,
+  "tags": [
+    "protein"
+  ],
+  "preferenceTags": [
+    "meat",
+    "onion"
+  ],
+  "ingredients": [
+    {
+      "food": "chicken_thigh",
+      "amount": 340,
+      "unit": "g",
+      "grams": 340
+    },
+    {
+      "food": "white_cabbage",
+      "amount": 250,
+      "unit": "g",
+      "grams": 250
+    },
+    {
+      "food": "sweet_potato",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 250
+    },
+    {
+      "food": "onion",
+      "amount": 0.5,
+      "unit": "pc",
+      "grams": 50
+    },
+    {
+      "food": "spring_onion",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 30
+    },
+    {
+      "food": "gochujang",
+      "amount": 2,
+      "unit": "tbsp",
+      "grams": 40
+    },
+    {
+      "food": "soy_sauce",
+      "amount": 1,
+      "unit": "tbsp",
+      "grams": 16
+    },
+    {
+      "food": "garlic",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 6
+    },
+    {
+      "food": "ginger",
+      "amount": 10,
+      "unit": "g",
+      "grams": 10
+    },
+    {
+      "food": "maple_syrup",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 7
+    },
+    {
+      "food": "rapeseed_oil",
+      "amount": 2,
+      "unit": "tsp",
+      "grams": 9
+    },
+    {
+      "food": "sesame_seeds",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 3
+    }
+  ],
+  "steps": 5,
+  "allergens": [
+    "sesame",
+    "soy"
+  ],
+  "allergensToCheck": [
+    "gluten"
+  ],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 454,
+      "fat": 17.0,
+      "satFat": 4.1,
+      "carbs": 32.1,
+      "sugars": 13.9,
+      "fiber": 9.2,
+      "protein": 38.8,
+      "salt": 1.6
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "gochujang",
+      "spring_onion"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://mykoreankitchen.com/dak-galbi/",
+      "https://tarasmulticulturaltable.com/dakgalbi-spicy-stir-fried-chicken/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

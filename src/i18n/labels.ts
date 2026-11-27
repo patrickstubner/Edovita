@@ -1,5 +1,12 @@
 import type { UiKey } from '../../content/generated/locales-index.ts';
-import type { Allergen, CuisineId, FoodGroup, Meal } from '../domain/index.ts';
+import type {
+  Allergen,
+  Cuisine,
+  CuisineId,
+  FoodGroup,
+  Meal,
+  PreferenceTag,
+} from '../domain/index.ts';
 
 export const MEAL_LABEL_KEYS: Readonly<Record<Meal, UiKey>> = {
   breakfast: 'meal.breakfast',
@@ -15,13 +22,39 @@ export const MEAL_SHORT_LABEL_KEYS: Readonly<Record<Meal, UiKey>> = {
   snack: 'meal.short.snack',
 };
 
-export const CUISINE_LABEL_KEYS: Readonly<Record<string, UiKey>> = {
+export const CUISINE_LABEL_KEYS: Readonly<Record<Cuisine, UiKey>> = {
+  american: 'cuisine.american',
+  brazilian: 'cuisine.brazilian',
+  chinese: 'cuisine.chinese',
   european: 'cuisine.european',
+  french: 'cuisine.french',
+  greek: 'cuisine.greek',
+  hawaiian: 'cuisine.hawaiian',
+  indian: 'cuisine.indian',
+  indonesian: 'cuisine.indonesian',
+  italian: 'cuisine.italian',
+  japanese: 'cuisine.japanese',
+  korean: 'cuisine.korean',
+  mediterranean: 'cuisine.mediterranean',
+  mexican: 'cuisine.mexican',
+  middle_eastern: 'cuisine.middle_eastern',
+  moroccan: 'cuisine.moroccan',
+  nordic: 'cuisine.nordic',
+  peruvian: 'cuisine.peruvian',
+  portuguese: 'cuisine.portuguese',
+  spanish: 'cuisine.spanish',
+  swiss: 'cuisine.swiss',
   thai: 'cuisine.thai',
   vietnamese: 'cuisine.vietnamese',
-  swiss: 'cuisine.swiss',
-  indian: 'cuisine.indian',
 };
+
+export const PREFERENCE_TAG_LABEL_KEYS: Readonly<Record<PreferenceTag, UiKey>> =
+  {
+    cilantro: 'pref.d_cil',
+    mushrooms: 'pref.d_mush',
+    onion: 'pref.d_onion',
+    meat: 'pref.d_meat',
+  };
 
 export const ALLERGEN_LABEL_KEYS: Readonly<Record<Allergen, UiKey>> = {
   gluten: 'allergen.gluten',
@@ -81,5 +114,5 @@ export function getCuisineLabelKey(
   if (typeof cuisine !== 'string' || !Object.hasOwn(CUISINE_LABEL_KEYS, cuisine)) {
     return undefined;
   }
-  return CUISINE_LABEL_KEYS[cuisine];
+  return CUISINE_LABEL_KEYS[cuisine as Cuisine];
 }

@@ -1,0 +1,115 @@
+{
+  "format": 1,
+  "id": "cottage_zucchini_frittata",
+  "cuisine": "italian",
+  "meal": "breakfast",
+  "minutes": 20,
+  "servings": 2,
+  "tags": [
+    "vegetarian",
+    "protein"
+  ],
+  "preferenceTags": [],
+  "ingredients": [
+    {
+      "food": "eggs",
+      "amount": 3,
+      "unit": "pc",
+      "grams": 150
+    },
+    {
+      "food": "cottage_cheese",
+      "amount": 150,
+      "unit": "g",
+      "grams": 150
+    },
+    {
+      "food": "zucchini",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 200
+    },
+    {
+      "food": "cherry_tomatoes",
+      "amount": 100,
+      "unit": "g",
+      "grams": 100
+    },
+    {
+      "food": "parmesan",
+      "amount": 15,
+      "unit": "g",
+      "grams": 15
+    },
+    {
+      "food": "basil_fresh",
+      "amount": 5,
+      "unit": "g",
+      "grams": 5
+    },
+    {
+      "food": "olive_oil",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 4.5
+    },
+    {
+      "food": "salt",
+      "amount": 1,
+      "unit": "g",
+      "grams": 1
+    },
+    {
+      "food": "black_pepper",
+      "amount": 1,
+      "unit": "pinch",
+      "grams": 0.5
+    },
+    {
+      "food": "bread",
+      "amount": 60,
+      "unit": "g",
+      "grams": 60
+    }
+  ],
+  "steps": 5,
+  "allergens": [
+    "eggs",
+    "gluten",
+    "milk"
+  ],
+  "allergensToCheck": [],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 329,
+      "fat": 16.1,
+      "satFat": 6.0,
+      "carbs": 18.9,
+      "sugars": 5.6,
+      "fiber": 3.0,
+      "protein": 25.6,
+      "salt": 2.0
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "black_pepper",
+      "parmesan:carbs",
+      "parmesan:sugars"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://eggs.org.nz/recipes/zucchini-cottage-cheese-and-corn-baked-frittata/",
+      "https://cleananddelicious.com/crustless-cottage-cheese-frittata/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

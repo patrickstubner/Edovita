@@ -353,7 +353,7 @@ describe('Paket E6: Zweitsprache für Lebensmittel, Kopfzeilen-Umschalter, Bidi 
     );
     expect(cartHead.querySelector('bdi')).toHaveTextContent('No carrinho');
 
-    // 5) Herkunfts-Sheet: Titel gestapelt zweizeilig, Rezepttitel OHNE PT-Übersetzung nur Haupttitel (kein EN-Ersatz!), Summe zweisprachig
+    // 5) Herkunfts-Sheet: Titel gestapelt zweizeilig, Rezepttitel mit PT-Übersetzung (E12, 7 Titel-Sprachen) statt EN-Ersatz, Summe zweisprachig
     fireEvent.click(screen.getByTestId('shop-src-broccoli__g'));
     const srcSheet = await screen.findByTestId('shop-src-sheet');
     const srcTitleBdi = srcSheet.querySelector('#edo-shop-src-title bdi');
@@ -361,7 +361,9 @@ describe('Paket E6: Zweitsprache für Lebensmittel, Kopfzeilen-Umschalter, Bidi 
     expect(srcTitleBdi).toHaveAttribute('lang', 'pt-BR');
     const srcNameEl = srcSheet.querySelector('.edo-shop-src-name')!;
     expect(srcNameEl).toHaveTextContent('Ofenlachs mit Broccoli und Kartoffeln');
-    expect(srcNameEl.querySelector('bdi')).toBeNull();
+    const srcNameBdi = srcNameEl.querySelector('bdi');
+    expect(srcNameBdi).not.toBeNull();
+    expect(srcNameBdi).toHaveAttribute('lang', 'pt-BR');
     expect(srcSheet).not.toHaveTextContent('Oven-baked salmon');
     const srcSum = within(srcSheet).getByTestId('shop-src-sum');
     expect(srcSum).toHaveTextContent('Summe: 400 g');
@@ -427,5 +429,50 @@ describe('Paket E6: Zweitsprache für Lebensmittel, Kopfzeilen-Umschalter, Bidi 
     });
     expect(screen.getByTestId('shop-group-veg').querySelector('bdi')).toBeNull();
     expect(screen.getByTestId('shop-section-home').querySelector('bdi')).toBeNull();
+  });
+
+  it('E12: manuelle Zweitsprache fr, it oder es zeigt übersetzte Lebensmittelnamen aus dem 199-Einträge-Glossar', async () => {
+    const storage = createMemoryStorage();
+    window.location.hash = '#/rezept/oven_salmon';
+
+    render(
+      <App
+        navigatorLanguages={['de-CH']}
+        timeZone="Europe/Zurich"
+        storage={storage}
+      />,
+    );
+
+    expect(
+      await screen.findByRole('heading', {
+        name: 'Ofenlachs mit Broccoli und Kartoffeln',
+      }),
+    ).toBeInTheDocument();
+
+    // Zweitsprache Französisch wählen -> «brocoli» in <bdi lang="fr-CH">
+    fireEvent.click(screen.getByTestId('second-switch-btn'));
+    fireEvent.click(
+      screen.getByTestId('second-switch-menu').querySelector('[data-second="fr"]')!,
+    );
+    await waitFor(() => {
+      const broc = screen.getByTestId('ingredient-broccoli-1');
+      const bdi = broc.querySelector('bdi');
+      expect(bdi).not.toBeNull();
+      expect(bdi).toHaveTextContent('brocoli');
+      expect(bdi).toHaveAttribute('lang', 'fr-CH');
+    });
+
+    // Zweitsprache Spanisch wählen -> «brócoli» in <bdi lang="es-ES">
+    fireEvent.click(screen.getByTestId('second-switch-btn'));
+    fireEvent.click(
+      screen.getByTestId('second-switch-menu').querySelector('[data-second="es"]')!,
+    );
+    await waitFor(() => {
+      const broc = screen.getByTestId('ingredient-broccoli-1');
+      const bdi = broc.querySelector('bdi');
+      expect(bdi).not.toBeNull();
+      expect(bdi).toHaveTextContent('brócoli');
+      expect(bdi).toHaveAttribute('lang', 'es-ES');
+    });
   });
 });

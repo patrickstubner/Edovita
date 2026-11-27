@@ -4,6 +4,7 @@ import {
   fireEvent,
   render,
   screen,
+  waitFor,
   within,
 } from '@testing-library/react';
 import { I18nextProvider } from 'react-i18next';
@@ -58,25 +59,27 @@ describe('Paket E4: Rezeptliste, Rezept-Detailseite & F3b (Issue #10)', () => {
     ).toBeInTheDocument();
 
     const list = screen.getByTestId('recipe-list');
-    expect(within(list).getAllByRole('article')).toHaveLength(5);
+    expect(list.querySelectorAll('article')).toHaveLength(200);
 
-    // Mahlzeit-Filter: Frühstück -> nur Birchermüesli
+    // Mahlzeit-Filter: Frühstück -> mehrere Rezepte inkl. Birchermüesli
     fireEvent.click(screen.getByRole('button', { name: 'Frühstück' }));
-    expect(within(list).getAllByRole('article')).toHaveLength(1);
+    const breakfastArticles = list.querySelectorAll('article');
+    expect(breakfastArticles.length).toBeGreaterThan(10);
+    expect(breakfastArticles.length).toBeLessThan(200);
     expect(
       screen.getByTestId('recipe-card-birchermuesli'),
     ).toBeInTheDocument();
 
-    // Mahlzeit-Filter: Snacks -> leerer Zustand
+    // Mahlzeit-Filter: Snacks -> enthält neue E12-Snacks
     fireEvent.click(screen.getByRole('button', { name: 'Snacks' }));
-    expect(screen.getByTestId('recipes-empty')).toBeInTheDocument();
+    expect(list.querySelectorAll('article').length).toBeGreaterThan(5);
 
-    // Zurück auf Alle + Eigenschaftsfilter «Schnell, bis 15 Min.» -> Birchermüesli
+    // Zurück auf Alle + Eigenschaftsfilter «Schnell, bis 15 Min.» -> enthält Birchermüesli
     fireEvent.click(screen.getByRole('button', { name: 'Alle' }));
     fireEvent.click(
       screen.getByRole('button', { name: 'Schnell, bis 15 Min.' }),
     );
-    expect(within(list).getAllByRole('article')).toHaveLength(1);
+    expect(list.querySelectorAll('article').length).toBeGreaterThan(10);
     expect(
       screen.getByTestId('recipe-card-birchermuesli'),
     ).toBeInTheDocument();
@@ -97,11 +100,29 @@ describe('Paket E4: Rezeptliste, Rezept-Detailseite & F3b (Issue #10)', () => {
       screen.getByRole('button', { name: 'Schnell, bis 15 Min.' }),
     );
     fireEvent.click(screen.getByRole('button', { name: 'Gemerkt' }));
-    expect(within(list).getAllByRole('article')).toHaveLength(1);
-    expect(
-      screen.getByTestId('recipe-card-birchermuesli'),
-    ).toBeInTheDocument();
-  });
+    expect(list.querySelectorAll('article')).toHaveLength(1);
+
+    // E12 Vorlieben-Ausschluss: «Gemerkt» aus, «Fleisch» und «Pilze» blenden betroffene Rezepte aus
+    fireEvent.click(screen.getByRole('button', { name: 'Gemerkt' }));
+    expect(screen.getByTestId('recipe-card-thai_curry')).toBeInTheDocument();
+    expect(screen.getByTestId('recipe-card-pho')).toBeInTheDocument();
+    expect(screen.getByTestId('recipe-card-mushroom_polenta')).toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole('button', { name: 'Fleisch' }));
+    expect(screen.queryByTestId('recipe-card-thai_curry')).toBeNull();
+    expect(screen.queryByTestId('recipe-card-pho')).toBeNull();
+    expect(screen.getByTestId('recipe-card-birchermuesli')).toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole('button', { name: 'Pilze' }));
+    expect(screen.queryByTestId('recipe-card-mushroom_polenta')).toBeNull();
+
+    // Kombination «Gemerkt» + «Abendessen» -> leerer Zustand
+    fireEvent.click(screen.getByRole('button', { name: 'Fleisch' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Pilze' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Gemerkt' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Abendessen' }));
+    expect(screen.getByTestId('recipes-empty')).toBeInTheDocument();
+  }, 15_000);
 
   it('Rezept-Detailseite (#/rezept/oven_salmon): Mengen & Nährwerte für 1, 2, 4 Portionen exakt gemäss Unit-Tests, Tastatur-Stepper, Einkaufsliste + Rückgängig', async () => {
     const storage = createMemoryStorage();
@@ -219,9 +240,11 @@ describe('Paket E4: Rezeptliste, Rezept-Detailseite & F3b (Issue #10)', () => {
 
     // Rückgängig stellt Plan und Liste wieder leer her
     fireEvent.click(screen.getByTestId('toast-undo'));
-    expect(await screen.findByTestId('toast')).toHaveTextContent(
-      'Hinzufügen rückgängig gemacht.',
-    );
+    await waitFor(() => {
+      expect(screen.getByTestId('toast')).toHaveTextContent(
+        'Hinzufügen rückgängig gemacht.',
+      );
+    });
     expect((await storage.plan.get()).items).toHaveLength(0);
     expect(await storage.shopping.list()).toHaveLength(0);
   });
@@ -366,8 +389,54 @@ describe('Paket E4: Rezeptliste, Rezept-Detailseite & F3b (Issue #10)', () => {
     expect(document.body.textContent).not.toContain('Baked salmon');
     expect(document.body.textContent).not.toContain('Preheat the oven');
 
-    // Lücke für fehlende Lebensmittelnamen (Glossar fr existiert nicht) wird sichtbar markiert
-    const missingPotato = screen.getByTestId('missing-food-potato-0');
+    // E12: Französisches Lebensmittel-Glossar existiert -> zeigt «pommes de terre» statt englischem Fallback
+    expect(document.body.textContent).toContain('pommes de terre');
+    expect(document.body.textContent).not.toContain('Potatoes');
+
+    // Gegenprobe für eine Sprache ohne Glossar (`xx`): fehlende Lebensmittelnamen werden sichtbar markiert (F2)
+    cleanup();
+    const xxMeta = {
+      ...frMeta,
+      code: 'xx',
+      locale: 'xx',
+    };
+    render(
+      <I18nextProvider i18n={frInstance}>
+        <I18nContext.Provider
+          value={{
+            lang: 'xx',
+            meta: xxMeta,
+            locale: xxMeta.locale,
+            detected: { code: 'xx', device: 'xx', matched: true },
+            uiLanguages: frRegistry.ui,
+            isApproved: (c) => c === 'xx',
+            metaFor: (c) => (c === 'xx' ? xxMeta : frRegistry.meta[c]),
+            setLang: () => false,
+            fmtNumber: (v, d) => fmtNumber(v, 'fr-CH', d),
+            fmtAmount: (v, u) => fmtAmount(v, u, 'fr-CH'),
+            fmtDate: (d) => d.toISOString(),
+          }}
+        >
+          <SecondLangProvider>
+            <ShoppingProvider repository={storage.shopping}>
+              <PlanProvider repository={storage.plan}>
+                <RatingsProvider repository={storage.ratings}>
+                  <MemoryRouter initialEntries={['/rezept/oven_salmon']}>
+                    <Routes>
+                      <Route
+                        path="/rezept/:id"
+                        element={<RecipeDetailPage />}
+                      />
+                    </Routes>
+                  </MemoryRouter>
+                </RatingsProvider>
+              </PlanProvider>
+            </ShoppingProvider>
+          </SecondLangProvider>
+        </I18nContext.Provider>
+      </I18nextProvider>,
+    );
+    const missingPotato = await screen.findByTestId('missing-food-potato-0');
     expect(missingPotato).toHaveTextContent('potato');
     expect(missingPotato).toHaveTextContent('Nom manquant');
     expect(document.body.textContent).not.toContain('Potatoes');
@@ -375,6 +444,8 @@ describe('Paket E4: Rezeptliste, Rezept-Detailseite & F3b (Issue #10)', () => {
 
   it('E8: zeigt lokale Rezeptbilder in Liste (lazy) und Detail (eager, 4:3) ohne Manifest-/Fotografenangaben in der UI', async () => {
     const storage = createMemoryStorage();
+    // Ofenlachs auf 5 Sterne setzen, damit er als Top-Karte (featured 800x600) erscheint
+    await storage.ratings.setRating(asRecipeId('oven_salmon'), 5);
     window.location.hash = '#/rezepte';
 
     render(<App navigatorLanguages={['de-CH']} storage={storage} />);

@@ -1,0 +1,134 @@
+{
+  "format": 1,
+  "id": "teriyaki_tofu",
+  "cuisine": "japanese",
+  "meal": "dinner",
+  "minutes": 25,
+  "servings": 2,
+  "tags": [
+    "vegan",
+    "protein"
+  ],
+  "preferenceTags": [
+    "onion"
+  ],
+  "ingredients": [
+    {
+      "food": "tofu_firm",
+      "amount": 400,
+      "unit": "g",
+      "grams": 400
+    },
+    {
+      "food": "broccoli",
+      "amount": 300,
+      "unit": "g",
+      "grams": 300
+    },
+    {
+      "food": "brown_rice",
+      "amount": 110,
+      "unit": "g",
+      "grams": 110
+    },
+    {
+      "food": "soy_sauce",
+      "amount": 3,
+      "unit": "tbsp",
+      "grams": 48
+    },
+    {
+      "food": "maple_syrup",
+      "amount": 1,
+      "unit": "tbsp",
+      "grams": 20
+    },
+    {
+      "food": "rice_vinegar",
+      "amount": 1,
+      "unit": "tbsp",
+      "grams": 15
+    },
+    {
+      "food": "ginger",
+      "amount": 10,
+      "unit": "g",
+      "grams": 10
+    },
+    {
+      "food": "garlic",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 3
+    },
+    {
+      "food": "cornstarch",
+      "amount": 2,
+      "unit": "tsp",
+      "grams": 6
+    },
+    {
+      "food": "rapeseed_oil",
+      "amount": 2,
+      "unit": "tsp",
+      "grams": 9
+    },
+    {
+      "food": "sesame_seeds",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 3
+    },
+    {
+      "food": "spring_onion",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 15
+    }
+  ],
+  "steps": 5,
+  "allergens": [
+    "sesame",
+    "soy"
+  ],
+  "allergensToCheck": [
+    "gluten"
+  ],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 653,
+      "fat": 25.0,
+      "satFat": 3.9,
+      "carbs": 60.7,
+      "sugars": 10.5,
+      "fiber": 8.2,
+      "protein": 41.3,
+      "salt": 3.6
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "cornstarch:fat",
+      "cornstarch:satFat",
+      "cornstarch:sugars",
+      "spring_onion",
+      "tofu_firm:fiber"
+    ],
+    "proxies": [
+      "rice_vinegar"
+    ],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://www.daringgourmet.com/teriyaki-tofu/",
+      "https://www.recipetineats.com/sesame-crusted-tofu-steaks/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

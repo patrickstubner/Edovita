@@ -1,0 +1,143 @@
+{
+  "format": 1,
+  "id": "black_bean_soup",
+  "cuisine": "mexican",
+  "meal": "lunch",
+  "minutes": 30,
+  "servings": 2,
+  "tags": [
+    "vegan",
+    "protein"
+  ],
+  "preferenceTags": [
+    "cilantro",
+    "onion"
+  ],
+  "ingredients": [
+    {
+      "food": "black_beans",
+      "amount": 480,
+      "unit": "g",
+      "grams": 480
+    },
+    {
+      "food": "onion",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 100
+    },
+    {
+      "food": "garlic",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 6
+    },
+    {
+      "food": "red_bell_pepper",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 150
+    },
+    {
+      "food": "cumin",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 2
+    },
+    {
+      "food": "paprika",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 2.5
+    },
+    {
+      "food": "vegetable_broth",
+      "amount": 600,
+      "unit": "ml",
+      "grams": 606
+    },
+    {
+      "food": "canned_tomatoes",
+      "amount": 200,
+      "unit": "g",
+      "grams": 200
+    },
+    {
+      "food": "lime",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 30
+    },
+    {
+      "food": "soy_yogurt",
+      "amount": 100,
+      "unit": "g",
+      "grams": 100
+    },
+    {
+      "food": "avocado",
+      "amount": 0.5,
+      "unit": "pc",
+      "grams": 70
+    },
+    {
+      "food": "coriander_fresh",
+      "amount": 10,
+      "unit": "g",
+      "grams": 10
+    },
+    {
+      "food": "olive_oil",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 4.5
+    },
+    {
+      "food": "salt",
+      "amount": 2,
+      "unit": "g",
+      "grams": 2
+    }
+  ],
+  "steps": 4,
+  "allergens": [
+    "soy"
+  ],
+  "allergensToCheck": [
+    "celery"
+  ],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 505,
+      "fat": 11.5,
+      "satFat": 2.0,
+      "carbs": 71.9,
+      "sugars": 12.3,
+      "fiber": 26.7,
+      "protein": 27.6,
+      "salt": 3.8
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "coriander_fresh",
+      "cumin",
+      "lime",
+      "vegetable_broth:fiber"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://www.bbcgoodfood.com/recipes/mexican-bean-soup-guacamole",
+      "https://www.mexicanplease.com/mexican-black-bean-soup/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

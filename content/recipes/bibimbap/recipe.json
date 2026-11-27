@@ -1,0 +1,131 @@
+{
+  "format": 1,
+  "id": "bibimbap",
+  "cuisine": "korean",
+  "meal": "lunch",
+  "minutes": 30,
+  "servings": 2,
+  "tags": [
+    "protein"
+  ],
+  "preferenceTags": [
+    "meat",
+    "mushrooms"
+  ],
+  "ingredients": [
+    {
+      "food": "beef_steak",
+      "amount": 200,
+      "unit": "g",
+      "grams": 200
+    },
+    {
+      "food": "sushi_rice",
+      "amount": 130,
+      "unit": "g",
+      "grams": 130
+    },
+    {
+      "food": "eggs",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 100
+    },
+    {
+      "food": "spinach",
+      "amount": 150,
+      "unit": "g",
+      "grams": 150
+    },
+    {
+      "food": "carrot",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 80
+    },
+    {
+      "food": "bean_sprouts",
+      "amount": 100,
+      "unit": "g",
+      "grams": 100
+    },
+    {
+      "food": "shiitake",
+      "amount": 80,
+      "unit": "g",
+      "grams": 80
+    },
+    {
+      "food": "gochujang",
+      "amount": 1,
+      "unit": "tbsp",
+      "grams": 20
+    },
+    {
+      "food": "soy_sauce",
+      "amount": 1,
+      "unit": "tbsp",
+      "grams": 16
+    },
+    {
+      "food": "sesame_oil",
+      "amount": 2,
+      "unit": "tsp",
+      "grams": 9
+    },
+    {
+      "food": "garlic",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 3
+    },
+    {
+      "food": "sesame_seeds",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 3
+    }
+  ],
+  "steps": 5,
+  "allergens": [
+    "eggs",
+    "sesame",
+    "soy"
+  ],
+  "allergensToCheck": [
+    "gluten"
+  ],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 541,
+      "fat": 17.4,
+      "satFat": 4.8,
+      "carbs": 58.2,
+      "sugars": 3.8,
+      "fiber": 4.5,
+      "protein": 36.7,
+      "salt": 1.6
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "bean_sprouts",
+      "gochujang",
+      "shiitake:satFat"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://www.recipetineats.com/bibimbap/",
+      "https://www.bbcgoodfood.com/recipes/korean-bibimbap"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

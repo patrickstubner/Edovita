@@ -1,0 +1,124 @@
+{
+  "format": 1,
+  "id": "chicken_caesar_light",
+  "cuisine": "american",
+  "meal": "lunch",
+  "minutes": 20,
+  "servings": 2,
+  "tags": [
+    "protein"
+  ],
+  "preferenceTags": [
+    "meat"
+  ],
+  "ingredients": [
+    {
+      "food": "chicken_breast",
+      "amount": 300,
+      "unit": "g",
+      "grams": 300
+    },
+    {
+      "food": "lettuce",
+      "amount": 0.5,
+      "unit": "pc",
+      "grams": 150
+    },
+    {
+      "food": "bread",
+      "amount": 60,
+      "unit": "g",
+      "grams": 60
+    },
+    {
+      "food": "parmesan",
+      "amount": 25,
+      "unit": "g",
+      "grams": 25
+    },
+    {
+      "food": "greek_yogurt",
+      "amount": 100,
+      "unit": "g",
+      "grams": 100
+    },
+    {
+      "food": "lemon",
+      "amount": 0.5,
+      "unit": "pc",
+      "grams": 20
+    },
+    {
+      "food": "garlic",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 3
+    },
+    {
+      "food": "dijon_mustard",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 5
+    },
+    {
+      "food": "olive_oil",
+      "amount": 2,
+      "unit": "tsp",
+      "grams": 9
+    },
+    {
+      "food": "salt",
+      "amount": 2,
+      "unit": "g",
+      "grams": 2
+    },
+    {
+      "food": "black_pepper",
+      "amount": 1,
+      "unit": "pinch",
+      "grams": 0.5
+    }
+  ],
+  "steps": 4,
+  "allergens": [
+    "gluten",
+    "milk",
+    "mustard"
+  ],
+  "allergensToCheck": [
+    "sulphites"
+  ],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 377,
+      "fat": 11.7,
+      "satFat": 4.3,
+      "carbs": 16.7,
+      "sugars": 2.8,
+      "fiber": 2.6,
+      "protein": 49.8,
+      "salt": 2.0
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "black_pepper",
+      "parmesan:carbs",
+      "parmesan:sugars"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://www.bbcgoodfood.com/recipes/skinny-chicken-caesar-salad",
+      "https://www.foodnetwork.com/recipes/food-network-kitchen/light-chicken-caesar-salad-recipe-2109886"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "format": 1,
+  "id": "lentil_bolognese",
+  "cuisine": "italian",
+  "meal": "dinner",
+  "minutes": 35,
+  "servings": 2,
+  "tags": [
+    "vegan",
+    "protein"
+  ],
+  "preferenceTags": [
+    "onion"
+  ],
+  "ingredients": [
+    {
+      "food": "red_lentils",
+      "amount": 120,
+      "unit": "g",
+      "grams": 120
+    },
+    {
+      "food": "pasta",
+      "amount": 140,
+      "unit": "g",
+      "grams": 140
+    },
+    {
+      "food": "passata",
+      "amount": 500,
+      "unit": "ml",
+      "grams": 530
+    },
+    {
+      "food": "onion",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 100
+    },
+    {
+      "food": "carrot",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 80
+    },
+    {
+      "food": "celery",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 40
+    },
+    {
+      "food": "garlic",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 6
+    },
+    {
+      "food": "tomato_paste",
+      "amount": 1,
+      "unit": "tbsp",
+      "grams": 16
+    },
+    {
+      "food": "olive_oil",
+      "amount": 2,
+      "unit": "tsp",
+      "grams": 9
+    },
+    {
+      "food": "oregano_dried",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 1
+    },
+    {
+      "food": "tofu_firm",
+      "amount": 150,
+      "unit": "g",
+      "grams": 150
+    },
+    {
+      "food": "basil_fresh",
+      "amount": 5,
+      "unit": "g",
+      "grams": 5
+    },
+    {
+      "food": "salt",
+      "amount": 3,
+      "unit": "g",
+      "grams": 3
+    },
+    {
+      "food": "black_pepper",
+      "amount": 1,
+      "unit": "pinch",
+      "grams": 0.5
+    }
+  ],
+  "steps": 5,
+  "allergens": [
+    "celery",
+    "gluten",
+    "soy"
+  ],
+  "allergensToCheck": [],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 746,
+      "fat": 13.7,
+      "satFat": 2.1,
+      "carbs": 109.1,
+      "sugars": 20.8,
+      "fiber": 22.7,
+      "protein": 41.9,
+      "salt": 1.9
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "black_pepper",
+      "tofu_firm:fiber"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://rainbowplantlife.com/10-ingredient-vegan-red-lentil-bolognese/",
+      "https://www.feastingathome.com/lentil-bolognese/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

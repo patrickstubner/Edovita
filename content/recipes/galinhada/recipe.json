@@ -1,0 +1,139 @@
+{
+  "format": 1,
+  "id": "galinhada",
+  "cuisine": "brazilian",
+  "meal": "dinner",
+  "minutes": 45,
+  "servings": 2,
+  "tags": [
+    "protein"
+  ],
+  "preferenceTags": [
+    "meat",
+    "onion"
+  ],
+  "ingredients": [
+    {
+      "food": "chicken_thigh",
+      "amount": 340,
+      "unit": "g",
+      "grams": 340
+    },
+    {
+      "food": "brown_rice",
+      "amount": 120,
+      "unit": "g",
+      "grams": 120
+    },
+    {
+      "food": "onion",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 100
+    },
+    {
+      "food": "garlic",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 6
+    },
+    {
+      "food": "tomato",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 120
+    },
+    {
+      "food": "red_bell_pepper",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 150
+    },
+    {
+      "food": "peas",
+      "amount": 100,
+      "unit": "g",
+      "grams": 100
+    },
+    {
+      "food": "turmeric",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 3
+    },
+    {
+      "food": "chicken_broth",
+      "amount": 450,
+      "unit": "ml",
+      "grams": 454.5
+    },
+    {
+      "food": "parsley",
+      "amount": 10,
+      "unit": "g",
+      "grams": 10
+    },
+    {
+      "food": "spring_onion",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 15
+    },
+    {
+      "food": "rapeseed_oil",
+      "amount": 2,
+      "unit": "tsp",
+      "grams": 9
+    },
+    {
+      "food": "lime",
+      "amount": 0.5,
+      "unit": "pc",
+      "grams": 15
+    },
+    {
+      "food": "salt",
+      "amount": 3,
+      "unit": "g",
+      "grams": 3
+    }
+  ],
+  "steps": 5,
+  "allergens": [],
+  "allergensToCheck": [
+    "celery"
+  ],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 599,
+      "fat": 18.4,
+      "satFat": 4.4,
+      "carbs": 60.3,
+      "sugars": 12.0,
+      "fiber": 9.3,
+      "protein": 43.6,
+      "salt": 4.1
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "chicken_broth:fiber",
+      "lime",
+      "spring_onion"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://texasdebrazil.com/recipes/brazilian-chicken-and-saffron-rice-galinhada/",
+      "https://www.gousto.co.uk/cookbook/recipes/one-pot-brazilian-chicken-saffron-rice"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

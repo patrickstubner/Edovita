@@ -1,0 +1,107 @@
+{
+  "format": 1,
+  "id": "chicken_congee",
+  "cuisine": "chinese",
+  "meal": "breakfast",
+  "minutes": 35,
+  "servings": 2,
+  "tags": [
+    "protein"
+  ],
+  "preferenceTags": [
+    "meat",
+    "onion"
+  ],
+  "ingredients": [
+    {
+      "food": "jasmine_rice",
+      "amount": 70,
+      "unit": "g",
+      "grams": 70
+    },
+    {
+      "food": "chicken_breast",
+      "amount": 220,
+      "unit": "g",
+      "grams": 220
+    },
+    {
+      "food": "chicken_broth",
+      "amount": 900,
+      "unit": "ml",
+      "grams": 909
+    },
+    {
+      "food": "ginger",
+      "amount": 15,
+      "unit": "g",
+      "grams": 15
+    },
+    {
+      "food": "spring_onion",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 30
+    },
+    {
+      "food": "soy_sauce",
+      "amount": 1,
+      "unit": "tbsp",
+      "grams": 16
+    },
+    {
+      "food": "sesame_oil",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 4.5
+    },
+    {
+      "food": "eggs",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 100
+    }
+  ],
+  "steps": 5,
+  "allergens": [
+    "eggs",
+    "sesame",
+    "soy"
+  ],
+  "allergensToCheck": [
+    "celery",
+    "gluten"
+  ],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 361,
+      "fat": 10.1,
+      "satFat": 2.5,
+      "carbs": 29.4,
+      "sugars": 0.8,
+      "fiber": 0.6,
+      "protein": 38.0,
+      "salt": 6.0
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "chicken_broth:fiber",
+      "spring_onion"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://makan.ch/recipe/chicken-congee-chicken-rice-porridge",
+      "https://panlasangpinoy.com/chicken-congee-recipe/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "format": 1,
+  "id": "caldo_verde_beans",
+  "cuisine": "portuguese",
+  "meal": "lunch",
+  "minutes": 35,
+  "servings": 3,
+  "tags": [
+    "protein"
+  ],
+  "preferenceTags": [
+    "meat",
+    "onion"
+  ],
+  "ingredients": [
+    {
+      "food": "potato",
+      "amount": 400,
+      "unit": "g",
+      "grams": 400
+    },
+    {
+      "food": "kale",
+      "amount": 200,
+      "unit": "g",
+      "grams": 200
+    },
+    {
+      "food": "white_beans",
+      "amount": 400,
+      "unit": "g",
+      "grams": 400
+    },
+    {
+      "food": "chorizo",
+      "amount": 60,
+      "unit": "g",
+      "grams": 60
+    },
+    {
+      "food": "chicken_breast",
+      "amount": 200,
+      "unit": "g",
+      "grams": 200
+    },
+    {
+      "food": "onion",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 100
+    },
+    {
+      "food": "garlic",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 6
+    },
+    {
+      "food": "chicken_broth",
+      "amount": 1200,
+      "unit": "ml",
+      "grams": 1212
+    },
+    {
+      "food": "olive_oil",
+      "amount": 1,
+      "unit": "tbsp",
+      "grams": 13.5
+    },
+    {
+      "food": "salt",
+      "amount": 2,
+      "unit": "g",
+      "grams": 2
+    }
+  ],
+  "steps": 4,
+  "allergens": [],
+  "allergensToCheck": [
+    "celery"
+  ],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 489,
+      "fat": 12.7,
+      "satFat": 3.1,
+      "carbs": 55.1,
+      "sugars": 5.0,
+      "fiber": 12.7,
+      "protein": 36.1,
+      "salt": 6.5
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "chicken_broth:fiber"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://honestcooking.com/caldo-verde-portuguese-kale-soup/",
+      "https://leitesculinaria.com/7580/recipes-portuguese-kale-soup-caldo-verde.html"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

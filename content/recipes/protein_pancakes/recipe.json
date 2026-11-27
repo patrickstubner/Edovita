@@ -1,0 +1,98 @@
+{
+  "format": 1,
+  "id": "protein_pancakes",
+  "cuisine": "american",
+  "meal": "breakfast",
+  "minutes": 20,
+  "servings": 2,
+  "tags": [
+    "vegetarian"
+  ],
+  "preferenceTags": [],
+  "ingredients": [
+    {
+      "food": "oats",
+      "amount": 60,
+      "unit": "g",
+      "grams": 60
+    },
+    {
+      "food": "quark_lowfat",
+      "amount": 200,
+      "unit": "g",
+      "grams": 200
+    },
+    {
+      "food": "eggs",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 100
+    },
+    {
+      "food": "milk_skimmed",
+      "amount": 60,
+      "unit": "ml",
+      "grams": 62.4
+    },
+    {
+      "food": "baking_powder",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 4
+    },
+    {
+      "food": "rapeseed_oil",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 4.5
+    },
+    {
+      "food": "berries",
+      "amount": 150,
+      "unit": "g",
+      "grams": 150
+    },
+    {
+      "food": "maple_syrup",
+      "amount": 1,
+      "unit": "tbsp",
+      "grams": 20
+    }
+  ],
+  "steps": 5,
+  "allergens": [
+    "eggs",
+    "gluten",
+    "milk"
+  ],
+  "allergensToCheck": [],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 336,
+      "fat": 10.0,
+      "satFat": 1.9,
+      "carbs": 36.1,
+      "sugars": 16.2,
+      "fiber": 5.9,
+      "protein": 22.7,
+      "salt": 0.7
+    },
+    "isMinimum": false,
+    "notIncluded": [],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://www.bbcgoodfood.com/recipes/protein-pancakes-with-banana",
+      "https://rachaelsgoodeats.com/high-protein-blender-banana-oat-pancakes/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "format": 1,
+  "id": "green_curry_shrimp",
+  "cuisine": "thai",
+  "meal": "dinner",
+  "minutes": 25,
+  "servings": 2,
+  "tags": [
+    "protein"
+  ],
+  "preferenceTags": [
+    "meat"
+  ],
+  "ingredients": [
+    {
+      "food": "shrimp",
+      "amount": 320,
+      "unit": "g",
+      "grams": 320
+    },
+    {
+      "food": "coconut_milk",
+      "amount": 150,
+      "unit": "ml",
+      "grams": 153
+    },
+    {
+      "food": "red_curry_paste",
+      "amount": 1,
+      "unit": "tbsp",
+      "grams": 15
+    },
+    {
+      "food": "spinach",
+      "amount": 60,
+      "unit": "g",
+      "grams": 60
+    },
+    {
+      "food": "green_beans",
+      "amount": 150,
+      "unit": "g",
+      "grams": 150
+    },
+    {
+      "food": "zucchini",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 200
+    },
+    {
+      "food": "red_bell_pepper",
+      "amount": 0.5,
+      "unit": "pc",
+      "grams": 75
+    },
+    {
+      "food": "fish_sauce",
+      "amount": 1,
+      "unit": "tbsp",
+      "grams": 15
+    },
+    {
+      "food": "lime",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 30
+    },
+    {
+      "food": "thai_basil",
+      "amount": 10,
+      "unit": "g",
+      "grams": 10
+    },
+    {
+      "food": "chicken_broth",
+      "amount": 200,
+      "unit": "ml",
+      "grams": 202
+    },
+    {
+      "food": "jasmine_rice",
+      "amount": 120,
+      "unit": "g",
+      "grams": 120
+    }
+  ],
+  "steps": 5,
+  "allergens": [
+    "crustaceans",
+    "fish"
+  ],
+  "allergensToCheck": [
+    "celery",
+    "crustaceans"
+  ],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 561,
+      "fat": 19.1,
+      "satFat": 15.2,
+      "carbs": 57.2,
+      "sugars": 8.0,
+      "fiber": 5.4,
+      "protein": 37.0,
+      "salt": 2.4
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "chicken_broth:fiber",
+      "fish_sauce",
+      "lime",
+      "red_curry_paste"
+    ],
+    "proxies": [
+      "thai_basil"
+    ],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://www.nourish-and-fete.com/thai-green-curry-with-shrimp/",
+      "https://fortheloveofgourmet.com/shrimp-green-curry-with-spring-vegetables/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

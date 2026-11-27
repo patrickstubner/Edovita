@@ -1,0 +1,149 @@
+{
+  "format": 1,
+  "id": "sundubu_jjigae",
+  "cuisine": "korean",
+  "meal": "dinner",
+  "minutes": 25,
+  "servings": 2,
+  "tags": [
+    "protein"
+  ],
+  "preferenceTags": [
+    "meat",
+    "mushrooms",
+    "onion"
+  ],
+  "ingredients": [
+    {
+      "food": "silken_tofu",
+      "amount": 400,
+      "unit": "g",
+      "grams": 400
+    },
+    {
+      "food": "eggs",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 100
+    },
+    {
+      "food": "shrimp",
+      "amount": 120,
+      "unit": "g",
+      "grams": 120
+    },
+    {
+      "food": "kimchi",
+      "amount": 100,
+      "unit": "g",
+      "grams": 100
+    },
+    {
+      "food": "zucchini",
+      "amount": 0.5,
+      "unit": "pc",
+      "grams": 100
+    },
+    {
+      "food": "shiitake",
+      "amount": 80,
+      "unit": "g",
+      "grams": 80
+    },
+    {
+      "food": "onion",
+      "amount": 0.5,
+      "unit": "pc",
+      "grams": 50
+    },
+    {
+      "food": "garlic",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 6
+    },
+    {
+      "food": "gochujang",
+      "amount": 1,
+      "unit": "tbsp",
+      "grams": 20
+    },
+    {
+      "food": "chili_flakes",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 2
+    },
+    {
+      "food": "chicken_broth",
+      "amount": 500,
+      "unit": "ml",
+      "grams": 505
+    },
+    {
+      "food": "sesame_oil",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 4.5
+    },
+    {
+      "food": "spring_onion",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 15
+    },
+    {
+      "food": "sushi_rice",
+      "amount": 100,
+      "unit": "g",
+      "grams": 100
+    }
+  ],
+  "steps": 5,
+  "allergens": [
+    "crustaceans",
+    "eggs",
+    "sesame",
+    "soy"
+  ],
+  "allergensToCheck": [
+    "celery",
+    "crustaceans",
+    "fish",
+    "gluten"
+  ],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 475,
+      "fat": 15.6,
+      "satFat": 3.3,
+      "carbs": 50.4,
+      "sugars": 6.5,
+      "fiber": 5.0,
+      "protein": 33.3,
+      "salt": 3.8
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "chicken_broth:fiber",
+      "gochujang",
+      "shiitake:satFat",
+      "spring_onion"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://www.koreanbapsang.com/kimchi-soondubu-jjigae-soft-tofu-stew-kimchi/",
+      "https://www.cookerru.com/soondubu-jjigae/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

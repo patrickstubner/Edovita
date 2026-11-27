@@ -1,105 +1,106 @@
 {
- "format": 1,
- "id": "oven_salmon",
- "image": "oven_salmon",
- "cuisine": "european",
- "meal": "dinner",
- "minutes": 40,
- "servings": 2,
- "tags": [
-  "protein"
- ],
- "ingredients": [
-  {
-   "food": "potato",
-   "amount": 500,
-   "unit": "g",
-   "grams": 500,
-   "noteKey": "oven_salmon.ing.potato"
+  "format": 1,
+  "id": "oven_salmon",
+  "image": "oven_salmon",
+  "cuisine": "european",
+  "meal": "dinner",
+  "minutes": 40,
+  "servings": 2,
+  "tags": [
+    "protein"
+  ],
+  "preferenceTags": [],
+  "ingredients": [
+    {
+      "food": "potato",
+      "amount": 500,
+      "unit": "g",
+      "grams": 500,
+      "noteKey": "oven_salmon.ing.potato"
+    },
+    {
+      "food": "broccoli",
+      "amount": 400,
+      "unit": "g",
+      "grams": 400,
+      "noteKey": "oven_salmon.ing.broccoli"
+    },
+    {
+      "food": "salmon",
+      "amount": 300,
+      "unit": "g",
+      "grams": 300,
+      "noteKey": "oven_salmon.ing.salmon"
+    },
+    {
+      "food": "olive_oil",
+      "amount": 25,
+      "unit": "g",
+      "grams": 25,
+      "noteKey": "oven_salmon.ing.olive_oil"
+    },
+    {
+      "food": "garlic",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 6,
+      "noteKey": "oven_salmon.ing.garlic"
+    },
+    {
+      "food": "lemon",
+      "amount": 0.5,
+      "unit": "pc",
+      "grams": 20,
+      "noteKey": "oven_salmon.ing.lemon"
+    },
+    {
+      "food": "salt",
+      "amount": 4,
+      "unit": "g",
+      "grams": 4
+    },
+    {
+      "food": "black_pepper",
+      "amount": 1,
+      "unit": "pinch",
+      "grams": 0.5
+    }
+  ],
+  "steps": 5,
+  "allergens": [
+    "fish"
+  ],
+  "allergensToCheck": [],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 721,
+      "fat": 37.9,
+      "satFat": 5.4,
+      "carbs": 46.2,
+      "sugars": 5.8,
+      "fiber": 12,
+      "protein": 42.3,
+      "salt": 2.1
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "black_pepper"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1, pro 100 g essbarer Anteil, roh; Garverluste nicht berücksichtigt"
   },
-  {
-   "food": "broccoli",
-   "amount": 400,
-   "unit": "g",
-   "grams": 400,
-   "noteKey": "oven_salmon.ing.broccoli"
-  },
-  {
-   "food": "salmon",
-   "amount": 300,
-   "unit": "g",
-   "grams": 300,
-   "noteKey": "oven_salmon.ing.salmon"
-  },
-  {
-   "food": "olive_oil",
-   "amount": 25,
-   "unit": "g",
-   "grams": 25,
-   "noteKey": "oven_salmon.ing.olive_oil"
-  },
-  {
-   "food": "garlic",
-   "amount": 2,
-   "unit": "pc",
-   "grams": 6,
-   "noteKey": "oven_salmon.ing.garlic"
-  },
-  {
-   "food": "lemon",
-   "amount": 0.5,
-   "unit": "pc",
-   "grams": 20,
-   "noteKey": "oven_salmon.ing.lemon"
-  },
-  {
-   "food": "salt",
-   "amount": 4,
-   "unit": "g",
-   "grams": 4
-  },
-  {
-   "food": "black_pepper",
-   "amount": 1,
-   "unit": "pinch",
-   "grams": 0.5
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-15",
+    "by": "Master Bot (Abgleich von Zutaten und Mengenverhältnissen, keine Texte übernommen)",
+    "sources": [
+      "https://www.bbc.co.uk/food/recipes/baked_salmon_00289",
+      "https://www.recipeanytime.com/salmon-broccoli-and-potatoes/",
+      "https://chefjar.com/baked-salmon-with-potatoes/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
   }
- ],
- "steps": 5,
- "allergens": [
-  "fish"
- ],
- "allergensToCheck": [],
- "nutritionPerServing": {
-  "values": {
-   "kcal": 721,
-   "fat": 37.9,
-   "satFat": 5.4,
-   "carbs": 46.2,
-   "sugars": 5.8,
-   "fiber": 12,
-   "protein": 42.3,
-   "salt": 2.1
-  },
-  "isMinimum": true,
-  "notIncluded": [
-   "black_pepper"
-  ],
-  "proxies": [],
-  "basis": "CH-NWD 7.1, pro 100 g essbarer Anteil, roh; Garverluste nicht berücksichtigt"
- },
- "review": {
-  "status": "zu_pruefen",
-  "checkedAt": "2026-11-15",
-  "by": "Master Bot (Abgleich von Zutaten und Mengenverhältnissen, keine Texte übernommen)",
-  "sources": [
-   "https://www.bbc.co.uk/food/recipes/baked_salmon_00289",
-   "https://www.recipeanytime.com/salmon-broccoli-and-potatoes/",
-   "https://chefjar.com/baked-salmon-with-potatoes/"
-  ],
-  "open": [
-   "Probekochen durch einen Menschen",
-   "Nährwerte gegenlesen"
-  ]
- }
 }

@@ -1,0 +1,124 @@
+{
+  "format": 1,
+  "id": "pescado_veracruzana",
+  "cuisine": "mexican",
+  "meal": "dinner",
+  "minutes": 30,
+  "servings": 2,
+  "tags": [
+    "protein"
+  ],
+  "preferenceTags": [
+    "onion"
+  ],
+  "ingredients": [
+    {
+      "food": "cod",
+      "amount": 340,
+      "unit": "g",
+      "grams": 340
+    },
+    {
+      "food": "canned_tomatoes",
+      "amount": 400,
+      "unit": "g",
+      "grams": 400
+    },
+    {
+      "food": "olives",
+      "amount": 40,
+      "unit": "g",
+      "grams": 40
+    },
+    {
+      "food": "onion",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 100
+    },
+    {
+      "food": "garlic",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 6
+    },
+    {
+      "food": "chili_fresh",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 10
+    },
+    {
+      "food": "oregano_dried",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 1
+    },
+    {
+      "food": "olive_oil",
+      "amount": 1,
+      "unit": "tbsp",
+      "grams": 13.5
+    },
+    {
+      "food": "lime",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 30
+    },
+    {
+      "food": "basmati_rice",
+      "amount": 100,
+      "unit": "g",
+      "grams": 100
+    },
+    {
+      "food": "parsley",
+      "amount": 10,
+      "unit": "g",
+      "grams": 10
+    },
+    {
+      "food": "salt",
+      "amount": 3,
+      "unit": "g",
+      "grams": 3
+    }
+  ],
+  "steps": 5,
+  "allergens": [
+    "fish"
+  ],
+  "allergensToCheck": [],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 477,
+      "fat": 12.2,
+      "satFat": 1.6,
+      "carbs": 51.6,
+      "sugars": 10.8,
+      "fiber": 5.0,
+      "protein": 38.0,
+      "salt": 2.0
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "lime"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://www.muydelish.com/pescado-veracruzana/",
+      "https://www.fromachefskitchen.com/baked-veracruz-style-fish/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

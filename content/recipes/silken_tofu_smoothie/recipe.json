@@ -1,0 +1,86 @@
+{
+  "format": 1,
+  "id": "silken_tofu_smoothie",
+  "cuisine": "european",
+  "meal": "breakfast",
+  "minutes": 5,
+  "servings": 1,
+  "tags": [
+    "vegan"
+  ],
+  "preferenceTags": [],
+  "ingredients": [
+    {
+      "food": "silken_tofu",
+      "amount": 200,
+      "unit": "g",
+      "grams": 200
+    },
+    {
+      "food": "soy_milk",
+      "amount": 200,
+      "unit": "ml",
+      "grams": 206
+    },
+    {
+      "food": "berries",
+      "amount": 150,
+      "unit": "g",
+      "grams": 150
+    },
+    {
+      "food": "oats",
+      "amount": 20,
+      "unit": "g",
+      "grams": 20
+    },
+    {
+      "food": "peanut_butter",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 5
+    },
+    {
+      "food": "maple_syrup",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 7
+    }
+  ],
+  "steps": 4,
+  "allergens": [
+    "gluten",
+    "peanuts",
+    "soy"
+  ],
+  "allergensToCheck": [],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 380,
+      "fat": 15.0,
+      "satFat": 2.6,
+      "carbs": 33.8,
+      "sugars": 19.6,
+      "fiber": 10.5,
+      "protein": 22.8,
+      "salt": 0.3
+    },
+    "isMinimum": false,
+    "notIncluded": [],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://www.theleangreenbean.com/silken-tofu-berry-smoothie/",
+      "https://www.cookforyourlife.org/recipes/blueberry-tofu-smoothie/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "format": 1,
+  "id": "chicken_piccata",
+  "cuisine": "italian",
+  "meal": "dinner",
+  "minutes": 25,
+  "servings": 2,
+  "tags": [
+    "protein"
+  ],
+  "preferenceTags": [
+    "meat"
+  ],
+  "ingredients": [
+    {
+      "food": "chicken_breast",
+      "amount": 320,
+      "unit": "g",
+      "grams": 320
+    },
+    {
+      "food": "eggs",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 50
+    },
+    {
+      "food": "parmesan",
+      "amount": 20,
+      "unit": "g",
+      "grams": 20
+    },
+    {
+      "food": "wholewheat_flour",
+      "amount": 1,
+      "unit": "tbsp",
+      "grams": 8
+    },
+    {
+      "food": "lemon",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 40
+    },
+    {
+      "food": "chicken_broth",
+      "amount": 100,
+      "unit": "ml",
+      "grams": 101
+    },
+    {
+      "food": "butter",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 5
+    },
+    {
+      "food": "olive_oil",
+      "amount": 2,
+      "unit": "tsp",
+      "grams": 9
+    },
+    {
+      "food": "zucchini",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 400
+    },
+    {
+      "food": "pasta",
+      "amount": 100,
+      "unit": "g",
+      "grams": 100
+    },
+    {
+      "food": "parsley",
+      "amount": 10,
+      "unit": "g",
+      "grams": 10
+    },
+    {
+      "food": "salt",
+      "amount": 2,
+      "unit": "g",
+      "grams": 2
+    },
+    {
+      "food": "black_pepper",
+      "amount": 1,
+      "unit": "pinch",
+      "grams": 0.5
+    }
+  ],
+  "steps": 5,
+  "allergens": [
+    "eggs",
+    "gluten",
+    "milk"
+  ],
+  "allergensToCheck": [
+    "celery"
+  ],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 540,
+      "fat": 15.3,
+      "satFat": 5.3,
+      "carbs": 42.5,
+      "sugars": 4.7,
+      "fiber": 5.8,
+      "protein": 55.3,
+      "salt": 1.9
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "black_pepper",
+      "chicken_broth:fiber",
+      "parmesan:carbs",
+      "parmesan:sugars"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://www.recipetineats.com/chicken-piccata/",
+      "https://www.budgetbytes.com/chicken-piccata/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

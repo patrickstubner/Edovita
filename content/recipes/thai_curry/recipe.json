@@ -1,131 +1,134 @@
 {
- "format": 1,
- "id": "thai_curry",
- "image": "thai_curry",
- "cuisine": "thai",
- "meal": "dinner",
- "minutes": 30,
- "servings": 2,
- "tags": [
-  "protein"
- ],
- "ingredients": [
-  {
-   "food": "jasmine_rice",
-   "amount": 150,
-   "unit": "g",
-   "grams": 150,
-   "noteKey": "thai_curry.ing.jasmine_rice"
+  "format": 1,
+  "id": "thai_curry",
+  "image": "thai_curry",
+  "cuisine": "thai",
+  "meal": "dinner",
+  "minutes": 30,
+  "servings": 2,
+  "tags": [
+    "protein"
+  ],
+  "preferenceTags": [
+    "meat"
+  ],
+  "ingredients": [
+    {
+      "food": "jasmine_rice",
+      "amount": 150,
+      "unit": "g",
+      "grams": 150,
+      "noteKey": "thai_curry.ing.jasmine_rice"
+    },
+    {
+      "food": "chicken_breast",
+      "amount": 300,
+      "unit": "g",
+      "grams": 300
+    },
+    {
+      "food": "red_curry_paste",
+      "amount": 2,
+      "unit": "tbsp",
+      "grams": 30,
+      "noteKey": "thai_curry.ing.red_curry_paste"
+    },
+    {
+      "food": "coconut_milk",
+      "amount": 250,
+      "unit": "ml",
+      "grams": 255,
+      "noteKey": "thai_curry.ing.coconut_milk"
+    },
+    {
+      "food": "aubergine",
+      "amount": 150,
+      "unit": "g",
+      "grams": 150
+    },
+    {
+      "food": "red_bell_pepper",
+      "amount": 150,
+      "unit": "g",
+      "grams": 150,
+      "noteKey": "thai_curry.ing.red_bell_pepper"
+    },
+    {
+      "food": "rapeseed_oil",
+      "amount": 10,
+      "unit": "g",
+      "grams": 10,
+      "noteKey": "thai_curry.ing.rapeseed_oil"
+    },
+    {
+      "food": "fish_sauce",
+      "amount": 1,
+      "unit": "tbsp",
+      "grams": 15,
+      "noteKey": "thai_curry.ing.fish_sauce"
+    },
+    {
+      "food": "sugar",
+      "amount": 8,
+      "unit": "g",
+      "grams": 8,
+      "noteKey": "thai_curry.ing.sugar"
+    },
+    {
+      "food": "thai_basil",
+      "amount": 10,
+      "unit": "g",
+      "grams": 10,
+      "noteKey": "thai_curry.ing.thai_basil"
+    },
+    {
+      "food": "kaffir_lime_leaves",
+      "amount": 3,
+      "unit": "pc",
+      "grams": 1,
+      "optional": true
+    }
+  ],
+  "steps": 6,
+  "allergens": [
+    "fish"
+  ],
+  "allergensToCheck": [
+    "crustaceans"
+  ],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 800,
+      "fat": 34.5,
+      "satFat": 25,
+      "carbs": 72.9,
+      "sugars": 12.3,
+      "fiber": 4.3,
+      "protein": 47.2,
+      "salt": 0.1
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "fish_sauce",
+      "red_curry_paste"
+    ],
+    "proxies": [
+      "thai_basil"
+    ],
+    "basis": "CH-NWD 7.1, pro 100 g essbarer Anteil, roh; Garverluste nicht berücksichtigt"
   },
-  {
-   "food": "chicken_breast",
-   "amount": 300,
-   "unit": "g",
-   "grams": 300
-  },
-  {
-   "food": "red_curry_paste",
-   "amount": 2,
-   "unit": "tbsp",
-   "grams": 30,
-   "noteKey": "thai_curry.ing.red_curry_paste"
-  },
-  {
-   "food": "coconut_milk",
-   "amount": 250,
-   "unit": "ml",
-   "grams": 255,
-   "noteKey": "thai_curry.ing.coconut_milk"
-  },
-  {
-   "food": "aubergine",
-   "amount": 150,
-   "unit": "g",
-   "grams": 150
-  },
-  {
-   "food": "red_bell_pepper",
-   "amount": 150,
-   "unit": "g",
-   "grams": 150,
-   "noteKey": "thai_curry.ing.red_bell_pepper"
-  },
-  {
-   "food": "rapeseed_oil",
-   "amount": 10,
-   "unit": "g",
-   "grams": 10,
-   "noteKey": "thai_curry.ing.rapeseed_oil"
-  },
-  {
-   "food": "fish_sauce",
-   "amount": 1,
-   "unit": "tbsp",
-   "grams": 15,
-   "noteKey": "thai_curry.ing.fish_sauce"
-  },
-  {
-   "food": "sugar",
-   "amount": 8,
-   "unit": "g",
-   "grams": 8,
-   "noteKey": "thai_curry.ing.sugar"
-  },
-  {
-   "food": "thai_basil",
-   "amount": 10,
-   "unit": "g",
-   "grams": 10,
-   "noteKey": "thai_curry.ing.thai_basil"
-  },
-  {
-   "food": "kaffir_lime_leaves",
-   "amount": 3,
-   "unit": "pc",
-   "grams": 1,
-   "optional": true
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-15",
+    "by": "Master Bot (Abgleich von Zutaten und Mengenverhältnissen, keine Texte übernommen)",
+    "sources": [
+      "https://hot-thai-kitchen.com/quick-red-curry-chicken/",
+      "https://praewcooks.com/thai-red-curry-chicken/",
+      "https://www.thaicookbook.tv/thai-recipes/main-dishes/red-curry-with-bamboo-shoots-chicken-and-coconut/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
   }
- ],
- "steps": 6,
- "allergens": [
-  "fish"
- ],
- "allergensToCheck": [
-  "crustaceans"
- ],
- "nutritionPerServing": {
-  "values": {
-   "kcal": 800,
-   "fat": 34.5,
-   "satFat": 25,
-   "carbs": 72.9,
-   "sugars": 12.3,
-   "fiber": 4.3,
-   "protein": 47.2,
-   "salt": 0.1
-  },
-  "isMinimum": true,
-  "notIncluded": [
-   "fish_sauce",
-   "red_curry_paste"
-  ],
-  "proxies": [
-   "thai_basil"
-  ],
-  "basis": "CH-NWD 7.1, pro 100 g essbarer Anteil, roh; Garverluste nicht berücksichtigt"
- },
- "review": {
-  "status": "zu_pruefen",
-  "checkedAt": "2026-11-15",
-  "by": "Master Bot (Abgleich von Zutaten und Mengenverhältnissen, keine Texte übernommen)",
-  "sources": [
-   "https://hot-thai-kitchen.com/quick-red-curry-chicken/",
-   "https://praewcooks.com/thai-red-curry-chicken/",
-   "https://www.thaicookbook.tv/thai-recipes/main-dishes/red-curry-with-bamboo-shoots-chicken-and-coconut/"
-  ],
-  "open": [
-   "Probekochen durch einen Menschen",
-   "Nährwerte gegenlesen"
-  ]
- }
 }

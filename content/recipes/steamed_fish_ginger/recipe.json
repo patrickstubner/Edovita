@@ -1,0 +1,112 @@
+{
+  "format": 1,
+  "id": "steamed_fish_ginger",
+  "cuisine": "chinese",
+  "meal": "dinner",
+  "minutes": 25,
+  "servings": 2,
+  "tags": [
+    "protein"
+  ],
+  "preferenceTags": [
+    "cilantro",
+    "onion"
+  ],
+  "ingredients": [
+    {
+      "food": "sea_bass",
+      "amount": 340,
+      "unit": "g",
+      "grams": 340
+    },
+    {
+      "food": "ginger",
+      "amount": 20,
+      "unit": "g",
+      "grams": 20
+    },
+    {
+      "food": "spring_onion",
+      "amount": 3,
+      "unit": "pc",
+      "grams": 45
+    },
+    {
+      "food": "soy_sauce",
+      "amount": 2,
+      "unit": "tbsp",
+      "grams": 32
+    },
+    {
+      "food": "sesame_oil",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 4.5
+    },
+    {
+      "food": "rapeseed_oil",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 4.5
+    },
+    {
+      "food": "pak_choi",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 300
+    },
+    {
+      "food": "jasmine_rice",
+      "amount": 120,
+      "unit": "g",
+      "grams": 120
+    },
+    {
+      "food": "coriander_fresh",
+      "amount": 5,
+      "unit": "g",
+      "grams": 5
+    }
+  ],
+  "steps": 5,
+  "allergens": [
+    "fish",
+    "sesame",
+    "soy"
+  ],
+  "allergensToCheck": [
+    "gluten"
+  ],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 448,
+      "fat": 8.9,
+      "satFat": 1.5,
+      "carbs": 51.1,
+      "sugars": 2.1,
+      "fiber": 2.5,
+      "protein": 39.4,
+      "salt": 2.8
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "coriander_fresh",
+      "spring_onion"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://www.madewithlau.com/recipes/steamed-fish-ginger-scallion",
+      "https://alexandracooks.com/2019/03/28/chinese-style-steamed-whole-fish-with-ginger-and-scallions/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

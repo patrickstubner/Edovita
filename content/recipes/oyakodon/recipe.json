@@ -1,0 +1,106 @@
+{
+  "format": 1,
+  "id": "oyakodon",
+  "cuisine": "japanese",
+  "meal": "lunch",
+  "minutes": 25,
+  "servings": 2,
+  "tags": [
+    "protein"
+  ],
+  "preferenceTags": [
+    "meat",
+    "onion"
+  ],
+  "ingredients": [
+    {
+      "food": "chicken_thigh",
+      "amount": 250,
+      "unit": "g",
+      "grams": 250
+    },
+    {
+      "food": "eggs",
+      "amount": 3,
+      "unit": "pc",
+      "grams": 150
+    },
+    {
+      "food": "sushi_rice",
+      "amount": 130,
+      "unit": "g",
+      "grams": 130
+    },
+    {
+      "food": "onion",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 100
+    },
+    {
+      "food": "chicken_broth",
+      "amount": 150,
+      "unit": "ml",
+      "grams": 151.5
+    },
+    {
+      "food": "soy_sauce",
+      "amount": 2,
+      "unit": "tbsp",
+      "grams": 32
+    },
+    {
+      "food": "sugar",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 4
+    },
+    {
+      "food": "spring_onion",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 15
+    }
+  ],
+  "steps": 5,
+  "allergens": [
+    "eggs",
+    "soy"
+  ],
+  "allergensToCheck": [
+    "celery",
+    "gluten"
+  ],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 543,
+      "fat": 16.3,
+      "satFat": 4.6,
+      "carbs": 57.0,
+      "sugars": 4.9,
+      "fiber": 1.7,
+      "protein": 41.0,
+      "salt": 3.5
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "chicken_broth:fiber",
+      "spring_onion"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://winniesbalance.com/easy-chicken-oyakodon-chicken-egg-rice-bowl/",
+      "https://ironchefshellie.com/2024/08/17/oyakodon-chicken-and-egg-rice-bowl/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

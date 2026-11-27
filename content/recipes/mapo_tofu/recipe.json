@@ -1,0 +1,139 @@
+{
+  "format": 1,
+  "id": "mapo_tofu",
+  "cuisine": "chinese",
+  "meal": "dinner",
+  "minutes": 25,
+  "servings": 2,
+  "tags": [
+    "protein"
+  ],
+  "preferenceTags": [
+    "meat",
+    "onion"
+  ],
+  "ingredients": [
+    {
+      "food": "tofu_firm",
+      "amount": 400,
+      "unit": "g",
+      "grams": 400
+    },
+    {
+      "food": "pork_mince_lean",
+      "amount": 150,
+      "unit": "g",
+      "grams": 150
+    },
+    {
+      "food": "garlic",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 6
+    },
+    {
+      "food": "ginger",
+      "amount": 10,
+      "unit": "g",
+      "grams": 10
+    },
+    {
+      "food": "spring_onion",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 30
+    },
+    {
+      "food": "chili_flakes",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 2
+    },
+    {
+      "food": "soy_sauce",
+      "amount": 2,
+      "unit": "tbsp",
+      "grams": 32
+    },
+    {
+      "food": "miso_paste",
+      "amount": 1,
+      "unit": "tbsp",
+      "grams": 17
+    },
+    {
+      "food": "chicken_broth",
+      "amount": 200,
+      "unit": "ml",
+      "grams": 202
+    },
+    {
+      "food": "cornstarch",
+      "amount": 2,
+      "unit": "tsp",
+      "grams": 6
+    },
+    {
+      "food": "rapeseed_oil",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 4.5
+    },
+    {
+      "food": "pak_choi",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 300
+    },
+    {
+      "food": "jasmine_rice",
+      "amount": 110,
+      "unit": "g",
+      "grams": 110
+    }
+  ],
+  "steps": 5,
+  "allergens": [
+    "soy"
+  ],
+  "allergensToCheck": [
+    "celery",
+    "gluten"
+  ],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 698,
+      "fat": 27.6,
+      "satFat": 5.6,
+      "carbs": 59.0,
+      "sugars": 4.0,
+      "fiber": 3.2,
+      "protein": 54.2,
+      "salt": 4.6
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "chicken_broth:fiber",
+      "cornstarch:fat",
+      "cornstarch:satFat",
+      "cornstarch:sugars",
+      "spring_onion",
+      "tofu_firm:fiber"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://www.recipetineats.com/mapo-tofu/",
+      "https://www.bbcgoodfood.com/recipes/mapo-tofu"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

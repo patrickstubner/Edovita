@@ -1,0 +1,98 @@
+{
+  "format": 1,
+  "id": "quark_bircher",
+  "cuisine": "swiss",
+  "meal": "breakfast",
+  "minutes": 10,
+  "servings": 2,
+  "tags": [
+    "vegetarian"
+  ],
+  "preferenceTags": [],
+  "ingredients": [
+    {
+      "food": "oats",
+      "amount": 80,
+      "unit": "g",
+      "grams": 80
+    },
+    {
+      "food": "milk_skimmed",
+      "amount": 150,
+      "unit": "ml",
+      "grams": 156
+    },
+    {
+      "food": "quark_lowfat",
+      "amount": 250,
+      "unit": "g",
+      "grams": 250
+    },
+    {
+      "food": "apple",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 150
+    },
+    {
+      "food": "berries",
+      "amount": 100,
+      "unit": "g",
+      "grams": 100
+    },
+    {
+      "food": "hazelnuts",
+      "amount": 15,
+      "unit": "g",
+      "grams": 15
+    },
+    {
+      "food": "lemon",
+      "amount": 0.5,
+      "unit": "pc",
+      "grams": 20
+    },
+    {
+      "food": "honey",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 7
+    }
+  ],
+  "steps": 4,
+  "allergens": [
+    "gluten",
+    "milk",
+    "nuts"
+  ],
+  "allergensToCheck": [],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 378,
+      "fat": 8.3,
+      "satFat": 1.0,
+      "carbs": 48.6,
+      "sugars": 23.5,
+      "fiber": 8.0,
+      "protein": 23.2,
+      "salt": 0.2
+    },
+    "isMinimum": false,
+    "notIncluded": [],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://orlawalshnutrition.ie/high-protein-bircher-museli/",
+      "https://vlhhealth.com/high-protein-bircher-muesli/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

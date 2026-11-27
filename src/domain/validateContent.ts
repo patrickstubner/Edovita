@@ -1,8 +1,10 @@
 import {
   foodCatalogFileSchema,
   glossarySchema,
+  hasForbiddenOwnKey,
   recipeLocaleTextSchema,
   recipeSchema,
+  recipeTitlesSchema,
 } from './schemas.ts';
 import {
   NUTRIENT_KEYS,
@@ -15,10 +17,28 @@ import {
   type NutritionSummary,
   type Recipe,
   type RecipeLocaleText,
+  type RecipeTitles,
 } from './types.ts';
 
-export const EXPECTED_GLOSSARY_LANGS = ['de', 'en', 'pt', 'ja'] as const;
+export const EXPECTED_GLOSSARY_LANGS = [
+  'de',
+  'en',
+  'fr',
+  'it',
+  'es',
+  'pt',
+  'ja',
+] as const;
 export const EXPECTED_RECIPE_UI_LANGS = ['de', 'en'] as const;
+export const EXPECTED_RECIPE_TITLE_LANGS = [
+  'de',
+  'en',
+  'fr',
+  'it',
+  'es',
+  'pt',
+  'ja',
+] as const;
 
 export interface RawRecipeBundle {
   folderName: string;
@@ -30,6 +50,7 @@ export interface RawContentBundle {
   foodsFile: unknown;
   glossaries: Record<string, unknown>;
   recipes: RawRecipeBundle[];
+  recipeTitles?: Record<string, unknown>;
 }
 
 export interface ValidatedContentBundle {
@@ -39,6 +60,7 @@ export interface ValidatedContentBundle {
     recipe: Recipe;
     locales: Record<string, RecipeLocaleText>;
   }>;
+  recipeTitles?: Record<string, RecipeTitles>;
 }
 
 export interface ContentValidationReport {
@@ -137,6 +159,7 @@ export function validateContentBundle(
   options?: {
     requiredGlossaryLangs?: readonly string[];
     requiredRecipeUiLangs?: readonly string[];
+    requiredRecipeTitleLangs?: readonly string[];
   },
 ): ContentValidationReport {
   const errors: string[] = [];
@@ -145,6 +168,14 @@ export function validateContentBundle(
     options?.requiredGlossaryLangs ?? EXPECTED_GLOSSARY_LANGS;
   const recipeUiLangs =
     options?.requiredRecipeUiLangs ?? EXPECTED_RECIPE_UI_LANGS;
+  const recipeTitleLangs =
+    options?.requiredRecipeTitleLangs ??
+    (bundle.recipeTitles !== undefined ? EXPECTED_RECIPE_TITLE_LANGS : []);
+
+  if (hasForbiddenOwnKey(bundle.foodsFile)) {
+    errors.push('foods.json: reservierter Prototype-Schlüssel nicht zulässig');
+    return { ok: false, errors, warnings, validated: null };
+  }
 
   const catalogResult = foodCatalogFileSchema.safeParse(bundle.foodsFile);
   if (!catalogResult.success) {
@@ -185,6 +216,12 @@ export function validateContentBundle(
       errors.push(`Glossar ${lang}: Datei fehlt`);
       continue;
     }
+    if (hasForbiddenOwnKey(rawGlossary)) {
+      errors.push(
+        `Glossar ${lang}: reservierter Prototype-Schlüssel nicht zulässig`,
+      );
+      continue;
+    }
     const parsedGlossary = glossarySchema.safeParse(rawGlossary);
     if (!parsedGlossary.success) {
       for (const issue of parsedGlossary.error.issues) {
@@ -213,6 +250,12 @@ export function validateContentBundle(
   const seenRecipeIds = new Set<string>();
 
   for (const entry of bundle.recipes) {
+    if (hasForbiddenOwnKey(entry.recipe)) {
+      errors.push(
+        `Rezept ${entry.folderName}: reservierter Prototype-Schlüssel nicht zulässig`,
+      );
+      continue;
+    }
     const parsedRecipe = recipeSchema.safeParse(entry.recipe);
     if (!parsedRecipe.success) {
       for (const issue of parsedRecipe.error.issues) {
@@ -350,6 +393,12 @@ export function validateContentBundle(
         errors.push(`${rid}/${lang}: Übersetzungsdatei fehlt`);
         continue;
       }
+      if (hasForbiddenOwnKey(rawLocale)) {
+        errors.push(
+          `${rid}/${lang}: reservierter Prototype-Schlüssel nicht zulässig`,
+        );
+        continue;
+      }
       const parsedLocale = recipeLocaleTextSchema.safeParse(rawLocale);
       if (!parsedLocale.success) {
         for (const issue of parsedLocale.error.issues) {
@@ -379,6 +428,56 @@ export function validateContentBundle(
     validatedRecipes.push({ recipe, locales: validatedLocales });
   }
 
+  let validatedRecipeTitles: Record<string, RecipeTitles> | undefined;
+  if (recipeTitleLangs.length > 0) {
+    validatedRecipeTitles = {};
+    const recipesById = new Map(
+      validatedRecipes.map((entry) => [entry.recipe.id as string, entry]),
+    );
+    for (const lang of recipeTitleLangs) {
+      const rawTitles = bundle.recipeTitles?.[lang];
+      if (rawTitles === undefined) {
+        errors.push(`Rezepttitel ${lang}: Datei fehlt`);
+        continue;
+      }
+      if (hasForbiddenOwnKey(rawTitles)) {
+        errors.push(
+          `Rezepttitel ${lang}: reservierter Prototype-Schlüssel nicht zulässig`,
+        );
+        continue;
+      }
+      const parsedTitles = recipeTitlesSchema.safeParse(rawTitles);
+      if (!parsedTitles.success) {
+        for (const issue of parsedTitles.error.issues) {
+          errors.push(
+            `Rezepttitel ${lang} (${issue.path.join('.')}): ${issue.message}`,
+          );
+        }
+        continue;
+      }
+      const titles = parsedTitles.data;
+      validatedRecipeTitles[lang] = titles;
+
+      for (const [rid, entry] of recipesById.entries()) {
+        if (!Object.hasOwn(titles, rid) || !titles[rid]) {
+          errors.push(`Rezepttitel ${lang}: ${rid} fehlt`);
+          continue;
+        }
+        const loc = entry.locales[lang];
+        if (loc && titles[rid] !== loc.title) {
+          errors.push(
+            `Rezepttitel ${lang}: ${rid} weicht von ${rid}/${lang}.json ab`,
+          );
+        }
+      }
+      for (const key of Object.keys(titles)) {
+        if (!recipesById.has(key)) {
+          errors.push(`Rezepttitel ${lang}: unbekannte Rezept-ID ${key}`);
+        }
+      }
+    }
+  }
+
   return {
     ok: errors.length === 0,
     errors,
@@ -389,6 +488,9 @@ export function validateContentBundle(
             catalog,
             glossaries: validatedGlossaries,
             recipes: validatedRecipes,
+            ...(validatedRecipeTitles
+              ? { recipeTitles: validatedRecipeTitles }
+              : {}),
           }
         : null,
   };

@@ -192,7 +192,7 @@ function loadChNwdV71Rows(): Map<number, NwdXlsxRow> {
 }
 
 function loadMergedE12aBundle(): RawContentBundle {
-  const mainFoods = readJson<FoodCatalogFile>(
+  const catalogFoods = readJson<FoodCatalogFile>(
     resolve(CONTENT_DIR, 'foods/foods.json'),
   );
   const e12aFoods = readJson<FoodCatalogFile>(
@@ -202,13 +202,17 @@ function loadMergedE12aBundle(): RawContentBundle {
     resolve(E12A_DIR, 'recipes-ext.json'),
   );
 
+  const e12aFoodIds = new Set(e12aFoods.foods.map((f) => f.id));
+  const baseFoods = catalogFoods.foods.filter((f) => !e12aFoodIds.has(f.id));
+
+  const e12aRecipeIds = new Set<string>(e12aRecipes.recipes.map((r) => r.id));
   const recipesDir = resolve(CONTENT_DIR, 'recipes');
-  const existingFolders = readdirSync(recipesDir, { withFileTypes: true })
-    .filter((entry) => entry.isDirectory())
+  const baseFolders = readdirSync(recipesDir, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory() && !e12aRecipeIds.has(entry.name))
     .map((entry) => entry.name)
     .sort();
 
-  const existingRecipes = existingFolders.map((folderName) => ({
+  const baseRecipes = baseFolders.map((folderName) => ({
     folderName,
     recipe: readJson<unknown>(resolve(recipesDir, folderName, 'recipe.json')),
     locales: {},
@@ -222,17 +226,17 @@ function loadMergedE12aBundle(): RawContentBundle {
 
   return {
     foodsFile: {
-      ...mainFoods,
-      foods: [...mainFoods.foods, ...e12aFoods.foods],
+      ...catalogFoods,
+      foods: [...baseFoods, ...e12aFoods.foods],
     },
     glossaries: {},
-    recipes: [...existingRecipes, ...extRecipes],
+    recipes: [...baseRecipes, ...extRecipes],
   };
 }
 
 describe('Paket E12a (#46): Nährwert- und Quellenbelege vor dem Rezeptimport', () => {
-  it('lässt die 55 bestehenden Lebensmittel und 5 Rezepte auf main unverändert und disjunkt zu E12a', () => {
-    const mainFoods = readJson<FoodCatalogFile>(
+  it('prüft die 55 Basis-Lebensmittel + 144 E12a-Lebensmittel (199) sowie 5 Basis- + 195 E12a-Rezepte (200) konsistent zu content/', () => {
+    const catalogFoods = readJson<FoodCatalogFile>(
       resolve(CONTENT_DIR, 'foods/foods.json'),
     );
     const e12aFoods = readJson<FoodCatalogFile>(
@@ -242,26 +246,26 @@ describe('Paket E12a (#46): Nährwert- und Quellenbelege vor dem Rezeptimport', 
       resolve(E12A_DIR, 'recipes-ext.json'),
     );
 
-    const existingRecipeFolders = readdirSync(resolve(CONTENT_DIR, 'recipes'), {
+    const allRecipeFolders = readdirSync(resolve(CONTENT_DIR, 'recipes'), {
       withFileTypes: true,
     })
       .filter((entry) => entry.isDirectory())
       .map((entry) => entry.name)
       .sort();
 
-    expect(mainFoods.foods).toHaveLength(55);
-    expect(existingRecipeFolders).toHaveLength(5);
     expect(e12aFoods.foods).toHaveLength(144);
     expect(e12aRecipes.recipes).toHaveLength(195);
+    expect(catalogFoods.foods).toHaveLength(199);
+    expect(allRecipeFolders).toHaveLength(200);
 
-    const mainFoodIds = new Set(mainFoods.foods.map((f) => f.id));
+    const catalogFoodById = new Map(catalogFoods.foods.map((f) => [f.id, f]));
     for (const f of e12aFoods.foods) {
-      expect(mainFoodIds.has(f.id)).toBe(false);
+      expect(catalogFoodById.get(f.id)).toEqual(f);
     }
 
-    const mainRecipeIds = new Set(existingRecipeFolders);
+    const folderSet = new Set(allRecipeFolders);
     for (const r of e12aRecipes.recipes) {
-      expect(mainRecipeIds.has(r.id)).toBe(false);
+      expect(folderSet.has(r.id)).toBe(true);
     }
   });
 

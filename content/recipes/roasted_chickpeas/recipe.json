@@ -1,0 +1,86 @@
+{
+  "format": 1,
+  "id": "roasted_chickpeas",
+  "cuisine": "mediterranean",
+  "meal": "snack",
+  "minutes": 35,
+  "servings": 2,
+  "tags": [
+    "vegan"
+  ],
+  "preferenceTags": [],
+  "ingredients": [
+    {
+      "food": "chickpeas",
+      "amount": 400,
+      "unit": "g",
+      "grams": 400
+    },
+    {
+      "food": "olive_oil",
+      "amount": 2,
+      "unit": "tsp",
+      "grams": 9
+    },
+    {
+      "food": "paprika",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 2.5
+    },
+    {
+      "food": "cumin",
+      "amount": 0.5,
+      "unit": "tsp",
+      "grams": 1
+    },
+    {
+      "food": "salt",
+      "amount": 2,
+      "unit": "g",
+      "grams": 2
+    },
+    {
+      "food": "edamame",
+      "amount": 100,
+      "unit": "g",
+      "grams": 100
+    }
+  ],
+  "steps": 4,
+  "allergens": [
+    "soy"
+  ],
+  "allergensToCheck": [],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 378,
+      "fat": 12.4,
+      "satFat": 1.6,
+      "carbs": 36.6,
+      "sugars": 2.9,
+      "fiber": 19.8,
+      "protein": 20.5,
+      "salt": 1.0
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "cumin"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://themodernproper.com/crispy-roasted-chickpeas",
+      "https://food52.com/recipes/18482-crispy-roasted-chickpeas"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

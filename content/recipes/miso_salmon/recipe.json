@@ -1,0 +1,118 @@
+{
+  "format": 1,
+  "id": "miso_salmon",
+  "cuisine": "japanese",
+  "meal": "dinner",
+  "minutes": 20,
+  "servings": 2,
+  "tags": [
+    "protein"
+  ],
+  "preferenceTags": [
+    "onion"
+  ],
+  "ingredients": [
+    {
+      "food": "salmon",
+      "amount": 280,
+      "unit": "g",
+      "grams": 280
+    },
+    {
+      "food": "miso_paste",
+      "amount": 1,
+      "unit": "tbsp",
+      "grams": 17
+    },
+    {
+      "food": "honey",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 7
+    },
+    {
+      "food": "soy_sauce",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 5
+    },
+    {
+      "food": "rice_noodles",
+      "amount": 120,
+      "unit": "g",
+      "grams": 120
+    },
+    {
+      "food": "pak_choi",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 300
+    },
+    {
+      "food": "spinach",
+      "amount": 100,
+      "unit": "g",
+      "grams": 100
+    },
+    {
+      "food": "spring_onion",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 30
+    },
+    {
+      "food": "sesame_oil",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 4.5
+    },
+    {
+      "food": "sesame_seeds",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 3
+    }
+  ],
+  "steps": 5,
+  "allergens": [
+    "fish",
+    "sesame",
+    "soy"
+  ],
+  "allergensToCheck": [
+    "gluten"
+  ],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 614,
+      "fat": 27.0,
+      "satFat": 3.9,
+      "carbs": 55.7,
+      "sugars": 5.2,
+      "fiber": 3.7,
+      "protein": 37.5,
+      "salt": 1.6
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "spring_onion"
+    ],
+    "proxies": [
+      "rice_noodles"
+    ],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://www.justonecookbook.com/miso-salmon/",
+      "https://www.recipetineats.com/miso-marinated-side-of-salmon/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

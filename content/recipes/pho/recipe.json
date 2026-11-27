@@ -1,163 +1,168 @@
 {
- "format": 1,
- "id": "pho",
- "image": "pho",
- "cuisine": "vietnamese",
- "meal": "lunch",
- "minutes": 45,
- "servings": 2,
- "tags": [
-  "protein"
- ],
- "ingredients": [
-  {
-   "food": "beef_broth",
-   "amount": 1000,
-   "unit": "ml",
-   "grams": 1010
+  "format": 1,
+  "id": "pho",
+  "image": "pho",
+  "cuisine": "vietnamese",
+  "meal": "lunch",
+  "minutes": 45,
+  "servings": 2,
+  "tags": [
+    "protein"
+  ],
+  "preferenceTags": [
+    "cilantro",
+    "meat",
+    "onion"
+  ],
+  "ingredients": [
+    {
+      "food": "beef_broth",
+      "amount": 1000,
+      "unit": "ml",
+      "grams": 1010
+    },
+    {
+      "food": "onion",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 100,
+      "strained": true,
+      "noteKey": "pho.ing.onion"
+    },
+    {
+      "food": "ginger",
+      "amount": 30,
+      "unit": "g",
+      "grams": 30,
+      "strained": true,
+      "noteKey": "pho.ing.ginger"
+    },
+    {
+      "food": "star_anise",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 1,
+      "strained": true
+    },
+    {
+      "food": "cinnamon_stick",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 3,
+      "strained": true
+    },
+    {
+      "food": "cloves",
+      "amount": 3,
+      "unit": "pc",
+      "grams": 0.3,
+      "strained": true
+    },
+    {
+      "food": "fish_sauce",
+      "amount": 1,
+      "unit": "tbsp",
+      "grams": 15
+    },
+    {
+      "food": "sugar",
+      "amount": 5,
+      "unit": "g",
+      "grams": 5,
+      "noteKey": "pho.ing.sugar"
+    },
+    {
+      "food": "rice_noodles",
+      "amount": 160,
+      "unit": "g",
+      "grams": 160,
+      "noteKey": "pho.ing.rice_noodles"
+    },
+    {
+      "food": "beef_sirloin",
+      "amount": 200,
+      "unit": "g",
+      "grams": 200,
+      "noteKey": "pho.ing.beef_sirloin"
+    },
+    {
+      "food": "bean_sprouts",
+      "amount": 100,
+      "unit": "g",
+      "grams": 100
+    },
+    {
+      "food": "spring_onion",
+      "amount": 30,
+      "unit": "g",
+      "grams": 30,
+      "noteKey": "pho.ing.spring_onion"
+    },
+    {
+      "food": "coriander_fresh",
+      "amount": 10,
+      "unit": "g",
+      "grams": 10
+    },
+    {
+      "food": "thai_basil",
+      "amount": 10,
+      "unit": "g",
+      "grams": 10
+    },
+    {
+      "food": "lime",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 30,
+      "noteKey": "pho.ing.lime"
+    }
+  ],
+  "steps": 6,
+  "allergens": [
+    "fish"
+  ],
+  "allergensToCheck": [
+    "celery"
+  ],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 452,
+      "fat": 6.8,
+      "satFat": 3.2,
+      "carbs": 66.2,
+      "sugars": 2.9,
+      "fiber": 1,
+      "protein": 30.8,
+      "salt": 5.7
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "bean_sprouts",
+      "beef_broth:fiber",
+      "coriander_fresh",
+      "fish_sauce",
+      "lime",
+      "spring_onion"
+    ],
+    "proxies": [
+      "rice_noodles",
+      "thai_basil"
+    ],
+    "basis": "CH-NWD 7.1, pro 100 g essbarer Anteil, roh; Garverluste nicht berücksichtigt"
   },
-  {
-   "food": "onion",
-   "amount": 1,
-   "unit": "pc",
-   "grams": 100,
-   "strained": true,
-   "noteKey": "pho.ing.onion"
-  },
-  {
-   "food": "ginger",
-   "amount": 30,
-   "unit": "g",
-   "grams": 30,
-   "strained": true,
-   "noteKey": "pho.ing.ginger"
-  },
-  {
-   "food": "star_anise",
-   "amount": 2,
-   "unit": "pc",
-   "grams": 1,
-   "strained": true
-  },
-  {
-   "food": "cinnamon_stick",
-   "amount": 1,
-   "unit": "pc",
-   "grams": 3,
-   "strained": true
-  },
-  {
-   "food": "cloves",
-   "amount": 3,
-   "unit": "pc",
-   "grams": 0.3,
-   "strained": true
-  },
-  {
-   "food": "fish_sauce",
-   "amount": 1,
-   "unit": "tbsp",
-   "grams": 15
-  },
-  {
-   "food": "sugar",
-   "amount": 5,
-   "unit": "g",
-   "grams": 5,
-   "noteKey": "pho.ing.sugar"
-  },
-  {
-   "food": "rice_noodles",
-   "amount": 160,
-   "unit": "g",
-   "grams": 160,
-   "noteKey": "pho.ing.rice_noodles"
-  },
-  {
-   "food": "beef_sirloin",
-   "amount": 200,
-   "unit": "g",
-   "grams": 200,
-   "noteKey": "pho.ing.beef_sirloin"
-  },
-  {
-   "food": "bean_sprouts",
-   "amount": 100,
-   "unit": "g",
-   "grams": 100
-  },
-  {
-   "food": "spring_onion",
-   "amount": 30,
-   "unit": "g",
-   "grams": 30,
-   "noteKey": "pho.ing.spring_onion"
-  },
-  {
-   "food": "coriander_fresh",
-   "amount": 10,
-   "unit": "g",
-   "grams": 10
-  },
-  {
-   "food": "thai_basil",
-   "amount": 10,
-   "unit": "g",
-   "grams": 10
-  },
-  {
-   "food": "lime",
-   "amount": 1,
-   "unit": "pc",
-   "grams": 30,
-   "noteKey": "pho.ing.lime"
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-15",
+    "by": "Master Bot (Abgleich von Zutaten und Mengenverhältnissen, keine Texte übernommen)",
+    "sources": [
+      "https://www.unitednoodles.com/recipes/pho/",
+      "https://www.onceuponachef.com/recipes/quick-beef-pho.html",
+      "https://www.foodnetwork.com/recipes/quick-beef-pho-7112948"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
   }
- ],
- "steps": 6,
- "allergens": [
-  "fish"
- ],
- "allergensToCheck": [
-  "celery"
- ],
- "nutritionPerServing": {
-  "values": {
-   "kcal": 452,
-   "fat": 6.8,
-   "satFat": 3.2,
-   "carbs": 66.2,
-   "sugars": 2.9,
-   "fiber": 1,
-   "protein": 30.8,
-   "salt": 5.7
-  },
-  "isMinimum": true,
-  "notIncluded": [
-   "bean_sprouts",
-   "beef_broth:fiber",
-   "coriander_fresh",
-   "fish_sauce",
-   "lime",
-   "spring_onion"
-  ],
-  "proxies": [
-   "rice_noodles",
-   "thai_basil"
-  ],
-  "basis": "CH-NWD 7.1, pro 100 g essbarer Anteil, roh; Garverluste nicht berücksichtigt"
- },
- "review": {
-  "status": "zu_pruefen",
-  "checkedAt": "2026-11-15",
-  "by": "Master Bot (Abgleich von Zutaten und Mengenverhältnissen, keine Texte übernommen)",
-  "sources": [
-   "https://www.unitednoodles.com/recipes/pho/",
-   "https://www.onceuponachef.com/recipes/quick-beef-pho.html",
-   "https://www.foodnetwork.com/recipes/quick-beef-pho-7112948"
-  ],
-  "open": [
-   "Probekochen durch einen Menschen",
-   "Nährwerte gegenlesen"
-  ]
- }
 }

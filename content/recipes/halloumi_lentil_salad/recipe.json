@@ -1,0 +1,112 @@
+{
+  "format": 1,
+  "id": "halloumi_lentil_salad",
+  "cuisine": "mediterranean",
+  "meal": "lunch",
+  "minutes": 25,
+  "servings": 2,
+  "tags": [
+    "vegetarian"
+  ],
+  "preferenceTags": [
+    "onion"
+  ],
+  "ingredients": [
+    {
+      "food": "green_lentils",
+      "amount": 120,
+      "unit": "g",
+      "grams": 120
+    },
+    {
+      "food": "halloumi",
+      "amount": 120,
+      "unit": "g",
+      "grams": 120
+    },
+    {
+      "food": "zucchini",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 200
+    },
+    {
+      "food": "red_bell_pepper",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 150
+    },
+    {
+      "food": "red_onion",
+      "amount": 0.5,
+      "unit": "pc",
+      "grams": 50
+    },
+    {
+      "food": "rocket",
+      "amount": 40,
+      "unit": "g",
+      "grams": 40
+    },
+    {
+      "food": "lemon",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 40
+    },
+    {
+      "food": "olive_oil",
+      "amount": 1,
+      "unit": "tbsp",
+      "grams": 13.5
+    },
+    {
+      "food": "mint_fresh",
+      "amount": 5,
+      "unit": "g",
+      "grams": 5
+    },
+    {
+      "food": "salt",
+      "amount": 1,
+      "unit": "g",
+      "grams": 1
+    }
+  ],
+  "steps": 4,
+  "allergens": [
+    "milk"
+  ],
+  "allergensToCheck": [],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 310,
+      "fat": 8.4,
+      "satFat": 1.1,
+      "carbs": 31.8,
+      "sugars": 8.3,
+      "fiber": 17.6,
+      "protein": 17.8,
+      "salt": 0.5
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "halloumi"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://www.sainsburys.co.uk/gol-ui/recipes/lemony-lentil-salad-with-griddled-halloumi",
+      "https://simplebites.net/mediterranean-lentil-salad-with-halloumi/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

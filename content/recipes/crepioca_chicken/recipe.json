@@ -1,0 +1,99 @@
+{
+  "format": 1,
+  "id": "crepioca_chicken",
+  "cuisine": "brazilian",
+  "meal": "breakfast",
+  "minutes": 15,
+  "servings": 1,
+  "tags": [
+    "protein"
+  ],
+  "preferenceTags": [
+    "meat"
+  ],
+  "ingredients": [
+    {
+      "food": "eggs",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 100
+    },
+    {
+      "food": "tapioca_starch",
+      "amount": 20,
+      "unit": "g",
+      "grams": 20
+    },
+    {
+      "food": "chicken_breast",
+      "amount": 80,
+      "unit": "g",
+      "grams": 80
+    },
+    {
+      "food": "tomato",
+      "amount": 0.5,
+      "unit": "pc",
+      "grams": 60
+    },
+    {
+      "food": "cream_cheese_light",
+      "amount": 20,
+      "unit": "g",
+      "grams": 20
+    },
+    {
+      "food": "oregano_dried",
+      "amount": 0.5,
+      "unit": "tsp",
+      "grams": 0.5
+    },
+    {
+      "food": "rapeseed_oil",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 4.5
+    },
+    {
+      "food": "salt",
+      "amount": 1,
+      "unit": "g",
+      "grams": 1
+    }
+  ],
+  "steps": 4,
+  "allergens": [
+    "eggs",
+    "milk"
+  ],
+  "allergensToCheck": [],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 393,
+      "fat": 18.6,
+      "satFat": 5.2,
+      "carbs": 21.7,
+      "sugars": 3.6,
+      "fiber": 1.1,
+      "protein": 34.5,
+      "salt": 1.6
+    },
+    "isMinimum": false,
+    "notIncluded": [],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://www.drbotezelli.com/recipes/tapioca-crepioca-with-chicken/",
+      "https://berryfit.ai/recipes/brazilian-tapioca"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

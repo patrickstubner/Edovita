@@ -1,12 +1,14 @@
 import {
   RECIPES,
   RECIPE_LOCALES,
+  RECIPE_TITLES,
 } from '../../content/generated/catalog-index.ts';
 import {
   asRecipeId,
   type DietaryPref,
   type LangCode,
   type Meal,
+  type PreferenceTag,
   type Recipe,
   type RecipeId,
   type RecipeLocaleText,
@@ -26,6 +28,8 @@ export interface RecipeFilter {
   savedOnly?: boolean;
   savedIds?: Readonly<Record<string, boolean>> | ReadonlySet<string>;
   prefs?: Readonly<Partial<Record<DietaryPref, boolean>>>;
+  /** Vorlieben-Tags, die Rezepte ausschliessen (`cilantro`, `mushrooms`, `onion`, `meat`; E12). */
+  excludePreferences?: readonly PreferenceTag[];
   tag?: string;
 }
 
@@ -62,6 +66,31 @@ export function getRecipeText(
   return byLang[lang];
 }
 
+/**
+ * Liefert den lokalisierten Rezepttitel in allen 7 unterstützten Sprachen (E12),
+ * streng über eigene Schlüssel (`Object.hasOwn`) ohne stillen Englisch-Fallback (F2).
+ */
+export function getRecipeTitle(
+  id: RecipeId | string,
+  lang: LangCode,
+): string | undefined {
+  if (typeof id !== 'string' || typeof lang !== 'string') {
+    return undefined;
+  }
+  const full = getRecipeText(id, lang);
+  if (full) {
+    return full.title;
+  }
+  if (!Object.hasOwn(RECIPE_TITLES, lang)) {
+    return undefined;
+  }
+  const byId = RECIPE_TITLES[lang];
+  if (!byId || !Object.hasOwn(byId, id)) {
+    return undefined;
+  }
+  return byId[id];
+}
+
 export function isRecipeAllowed(
   recipe: Recipe,
   prefs?: Readonly<Partial<Record<DietaryPref, boolean>>>,
@@ -79,12 +108,16 @@ export function isRecipeAllowed(
 
 /**
  * Filtert den Rezeptkatalog nach Mahlzeit, Eigenschaften (schnell <= 15 min,
- * proteinreich >= 30 g, gemerkt), Tag und Vorlieben (wie Prototyp `rlist`).
+ * proteinreich >= 30 g, gemerkt), Vorlieben-Ausschluss, Tag und Ernährungsprofil (wie Prototyp `rlist`).
  */
 export function listRecipes(filter?: RecipeFilter): Recipe[] {
   if (!filter) {
     return [...RECIPES];
   }
+  const excludedPrefs =
+    filter.excludePreferences && filter.excludePreferences.length > 0
+      ? new Set<PreferenceTag>(filter.excludePreferences)
+      : null;
   return RECIPES.filter((recipe) => {
     if (filter.meal && filter.meal !== 'all' && recipe.meal !== filter.meal) {
       return false;
@@ -99,6 +132,12 @@ export function listRecipes(filter?: RecipeFilter): Recipe[] {
       return false;
     }
     if (filter.tag && !recipe.tags.includes(filter.tag)) {
+      return false;
+    }
+    if (
+      excludedPrefs &&
+      recipe.preferenceTags?.some((pref) => excludedPrefs.has(pref))
+    ) {
       return false;
     }
     if (filter.prefs && !isRecipeAllowed(recipe, filter.prefs)) {

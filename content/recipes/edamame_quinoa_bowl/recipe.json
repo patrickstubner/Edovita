@@ -1,0 +1,128 @@
+{
+  "format": 1,
+  "id": "edamame_quinoa_bowl",
+  "cuisine": "japanese",
+  "meal": "lunch",
+  "minutes": 20,
+  "servings": 2,
+  "tags": [
+    "vegan",
+    "protein"
+  ],
+  "preferenceTags": [],
+  "ingredients": [
+    {
+      "food": "quinoa",
+      "amount": 120,
+      "unit": "g",
+      "grams": 120
+    },
+    {
+      "food": "edamame",
+      "amount": 200,
+      "unit": "g",
+      "grams": 200
+    },
+    {
+      "food": "tofu_firm",
+      "amount": 150,
+      "unit": "g",
+      "grams": 150
+    },
+    {
+      "food": "carrot",
+      "amount": 1,
+      "unit": "pc",
+      "grams": 80
+    },
+    {
+      "food": "red_cabbage",
+      "amount": 100,
+      "unit": "g",
+      "grams": 100
+    },
+    {
+      "food": "avocado",
+      "amount": 0.5,
+      "unit": "pc",
+      "grams": 70
+    },
+    {
+      "food": "miso_paste",
+      "amount": 1,
+      "unit": "tbsp",
+      "grams": 17
+    },
+    {
+      "food": "rice_vinegar",
+      "amount": 1,
+      "unit": "tbsp",
+      "grams": 15
+    },
+    {
+      "food": "maple_syrup",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 7
+    },
+    {
+      "food": "sesame_oil",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 4.5
+    },
+    {
+      "food": "ginger",
+      "amount": 5,
+      "unit": "g",
+      "grams": 5
+    },
+    {
+      "food": "sesame_seeds",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 3
+    }
+  ],
+  "steps": 4,
+  "allergens": [
+    "sesame",
+    "soy"
+  ],
+  "allergensToCheck": [
+    "gluten"
+  ],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 616,
+      "fat": 26.9,
+      "satFat": 3.8,
+      "carbs": 52.5,
+      "sugars": 11.1,
+      "fiber": 15.5,
+      "protein": 33.3,
+      "salt": 0.9
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "tofu_firm:fiber"
+    ],
+    "proxies": [
+      "rice_vinegar"
+    ],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://www.twopeasandtheirpod.com/quinoa-salad-with-edamame-cucumber-and-avocado/",
+      "https://www.walderwellness.com/quinoa-edamame-salad-with-miso-dressing/"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

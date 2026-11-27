@@ -1,0 +1,124 @@
+{
+  "format": 1,
+  "id": "larb_gai",
+  "cuisine": "thai",
+  "meal": "lunch",
+  "minutes": 20,
+  "servings": 2,
+  "tags": [
+    "protein"
+  ],
+  "preferenceTags": [
+    "cilantro",
+    "meat",
+    "onion"
+  ],
+  "ingredients": [
+    {
+      "food": "chicken_breast",
+      "amount": 320,
+      "unit": "g",
+      "grams": 320
+    },
+    {
+      "food": "shallot",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 60
+    },
+    {
+      "food": "spring_onion",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 30
+    },
+    {
+      "food": "mint_fresh",
+      "amount": 15,
+      "unit": "g",
+      "grams": 15
+    },
+    {
+      "food": "coriander_fresh",
+      "amount": 10,
+      "unit": "g",
+      "grams": 10
+    },
+    {
+      "food": "lime",
+      "amount": 2,
+      "unit": "pc",
+      "grams": 60
+    },
+    {
+      "food": "fish_sauce",
+      "amount": 1,
+      "unit": "tbsp",
+      "grams": 15
+    },
+    {
+      "food": "chili_flakes",
+      "amount": 1,
+      "unit": "pinch",
+      "grams": 0.3
+    },
+    {
+      "food": "jasmine_rice",
+      "amount": 100,
+      "unit": "g",
+      "grams": 100
+    },
+    {
+      "food": "lettuce",
+      "amount": 0.5,
+      "unit": "pc",
+      "grams": 150
+    },
+    {
+      "food": "cucumber",
+      "amount": 0.5,
+      "unit": "pc",
+      "grams": 150
+    }
+  ],
+  "steps": 4,
+  "allergens": [
+    "fish"
+  ],
+  "allergensToCheck": [],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 392,
+      "fat": 2.4,
+      "satFat": 0.7,
+      "carbs": 45.3,
+      "sugars": 3.4,
+      "fiber": 3.1,
+      "protein": 45.4,
+      "salt": 0.2
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "coriander_fresh",
+      "fish_sauce",
+      "lime",
+      "shallot:fat",
+      "spring_onion"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://hot-thai-kitchen.com/laab-gai/",
+      "https://www.bbcgoodfood.com/recipes/thai-minced-chicken-salad"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "format": 1,
+  "id": "skagen_toast",
+  "cuisine": "nordic",
+  "meal": "lunch",
+  "minutes": 15,
+  "servings": 2,
+  "tags": [
+    "protein"
+  ],
+  "preferenceTags": [
+    "onion"
+  ],
+  "ingredients": [
+    {
+      "food": "shrimp",
+      "amount": 300,
+      "unit": "g",
+      "grams": 300
+    },
+    {
+      "food": "greek_yogurt",
+      "amount": 100,
+      "unit": "g",
+      "grams": 100
+    },
+    {
+      "food": "dijon_mustard",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 5
+    },
+    {
+      "food": "red_onion",
+      "amount": 0.25,
+      "unit": "pc",
+      "grams": 25
+    },
+    {
+      "food": "dill",
+      "amount": 10,
+      "unit": "g",
+      "grams": 10
+    },
+    {
+      "food": "lemon",
+      "amount": 0.5,
+      "unit": "pc",
+      "grams": 20
+    },
+    {
+      "food": "bread",
+      "amount": 120,
+      "unit": "g",
+      "grams": 120
+    },
+    {
+      "food": "lettuce",
+      "amount": 0.2,
+      "unit": "pc",
+      "grams": 60
+    },
+    {
+      "food": "butter",
+      "amount": 1,
+      "unit": "tsp",
+      "grams": 5
+    },
+    {
+      "food": "salt",
+      "amount": 1,
+      "unit": "g",
+      "grams": 1
+    }
+  ],
+  "steps": 4,
+  "allergens": [
+    "crustaceans",
+    "gluten",
+    "milk",
+    "mustard"
+  ],
+  "allergensToCheck": [
+    "sulphites"
+  ],
+  "nutritionPerServing": {
+    "values": {
+      "kcal": 324,
+      "fat": 5.4,
+      "satFat": 2.3,
+      "carbs": 30.4,
+      "sugars": 3.2,
+      "fiber": 3.5,
+      "protein": 36.5,
+      "salt": 2.8
+    },
+    "isMinimum": true,
+    "notIncluded": [
+      "dill:sugars"
+    ],
+    "proxies": [],
+    "basis": "CH-NWD 7.1 / USDA SR Legacy 2018-04, pro 100 g essbarer Anteil, roh bzw. trocken; Garverluste nicht berücksichtigt"
+  },
+  "review": {
+    "status": "zu_pruefen",
+    "checkedAt": "2026-11-25",
+    "by": "Inhaltsprüfung E12a (Abgleich von Zutaten, Mengenverhältnissen und Nährwert-Belegen; keine Texte übernommen)",
+    "sources": [
+      "https://theeuropeandish.com/creamy-swedish-shrimp-salad-skagenrora/",
+      "https://recipheon.com/en/recipes/snacks/toast-skagen-swedish-toast-with-creamy-shrimp-and-dill"
+    ],
+    "open": [
+      "Probekochen durch einen Menschen",
+      "Nährwerte gegenlesen"
+    ]
+  }
+}
