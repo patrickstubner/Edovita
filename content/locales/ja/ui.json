@@ -305,5 +305,8 @@
   "pref.d_onion": "玉ねぎ",
   "pref.d_meat": "肉",
   "plan.pick.search": "レシピを検索…",
-  "plan.pick.empty": "該当するレシピが見つかりません。"
+  "plan.pick.empty": "該当するレシピが見つかりません。",
+  "pwa.update.message": "Edovitaの新しいバージョンが利用できます。",
+  "pwa.update.action": "今すぐ更新",
+  "pwa.update.dismiss": "更新のお知らせを閉じる"
 }

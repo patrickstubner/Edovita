@@ -80,3 +80,4 @@ export {
   type TabBarProps,
 } from './TabBar.tsx';
 export { Toast, type ToastProps } from './Toast.tsx';
+export { UpdateBanner, type UpdateBannerProps } from './UpdateBanner.tsx';

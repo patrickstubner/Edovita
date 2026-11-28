@@ -4,9 +4,12 @@ import { resolve } from 'node:path';
 import { defineConfig, type RsbuildPlugin } from '@rsbuild/core';
 import { pluginReact } from '@rsbuild/plugin-react';
 import {
-  buildCacheName,
+  SHELL_PRECACHE_STATIC_FILES,
+  buildCacheNames,
   buildWebManifest,
   filterAppShellPaths,
+  filterRecipeThumbPaths,
+  generateKillSwitchServiceWorkerScript,
   generateServiceWorkerScript,
 } from './src/pwa/index.ts';
 
@@ -87,15 +90,20 @@ function loadAppVersion(): string {
 }
 
 /**
- * Emits `manifest.webmanifest` and the E7a app-shell-only `sw.js` with a
- * deterministic versioned cache name derived from the emitted HTML/JS/CSS shell.
+ * Emits `manifest.webmanifest` and the E7b offline `sw.js` with deterministic
+ * versioned cache names covering the app shell (HTML/JS/CSS, manifest, icons,
+ * logos) and recipe thumbnails, plus a bounded runtime full-image cache.
+ * Set `PWA_KILL_SWITCH=true` to emit the self-unregistering kill-switch worker.
  */
 function pluginPwaShell(basePath: string): RsbuildPlugin {
   const appVersion = loadAppVersion();
-  const themeInitContent = readFileSync(
-    resolve(import.meta.dirname, 'public/theme-init.js'),
-    'utf8',
-  );
+  const killSwitchEnabled = process.env.PWA_KILL_SWITCH === 'true';
+  const publicStaticBuffers = SHELL_PRECACHE_STATIC_FILES.filter(
+    (file) => file !== 'manifest.webmanifest',
+  ).map((file) => ({
+    file,
+    content: readFileSync(resolve(import.meta.dirname, 'public', file)),
+  }));
 
   return {
     name: 'edovita-pwa-shell',
@@ -113,39 +121,60 @@ function pluginPwaShell(basePath: string): RsbuildPlugin {
             new sources.RawSource(manifestJson),
           );
 
-          const candidates = [
+          if (killSwitchEnabled) {
+            compilation.emitAsset(
+              'sw.js',
+              new sources.RawSource(generateKillSwitchServiceWorkerScript()),
+            );
+            return;
+          }
+
+          const emittedAssetPaths = Object.keys(assets).map(
+            (assetName) => `${basePath}${assetName.replace(/^\/+/, '')}`,
+          );
+          const shellCandidates = [
             basePath,
             `${basePath}index.html`,
-            `${basePath}theme-init.js`,
-            ...Object.keys(assets).map(
-              (assetName) => `${basePath}${assetName.replace(/^\/+/, '')}`,
-            ),
+            ...SHELL_PRECACHE_STATIC_FILES.map((file) => `${basePath}${file}`),
+            ...emittedAssetPaths,
           ];
-          const shellPaths = filterAppShellPaths(candidates, basePath);
+          const shellPaths = filterAppShellPaths(shellCandidates, basePath);
+          const thumbPaths = filterRecipeThumbPaths(
+            emittedAssetPaths,
+            basePath,
+          );
 
           const hash = createHash('sha256');
           hash.update(appVersion);
           hash.update('\n');
           hash.update(basePath);
           hash.update('\n');
-          hash.update(themeInitContent);
-          for (const shellPath of shellPaths) {
+          hash.update(manifestJson);
+          for (const entry of publicStaticBuffers) {
             hash.update('\n');
-            hash.update(shellPath);
-            const rel = shellPath.slice(basePath.length);
+            hash.update(entry.file);
+            hash.update(':');
+            hash.update(entry.content);
+          }
+          for (const precachePath of [...shellPaths, ...thumbPaths]) {
+            hash.update('\n');
+            hash.update(precachePath);
+            const rel = precachePath.slice(basePath.length);
             const asset = rel ? assets[rel] : undefined;
             if (asset) {
               hash.update(':');
-              hash.update(String(asset.source()));
+              const src = asset.source();
+              hash.update(typeof src === 'string' ? src : Buffer.from(src));
             }
           }
           const buildHash = hash.digest('hex').slice(0, 12);
-          const cacheName = buildCacheName(appVersion, buildHash);
+          const cacheNames = buildCacheNames(appVersion, buildHash);
 
           const swSource = generateServiceWorkerScript({
-            cacheName,
+            cacheNames,
             basePath,
             shellPaths,
+            thumbPaths,
           });
           compilation.emitAsset('sw.js', new sources.RawSource(swSource));
         },

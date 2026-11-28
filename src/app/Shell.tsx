@@ -14,12 +14,17 @@ import {
   SecondLangSwitcher,
   TabBar,
   Toast,
+  UpdateBanner,
   type LangSwitcherOption,
   type SecondLangOptionValue,
   type SecondLangSwitcherOption,
   type TabBarItem,
 } from '../components/index.ts';
 import { useI18n, useSecondLang } from '../hooks/index.ts';
+import {
+  defaultPwaUpdateController,
+  type PwaUpdateState,
+} from '../pwa/index.ts';
 import {
   VISIBLE_NAV_TABS,
   resolveActiveNavTab,
@@ -64,7 +69,12 @@ export function Shell() {
 
   const [activeMenu, setActiveMenu] = useState<OpenHeaderMenu>(null);
   const [sameToast, setSameToast] = useState<string | null>(null);
+  const [pwaUpdate, setPwaUpdate] = useState<PwaUpdateState>(() =>
+    defaultPwaUpdateController.getState(),
+  );
   const toastTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => defaultPwaUpdateController.subscribe(setPwaUpdate), []);
 
   useEffect(
     () => () => {
@@ -248,6 +258,15 @@ export function Shell() {
         </div>
       ) : null}
       <Outlet />
+      <UpdateBanner
+        visible={pwaUpdate.updateAvailable}
+        message={t('pwa.update.message')}
+        actionLabel={t('pwa.update.action')}
+        dismissLabel={t('pwa.update.dismiss')}
+        disabled={pwaUpdate.isReloading}
+        onUpdate={() => defaultPwaUpdateController.applyUpdate()}
+        onDismiss={() => defaultPwaUpdateController.dismissUpdate()}
+      />
       <TabBar
         items={tabItems}
         activeId={activeNavTab}

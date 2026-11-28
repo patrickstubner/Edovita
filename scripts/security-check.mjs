@@ -31,10 +31,35 @@ function walkFiles(dir, allowedExts) {
   return result;
 }
 
-function headerValue(headersText, name) {
-  const re = new RegExp(`^\\s*${name}\\s*:\\s*(.+)$`, 'im');
-  const match = headersText.match(re);
-  return match ? match[1].trim() : '';
+function parseHeaderBlocks(headersText) {
+  const blocks = new Map();
+  let currentPath = null;
+  for (const line of headersText.split(/\r?\n/)) {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith('#')) {
+      continue;
+    }
+    if (!trimmed.includes(':')) {
+      currentPath = trimmed;
+      if (!blocks.has(currentPath)) {
+        blocks.set(currentPath, new Map());
+      }
+      continue;
+    }
+    if (!currentPath) {
+      continue;
+    }
+    const sep = trimmed.indexOf(':');
+    if (sep <= 0) {
+      continue;
+    }
+    const name = trimmed.slice(0, sep).trim().toLowerCase();
+    const value = trimmed.slice(sep + 1).trim();
+    if (name && value) {
+      blocks.get(currentPath).set(name, value);
+    }
+  }
+  return blocks;
 }
 
 function cspForMeta(csp) {
@@ -86,37 +111,51 @@ for (const file of codeFiles) {
   }
 }
 
-// 2. CSP in public/_headers prüfen
+// 2. Validate CSP and per-path header blocks in public/_headers (L1: per-path parsing)
 const headersPath = resolve(ROOT, 'public/_headers');
 let headersCsp = '';
 if (!existsSync(headersPath)) {
-  errors.push('public/_headers fehlt.');
+  errors.push('public/_headers is missing.');
 } else {
-  const headers = readFileSync(headersPath, 'utf8');
-  headersCsp = headerValue(headers, 'Content-Security-Policy');
-  if (!headersCsp) {
-    errors.push('Content-Security-Policy fehlt in public/_headers.');
+  const headersRaw = readFileSync(headersPath, 'utf8');
+  const headerBlocks = parseHeaderBlocks(headersRaw);
+  const defaultBlock = headerBlocks.get('/*');
+  if (!defaultBlock) {
+    errors.push('public/_headers must define a /* default header block.');
+  } else {
+    headersCsp = defaultBlock.get('content-security-policy') ?? '';
+    if (!headersCsp) {
+      errors.push('Content-Security-Policy is missing in the /* block of public/_headers.');
+    }
+    if (headersCsp.includes('unsafe-inline') || headersCsp.includes('unsafe-eval')) {
+      errors.push('CSP in public/_headers must not contain unsafe-inline or unsafe-eval.');
+    }
+    if (!headersCsp.includes("connect-src 'self'")) {
+      errors.push("CSP in public/_headers must include connect-src 'self'.");
+    }
+    if (!headersCsp.includes("worker-src 'self'")) {
+      errors.push("CSP in public/_headers must include worker-src 'self'.");
+    }
+    if (!headersCsp.includes("manifest-src 'self'")) {
+      errors.push("CSP in public/_headers must include manifest-src 'self'.");
+    }
+    if (!headersCsp.includes("frame-ancestors 'none'")) {
+      errors.push("CSP in public/_headers must include frame-ancestors 'none'.");
+    }
+    const robots = defaultBlock.get('x-robots-tag') ?? '';
+    if (robots !== 'noindex, nofollow, noarchive') {
+      errors.push('public/_headers must include X-Robots-Tag: noindex, nofollow, noarchive in the /* block.');
+    }
   }
-  if (headers.includes('unsafe-inline') || headers.includes('unsafe-eval')) {
-    errors.push('CSP in public/_headers darf kein unsafe-inline oder unsafe-eval enthalten.');
-  }
-  if (!headers.includes("connect-src 'self'")) {
-    errors.push("CSP in public/_headers muss connect-src 'self' enthalten.");
-  }
-  if (!headers.includes("worker-src 'self'")) {
-    errors.push("CSP in public/_headers must include worker-src 'self'.");
-  }
-  if (!headers.includes("manifest-src 'self'")) {
-    errors.push("CSP in public/_headers must include manifest-src 'self'.");
-  }
-  if (!headers.includes("frame-ancestors 'none'")) {
-    errors.push("CSP in public/_headers muss frame-ancestors 'none' enthalten.");
-  }
-  if (!headers.includes('X-Robots-Tag: noindex, nofollow, noarchive')) {
-    errors.push('public/_headers muss X-Robots-Tag: noindex, nofollow, noarchive enthalten.');
-  }
-  if (!/^\s*\/sw\.js\s*$/m.test(headers) || !/Cache-Control:\s*no-cache/i.test(headers)) {
-    errors.push('public/_headers must configure Cache-Control: no-cache for /sw.js.');
+
+  for (const swPath of ['/sw.js', '/Edovita/sw.js']) {
+    const block = headerBlocks.get(swPath);
+    const cacheControl = block?.get('cache-control') ?? '';
+    if (!block || !/\bno-cache\b/i.test(cacheControl)) {
+      errors.push(
+        `public/_headers must configure Cache-Control: no-cache in the "${swPath}" path block.`,
+      );
+    }
   }
 }
 
@@ -265,10 +304,10 @@ if (existsSync(distIndex)) {
     }
   }
 
-  // 3c. Validate emitted app-shell-only service worker (E7a)
+  // 3c. Validate emitted offline service worker (E7b)
   const distSw = resolve(DIST_DIR, 'sw.js');
   if (!existsSync(distSw)) {
-    errors.push(`${distSw} is missing (E7a service worker required).`);
+    errors.push(`${distSw} is missing (E7b service worker required).`);
   } else {
     const swSrc = readFileSync(distSw, 'utf8');
     for (const sink of FORBIDDEN_SINKS) {
@@ -279,32 +318,133 @@ if (existsSync(distIndex)) {
     if (/\bimportScripts\s*\(/.test(swSrc)) {
       errors.push(`importScripts() is forbidden in ${distSw}.`);
     }
-    if (/\bcache\.put\s*\(/.test(swSrc)) {
-      errors.push(`E7a service worker must not call cache.put() at runtime in ${distSw}.`);
+    if (!/var SHELL_CACHE_NAME = "edovita-shell-v[0-9A-Za-z._-]+-[0-9a-f]{12}";/.test(swSrc)) {
+      errors.push(`${distSw} must define a versioned edovita-shell-* SHELL_CACHE_NAME.`);
     }
-    if (!/var CACHE_NAME = "edovita-shell-v[0-9A-Za-z._-]+-[0-9a-f]{12}";/.test(swSrc)) {
-      errors.push(`${distSw} must define a versioned edovita-shell-* CACHE_NAME.`);
+    if (!/var THUMBS_CACHE_NAME = "edovita-thumbs-v[0-9A-Za-z._-]+-[0-9a-f]{12}";/.test(swSrc)) {
+      errors.push(`${distSw} must define a versioned edovita-thumbs-* THUMBS_CACHE_NAME.`);
     }
-    const pathsMatch = swSrc.match(/var SHELL_PATHS = (\[[\s\S]*?\]);/);
-    if (!pathsMatch) {
+    if (!/var IMAGES_CACHE_NAME = "edovita-images-v[0-9A-Za-z._-]+-[0-9a-f]{12}";/.test(swSrc)) {
+      errors.push(`${distSw} must define a versioned edovita-images-* IMAGES_CACHE_NAME.`);
+    }
+    const maxMatch = swSrc.match(/var MAX_RUNTIME_IMAGE_ENTRIES = (\d+);/);
+    const maxEntries = maxMatch ? Number(maxMatch[1]) : 0;
+    if (!maxMatch || !Number.isInteger(maxEntries) || maxEntries < 1 || maxEntries > 120) {
+      errors.push(`${distSw} must bound MAX_RUNTIME_IMAGE_ENTRIES to an integer in 1..120.`);
+    }
+    const putMatches = swSrc.match(/\bcache\s*\.\s*put\s*\(/g) ?? [];
+    if (putMatches.length !== 1 || !swSrc.includes('enforceBoundedImageCache')) {
+      errors.push(
+        `${distSw} must call cache.put() only in the bounded full-size image runtime cache handler.`,
+      );
+    }
+    const installBlock = swSrc.match(
+      /self\.addEventListener\('install'[\s\S]*?\n\}\);/,
+    );
+    if (!installBlock || /\bskipWaiting\s*\(/.test(installBlock[0])) {
+      errors.push(
+        `${distSw} must not call skipWaiting() automatically inside the install listener.`,
+      );
+    }
+    if (
+      !swSrc.includes('isValidSkipWaitingMessage') ||
+      !swSrc.includes("data.type === 'SKIP_WAITING'") ||
+      !swSrc.includes('event.source.url.indexOf(scope) !== 0')
+    ) {
+      errors.push(
+        `${distSw} must gate skipWaiting() behind a scope-verified exact {type:'SKIP_WAITING'} message.`,
+      );
+    }
+    if (!swSrc.includes("new Request(url, { cache: 'reload' })")) {
+      errors.push(
+        `${distSw} must precache entries with new Request(url, { cache: 'reload' }) to bypass stale HTTP cache.`,
+      );
+    }
+    if (
+      !swSrc.includes("response.type !== 'basic'") ||
+      !swSrc.includes("contentType.toLowerCase().indexOf('image/webp') !== 0")
+    ) {
+      errors.push(
+        `${distSw} must enforce fail-closed response.type === 'basic' and image/webp Content-Type before caching full images.`,
+      );
+    }
+
+    const shellMatch = swSrc.match(/var SHELL_PATHS = (\[[\s\S]*?\]);/);
+    if (!shellMatch) {
       errors.push(`${distSw} must define SHELL_PATHS.`);
     } else {
       try {
-        const shellPaths = JSON.parse(pathsMatch[1]);
-        if (!Array.isArray(shellPaths) || shellPaths.length < 4) {
-          errors.push(`${distSw} SHELL_PATHS must contain the built HTML/JS/CSS app shell.`);
+        const shellPaths = JSON.parse(shellMatch[1]);
+        if (!Array.isArray(shellPaths) || shellPaths.length < 10) {
+          errors.push(`${distSw} SHELL_PATHS must contain the built HTML/JS/CSS shell, manifest, and icons.`);
         } else {
+          const requiredShellEntries = [
+            `${expectedBase}index.html`,
+            `${expectedBase}manifest.webmanifest`,
+            `${expectedBase}theme-init.js`,
+            `${expectedBase}icons/icon-192.png`,
+            `${expectedBase}icons/icon-512.png`,
+          ];
+          for (const required of requiredShellEntries) {
+            if (!shellPaths.includes(required)) {
+              errors.push(`${distSw} SHELL_PATHS is missing required entry "${required}".`);
+            }
+          }
+          if (!shellPaths.some((p) => /\.js$/.test(p) && p.includes('static/js/'))) {
+            errors.push(`${distSw} SHELL_PATHS must include the built JS bundle.`);
+          }
+          if (!shellPaths.some((p) => /\.css$/.test(p) && p.includes('static/css/'))) {
+            errors.push(`${distSw} SHELL_PATHS must include the built CSS bundle.`);
+          }
           for (const entry of shellPaths) {
             if (typeof entry !== 'string' || !entry.startsWith(expectedBase)) {
               errors.push(`${distSw} SHELL_PATHS entry "${entry}" must start with "${expectedBase}".`);
+              continue;
             }
-            if (/\.(?:webp|png|jpe?g|gif|svg|ico|avif|json|webmanifest)$/i.test(entry)) {
-              errors.push(`${distSw} SHELL_PATHS must not precache images or data files in E7a: "${entry}".`);
+            if (entry.includes('?') || entry.includes('#') || entry.includes('/api/')) {
+              errors.push(`${distSw} SHELL_PATHS entry "${entry}" must not include query/hash/api paths.`);
+            }
+            if (/\.webp$/i.test(entry)) {
+              errors.push(`${distSw} SHELL_PATHS must not contain WebP recipe photos: "${entry}".`);
+            }
+            const rel = entry.slice(expectedBase.length);
+            if (rel && !existsSync(resolve(DIST_DIR, rel))) {
+              errors.push(`${distSw} SHELL_PATHS entry missing from build output: "${rel}".`);
             }
           }
         }
       } catch (err) {
         errors.push(`Failed to parse SHELL_PATHS in ${distSw}: ${String(err)}`);
+      }
+    }
+
+    const thumbMatch = swSrc.match(/var THUMB_PATHS = (\[[\s\S]*?\]);/);
+    if (!thumbMatch) {
+      errors.push(`${distSw} must define THUMB_PATHS.`);
+    } else {
+      try {
+        const thumbPaths = JSON.parse(thumbMatch[1]);
+        if (!Array.isArray(thumbPaths) || thumbPaths.length < 190) {
+          errors.push(
+            `${distSw} THUMB_PATHS must precache emitted recipe thumbnails (found ${Array.isArray(thumbPaths) ? thumbPaths.length : 'non-array'}).`,
+          );
+        } else {
+          for (const entry of thumbPaths) {
+            if (typeof entry !== 'string' || !entry.startsWith(expectedBase)) {
+              errors.push(`${distSw} THUMB_PATHS entry "${entry}" must start with "${expectedBase}".`);
+              continue;
+            }
+            const rel = entry.slice(expectedBase.length);
+            if (!/^static\/image\/[a-z0-9_]+-thumb(?:\.[0-9a-f]+)?\.webp$/.test(rel)) {
+              errors.push(`${distSw} THUMB_PATHS must contain only *-thumb.webp thumbnails: "${entry}".`);
+            }
+            if (!existsSync(resolve(DIST_DIR, rel))) {
+              errors.push(`${distSw} THUMB_PATHS entry missing from build output: "${rel}".`);
+            }
+          }
+        }
+      } catch (err) {
+        errors.push(`Failed to parse THUMB_PATHS in ${distSw}: ${String(err)}`);
       }
     }
   }
