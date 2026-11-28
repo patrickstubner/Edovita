@@ -22,6 +22,7 @@ import {
   isAppShellAssetPath,
   isEdovitaCacheName,
   isFullRecipeImagePath,
+  isMatchingAppScope,
   isObsoleteEdovitaCache,
   isRecipeThumbPath,
   normalizeBasePath,
@@ -437,9 +438,19 @@ describe('Service worker offline script lifecycle (E7b)', () => {
 
     const listeners = new Map<string, (event: unknown) => void>();
     const networkFetches: string[] = [];
+    const precacheRequests: Array<{ url: string; cache?: string }> = [];
     let claimed = false;
     let skipWaitingCount = 0;
     let indexedDbTouched = false;
+
+    class MockRequest {
+      url: string;
+      cache?: string;
+      constructor(url: string, init?: { cache?: string }) {
+        this.url = url;
+        this.cache = init?.cache;
+      }
+    }
 
     const mockCaches = {
       async open(name: string) {
@@ -449,9 +460,14 @@ describe('Service worker offline script lifecycle (E7b)', () => {
           store.set(name, bucket);
         }
         return {
-          async addAll(urls: string[]) {
-            for (const url of urls) {
-              bucket.set(url, makeMockResponse(`cached:${url}`));
+          async addAll(items: Array<string | MockRequest>) {
+            for (const item of items) {
+              const req =
+                item instanceof MockRequest
+                  ? item
+                  : { url: String(item), cache: undefined };
+              precacheRequests.push({ url: req.url, cache: req.cache });
+              bucket.set(req.url, makeMockResponse(`cached:${req.url}`));
             }
           },
           async match(key: string) {
@@ -484,6 +500,17 @@ describe('Service worker offline script lifecycle (E7b)', () => {
       if (req.url.includes('opaque_img')) {
         return makeMockResponse('opaque', { type: 'opaque' });
       }
+      if (req.url.includes('cors_img')) {
+        return makeMockResponse('cors', { type: 'cors' });
+      }
+      if (req.url.includes('no_type_img')) {
+        const res = makeMockResponse('notype');
+        (res as unknown as { type?: string }).type = undefined;
+        return res;
+      }
+      if (req.url.includes('no_ct_img')) {
+        return makeMockResponse('no-ct', { contentType: null });
+      }
       if (req.url.includes('bad_mime')) {
         return makeMockResponse('<html>nope</html>', {
           contentType: 'text/html',
@@ -499,6 +526,7 @@ describe('Service worker offline script lifecycle (E7b)', () => {
       URL,
       Set,
       Promise,
+      Request: MockRequest,
       caches: mockCaches,
       fetch: mockFetch,
       get indexedDB() {
@@ -507,6 +535,7 @@ describe('Service worker offline script lifecycle (E7b)', () => {
       },
       self: {
         location: { origin: 'https://edovita.example' },
+        registration: { scope: 'https://edovita.example/' },
         skipWaiting() {
           skipWaitingCount += 1;
         },
@@ -523,7 +552,7 @@ describe('Service worker offline script lifecycle (E7b)', () => {
 
     vm.runInNewContext(script, sandbox);
 
-    // 1. Install precaches shell + all 30 thumbs and NEVER calls skipWaiting()
+    // 1. Install precaches shell + all 30 thumbs with Request(..., { cache: 'reload' }) and NEVER calls skipWaiting()
     const installPromises: Promise<unknown>[] = [];
     listeners.get('install')?.({
       waitUntil: (p: Promise<unknown>) => installPromises.push(p),
@@ -531,6 +560,8 @@ describe('Service worker offline script lifecycle (E7b)', () => {
     await Promise.all(installPromises);
 
     expect(skipWaitingCount).toBe(0);
+    expect(precacheRequests).toHaveLength(38);
+    expect(precacheRequests.every((r) => r.cache === 'reload')).toBe(true);
     expect(Array.from(store.get(cacheNames.shell)?.keys() ?? [])).toEqual([
       '/',
       '/icons/icon-192.png',
@@ -544,11 +575,26 @@ describe('Service worker offline script lifecycle (E7b)', () => {
     expect(store.get(cacheNames.thumbs)?.size).toBe(30);
     expect(store.has(cacheNames.images)).toBe(false);
 
-    // 2. Message listener only calls skipWaiting on explicit SKIP_WAITING
-    listeners.get('message')?.({ data: { type: 'OTHER' } });
-    listeners.get('message')?.({ data: null });
+    // 2. Message listener only calls skipWaiting when source.url starts with registration.scope AND data is exactly {type:'SKIP_WAITING'}
+    const validSource = { url: 'https://edovita.example/#/rezepte' };
+    listeners.get('message')?.({ data: { type: 'SKIP_WAITING' } }); // missing source
+    listeners.get('message')?.({
+      source: { url: 'https://evil.example/' },
+      data: { type: 'SKIP_WAITING' },
+    }); // wrong origin
+    listeners.get('message')?.({
+      source: validSource,
+      data: { type: 'SKIP_WAITING', extra: true },
+    }); // extra key
+    listeners.get('message')?.({ source: validSource, data: { type: 'OTHER' } });
+    listeners.get('message')?.({ source: validSource, data: null });
+    listeners.get('message')?.({ source: validSource, data: ['SKIP_WAITING'] });
     expect(skipWaitingCount).toBe(0);
-    listeners.get('message')?.({ data: { type: 'SKIP_WAITING' } });
+
+    listeners.get('message')?.({
+      source: validSource,
+      data: { type: 'SKIP_WAITING' },
+    });
     expect(skipWaitingCount).toBe(1);
 
     // 3. Activate deletes all 3 obsolete Edovita caches but keeps active + unrelated caches
@@ -643,10 +689,22 @@ describe('Service worker offline script lifecycle (E7b)', () => {
       '/static/image/lentil_dal.3333cccc.webp',
     ]);
 
-    // Rejects opaque, non-200, and non-webp full-image responses from CacheStorage
+    // Rejects opaque, cors, missing-type, missing-Content-Type, non-200, and non-webp full-image responses
     await dispatchFetch({
       method: 'GET',
       url: 'https://edovita.example/static/image/opaque_img.4444dddd.webp',
+    });
+    await dispatchFetch({
+      method: 'GET',
+      url: 'https://edovita.example/static/image/cors_img.4444eeee.webp',
+    });
+    await dispatchFetch({
+      method: 'GET',
+      url: 'https://edovita.example/static/image/no_type_img.4444ffff.webp',
+    });
+    await dispatchFetch({
+      method: 'GET',
+      url: 'https://edovita.example/static/image/no_ct_img.5555dddd.webp',
     });
     await dispatchFetch({
       method: 'GET',
@@ -703,6 +761,59 @@ describe('Service worker offline script lifecycle (E7b)', () => {
       }),
     ).toBeUndefined();
     expect(indexedDbTouched).toBe(false);
+  });
+
+  it('rejects SKIP_WAITING messages from sibling paths on a shared GitHub Pages origin', () => {
+    const cacheNames = buildCacheNames('0.1.0', 'abcdef012345');
+    const script = generateServiceWorkerScript({
+      cacheNames,
+      basePath: '/Edovita/',
+      shellPaths: ['/Edovita/', '/Edovita/index.html'],
+      thumbPaths: [],
+    });
+
+    const listeners = new Map<string, (event: unknown) => void>();
+    let skipWaitingCount = 0;
+
+    vm.runInNewContext(script, {
+      URL,
+      Set,
+      Promise,
+      self: {
+        location: { origin: 'https://example.github.io' },
+        registration: { scope: 'https://example.github.io/Edovita/' },
+        skipWaiting() {
+          skipWaitingCount += 1;
+        },
+        addEventListener(type: string, fn: (event: unknown) => void) {
+          listeners.set(type, fn);
+        },
+      },
+    });
+
+    // Sibling repo on shared github.io origin must be ignored
+    listeners.get('message')?.({
+      source: { url: 'https://example.github.io/other-repo/' },
+      data: { type: 'SKIP_WAITING' },
+    });
+    // Root path outside /Edovita/ scope must be ignored
+    listeners.get('message')?.({
+      source: { url: 'https://example.github.io/' },
+      data: { type: 'SKIP_WAITING' },
+    });
+    // Prefix-lookalike sibling without trailing slash must be ignored
+    listeners.get('message')?.({
+      source: { url: 'https://example.github.io/Edovita-evil/' },
+      data: { type: 'SKIP_WAITING' },
+    });
+    expect(skipWaitingCount).toBe(0);
+
+    // Client within /Edovita/ scope with exact payload succeeds
+    listeners.get('message')?.({
+      source: { url: 'https://example.github.io/Edovita/#/plan' },
+      data: { type: 'SKIP_WAITING' },
+    });
+    expect(skipWaitingCount).toBe(1);
   });
 });
 
@@ -918,7 +1029,7 @@ describe('PWA kill switch (runtime helper and emergency SW script)', () => {
       openReq.onerror = () => rejectDb(openReq.error);
     });
 
-    let unregistered = 0;
+    const unregisteredScopes: string[] = [];
     const cacheKeys = new Set([
       'edovita-shell-v0.1.0-aaaa1111bbbb',
       'edovita-thumbs-v0.1.0-aaaa1111bbbb',
@@ -926,12 +1037,61 @@ describe('PWA kill switch (runtime helper and emergency SW script)', () => {
       'unrelated-site-cache',
     ]);
 
+    expect(
+      isMatchingAppScope(
+        'https://example.github.io/Edovita/',
+        '/Edovita/',
+        'https://example.github.io',
+      ),
+    ).toBe(true);
+    expect(
+      isMatchingAppScope(
+        'https://example.github.io/other-repo/',
+        '/Edovita/',
+        'https://example.github.io',
+      ),
+    ).toBe(false);
+    expect(
+      isMatchingAppScope(
+        'https://example.github.io/',
+        '/Edovita/',
+        'https://example.github.io',
+      ),
+    ).toBe(false);
+    expect(
+      isMatchingAppScope(
+        'https://other.example/Edovita/',
+        '/Edovita/',
+        'https://example.github.io',
+      ),
+    ).toBe(false);
+    expect(isMatchingAppScope(undefined, '/', 'http://127.0.0.1:4173')).toBe(
+      false,
+    );
+
     const result = await runPwaKillSwitch({
+      basePath: '/Edovita/',
+      origin: 'https://example.github.io',
       serviceWorker: {
         getRegistrations: async () => [
           {
+            scope: 'https://example.github.io/Edovita/',
             unregister: async () => {
-              unregistered += 1;
+              unregisteredScopes.push('https://example.github.io/Edovita/');
+              return true;
+            },
+          },
+          {
+            scope: 'https://example.github.io/other-repo/',
+            unregister: async () => {
+              unregisteredScopes.push('https://example.github.io/other-repo/');
+              return true;
+            },
+          },
+          {
+            scope: 'https://example.github.io/',
+            unregister: async () => {
+              unregisteredScopes.push('https://example.github.io/');
               return true;
             },
           },
@@ -943,7 +1103,7 @@ describe('PWA kill switch (runtime helper and emergency SW script)', () => {
       },
     });
 
-    expect(unregistered).toBe(1);
+    expect(unregisteredScopes).toEqual(['https://example.github.io/Edovita/']);
     expect(result.unregisteredCount).toBe(1);
     expect(result.deletedCaches.sort()).toEqual([
       'edovita-images-v0.1.0-aaaa1111bbbb',

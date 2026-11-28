@@ -104,7 +104,10 @@ function addAllBatched(cache, urls) {
   for (var i = 0; i < urls.length; i += PRECACHE_BATCH_SIZE) {
     (function (batch) {
       chain = chain.then(function () {
-        return cache.addAll(batch);
+        var requests = batch.map(function (url) {
+          return new Request(url, { cache: 'reload' });
+        });
+        return cache.addAll(requests);
       });
     })(urls.slice(i, i + PRECACHE_BATCH_SIZE));
   }
@@ -139,19 +142,42 @@ function matchThumbFallbackForFullPath(pathname) {
 }
 
 function isCacheableFullImageResponse(response) {
-  if (!response || !response.ok || response.status !== 200) {
+  if (!response || response.ok !== true || response.status !== 200) {
     return false;
   }
-  if (response.type && response.type !== 'basic') {
+  if (response.type !== 'basic') {
     return false;
   }
-  if (response.headers && typeof response.headers.get === 'function') {
-    var contentType = response.headers.get('content-type');
-    if (contentType && contentType.toLowerCase().indexOf('image/webp') !== 0) {
-      return false;
-    }
+  if (!response.headers || typeof response.headers.get !== 'function') {
+    return false;
+  }
+  var contentType = response.headers.get('content-type');
+  if (
+    typeof contentType !== 'string' ||
+    contentType.toLowerCase().indexOf('image/webp') !== 0
+  ) {
+    return false;
   }
   return true;
+}
+
+function isValidSkipWaitingMessage(event) {
+  if (!event || !event.source || typeof event.source.url !== 'string') {
+    return false;
+  }
+  var scope =
+    self.registration && typeof self.registration.scope === 'string'
+      ? self.registration.scope
+      : self.location.origin + BASE_PATH;
+  if (event.source.url.indexOf(scope) !== 0) {
+    return false;
+  }
+  var data = event.data;
+  if (!data || typeof data !== 'object' || Array.isArray(data)) {
+    return false;
+  }
+  var keys = Object.keys(data);
+  return keys.length === 1 && keys[0] === 'type' && data.type === 'SKIP_WAITING';
 }
 
 function enforceBoundedImageCache(cache) {
@@ -182,7 +208,7 @@ self.addEventListener('install', function (event) {
 });
 
 self.addEventListener('message', function (event) {
-  if (event && event.data && event.data.type === 'SKIP_WAITING') {
+  if (isValidSkipWaitingMessage(event)) {
     self.skipWaiting();
   }
 });
@@ -316,6 +342,12 @@ self.addEventListener('fetch', function (event) {
  * Generates an emergency self-unregistering kill-switch service worker
  * (`PWA_KILL_SWITCH=true`). Deletes only Edovita caches and unregisters itself
  * without ever touching IndexedDB/Dexie user data.
+ *
+ * Keeping normal SW registration active in a kill-switch build is intentional
+ * and harmless: returning clients with an older worker actively check `sw.js`
+ * (`updateViaCache: 'none'`), activate this kill-switch worker, clear Edovita
+ * caches, and unregister it; fresh clients immediately self-unregister on
+ * `activate`, leaving zero active worker and zero caches.
  */
 export function generateKillSwitchServiceWorkerScript(): string {
   return `/* Edovita Emergency Kill-Switch Service Worker (PWA_KILL_SWITCH=true).

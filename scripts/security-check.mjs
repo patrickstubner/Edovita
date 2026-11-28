@@ -111,11 +111,11 @@ for (const file of codeFiles) {
   }
 }
 
-// 2. CSP und Pfad-Blöcke in public/_headers prüfen (L1: per-path parsing)
+// 2. Validate CSP and per-path header blocks in public/_headers (L1: per-path parsing)
 const headersPath = resolve(ROOT, 'public/_headers');
 let headersCsp = '';
 if (!existsSync(headersPath)) {
-  errors.push('public/_headers fehlt.');
+  errors.push('public/_headers is missing.');
 } else {
   const headersRaw = readFileSync(headersPath, 'utf8');
   const headerBlocks = parseHeaderBlocks(headersRaw);
@@ -125,13 +125,13 @@ if (!existsSync(headersPath)) {
   } else {
     headersCsp = defaultBlock.get('content-security-policy') ?? '';
     if (!headersCsp) {
-      errors.push('Content-Security-Policy fehlt im /*-Block von public/_headers.');
+      errors.push('Content-Security-Policy is missing in the /* block of public/_headers.');
     }
     if (headersCsp.includes('unsafe-inline') || headersCsp.includes('unsafe-eval')) {
-      errors.push('CSP in public/_headers darf kein unsafe-inline oder unsafe-eval enthalten.');
+      errors.push('CSP in public/_headers must not contain unsafe-inline or unsafe-eval.');
     }
     if (!headersCsp.includes("connect-src 'self'")) {
-      errors.push("CSP in public/_headers muss connect-src 'self' enthalten.");
+      errors.push("CSP in public/_headers must include connect-src 'self'.");
     }
     if (!headersCsp.includes("worker-src 'self'")) {
       errors.push("CSP in public/_headers must include worker-src 'self'.");
@@ -140,11 +140,11 @@ if (!existsSync(headersPath)) {
       errors.push("CSP in public/_headers must include manifest-src 'self'.");
     }
     if (!headersCsp.includes("frame-ancestors 'none'")) {
-      errors.push("CSP in public/_headers muss frame-ancestors 'none' enthalten.");
+      errors.push("CSP in public/_headers must include frame-ancestors 'none'.");
     }
     const robots = defaultBlock.get('x-robots-tag') ?? '';
     if (robots !== 'noindex, nofollow, noarchive') {
-      errors.push('public/_headers muss im /*-Block X-Robots-Tag: noindex, nofollow, noarchive enthalten.');
+      errors.push('public/_headers must include X-Robots-Tag: noindex, nofollow, noarchive in the /* block.');
     }
   }
 
@@ -346,9 +346,26 @@ if (existsSync(distIndex)) {
         `${distSw} must not call skipWaiting() automatically inside the install listener.`,
       );
     }
-    if (!/event\.data\.type === 'SKIP_WAITING'/.test(swSrc)) {
+    if (
+      !swSrc.includes('isValidSkipWaitingMessage') ||
+      !swSrc.includes("data.type === 'SKIP_WAITING'") ||
+      !swSrc.includes('event.source.url.indexOf(scope) !== 0')
+    ) {
       errors.push(
-        `${distSw} must gate skipWaiting() behind an explicit SKIP_WAITING message.`,
+        `${distSw} must gate skipWaiting() behind a scope-verified exact {type:'SKIP_WAITING'} message.`,
+      );
+    }
+    if (!swSrc.includes("new Request(url, { cache: 'reload' })")) {
+      errors.push(
+        `${distSw} must precache entries with new Request(url, { cache: 'reload' }) to bypass stale HTTP cache.`,
+      );
+    }
+    if (
+      !swSrc.includes("response.type !== 'basic'") ||
+      !swSrc.includes("contentType.toLowerCase().indexOf('image/webp') !== 0")
+    ) {
+      errors.push(
+        `${distSw} must enforce fail-closed response.type === 'basic' and image/webp Content-Type before caching full images.`,
       );
     }
 

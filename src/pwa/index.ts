@@ -38,6 +38,7 @@ export {
 } from './manifest.ts';
 
 export {
+  isMatchingAppScope,
   runPwaKillSwitch,
   type KillSwitchCacheStorageLike,
   type KillSwitchRegistrationLike,
