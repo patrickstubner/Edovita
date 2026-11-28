@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 
-test.describe('E7a PWA installability and app-shell service worker', () => {
+test.describe('E7b PWA offline app shell, thumbnails, manifest/icons, and runtime image cache', () => {
   test('serves valid web app manifest, installability icons, theme color, and strict CSP', async ({
     page,
     request,
@@ -88,7 +88,7 @@ test.describe('E7a PWA installability and app-shell service worker', () => {
     expect(consoleErrors).toEqual([]);
   });
 
-  test('registers app-shell SW, caches only HTML/JS/CSS (no images or user data), and loads offline', async ({
+  test('precaches shell, manifest, icons, and recipe thumbnails; caches full-size images on demand; and runs offline', async ({
     page,
     context,
   }) => {
@@ -130,9 +130,9 @@ test.describe('E7a PWA installability and app-shell service worker', () => {
     expect(swState.scope).toMatch(/\/$/);
     expect(swState.controlled).toBe(true);
 
-    // Inspect Cache Storage: strictly one versioned edovita-shell-* cache with HTML/JS/CSS only
-    const cacheInspection = await page.evaluate(async () => {
-      const keys = await caches.keys();
+    // Inspect Cache Storage right after install: shell + thumbs precached, NO runtime full images yet
+    const initialCaches = await page.evaluate(async () => {
+      const keys = (await caches.keys()).sort();
       const entriesByCache: Record<string, string[]> = {};
       for (const key of keys) {
         const cache = await caches.open(key);
@@ -142,61 +142,177 @@ test.describe('E7a PWA installability and app-shell service worker', () => {
       return { keys, entriesByCache };
     });
 
-    expect(cacheInspection.keys).toHaveLength(1);
-    const cacheKey = cacheInspection.keys[0]!;
-    expect(cacheKey).toMatch(/^edovita-shell-v[0-9A-Za-z._-]+-[0-9a-f]{12}$/);
+    const shellKey = initialCaches.keys.find((k) =>
+      /^edovita-shell-v[0-9A-Za-z._-]+-[0-9a-f]{12}$/.test(k),
+    );
+    const thumbsKey = initialCaches.keys.find((k) =>
+      /^edovita-thumbs-v[0-9A-Za-z._-]+-[0-9a-f]{12}$/.test(k),
+    );
+    expect(shellKey).toBeDefined();
+    expect(thumbsKey).toBeDefined();
+    expect(initialCaches.keys).toHaveLength(2);
 
-    const cachedUrls = cacheInspection.entriesByCache[cacheKey] ?? [];
-    expect(cachedUrls.some((u) => u.endsWith('/index.html'))).toBe(true);
-    expect(cachedUrls.some((u) => u.endsWith('/theme-init.js'))).toBe(true);
-    expect(cachedUrls.some((u) => /\/static\/js\/.+\.js$/.test(u))).toBe(true);
-    expect(cachedUrls.some((u) => /\/static\/css\/.+\.css$/.test(u))).toBe(
+    const shellUrls = initialCaches.entriesByCache[shellKey!] ?? [];
+    expect(shellUrls.some((u) => u.endsWith('/index.html'))).toBe(true);
+    expect(shellUrls.some((u) => u.endsWith('/manifest.webmanifest'))).toBe(
       true,
     );
-
-    for (const url of cachedUrls) {
+    expect(shellUrls.some((u) => u.endsWith('/theme-init.js'))).toBe(true);
+    expect(shellUrls.some((u) => u.endsWith('/icons/icon-192.png'))).toBe(true);
+    expect(shellUrls.some((u) => u.endsWith('/icons/icon-512.png'))).toBe(true);
+    expect(shellUrls.some((u) => u.endsWith('/assets/edovita_appicon.svg'))).toBe(
+      true,
+    );
+    expect(shellUrls.some((u) => /\/static\/js\/.+\.js$/.test(u))).toBe(true);
+    expect(shellUrls.some((u) => /\/static\/css\/.+\.css$/.test(u))).toBe(true);
+    for (const url of shellUrls) {
       expect(url).toMatch(/^http:\/\/127\.0\.0\.1:4173\//);
-      expect(url).not.toMatch(
-        /\.(?:webp|png|jpe?g|gif|svg|ico|avif|json|webmanifest)$/i,
-      );
+      expect(url).not.toMatch(/\.webp$/i);
       expect(url).not.toContain('/api/');
       expect(url).not.toContain('#import');
     }
 
-    // Go offline and verify full reload loads the app shell from the SW cache
+    const thumbUrls = initialCaches.entriesByCache[thumbsKey!] ?? [];
+    expect(thumbUrls.length).toBeGreaterThanOrEqual(190);
+    for (const url of thumbUrls) {
+      expect(url).toMatch(
+        /^http:\/\/127\.0\.0\.1:4173\/static\/image\/[a-z0-9_]+-thumb(?:\.[0-9a-f]+)?\.webp$/,
+      );
+    }
+
+    // Visit one recipe detail online so its full-size photo populates the bounded runtime cache
+    await page.goto('/#/rezept/oven_salmon');
+    const detailImg = page.locator('img').first();
+    await expect(detailImg).toBeVisible();
+    await expect
+      .poll(async () =>
+        detailImg.evaluate((img: HTMLImageElement) => ({
+          complete: img.complete,
+          naturalWidth: img.naturalWidth,
+        })),
+      )
+      .toEqual({ complete: true, naturalWidth: expect.any(Number) });
+    const onlineDetailWidth = await detailImg.evaluate(
+      (img: HTMLImageElement) => img.naturalWidth,
+    );
+    expect(onlineDetailWidth).toBeGreaterThan(0);
+
+    const postDetailCaches = await page.evaluate(async () => {
+      const keys = (await caches.keys()).sort();
+      const imageKey = keys.find((k) => k.startsWith('edovita-images-'));
+      let imageUrls: string[] = [];
+      if (imageKey) {
+        const cache = await caches.open(imageKey);
+        imageUrls = (await cache.keys()).map((r) => r.url).sort();
+      }
+      return { keys, imageKey, imageUrls };
+    });
+    expect(postDetailCaches.imageKey).toMatch(
+      /^edovita-images-v[0-9A-Za-z._-]+-[0-9a-f]{12}$/,
+    );
+    expect(
+      postDetailCaches.imageUrls.some((u) =>
+        /\/static\/image\/oven_salmon\.[0-9a-f]+\.webp$/.test(u),
+      ),
+    ).toBe(true);
+
+    // Go offline and verify full app start, manifest/icons, thumbnails, and cached full-size photo
     await context.setOffline(true);
     try {
-      await page.reload({ waitUntil: 'domcontentloaded' });
+      await page.goto('/', { waitUntil: 'domcontentloaded' });
       await expect(
         page.getByRole('heading', { name: 'Willkommen bei Edovita' }),
       ).toBeVisible();
 
-      // Verify hash navigation inside the offline app shell works cleanly
-      await page.getByRole('button', { name: /Weiter/i }).click();
-      await expect(
-        page.getByRole('heading', { name: 'Übersicht' }),
-      ).toBeVisible();
-      expect(page.url()).toContain('#/status');
+      // Manifest and PWA icons remain fetchable offline from the shell cache
+      const offlineMeta = await page.evaluate(async () => {
+        const manifestRes = await fetch('/manifest.webmanifest');
+        const iconRes = await fetch('/icons/icon-192.png');
+        const manifestBody = (await manifestRes.json()) as { name?: string };
+        return {
+          manifestOk: manifestRes.ok,
+          manifestName: manifestBody.name,
+          iconOk: iconRes.ok,
+        };
+      });
+      expect(offlineMeta).toEqual({
+        manifestOk: true,
+        manifestName: 'Edovita',
+        iconOk: true,
+      });
 
-      // Re-verify Cache Storage still contains only the HTML/JS/CSS shell after offline navigation
-      const postOfflineKeys = await page.evaluate(async () => {
+      // Recipe list + precached thumbnails (and featured card fallback) render offline
+      await page.goto('/#/rezepte', { waitUntil: 'domcontentloaded' });
+      await expect(
+        page.getByRole('heading', { name: /Rezepte/ }),
+      ).toBeVisible();
+      const featuredImg = page.locator('.edo-recipe-feat img').first();
+      await expect(featuredImg).toBeVisible();
+      await expect
+        .poll(async () =>
+          featuredImg.evaluate(
+            (img: HTMLImageElement) => img.complete && img.naturalWidth > 0,
+          ),
+        )
+        .toBe(true);
+      const compactThumb = page.locator('.edo-recipe-sm img').first();
+      await expect(compactThumb).toBeVisible();
+      await expect
+        .poll(async () =>
+          compactThumb.evaluate(
+            (img: HTMLImageElement) => img.complete && img.naturalWidth > 0,
+          ),
+        )
+        .toBe(true);
+
+      // Previously viewed recipe full-size photo renders offline from edovita-images-*
+      await page.goto('/#/rezept/oven_salmon', {
+        waitUntil: 'domcontentloaded',
+      });
+      const offlineHero = page.locator('img').first();
+      await expect(offlineHero).toBeVisible();
+      await expect
+        .poll(async () =>
+          offlineHero.evaluate(
+            (img: HTMLImageElement) =>
+              img.complete && img.naturalWidth >= 640,
+          ),
+        )
+        .toBe(true);
+
+      // Core tabs (Plan + Shopping) load cleanly offline
+      await page.goto('/#/plan', { waitUntil: 'domcontentloaded' });
+      await expect(
+        page.getByRole('heading', { name: 'Plan', exact: true }),
+      ).toBeVisible();
+      await page.goto('/#/einkauf', { waitUntil: 'domcontentloaded' });
+      await expect(
+        page.getByRole('heading', { name: 'Einkaufsliste', exact: true }),
+      ).toBeVisible();
+
+      // Verify Cache Storage hygiene & 0 CSP violations after offline navigation
+      const hygiene = await page.evaluate(async () => {
         const keys = await caches.keys();
-        const urls: string[] = [];
+        const allUrls: string[] = [];
         for (const key of keys) {
           const cache = await caches.open(key);
           const reqs = await cache.keys();
-          urls.push(...reqs.map((r) => r.url));
+          allUrls.push(...reqs.map((r) => r.url));
         }
-        return { keys, urls };
-      });
-      expect(postOfflineKeys.keys).toEqual([cacheKey]);
-      expect(postOfflineKeys.urls.sort()).toEqual(cachedUrls);
-
-      const cspViolations = await page.evaluate(() => {
         const target = window as unknown as { __cspViolations?: string[] };
-        return target.__cspViolations ?? [];
+        return {
+          keys,
+          hasForbidden: allUrls.some(
+            (u) =>
+              u.includes('/api/') ||
+              u.includes('#import') ||
+              !u.startsWith('http://127.0.0.1:4173/'),
+          ),
+          cspViolations: target.__cspViolations ?? [],
+        };
       });
-      expect(cspViolations).toEqual([]);
+      expect(hygiene.hasForbidden).toBe(false);
+      expect(hygiene.cspViolations).toEqual([]);
     } finally {
       await context.setOffline(false);
     }

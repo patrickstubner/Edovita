@@ -305,5 +305,8 @@
   "pref.d_onion": "Cebola",
   "pref.d_meat": "Carne",
   "plan.pick.search": "Procurar receita…",
-  "plan.pick.empty": "Nenhuma receita encontrada."
+  "plan.pick.empty": "Nenhuma receita encontrada.",
+  "pwa.update.message": "Uma nova versão do Edovita está pronta.",
+  "pwa.update.action": "Atualizar agora",
+  "pwa.update.dismiss": "Fechar aviso de atualização"
 }

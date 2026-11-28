@@ -788,6 +788,54 @@ html[data-eff='dark'] .edo-rimg-has-photo img {
   flex: none;
 }
 
+/* PWA update banner (E7b): non-intrusive status bar above TabBar, logical properties only */
+.edo-update-banner {
+  flex: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding-block: 8px;
+  padding-inline: 14px;
+  background: var(--edo-primary-soft);
+  color: var(--edo-text);
+  border-block-start: 1px solid var(--edo-border);
+  font-size: 14px;
+  font-weight: 600;
+  z-index: 11;
+}
+
+.edo-update-banner-msg {
+  flex: 1 1 160px;
+}
+
+.edo-update-banner-btn {
+  flex: none;
+  min-inline-size: 44px;
+  min-block-size: 44px;
+  padding-block: 8px;
+  padding-inline: 14px;
+  border-radius: 12px;
+  background: var(--edo-primary);
+  color: var(--edo-on-primary);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.edo-update-banner-btn:disabled {
+  opacity: 0.6;
+}
+
+.edo-update-banner-close {
+  flex: none;
+  min-inline-size: 44px;
+  min-block-size: 44px;
+  border-radius: 22px;
+  display: grid;
+  place-items: center;
+  color: var(--edo-text);
+}
+
 /* Kompakter Sprachumschalter & Zweitsprache oben rechts (in RTL links), exakt nach Prototyp v5.5–v5.10 */
 .edo-lang-switch {
   position: absolute;
